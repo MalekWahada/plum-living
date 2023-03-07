@@ -1,0 +1,7 @@
+sylius_grid:
+    grids:
+        sylius_admin_payment:
+            actions:
+                item:
+                    complete:
+                        enabled: false

@@ -1,0 +1,31 @@
+<div class="address-form row" {% if type is defined %} id="{{ type }}-address-form" {% endif %}>
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_text_field.html.twig' with { field: form.firstName } %}
+    </div>
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_text_field.html.twig' with { field: form.lastName } %}
+    </div>
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_phonenumber_field.html.twig' with { field: form.phoneNumber } %}
+    </div>
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_text_field.html.twig' with { field: form.company } %}
+    </div>
+    <div class="column u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_text_field.html.twig' with { field: form.street } %}
+    </div>
+    <div class="column @md:column-4 u-margin-b-4 @md:u-margin-b-auto">
+        {% include 'Shop/Form/_text_field.html.twig' with { field: form.postcode } %}
+    </div>
+    <div class="column @md:column-4 u-margin-b-4 @md:u-margin-b-auto">
+        {% include 'Shop/Form/_text_field.html.twig' with { field: form.city } %}
+    </div>
+    <div class="column @md:column-4">
+        {% include 'Shop/Form/_select_field.html.twig' with { field: form.countryCode, usePlaceholder: false } %}
+    </div>
+    {% if form.shippingNotes is defined %}
+        <div class="column u-margin-t-4 @md:u-margin-t-5">
+            {% include 'Shop/Form/_textarea_field.html.twig' with { field: form.shippingNotes } %}
+        </div>
+    {% endif %}
+</div>

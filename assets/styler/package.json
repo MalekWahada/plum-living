@@ -1,0 +1,61 @@
+{
+  "name": "@plum/styler",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@plum/fonts": "link:../_fonts",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.27.2",
+    "bootstrap": "^5.1.3",
+    "camelcase-keys": "^7.0.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "i18next": "^21.6.15",
+    "mobx": "^6.6.0",
+    "mobx-react-lite": "^3.4.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.2.0",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.16.5",
+    "react-scripts": "5.0.0",
+    "react-tooltip": "^4.2.21",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^4.6.2",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "import-translation": "node translation-tool.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.2",
+    "@types/react": "^17.0.40",
+    "@types/react-dom": "^17.0.13",
+    "@types/webpack-env": "^1.16.3",
+    "eslint-config-react-app": "^7.0.1",
+    "react-app-rewired": "^2.2.1"
+  }
+}

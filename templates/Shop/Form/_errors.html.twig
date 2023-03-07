@@ -1,0 +1,14 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set errors = form.vars.errors|default(null) %}
+
+{% if errors %}
+    <div class="message u-flex u-start-on-cross bg-pink-light u-padding-l-2 u-padding-r-3 u-padding-t-2 u-padding-b-1.5 u-margin-b-5" {{ sylius_test_html_attribute('validation-error') }}>
+        <svg class="o-icon-40 u-fit-content u-margin-r-2 c-pink"><use xlink:href="{{ iconLibUrl }}#SVG-icon-warning"/></svg>
+        <div class="u-fill-space">
+            <p class="t-label-small c-grey-mid u-flex u-center-on-cross" style="height:40px">{{ 'app.ui.generic.form_errors_label'|trans }}</p>
+            {% for item in errors %}
+                <p class="t-base-small c-near-black">{{ item.message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,41 @@
+{% set orderId = get_current_cart_id() %}
+{% if app.request.attributes.get('_route_params')['scannerProjectId'] is defined %}
+    {% set plumScannerId = app.request.attributes.get('_route_params')['scannerProjectId'] %}
+{% endif %}
+
+{% if orderId is not null or plumScannerId is defined %}
+    <!-- Hotjar Tracking Code for https://plum-living.com/ -->
+    <script>
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () {
+                (h.hj.q = h.hj.q || []).push(arguments);
+            };
+            h._hjSettings = {
+                hjid: "{{ hotjar_site_id }}",
+                hjsv: 6
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!-- Hotjar Tracking scenarios triggers for https://plum-living.com/ -->
+    <script>
+        let customerId = null;
+        let orderId = null;
+        let scannerProjectId = null;
+
+        {%- if app.user is not null and app.user.customer is not null -%} customerId = {{ app.user.customer.id }};{%- endif -%}
+        {%- if orderId is not null -%} orderId = {{ orderId }};{% endif %}
+        {%- if plumScannerId is defined -%} scannerProjectId = "{{ plumScannerId }}"; {%- endif -%}
+
+        window.hj=window.hj||function(){(hj.q=hj.q||[]).push(arguments)};
+        window.hj('identify', customerId, {
+            orderId: orderId,
+            plumScannerId: scannerProjectId,
+        });
+    </script>
+{% endif %}

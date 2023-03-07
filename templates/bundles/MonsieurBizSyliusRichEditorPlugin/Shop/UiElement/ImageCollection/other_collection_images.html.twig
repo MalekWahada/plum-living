@@ -1,0 +1,58 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set imageFilter = 'app_cms_image_collection_slider_default' %}
+{% set imageFilterRetina = 'app_cms_image_collection_slider_right_retina' %}
+
+{% if element.type == constant('App\\Provider\\CMS\\ImageCollection\\ImageCollectionTypeProvider::IMAGE_COLLECTION_TYPE_DEFAULT') %}
+    {% set imageFilter = 'app_cms_image_collection_default' %}
+    {% set imageFilterRetina = 'app_cms_image_collection_slider_right_retina' %}
+    {% set classes = classes|merge({'container': 'cms-values__right u-margin-t-6'}) %}
+    {% set classes = classes|merge({'wrapper': 'cms-values-img u-center-on-main'}) %}
+    {% set classes = classes|merge({'slide': 'cms-values-img__item t-align-center'}) %}
+{% elseif element.type == constant('App\\Provider\\CMS\\ImageCollection\\ImageCollectionTypeProvider::IMAGE_COLLECTION_TYPE_SLIDER') %}
+    {% set imageFilter = 'app_cms_image_collection_slider' %}
+    {% set imageFilterRetina = 'app_cms_image_collection_slider_retina' %}
+    {% set classes = classes|merge({'container': 'cms-slider-home__container'}) %}
+    {% set classes = classes|merge({'wrapper': 'swiper-wrapper'}) %}
+    {% set classes = classes|merge({'slide': 'swiper-slide'}) %}
+{% elseif element.type == constant('App\\Provider\\CMS\\ImageCollection\\ImageCollectionTypeProvider::IMAGE_COLLECTION_TYPE_SLIDER_PLANS')   %}
+    {% set imageFilter = 'app_cms_image_collection_slider_plans' %}
+    {% set imageFilterRetina = 'app_cms_image_collection_slider_plans_retina' %}
+    {% set classes = classes|merge({'container': 'cms-slider-budget__container'}) %}
+    {% set classes = classes|merge({'wrapper': 'swiper-wrapper'}) %}
+    {% set classes = classes|merge({'slide': 'swiper-slide'}) %}
+{% elseif element.type == constant('App\\Provider\\CMS\\ImageCollection\\ImageCollectionTypeProvider::IMAGE_COLLECTION_TYPE_SLIDER_RIGHT') %}
+    {% set imageFilter = 'app_cms_image_collection_slider_right' %}
+    {% set imageFilterRetina = 'app_cms_image_collection_slider_right_retina' %}
+    {% set classes = classes|merge({'container': 'cms-slider-header__container'}) %}
+    {% set classes = classes|merge({'wrapper': 'swiper-wrapper'}) %}
+    {% set classes = classes|merge({'slide': 'swiper-slide'}) %}
+{% endif %}
+
+<div class="{{ classes['container'] }}">
+    {% if element.type == constant('App\\Provider\\CMS\\ImageCollection\\ImageCollectionTypeProvider::IMAGE_COLLECTION_TYPE_SLIDER_PLANS') %}
+        <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78">
+            <use xlink:href="{{ iconLibUrl }}#SVG-arrow-fill"/>
+        </svg>
+    {% elseif element.type != constant('App\\Provider\\CMS\\ImageCollection\\ImageCollectionTypeProvider::IMAGE_COLLECTION_TYPE_DEFAULT') %}
+        <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78">
+            <use xlink:href="{{ iconLibUrl }}#SVG-arrow-fill--white-new"/>
+        </svg>
+    {% endif %}
+    <div class="{{ classes['wrapper'] }}">
+        {% for image in element.images %}
+            <div class="{{ classes['slide'] }}">
+                {% if image.image is not empty %}
+                    {% if image.link is not empty %}
+                        <a href="{{ image.link }}">
+                            <img src="{{ image.image|imagine_filter(imageFilter) }}" srcset="{{ image.image|imagine_filter(imageFilterRetina) }} 2x" alt="{{ image.alt|default('') }}"
+                                 title="{{ image.title|default('') }}"/>
+                        </a>
+                    {% else %}
+                        <img src="{{ image.image|imagine_filter(imageFilter) }}" srcset="{{ image.image|imagine_filter(imageFilterRetina) }} 2x"  alt="{{ image.alt|default('') }}"
+                             title="{{ image.title|default('') }}"/>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

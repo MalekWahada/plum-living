@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="column-fill-space u-margin-b-3 @md:u-margin-b-auto u-padding-r-1">
+        {% set errorClass = form.design.vars.errors is not empty ? ' field--warning' %}
+        {% include 'Shop/Form/_select_field.html.twig' with {
+            'field': form.design,
+            'attributes': {
+                'labelClass': 't-label-col',
+                'class': 'ps-project__design-field select-field--alt u-margin-b-4 t-base-small' ~ errorClass
+            }
+        } %}
+    </div>
+    <div class="column-fill-space u-margin-b-3 @md:u-margin-b-auto u-padding-r-1 u-padding-l-1">
+        {% set errorClass = form.finish.vars.errors is not empty ? ' field--warning' %}
+        {% include 'Shop/Form/_color_select_field.html.twig' with {
+            'field': form.finish,
+            'showLabel': true,
+            'attributes': {
+                'labelClass': 't-label-col',
+                'class': 'ps-project__finish-field u-margin-b-4' ~ errorClass
+            }
+        } %}
+    </div>
+    <div class="column-fill-space u-margin-b-3 @md:u-margin-b-auto u-padding-l-1">
+        {% set errorClass = form.color.vars.errors is not empty ? ' field--warning' %}
+        {% include 'Shop/Form/_color_select_field.html.twig' with {
+            'field': form.color,
+            'showLabel': true,
+            'attributes': {
+                'labelClass': 't-label-col',
+                'class': 'ps-project__color-field' ~ errorClass
+            }
+        } %}
+    </div>
+</div>

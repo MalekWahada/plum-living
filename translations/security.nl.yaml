@@ -1,0 +1,5 @@
+'Invalid credentials':
+    '': 'Als u een account had op onze oude website, is uw wachtwoord voor de veiligheid gewijzigd, klik alstublieft op "Wachtwoord vergeten"'
+    lokalise_sanitize_two_single_quotes: 'Als u een account had op onze oude website, is uw wachtwoord voor de veiligheid gewijzigd, klik alstublieft op "Wachtwoord vergeten"'
+app:
+    email_not_verified: 'Uw account is niet gevalideerd, valideer uw account door op de link te klikken die we u per e-mail hebben gestuurd.'

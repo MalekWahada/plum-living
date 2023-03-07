@@ -1,0 +1,29 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-top-level/css-top-level-config' as *;
+
+
+.newsletter-form {
+  &__title {
+    margin-bottom: rem(20);
+  }
+
+  fieldset {
+    position: relative;
+  }
+
+    &__email-field {
+      margin-bottom: rem(30);
+    }
+
+    .link-button {
+      margin-top: rem(30);
+      transform: translateY(-50%);
+    }
+
+  .field__message{
+    color: get-color('pink');
+  }
+  span.field__label.field__label--leave-font-size.t-base-xsmall::after{
+    content:none !important;
+  }
+}

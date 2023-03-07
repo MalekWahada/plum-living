@@ -1,0 +1,45 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set firstMosaicImage = mozaicImagesCollection[0] %}
+{% set secondMosaicImage = mozaicImagesCollection[1] %}
+{% set thirdMosaicImage = mozaicImagesCollection[2] %}
+{% set filters = [
+    'app_cms_image_collection_mosaic_first_title',
+    'app_cms_image_collection_mosaic_second_title',
+    'app_cms_image_collection_mosaic_third_title',
+] %}
+{% set filtersRetina = [
+    'app_cms_image_collection_mosaic_first_title_retina',
+    'app_cms_image_collection_mosaic_second_title_retina',
+    'app_cms_image_collection_mosaic_third_title_retina',
+] %}
+
+<div class="cms-mosaic">
+    <div class="cms-mosaic__content u-padding-t-4 @lg:u-padding-t-0">
+        <div class="cms-mosaic__item flush-column-1 @md:flush-column-2 @lg:flush-column-3">
+            <img class="img-anim" src="{{ firstMosaicImage.image|imagine_filter(filters[0]) }}" srcset="{{ firstMosaicImage.image|imagine_filter(filtersRetina[0]) }} 2x" alt="{{ firstMosaicImage.alt|default('') }}" title="{{ firstMosaicImage.title|default('') }}"/>
+        </div>
+
+        <div class="cms-mosaic__center column-10 t-align-center">
+            <span class="cms-mosaic__title t-header-xlarge">{{ mozaicMainTitle }}</span>
+            <span class="cms-mosaic__subtitle t-header-xlarge">#{{ 'app.ui.cms.instagram_tag'|trans }}</span>
+            <div class="cms-mosaic__socials">
+                <a href="https://www.pinterest.fr/PlumLiving/" target="_blank" class="button button--inversed button--small u-padding-l-4 bg-beige u-margin-b-2 @lg:u-margin-b-0">
+                    <svg class="o-icon-24 o-icon--left"><use xlink:href="{{ iconLibUrl }}#SVG-icon-pinterest-stroke"/></svg>
+                    <span>{{ 'app.form.customer.how_you_know_about_us.choices.pinterest'|trans }}</span>
+                </a>
+                <a href="{{ 'app.ui.cms.instagram_url'|trans }}" target="_blank" class="button button--inversed button--small u-padding-l-4 bg-beige">
+                    <svg class="o-icon-24 o-icon--left"><use xlink:href="{{ iconLibUrl }}#SVG-icon-instagram"/></svg>
+                    <span>{{ 'app.form.customer.how_you_know_about_us.choices.instagram'|trans }}</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="cms-mosaic__item flush-column-1 @md:flush-column-2 @lg:flush-column-3">
+            <img class="img-anim" src="{{ secondMosaicImage.image|imagine_filter(filters[1]) }}" srcset="{{ secondMosaicImage.image|imagine_filter(filtersRetina[1]) }} 2x" alt="{{ secondMosaicImage.alt|default('') }}" title="{{ secondMosaicImage.title|default('') }}"/>
+        </div>
+
+        <div class="cms-mosaic__item flush-column-4">
+            <img class="img-anim" src="{{ thirdMosaicImage.image|imagine_filter(filters[2]) }}" srcset="{{ thirdMosaicImage.image|imagine_filter(filtersRetina[2]) }} 2x" alt="{{ thirdMosaicImage.alt|default('') }}" title="{{ thirdMosaicImage.title|default('') }}"/>
+        </div>
+    </div>
+</div>

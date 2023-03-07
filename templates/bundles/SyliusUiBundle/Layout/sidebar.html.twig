@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% block title %}Sylius{% endblock %}</title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    {# Sentry.io integration #}
+    {#<script
+        src="https://browser.sentry-cdn.com/6.8.0/bundle.tracing.min.js"
+        integrity="sha384-PEpz3oi70IBfja8491RPjqj38s8lBU9qHRh+tBurFb6XNetbdvlRXlshYnKzMB0U"
+        crossorigin="anonymous"
+    ></script>
+    <script>
+        Sentry.init({
+            dsn: '{{ SENTRY_DSN_JAVASCRIPT }}',
+            // this assumes your build process sets "npm_package_version" in the env
+            // release: "plum-kitchen@1.0.0",
+            integrations: [new Sentry.Integrations.BrowserTracing()],
+
+            // We recommend adjusting this value in production, or using tracesSampler
+            // for finer control
+            tracesSampleRate: 0.5,
+            ignoreErrors: [
+                // "top.GLOBALS",
+            ],
+        });
+    </script>#}
+
+    {% block metatags %}
+    {% endblock %}
+
+    {% block stylesheets %}
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    {% endblock %}
+    {# Shop Base URI used to redirect from BO CMS to shop CMS pages #}
+    {% if 'monsieurbiz_cms_page_admin_page_update' == getCurrentRouteClasses() %}
+        <base href="{{ path('sylius_shop_homepage') }}" target="_self">
+    {% endif %}
+</head>
+
+<body class="pushable">
+<div class="ui sidebar vertical inverted menu visible left" id="sidebar">
+    {% block sidebar %}
+    {% endblock %}
+</div>
+<div class="ui borderless fixed menu">
+    {% block topbar %}
+    {% endblock %}
+</div>
+<div class="pusher">
+    <div class="full height" id="wrapper">
+        <div id="content">
+            {% block flash_messages %}
+                {% include '@SyliusUi/_flashes.html.twig' %}
+            {% endblock %}
+
+            {% block pre_content %}
+            {% endblock %}
+
+            {% block content %}
+            {% endblock %}
+
+            {% block post_content %}
+            {% endblock %}
+        </div>
+
+        <div class="sylius-footer">
+            {% block footer %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+{% include '@SyliusUi/Modal/_confirmation.html.twig' %}
+
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>

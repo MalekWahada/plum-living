@@ -1,0 +1,39 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% if element.pagesCards is not empty %}
+    <div class="row u-margin-b-10 @lg:u-margin-b-4">
+
+        {% for pageCard in element.pagesCards %}
+            {% set hasModal = pageCard.code == constant('App\\Provider\\CMS\\PageCode\\PageCodeProvider::PAGE_QUOTATION_TYPE_FORM') %}
+            {% set hasDesignModal = pageCard.code == 'app_plum_scanner_get_designs' %}
+
+            <div class="@lg:column-6 {% if loop.last == false %} u-margin-b-5 @lg:u-margin-b-0 {% endif %}">
+                <div class="routing-card cms__content__default u-flex-column u-height-100% u-padding-3 u-padding-t-5 @lg:u-padding-6 {% if loop.index % 2 == 0 %} bg-true-white {% else %} bg-green-light {% endif %}">
+                    <div class="cms__text cms-body-alt u-fill-space u-padding-0 u-margin-t-0 t-base-medium t-align-center">
+                        {{ pageCard.content | raw }}
+                    </div>
+
+                    <div class="{% if hasModal %} devis-trigger {% endif %}{% if hasDesignModal %}trigger-front-modal{% endif%} u-fit-content t-align-center">
+                        {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ButtonLink/classic_button_link.html.twig' with {
+                            'element': {
+                                'label': pageCard.label,
+                                'link': get_linker_redirect_url(pageCard.code),
+                                'classList': '',
+                                'isDark': true
+                            }
+                        } %}
+                    </div>
+
+                    {% if pageCard.hint is not null %}
+                        <div class="routing-card__hint cms-body-alt u-fit-content u-padding-t-4 t-base-small u-flex">
+                            <svg class="o-icon-24 u-fit-content u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-infos"/></svg>
+                            {{ pageCard.hint | raw }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+{% endif %}

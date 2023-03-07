@@ -1,0 +1,281 @@
+liip_imagine:
+
+    default_filter_set_settings:
+        quality: 80
+        jpeg_quality: 75
+
+    loaders:
+        default:
+            filesystem:
+                data_root:
+                    - "%kernel.project_dir%/public"
+
+    filter_sets:
+        ### CMS image filters
+        app_cms_big_thumbnail:
+            filters:
+                thumbnail: { size: [588, 542], mode: outbound }
+
+        app_cms_big_thumbnail_retina:
+            filters:
+                thumbnail: { size: [1176, 1084], mode: outbound }
+
+        app_cms_medium_thumbnail:
+            filters:
+                thumbnail: { size: [ 473, 472 ], mode: outbound }
+
+        app_cms_medium_thumbnail_retina:
+            filters:
+                thumbnail: { size: [ 946, 944 ], mode: outbound }
+
+        app_cms_square_thumbnail:
+            filters:
+                thumbnail: { size: [ 473, 388 ], mode: outbound }
+
+        app_cms_square_thumbnail_retina:
+            filters:
+                thumbnail: { size: [ 946, 776 ], mode: outbound }
+
+        app_cms_slider_thumbnail:
+            filters:
+                thumbnail: { size: [ 542, 670 ], mode: outbound }
+
+        app_cms_slider_chip:
+            filters:
+                thumbnail: { size: [ 14, 14 ], mode: outbound }
+
+        app_cms_slider_chip_retina:
+            filters:
+                thumbnail: { size: [ 28, 28 ], mode: outbound }
+
+        app_cms_steps_thumbnail:
+            filters:
+                thumbnail: { size: [ 407, 197 ], mode: outbound }
+
+        app_cms_steps_thumbnail_retina:
+            filters:
+                thumbnail: { size: [ 814, 394 ], mode: outbound }
+
+        # cms colors slider
+        app_cms_color_slider_chip:
+            filters:
+                thumbnail: { size: [ 45, 45 ], mode: outbound }
+
+        app_cms_color_slider_display_image_small:
+            filters:
+                thumbnail: { size: [ null, 255 ], mode: outbound }
+
+        app_cms_color_slider_display_image_medium:
+            filters:
+                thumbnail: { size: [ null, 450 ], mode: outbound }
+
+        app_cms_color_slider_display_image_large:
+            filters:
+                thumbnail: { size: [ null, 642 ], mode: outbound }
+
+        app_cms_color_slider_display_image_wide:
+            filters:
+                thumbnail: { size: [ null, 1000 ], mode: outbound }
+
+        # cms images collection
+        app_cms_image_collection_slider:
+            filters:
+                thumbnail: { size: [ 1240, 494 ], mode: outbound }
+
+        app_cms_image_collection_slider_retina:
+            filters:
+                thumbnail: { size: [ 2480, 988 ], mode: outbound }
+
+        app_cms_image_collection_slider_plans:
+            filters:
+                thumbnail: { size: [ 709, 412 ], mode: outbound }
+
+        app_cms_image_collection_slider_plans_retina:
+            filters:
+                thumbnail: { size: [ 1418, 824 ], mode: outbound }
+
+        app_cms_image_collection_slider_right:
+            filters:
+                thumbnail: { size: [ null, 607 ], mode: outbound }
+
+        app_cms_image_collection_slider_right_retina:
+            filters:
+                thumbnail: { size: [ null, 1214 ], mode: outbound }
+
+        app_cms_image_collection_default:
+            filters:
+                thumbnail: { size: [ 145, 145 ], mode: outbound }
+
+        # cms images collection individually
+        app_cms_image_collection_mosaic_first_title:
+            filters:
+                thumbnail: { size: [ 472, 490 ], mode: outbound }
+
+        app_cms_image_collection_mosaic_first_title_retina:
+            filters:
+                thumbnail: { size: [ 944, 980 ], mode: outbound }
+
+        app_cms_image_collection_mosaic_first_no_title:
+            filters:
+                thumbnail: { size: [ 642, 490 ], mode: outbound }
+
+        app_cms_image_collection_mosaic_first_no_title_retina:
+            filters:
+                thumbnail: { size: [ 1284, 980 ], mode: outbound }
+
+        app_cms_image_collection_mosaic_second_title:
+            filters:
+                thumbnail: { size: [ 472, 499 ], mode: outbound }
+
+        app_cms_image_collection_mosaic_second_title_retina:
+            filters:
+                thumbnail: { size: [ 944, 998 ], mode: outbound }
+
+        app_cms_image_collection_mosaic_second_no_title:
+            filters:
+                thumbnail: { size: [ 580, 499 ], mode: outbound }
+
+        app_cms_image_collection_mosaic_second_no_title_retina:
+            filters:
+                thumbnail: { size: [ 1160, 998 ], mode: outbound }
+
+        app_cms_image_collection_mosaic_third_title:
+            filters:
+                thumbnail: { size: [ 493, 270 ], mode: outbound }
+
+        app_cms_image_collection_mosaic_third_title_retina:
+            filters:
+                thumbnail: { size: [ 986, 540 ], mode: outbound }
+
+        app_cms_image_collection_mosaic_third_no_title:
+            filters:
+                thumbnail: { size: [ 491, 306 ], mode: outbound }
+
+        app_cms_image_collection_mosaic_third_no_title_retina:
+            filters:
+                thumbnail: { size: [ 982, 612 ], mode: outbound }
+        # cms single image
+        app_cms_main_image:
+            filters:
+                thumbnail: { size: [ 757, 607 ], mode: outbound }
+
+        app_cms_main_image_retina:
+            filters:
+                thumbnail: { size: [ 1514, 1214 ], mode: outbound }
+
+        app_cms_main_image_concept:
+            filters:
+                thumbnail: { size: [ 757, 679 ], mode: outbound }
+
+        app_cms_main_image_concept_retina:
+            filters:
+                thumbnail: { size: [ 1514, 1358 ], mode: outbound }
+
+        app_cms_image:
+            filters:
+                thumbnail: { size: [ 698, null ], mode: outbound }
+
+        app_cms_image_retina:
+            filters:
+                thumbnail: { size: [ 1396, null ], mode: outbound }
+
+        app_cms_image_single_article:
+            filters:
+                thumbnail: { size: [ 588, null ], mode: outbound }
+
+        app_cms_image_single_article_retina:
+            filters:
+                thumbnail: { size: [ 1176, null ], mode: outbound }
+        # single box image (cms + e-shop tunnel)
+        app_box_image:
+            filters:
+                thumbnail: { size: [ 259, 259 ], mode: outbound }
+
+        app_box_image_retina:
+            filters:
+                thumbnail: { size: [ 518, 518 ], mode: outbound }
+
+        ### Shopping Tunnel image filters
+        app_tunnel_finish_thumbnail:
+            filters:
+                thumbnail: { size: [ 566, 616 ], mode: outbound }
+
+        app_tunnel_finish_thumbnail_retina:
+            filters:
+                thumbnail: { size: [ 1132, 1232 ], mode: outbound }
+
+        app_tunnel_recommendation_thumbnail:
+            filters:
+                thumbnail: { size: [ 300, 372 ], mode: outbound }
+
+        app_tunnel_recommendation_thumbnail_retina:
+            filters:
+                thumbnail: { size: [ 600, 744 ], mode: outbound }
+
+        app_tunnel_design_thumbnail:
+            filters:
+                thumbnail: { size: [ 414, 472 ], mode: outbound }
+
+        app_tunnel_design_thumbnail_retina:
+            filters:
+                thumbnail: { size: [ 828, 944 ], mode: outbound }
+
+        app_tunnel_product_thumbnail:
+            filters:
+                thumbnail: { size: [ 363, 250 ], mode: outbound }
+
+        app_tunnel_product_thumbnail_custom:
+            filters:
+                thumbnail: { size: [ 363, 363 ], mode: outbound }
+
+        app_tunnel_product_thumbnail_custom_retina:
+            filters:
+                thumbnail: { size: [ 726, 726 ], mode: outbound }
+
+        app_tunnel_modal_thumbnail:
+            filters:
+                fixed:
+                    width: 536
+                    height: 810
+
+        app_tunnel_modal_thumbnail_retina:
+            filters:
+                fixed:
+                    width: 1072
+                    height: 1620
+
+        app_tunnel_finish_color_chip_tumbnail:
+            filters:
+                thumbnail: { size: [ 45, 45 ], mode: outbound }
+
+        # product image in cart widget
+        app_cart_widget_product_thumbnail:
+            filters:
+                thumbnail: { size: [ 85, 98 ], mode: outbound }
+
+        ### Plum scanner filters
+        app_plum_scanner_final_step_product_thumbnail:
+            filters:
+                thumbnail: { size: [ 270, 274 ], mode: outbound }
+
+        app_plum_scanner_final_step_product_thumbnail_retina:
+            filters:
+                thumbnail: { size: [ 540, 548 ], mode: outbound }
+
+        app_plum_scanner_final_step_contact_thumbnail:
+            filters:
+                thumbnail: { size: [ 120, 120 ], mode: outbound }
+
+        app_plum_scanner_final_step_contact_thumbnail_retina:
+            filters:
+                thumbnail: { size: [ 240, 240 ], mode: outbound }
+
+        # common chips filter
+        app_common_form_chip_thumbnail:
+            filters:
+                thumbnail: { size: [ 18, 18 ], mode: outbound }
+
+        ### Plum styler filters
+        app_plum_styler_option_value_image:
+            filters:
+                thumbnail: { size: [ 256, 256 ], mode: outbound }

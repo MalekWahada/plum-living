@@ -1,0 +1,32 @@
+{#
+UI Element template
+type: image
+element fields :
+    image
+    alt
+    title
+    link
+    align
+#}
+{% if element.image is defined %}
+    {% set align = element.align is defined and element.align is not empty ? element.align : 'inherit' %}
+        {% if element.link is not empty %}
+            <a href="{{ element.link }}">
+                <img class="ui fluid image" src="{{ element.image }}" alt="{{ element.alt|default('') }}" title="{{ element.title|default('') }}" />
+            </a>
+        {% else %}
+            <img class="ui fluid image" src="{{ element.image }}" alt="{{ element.alt|default('') }}" title="{{ element.title|default('') }}" />
+        {% endif %}
+        {% if element.image_title is not empty %}
+            <h1 class="t-header-large">
+                {{ element.image_title }}
+            </h1>
+        {% else %}
+        {% endif %}
+        {% if element.image_category is not empty %}
+            <h2 class="t-base-medium">
+                {{ element.image_category }}
+            </h2>
+        {% else %}
+        {% endif %}
+{% endif %}

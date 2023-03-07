@@ -1,0 +1,27 @@
+App\Entity\Order\Order:
+    order_{1..25}:
+        customer: '@customer_<current()>'
+        shippingAddress: '@customer_<current()>->defaultAddress'
+        billingAddress: '@customer_<current()>->defaultAddress'
+        channel: '@channel_main'
+        promotionCoupon: null
+        number: <bothify(#######)>
+        notes: <text()>
+        state: <randomElement(['new', 'cart'])>
+        checkout_completed_at: <dateTime('-4 days')>
+        created_at: <dateTime('-5 days')>
+        updated_at: <dateTime('-3 days')>
+        currency_code: 'EUR'
+        locale_code: 'fr'
+        checkout_state: <randomElement(['completed', 'cart', 'payment_selected', 'addressed'])>
+        payment_state: <randomElement(['paid', 'cart', 'awaiting_payment'])>
+        shipping_state: <randomElement(['ready', 'cart'])>
+        token_value: <bothify(?#?#??##?#)>
+        customer_ip: null
+        original_order_number: null
+        targeted_room: <randomElement([null, 'kitchen', 'saloon', 'adult-bedroom'])>
+        min_date_delivery: <dateTime('+1 weeks')>
+        max_date_delivery: <dateTime('+2 weeks')>
+        erp_registered: null
+        erp_status: new
+        mailing_workflow_type: <randomElement([null, 'method-mailing', 'no-front-mailing'])>

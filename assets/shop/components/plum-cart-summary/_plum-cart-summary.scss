@@ -1,0 +1,137 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+
+
+
+.plum-cart-summary {
+  pointer-events: none;
+  position: fixed;
+  z-index: 400;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  visibility: hidden;
+  transition: visibility 0s 0.5s;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(#fff, 0.8);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  &__container {
+    width: calc(100% - #{rem(40)});
+    max-width: rem(480);
+    padding: rem(40) rem(30) rem(30);
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: get-color('near-black');
+    color: #fff;
+    transform: translateX(100%);
+    transition: transform 0.3s 0s;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      height: rem(28);
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    &::before {
+      top: rem(88);
+      background: linear-gradient(to bottom, #{get-color('near-black')}, transparent);
+    }
+
+    &::after {
+      bottom: rem(235);
+      background: linear-gradient(to top, #{get-color('near-black')}, transparent);
+    }
+  }
+
+    &__header {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      .link-button {
+        display: block;
+        left: 0;
+        top: 100%;
+      }
+    }
+
+      .close-button {
+
+      }
+
+    &__content {
+      padding: 0 rem(30);
+      margin: 0 rem(-30);
+    }
+
+      &__item {
+
+      }
+
+      &__item + &__item {
+        margin-top: rem(40);
+      }
+
+    &__footer {
+
+    }
+}
+
+
+.plum-cart-summary--visible {
+  pointer-events: auto;
+  visibility: visible;
+  transition: visibility 0s 0s;
+
+  &::before {
+    opacity: 1;
+  }
+
+  .plum-cart-summary {
+    &__container {
+      transform: translateX(0);
+      transition: transform 0.3s 0.2s;
+    }
+  }
+}
+
+
+
+@include up(large) {
+  .plum-cart-summary {
+    &__container {
+      padding: rem(30) rem(40) rem(40);
+
+      &::before {
+        top: 6.5rem;
+      }
+
+      &::after {
+        bottom: 12.625rem;
+      }
+    }
+
+      &__content {
+        padding: 0 rem(40);
+        margin: 0 rem(-40);
+      }
+  }
+}

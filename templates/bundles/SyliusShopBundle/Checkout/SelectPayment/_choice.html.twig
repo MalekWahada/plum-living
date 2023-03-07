@@ -1,0 +1,14 @@
+<div class="{% if loop.index != 1 %}u-margin-t-3{% endif %}">
+{% include 'Shop/Form/_radio_field.html.twig' with {
+    field: form,
+    attributes: {
+        'data-test-payment-method-label': '',
+        labelClass: 't-label-medium'
+    },
+    description: method.description
+} %}
+
+{% if method.gatewayConfig.factoryName == 'sylius.pay_pal' %}
+    {{ render(controller('Sylius\\PayPalPlugin\\Controller\\PayPalButtonsController:renderPaymentPageButtonsAction', {'orderId': order.id})) }}
+{% endif %}
+</div>

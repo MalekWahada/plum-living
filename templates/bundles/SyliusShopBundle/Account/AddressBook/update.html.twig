@@ -1,0 +1,23 @@
+{% extends '@SyliusShop/Account/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block title %}{{ 'sylius.ui.edit_my_address'|trans }} | {{ parent() }}{% endblock %}
+
+{% block subcontent %}
+    <main class="panel account-modify-address-panel panel--big-chin panel--big-cheeks">
+        <h1 class="panel__title t-header-medium">{{ 'app.ui.account.modify_address.title'|trans }}</h1>
+        {{ form_start(form, {'action': path('sylius_shop_account_address_book_update', {'id': address.id}), 'method': 'PUT', 'attr': {'class': 'panel__content'}}) }}
+            {{ sylius_template_event('sylius.shop.account.address_book.update.after_content_header', {'address': address}) }}
+
+            {% include '@SyliusShop/Common/Form/_address.html.twig' with {'form': form} %}
+
+            {{ sylius_template_event('sylius.shop.account.address_book.update.form', {'address': address}) }}
+
+            <a href="{{ path('sylius_shop_account_address_book_index') }}" class="cancel-button c-grey-light">{{ 'app.ui.generic.cancel'|trans }}</a>
+            <button type="submit" class="big-honking-submit" {{ sylius_test_html_attribute('save-changes') }}>{{ 'app.ui.generic.save'|trans }}</button>
+
+        {{ form_row(form._token) }}
+        {{ form_end(form, {'render_rest': false}) }}
+    </main>
+{% endblock %}

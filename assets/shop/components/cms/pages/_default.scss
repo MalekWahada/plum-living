@@ -1,0 +1,213 @@
+//CMS Pages Simple
+
+.CMS_PAGE_TYPE_default {
+  .page-container {
+    padding-top: rem(50);
+  }
+}
+
+.CMS_PAGE_TYPE_default {
+  .cms {
+    &__content {
+      &__default {
+        .cms__title {
+          text-align: left;
+          margin-top: rem(25);
+
+          @include up('large') {
+            text-align: center;
+          }
+        }
+
+        .cms__text {
+          text-align: left;
+          margin-top: rem(25);
+
+          @include up('large') {
+            padding: 0 rem(30);
+          }
+
+          p {
+            margin-top: rem(20);
+          }
+        }
+
+        .cms__img {
+          width: 100%;
+          margin-top: rem(40);
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+
+          @include up('large') {
+            margin-top: rem(55);
+            padding: 0 rem(30);
+          }
+        }
+
+        .cms__caption {
+          margin-top: rem(20);
+
+          @include up('large') {
+            padding: 0 rem(30);
+          }
+        }
+      }
+      .big-honking-button{
+        margin-top:20px;
+        @include up('large'){
+          margin-left: 28px;
+        }
+      }
+    }
+  }
+}
+
+.cms__text {
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin-top: rem(20);
+    font-family: $font--blacklist;
+  }
+
+  h1 {
+    font-size: rem(35);
+    line-height: 121%;
+    letter-spacing: -0.03em;
+
+    @include up('large') {
+      font-size: rem(48);
+      line-height: 122%;
+    }
+  }
+
+  h2 {
+    font-size: rem(30);
+    line-height: 126%;
+    letter-spacing: -0.02em;
+
+    @include up('large') {
+      font-size: rem(38);
+      line-height: 122%;
+    }
+  }
+
+  h3 {
+    font-size: rem(22);
+    line-height: 136%;
+    letter-spacing: -0.02em;
+
+    @include up('large') {
+      font-size: rem(28);
+      line-height: 133%;
+    }
+  }
+
+  h4 {
+    font-size: rem(18);
+    line-height: 144%;
+    letter-spacing: -0.01em;
+
+    @include up('large') {
+      font-size: rem(20);
+      line-height: 140%;
+      letter-spacing: 0;
+    }
+  }
+}
+
+.cms-body-alt {
+  h1, h2, h3, h4 {
+    margin-top: 0;
+    margin-bottom: rem(32);
+  }
+
+  b {
+    color: get-color('terra');
+    font-weight: inherit;
+  }
+
+  i {
+    font-family: $font--blacklist;
+  }
+
+  a {
+    color: get-color('terra');
+    text-decoration: underline;
+  }
+}
+
+.cms__content {
+  .cms__text.rich-editor__text {
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin-top: 0;
+      margin-bottom: rem(20);
+    }
+
+    p {
+      margin-top: rem(20);
+    }
+  }
+}
+
+.single-product-content {
+  .cms__text {
+    h1 {
+      font-size: rem(18);
+      line-height: 144%;
+      letter-spacing: -0.01em;
+
+      @include up('large') {
+        font-size: rem(20);
+        line-height: 140%;
+      }
+    }
+
+    h2 {
+      font-size: rem(15);
+      line-height: 146%;
+
+      @include up('large') {
+        font-size: rem(17);
+        line-height: 141%;
+      }
+    }
+
+    h3 {
+      font-size: rem(15);
+      line-height: 154%;
+      letter-spacing: 0.02em;
+
+      @include up('large') {
+        font-size: rem(17);
+        line-height: 145%;
+      }
+    }
+
+    h4 {
+      font-size: rem(14);
+      line-height: 154%;
+      letter-spacing: 0.02em;
+
+      @include up('large') {
+        font-size: rem(16);
+        line-height: 145%;
+      }
+    }
+  }
+}
+
+.cms-header__toptitle{
+  font-size: 14px;
+  z-index: 2;
+  @include up('medium') {
+    font-size: 16px;
+  }
+}

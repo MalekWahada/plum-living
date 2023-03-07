@@ -1,0 +1,103 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+{% set orderTotal = 0 %}
+
+<div class="plum-cart-summary__header u-fit-content">
+    <div class="t-header-medium u-fill-space">
+        {{ 'sylius.ui.cart'|trans }}
+        <button id="ClearCartButton" class="link-button u-absolute c-grey-light {{ cart.empty ? 'u-hidden' : '' }}">
+            {{ 'app.header.shop.cart_summary_clear_label'|trans }}
+        </button>
+        {% if cart.id is not null %}
+            <input type="hidden" name="_csrf_token" id="ClearCartToken" value="{{ csrf_token(cart.id) }}" />
+        {% endif %}
+    </div>
+    <button id="CloseCartButton" class="close-button func-button u-fit-content" data-dark-ripple data-dismiss>
+        <span class="close-button__bar"></span>
+        <span class="close-button__bar"></span>
+        <span class="u-sr-only">{{ 'app.header.shop.cart_summary_close_label'|trans }}</span>
+    </button>
+</div>
+
+<div class="plum-cart-summary__content u-fill-space u-y-scrollable">
+    <div class="u-padding-t-3.5 u-padding-b-3.5 @lg:u-padding-t-5 @lg:u-padding-b-5">
+        {% if cart.empty %}
+            <form action="{{ path('sylius_shop_cart_summary') }}" method="POST" id="plum-cart-summary-form">
+                <div class="js-update-items">
+                    {{ 'sylius.ui.your_cart_is_empty'|trans }}
+                </div>
+            </form>
+        {% else %}
+            <form action="{{ path('sylius_shop_cart_summary') }}" method="POST" id="plum-cart-summary-form">
+                <input type="hidden" name="cart_id" value="{{ cart.id }}"/>
+                <div class="js-update-items">
+                    {% for item in cart.items %}
+                        <div class="plum-cart-summary__item u-flex" data-item-id="{{ item.id }}">
+                            {% include 'Shop/Product/_thumbnail.html.twig' with { 'variant': item.variant } %}
+                            <div class="u-fill-space u-margin-l-2 u-flex-column">
+                                <div class="u-fill-space u-margin-b-0.5">
+                                    <p class="t-header-xsmall u-margin-b-0.5">{{ item.product }}</p>
+                                    {% include 'Shop/Product/_selected_options.html.twig' with { variant: item.variant } %}
+                                </div>
+                                <div class="u-flex u-center-on-cross">
+                                    <label class="field number-field number-field--light u-fit-content u-margin-r-3">
+                                        <div class="field__widget">
+                                            <span class="func-button" data-field-action="decrement"><span class="u-sr-only">{{ 'app.ui.generic.minus' }}</span></span>
+                                            <input type="number" value="{{ item.quantity }}" min="0" name="sylius_cart[items][{{ item.id }}][quantity]" oninput="validity.valid||(value='');">
+                                            <span class="func-button" data-field-action="increment"><span class="u-sr-only">{{ 'app.ui.generic.plus' }}</span></span>
+                                        </div>
+                                    </label>
+                                    {% set itemTotal = item|calculate_total_with_tax %}
+                                    {% set orderTotal = orderTotal + itemTotal %}
+                                    <span class="u-fit-content t-label-large">{{ money.convertAndFormat(itemTotal) }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </form>
+        {% endif %}
+    </div>
+</div>
+
+<div class="plum-cart-summary__footer u-fit-content u-padding-t-3">
+    <div class="plum-cart-summary__total u-margin-b-3">
+        <p class="u-cross-centered-row t-label-large u-margin-b-1">
+            <span class="u-fill-space">{{ 'sylius.ui.subtotal'|trans }}</span>
+            <span class="js-update-total u-fit-content">{{ money.calculateTotaItemsWithTax(cart) }}</span>
+        </p>
+        <p class="t-base-xsmall c-grey-light">{{ 'app.ui.checkout.order_summary.price_does_not_include_shipping'|trans }}</p>
+    </div>
+    <div class="t-align-center">
+        <a class="button button--inversed ripple-button u-flex form-header-cart-submit" href="{{ path('sylius_shop_cart_summary') }}">{{ 'app.header.shop.cart_proceed_to_checkout'|trans }}</a>
+    </div>
+</div>
+
+<script type="text/x-template" id="plum-cart-summary__empty-template">
+    {{ 'sylius.ui.your_cart_is_empty'|trans }}
+</script>
+
+<script type="text/x-template" id="plum-cart-summary__item-template">
+    <div class="plum-cart-summary__item u-flex" data-item-id="%ID%">
+        <img class="product-thumbnail" src="%IMAGE%" alt="%NAME%">
+            <div class="u-fill-space u-margin-l-2 u-flex-column">
+                <div class="u-fill-space u-margin-b-0.5">
+                    <p class="t-header-xsmall u-margin-b-0.5">%NAME%</p>
+                    %OPTIONS%
+                </div>
+            <div class="u-flex u-center-on-cross">
+                <label class="field number-field u-fit-content u-margin-r-3 field--fill">
+                    <div class="field__widget">
+                        <span class="func-button" data-field-action="decrement" tabindex="0"><span class="u-sr-only">Minus</span></span>
+                        <input type="number" value="%QUANTITY%" min="0" name="sylius_cart[items][%ID%][quantity]">
+                        <span class="func-button" data-field-action="increment" tabindex="0"><span class="u-sr-only">Plus</span></span>
+                    </div>
+                </label>
+                <span class="u-fit-content t-label-large">%TOTAL_PRICE%</span>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="plum-cart-summary__item-options-template">
+    <p class="c-grey-light u-h-tail-spaced-1 t-base-xsmall">%OPTIONS%</p>
+</script>

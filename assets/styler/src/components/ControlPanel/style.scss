@@ -1,0 +1,10 @@
+@import '../../assets/variables';
+
+.styler {
+  &__left-nav {
+    width: 415px !important;
+    max-height: 100vh;
+    overflow: scroll;
+    padding-bottom: 2rem;
+  }
+}

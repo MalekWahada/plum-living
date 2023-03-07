@@ -1,0 +1,37 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% extends '@SyliusShop/Checkout/layout.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title t-header-large">{{ 'app.ui.checkout.payment_content.page_title'|trans }}</h1>
+        <div class="checkout-main-row row">
+            <main class="column @lg:column-7">
+                <div class="checkout-payment-panel panel">
+                    <h2 class="panel__title t-header-medium">{{ 'app.ui.checkout.payment_content.panel_title'|trans }}</h2>
+                    <div id="stripe-loader-hidden">
+                        <p>{{ 'app.ui.checkout.stripe.chargement'|trans }}</p>
+                    </div>
+                    <form id="payment-form" class="u-hidden">
+                        <div id="payment-element" data-secret="{{ clientSecret }}">
+                            <!--Stripe.js injects the EventProcessorInterface Element-->
+                        </div>
+                        <button id="submit" class="button ripple-button u-fullwidth u-margin-t-3">
+                            <div class="spinner hidden" id="spinner"></div>
+                            <span id="button-text">
+                               {{ 'app.ui.generic.pay'|trans }}
+                            </span>
+                            <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                        </button>
+                        <div id="payment-message" class="hidden u-margin-t-3 c-terra">
+                        </div>
+                    </form>
+                </div>
+            </main>
+            <aside class="column @lg:column-5 u-margin-t-5 @lg:u-margin-t-0">
+                {% include '@SyliusShop/Checkout/_summary.html.twig' with {order} only %}
+            </aside>
+        </div>
+    </div>
+{% endblock %}

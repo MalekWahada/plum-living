@@ -1,0 +1,184 @@
+{% include '@SyliusUi/_javascripts.html.twig' with {'path': 'bundles/monsieurbizsyliusricheditorplugin/js/rich-editor-js.js'} %}
+{% include '@SyliusUi/_stylesheets.html.twig' with {'path': 'bundles/monsieurbizsyliusricheditorplugin/css/rich-editor-css.css'} %}
+
+<script id="monsieurbiz-rich-editor-button-add" type="x-tmpl-mustache">
+{% verbatim %}
+<div class="ui horizontal divider">
+    <button data-position="{{position}}" class="tiny ui basic button uie-m-0 js-uie-add" type="button">
+        <i class="plus square icon"></i>
+        Add element
+    </button>
+</div>
+{% endverbatim %}
+</script>
+
+<script id="monsieurbiz-rich-editor-ui-element" type="x-tmpl-mustache">
+   {% verbatim %}
+    <div class="ui segment js-uie-element">
+        <div
+            class="uie-flex uie-flex-cross-center uie-flex-main-between uie-w-full uie-mb-sm sm:uie-flex-column">
+            <h3 class="header uie-m-0">
+                <i class="{{icon}} icon"></i>
+                {{title}}
+            </h3>
+            <div class="ui small basic icon buttons sm:uie-mt-xs">
+                <button class="ui button js-uie-delete" type="button">
+                    <i class="trash alternate outline icon"></i>
+                </button>
+
+                <button class="ui button js-uie-edit" type="button">
+                    <i class="pencil alternate icon"></i>
+                </button>
+                <button class="ui button js-uie-up" type="button">
+                    <i class="arrow up icon"></i>
+                </button>
+                <button class="ui button js-uie-down" type="button">
+                    <i class="arrow down icon"></i>
+                </button>
+            </div>
+        </div>
+        <div class="ui fluid js-uie-preview">{{{preview}}}</div>
+    </div>
+{% endverbatim %}
+
+</script>
+
+<script id="monsieurbiz-rich-editor-ui-elements-container" type="x-tmpl-mustache">
+{% verbatim %}
+    <div class="ui container">
+        <div class="ui segment js-uie-container">
+        </div>
+    </div>
+{% endverbatim %}
+</script>
+
+<script id="monsieurbiz-rich-editor-ui-element-card" type="x-tmpl-mustache">
+{% verbatim %}
+<button class="card uie-card js-uie-new" type="button">
+    <div class="content left aligned">
+        <div class="header">
+            <i class="{{icon}} icon"></i>
+            {{title}}
+        </div>
+        <div class="description">
+            {{#description}}
+            {{description}}
+            {{/description}}
+        </div>
+    </div>
+</button>
+{% endverbatim %}
+</script>
+
+<div class="uie-panels js-uie-panels">
+    <div class="uie-panels__content js-uie-panels-selector">
+        <div class="uie-flex uie-flex-main-between uie-w-full uie-mb-md">
+            <h2 class="ui header uie-heading uie-m-0" id="uie-heading">
+                {{ 'monsieurbiz_richeditor_plugin.form.select_ui_element'|trans }}
+            </h2>
+            <div class="uie-ml-md">
+                <button class="ui button js-uie-panels-close" type="button">
+                    <i class="close icon"></i>
+                    {{ 'monsieurbiz_richeditor_plugin.form.close'|trans }}
+                </button>
+            </div>
+        </div>
+
+        <div class="ui cards uie-cards js-uie-cards-container">
+        </div>
+
+        <div class="uie-panels__new js-uie-panels-new">
+        </div>
+    </div>
+</div>
+
+<div class="uie-panels js-uie-panels-edit">
+    <div class="uie-panels__content js-uie-content">
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+
+        let wysiwyg = new MonsieurBizRichEditorWysiwyg({
+            actions: [
+                'bold',
+                'italic',
+                'underline',
+                'ulist',
+                'olist',
+                'paragraph',
+                'heading1',
+                'heading2',
+                {
+                    name: 'heading3',
+                    icon: '<b>H<sub>3</sub></b>',
+                    title: 'Heading 3',
+                    result: () => wysiwyg.exec('formatBlock', '<h3>')
+                },
+                {
+                    name: 'heading4',
+                    icon: '<b>H<sub>4</sub></b>',
+                    title: 'Heading 4',
+                    result: () => wysiwyg.exec('formatBlock', '<h4>')
+                },
+                'link'
+            ]
+        });
+
+        let editors = document.querySelectorAll('[data-component="rich-editor"]');
+        let uielements = {{ monsieurbiz_richeditor_list_elements() }};
+        editors.forEach(function (editor) {
+            let config = new MonsieurBizRichEditorConfig(
+                editor,
+                uielements,
+                wysiwyg,
+                document.getElementById('monsieurbiz-rich-editor-ui-elements-container').innerHTML,
+                document.getElementById('monsieurbiz-rich-editor-button-add').innerHTML,
+                document.getElementById('monsieurbiz-rich-editor-ui-element').innerHTML,
+                document.getElementById('monsieurbiz-rich-editor-ui-element-card').innerHTML,
+                '{{ "monsieurbiz_richeditor_plugin.form.confirm_delete" |trans|e('js') }}',
+                '{{ url("monsieurbiz_richeditor_admin_form_create", {"code": "__CODE__"})|e('js') }}',
+                '{{ url("monsieurbiz_richeditor_admin_form_edit", {"code": "__CODE__"})|e('js') }}',
+                '{{ url("monsieurbiz_richeditor_admin_form_render_elements")|e('js') }}',
+                '{{ monsieurbiz_richeditor_get_default_element() }}',
+                '{{ monsieurbiz_richeditor_get_default_element_data_field() }}'
+            );
+            editor.manager = new MonsieurBizRichEditorManager(config);
+        });
+    });
+
+    document.addEventListener('monsieurBizRichEditorInitForm', (e) => {
+        let form = e.detail.form;
+        $(form).find('[data-form-type="collection"]').CollectionForm();
+        $(form).find('.sylius-autocomplete').autoComplete();
+        $(form).find('.ui.search.dropdown').dropdown({fullTextSearch: 'exact', ignoreCase: false});
+        let isPositionning = $(form).find('.slim_zoning_elements').length > 0;
+        let slimOptions = {};
+        if (isPositionning) {
+            let slimPositioningElement = slimPositioning($(form));
+            slimOptions = slimPositioningElement.options;
+            slimPositioningElement.init();
+        }
+        $(form).find('.slim').slim(slimOptions);
+        $(document).find('.js-autocomplete').each(function() {
+            $(this).parent().addClass('ui-front');
+            autocompleteProductVariant(this).init();
+        });
+        $(document).on('dom-node-inserted', (event, element) => {
+            $(element).find('.slim').slim();
+            $(element).find('.js-autocomplete').each(function() {
+                $(this).parent().addClass('ui-front');
+                autocompleteProductVariant(this).init();
+            });
+        });
+    });
+
+    function monsieurBizRichEditorRemoveFile(inputName) {
+        let input = document.querySelector('input[name="' + inputName + '"]');
+        let fileInput = document.querySelector('input[name="change_' + inputName + '"]');
+        input.parentElement.remove();
+        fileInput.style.display = 'inline';
+        fileInput.name = inputName;
+    }
+</script>

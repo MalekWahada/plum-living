@@ -1,0 +1,125 @@
+facade_get_designs:
+    path: /tunnel/shopping/{facadeTypeCode}
+    methods: [GET]
+    controller: App\Controller\Tunnel\ShoppingController::getFacadeOption
+    defaults:
+        _template: 'Shop/Common/Partial/_design_list.html.twig'
+
+facade_get_finishes:
+    path: /tunnel/shopping/{facadeTypeCode}/{designCode}
+    methods: [GET]
+    controller: App\Controller\Tunnel\ShoppingController::getFacadeOption
+    defaults:
+        _template: 'Shop/Common/Partial/_finish_list.html.twig'
+
+facade_get_colors:
+    path: /tunnel/shopping/{facadeTypeCode}/{designCode}/{finishCode}
+    methods: [GET]
+    controller: App\Controller\Tunnel\ShoppingController::getFacadeOption
+    defaults:
+        _template: 'Shop/Common/Partial/_finish_list.html.twig'
+
+facade_get_color_combination:
+    path: /tunnel/shopping/{facadeTypeCode}/{designCode}/{finishCode}/{colorCode}
+    methods: [GET]
+    controller: App\Controller\Tunnel\ShoppingController::getFacadeOption
+    defaults:
+        _template: 'Shop/Common/Partial/_finish_list.html.twig'
+
+facade_get_products:
+    path: /tunnel/shopping/{facadeTypeCode}/{designCode}/{finishCode}/{colorCode}/listing
+    methods: [GET]
+    controller: App\Controller\Tunnel\ShoppingController::getProducts
+    defaults:
+        _template: 'Shop/Tunnel/Shopping/Partial/_product_list.html.twig'
+
+facade_ajax_product_show:
+    path: /product/{facadeTypeCode}/{designCode}/{finishCode}/{colorCode}/{slug}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product::showAction
+        _sylius:
+            template: $template
+            repository:
+                method: findOneByChannelAndSlug
+                arguments:
+                    - "expr:service('sylius.context.channel').getChannel()"
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+                    - $slug
+
+listing_ajax_product_show:
+    path: /product/{slug}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product::showAction
+        _sylius:
+            template: $template
+            repository:
+                method: findOneByChannelAndSlug
+                arguments:
+                    - "expr:service('sylius.context.channel').getChannel()"
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+                    - $slug
+
+app_cart_add_item:
+    path: /add-item
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.order_item::addAction
+        _sylius:
+            template: $template
+            factory:
+                method: createForProduct
+                arguments: [ expr:notFoundOnNull(service('sylius.repository.product').find($productId)) ]
+            form:
+                type: Sylius\Bundle\CoreBundle\Form\Type\Order\AddToCartType
+                options:
+                    product: expr:notFoundOnNull(service('sylius.repository.product').find($productId)) #look for variants only have combination in url
+
+facade_cart_add_item:
+    # Requires a $selectedOptionsValues which is an array
+    path: /add-facade-item
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.order_item::addAction
+        _sylius:
+            template: $template
+            factory:
+                method: createForProductInTunnel
+                arguments: 
+                    - expr:notFoundOnNull(service('sylius.repository.product').find($productId))
+                    - $selectedOptionsValues
+            form:
+                type: App\Form\Type\Resources\Order\AddToCartTunnelShoppingType
+                options:
+                    product: expr:notFoundOnNull(service('sylius.repository.product').find($productId)) #look for variants only have combination in url
+                    selectedOptionsValues : $selectedOptionsValues
+
+facade_ajax_cart_add_item:
+    path: /add-facade
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.order_item::addAction
+        _format: json
+        _product : [expr:notFoundOnNull(service('sylius.repository.product').find($productId))]
+        _sylius:
+            factory:
+                method: createForProduct
+                arguments:
+                    - expr:notFoundOnNull(service('sylius.repository.product').find($productId))
+                    - $selectedOptionsValues
+            form:
+                type: App\Form\Type\Resources\Order\AddToCartTunnelShoppingType
+                options:
+                    product: expr:notFoundOnNull(service('sylius.repository.product').find($productId)) #look for variants only have combination in url
+                    selectedOptionsValues : $selectedOptionsValues
+
+ajax_cart_update:
+    path: /cart/update
+    methods: [POST]
+    controller: App\Controller\Tunnel\OrderController::ajaxUpdate
+
+product_variant_ajax_get_image:
+    path: /product-variant-image/{productCode}/{colorCode}
+    methods: [GET]
+    controller: App\Controller\Tunnel\ShoppingController::getProductVariantImage

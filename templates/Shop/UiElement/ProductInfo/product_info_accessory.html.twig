@@ -1,0 +1,9 @@
+{% set productInfo = taxonCode|get_product_info(facadeTypeCode) %}
+
+<div class="t-base-small rich-editor__text">
+{% if productInfo == null %}
+    {{ 'app.ui.tunnel_shopping.no_product_info'|trans }}
+{% else %}
+    {{ productInfo|monsieurbiz_richeditor_render_field }}
+{% endif %}
+</div>

@@ -1,0 +1,123 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block metatags %}
+    {% set filters = ['kitchen', 'room', 'bathroom', 'other'] %}
+    {% set filter =  app.request.query.all|first %}
+    {% if filter in filters %}
+        <meta property="og:type" content="{{ ('app.cms_page.project.'~filter~'.meta.type')|trans }}"/>
+        <meta property="og:title" content="{{ ('app.cms_page.project.'~filter~'.meta.title')|trans }}"/>
+        <meta name="description" property="og:description" content="{{ ('app.cms_page.project.'~filter~'.meta.description')|trans }}"/>
+    {% else %}
+        <meta property="og:type" content="{{ ('app.cms_page.project.meta.type')|trans }}"/>
+        <meta property="og:title" content="{{ ('app.cms_page.project.meta.title')|trans }}"/>
+        <meta name="description" property="og:description" content="{{ ('app.cms_page.project.meta.description')|trans }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="CMS_PAGE_home_project">
+        <div class="cms">
+            <div class="cms__container fluid-container bg-beige u-padding-b-5">
+                <div class="ui loader"></div>
+                <div class="cms-header u-cross-centered-col">
+                    <div class="cms-header__toptitle t-header-xsmall u-margin-b-4">
+                        {{ 'app.cms_page.project.top_title' | trans }}
+                    </div>
+                    <div class="cms-header__title t-header-xlarge t-align-center">
+                        {{ 'app.cms_page.project.main_caption'|trans }}
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="column-11 @lg:column-7 u-padding-r-1 u-margin-auto">
+                            <div class="chips-room">
+                                <ul class="t-align-center">
+                                    {% for room in rooms %}
+                                        {% set class="js-project-room cms__chip-button " %}
+                                        {% if app.request.query.get("room") == room %}
+                                            {% set class = class ~ " active" %}
+                                        {% endif %}
+                                        <li class="{{ class }}" data-value="{{ room }}">
+                                            {{ ('app.ui.cms.chip.room.type_' ~ room) | trans }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="tunnel-second u-margin-t-3 t-align-center">
+                                {% for color in colors %}
+                                    {% set class="js-project-color details-colors-item u-cross-centered-row " %}
+                                    {% if app.request.query.get("color") == color.code %}
+                                        {% set class = class ~ " active" %}
+                                    {% endif %}
+                                    <div class="{{ class }}"
+                                         data-value="{{ color.code }}">
+                                        {% set colorImage = color|filter_images(constant('App\\Entity\\Product\\ProductOptionValueImage::PRODUCT_OPTION_VALUE_IMAGE_TYPE_DEFAULT')) %}
+                                        {% if colorImage.path|default(null) is not null %}
+                                            <span class="details-colors-item__pastille"
+                                                  title="{{ color }}"
+                                                  style="background-image: url({{ colorImage.path|imagine_filter('app_tunnel_finish_color_chip_tumbnail') }});">
+                                                <span class="tooltip">
+                                                    {{ color }}
+                                                </span>
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cms__content container u-margin-t-10 u-padding-b-10">
+                {% if items | length > 0 %}
+                    {% for item in items %}
+                        {% include 'Shop/Plum/Project/_single_bloc_project_page.html.twig' %}
+                    {% endfor %}
+                    {% include 'Shop/Common/Partial/_pagination.html.twig' with {
+                        'total': totalPages,
+                        'current': currentPage
+                    } only %}
+                {% else %}
+                    <div class="column c-grey-mid t-base-medium t-align-center">
+                        {{ 'app.cms_page.media_article.category.no_content' | trans }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        function buildUrl() {
+            const url   = [];
+            const room  = $('.js-project-room.active');
+            const color = $('.js-project-color.active');
+            if (room.length) {
+                url.push('room=' + encodeURIComponent(room.data('value')));
+            }
+            if (color.length) {
+                url.push('color=' + encodeURIComponent(color.data('value')));
+            }
+
+            $('.ui.loader').addClass('active');
+            document.location.href = '?' + url.join('&');
+        }
+
+        $(function() {
+            $('.js-project-room').on('click', function () {
+                $('.js-project-room').not($(this)).removeClass('active');
+                $(this).toggleClass('active');
+                buildUrl();
+            });
+            $('.js-project-color').on('click', function () {
+                $('.js-project-color').not($(this)).removeClass('active');
+                $(this).toggleClass('active');
+                buildUrl();
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,5 @@
+App\Entity\Product\ProductCompleteInfo:
+    properties:
+        translations:
+            - Valid:
+                  groups: [sylius]

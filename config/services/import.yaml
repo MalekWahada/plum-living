@@ -1,0 +1,183 @@
+services:
+    # Controllers
+    sylius.controller.import_data:
+        class: App\Controller\Importer\ImportDataController
+        autowire: true
+        autoconfigure: true
+        tags: [ 'controller.service_arguments' ]
+    
+    FriendsOfSylius\SyliusImportExportPlugin\Importer\ResourceImporter:
+
+    # CSV Importers
+    
+    ## ProductVariant Importer services
+    sylius.importer.product_variants.csv:
+        class: App\Import\ResourceImporter
+        arguments:
+            - '@sylius.factory.csv_reader'
+            - '@sylius.manager.product_variant'
+            - '@doctrine.orm.entity_manager'
+            - '@sylius.processor.product_variants'
+            - '@sylius.importer.result'
+            - '@monolog.logger.csv_import'
+            - '%sylius.importer.batch_size%'
+            - '%sylius.importer.fail_on_incomplete%'
+            - '%sylius.importer.stop_on_failure%'
+        tags:
+            - { name: sylius.importer, type: product_variant, format: csv }
+
+    sylius.processor.product_variants:
+        class: App\Import\Processor\ProductVariantProcessor
+        arguments:
+            - '@sylius.factory.product_variant'
+            - '@sylius.factory.channel_pricing'
+            - '@sylius.repository.product_variant'
+            - '@sylius.repository.product'
+            - '@sylius.repository.product_option_value'
+            - '@sylius.repository.channel_pricing'
+            - '@sylius.importer.metadata_validator'
+            - '@doctrine.orm.entity_manager'
+            - '@sylius.repository.shipping_category'
+            - '@validator'
+            - '@monolog.logger.csv_import'
+            - '@App\Provider\ImportExport\LocalizedFieldsProvider'
+            - '@=service("App\\Provider\\ImportExport\\LocalizedFieldsProvider").mergeLocalizedFields(parameter("app.import_export.fields.product_variant"), parameter("app.import_export.localized_fields.product_variant"))'
+            
+    ## Product Importer services
+    sylius.importer.products.csv:
+        class: App\Import\ResourceImporter
+        arguments:
+            - '@sylius.factory.csv_reader'
+            - '@sylius.manager.product'
+            - '@doctrine.orm.entity_manager'
+            - '@sylius.processor.products'
+            - '@sylius.importer.result'
+            - '@monolog.logger.csv_import'
+            - '%sylius.importer.batch_size%'
+            - '%sylius.importer.fail_on_incomplete%'
+            - '%sylius.importer.stop_on_failure%'
+        tags:
+            - { name: sylius.importer, type: product, format: csv }
+
+    sylius.processor.products:
+        class: App\Import\Processor\ProductProcessor
+        arguments:
+            - '@sylius.custom_factory.product'
+            - '@sylius.repository.product'
+            - '@sylius.repository.taxon'
+            - '@sylius.importer.metadata_validator'
+            - '@sylius.repository.product_attribute'
+            - '@sylius.service.attributes_code'
+            - '@sylius.factory.product_attribute_value'
+            - '@sylius.repository.channel'
+            - '@sylius.factory.product_taxon'
+            - '@sylius.factory.product_image'
+            - '@sylius.factory.product_variant'
+            - '@sylius.repository.product_taxon'
+            - '@sylius.repository.product_variant'
+            - '@app.repository.product_group'
+            - '@sylius.service.product_image_code'
+            - '@sylius.generator.slug'
+            - '@sylius.importers_transformer_pool'
+            - '@doctrine.orm.entity_manager'
+            - '@App\Transformer\MonsieurBiz\TextTransformer'
+            - '@sylius.image_uploader'
+            - '@App\Uploader\ImageHttpUrlUploader'
+            - '@validator'
+            - '@monolog.logger.csv_import'
+            - '@App\Provider\Translation\TranslationLocaleProvider'
+            - '@App\Provider\ImportExport\LocalizedFieldsProvider'
+            - '@=service("App\\Provider\\ImportExport\\LocalizedFieldsProvider").mergeLocalizedFields(parameter("app.import_export.fields.product"), parameter("app.import_export.localized_fields.product"))'
+
+    ## Combination Importer services
+    app.importer.combination.csv:
+        class: App\Import\ResourceImporter
+        arguments:
+            - '@sylius.factory.csv_reader'
+            - '@app.manager.combination'
+            - '@doctrine.orm.entity_manager'
+            - '@app.processor.combination'
+            - '@sylius.importer.result'
+            - '@monolog.logger.csv_import'
+            - '%sylius.importer.batch_size%'
+            - '%sylius.importer.fail_on_incomplete%'
+            - '%sylius.importer.stop_on_failure%'
+        tags:
+            - { name: sylius.importer, type: app.combination, format: csv }
+
+    app.processor.combination:
+        class: App\Import\Processor\CombinationProcessor
+        arguments:
+            - '@sylius.importer.metadata_validator'
+            - '@app.factory.combination'
+            - '@app.factory.combination_image'
+            - '@app.repository.combination'
+            - '@sylius.repository.taxon'
+            - '@sylius.repository.product_option_value'
+            - '@doctrine.orm.entity_manager'
+            - '@sylius.image_uploader'
+            - '@App\Uploader\ImageHttpUrlUploader'
+            - '@validator'
+            - '@monolog.logger.csv_import'
+            - '%app.import_export.fields.combination%'
+                
+    ## Product Group Importer services
+    app.importer.product_group.csv:
+        class: App\Import\ResourceImporter
+        arguments:
+            - '@sylius.factory.csv_reader'
+            - '@app.manager.product_group'
+            - '@doctrine.orm.entity_manager'
+            - '@app.processor.product_group'
+            - '@sylius.importer.result'
+            - '@monolog.logger.csv_import'
+            - '%sylius.importer.batch_size%'
+            - '%sylius.importer.fail_on_incomplete%'
+            - '%sylius.importer.stop_on_failure%'
+        tags:
+            - { name: sylius.importer, type: app.product_group, format: csv }
+
+    app.processor.product_group:
+        class: App\Import\Processor\ProductGroupProcessor
+        arguments:
+            - '@sylius.importer.metadata_validator'
+            - '@app.factory.product_group'
+            - '@app.repository.product_group'
+            - '@sylius.repository.taxon'
+            - '@sylius.repository.product'
+            - '@doctrine.orm.entity_manager'
+            - '@validator'
+            - '@monolog.logger.csv_import'
+            - '@App\Provider\ImportExport\LocalizedFieldsProvider'
+            - '@=service("App\\Provider\\ImportExport\\LocalizedFieldsProvider").mergeLocalizedFields(parameter("app.import_export.fields.product_group"), parameter("app.import_export.localized_fields.product_group"))'
+
+    ## Product Ikea Importer services
+    app.importer.product_ikea.csv:
+        class: App\Import\ResourceImporter
+        arguments:
+            - '@sylius.factory.csv_reader'
+            - '@app.manager.product_ikea'
+            - '@doctrine.orm.entity_manager'
+            - '@app.processor.product_ikea'
+            - '@sylius.importer.result'
+            - '@monolog.logger.csv_import'
+            - '%sylius.importer.batch_size%'
+            - '%sylius.importer.fail_on_incomplete%'
+            - '%sylius.importer.stop_on_failure%'
+        tags:
+            - { name: sylius.importer, type: app.product_ikea, format: csv }
+
+    app.processor.product_ikea:
+        class: App\Import\Processor\ProductIkeaProcessor
+        arguments:
+            - '@app.factory.product_ikea'
+            - '@app.repository.product_ikea'
+            - '@app.factory.product_ikea_image'
+            - '@app.repository.product_ikea_image'
+            - '@app.factory.product_ikea_channel_pricing'
+            - '@app.repository.product_ikea_channel_pricing'
+            - '@sylius.importer.metadata_validator'
+            - '@doctrine.orm.entity_manager'
+            - '@validator'
+            - '@monolog.logger.csv_import'
+            - '%app.import_export.fields.product_ikea%'

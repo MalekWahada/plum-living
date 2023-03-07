@@ -1,0 +1,15 @@
+App\Entity\Order\Adjustment:
+    adjustment_shipping_{1..25}:
+        type: 'shipping'
+        label: 'La Poste - Colissimo'
+        amount: <numberBetween(4080, 90000)>
+        origin_code: null
+        created_at: <dateTime()>
+        updated_at: null
+    adjustment_vat_{1..25}:
+        type: 'tax'
+        label: 'TVA France(20%)'
+        amount: <numberBetween(816, 18167)>
+        origin_code: null
+        created_at: <dateTime()>
+        updated_at: null

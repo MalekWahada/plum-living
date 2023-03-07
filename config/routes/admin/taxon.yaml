@@ -1,0 +1,27 @@
+sylius_admin_taxon_update: # Override route to add custom toolbar
+    path: /{id}/edit
+    methods: [GET, PUT, PATCH]
+    defaults:
+        _controller: sylius.controller.taxon:updateAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@SyliusAdmin/Taxon/update.html.twig"
+            redirect: sylius_admin_taxon_update
+            vars:
+                subheader: sylius.ui.manage_categorization_of_your_products
+                templates:
+                    form: "@SyliusAdmin/Taxon/_form.html.twig"
+                    toolbar: "@SyliusAdmin/Taxon/Update/_toolbar.html.twig"
+
+app_admin_taxon_translation_publish:
+    path: /{id}/translation/publish
+    methods: [POST,GET ]
+    defaults:
+        _controller: App\Controller\Taxon\TaxonTranslationController::publishAction
+
+app_admin_taxon_translation_fetch:
+    path: /{id}/translation/{locale}/fetch
+    methods: [POST,GET]
+    defaults:
+        _controller: App\Controller\Taxon\TaxonTranslationController::fetchLocaleAction

@@ -1,0 +1,10 @@
+<div class="u-relative c-true-white">
+    {% include 'Shop/Form/_text_field.html.twig' with {
+        'field': form.promotionCoupon,
+        'label': 'app.ui.checkout.order_summary.coupon'|trans,
+        'attributes': {'form': main_form }}
+    %}
+    <button class="link-button t-label-small coupon-button" id="sylius-save" type="submit" {{ sylius_test_html_attribute('apply-coupon-button') }} form="{{ main_form }}">
+        {{ 'app.ui.checkout.order_summary.coupon_submit'|trans }}
+    </button>
+</div>

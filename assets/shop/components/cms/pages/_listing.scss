@@ -1,0 +1,290 @@
+@use '../../../config/sass' as *;
+@use '../../../abstract/css-grid/css-grid-config' as *;
+@use '../../../abstract/css-grid/css-grid-mixins' as *;
+
+.project_index,
+.inspiration_index,
+.CMS_PAGE_home_project
+{
+  background: $color--true-white;
+
+  .page-container {
+    padding-top: 0;
+  }
+
+  .cms {
+    //Header
+    &-header {
+      position: relative;
+      padding-top: rem(50);
+      padding-left: rem(20);
+      padding-right: rem(20);
+      padding-bottom: 3rem;
+
+      @include up('wide') {
+        padding-top: rem(70);
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      //Header background
+      &::before {
+        content: '';
+        display: block;
+        background-color: $color--pink--light;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        background: $color--pink--light;
+        height: rem(513);
+
+        @include up('medium') {
+          height: rem(614);
+        }
+      }
+      //End header background
+
+      //Header title
+      &__title {
+        z-index: 2;
+        max-width: 900px;
+        text-align: center;
+      }
+      //End header title
+
+      //Header filter
+      &-filter {
+        z-index: 2;
+
+        .compound-field {
+          width: 100vw;
+          height: rem(32);
+          margin-left: calc(50% - 50vw);
+        }
+      }
+      //End header filter
+    }
+
+    &__social-links {
+      left: 0;
+      top: 0;
+
+      @include up(medium) {
+        left: css-grid--get-last-config('wide', 'margins');
+      }
+    }
+    //End header
+
+    //Listing content
+    &__content {
+      margin-top: rem(80);
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+
+      @include up(medium) {
+        justify-content: flex-start;
+      }
+
+      @include up('wide') {
+        margin-top: rem(70);
+        justify-content: space-between;
+      }
+    }
+    //End listing content
+
+    //Listing item
+    &__item {
+      display: flex;
+      flex-direction: column;
+      max-width: rem(420);
+      background: transparent;
+
+      @include up('medium') {
+        flex-basis: 50%;
+        max-width: 50%;
+      }
+
+      @include up('wide') {
+        max-width: rem(588); // From mockups
+      }
+
+      //Listing image
+      &__img {
+        position: relative;
+      }
+
+        .slide-cover-image {
+          object-fit: cover;
+          display: block;
+          width: 100%;
+
+          @include up('medium') {
+            max-width: none;
+          }
+
+          @include up('large') {
+            min-height: rem(400);
+            max-height: rem(542);
+          }
+        }
+      //End listing image
+
+      //Listing mobile item
+      &:not(:last-child) {
+        padding-bottom: rem(50);
+
+        @include up('wide') {
+          padding-bottom: rem(80);
+        }
+      }
+      //End listing mobile item
+
+      //Listing item odd
+      &:nth-child(odd) {
+        @include up('wide') {
+          padding-top: rem(110);
+        }
+
+        @include up('medium') {
+          padding-right: rem(20);
+          padding-top: rem(0);
+        }
+      }
+
+      &:nth-child(even) {
+        @include up('medium') {
+          padding-left: rem(20);
+        }
+      }
+      //End listing item odd
+
+      //Listing item 4n+3 - 4n+4
+      &__item:nth-child(4n+3),
+      &__item:nth-child(4n+4) {
+
+        @include up('medium') {
+          margin-top: rem(70);
+        }
+      }
+      //End listing item 4n+3 - 4n+4
+
+      //Listing  title
+      .cms__title {
+        color: $color--near-black;
+        text-align: left;
+
+        h1 {
+          font-size: rem(20);
+          line-height: 136%;
+          letter-spacing: -0.02em;
+          display: inline;
+
+          @include up('large') {
+            font-size: rem(26);
+            line-height: 133%;
+          }
+        }
+      }
+      //End listing title
+    }
+
+    &__item--inspiration,
+    &__item--article {
+      .cms__title {
+        margin-right: rem(88);
+
+        @include up('large') {
+          margin-right: rem(104);
+        }
+      }
+    }
+    //End listing item
+
+    //End listing cta
+    &-cta {
+      margin-top: rem(100);
+
+      @include up('large') {
+        margin-top: rem(150);
+      }
+    }
+    //End listing cta
+  }
+  .cms-slider__content{
+    padding: 0;
+  }
+}
+
+
+//Only listing project
+.project_index, .CMS_PAGE_home_project {
+  .cms {
+    &-header {
+      &::before {
+        background-color: transparent;
+      }
+
+      &-filter {
+        flex-direction: column;
+
+        @include up('large') {
+          flex-direction: row;
+        }
+      }
+    }
+  }
+  .cms-slider__content{
+    .t-header-xsmall.c-vert-de-gris{
+      color: $color--basic-blue !important;
+    }
+  }
+}
+
+// New projects listing
+
+.app_media_home_project{
+  .page-container{
+    padding-bottom:0;
+  }
+}
+
+.CMS_PAGE_home_project{
+  .cms-header {
+    padding-top: 0;
+    padding-bottom: rem(26);
+  }
+  .fluid-container{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .cms__item{
+    .slide-cover-image{
+      aspect-ratio: 1 / 1;
+    }
+  }
+}
+
+//End only listing project
+
+.inspiration_index {
+  .cms {
+    &-header {
+      background-color: #fbf3f2;
+      &::before {
+        background-color: transparent;
+      }
+    }
+  }
+  .cms-header-filter{
+    .compound-field__widget > .field:last-child{
+      display:none !important;
+    }
+  }
+}
+
+

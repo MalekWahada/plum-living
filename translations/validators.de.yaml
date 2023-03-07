@@ -1,0 +1,50 @@
+app:
+    b2b_program:
+        cannot_use_for_b2c_type: 'Terra Club kann nicht für einen %customerType% -Benutzer verwendet werden.'
+    channel:
+        default_country:
+            enabled: 'Das Standardland muss in der Liste der aktivierten Länder vorhanden sein.'
+            not_blank: 'Bitte geben Sie das Standardland des Kanals ein.'
+        unique_countries: 'Die folgenden Länder werden bereits von einem anderen Kanal verwendet: %countries% .'
+        unique_default_country: 'Das Standardland wird bereits von einem anderen Kanal verwendet.'
+    cms_content: 'Bitte respektieren Sie das Skelett.'
+    combination:
+        already_use: 'Diese Kombination existiert bereits.'
+        design_not_null: 'Bitte wählen Sie das Design.'
+        finish_not_null: 'Bitte wählen Sie das Finish.'
+        image_not_null: 'Das Bild ist erforderlich.'
+    constraints:
+        project_plan: 'Laden Sie eine Datei im PDF-Format hoch'
+    customer_project:
+        chosen_variant:
+            error_occurred: 'Bei diesem Artikel ist ein Fehler aufgetreten.'
+            not_set: 'Achtung, bitte konfigurieren Sie diesen Artikel, um Ihr Projekt zu speichern.'
+    form:
+        address:
+            city:
+                no_digit: 'Der Text darf keine Zahlen enthalten.'
+            postCode:
+                format: 'Das Postleitzahlenformat stimmt nicht mit dem ausgewählten Land überein.'
+    page:
+        code:
+            not_blank: 'Bitte geben Sie auf der Seite einen Code ein'
+    product:
+        groups:
+            consistency_error: 'Die ausgewählten Gruppen haben nicht die gleichen Optionen oder Haupttaxen wie dieses Produkt.'
+    product_group:
+        consistency_error: 'Die ausgewählten Produkte haben nicht dieselben Optionen oder Haupttaxen.'
+    product_image:
+        position:
+            not_blank: 'Bitte wählen Sie eine Bestellung aus'
+    product_option_value:
+        position:
+            not_blank: 'Bitte wählen Sie eine Bestellung aus'
+    promotion_coupon:
+        code:
+            regex: 'Der Aktionscode darf nur aus Buchstaben, Zahlen, Bindestrichen, Unterstrichen und den Sonderzeichen @ + # bestehen! ? & /'
+    translation:
+        empty_translation_bag: 'Es wurde keine Übersetzung gefunden.'
+        missing_page_translation_for_locale_key: 'Ein oder mehrere Schlüssel wurden für die Sprache %locale% nicht übersetzt: %details%'
+        missing_page_translation_key: 'Ein oder mehrere Schlüssel wurden für die Sprache %locale% nicht übersetzt: %details%'
+        translator_client_locale_not_found: 'Die Sprache %locale% ist in Lokalize nicht konfiguriert oder für diese Sprache ist kein Schlüssel geprüft.'
+        validation_failed_on_field: 'Validierung für Feld "%field%" fehlgeschlagen: %error%'

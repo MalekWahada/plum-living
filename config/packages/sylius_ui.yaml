@@ -1,0 +1,147 @@
+sylius_ui:
+    events:
+        # mask the re-send order confirmation email
+        sylius.admin.order.show.sidebar:
+            blocks:
+                resend_email:
+                    template: "@SyliusAdmin/Order/Show/_resendEmail.html.twig"
+                    enabled: false
+
+        # navbar menu
+        sylius.shop.layout.topbar:
+            blocks:
+                shop_navigation:
+                    template: 'Shop/Plum/Layout/Topbar/_shop_navigation.html.twig'
+                    priority: 40
+                security_widget:
+                    enabled: false
+                cart_summary:
+                    template: 'Shop/Plum/Layout/Topbar/_cart_summary.html.twig'
+                    priority: 50
+                locale_switcher:
+                    enabled: false
+        
+        sylius.shop.layout.head:
+            blocks:
+                google_tag_manager:
+                    template: 'Shop/GoogleTagManager/head.html.twig'
+                hotjar:
+                    template: 'Shop/Hotjar/_head.html.twig'
+        
+        sylius.shop.layout.before_body:
+            blocks:
+                google_tag_manager:
+                    template: 'Shop/GoogleTagManager/body_end.html.twig'
+
+        sylius.shop.layout.after_body:
+            blocks:
+                google_tag_manager:
+                    template: 'Shop/GoogleTagManager/body.html.twig'
+                hubspot:
+                    template: 'Shop/Hubspot/body.html.twig'
+
+        # cart header
+        sylius.shop.cart.header:
+            blocks:
+                header:
+                    enabled: false
+
+        # cart sugggestions
+        sylius.shop.cart.suggestions:
+            blocks:
+                content:
+                    enabled: false
+
+        # account order history index
+        sylius.shop.account.order.index.subcontent:
+            blocks:
+                header:
+                    enabled: false
+
+        # account single order details
+        sylius.shop.account.order.show.subcontent:
+            blocks:
+                header:
+                    enabled: false
+                summary:
+                    enabled: false
+                details:
+                    template: 'Shop/Account/Order/_details.html.twig'
+
+        # checkout sidebar
+        sylius.shop.checkout.sidebar:
+            blocks:
+                support:
+                    enabled: false
+        app.shop.homepage:
+            blocks:
+                cms_home_page:
+                    template: '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/home_page.html.twig'
+
+        sylius.shop.layout.javascripts:
+            blocks:
+                zendesk_support:
+                    template: '@SyliusShop/Layout/Support/_zendesk_bot.html.twig'
+                    priority: 15
+
+        app.tunnel.shopping.product.show.right_sidebar:
+            blocks:
+                header:
+                    template: "@SyliusShop/Product/Show/_header.html.twig"
+                    priority: 50
+                after_product_header_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 45
+                    context:
+                        event: sylius.shop.product.show.after_product_header
+                reviews:
+                    template: "@SyliusShop/Product/Show/_reviews.html.twig"
+                    priority: 40
+                after_reviews_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 35
+                    context:
+                        event: sylius.shop.product.show.after_reviews
+                price_widget:
+                    enabled: false
+                after_price_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 25
+                    context:
+                        event: sylius.shop.product.show.after_price
+                description:
+                    template: "@SyliusShop/Product/Show/_description.html.twig"
+                    priority: 20
+                after_description_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 15
+                    context:
+                        event: sylius.shop.product.show.after_description
+                variant_selection:
+                    template: "Shop/Tunnel/Shopping/Product/_variantSelection.html.twig"
+                    priority: 10
+                after_add_to_cart_legacy:
+                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                    priority: 5
+                    context:
+                        event: sylius.shop.product.show.after_add_to_cart
+
+        app.tunnel.shopping.product.complete_info.show.left_sidebar:
+            blocks:
+                content:
+                    template: "Shop/Tunnel/Shopping/Product/CompleteInfo/_images.html.twig"
+                    priority: 5
+
+        app.tunnel.shopping.product.complete_info.show.right_sidebar:
+            blocks:
+                header:
+                    template: "Shop/Tunnel/Shopping/Product/CompleteInfo/_header.html.twig"
+                    priority: 15
+                price_widget:
+                    enabled: false
+                description:
+                    template: "Shop/Tunnel/Shopping/Product/CompleteInfo/_description.html.twig"
+                    priority: 10
+                variant_selection:
+                    template: "Shop/Tunnel/Shopping/Product/CompleteInfo/_variantSelection.html.twig"
+                    priority: 5

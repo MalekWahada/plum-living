@@ -1,0 +1,104 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set wireDetails = order.lastPayment.wireDetails %}
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% extends '@SyliusShop/Checkout/layout.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title t-header-large">{{ 'app.ui.checkout.transfer_content.page_title'|trans }}</h1>
+        <h5 class="page-title t-header-medium">{{ 'app.ui.checkout.transfer_content.page_subtitle'|trans }}</h5>
+        <div class="checkout-main-row row">
+            <main class="column @lg:column-7">
+                <div class="checkout-payment-panel panel">
+
+                    <div class="panel__header u-margin-b-5">
+                        <div class="u-flex u-spaced-on-main u-margin-b-2">
+                            <h2 class="t-header-medium t-align-left">{{ 'app.ui.checkout.transfer_content.panel_title'|trans }}</h2>
+                        </div>
+                        <p class="t-base-small c-terra custom-info">{{ 'app.ui.checkout.transfer_content.info_text'|trans }}</p>
+                    </div>
+                    <table class="table t-label-medium">
+                        <tbody>
+                        <tr>
+                            <td class="c-grey-mid">
+                                {{ 'app.ui.checkout.transfer_content.ref'|trans }}
+                            </td>
+                            <td>
+                                <span data-clipboard="{{ wireDetails.reference }}" data-clipboard-copied-text="{{ 'app.ui.generic.copied'|trans }}">
+                                    {{ wireDetails.reference }}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span class="c-grey-mid t-base-xsmall">
+                                    <svg class="o-icon-16 u-margin-r-1 u-v-align-sub"><use xlink:href="{{ iconLibUrl }}#SVG-icon-infos"/></svg>
+                                    {{ 'app.ui.checkout.transfer_content.ref_info'|trans }}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="table-separator-row c-grey">
+                            <td colspan="2" class="u-padding-t-1"></td>
+                        </tr>
+                        <tr>
+                            <td class="c-grey-mid">
+                                {{ 'app.ui.checkout.transfer_content.beneficiary.name'|trans }}
+                            </td>
+                            <td>
+                                <span data-clipboard="{{ 'app.ui.checkout.transfer_content.beneficiary.value'|trans }}" data-clipboard-copied-text="{{ 'app.ui.generic.copied'|trans }}">
+                                   <a href="{{ get_url_from_page_code('legal-mentions') }}" target="_blank">{{ 'app.ui.checkout.transfer_content.beneficiary.value'|trans }}</a>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="table-separator-row c-grey">
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td class="c-grey-mid">
+                                {{ 'app.ui.checkout.transfer_content.iban'|trans }}
+                            </td>
+                            <td>
+                                <span data-clipboard="{{ wireDetails.iban }}" data-clipboard-copied-text="{{ 'app.ui.generic.copied'|trans }}">
+                                   {{ wireDetails.iban }}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="table-separator-row c-grey">
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td class="c-grey-mid">
+                                {{ 'app.ui.checkout.transfer_content.bic'|trans }}
+                            </td>
+                            <td>
+                                <span data-clipboard="{{ wireDetails.bic }}" data-clipboard-copied-text="{{ 'app.ui.generic.copied'|trans }}" >
+                                    {{ wireDetails.bic }}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="table-separator-row c-grey">
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td class="c-grey-mid">
+                                {{ 'app.ui.checkout.transfer_content.amount'|trans }}
+                            </td>
+                            <td>
+                                <span data-clipboard="{{ (order.total/1000)|number_format(2, ',', '') }}" data-clipboard-copied-text="{{ 'app.ui.generic.copied'|trans }}">
+                                   {{ (order.total/1000)|number_format(2, ',', '') }} €
+                                </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </main>
+            <aside class="column @lg:column-5 u-margin-t-5 @lg:u-margin-t-0">
+                {% include '@SyliusShop/Checkout/_summary.html.twig' with {order} only %}
+            </aside>
+        </div>
+    </div>
+{% endblock %}
+

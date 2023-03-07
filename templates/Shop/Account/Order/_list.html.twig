@@ -1,0 +1,28 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+<table class="table order-summary-table account-orders-table t-base-small">
+    <thead>
+        <tr class="t-base-xsmall">
+            <th>{{ 'sylius.ui.status'|trans }}</th>
+            <th>{{ 'app.ui.generic.order_number'|trans }}</th>
+            <th>{{ 'sylius.ui.date'|trans }}</th>
+            <th class="price">{{ 'sylius.ui.total'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody class="baseline">
+    {% for item in orders %}
+            {% if loop.index0 > 0 %}
+                <tr class="table-separator-row table-separator-row--s c-near-white"><td colspan="4"></td></tr>
+            {% endif %}
+            <tr>
+                <td class="t-base-small">{% include 'Shop/Account/Order/_status_label.html.twig' with { 'order': item } %}</td>
+                <td>{{ item.number }}</td>
+                <td>{{ item.checkoutCompletedAt ? item.checkoutCompletedAt|date('d/m/Y') : '-' }}</td>
+                <td class="price">{{ money.convertAndFormat(item.total) }}</td>
+            </tr>
+            <tr><td colspan="4">
+                <a class="small-link-button c-grey-mid" href="{{ path('sylius_shop_account_order_show', { 'number': item.number }) }}">{{ 'app.ui.account.orders.see_order_details'|trans }}</a>
+            </td></tr>
+        {% endfor %}
+    </tbody>
+</table>

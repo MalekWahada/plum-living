@@ -1,0 +1,116 @@
+# Sylius Core
+sylius_shop:
+    resource: "@SyliusShopBundle/Resources/config/routing.yml"
+    prefix: /{_trans_slug}
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+sylius_shop_default_tranlation_slug:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.shop.locale_switch:switchAction
+
+sylius_shop_order_after_pay:
+    path: /{_trans_slug}/after-pay
+    methods: [GET, POST]
+    defaults:
+        _controller: App\Controller\Resource\PayumController::afterCaptureAction
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+sylius_shop_product_show:
+    path: /{_trans_slug}/products/{slug}
+    methods: [ GET ]
+    controller: App\Controller\Tunnel\ShoppingController::getTunnelProduct
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+# Plugins
+sylius_shop_payum:
+    resource: "@SyliusShopBundle/Resources/config/routing/payum.yml"
+
+sylius_paypal:
+    resource: "@SyliusPayPalPlugin/Resources/config/shop_routing.yaml"
+    prefix: /{_trans_slug}
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+noksi_sylius_plum_hubspot_plugin:
+    resource: "@NoksiSyliusPlumHubspotPlugin/Resources/config/routing.yml"
+    prefix: /{_trans_slug}
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+# App        
+app_account:
+    resource: "shop/app_account.yaml"
+    prefix: /{_trans_slug}/account
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+app_faq:
+    resource: "shop/app_faq.yaml"
+    prefix: /{_trans_slug}/faq
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+app_customer_project:
+    resource: "shop/app_customer_project.yaml"
+    prefix: /{_trans_slug}/project
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+app_plum_scanner:
+    resource: "shop/app_plum_scanner.yaml"
+    prefix: /{_trans_slug}/plum-scanner
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+app_order:
+    resource: "shop/app_order.yaml"
+    prefix: /{_trans_slug}/orders
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+app_cms:
+    resource: "shop/app_cms.yaml"
+    prefix: /{_trans_slug}
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+app_listings:
+    resource: "shop/app_listings.yaml"
+    prefix: /{_trans_slug}
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+app_cart:
+    resource: "shop/app_cart.yaml"
+    prefix: /{_trans_slug}
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+app_security:
+    resource: "shop/app_security.yaml"
+    prefix: /{_trans_slug}
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+app_tunnel_shopping:
+    resource: "shop/app_tunnel_shopping.yaml"
+    prefix: /{_trans_slug}
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+app_catalog:
+    resource: "shop/app_catalog.yaml"
+    prefix: /{_trans_slug}
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'
+
+app_plum_styler:
+    resource: "shop/app_plum_styler.yaml"
+    prefix: /{_trans_slug}
+    requirements:
+        _trans_slug: '%translatable_slug_validation_regex%'

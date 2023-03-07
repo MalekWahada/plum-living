@@ -1,0 +1,9 @@
+{% set classes = {
+    'container': '',
+    'wrapper': '',
+    'slide': ''
+} %}
+
+{% if element.type != constant('App\\Provider\\CMS\\ImageCollection\\ImageCollectionTypeProvider::IMAGE_COLLECTION_TYPE_MOSAIC') %}
+    {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ImageCollection/other_collection_images.html.twig' %}
+{% endif %}

@@ -1,0 +1,4 @@
+{# TODO: handle the no header & footer outside twig. possible enhancements: conditional render in contoller, add a bool attrb in the BO ... #}
+{% if code != constant('App\\Provider\\CMS\\PageCode\\PageCodeProvider::PAGE_PARTICULAR_MEETING_NO_HEADER') %}
+    {{ parent|raw }}
+{% endif %}

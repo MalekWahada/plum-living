@@ -1,0 +1,6 @@
+{% set state = order.shippingState %}
+{% for shipment in order.shipments %}
+    <p id="sylius-shipping-method" {{ sylius_test_html_attribute('shipping-method') }}>
+        {{ shipment.method }}
+    </p>
+{% endfor %}

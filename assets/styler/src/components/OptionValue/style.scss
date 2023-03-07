@@ -1,0 +1,115 @@
+@import '../../assets/variables';
+
+.styler {
+  &__btn-design.btn-outline-dark {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    border: none;
+    letter-spacing: -0.5px;
+    color: $asphalte;
+    text-align: left;
+    padding: 0;
+    transition: outline ease-in-out 0.3s;
+
+    img {
+      display: block;
+      margin: auto;
+      border-radius: 8px;
+      margin-bottom: 5px;
+      border: 2.5px solid #fff;
+      width: 100%;
+      pointer-events: none;
+      transition: outline-color ease-in-out 0.2s;
+      outline: 1.5px solid #ffffff;
+    }
+
+    &.active, &:hover {
+      color: $asphalte;
+      background: transparent;
+
+      img {
+        outline: 1.5px solid $asphalte;
+      }
+    }
+
+    &:active, &:focus {
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    span {
+      display: inline-block;
+      padding-left: 3px;
+      font-weight: 600;
+    }
+  }
+
+  &__btn-color.btn-outline-dark {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+    color: $asphalte;
+    text-align: left;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    background: $asphalte;
+    border: 2.5px solid #fff;
+    outline: 1.5px solid $grey-3;
+
+    img {
+      display: block;
+      margin: auto;
+      width: 30px;
+      height: 30px;
+      border: 2.5px solid #fff;
+      border-radius: 50px;
+      outline: 1.5px solid $grey-3;
+      pointer-events: none;
+    }
+
+    &.active, &:hover {
+      color: $asphalte;
+      background: currentColor;
+      outline: 1.5px solid $asphalte;
+      border: 2.5px solid #fff;
+
+      img {
+        outline: 1.5px solid $asphalte;
+      }
+    }
+
+    span {
+      display: none;
+    }
+
+    &:active, &:focus {
+      box-shadow: none !important;
+      outline: 1.5px solid $asphalte;
+    }
+
+    &[value="90"] {
+      background-color: #DCDDE1;
+    }
+
+    &[value="91"] {
+      background-color: #E9BA55;
+    }
+
+    &[value="92"] {
+      background-color: #24342E;
+    }
+  }
+
+  &__color-container {
+    gap: 10px;
+    width: auto !important;
+  }
+
+  .surfaceOpt.styler__btn-design {
+    font-weight: 600;
+  }
+}

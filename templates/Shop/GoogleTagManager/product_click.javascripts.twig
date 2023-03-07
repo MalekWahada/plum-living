@@ -1,0 +1,10 @@
+<script>
+    function gtmModalProductClick(productObj) {
+        var obj = {
+            'event': '{{ constant('App\\TagManager\\TagManagerEventInterface::SHOW_PRODUCT_MODAL_EVENT') }}',
+            'object': productObj
+        };
+
+        dataLayer.push(obj);
+    }
+</script>

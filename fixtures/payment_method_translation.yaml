@@ -1,0 +1,13 @@
+App\Entity\Payment\PaymentMethodTranslation:
+    credit_card:
+        translatable: '@payment_method_stripe_sca'
+        name: 'Carte bancaire'
+        description: "L'encaissement se fera via notre partenaire Stripe."
+        instructions: null
+        locale: 'fr'
+    wire:
+        translatable: '@payment_method_stripe_wire'
+        name: 'Virement bancaire'
+        description: "Le délai de traitement est de 1 à 5 jours selon votre banque."
+        instructions: "Rappel : N'oubliez pas d'effectuer le virement"
+        locale: 'fr'

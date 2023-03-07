@@ -1,0 +1,22 @@
+@use '../../config/sass' as *;
+
+
+
+.ui-hint {
+  pointer-events: none;
+  padding: rem(8) rem(16) rem(6);
+  position: fixed;
+  z-index: 1000000;
+  left: 50%;
+  top: 50%;
+  background: get-color(near-black);
+  color: #fff;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.75);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.ui-hint--visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}

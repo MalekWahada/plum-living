@@ -1,0 +1,14 @@
+{% if element.pages is not empty %}
+    {% set pages = ui_element.getPagesListing(element.pages) %}
+    {% for singlePage in pages %}
+        {% if singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_INSPIRATION') %}
+            {% include 'Shop/Plum/Inspiration/_single_inspiration_page.html.twig' with {'inspiration': singlePage} %}
+        {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_PROJECT') %}
+            {% include 'Shop/Plum/Project/_single_project_page.html.twig' with {'project': singlePage} %}
+        {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_ARTICLE') %}
+            {% include 'Shop/Plum/Article/_single_article_page.html.twig' with {'article': singlePage} %}
+        {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_MEDIA_ARTICLE') %}
+            {% include 'Shop/Plum/Media/_single_article_page.html.twig' with {'article': singlePage} %}
+        {% endif %}
+    {% endfor %}
+{% endif %}

@@ -1,0 +1,14 @@
+{% set menuItems = knp_menu_get('sylius.shop.account') %}
+{% set currentPath = app.request.requestUri %}
+
+<nav class="tabbed-nav u-margin-b-7">
+	<div class="tabbed-nav__wrapper">
+	    {% for item in menuItems %}
+	        {% if item.isCurrent or item.uri in currentPath %}
+	            <a class="tabbed-nav__item tabbed-nav__item--selected t-header-xsmall" href="{{ item.uri }}">{{ item.label|trans }}</a>
+	        {% else %}
+	            <a class="tabbed-nav__item t-header-xsmall" href="{{ item.uri }}">{{ item.label|trans }}</a>
+	        {% endif %}
+	    {% endfor %}
+	</div>
+</nav>

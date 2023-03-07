@@ -1,0 +1,8 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<svg role="img" aria-label="{{ 'app.header.shop.cart_label'|trans }}" class="o-icon-20"><use xlink:href="{{ iconLibUrl }}#SVG-icon-cart"/></svg>
+<span class="cart-toggle__count">{{ cart.totalQuantity }}</span>
+<span class="u-sr-only" id="sylius-cart-total" {{ sylius_test_html_attribute('cart-total') }}>
+    {{ money.convertAndFormat(cart.itemsTotal) }}
+</span>

@@ -1,0 +1,49 @@
+app:
+    cart:
+        error: 'Warenkorbfehler: Ihr Warenkorb wurde nicht aktualisiert'
+        success: 'Ihr Warenkorb wurde erfolgreich aktualisiert.'
+    cms:
+        page_position:
+            success: 'Positionen wurden erfolgreich aktualisiert'
+        project_plan:
+            error: 'Ein interner Fehler ist aufgetreten, versuchen Sie es später erneut'
+            success: 'Die E-Mail wurde erfolgreich gesendet'
+            warning: 'Überprüfen Sie, ob Sie Ihre E-Mail-Adresse korrekt eingegeben haben.'
+    duplicate_cart:
+        error: 'Die Bestellung existiert nicht. Ihr Warenkorb wurde nicht aktualisiert.'
+        success: 'Ihr Warenkorb wurde erfolgreich aktualisiert.'
+    facade:
+        facade_not_exist: 'Ihre Frontenwahl gibt es nicht.'
+    order:
+        awaiting_payment:
+            not_allowed: 'Sie wurden ausgeloggt, Ihre ausstehenden Bestellungen sind in Ihrem Bereich zugänglich'
+            not_found: 'Ein Fehler ist aufgetreten'
+            to_cart_success: 'Ihre Bestellung wurde nicht in Rechnung gestellt. Ihre Artikel befinden sich noch in Ihrem Warenkorb'
+        order_not_exist: 'Bestellung nicht gefunden.'
+    plum_scanner:
+        create_project_error: 'Beim Erstellen Ihres Projekts ist ein unerwartetes Problem aufgetreten. Versuchen Sie es erneut.'
+        create_project_success: 'Ihr Projekt wurde erfolgreich erstellt.'
+        error_invalid_mail: 'Die E-Mail, die Sie uns gesendet haben, stammt nicht von IKEA Küchenplaner.'
+        error_invalid_pdf: 'Der Plan, den Sie uns gesendet haben, ist ungültig.'
+        error_other: 'Beim Scannen Ihres Plans ist ein unerwartetes Problem aufgetreten. Versuchen Sie es erneut.'
+        not_found: 'Projekt nicht gefunden.'
+        project_successfully_saved: 'Ihr Projekt wurde erfolgreich gespeichert.'
+        project_successfully_shared: 'Das Projekt wurde erfolgreich per E-Mail geteilt.'
+    product:
+        not_found: 'Das gesuchte Produkt existiert nicht!'
+    project:
+        create_project_success: 'Ihr Projekt wurde erfolgreich erstellt.'
+        delete_project_success: 'Ihr Projekt wurde erfolgreich gelöscht.'
+        duplicate_project_error: 'Beim Duplizieren Ihres Projekts ist ein unerwartetes Problem aufgetreten. Versuchen Sie es erneut.'
+        duplicate_project_success: 'Ihr Projekt wurde erfolgreich dupliziert.'
+    share_cart:
+        error: 'Ein interner Fehler ist aufgetreten, versuchen Sie es später erneut.'
+        success: 'Ihr Warenkorb wurde erfolgreich per E-Mail geteilt.'
+    user:
+        mail_verified: 'Ihre E-Mail wurde bereits bestätigt'
+sylius:
+    address:
+        delete: 'Ihre Adresse wurde gelöscht'
+    customer:
+        register: 'Vielen Dank für die Registrierung. Sie erhalten eine E-Mail zur Bestätigung Ihres Kontos.'
+        update: 'Ihr Profil wurde erfolgreich aktualisiert.'

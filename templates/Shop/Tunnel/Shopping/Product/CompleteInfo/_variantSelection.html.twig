@@ -1,0 +1,5 @@
+{% if product.isConfigurable and product.getVariantSelectionMethod == 'match' and not product.enabledVariants.empty %}
+    {% include '@SyliusShop/Product/Show/_variantsPricing.html.twig' with {'pricing': app_product_variant_taxed_prices(product, sylius.channel)} %}
+{% endif %}
+
+{% include 'Shop/Tunnel/Shopping/Product/CompleteInfo/_inventory.html.twig' %}

@@ -1,0 +1,12 @@
+App\Entity\Addressing\Province:
+    province_FR_{1..94}:
+        country: '@country_FR'
+        code: '<provinceFr(<current()>)>'
+        name: '<provinceNameFr(<current()>)>'
+        abbreviation: null
+    province_DE_{1..16}:
+        country: '@country_DE'
+        code: '<provinceDe(<current()>)>'
+        name: '<provinceNameDe(<current()>)>'
+        abbreviation: null
+        

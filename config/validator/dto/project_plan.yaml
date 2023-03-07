@@ -1,0 +1,5 @@
+App\Dto\PlumScanner\ProjectShareUrlDto:
+    properties:
+        url:
+            - Url: ~
+            - NotBlank: ~

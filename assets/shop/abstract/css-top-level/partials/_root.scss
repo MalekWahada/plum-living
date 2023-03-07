@@ -1,0 +1,116 @@
+@use 'sass:list';
+@use 'sass:string';
+@use '../../../config/sass' as *;
+
+
+@-ms-viewport {
+  width: device-width;
+}
+
+@viewport {
+  width: device-width;
+}
+
+@each $font in $font--families {
+  $font-family: string.quote(#{list.nth($font, 1)});
+  $font-variants: list.nth($font, 2);
+
+  @each $variant in $font-variants {
+    @if $variant {
+      $font-path: '~@plum/fonts/' + $font-family + '/';
+      $font-file: list.nth($variant, 1);
+      $font-weight: list.nth($variant, 2);
+      $font-style: list.nth($variant, 3);
+
+      @include declare-font-face($font-family, $font-path, $font-file, $font-weight: $font-weight, $font-style: $font-style)
+    }
+  }
+}
+
+html {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  font-size: $font--root-size;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: #fff;
+  color: $font--default-color;
+  font-family: $font--default-stack;
+  font-size: $font--default-size;
+  line-height: $font--default-line-height;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid;
+  margin: rem(32) 0;
+  color: get-color("grey-clear");
+
+  &.hr--s-space {
+    margin-top: rem(16);
+    margin-bottom: rem(16);
+  }
+
+  &.hr--l-space {
+    margin-top: rem(48);
+    margin-bottom: rem(48);
+  }
+
+  &.hr--xl-space {
+    margin-top: rem(80);
+    margin-bottom: rem(80);
+  }
+}
+
+[data-href] {
+  cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+code,
+pre {
+  font-family: $font--monospace;
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+}
+
+img {
+}
+
+figure {
+}
+
+video {
+}
+
+iframe {
+}
+
+address {
+  font-style: inherit;
+}
+
+#SVG-icon-lib {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+}

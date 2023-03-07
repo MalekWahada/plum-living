@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+
+<!--
+
+This file is originally coming form ApiBundle and edited for new operations
+This file should be merged with the next Sylius v1.9 ApiBundle version
+TODO: merge with Sylius 1.9 definition
+
+-->
+
+<resources xmlns="https://api-platform.com/schema/metadata"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
+>
+    <resource class="%sylius.model.customer.class%" shortName="Customer">
+        <attribute name="route_prefix">admin</attribute>
+
+        <attribute name="normalization_context">
+            <attribute name="groups">
+                <attribute>customer:read</attribute>
+            </attribute>
+        </attribute>
+
+        <attribute name="validation_groups">sylius</attribute>
+
+        <collectionOperations>
+            <collectionOperation name="admin_post">
+                <attribute name="method">POST</attribute>
+                <attribute name="denormalization_context">
+                    <attribute name="groups">customer:create</attribute>
+                </attribute>
+            </collectionOperation>
+        </collectionOperations>
+
+        <itemOperations>
+            <itemOperation name="admin_get">
+                <attribute name="method">GET</attribute>
+                <attribute name="groups">
+                    <attribute>customer:read</attribute>
+                </attribute>
+            </itemOperation>
+
+            <itemOperation name="admin_put">
+                <attribute name="method">PUT</attribute>
+                <attribute name="denormalization_context">
+                    <attribute name="groups">customer:update</attribute>
+                </attribute>
+            </itemOperation>
+        </itemOperations>
+
+        <property name="id" identifier="true" writable="false" />
+        <property name="firstName" writable="true" readable="true" />
+        <property name="lastName" writable="true" readable="true" />
+        <property name="birthday" writable="true" readable="true" />
+        <property name="email" writable="true" readable="true" />
+        <property name="defaultAddress" writable="true" readable="true">
+            <subresource resourceClass="%sylius.model.address.class%" />
+        </property>
+    </resource>
+</resources>

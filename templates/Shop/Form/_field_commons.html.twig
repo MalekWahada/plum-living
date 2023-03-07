@@ -1,0 +1,103 @@
+{% block field_attributes %}
+    {% if attributes is defined %}
+        {% for name, value in attributes %}
+            {% if name in ['placeholder', 'title'] %}
+                {{ name }}="{{ value|trans }}"
+            {% elseif value is same as(true) %}
+                {{ name }}
+            {% elseif value is not same as(false) and name not in ['type', 'class', 'labelClass'] %}
+                {{ name }}="{{ value }}"
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block field_container_attributes %}
+    {% if props.required or (isRequired is defined and isRequired == true) or (isLabelRequired is defined and isLabelRequired == true) %} data-field-required {% endif %}
+    {% if props.disabled or (isDisabled is defined and isDisabled == true) %} data-field-disabled {% endif %}
+    {{ block('field_attributes') }}
+{% endblock %}
+
+{% block field_widget_attributes %}
+    id="{{ props.id }}"
+    name="{{ props.full_name }}"
+    {% if props.required or (isRequired is defined and isRequired == true) %} required {% endif %}
+    {% if props.disabled or (isDisabled is defined and isDisabled == true) %} disabled {% endif %}
+    {% if props.attr.pattern is defined %}
+        pattern="{{ props.attr.pattern }}"
+    {% endif %}
+    {% if widget_attributes is defined %}
+        {% for name, value in widget_attributes %}
+            {% if name in ['placeholder', 'title'] %}
+                {{ name }}="{{ value|trans }}"
+            {% elseif value is same as(true) %}
+                {{ name }}
+            {% elseif value is not same as(false) and name not in ['id', 'name'] %}
+                {{ name }}="{{ value }}"
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block field_widget_value_attribute %}
+    {% if props.value is defined %} value="{{ props.value }}" {% endif %}
+{% endblock %}
+
+{% block field_widget_value %}{% if props.value is defined %}{{ props.value }}{% endif %}{% endblock %}
+
+{% block number_field_widget_value_attribute %}
+    {% if props.value is defined and props.value is not empty %} value="{{ props.value }}" {% else %} value="0" {% endif %}
+{% endblock %}
+
+{% block field_widget_checked_attribute %}
+    {% if props.checked %} checked {% endif %}
+{% endblock %}
+
+{% block field_label %}
+    {% if labelExtra is defined %}
+        <span class="field__label field__label--with-extra u-inline-flex {{ labelClassAttr }}">
+            <span>
+                {% if label is defined %}
+                    {{ label }}
+                {% else %}
+                    {{ props.label|trans }}
+                {% endif %}
+            </span>
+            <span class="u-fill-space t-align-right">{{ labelExtra }}</span>
+        </span>
+    {% else %}
+        <span class="field__label {{ labelClassAttr }}">
+            {% if label is defined and label is not empty %}
+                {{ label }}
+            {% else %}
+                {{ props.label|trans }}
+            {% endif %}
+        </span>
+    {% endif %}
+{% endblock %}
+
+{% block field_help_or_description %}
+    {% if description is defined or props.help is not empty %}
+        <div class="field__description t-base-small c-grey-mid u-margin-t-0.5 @sm:u-margin-l-3.5">
+            {% if description is defined %}
+                <p>{{ description }}</p>
+                {% if form.vars.value == 'stripe_wire' %}
+                    <p id="custom-wire-delay-message">En choisissant cette option, la commande sera validée à la réception du virement.</p>
+                {% endif %}
+            {% endif %}
+            {% if props.help is not empty %}
+                <p>{{ props.help|trans }}</p>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block field_errors %}
+    {% if props.errors is not empty %}
+        <div class="field__message field__message--visible t-base-small">
+            {% for error in props.errors %}
+                <p>{{ error.message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,44 @@
+sylius_grid:
+    grids:
+        app_admin_product_ikea:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%app.model.product_ikea.class%"
+                    repository:
+                        method: createListQueryBuilder
+                        arguments: [ "expr:service('sylius.context.locale').getLocaleCode()" ]
+            limits: [50, 100, 25, 10]
+            fields:
+                code:
+                    type: string
+                    label: sylius.ui.code
+                    sortable: ~
+                name:
+                    type: string
+                    label: sylius.ui.name
+                    sortable: translation.name
+                image:
+                    type: twig
+                    label: sylius.ui.image
+                    path: .
+                    options:
+                        template: "@SyliusAdmin/ProductIkea/Grid/Field/_image.html.twig"
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [ code, translation.name ]
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+                bulk:
+                    delete:
+                        type: delete

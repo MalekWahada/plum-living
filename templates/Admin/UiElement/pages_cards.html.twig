@@ -1,0 +1,20 @@
+{% if element.pagesCards is not empty %}
+    {% for pageCard in element.pagesCards %}
+        <center>
+            {{ pageCard.content | raw }}
+            <br><br>
+            {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ButtonLink/default_button_link.html.twig' with {
+                'element': {
+                    'label': pageCard.label,
+                    'link': get_linker_redirect_url(pageCard.code),
+                }
+            } %}
+
+            <br>
+            {% if pageCard.hint is not null %}
+                {{ pageCard.hint | raw }}
+            {% endif %}
+            {% if not loop.last %} <hr> {% endif %}
+        </center>
+    {% endfor %}
+{% endif %}

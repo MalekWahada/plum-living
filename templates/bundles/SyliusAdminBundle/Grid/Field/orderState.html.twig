@@ -1,0 +1,8 @@
+{% set state = data|get_account_status_label %}
+{% set value = 'app.ui.order.' ~ state %}
+
+{% if options.vars.labels is defined %}
+    {% include [(options.vars.labels ~ '/' ~ state|replace({'state_':''}) ~ '.html.twig'), '@SyliusUi/Label/_default.html.twig'] with {'value': value} %}
+{% else %}
+    {% include '@SyliusUi/Label/_default.html.twig' with {'value': value} %}
+{% endif %}

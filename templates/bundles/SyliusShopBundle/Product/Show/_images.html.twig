@@ -1,0 +1,34 @@
+<div id="product-modal-images-container" class="swiper-wrapper">
+    {% if product.images|length > 0 %}
+        {% for image in product.images|sort((prod1, prod2) => prod1.position <=> prod2.position) %}
+            {% set source_path = image.path %}
+            {% set original_path = source_path|imagine_filter('sylius_shop_product_original') %}
+            {% set path = source_path|imagine_filter('app_tunnel_modal_thumbnail') %}
+            {% set pathRetina = source_path|imagine_filter('app_tunnel_modal_thumbnail_retina') %}
+            <div class="tunnel-modal-left__img u-cross-centered-row swiper-slide">
+                <img src="{{ path }}" srcset="{{ pathRetina|default(path) }} 2x" id="main-image-{{ loop.index }}"
+                     alt="{{ product.name }}" {{ sylius_test_html_attribute('main-image-' ~ loop.index) }} />
+            </div>
+        {% endfor %}
+    {% else %}
+        {% set path = asset('build/shop/images/no-image.png', 'shop') %}
+        <div class="tunnel-modal-left__img u-cross-centered-row swiper-slide">
+            <img src="{{ path }}" srcset="{{ pathRetina|default(path) }} 2x" id="main-image"
+                 alt="{{ product.name }}" {{ sylius_test_html_attribute('main-image') }} class="no-image u-cover" />
+        </div>
+    {% endif %}
+</div>
+
+<script type="text/x-template" id="plum-product-modal-image__variant-template">
+    <div class="tunnel-modal-left__img u-cross-centered-row swiper-slide">
+        <img src="%IMAGE_SRC%" srcset="%IMAGE_SRC_SET%" alt="{{ product.name }}" id="main-image" />
+    </div>
+</script>
+
+<script type="text/x-template" id="plum-product-modal-image__empty-template">
+    {% set path = asset('build/shop/images/no-image.png', 'shop') %}
+    <div class="tunnel-modal-left__img u-cross-centered-row swiper-slide">
+        <img src="{{ path }}" srcset="{{ pathRetina|default(path) }} 2x" id="main-image"
+             alt="{{ product.name }}" {{ sylius_test_html_attribute('main-image') }} class="no-image u-cover" />
+    </div>
+</script>

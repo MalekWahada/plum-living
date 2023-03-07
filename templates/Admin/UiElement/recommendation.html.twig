@@ -1,0 +1,12 @@
+{% if element is not empty %}
+    <h1>{{ element.subtitle|raw }}</h1>
+    {% for option in element.options %}
+        <div>
+            {{ option.title }}
+            {{ option.description|raw }}
+            <img class="u-cover"
+                 src="{{ option.image|imagine_filter('app_tunnel_recommendation_thumbnail') }}"
+            />
+        </div>
+    {% endfor %}
+{% endif %}

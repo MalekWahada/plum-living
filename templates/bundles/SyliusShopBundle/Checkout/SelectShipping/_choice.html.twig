@@ -1,0 +1,11 @@
+{% import '@SyliusShop/Common/Macro/money.html.twig' as money %}
+
+{% include 'Shop/Form/_radio_field.html.twig' with {
+    field: form,
+    attributes: {
+        'data-fee': fee,
+        labelClass: 't-label-medium'
+    },
+    labelExtra: fee == 0 ? 'app.ui.free_shipping'|trans : money.convertAndFormat(fee),
+    description: method.description
+} %}

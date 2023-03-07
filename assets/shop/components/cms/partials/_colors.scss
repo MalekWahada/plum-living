@@ -1,0 +1,199 @@
+.homepage,
+.cms,
+.facade_get_designs {
+
+  //Palette of colors
+  &-palette {
+    background: $color--beige;
+    margin-top: rem(100);
+    padding-bottom: rem(100);
+
+    @include up('large') {
+      margin-top: rem(60);
+      padding-bottom: rem(100);
+    }
+
+    //Palette img left
+    &-img {
+      position: relative;
+
+      //Palette img container
+      &__container {
+        padding: rem(20) rem(20);
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        @include up('large') {
+          padding: rem(40) rem(40);
+        }
+
+        .swiper-slide {
+          display: flex;
+          justify-content: center;
+          opacity: 0;
+        }
+
+        .swiper-slide-active {
+          opacity: 1;
+        }
+        .slide-color-name {
+          position: absolute;
+          bottom: rem(20);
+          left: rem(20);
+          color: $color--true-white;
+          z-index: 2;
+        }
+      }
+      //End palette img container
+    }
+    //End palette left img
+
+    //Palette content right
+    &__content {
+      padding-top: rem(40);
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      padding-left: rem(20);
+      padding-right: rem(20);
+
+      @include up('large') {
+        padding-left: rem(100);
+        padding-right: rem(20);
+      }
+    }
+    //End palette content right
+
+    //Palette content right : subtitle
+    &__subtitle {
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 1.05px;
+      font-family: $font--cera;
+      font-weight:500;
+
+      @include up('large') {
+      }
+    }
+    //End palette content right : subtitle
+
+    //Palette content right : title
+    &__title {
+      text-align: left;
+    }
+    //End palette content right : title
+
+    //Palette content right : description
+    &__desc {
+      margin-top: rem(0);
+      text-align: left;
+      max-width: 453px;
+      order: 2;
+
+      @include up('large') {
+        order: initial;
+        margin-top: rem(30);
+        min-height: 100px;
+      }
+    }
+
+    &__btn {
+      order: 3;
+      @include up('large') {
+        order: initial;
+      }
+    }
+    //End palette content right : description
+
+    //Palette content right : list of colors
+    &__list {
+      max-width: 453px;
+      margin-top: rem(20);
+      order: 1;
+
+      @include up('large') {
+        order: initial;
+        max-width: 453px;
+        margin-top: rem(0);
+      }
+
+      .swiper-pagination {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: left;
+        margin-bottom: rem(2);
+        position: relative;
+
+        @include up('large') {
+          margin-top: rem(30);
+          margin-bottom: 0;
+        }
+      }
+
+      //Palette content right : color active
+      .swiper-pagination-bullet-active {
+        &::before {
+          content: '';
+          display: block;
+          border-radius: 50%;
+          border: 1px solid $color--near-black;
+          position: absolute;
+          background: transparent;
+          top: rem(-8);
+          left: rem(-8);
+          width: calc(100% + 1rem);
+          height: calc(100% + 1rem);
+        }
+      }
+      //End palette content right : color active
+    }
+    //End palette content right : list of colors
+
+    //Palette content right : color
+    &__color {
+      margin-right: rem(18);
+      margin-bottom: rem(30);
+      position: relative;
+      cursor: pointer;
+      width: rem(30);
+      height: rem(30);
+      border-radius: 50%;
+      opacity: 1;
+
+      @include up('large') {
+        width: rem(40);
+        height: rem(40);
+        margin-right: rem(20);
+      }
+
+      &:first-child {
+
+        @include up('large') {
+        }
+      }
+
+      &::before {
+        content: '';
+        display: none;
+        border-radius: 50%;
+        border: 1px solid $color--near-black;
+        position: absolute;
+        background: transparent;
+        width: calc(100% + 1rem);
+        height: calc(100% + 1rem);
+        top: rem(-8);
+        left: rem(-8);
+        opacity: 1;
+      }
+
+      &:hover:before {
+        display: block;
+      }
+    }
+    //End Palette content right : color
+  }
+  //End palette of colors
+}

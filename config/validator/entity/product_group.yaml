@@ -1,0 +1,17 @@
+App\Entity\Product\ProductGroup:
+    properties:
+        code:
+            -   NotBlank:
+                    groups: [Default, sylius]
+            -   Regex:
+                    groups: [Default, sylius]
+                    pattern: /^[\w-]*$/
+        mainTaxon:
+            -   NotNull:
+                    groups: [Default, sylius] 
+        position:
+            -   PositiveOrZero:
+                    groups: [Default, sylius]
+    constraints:
+        -   App\Validator\ProductConstraint\ProductGroupConsistency:
+                groups: [Default, sylius]

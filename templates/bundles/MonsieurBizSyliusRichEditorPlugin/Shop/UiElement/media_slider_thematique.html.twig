@@ -1,0 +1,68 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% if element.pages is not empty %}
+    {% set pages = ui_element.getPagesListing(element.pages) %}
+    <div class="container container-slider-thematique u-padding-t-7">
+        <div class="row u-cross-centered-row u-margin-b-2 @lg:u-margin-b-4">
+            <div class="column-8 @lg:column-10 u-center-on-cross u-flex">
+                <h2 class="t-header-medium c-vert-ardoise u-inline-block">{{ element.title }}</h2>
+                {% if element.link_url is not empty %}
+                    <a class="u-margin-l-4 link-button link-button--inline u-hidden @lg:u-inline-block link-hover small-link-button"
+                        {% if element.link_target %} target="{{ element.link_target }}"{% endif %}
+                       href="{{ element.link_url | raw }}">
+                        <svg class="o-icon-16 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                        {{ 'app.media.slider.link_label' |trans }}
+                    </a>
+                {% endif %}
+            </div>
+            <div class="column-4 @lg:column-2 t-align-right">
+                {% if element.pages|length > 4 %}
+                <svg class="slider-thematique--arrow slider-thematique--arrow--left o-icon-78 u-inline-flex">
+                    <use xlink:href="{{ iconLibUrl }}#SVG-arrow-left-fill--beige-new"/>
+                </svg>
+                <svg class="slider-thematique--arrow slider-thematique--arrow--right o-icon-78 u-inline-flex">
+                    <use xlink:href="{{ iconLibUrl }}#SVG-arrow-right-fill--beige-new"/>
+                </svg>
+                {% else %}
+                <svg class="slider-thematique--arrow slider-thematique--arrow--left o-icon-78 u-inline-flex @lg:u-hidden">
+                    <use xlink:href="{{ iconLibUrl }}#SVG-arrow-left-fill--beige-new"/>
+                </svg>
+                <svg class="slider-thematique--arrow slider-thematique--arrow--right o-icon-78 u-inline-flex @lg:u-hidden">
+                    <use xlink:href="{{ iconLibUrl }}#SVG-arrow-right-fill--beige-new"/>
+                </svg>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="swiper-thematique swiper-container">
+                <div class="swiper-wrapper">
+                    {% for singlePage in pages %}
+                        {% if singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_INSPIRATION') %}
+                            {% include 'Shop/Plum/Media/_single_thematique_slider_item.html.twig' with {'inspiration': singlePage} %}
+                        {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_PROJECT') %}
+                            {% include 'Shop/Plum/Media/_single_thematique_slider_item_project.html.twig' with {'project': singlePage} %}
+                        {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_ARTICLE') %}
+                            {% include 'Shop/Plum/Media/_single_thematique_slider_item_old_article.html.twig' with {'article': singlePage} %}
+                        {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_MEDIA_ARTICLE') %}
+                            {% include 'Shop/Plum/Media/_single_thematique_slider_item.html.twig' with {'article': singlePage} %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row u-flex @lg:u-hidden u-margin-t-3">
+            <div class="column-fill-space">
+                {% if element.link_url is not empty %}
+                    <a class="link-button link-button--inline small-link-button"
+                        {% if element.link_target %} target="{{ element.link_target }}"{% endif %}
+                       href="{{ element.link_url | raw }}">
+                        <svg class="o-icon-16 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                        {{ 'app.media.slider.link_label' |trans }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}

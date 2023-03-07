@@ -1,0 +1,48 @@
+{% macro translationFormWithSlug(translations, slugFieldTemplate, resource) %}
+    {% import '@SyliusUi/Macro/flags.html.twig' as flags %}
+
+    <div class="ui styled fluid accordion">
+        {% for locale, translationForm in translations %}
+            {% set page = null %}
+            {% if translationForm.vars.value %}
+                {% set page = translationForm.vars.value.getTranslatable() %}
+                {% set translation = translationForm.vars.data %}
+                {% if page.getId() %}
+                    {% set route = url('app_admin_cms_page_preview', {
+                        'pageId': page.getId()
+                    }) %}
+                {% endif %}
+            {% endif %}
+            <div data-locale="{{ locale }}">
+                <div class="title{% if loop.first %} active{% endif %}">
+                    <i class="dropdown icon"></i>
+                    {{ flags.fromLocaleCode(locale) }} {{ locale|sylius_locale_name }}
+                </div>
+                <div class="ui content{% if loop.first %} active{% endif %}">
+                    {% if page and page.getId() %}
+                        <a href="{{ route | raw }}"
+                           target="_blank"
+                           class="ui primary button">
+                            {{ 'app.ui.cms.admin.preview' | trans }}
+                        </a>
+                        {% if (page.getType() == 'media_article') %}
+                            {% set route = get_url_from_page(page) %}
+                            <div class="ui left pointing label">
+                                <a href="{{ route }}" target="_blank">{{ route }}</a>
+                            </div>
+                        {% endif %}
+                        <br>
+                        <br>
+                    {% endif %}
+                    {% for field in translationForm %}
+                        {% if field.vars.name != 'slug' %}
+                            {{ form_row(field) }}
+                        {% else %}
+                            {% include slugFieldTemplate with { 'slugField': translationForm.slug, 'resource': resource } %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}

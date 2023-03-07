@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es6",
+    "jsx": "preserve",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "sourceMap": true
+  },
+  "exclude": [
+    "assets/styler", // Plum styler has its own tsconfig.json
+    "node_modules",
+    "vendor"
+  ]
+}

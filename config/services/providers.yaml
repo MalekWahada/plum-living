@@ -1,0 +1,17 @@
+services:
+    ### App Stripe discount item provider (~ Stripe Coupon)
+    App\Provider\Stripe\DiscountItemProvider:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    ### Sales Data provider (Admin dashboard) is decorated to fix the money format
+    App\Provider\Dashboard\SalesDataProvider:
+        decorates: Sylius\Component\Core\Dashboard\SalesDataProviderInterface
+        autowire: true
+        autoconfigure: true
+
+    App\Provider\Translation\TranslationLocaleProvider:
+        decorates: Sylius\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface
+        autowire: true
+        autoconfigure: true

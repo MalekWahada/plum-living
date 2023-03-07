@@ -1,0 +1,16 @@
+app:
+    ui:
+        cart:
+            summary_modal:
+                accessoires: '{items_count, plural, one {1 Accessoire} other {# Accessoires}}'
+                door: '{items_count, plural, one {1 Tür} other {# Türen}}'
+                drawer: '{items_count, plural, one {1 Schublade} other {# Schubladen}}'
+                echantillon: '{items_count, plural, one {1 Muster} other {# Muster}}'
+                panel_and_plinth: '{items_count, plural, one {1 Deckseite oder Sockelleiste} other {# Deckseiten oder Sockelleisten}}'
+                peinture: '{items_count, plural, one {1 Farbe} other {#Farben}}'
+        shop:
+            article:
+                days: '{days, plural, one {vor 1 Tag} other {vor # Tag(en)}}'
+                lecture_time: '{time, plural, one {1 Min. Lesezeit} other {# Min. Lesezeit}}'
+                months: '{months, plural, one {vor 1 Monat} other {vor # Monaten}}'
+                years: '{years, plural, one {vor 1 Jahr} other {vor # Jahr(en)}}'

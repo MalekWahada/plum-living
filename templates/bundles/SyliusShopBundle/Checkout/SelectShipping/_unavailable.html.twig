@@ -1,0 +1,9 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="message u-flex u-start-on-cross bg-pink-light u-padding-2 u-padding-r-3" id="sylius-order-cannot-be-shipped" {{ sylius_test_html_attribute('order-cannot-be-shipped') }}>
+    <svg class="o-icon-40 u-fit-content u-margin-r-2 c-pink"><use xlink:href="{{ iconLibUrl }}#SVG-icon-warning"/></svg>
+    <div class="u-fill-space">
+        <p class="t-label-small c-grey-mid u-flex u-center-on-cross" style="height:40px">{{ 'app.ui.generic.warning'|trans }}</p>
+        <p class="t-base-medium">{{ 'app.ui.checkout.warnings.no_shipping_methods_available'|trans }}</p>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set updateCartIcon = '<svg aria-label="' ~ 'app.ui.generic.cart'|trans ~ '" class="o-icon-24 u-margin-l-0.5 u-margin-r-0.5"><use xlink:href="' ~ iconLibUrl ~ '#SVG-icon-cart"/></svg>' %}
+{% set shareCartIcon = '<svg aria-label="' ~ 'app.ui.generic.cart'|trans ~ '" class="o-icon-24 u-margin-l-0.5 u-margin-r-0.5"><use xlink:href="' ~ iconLibUrl ~ '#SVG-icon-mail"/></svg>' %}
+
+<div class="panel__header u-margin-b-5">
+    <div class="u-flex u-spaced-on-main u-margin-b-2">
+        <h2 class="t-header-medium t-align-left">{{ 'app.ui.cart.main_panel_title'|trans }}</h2>
+        <div class="u-flex u-spaced-on-main">
+            {% include 'Shop/Cart/Share/_send_cart.html.twig' with {'order': cart} %}
+            <a class="sylius-cart-button top-cart u-flex u-center-on-cross u-fit-content u-margin-l-2 @lg:u-margin-l-4">
+                <span class="u-sr-only">{{ 'app.ui.cart.update_cart'|trans }}</span>
+                <span class="u-hidden @lg:u-inline-block small-link-button link-button--small c-grey-mid">{{ 'app.ui.cart.update_cart'|trans }}</span>
+                <div class="icon-button ripple-button u-margin-l-1" data-dark-ripple>
+                    <svg class="o-icon-24 " data-no-link-fx><use xlink:href="{{ iconLibUrl }}#SVG-icon-cart"/></svg>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{{ sylius_template_event('sylius.shop.cart.summary.items', {'cart': cart, 'form': form}) }}
+
+<table id="sylius-cart-items" {{ sylius_test_html_attribute('cart-items') }} class="table order-summary-table cart-items-table t-label-small">
+    <thead>
+    <tr>
+        <th>{{ 'app.ui.generic.product'|trans }}</th>
+        <th class="qty">{{ 'app.ui.generic.quantity'|trans }}</th>
+        <th class="price">{{ 'app.ui.generic.price'|trans }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for key, item in cart.items %}
+        {% if loop.index > 1 %}
+            <tr class="table-separator-row c-grey-clear"><td colspan="3"></td></tr>
+        {% endif %}
+        {% include '@SyliusShop/Cart/Summary/_item.html.twig' with {'item': item, 'form': form.items[key], 'main_form': form.vars.id, 'loop_index': loop.index} %}
+    {% endfor %}
+    </tbody>
+</table>
+
+<button class="sylius-cart-button button ripple-button u-margin-t-3">
+    {{ 'app.ui.cart.edit_checkout'|trans }}
+    <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+</button>

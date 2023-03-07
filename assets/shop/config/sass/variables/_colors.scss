@@ -1,0 +1,90 @@
+$color--beige: #f9f7f4;
+$color--green: #c9d7cc;
+$color--green-dark: #24342e;
+$color--green-light: #c9D7cc;
+$color--pink: #eca796;
+$color--pink--light: #fbf3f2;
+$color--terra: #a7554e;
+$color--electric-blue: #0040F5;
+$color--vert-de-gris: #708073;
+$color--basic-blue: #3C6574;
+$color--vert-pastel: #E3E8E6;
+$color--bleu-nuit: #1B3248;
+$color--bleu-pastel: #F6FAFF;
+$color--asphalte: #1C2028;
+$color--vert-ardoise: #383E47;
+$color--ciel-voile: #B8C9D0;
+$color--bleu-lagon: #3C6575;
+$color--beige-rose: #F4E9E5;
+$color--bleu-gris: #405268;
+$color--bleu-paon: #5b686c;
+$color--moka: #d2bca9;
+$color--vert-sauvage: #1c494c;
+$color--stone: #969b92;
+$color--amandier-grise: #bdc2c0;
+$color--sombre-forest: #28352f;
+$color--sable: #d9cdb1;
+$color--gris-nuage: #dcdde1;
+
+
+
+$color--near-black: #1c2128;
+$color--near-white: #f9f7f4;
+
+$color--true-black: #000;
+$color--true-white: #fff;
+
+$color--grey: #c4c4c4;
+$color--grey-dark: #3f454f;
+$color--grey-mid: #7b838d;
+$color--grey-light: #a9b1bb;
+$color--grey-clear: #dadcdf;
+$color--placeholder-grey: #f1f3f5;
+$color--transparent: transparent;
+
+$color--primary: $color--pink;
+
+$colors: (
+  "beige": $color--beige,
+  "green": $color--green,
+  "green-dark": $color--green-dark,
+  "green-light": $color--green-light,
+  "pink": $color--pink,
+  "pink-light": $color--pink--light,
+  "terra": $color--terra,
+  "electric-blue": $color--electric-blue,
+  "vert-de-gris": $color--vert-de-gris,
+  "basic-blue": $color--basic-blue,
+  "vert-pastel": $color--vert-pastel,
+  "bleu-nuit": $color--bleu-nuit,
+  "asphalte": $color--asphalte,
+  "bleu-pastel": $color--bleu-pastel,
+  "transparent": $color--transparent,
+  "vert-ardoise": $color--vert-ardoise,
+  "ciel-voile": $color--ciel-voile,
+  "bleu-lagon": $color--bleu-lagon,
+  "beige-rose": $color--beige-rose,
+  "bleu-gris": $color--bleu-gris,
+  "bleu-paon": $color--bleu-paon,
+  "amandier-grise": $color--amandier-grise,
+  "moka": $color--moka,
+  "vert-sauvage": $color--vert-sauvage,
+  "stone": $color--stone,
+  "sable": $color--sable,
+  "gris-nuage": $color--gris-nuage,
+
+"near-black": $color--near-black,
+  "near-white": $color--near-white,
+
+  "true-black": $color--true-black,
+  "true-white": $color--true-white,
+
+  "grey": $color--grey,
+  "grey-dark": $color--grey-dark,
+  "grey-mid": $color--grey-mid,
+  "grey-light": $color--grey-light,
+  'grey-clear': $color--grey-clear,
+  'placeholder-grey': $color--placeholder-grey,
+
+  "primary": $color--primary
+);

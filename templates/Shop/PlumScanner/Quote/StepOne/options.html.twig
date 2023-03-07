@@ -1,0 +1,40 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block title %}
+    {{ "app.ui.plum_scanner.title"|trans }}
+{% endblock %}
+
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% block content %}
+    <div class="container u-hidden @lg:u-block">
+        <h1 class="page-title t-header-large">{{ "app.ui.plum_scanner.heading"|trans|raw }}</h1>
+        {% include 'Shop/PlumScanner/Quote/Partial/_steps.html.twig' with { step: 1 } %}
+
+        <div class="tunnel plum-scanner-tunnel">
+            {% include 'Shop/PlumScanner/Quote/Partial/_sidebar.html.twig' %}
+            <div class="tunnel-main-content @lg:u-fill-space">
+                {{ optionListView|raw }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container container--compact @lg:u-hidden">
+        <h1 class="page-title t-header-large">{{ "app.ui.plum_scanner.heading"|trans|raw }}</h1>
+
+        <div class="panel bodycopy t-base-large t-align-center">
+            {{ 'app.ui.plum_scanner.mobile_not_avaialble'|trans|raw }}
+        </div>
+    </div>
+
+    <div class="rotate-device-indicator u-center-on-cross u-padding-2 u-padding-r-3 bg-near-black c-near-white u-hidden @md:u-flex @lg:u-hidden">
+        <svg class="o-icon-40"><use xlink:href="{{ iconLibUrl }}#SVG-icon-tablet"/></svg>
+        <span class="u-margin-l-2 t-align-center t-base-medium">{{ 'app.ui.plum_scanner.rotate_your_device'|trans }}</span>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ sylius_template_event('app.shop.facade.scripts') }}
+{% endblock %}

@@ -1,0 +1,43 @@
+
+@mixin zoningFieldCompactLeft() {
+  clear: inherit;
+  float:left;
+  width: 49%;
+  margin-right: 1%;
+}
+@mixin zoningFieldCompactRight() {
+  clear: inherit;
+  float:left;
+  width: 49%;
+  margin-left: 1%;
+}
+
+#media_zoning_image_zone {
+  [data-form-collection="list"] {
+    .slim {
+      width: 200px;
+    }
+    [data-form-collection="item"] {
+      > div {
+        > .field:nth-child(2){ @include zoningFieldCompactLeft() }
+        > .field:nth-child(3){ @include zoningFieldCompactRight() }
+        > .field:nth-child(7){ @include zoningFieldCompactLeft() }
+        > .field:nth-child(8){ @include zoningFieldCompactRight() }
+        > .field:nth-child(9){ @include zoningFieldCompactLeft() }
+        > .field:nth-child(10){ @include zoningFieldCompactRight() }
+      }
+    }
+  }
+}
+
+#media_zoning_image{
+  .slim{
+    width: 1160px;
+  }
+}
+#home_project_budget_cardElementsPlum{
+  .slim{
+    width: 200px;
+    height: 200px;
+  }
+}

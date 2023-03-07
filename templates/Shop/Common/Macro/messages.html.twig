@@ -1,0 +1,42 @@
+{% macro default(message, icon, type, header) %}
+    {% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+    {% set className = 'message u-flex u-start-on-cross u-padding-2 u-padding-r-3 u-margin-b-5' %}
+
+    {% if type == 'info' %}
+        {% set className = className ~ ' bg-beige c-near-black' %}
+    {% elseif type == 'success' %}
+        {% set className = className ~ ' bg-green-light c-true-white' %}
+    {% elseif type == 'error' %}
+        {% set className = className ~ ' bg-pink-light c-pink' %}
+    {% else %}
+    {% endif %}
+
+    <div class="{{ className }}" {{ sylius_test_html_attribute('flash-message', type) }}>
+        <svg class="o-icon-40 u-fit-content u-margin-r-2">
+            <use xlink:href="{{ iconLibUrl }}#SVG-icon-{{ icon }}"/>
+        </svg>
+        <div class="u-fill-space">
+            <p class="t-label-small c-grey-mid u-flex u-center-on-cross" style="height:40px">
+                {{ header|default(type)|trans }}
+            </p>
+            <p class="t-base-small c-near-black">
+                {{ message|trans }}
+            </p>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro info(message) %}
+    {% import _self as messages %}
+    {{ messages.default(message, 'arrow-right', 'info', 'sylius.ui.info') }}
+{% endmacro %}
+
+{% macro success(message) %}
+    {% import _self as messages %}
+    {{ messages.default(message, 'check', 'success', 'sylius.ui.success') }}
+{% endmacro %}
+
+{% macro error(message) %}
+    {% import _self as messages %}
+    {{ messages.default(message, 'warning', 'error', 'app.ui.generic.warning') }}
+{% endmacro %}

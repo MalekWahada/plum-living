@@ -1,0 +1,24 @@
+{#
+UI Element template
+type: image_collection
+element fields :
+    images
+#}
+<div class="ui stackable four column grid">
+    {% for image in element.images %}
+        <div class="column">
+            {# image #}
+            {% if image.image %}
+                <img class="ui fluid image"
+                     src="{{ image.image }}"
+                     alt="{{ image.image_alt|default('') }}"
+                     title="{{ image.image_title|default('') }}"
+                />
+            {% endif %}
+            {# lien #}
+            {% if image.link_url is not empty %}
+                <a href="{{ image.link_url }}">{{ image.link_label }}</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

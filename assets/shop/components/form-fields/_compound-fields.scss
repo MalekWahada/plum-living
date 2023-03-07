@@ -1,0 +1,34 @@
+@use '../../config/sass' as *;
+
+.ratio-tabs-compound-field {
+  .compound-field__widget {
+    padding-left: rem(40);
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: rem(40);
+    }
+  }
+
+  .field__label {
+    cursor: pointer;
+    display: block;
+    height: rem(32);
+    opacity: 0.5;
+    background: linear-gradient(to top, currentColor 1px, transparent 0) no-repeat left;
+    background-size: 0% 100%;
+    transition: background-size 0.3s;
+    font-family: $font--blacklist;
+    font-style: italic;
+  }
+
+  .field__label:hover {
+    opacity: 1;
+  }
+
+  input[type="radio"]:checked + .field__label {
+    opacity: 1;
+    background-size: 100% 100%;
+  }
+}

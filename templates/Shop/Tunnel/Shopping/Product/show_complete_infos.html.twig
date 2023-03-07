@@ -1,0 +1,73 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+{% block title %}{{ product.name }} | {{ parent() }}{% endblock %}
+{% block content %}
+    {% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+    <div class="single-product full-container bg-true-white">
+        <div class="@md:u-flex bg-beige">
+            <div class="single-product-header__left swiper-container @md:flush-column-6">
+                <div class="swiper-wrapper">
+                    {{ sylius_template_event('app.tunnel.shopping.product.complete_info.show.left_sidebar', _context) }}
+                </div>
+                <svg class="single-product-arrow single-product-arrow--left o-icon-78">
+                    <use xlink:href="{{ iconLibUrl }}#SVG-arrow-fill--white"/>
+                </svg>
+                <svg class="single-product-arrow single-product-arrow--right o-icon-78">
+                    <use xlink:href="{{ iconLibUrl }}#SVG-arrow-fill--white"/>
+                </svg>
+            </div>
+            <div class="single-product-header__right @md:flush-column-fill-space">
+                {{ sylius_template_event('app.tunnel.shopping.product.complete_info.show.right_sidebar', _context) }}
+            </div>
+        </div>
+        {% if product.completeInfo is not null %}
+            {% set content = product.completeInfo.translation.content|format_cms_content_to_array %}
+
+            <div class="container">
+                <div class="single-product-content @md:u-flex">
+                    <div class="single-product-content__left cms__content @md:column-6">
+                        {# Detail #}
+                        {{ content | get_product_complete_info_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PRODUCT_COMPLETE_INFO_DETAIL')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                    <div class="single-product-content__right @md:column-6">
+                        {# Accordions(product questions) #}
+                        {{ content | get_product_complete_info_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PRODUCT_COMPLETE_INFO_QUESTIONS')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                </div>
+            </div>
+
+            {% set mozaicImages = (content | get_product_complete_info_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PRODUCT_COMPLETE_INFO_MOSAIC_IMAGES'))).data %}
+
+            {% if mozaicImages.images is defined and mozaicImages.images is not empty %}
+                {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ImageCollection/mozaic_image_collection.html.twig' with {
+                    mozaicMainTitle: '',
+                    mozaicImagesCollection: mozaicImages.images is defined ? mozaicImages.images : null
+                } only %}
+            {% endif %}
+
+            <div class="cms-cta u-cross-centered-col">
+                {# Examples Title #}
+                {{ content | get_product_complete_info_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PRODUCT_COMPLETE_INFO_EXAMPLES_TITLE')) | monsieurbiz_richeditor_render_element }}
+                {# Examples Link #}
+                {{ content | get_product_complete_info_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PRODUCT_COMPLETE_INFO_EXAMPLES_BUTTON_LINK')) | monsieurbiz_richeditor_render_element }}
+            </div>
+            <div class="cms-slider u-cross-centered-col">
+                <div class="cms-slider__header container">
+                    {# Cross Content Title #}
+                    {{ content | get_product_complete_info_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PRODUCT_COMPLETE_INFO_CROSS_CONTENT_TITLE')) | monsieurbiz_richeditor_render_element }}
+                    {# Inspirations Link #}
+                    {{ content | get_product_complete_info_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PRODUCT_COMPLETE_INFO_INSPIRATIONS_BUTTON_LINK')) | monsieurbiz_richeditor_render_element }}
+                </div>
+                <div class="cms-slider__container swiper-container">
+                    <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78">
+                        <use xlink:href="{{ iconLibUrl }}#SVG-arrow-fill--white"/>
+                    </svg>
+                    <div class="swiper-wrapper">
+                        {# Cross Content #}
+                        {{ content | get_product_complete_info_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PRODUCT_COMPLETE_INFO_CROSS_CONTENT')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block title %}{{ 'sylius.ui.order'|trans }} #{{ order.number }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title t-header-large">{{ 'app.ui.account.order_details.title'|trans }}</h1>
+
+        {% include 'Shop/Account/Order/_steps.html.twig' %}
+
+        <div class="t-align-center u-margin-b-6">
+            <a class="link-button" href="{{ path('sylius_shop_account_order_index') }}">{{ 'app.ui.account.orders.back'|trans }}</a>
+        </div>
+        <div class="checkout-main-row row">
+            <main class="column @lg:column-7">
+                <div class="account-order-details-panel panel">
+                    {% include 'Shop/Account/Order/_details.html.twig' %}
+                </div>
+            </main>
+            <aside class="column @lg:column-5 u-margin-t-5 @lg:u-margin-t-0">
+                {% include 'Shop/Account/Order/_summary.html.twig' %}
+            </aside>
+        </div>
+    </div>
+{% endblock %}

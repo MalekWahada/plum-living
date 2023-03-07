@@ -1,0 +1,18 @@
+_crud:
+    resource: |
+        alias: app.delivery_date_calculation_config
+        section: admin
+        only: ['index', 'update']
+        path: /
+        templates: "@SyliusAdmin\\Crud"
+        redirect: update
+        grid: app_admin_delivery_calculation_mode_config
+        vars:
+            all:
+                header: app.ui.delivery_date_calculation_config.header
+                subheader: app.ui.delivery_date_calculation_config.subheader
+                templates:
+                    form: '@SyliusAdmin\DeliveryDateCalculationConfig\_form.html.twig'
+            index:
+                icon: 'fast forward'
+    type: sylius.resource

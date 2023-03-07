@@ -1,0 +1,13 @@
+{% set articleContent = page.content | format_cms_content_to_array %}
+
+<div class="cms__container page-media-article">
+    <div class="cms__content container-fluid" id="cms-anchor">
+        {% for bloc in articleContent %}
+            {% if bloc.code and bloc.data %}
+                {% if bloc.code != 'app.chip' %}
+                    {{ bloc | monsieurbiz_richeditor_render_element }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

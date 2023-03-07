@@ -1,0 +1,27 @@
+@mixin u-hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+@mixin u-visible($display: block) {
+  display: $display !important;
+  visibility: visible !important;
+}
+
+@mixin u-va-in($align-base) {
+  font-size: 0 !important;
+
+  &:before {
+    content: "";
+    display: inline-block;
+    vertical-align: $align-base;
+    width: 0;
+    height: 100%;
+  }
+
+  & > * {
+    display: inline-block !important;
+    vertical-align: $align-base !important;
+    font-size: 1rem;
+  }
+}

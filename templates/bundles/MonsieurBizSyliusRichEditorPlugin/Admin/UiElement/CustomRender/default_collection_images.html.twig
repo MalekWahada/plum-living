@@ -1,0 +1,19 @@
+{#
+UI Element template
+type: image_collection
+element fields :
+    images
+#}
+<div class="cms-mosaic__content">
+    {% for image in images %}
+        <div class="cms-mosaic__item">
+            {% if image.link is not empty %}
+                <a href="{{ image.link }}">
+                    <img class="" src="{{ image.image }}" alt="{{ image.alt|default('') }}" title="{{ image.title|default('') }}" />
+                </a>
+            {% else %}
+                <img class="" src="{{ image.image }}" alt="{{ image.alt|default('') }}" title="{{ image.title|default('') }}" />
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

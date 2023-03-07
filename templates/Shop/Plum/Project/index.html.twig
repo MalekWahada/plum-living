@@ -1,0 +1,61 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block metatags %}
+    {% set filters = ['kitchen', 'room', 'bathroom', 'other'] %}
+    {% set filter =  app.request.query.all|first %}
+    {% if filter in filters %}
+        <meta property="og:type" content="{{ ('app.cms_page.project.'~filter~'.meta.type')|trans }}"/>
+        <meta property="og:title" content="{{ ('app.cms_page.project.'~filter~'.meta.title')|trans }}"/>
+        <meta name="description" property="og:description" content="{{ ('app.cms_page.project.'~filter~'.meta.description')|trans }}"/>
+    {% else %}
+        <meta property="og:type" content="{{ ('app.cms_page.project.meta.type')|trans }}"/>
+        <meta property="og:title" content="{{ ('app.cms_page.project.meta.title')|trans }}"/>
+        <meta name="description" property="og:description" content="{{ ('app.cms_page.project.meta.description')|trans }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="cms">
+        <div class="cms__container full-container">
+            <div class="cms-header u-cross-centered-col bg-beige">
+                <div class="cms-header__toptitle t-header-xsmall u-margin-b-4">
+                    {{ 'app.cms_page.project.top_title' | trans }}
+                </div>
+                <div class="cms-header__title t-header-xlarge">
+                    {{ 'app.cms_page.project.main_caption'|trans }}
+                </div>
+                <div class="cms-header-filter u-flex u-center-on-cross u-margin-t-5">
+                    {{ form_start(form, {'action': path('project_index'), 'method': 'POST','attr': {'class': 'u-flex u-flex-wrapping u-cross-centered-row u-centered-on-x u-h-spaced-1'}}) }}
+                    <span class="cms-header-filter__title t-base-medium">
+                        {{ 'app.ui.listing.projects.label'|trans }}
+                    </span>
+                    {% include 'Shop/Form/_select_field.html.twig' with { field: form.piece } %}
+                    <span class="cms-header-filter__title t-base-medium">
+                        {{ 'app.ui.listing.projects.having'|trans }}
+                    </span>
+                        {% include 'Shop/Form/_select_field.html.twig' with { field: form.color } %}
+                    {{ form_end(form, {'render_rest': false}) }}
+                </div>
+            </div>
+        </div>
+        <div class="cms__content container">
+            {% if projects|length > 0 %}
+                {% for project in projects %}
+                    {% include 'Shop/Plum/Project/_single_project_page.html.twig' %}
+                {% endfor %}
+            {% else %}
+                <div class="column c-grey-mid t-align-center">
+                    {{ 'app.cms_page.project.no_project'|trans }}<br>
+                    <a href="{{ path('project_index') }}" class="link-button hover:c-near-black">
+                        {{ 'app.cms_page.project.discover_all_projects'|trans }}
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+        <!--div class="cms-cta u-cross-centered-row">
+            <a href="{{ link }}" class="big-honking-button">
+                {{ 'app.ui.project.button_text'|trans }}
+            </a>
+        </div-->
+    </div>
+{% endblock %}

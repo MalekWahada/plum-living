@@ -1,0 +1,32 @@
+{% if element is not empty %}
+    <div class="recommendations u-margin-t-7 @lg:u-margin-t-10 u-padding-b-10">
+        <div class="recommendations__container u-padding-t-7 u-padding-r-2 u-padding-t-7 u-padding-l-2 @lg:u-padding-10">
+            <div class="recommendations-header u-flex-column u-fullwidth u-margin-b-10 @md:u-margin-b-12">
+                <h1 class="recommendations-header__title t-header-large u-margin-b-3">{{ "app.ui.tunnel_shopping.recommendations"|trans }}</h1>
+                <div class="recommendations-header__desc t-base-small u-margin-b-3 u-centered-on-x rich-editor__text">{{ element.subtitle|raw  }}</div>
+                <a class="recommendations-header__link t-like-link-button u-centered-on-x">{{ "app.ui.tunnel_shopping.recommendations_suggestion"|trans }}</a>
+            </div>
+            <div class="reco-slider swiper-container">
+                <div class="swiper-wrapper">
+                    {% for option in element.options %}
+                        <div class="recommendations-item u-flex swiper-slide @md:column-6 u-margin-b-5 @lg:u-margin-b-0">
+                            <div class="recommendations-item__header @md:flush-column-fill-space u-margin-b-2 @md:u-margin-b-0  @md:u-margin-r-2">
+                                <div class="recommendations-item__title t-header-medium">
+                                    <h5>{{ option.title }}</h5>
+                                </div>
+                                <div class="recommendations-item__desc u-margin-t-2">
+                                    <p class="t-base-small rich-editor__text">
+                                        {{ option.description|raw }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="recommendations-item__img @md:flush-column-8">
+                                <img class="u-block u-cover u-fullwidth" src="{{ option.image|imagine_filter('app_tunnel_recommendation_thumbnail') }}" srcset="{{ option.image|imagine_filter('app_tunnel_recommendation_thumbnail_retina') }} 2x" alt="">
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+           </div>
+        </div>
+    </div>
+{% endif %}

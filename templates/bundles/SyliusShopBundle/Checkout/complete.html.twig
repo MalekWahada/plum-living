@@ -1,0 +1,42 @@
+{% extends '@SyliusShop/Checkout/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block title %}{{ 'app.ui.checkout.step_4_content.tab_title'|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title t-header-large">{{ 'app.ui.checkout.step_4_content.page_title'|trans }}</h1>
+
+        {{ sylius_template_event('sylius.shop.checkout.complete.after_content_header', {'order': order}) }}
+
+        {% include '@SyliusShop/_flashes.html.twig' %}
+
+        {{ sylius_template_event(['sylius.shop.checkout.complete.steps', 'sylius.shop.checkout.steps'], _context|merge({'active': 'complete', 'orderTotal': order.total})) }}
+
+        <div class="t-align-center u-margin-b-6">
+            <a class="link-button" href="{{ path('sylius_shop_checkout_select_payment') }}">{{ 'app.ui.checkout.steps_nav.back'|trans }}</a>
+        </div>
+        <div class="checkout-main-row row">
+            <main class="column @lg:column-7">
+                <div class="checkout-confirmation-panel panel">
+                    <h2 class="panel__title t-header-medium">{{ 'app.ui.checkout.step_4_content.panel_title'|trans }}</h2>
+
+                    {{ form_start(form, {'action': path('sylius_shop_checkout_complete'), 'attr': {'class': 'panel__content', 'id': form.vars.id}}) }}
+                        {{ form_errors(form) }}
+                        <input type="hidden" name="_method" value="PUT" />
+
+                        {{ sylius_template_event('sylius.shop.checkout.complete.summary', _context) }}
+
+                        {{ sylius_template_event('sylius.shop.checkout.complete.before_navigation', {'order': order}) }}
+                        {% include '@SyliusShop/Checkout/_navigation.html.twig' %}
+                        {{ form_row(form._token) }}
+                    {{ form_end(form, {'render_rest': false}) }}
+                </div>
+            </main>
+            <aside class="column @lg:column-5 u-margin-t-5 @lg:u-margin-t-0">
+                {{ sylius_template_event(['sylius.shop.checkout.select_payment.sidebar', 'sylius.shop.checkout.sidebar'], _context) }}
+            </aside>
+        </div>
+    </div>
+{% endblock %}

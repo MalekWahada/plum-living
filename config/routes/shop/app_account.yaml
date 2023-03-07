@@ -1,0 +1,39 @@
+###
+### All routes are prefixed by /account
+###
+
+app_account_root:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: sylius_shop_account_profile_update
+        permanent: true
+
+app_account_project_list:
+    path: /projects
+    methods: [GET]
+    controller: App\Controller\CustomerProject\AccountProjectController::list
+
+app_account_project_create:
+    path: /projects/create
+    methods: [GET]
+    controller: App\Controller\CustomerProject\AccountProjectController::create
+
+app_account_project_delete:
+    path: /projects/{token}
+    methods: [GET]
+    controller: App\Controller\CustomerProject\AccountProjectController::delete
+
+app_account_project_duplicate:
+    path: /projects/duplicate/{token}
+    methods: [GET]
+    controller: App\Controller\CustomerProject\AccountProjectController::duplicate
+    
+app_account_dashboard:
+    path: /dashboard
+    methods: [GET]
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: sylius_shop_account_profile_update
+        permanent: true

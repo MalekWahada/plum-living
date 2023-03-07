@@ -1,0 +1,6 @@
+App\Entity\Tunnel\Shopping\CombinationImage:
+  properties:
+    file:
+      - NotNull:
+            message: app.combination.image_not_null
+            groups: [combination_create]

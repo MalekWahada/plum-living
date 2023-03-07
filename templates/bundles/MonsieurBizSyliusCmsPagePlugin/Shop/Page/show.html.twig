@@ -1,0 +1,69 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block metatags %}
+    {{ parent() }}
+    {% if page.metaTitle is not empty %}
+        <title>
+            {% block title %}
+                {{ page.metaTitle }}
+            {% endblock %}
+        </title>
+    {% endif %}
+    <meta property="og:type" content="page"/>
+    {% if page.metaTitle is not empty %}
+        <meta property="og:title" content="{{ page.metaTitle }}"/>
+    {% endif %}
+    {% if page.metaDescription is not empty %}
+        <meta name="description" property="og:description" content="{{ page.metaDescription }}"/>
+    {% endif %}
+    {% if page.metaKeywords is not empty %}
+        <meta name="keywords" content="{{ page.metaKeywords }}"/>
+    {% endif %}
+{% endblock %}
+
+{# No top + stylesheets for this type form #}
+{% block top %}
+    {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/_cms_conditional.html.twig' with {'code': page.code, 'parent': parent()} %}
+{% endblock %}
+
+{% block stylesheets %}
+    {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/_cms_conditional.html.twig' with {'code': page.code, 'parent': parent()} %}
+{% endblock %}
+{# END of No stylesheets + top for this type form #}
+
+{% block content %}
+    <div class="cms">
+        {% if page.content is defined and page.content is not empty %}
+            {% if page.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_PROJECT') %}
+                {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/project.html.twig' %}
+            {% elseif page.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_INSPIRATION') %}
+                {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/inspiration.html.twig' %}
+            {% elseif page.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_ARTICLE') %}
+                {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/article.html.twig' %}
+            {% elseif page.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_MEDIA_HOME') %}
+                {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/media_home.html.twig' %}
+            {% elseif page.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_MEDIA_ARTICLE') %}
+                {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/media_article.html.twig' %}
+            {% else %}
+                {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/default.html.twig' %}
+            {% endif %}
+        {% else %}
+            {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/no_content.html.twig' %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{# No footer + javascripts for this type form #}
+{% block footer %}
+    {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/_cms_conditional.html.twig' with {'code': page.code, 'parent': parent()} %}
+{% endblock %}
+
+{% block javascripts %}
+    {% if page.code == constant('App\\Provider\\CMS\\PageCode\\PageCodeProvider::PAGE_QUOTATION_TYPE_FORM') %}
+        {% include 'Shop/GoogleTagManager/quote_ask.javascripts.twig' %}
+    {% endif %}
+    {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/_cms_conditional.html.twig' with {'code': page.code, 'parent': parent()} %}
+{% endblock %}
+{# END of No footer + javascripts for this type form #}
+{% block confirmationModal %}
+{% endblock %}

@@ -1,0 +1,6 @@
+{% set headerRibbon = get_page_content(constant('App\\Entity\\Page\\Page::PAGE_TYPE_RIBBON')) %}
+{% if headerRibbon.content is defined and headerRibbon.content is not empty %}
+    <div class="plum-header__banner">
+        <div>{{ headerRibbon.content|monsieurbiz_richeditor_render_field }}</div>
+    </div>
+{% endif %}

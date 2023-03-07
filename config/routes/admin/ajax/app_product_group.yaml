@@ -1,0 +1,28 @@
+app_admin_ajax_product_group_by_name_phrase:
+    path: /search
+    methods: [GET]
+    defaults:
+        _controller: app.controller.product_group:indexAction
+        _format: json
+        _sylius:
+            serialization_groups: [Autocomplete]
+            permission: true
+            repository:
+                method: findByNamePart
+                arguments:
+                    phrase: $phrase
+                    locale: expr:service('sylius.context.locale').getLocaleCode()
+                    limit: 25
+
+app_admin_ajax_product_group_by_code:
+    path: /code
+    methods: [GET]
+    defaults:
+        _controller: app.controller.product_group:indexAction
+        _format: json
+        _sylius:
+            serialization_groups: [Autocomplete]
+            permission: true
+            repository:
+                method: findBy
+                arguments: [code: $code]

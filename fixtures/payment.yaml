@@ -1,0 +1,10 @@
+App\Entity\Payment\Payment:
+    payment_fr_card_{1..25}:
+        method: '@payment_method_stripe_sca'
+        order: '@order_<current()>'
+        currency_code: 'EUR'
+        state: <randomElement(['new', 'completed', 'cart', 'cancelled'])>
+        details: []
+        created_at: <dateTime()>
+        updated_at: null
+        wireDetails: []

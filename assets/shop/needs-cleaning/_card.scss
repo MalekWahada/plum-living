@@ -1,0 +1,42 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.card-header {
+  text-align: left;
+  padding: 12px;
+  background: #F9F7F4;
+}
+
+.card > .card-content {
+  padding: 12px;
+  text-align: left;
+  background: #F9F7F4;
+}
+
+.total {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #24342E;
+  text-align: left;
+  cursor: pointer;
+  width: auto;
+}
+
+.card-element {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-element-description {
+  font-size: 12px;
+  color: grey;
+  margin-top: initial;
+}

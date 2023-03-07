@@ -1,0 +1,43 @@
+{% set articleContent = page.content | format_cms_content_to_array %}
+
+<div class="cms__container page-media-home">
+    <div class="cms__content container-fluid" id="cms-anchor">
+        {% for bloc in articleContent %}
+            {% if bloc.code and bloc.data %}
+                {% if bloc.code != 'app.chip' %}
+                    {{ bloc | monsieurbiz_richeditor_render_element }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="cms__content container u-margin-t-7 u-padding-b-7">
+        <div class="row">
+            <div class="column-fill-space">
+                <h2 class="t-header-medium u-margin-b-2 @lg:u-margin-b-4 c-vert-ardoise">{{ 'app.cms_page.media_article.category.all' | trans }}</h2>
+            </div>
+        </div>
+        <div class="row categories-list">
+            {% set categories = ['home_project', 'home_tour', 'tutorial', 'inspiration', 'address', 'practice', 'toolbox', 'tuto_ikea'] %}
+            {%  for category in categories %}
+                {% set libelle = ('app.cms_page.media_article.category.' ~ category ~ '.title') | trans %}
+                {% if category == 'home_project' %}
+                    {% set route = path('project_index') %}
+                {% else %}
+                    {% set route = path('app_media_category', {
+                        'category': category
+                    }) %}
+                {% endif %}
+                <div class="column-6 @lg:column-3">
+                    <a href="{{ route | raw }}" class="u-block u-fullwidth u-fullheight">
+                        <div class="card card-media card-category u-padding-b-6 u-padding-t-6 u-margin-b-4">
+                            <img src="{{ asset('build/shop/images/' ~ category ~ '.svg', 'shop') }}">
+                            <div class="t-base-medium t-cera-500-normal c-basic-blue u-margin-t-4">
+                                {{ libelle }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

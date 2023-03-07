@@ -1,0 +1,96 @@
+listing_accessoires:
+    path: 
+        fr: /accessoires
+        en: /accessories
+        de: /accessoires
+        nl: /accessoires
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product::indexAction
+        _taxonName: 'app.ui.tunnel_shopping.accessoires'
+        _taxonCode: !php/const App\Entity\Taxonomy\Taxon::TAXON_ACCESSORY_CODE
+        _sylius:
+            template: "Tunnel/Listing/index.html.twig"
+            repository:
+                method: getProductsByMainTaxon
+                arguments:
+                    mainTaxonCode: !php/const App\Entity\Taxonomy\Taxon::TAXON_ACCESSORY_CODE
+                    channelCode: "expr:service('sylius.context.channel').getChannel().getCode()"
+
+listing_sample_facade:
+    path: 
+        fr: /echantillon-facade
+        en: /front-sample
+        de: /front-muster
+        nl: /proefplank
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product::indexAction
+        _taxonName: 'app.ui.tunnel_shopping.samples.facade.name'
+        _taxonSubTitle: 'app.ui.tunnel_shopping.samples.facade.sub_title'
+        _taxonCode: !php/const App\Entity\Taxonomy\Taxon::TAXON_SAMPLE_FRONT_CODE
+        _sylius:
+            template: "Tunnel/Listing/index.html.twig"
+            repository:
+                method: getProductsByMainTaxon
+                arguments:
+                    mainTaxonCode: !php/const App\Entity\Taxonomy\Taxon::TAXON_SAMPLE_FRONT_CODE
+                    channelCode: "expr:service('sylius.context.channel').getChannel().getCode()"
+
+listing_sample_paint_mural:
+    path: 
+        fr: /echantillon-peinture-murale
+        en: /wall-paint-sample
+        de: /wandfarben-muster
+        nl: /verfstaal
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product::indexAction
+        _taxonName: 'app.ui.tunnel_shopping.samples.paint_mural.name'
+        _taxonSubTitle: 'app.ui.tunnel_shopping.samples.paint_mural.sub_title'
+        _taxonCode: !php/const App\Entity\Taxonomy\Taxon::TAXON_SAMPLE_PAINT_CODE
+        _sylius:
+            template: "Tunnel/Listing/index.html.twig"
+            repository:
+                method: getProductsByMainTaxon
+                arguments:
+                    mainTaxonCode: !php/const App\Entity\Taxonomy\Taxon::TAXON_SAMPLE_PAINT_CODE
+                    channelCode: "expr:service('sylius.context.channel').getChannel().getCode()"
+
+listing_paint:
+    path: 
+        fr: /peinture
+        en: /paint
+        de: /farben
+        nl: /verf
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product::indexAction
+        _taxonName: 'app.ui.tunnel_shopping.paints'
+        _taxonCode: !php/const App\Entity\Taxonomy\Taxon::TAXON_PAINT_CODE
+        _sylius:
+            template: "Tunnel/Listing/index.html.twig"
+            repository:
+                method: getProductsByMainTaxon
+                arguments:
+                    mainTaxonCode: !php/const App\Entity\Taxonomy\Taxon::TAXON_PAINT_CODE
+                    channelCode: "expr:service('sylius.context.channel').getChannel().getCode()"
+
+listing_tap:
+    path: 
+        fr: /mitigeurs
+        en: /taps
+        de: /mischbatterien
+        nl: /mengkranen
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product::indexAction
+        _taxonName: 'app.ui.tunnel_shopping.taps'
+        _taxonCode: !php/const App\Entity\Taxonomy\Taxon::TAXON_TAP_CODE
+        _sylius:
+            template: "Tunnel/Listing/index.html.twig"
+            repository:
+                method: getProductsByMainTaxon
+                arguments:
+                    mainTaxonCode: !php/const App\Entity\Taxonomy\Taxon::TAXON_TAP_CODE
+                    channelCode: "expr:service('sylius.context.channel').getChannel().getCode()"

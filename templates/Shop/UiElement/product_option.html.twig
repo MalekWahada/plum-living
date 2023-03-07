@@ -1,0 +1,62 @@
+{% if element.option is not empty %}
+    {% set optionsValues = ui_element.getProductOptions(element.option) %}
+
+    {% if element.option == constant('App\\Entity\\Product\\ProductOption::PRODUCT_OPTION_COLOR') and element.title is defined %}
+        {# Slider images #}
+        {% set displayColorImages = [] %}
+        {% for colorOptionValue in optionsValues %}
+            {% set defaultImage = colorOptionValue|filter_images(constant('App\\Entity\\Product\\ProductOptionValueImage::PRODUCT_OPTION_VALUE_IMAGE_TYPE_DEFAULT')) %}
+            {% if defaultImage.path is defined and defaultImage.path is not empty %}
+                {% set displayImage = colorOptionValue|filter_images(constant('App\\Entity\\Product\\ProductOptionValueImage::PRODUCT_OPTION_VALUE_IMAGE_TYPE_DISPLAY')) %}
+                {% if displayImage.path is defined and displayImage.path is not empty %}
+                    {% set displayColorImages = displayColorImages|merge({(loop.index):{
+                        'colorCode': colorOptionValue.code,
+                        'colorName': colorOptionValue.value,
+                        'colorDesc': colorOptionValue.description,
+                        'colorHex': colorOptionValue.colorHex,
+                        'chipImage': defaultImage.path|imagine_filter('app_cms_color_slider_chip'),
+                        'displayImageSmall': displayImage.path|imagine_filter('app_cms_color_slider_display_image_small'),
+                        'displayImageMedium': displayImage.path|imagine_filter('app_cms_color_slider_display_image_medium'),
+                        'displayImageLarge': displayImage.path|imagine_filter('app_cms_color_slider_display_image_large'),
+                        'displayImageWide': displayImage.path|imagine_filter('app_cms_color_slider_display_image_wide'),
+                    }}) %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        <div class="cms-palette-img combinations-ajax @lg:flush-column-6">
+            {% if displayColorImages is not empty %}
+                <div class="cms-palette-img__container"
+                     style="background-color: {{ displayColorImages[0].colorHex }}">
+                    {% include 'Shop/UiElement/ProductOptionValues/OtherUIs/display_color_images.html.twig' with {
+                        displayColorImages: displayColorImages
+                    } %}
+                </div>
+            {% endif %}
+        </div>
+        {# End of Slider images #}
+
+        <div class="cms-palette__content @lg:flush-column-6">
+        {# colors [title + desc] #}
+        {% include 'Shop/UiElement/ProductOptionValues/OtherUIs/title_desc.html.twig' with {'data': element} %}
+        {# End of colors [title + desc] #}
+
+        {# colors images #}
+        {% include 'Shop/UiElement/ProductOptionValues/color_values.html.twig' %}
+        {# End of colors images #}
+
+        {# colors box | button links #}
+        {% if element.box is defined %}
+            {% include 'Shop/UiElement/ProductOptionValues/OtherUIs/box.html.twig' with {
+                'boxElements': element.box
+            } %}
+        {% elseif element.buttonLinks is defined %}
+            {% include 'Shop/UiElement/ProductOptionValues/OtherUIs/button_links.html.twig' with {
+                'buttonLinkElements': element.buttonLinks
+            } %}
+        {% endif %}
+        {# End of colors box | button links #}
+        {% elseif element.option == constant('App\\Entity\\Product\\ProductOption::PRODUCT_OPTION_DESIGN') or element.option == constant('App\\Entity\\Product\\ProductOption::PRODUCT_OPTION_FINISH') %}
+            {% include 'Shop/UiElement/ProductOptionValues/design_finish_values.html.twig' %}
+        {% endif %}
+        </div>
+{% endif %}

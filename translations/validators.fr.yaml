@@ -1,0 +1,50 @@
+app:
+    b2b_program:
+        cannot_use_for_b2c_type: 'Le Terra Club ne peut être utilisé pour un utilisateur %customerType%.'
+    channel:
+        default_country:
+            enabled: 'Le pays par défaut doit être présent dans la liste des pays activés.'
+            not_blank: 'Veuillez renseigner le pays par défaut du canal.'
+        unique_countries: 'Les pays suivants sont déjà utilisés par un autre canal : %countries%.'
+        unique_default_country: 'Le pays par défaut est déjà utilisée par un autre canal.'
+    cms_content: 'Veuillez respecter le squelette.'
+    combination:
+        already_use: 'Cette combinaison est existe déja.'
+        design_not_null: 'Veuillez choisir le design.'
+        finish_not_null: 'Veuillez choisir la finition.'
+        image_not_null: 'L''image est obligatoire.'
+    constraints:
+        project_plan: 'Uploadez un fichier de format PDF'
+    customer_project:
+        chosen_variant:
+            error_occurred: 'Une erreur est survenue avec cet article.'
+            not_set: 'Attention, veuillez configurer cet article pour sauvegarder votre projet.'
+    form:
+        address:
+            city:
+                no_digit: 'Le texte ne doit pas contenir de chiffres.'
+            postCode:
+                format: 'Le format du code postal ne correspond pas au pays sélectionné.'
+    page:
+        code:
+            not_blank: 'Veuillez donner un code à la page'
+    product:
+        groups:
+            consistency_error: 'Les groupes sélectionnés ne possèdent pas les mêmes options ou taxons en commun que ce produit.'
+    product_group:
+        consistency_error: 'Les produits sélectionnés ne possèdent pas les mêmes options ou taxons en commun.'
+    product_image:
+        position:
+            not_blank: 'Veuillez choisir un ordre'
+    product_option_value:
+        position:
+            not_blank: 'Veuillez choisir un ordre'
+    promotion_coupon:
+        code:
+            regex: 'Le code de promotion peut uniquement être constitué de lettres, chiffres, tirets, traits de soulignement et des caractères spéciaux @ + # ! ? & /'
+    translation:
+        empty_translation_bag: 'Aucune traduction n''a été trouvée.'
+        missing_page_translation_for_locale_key: 'Une ou plusieurs clés ne sont pas traduites pour la langue %locale% : %details%'
+        missing_page_translation_key: 'Une ou plusieurs clés de traduction sont manquantes dans Lokalize : %details%'
+        translator_client_locale_not_found: 'La langue %locale% n''est pas configurée dans Lokalize ou aucune clé n''est vérifiée pour cette langue.'
+        validation_failed_on_field: 'La validation a échoué sur le champ "%field%": %error%'

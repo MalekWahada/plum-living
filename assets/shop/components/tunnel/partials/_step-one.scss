@@ -1,0 +1,15 @@
+.tunnel-first {
+  cursor: pointer;
+  
+  .facade {
+    h5 {
+      max-width: 110px;
+    }
+  }
+  &__category {
+
+    @include up('large') {
+      max-width: rem(112);
+    }
+  }
+}

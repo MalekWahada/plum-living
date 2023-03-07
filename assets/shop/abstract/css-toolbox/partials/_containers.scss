@@ -1,0 +1,50 @@
+// ---------- ---------- ---------- ----------
+// Simple toggles
+// ---------- ---------- ---------- ----------
+
+.u-flex-row {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.u-flex-column {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.u-flex-wrapping {
+  flex-wrap: wrap;
+}
+
+
+// ---------- ---------- ---------- ----------
+// Templaty toggles
+// ---------- ---------- ---------- ----------
+
+.u-cross-centered-row {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center;
+  align-items: center !important;
+}
+
+.u-cross-stretched-row {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center;
+  align-items: stretch !important;
+}
+
+.u-cross-centered-col {
+  flex-direction: column !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center !important;
+}
+
+.u-cross-stretched-col {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: stretch !important;
+}

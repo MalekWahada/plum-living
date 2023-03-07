@@ -1,0 +1,32 @@
+@keyframes button-ripple {
+  from {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+
+.ripple-button {
+  overflow: hidden !important;
+  position: relative;
+
+  &__ripple {
+    border-radius: 100%;
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+    fill: #fff;
+    animation: button-ripple 0.5s both;
+  }
+
+  &[data-dark-ripple] {
+    .ripple-button__ripple {
+      background: rgba(#000, 0.7);
+    }
+  }
+}

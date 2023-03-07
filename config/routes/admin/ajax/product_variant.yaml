@@ -1,0 +1,15 @@
+app_admin_ajax_product_variant_autocomplete:
+    path: /autocomplete
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product_variant:indexAction
+        _format: json
+        _sylius:
+            serialization_groups: [Default]
+            permission: true
+            repository:
+                method: getVariantsByCodeOrName
+                arguments:
+                    locale: !php/const App\Entity\Locale\Locale::DEFAULT_LOCALE_CODE
+                    term: $term
+                    limit: 50

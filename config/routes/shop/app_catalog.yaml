@@ -1,0 +1,11 @@
+catalog_product_smallcard_ajax:
+    path: /product-variant/{code}/smallcard
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product_variant:showAction
+        _sylius:
+            template: Shop/Plum/Product/smallcard.html.twig
+            repository:
+                method: findOneByCode
+                arguments:
+                    - $code

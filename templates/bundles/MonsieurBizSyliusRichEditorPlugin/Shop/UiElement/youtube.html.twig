@@ -1,0 +1,26 @@
+{#
+    UI Element template
+    type: youtube
+    element fields :
+        link
+        width
+        height
+#}
+{# Don't display video if URL is not correct (empty) #}
+
+{% set url = monsieurbiz_richeditor_youtube_link(element.link) %}
+{% set width = element.width ?: 560 %}
+{% set height = element.height ?: 315 %}
+
+{% if url is not null %}
+    <div class="cms__youtube u-relative u-flex u-justify-content-center" style="--video-ratio: {{ height / width }}">
+        <iframe
+            class="u-width-100% u-height-100% u-absolute"
+            width="{{ width }}"
+            height="{{ height }}"
+            src="{{ monsieurbiz_richeditor_youtube_link(element.link) }}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+    </div>
+{% endif %}

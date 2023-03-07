@@ -1,0 +1,49 @@
+app:
+    cart:
+        error: 'Erreur de panier: Votre panier n''est pas mis à jour'
+        success: 'Votre panier a été mis à jour avec succès.'
+    cms:
+        page_position:
+            success: 'Les positions sont mises à jour avec succès'
+        project_plan:
+            error: 'Une erreur interne s''est produite, essayez plus tard'
+            success: 'L''e-mail a été transmis avec succès'
+            warning: 'Vérifiez que vous avez bien saisi votre adresse e-mail'
+    duplicate_cart:
+        error: 'La commande n''existe pas, votre panier n''a pas été mis à jour.'
+        success: 'Votre panier a été mis à jour avec succès.'
+    facade:
+        facade_not_exist: 'Votre choix de facade n''existe pas.'
+    order:
+        awaiting_payment:
+            not_allowed: 'Vous avez été déconnecté, vos commandes en attente sont accessibles dans votre espace'
+            not_found: 'Une erreur est survenue'
+            to_cart_success: 'Votre commande n''a pas été débitée. Vos articles sont toujours présents dans votre panier'
+        order_not_exist: 'Commande Introuvable.'
+    plum_scanner:
+        create_project_error: 'Un problème inattendu s''est produit lors de la création de votre projet. Veuillez réessayer.'
+        create_project_success: 'Votre projet a été créé avec succès.'
+        error_invalid_mail: 'L''e-mail que vous nous avez transmis ne provient pas du IKEA Kitchen Planner.'
+        error_invalid_pdf: 'Le plan que vous nous avez transmis n''est pas valide.'
+        error_other: 'Un problème inattendu s''est produit lors du scan de votre plan. Veuillez réessayer.'
+        not_found: 'Project Introuvable.'
+        project_successfully_saved: 'Votre projet a été sauvegardé avec succès.'
+        project_successfully_shared: 'Le projet a été partagé par e-mail avec succès.'
+    product:
+        not_found: 'Le produit que vous cherchez n''existe pas!'
+    project:
+        create_project_success: 'Votre projet a été créé avec succès.'
+        delete_project_success: 'Votre projet a été supprimé avec succès.'
+        duplicate_project_error: 'Un problème inattendu s''est produit lors de la duplication de votre projet. Veuillez réessayer.'
+        duplicate_project_success: 'Votre projet a été dupliqué avec succès.'
+    share_cart:
+        error: 'Une erreur interne s''est produite, réessayez plus tard.'
+        success: 'Votre panier a été partagé par e-mail avec succès.'
+    user:
+        mail_verified: 'Votre e-mail est déjà vérifié'
+sylius:
+    address:
+        delete: 'Votre adresse a bien été supprimée'
+    customer:
+        register: 'Merci pour votre inscription, vous allez recevoir un e-mail pour vérifier votre compte.'
+        update: 'Votre profil a bien été mis à jour.'

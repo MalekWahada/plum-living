@@ -1,0 +1,37 @@
+App\Entity\User\ShopUser:
+    shop_user_{1..50}:
+        customer: '@customer_<current()>'
+        username: <email()>
+        enabled: true
+        plainPassword: 'fixtures'
+        encoder_name: 'argon2i'
+        locked: false
+        roles: <randomElements(['ROLE_USER'])>
+        stripeId: <lexify(????????????)>
+    basic_user:
+        customer: '@basic_customer'
+        username: 'basic-user@mail.com'
+        enabled: true
+        plainPassword: 'basic-user'
+        encoder_name: 'argon2i'
+        locked: false
+        roles: '[ROLE_USER]'
+        stripeId: 'cus_123abc56DE'
+    cart_user:
+        customer: '@cart_customer'
+        username: 'cart-user@mail.com'
+        enabled: true
+        plainPassword: 'cart-user'
+        encoder_name: 'argon2i'
+        locked: false
+        roles: '[ROLE_USER]'
+        stripeId: 'cus_987yui546UjN'
+    shop_user_DE_{1..10}:
+        customer: '@customer_DE_<current()>'
+        username: <de:email()>
+        enabled: true
+        plainPassword: 'shop-user-de'
+        encoder_name: 'argon2i'
+        locked: false
+        roles: '[ROLE_USER]'
+        stripeId: null

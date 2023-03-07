@@ -1,0 +1,12 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% if order.lastPayment %}
+    {% set payment = order.lastPayment %}
+    <p id="sylius-payment-method" {{ sylius_test_html_attribute('payment-method') }}>
+        {{ payment.method }}
+    </p>
+{% else %}
+    <p>-</p>
+{% endif %}
+
+

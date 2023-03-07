@@ -1,0 +1,10 @@
+<script>
+    function gtmAddToCart(itemObj) {
+        var obj = {
+            'event': '{{ constant('App\\TagManager\\TagManagerEventInterface::ADD_TO_CART_EVENT') }}',
+            'object': itemObj
+        };
+
+        dataLayer.push(obj);
+    }
+</script>

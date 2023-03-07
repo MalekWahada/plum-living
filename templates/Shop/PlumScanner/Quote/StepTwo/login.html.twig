@@ -1,0 +1,94 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+{% import 'Shop/Common/Macro/messages.html.twig' as messages %}
+
+{% set designCode = app.request.attributes.get('_route_params').designCode %}
+{% set finishCode = app.request.attributes.get('_route_params').finishCode %}
+{% set colorCode = app.request.attributes.get('_route_params').colorCode %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% block title %}
+    {{ "app.ui.plum_scanner.title"|trans }}
+{% endblock %}
+
+{% block content %}
+    <div class="container container--compact">
+        <h1 class="page-title t-header-large">{{ "app.ui.plum_scanner.heading"|trans|raw }}</h1>
+
+        {% include 'Shop/PlumScanner/Quote/Partial/_steps.html.twig' with { step: 2 } %}
+
+        <div class="t-align-center u-margin-b-6">
+            <h2 class="t-base-medium">
+                {{ 'app.ui.plum_scanner.login'|trans }}
+            </h2>
+        </div>
+
+        <div class="panel panel--big-chin panel--big-cheeks">
+            <h3 class="panel__title t-header-medium">{{ 'sylius.ui.login'|trans }}</h3>
+            <div class="panel__content">
+                {% if last_error %}
+                    <div class="u-margin-b-6">
+                        {{ messages.error(last_error.messageKey|trans(last_error.messageData, 'security')) }}
+                    </div>
+                {% endif %}
+
+                {{ form_start(form, {
+                    'action': path('sylius_shop_login_check', {
+                        'plumScannerLogin': true,
+                        'designCode': designCode,
+                        'finishCode': finishCode,
+                        'colorCode': colorCode
+                    }),
+                    'method': 'POST' })
+                }}
+
+                    <div class="row u-margin-b-6 @md:u-margin-b-auto">
+                        <div class="column u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_text_field.html.twig' with { 'field': form._username } %}
+                        </div>
+                        <div class="column u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_text_field.html.twig' with { 'field': form._password, 'attributes': { 'type': 'password' } } %}
+                        </div>
+                        <div class="column u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_checkbox_field.html.twig' with { 'field': form._remember_me } %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column">
+                            <button type="submit" class="button u-fullwidth ripple-button">
+                                {{ 'app.ui.plum_scanner.login_button'|trans }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row u-margin-t-4">
+                        <div class="column">
+                            <a class="u-margin-l-auto  link-button" href="{{ path('sylius_shop_request_password_reset_token') }}">
+                                <svg class="o-icon-16 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                                {{ 'sylius.ui.forgot_password'|trans }}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row t-align-center u-margin-t-6">
+                        <div class="column">
+                            <span class="t-header-medium">{{ 'sylius.ui.new_customer'|trans }}</span>
+                        </div>
+                    </div>
+
+                    <div class="row u-margin-t-2">
+                        <div class="column">
+                            <a class="button button--inversed button u-fullwidth ripple-button" href="{{ path('sylius_shop_register') }}">
+                                {{ 'app.ui.plum_scanner.register'|trans }}
+                            </a>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="_csrf_shop_security_token" value="{{ csrf_token('shop_authenticate') }}">
+
+                {{ form_end(form, {'render_rest': false}) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

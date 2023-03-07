@@ -1,0 +1,12 @@
+{% if  element.link is defined and element.type is defined %}
+    {% set element = element|merge({
+        'link': (element.link)|get_absolute_url
+    }) %}
+    {% if element.type == constant('App\\Provider\\CMS\\Button\\ButtonProvider::BUTTON_TYPE_SIMPLE_LINK') %}
+        {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ButtonLink/simple_button_link.html.twig' %}
+    {% elseif element.type == constant('App\\Provider\\CMS\\Button\\ButtonProvider::BUTTON_TYPE_CLASSIC') %}
+        {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ButtonLink/classic_button_link.html.twig' %}
+    {% else %}
+        {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ButtonLink/default_button_link.html.twig' %}
+    {% endif %}
+{% endif %}

@@ -1,0 +1,75 @@
+<div class="eight wide column">
+    <h4 class="ui top attached styled header">
+
+        {%- if customer.hasB2bProgram -%}
+            <i class="green checkmark icon"></i>
+        {%- else -%}
+            <i class="red remove icon"></i>
+        {%- endif -%}
+        {{ 'sylius.ui.b2b_program'|trans }}
+    </h4>
+
+    {%- if customer.hasB2bProgram -%}
+        <div class="ui attached segment" id="default-address">
+            <table class="ui very basic celled table">
+                <tbody>
+                <tr>
+                    <td class="seven wide">
+                        <strong class="gray text">
+                            {{ 'sylius.ui.customer.b2b_program.coupon_code'|trans }}
+                        </strong>
+                    </td>
+                    <td><b>{{- customer.personalCoupon.code|default('-') -}}</b></td>
+                </tr>
+                <tr>
+                    <td class="seven wide">
+                        <strong class="gray text">
+                            {{ 'sylius.ui.customer.b2b_program.company_name'|trans }}
+                        </strong>
+                    </td>
+                    <td>{{- customer.companyName|default('-') -}}</td>
+                </tr>
+                <tr>
+                    <td class="seven wide">
+                        <strong class="gray text">
+                            {{ 'sylius.form.customer.vat_number'|trans }}
+                        </strong>
+                    </td>
+                    <td>{{- customer.vatNumber|default('-') -}}</td>
+                </tr>
+                <tr>
+                    <td class="seven wide">
+                        <strong class="gray text">
+                            {{ 'sylius.ui.customer.b2b_program.company_address'|trans }}
+                        </strong>
+                    </td>
+                    <td>
+                        <address>
+                            {{ customer.companyStreet }}<br/>
+                            {{ customer.companyPostcode }}<br/>
+                            {{ customer.companyCity }}<br/>
+                            {{ customer.companyCountryCode|sylius_country_name }}<br/>
+                        </address>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="seven wide">
+                        <strong class="gray text">
+                            {{ 'sylius.form.customer.company_instagram'|trans }}
+                        </strong>
+                    </td>
+                    <td>{{- customer.companyInstagram|default('-') -}}</td>
+                </tr>
+                <tr>
+                    <td class="seven wide">
+                        <strong class="gray text">
+                            {{ 'sylius.form.customer.company_website'|trans }}
+                        </strong>
+                    </td>
+                    <td>{{- customer.companyWebsite|default('-') -}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    {%- endif -%}
+</div>

@@ -1,0 +1,48 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block title %}{{ ('app.ui.plum_styler.title')|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="styler-home__hero">
+        <img src="{{ asset('build/shop/images/plum-styler/index-background.jpg', 'shop') }}" srcset="{{ asset('build/shop/images/plum-styler/index-background.jpg', 'shop') }} 2x">
+        <div class="container container-custom-padding u-absolute content">
+            <h1 class="t-header-xxlarge u-margin-b-3">
+                {{ ('app.ui.plum_styler.title')|trans }}
+            </h1>
+            <div class="t-base-medium">
+                {{ ('app.ui.plum_styler.index.description')|trans }}
+            </div>
+        </div>
+    </div>
+    <div class="styler-home__list container container-custom-padding u-padding-t-6">
+        <div class="row">
+            <div class="@lg:column-4">
+                <div class="styler-home__list-item u-margin-b-3">
+                    <a href="{{ path('app_plum_styler_show', {'sceneId': 7}) }}">
+                        <img src="{{ asset('build/shop/images/plum-styler/scene1.png', 'shop') }}" srcset="{{ asset('build/shop/images/plum-styler/scene1.png', 'shop') }} 2x">
+                    </a>
+                </div>
+            </div>
+
+            <div class="@lg:column-4">
+                <div class="styler-home__list-item u-margin-b-3">
+                    <a href="{{ path('app_plum_styler_show', {'sceneId': 19}) }}">
+                        <img src="{{ asset('build/shop/images/plum-styler/scene2.jpg', 'shop') }}" srcset="{{ asset('build/shop/images/plum-styler/scene2.jpg', 'shop') }} 2x">
+                    </a>
+                </div>
+            </div>
+
+            <div class="@lg:column-4">
+                <div class="styler-home__list-item">
+                    <a href="{{ path('app_plum_styler_show', {'sceneId': 29}) }}">
+                        <img src="{{ asset('build/shop/images/plum-styler/scene3.jpg', 'shop') }}" srcset="{{ asset('build/shop/images/plum-styler/scene3.jpg', 'shop') }} 2x">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('styler', null, 'styler') }}
+{% endblock %}

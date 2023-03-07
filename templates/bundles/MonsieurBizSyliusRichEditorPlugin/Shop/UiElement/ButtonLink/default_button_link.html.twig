@@ -1,0 +1,13 @@
+{#
+UI Element template
+type: button_link
+element fields :
+    label
+    link
+#}
+
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<a class="big-honking-button" href="{{ element.link }}">
+    {{ element.label }}
+</a>

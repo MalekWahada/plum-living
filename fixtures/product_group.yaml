@@ -1,0 +1,44 @@
+App\Entity\Product\ProductGroup:
+    product_group (template):
+        position: 1
+        
+    product_group_metod_4010 (extends product_group):
+        main_taxon: '@taxon_metod'
+        code: 'product_group_metod_4010'
+        products: 
+            - '@product_metod_4010_1'
+            - '@product_metod_4010_2'
+            - '@product_metod_4010_3'
+            - '@product_metod_4010_4'
+            - '@product_metod_4010_5'
+            - '@product_metod_4010_6'
+            - '@product_metod_4010_7'
+            - '@product_metod_4010_8'
+
+    product_group_pax_35201 (extends product_group):
+        main_taxon: '@taxon_pax'
+        code: 'product_group_pax_35201'
+        products:
+            - '@product_pax_35201_1'
+            - '@product_pax_35201_2'
+            - '@product_pax_35201_3'
+            - '@product_pax_35201_4'
+
+    product_group_accessory (extends product_group):
+        main_taxon: '@taxon_accessories'
+        code: 'product_group_accessory'
+        products:
+            - '@product_accessory_1'
+            - '@product_accessory_2'
+            - '@product_accessory_3'
+            - '@product_accessory_4'
+        
+    product_group_paint (extends product_group):
+        main_taxon: '@taxon_paint'
+        code: 'product_group_paint'
+        products:
+            - '@product_paint_1'
+            - '@product_paint_2'
+            - '@product_paint_3'
+            - '@product_paint_4'
+    

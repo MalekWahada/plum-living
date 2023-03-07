@@ -1,0 +1,5 @@
+{% set page = data %}
+
+{% if page.image is not null and page.image.path is not null %}
+    <img src="{{ page.image.path|imagine_filter('sylius_small') }}" alt="" class="ui bordered image sylius-grid-image"/>
+{% endif %}

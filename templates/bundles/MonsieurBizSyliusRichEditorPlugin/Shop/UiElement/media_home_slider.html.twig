@@ -1,0 +1,66 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set imageFilter = 'app_cms_image_collection_slider' %}
+{% set imageFilterRetina = 'app_cms_image_collection_slider_retina' %}
+
+<div class="cms-slider-home__container new-slider media-home-slider">
+    <div class="swiper-wrapper">
+        {% for image in element.images %}
+            <div class="swiper-slide">
+                {% if image.image is not empty %}
+                    {% if image.link_url is not empty %}
+                        <a href="{{ image.link_url }}">
+                            <img src="{{ image.image|imagine_filter(imageFilter) }}" srcset="{{ image.image|imagine_filter(imageFilterRetina) }} 2x" alt="{{ image.alt|default('') }}"
+                                 title="{{ image.title|default('') }}"/>
+                        </a>
+                    {% else %}
+                        <img src="{{ image.image|imagine_filter(imageFilter) }}" srcset="{{ image.image|imagine_filter(imageFilterRetina) }} 2x"  alt="{{ image.alt|default('') }}"
+                             title="{{ image.title|default('') }}"/>
+                    {% endif %}
+                    {% if image.image_title is not empty %}
+                        <div class="container u-absolute {{ image.text_color }}">
+                            {% if image.image_category is not empty %}
+                                <div class="category t-header-xsmall u-margin-b-1">
+                                    {{ image.image_category }}
+                                </div>
+                            {% endif %}
+                            <h1 class="t-header-xlarge u-margin-b-2 t-shadow">
+                                {{ image.image_title }}
+                            </h1>
+                            <p class="t-base-medium">
+                                {{ image.image_description }}
+                            </p>
+                            {% if image.link_url is not empty %}
+                                {% if image.text_color == 'c-true-white' %}
+                                    <a class="button button--inversed u-margin-t-3" href="{{ image.link_url }}">
+                                        <svg class="o-icon-16 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                                        {% if image.link_label is not empty %}
+                                            {{ image.link_label |raw }}
+                                        {% else %}
+                                            {{ ('app.ui.tunnel_shopping.samples.find_out_more' | trans) }}
+                                        {% endif %}
+                                    </a>
+                                {% else %}
+                                    <a class="button" href="{{ image.link_url }}">
+                                        <svg class="o-icon-16 u-margin-r-1 u-margin-t-3"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                                        {% if image.link_label is not empty %}
+                                            {{ image.link_label |raw }}
+                                        {% else %}
+                                            {{ ('app.ui.tunnel_shopping.samples.find_out_more' | trans) }}
+                                        {% endif %}
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% else %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    {% if element.images|length > 1 %}
+        <div class="container container-pagination u-absolute">
+            <div class="swiper-pagination-two"></div>
+        </div>
+    {% endif %}
+</div>

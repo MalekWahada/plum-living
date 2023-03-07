@@ -1,0 +1,11 @@
+{% if taxonCode == constant('App\\Entity\\Taxonomy\\Taxon::TAXON_SAMPLE_CODE') %}
+    <div class="t-header-small t-align-center">{{ "app.ui.listing.tunnel.samples_subtitle"|trans }}</div>
+{% elseif taxonCode in [constant('App\\Entity\\Taxonomy\\Taxon::TAXON_SAMPLE_FRONT_CODE'), constant('App\\Entity\\Taxonomy\\Taxon::TAXON_SAMPLE_PAINT_CODE')] %}
+    <div class="t-base-small t-align-center">
+        {{ app.request.attributes.get('_taxonSubTitle')|trans|raw }} <br>
+        <a class="button button--inversed button--small u-margin-t-3 bg-transparent" href="{{ path('app_faq_article', {'articleId': '4407121746450'}) }}">
+            <svg class="o-icon-16 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+            {{ 'app.ui.tunnel_shopping.samples.find_out_more'|trans }}
+        </a>
+    </div>
+{% endif %}

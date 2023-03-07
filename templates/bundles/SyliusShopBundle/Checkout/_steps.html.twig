@@ -1,0 +1,55 @@
+{% set order_requires_payment = sylius_is_payment_required(order) %}
+{% set order_requires_shipping = sylius_is_shipping_required(order) %}
+{% set current_step = current_step|default(resolve_checkout_step()) %}
+{% set step_loop_index = 1 %}
+{% set can_go_back = can_go_back is defined ? can_go_back : true %}
+<div class="steps-nav">
+
+    {% if current_step > 1 and can_go_back %}
+        <a class="steps-nav__step t-link-wrapper" href="{{ path('sylius_shop_checkout_address') }}" {{ sylius_test_html_attribute('step-address') }}>
+            <span class="steps-nav__index t-base-medium" data-no-link-fx>{{ step_loop_index }}</span>
+            <span class="steps-nav__name t-base-small">{{ 'app.ui.checkout.steps_nav.step_1'|trans }}</span>
+        </a>
+    {% else %}
+        <div class="steps-nav__step {% if current_step == 1 %} steps-nav__step--active {% endif %}" data-route="{{ path('sylius_shop_checkout_address') }}" {{ sylius_test_html_attribute('step-address') }}>
+            <span class="steps-nav__index t-base-medium" data-no-link-fx>{{ step_loop_index }}</span>
+            <span class="steps-nav__name t-base-small">{{ 'app.ui.checkout.steps_nav.step_1'|trans }}</span>
+        </div>
+    {% endif %}
+    {% set step_loop_index = step_loop_index + 1 %}
+
+    {% if order_requires_shipping %}
+        {% if current_step > 2 and can_go_back %}
+            <a class="steps-nav__step t-link-wrapper" href="{{ path('sylius_shop_checkout_select_shipping') }}" {{ sylius_test_html_attribute('step-shipping') }}>
+                <span class="steps-nav__index t-base-medium" data-no-link-fx>{{ step_loop_index }}</span>
+                <span class="steps-nav__name t-base-small">{{ 'app.ui.checkout.steps_nav.step_2'|trans }}</span>
+            </a>
+        {% else %}
+            <div class="steps-nav__step {% if current_step == 2 %} steps-nav__step--active {% endif %}" data-route="{{ path('sylius_shop_checkout_select_shipping') }}" {{ sylius_test_html_attribute('step-shipping') }}>
+                <span class="steps-nav__index t-base-medium" data-no-link-fx>{{ step_loop_index }}</span>
+                <span class="steps-nav__name t-base-small">{{ 'app.ui.checkout.steps_nav.step_2'|trans }}</span>
+            </div>
+        {% endif %}
+        {% set step_loop_index = step_loop_index + 1 %}
+    {% endif %}
+
+    {% if order_requires_payment %}
+        {% if current_step > 3 and can_go_back %}
+            <a class="steps-nav__step t-link-wrapper" href="{{ path('sylius_shop_checkout_select_payment') }}" {{ sylius_test_html_attribute('step-payment') }}>
+                <span class="steps-nav__index t-base-medium" data-no-link-fx>{{ step_loop_index }}</span>
+                <span class="steps-nav__name t-base-small">{{ 'app.ui.checkout.steps_nav.step_3'|trans }}</span>
+            </a>
+        {% else %}
+            <div class="steps-nav__step {% if current_step == 3 %} steps-nav__step--active {% endif %}" data-route="{{ path('sylius_shop_checkout_select_payment') }}" {{ sylius_test_html_attribute('step-payment') }}>
+                <span class="steps-nav__index t-base-medium" data-no-link-fx>{{ step_loop_index }}</span>
+                <span class="steps-nav__name t-base-small">{{ 'app.ui.checkout.steps_nav.step_3'|trans }}</span>
+            </div>
+        {% endif %}
+        {% set step_loop_index = step_loop_index + 1 %}
+    {% endif %}
+
+    <div class="steps-nav__step {% if current_step == 4 %} steps-nav__step--active {% endif %}" data-route="{{ path('sylius_shop_checkout_complete') }}">
+        <span class="steps-nav__index t-base-medium" data-no-link-fx>{{ step_loop_index }}</span>
+        <span class="steps-nav__name t-base-small">{{ 'app.ui.checkout.steps_nav.step_4'|trans }}</span>
+    </div>
+</div>

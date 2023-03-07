@@ -1,0 +1,33 @@
+{% set filters = [
+    'app_cms_image_collection_mosaic_first_no_title',
+    'app_cms_image_collection_mosaic_second_no_title',
+    'app_cms_image_collection_mosaic_third_no_title',
+] %}
+
+{% set filtersRetina = [
+    'app_cms_image_collection_mosaic_first_no_title_retina',
+    'app_cms_image_collection_mosaic_second_no_title_retina',
+    'app_cms_image_collection_mosaic_third_no_title_retina',
+] %}
+
+<div class="{{ classes['container'] }}">
+    <div class="{{ classes['wrapper'] }}">
+        {% for image in mozaicImagesCollection %}
+            <div class="{{ classes['slide'] }}">
+                {% if image.image is defined and image.image is not empty %}
+                    {% set imagePath = filters[loop.index0] is defined ? image.image|imagine_filter(filters[loop.index0]) : image.image %}
+                    {% set imagePathRetina = filters[loop.index0] is defined ? image.image|imagine_filter(filtersRetina[loop.index0]) : image.image %}
+                    {% if image.link is not empty %}
+                        <a href="{{ image.link }}">
+                            <img class="img-anim is-out" src="{{ imagePath }}" srcset="{{ imagePathRetina }} 2x" alt="{{ image.alt|default('') }}"
+                                 title="{{ image.title|default('') }}"/>
+                        </a>
+                    {% else %}
+                        <img class="img-anim is-out" src="{{ imagePath }}" srcset="{{ imagePathRetina }} 2x" alt="{{ image.alt|default('') }}"
+                             title="{{ image.title|default('') }}"/>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

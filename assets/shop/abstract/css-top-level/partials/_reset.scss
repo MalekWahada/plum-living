@@ -1,0 +1,27 @@
+p, ul, ol, dl, dd, blockquote, figure {
+  margin: 0;
+  line-height: 170%;
+}
+
+ul, ol {
+  padding: 0;
+}
+
+ul, ol {
+  list-style-position: inside;
+}
+
+input {
+  margin: 0;
+}
+
+fieldset {
+  padding: 0;
+}
+
+button {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}

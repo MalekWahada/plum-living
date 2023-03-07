@@ -1,0 +1,64 @@
+sylius_grid:
+    grids:
+        sylius_admin_order:
+            limits: [ 100, 200, 50, 25, 10 ]
+            fields:
+                shippingState:
+                    enabled: false
+                erpRegistered:
+                    type: twig
+                    label: app.admin.erp_registered
+                    path: .
+                    sortable: ~
+                    options:
+                        template: "@SyliusAdmin/Grid/Field/erpRegistered.html.twig"
+                state:
+                    label: sylius.ui.order_state
+                    path: .
+                    options:
+                        template: "@SyliusAdmin/Grid/Field/orderState.html.twig"
+                        vars:
+                            labels: "@SyliusAdmin/Order/Label/State"
+            filters:
+                erpRegistered:
+                    type: skippable_exists
+                    label: app.admin.erp_registered
+                    options:
+                        field: erpRegistered
+                state:
+                    type: order_state
+                    label: sylius.ui.order_state
+                    form_options:
+                        choices:
+                            app.ui.order.state_pending: state_pending
+                            app.ui.order.state_fully_paid: state_fully_paid
+                            app.ui.order.state_partially_shipped: state_partially_shipped
+                            app.ui.order.state_fully_shipped: state_fully_shipped
+                            app.ui.order.state_fulfilled: state_fulfilled
+                            app.ui.order.state_cancelled: state_cancelled
+                paymentState:
+                    type: select
+                    label: sylius.ui.payment_state
+                    form_options:
+                        choices:
+                            sylius.ui.awaiting_payment: Awaiting_payment
+                            sylius.ui.authorized: Authorized
+                            sylius.ui.partially_authorized: Partially_authorized
+                            sylius.ui.paid: Paid
+                            sylius.ui.partially_paid: Partially_paid
+                            sylius.ui.refunded: Refunded
+                            sylius.ui.cancelled: Cancelled
+            actions:
+                main:
+                    export_custom_orders:
+                        type: export_custom_orders
+                        label: Export Commandes
+                        options: 
+                            link:
+                                route: app_export_data_order_custom
+                
+
+    templates:
+        filter:
+            skippable_exists: 'Grid/Filter/skippable_exists.html.twig'
+            order_state: 'Grid/Filter/order_state.html.twig'

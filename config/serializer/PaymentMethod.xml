@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="Sylius\Component\Core\Model\PaymentMethod">
+        <attribute name="id">
+            <group>payment_method:read</group>
+            <group>order:read</group>
+        </attribute>
+        <attribute name="name">
+            <group>payment_method:read</group>
+            <group>checkout:read</group>
+            <group>order:read</group>
+        </attribute>
+    </class>
+</serializer>

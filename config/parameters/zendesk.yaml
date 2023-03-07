@@ -1,0 +1,4 @@
+parameters:
+    zendesk_api_subdomain: '%env(ZENDESK_API_SUBDOMAIN)%'
+    zendesk_api_username: '%env(ZENDESK_API_USERNAME)%'
+    zendesk_api_token: '%env(ZENDESK_API_TOKEN)%'

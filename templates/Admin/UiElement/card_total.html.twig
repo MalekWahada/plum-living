@@ -1,0 +1,48 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set totalPrice = 0 %}
+{% if element is not empty %}
+    <div class="ui">
+        {# total to display #}
+        <div>
+            {% if element.cardTotalToDisplay is defined and element.cardTotalToDisplay is not null %}
+                <p>{{ 'app.form.card_total.total_to_display'|trans }}</p>
+                <p>{{ money.formatPriceWithoutDecimals(element.cardTotalToDisplay) }}</p>
+            {% else %}
+                <p>{{ 'app.ui.cms.admin.alternative_total_to_display'|trans }}</p>
+            {% endif %}
+        </div>
+        {# End of total to display #}
+
+        <div class="card">
+            {# Card Header #}
+            <div class="card-header">
+                <h2>{{ element.cardMainTitle }}</h2>
+            </div>
+            {# End Card Header #}
+            {# Card Content #}
+            {% for cardelement in element.cardElements %}
+                {% set totalPrice = totalPrice + cardelement.price %}
+                <div class="card-content">
+                    <div>
+                        <div class="card-element">
+                            <p>{{ cardelement.title }}</p>
+                            <p>{{ money.formatPriceWithoutDecimals(cardelement.price) }}</p>
+                        </div>
+                        <p class="card-element-description">{{ cardelement.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            {# End Card Content #}
+            {# Card Total #}
+            <div class="total">
+                <div class="card-element">
+                    <p>{{ element.cardTotalTitle }}*</p>
+                    <p>{{ money.formatPriceWithoutDecimals(totalPrice) }}</p>
+                </div>
+                <p style="font-size: 12px">*{{ element.cardTotalDetails }}</p>
+            </div>
+            {# End Card Total #}
+        </div>
+    </div>
+{% endif %}

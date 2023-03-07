@@ -1,0 +1,72 @@
+name: Build
+
+on: [push]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
+
+            -   name: SSH Agent
+                uses: webfactory/ssh-agent@v0.5.4
+                with:
+                    ssh-private-key: ${{ secrets.HUBSPOT_BUNDLE_DEPLOY_KEY }}
+            
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    extensions: gd, intl, mbstring, pdo_sqlite, soap
+                    php-version: 7.4
+                    tools: composer:v2
+
+            -   name: Validate composer.json and composer.lock
+                run: composer validate
+
+            -   name: Cache composer dependencies
+                uses: actions/cache@v1
+                with:
+                    path: vendor
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: ${{ runner.os }}-composer-
+
+            -   name: Install Composer dependencies
+                run: composer install --prefer-dist --no-progress --no-scripts
+                
+            -   name: PHPCS
+                run: ./vendor/bin/phpcs --runtime-set ignore_warnings_on_exit true
+
+            -   name: PHP-CS-Fixer
+                run: ./vendor/bin/php-cs-fixer fix -v --dry-run --diff-format=udiff --using-cache=no src
+
+            -   name: PHPStan
+                run: ./vendor/bin/phpstan analyse -c phpstan.neon -l 6 src/
+                
+            -   name: Run Unit Tests
+                run: vendor/bin/phpunit tests/Unit --testdox
+                continue-on-error: true
+                
+            -   name: Create Test Database
+                run: bin/console doctrine:database:create --env=test
+                
+            -   name: Update Test Database Schema
+                run: bin/console doctrine:schema:update --force --env=test
+                
+            -   name: Load Fixtures
+                run: bin/console hautelook:fixtures:load --env=test --no-interaction
+                
+            -   name: Setup Node
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 14
+
+            -   name: Install assets
+                run: |
+                    yarn install --force
+                    yarn build
+                    yarn encore prod
+                
+            -   name: Run Functionnal Tests
+                run: vendor/bin/phpunit tests/Functional --testdox 
+                continue-on-error: true

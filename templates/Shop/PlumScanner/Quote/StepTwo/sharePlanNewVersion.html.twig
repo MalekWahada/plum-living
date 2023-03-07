@@ -1,0 +1,74 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block title %}
+    {{ "app.ui.plum_scanner.title"|trans }}
+{% endblock %}
+
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% block content %}
+    <div class="container container--compact">
+        <h1 class="page-title t-header-large">{{ "app.ui.plum_scanner.heading"|trans|raw }}</h1>
+
+        {% include 'Shop/PlumScanner/Quote/Partial/_steps.html.twig' with { step: 2 } %}
+
+        <div class="panel panel--medium-chin u-padding-t-5 u-margin-b-15">
+            <div class="flush-row u-margin-b-6">
+                <div class="flush-column @md:flush-column-fit-content t-header-small @md:u-margin-r-3">2.</div>
+                <div class="flush-column @md:flush-column-fill-space">
+                    <div class="t-header-small">
+                        {{ 'app.ui.plum_scanner.step_two.share_plan_new.title'|trans|raw }}
+                    </div>
+                    <div class="bodycopy u-margin-t-3 t-base-medium">
+                        {% set url = constant('App\\Provider\\PlumScanner\\IkeaKitchenPlannerProvider::IKP_NEW_VERSION_LONG_URL') %}
+                        {{ 'app.ui.plum_scanner.step_two.share_plan_new.action_desc'|trans({ '%URL%': url, '%ICON_LIB_URL%': iconLibUrl })|raw }}
+                    </div>
+
+                    {{ form_start(form, {
+                        'attr': {
+                            'class': 'u-margin-t-6',
+                            'id': 'share-project-plan-url-form'
+                        },
+                        'action':path('app_plum_scanner_share_plan_via_link', {
+                            'designCode': designOption.code,
+                            'finishCode': finishOption.code,
+                            'colorCode': colorOption.code,
+                            'ikeaConnected': true
+                        })
+                    }) }}
+
+                    {% include 'Shop/Form/_text_field.html.twig' with {
+                        'field': form.url,
+                        'label': form.url.vars.attr.placeholder|trans,
+                        'attributes': {
+                            'type': 'url',
+                        }
+                    } %}
+
+                    {{ form_widget(form._token) }}
+
+                    {{ form_end(form, { 'render_rest': false }) }}
+                </div>
+            </div>
+
+            <button id="share-project-plan-url-btn" form="share-project-plan-url-form" class="big-honking-submit ripple-button"
+               href="{{ path('app_plum_scanner_share_plan_via_link', {
+                   'designCode': designOption.code,
+                   'finishCode': finishOption.code,
+                   'colorCode': colorOption.code,
+                   'ikeaConnected': true
+               }) }}">
+                {{ 'app.ui.plum_scanner.step_two.share_plan_new.scan_plan_btn'|trans }}
+            </button>
+        </div>
+
+        <p class="t-header-small u-margin-b-4 t-align-center">
+            {{ 'app.ui.plum_scanner.step_two.share_plan.guide'|trans|raw }}
+        </p>
+
+        <video class="u-block u-fullwidth" controls="controls" preload="metadata"
+               poster="{{ asset('build/shop/images/ikp-new-demo-poster.jpg', 'shop') }}">
+            <source src="{{ asset('build/shop/images/ikp-new-demo.mp4', 'shop') }}" type="video/mp4">
+        </video>
+    </div>
+{% endblock %}

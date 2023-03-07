@@ -1,0 +1,114 @@
+App\Entity\Taxonomy\Taxon:
+    taxon_product_category:
+        parent: null
+        code: 'product_category'
+        position: 0
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_facade:
+        parent: '@taxon_product_category'
+        code: 'facade'
+        position: 0
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_metod:
+        parent: '@taxon_facade'
+        code: 'metod'
+        position: 0
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_metod_door:
+        parent: '@taxon_metod'
+        code: 'metod_door'
+        position: 0
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_pax_door:
+        parent: '@taxon_pax'
+        code: 'pax_door'
+        position: 0
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_accessories_handle:
+        parent: '@taxon_accessories'
+        code: 'accessoires_handle'
+        position: 0
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_metod_panel:
+        parent: '@taxon_metod'
+        code: 'metod_panel'
+        position: 1
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_pax:
+        parent: '@taxon_facade'
+        code: 'pax'
+        position: 1
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_pax_panel:
+        parent: '@taxon_pax'
+        code: 'pax_panel'
+        position: 1
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_paint:
+        parent: '@taxon_product_category'
+        code: 'peinture'
+        position: 1
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_sample_paint:
+        parent: '@taxon_sample'
+        code: 'echantillonn_peinture'
+        position: 1
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_sample_facade:
+        parent: '@taxon_sample'
+        code: 'echantillon_facade'
+        position: 0
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_metod_drawer:
+        parent: '@taxon_metod'
+        code: 'metod_drawer'
+        position: 2
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_sample:
+        parent: '@taxon_product_category'
+        code: 'echantillon'
+        position: 2
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_accessories:
+        parent: '@taxon_product_category'
+        code: 'accessoires'
+        position: 3
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+    taxon_metod_baseboard:
+        parent: '@taxon_metod'
+        code: 'metod_baseboard'
+        position: 3
+        enabled: true
+        created_at: <dateTime()>
+        updated_at: null
+        

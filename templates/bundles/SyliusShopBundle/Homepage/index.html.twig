@@ -1,0 +1,22 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+{% set page = get_page_content(constant('App\\Entity\\Page\\Page::PAGE_TYPE_HOME_PAGE')) %}
+
+{% block metatags %}
+    {{ parent() }}
+    <meta property="og:type" content="page"/>
+    {% if page.metaTitle is not empty %}
+        <meta property="og:title" content="{{ page.metaTitle }}"/>
+    {% endif %}
+    {% if page.metaDescription is not empty %}
+        <meta name="description" property="og:description" content="{{ page.metaDescription }}"/>
+    {% endif %}
+    {% if page.metaKeywords is not empty %}
+        <meta name="keywords" content="{{ page.metaKeywords }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="homepage">
+         {{ sylius_template_event('app.shop.homepage', {'page': page}) }}
+    </div>
+{% endblock %}

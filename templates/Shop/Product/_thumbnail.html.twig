@@ -1,0 +1,18 @@
+{% if variant.hasImages %}
+	{% set imagesAware = variant %}
+{% else %}
+	{% set imagesAware = variant.product %}
+{% endif %}
+
+{% set filter = 'app_cart_widget_product_thumbnail' %}
+{# Could also be 'sylius_shop_product_tiny_thumbnail' #}
+
+{% if imagesAware.imagesByType('thumbnail') is not empty %}
+    {% set path = imagesAware.imagesByType('thumbnail').first.path|imagine_filter(filter|default('sylius_shop_product_thumbnail')) %}
+{% elseif imagesAware.images.first %}
+    {% set path = imagesAware.images.first.path|imagine_filter(filter|default('sylius_shop_product_thumbnail')) %}
+{% else %}
+    {% set path = asset('build/shop/images/no-image.png', 'shop')|imagine_filter(filter|default('sylius_shop_product_thumbnail')) %}
+{% endif %}
+
+<img class="product-thumbnail" src="{{ path }}" alt="{{ imagesAware.name }}" />

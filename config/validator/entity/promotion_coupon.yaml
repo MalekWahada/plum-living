@@ -1,0 +1,21 @@
+Sylius\Component\Promotion\Model\PromotionCoupon:
+    properties:
+        code: # Override default validation with new regex pattern
+            - Regex:
+                message: app.promotion_coupon.code.regex
+                pattern: '/^[!?\/@+#&\w-]*$/'
+                groups: [app_promotion_coupon]
+            - Length:
+                  minMessage: sylius.promotion_coupon.code.min_length
+                  maxMessage: sylius.promotion_coupon.code.max_length
+                  min: 2
+                  max: 255
+                  groups: [app_promotion_coupon]
+            - NotBlank:
+                  message: sylius.promotion_coupon.code.not_blank
+                  groups: [app_promotion_coupon]
+        usageLimit:
+            - Range:
+                  minMessage: sylius.promotion_coupon.usage_limit.min
+                  min: 1
+                  groups: [app_promotion_coupon]

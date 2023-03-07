@@ -1,0 +1,14 @@
+{% set classes = {
+    'container': 'cms-mosaic',
+    'wrapper': 'cms-mosaic__content',
+    'slide': 'cms-mosaic__item @md:flush-column-5'
+} %}
+{# individual imagine filters #}
+
+{% if mozaicImagesCollection|length > 2 %}
+    {% if mozaicMainTitle != '' %}
+        {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ImageCollection/MosaicType/mosaic_with_title.html.twig' %}
+    {% else %}
+        {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ImageCollection/MosaicType/mosaic_without_title.html.twig' %}
+    {% endif %}
+{% endif %}

@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autoconfigure: false
+        autowire: true
+        public: false
+
+    App\Uploader\CMS\CMSFileUploader: ~
+    
+    App\Uploader\ImageHttpUrlUploader: ~

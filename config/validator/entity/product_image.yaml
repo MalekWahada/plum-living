@@ -1,0 +1,6 @@
+App\Entity\Product\ProductImage:
+    properties:
+        position:
+            - NotBlank:
+                  message: 'app.product_image.position.not_blank'
+                  groups: [ sylius ]

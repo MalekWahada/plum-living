@@ -1,0 +1,62 @@
+{% import _self as _self %}
+{% use 'Shop/Form/_field_commons.html.twig' %}
+
+{% set props = field.vars %}
+{% set classAttr = attributes.class|default('') %}
+{% set labelClassAttr = attributes.labelClass|default('t-label-small') %}
+{% set usePlaceholder = usePlaceholder is defined ? usePlaceholder : true %}
+{% set options = props.choices %}
+
+{% macro options(options, preselected) %}
+    {% for group_label, choice in options %}
+        {% if choice is iterable %}
+            <optgroup label="{{ group_label|trans }}"
+             {% for name, value in choice.attr %} {{ name }}="{{ value }}" {% endfor %}>
+                {{ _self.options(choice, preselected) }}
+            </optgroup>
+        {% else %}
+            <option
+             {% if choice.value is defined %} value="{{ choice.value }}" {% endif %}
+             {% if choice.value == preselected %}selected{% endif %}
+             {% for name, value in choice.attr %} {{ name }}="{{ value }}" {% endfor %}>
+                {{ choice.label|trans }}
+            </option>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% macro widget_value(options, preselected) %}
+    {% for group_label, choice in options %}
+        {% if choice is iterable %}
+            {{ _self.options(choice, preselected) }}
+        {% else %}
+            {% if choice.value == preselected %} {{ choice.label|trans }} {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% apply spaceless %}
+    <label
+        class="field select-field {{ props.value is not empty or (usePlaceholder and props.placeholder is not empty) ? 'field--fill' }} {{ props.errors is not empty ? 'field--invalid field--has-initial-error' }} {{ classAttr }}"
+        {{ block('field_container_attributes') }}>
+        <div class="field__wrapper">
+            {{ block('field_label') }}
+            <select
+                {{ block('field_widget_attributes') }}
+                {{ block('field_widget_value_attribute') }}>
+                <option {% if props.value is empty %}selected{% endif %} {{ not usePlaceholder or not props.placeholder ? 'disabled' }}
+                    value="">{{ (props.placeholder|default('app.form.select_field.placeholder'))|trans }}</option>
+                {{ _self.options(props.choices, props.value) }}
+            </select>
+            <div class="field__widget"><span>
+                {% if props.value is empty and usePlaceholder and props.placeholder is not empty %}
+                    {{ props.placeholder|trans }}
+                {% else %}
+                    {{ _self.widget_value(props.choices, props.value) }}
+                {% endif %}
+            </span></div>
+        </div>
+        {{ block('field_help_or_description') }}
+        {{ block('field_errors') }}
+    </label>
+{% endapply %}

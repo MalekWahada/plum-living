@@ -1,0 +1,107 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+    
+    _instanceof:
+        Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType:
+            autowire: false
+
+    App\Form\Type\Resources\ProductOptionValueImageType:
+        tags:
+            - { name: form.type }
+        arguments: ['%app.model.product_option_value_image.class%']
+
+    # add combination image form
+    App\Form\Type\Resources\CombinationImageType:
+        tags:
+            - { name: form.type }
+        arguments: ['%app.model.combination_image.class%']
+
+    # add product ikea image form
+    App\Form\Type\Resources\ProductIkeaImageType:
+        tags:
+            - { name: form.type }
+        arguments: ['%app.model.product_ikea_image.class%']
+
+    # add product ikea channel form
+    App\Form\Type\Resources\ProductIkeaChannelPricingType:
+        tags:
+            - { name: form.type }
+        arguments:
+          - '%app.model.product_ikea_channel_pricing.class%'
+          - '%sylius.form.type.channel_pricing.validation_groups%'
+
+    # add combination image form
+    App\Form\Type\Resources\Order\AddToCartTunnelShoppingType:
+        tags:
+            - { name: form.type }
+        arguments: ['Sylius\Bundle\OrderBundle\Controller\AddToCartCommand', '%sylius.form.type.add_to_cart.validation_groups%']
+
+    # add combination form
+    App\Form\Type\Resources\CombinationType:
+        tags:
+            - { name: form.type }
+        arguments:
+            - '@sylius.repository.product_option'
+            - '@sylius.repository.taxon'
+            - '%app.model.combination.class%'
+            - ['sylius']
+
+    # add theme(s) to the existent CMS page form
+    App\Form\Type\Resources\PageThemeType:
+        arguments:
+            $chipProvider: '@App\Provider\CMS\Chip\ChipProvider'
+
+    # add image to the existent CMS page form
+    App\Form\Type\Resources\PageImageType:
+        arguments: [ '%app.model.page_image.class%' ]
+
+    # add predefined cms page skeleton form type
+    App\Form\Type\Resources\Page\ConfiguredPageType:
+        arguments:
+            $localeModelTransformer: '@App\Transformer\Locale\LocaleModelTransformer'
+            $dataClass: '%monsieurbiz_cms_page.model.page.class%'
+            $validationGroups: ['monsieurbiz']
+
+    # override the logic of '@SyliusCoreBundle/Form/Type/Checkout/AddressType.php'
+    App\Form\Type\Resources\Checkout\CheckoutAddressType:
+        decorates: sylius.form.type.checkout_address
+        arguments:
+            - '@sylius.address_comparator'
+            - '%sylius.model.order.class%'
+            - '%sylius.form.type.checkout_address.validation_groups%'
+
+    # add productCompleteInfo form
+    App\Form\Type\Resources\ProductCompleteInfo\ProductCompleteInfoType:
+        tags:
+            - { name: form.type }
+        arguments:
+            - '%app.model.product_complete_info.class%'
+            - ['sylius']
+
+    # add productCompleteInfo Translation form
+    App\Form\Type\Resources\ProductCompleteInfo\ProductCompleteInfoTranslationType:
+        tags:
+            - { name: form.type }
+        arguments:
+            - '@App\Factory\Product\ProductCompleteInfoTranslationFactory'
+            - '%app.model.product_complete_info_translation.class%'
+            - ['sylius']
+                
+    App\Form\Extension\Product\ProductTypeExtension:
+        tags:
+            - { name: form.type_extension, priority: -1 }
+
+    # custom service for forms already extended in Sylius core
+    App\Form\Extension\CartItemTypeExtension:
+        tags:
+            - { name: form.type_extension, extended_type: Sylius\Bundle\OrderBundle\Form\Type\CartItemType, priority: -1 }
+
+    App\Form\Extension\CountryTypeExtension:
+        tags:
+            - { name: form.type_extension, extended_type: Sylius\Bundle\AddressingBundle\Form\Type\CountryType, priority: -1 }   
+    
+    # promotion forms
+    Sylius\Bundle\CoreBundle\Form\DataTransformer\TaxonsToCodesTransformer: '@sylius.form.type.data_transformer.taxons_to_codes'

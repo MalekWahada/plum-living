@@ -1,0 +1,21 @@
+{% import 'Shop/Common/Macro/messages.html.twig' as messages %}
+
+{% if last_error %}
+    {% if isVerified %}
+        {{ messages.error(last_error.messageKey|trans(last_error.messageData, 'security')) }}
+    {% else %}
+        {{ messages.error('app.email_not_verified'|trans([], 'security')) }}
+    {% endif %}
+{% endif %}
+
+<div class="row">
+    <div class="column u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_text_field.html.twig' with { 'field': form._username } %}
+    </div>
+    <div class="column u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_text_field.html.twig' with { 'field': form._password, 'attributes': { 'type': 'password' } } %}
+    </div>
+    <div class="column">
+        {% include 'Shop/Form/_checkbox_field.html.twig' with { 'field': form._remember_me } %}
+    </div>
+</div>

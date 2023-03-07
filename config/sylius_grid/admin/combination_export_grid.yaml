@@ -1,0 +1,35 @@
+sylius_grid:
+    grids:
+        app_admin_combination_export:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: '%app.model.combination.class%'
+                    repository:
+                        method: createQueryBuilder
+                        arguments: ['c']
+            filters:
+                facadeType:
+                    type: entity
+                    label: app.ui.tunnel_shopping.type_facade
+                    form_options:
+                        class: "%sylius.model.taxon.class%"
+                        query_builder: App\Grid\QueryBuilder\CombinationQueryBuilder::filterByFacade
+                design:
+                    type: entity
+                    label: app.ui.tunnel_shopping.design
+                    form_options:
+                        class: "%sylius.model.product_option_value.class%"
+                        query_builder: App\Grid\QueryBuilder\CombinationQueryBuilder::filterByDesignOptionCode
+                finish:
+                    type: entity
+                    label: app.ui.tunnel_shopping.finish
+                    form_options:
+                        class: "%sylius.model.product_option_value.class%"
+                        query_builder: App\Grid\QueryBuilder\CombinationQueryBuilder::filterByFinishOptionCode
+                color:
+                    type: entity
+                    label: app.ui.tunnel_shopping.color
+                    form_options:
+                        class: "%sylius.model.product_option_value.class%"
+                        query_builder: App\Grid\QueryBuilder\CombinationQueryBuilder::filterByColorOptionCode

@@ -1,0 +1,149 @@
+.find-installer{
+  .plum-x-needhelp{
+    max-width: 470px !important;
+    width: 100%;
+  }
+  &--header{
+    text-align: center;
+
+    @include up('large') {
+     height: 451px;
+     text-align: left;
+    }
+  }
+}
+
+.conception-home{
+  &--header{
+    @include up('large') {
+      height: 750px;
+      text-align:left;
+    }
+  }
+  &--image{
+    height: 300px;
+    @include up('large') {
+      height: 750px;
+    }
+  }
+  .price-container{
+  }
+  .icon-visio{
+    padding: 1.375rem;
+    border-radius: 1000px;
+    right: 3%;
+    bottom: -22px;
+    .o-icon-40{
+      width: 5rem;
+      height: 5rem;
+      padding: 1px 4px;
+    }
+    @include up('large') {
+      left: -62px;
+      right: auto;
+      bottom: 10rem;
+    }
+  }
+  .cms-button-ui-fix{
+    button{
+      background-color: get-color('near-black');
+      color: white;
+    }
+  }
+}
+
+.CMS_plan-conception, .CMS_terra-club, .CMS_conception-home	{
+  .page-container{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.cms-button-ui-fix{
+  button{
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+.terra-club{
+  .header{
+    background-image: url('../../../images/terra-club-header.jpg');
+    height: 333px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    h1{
+      font-size: 122px;
+      line-height: 100%;
+      @include up('large') {
+        font-size: 150px;
+      }
+    }
+    @include up('large'){
+      height: 416px;
+    }
+  }
+  .badges-container {
+    display: grid;
+    grid-template-columns: 110px 110px;
+    grid-template-rows: 110px 110px;
+    column-gap: 30%;
+    row-gap: 0;
+    grid-template-areas:
+        "one one"
+        "two three";
+
+    .terra-badge{
+      width: 110px;
+      height: 110px;
+    }
+
+    @include up('large') {
+      grid-template-columns: 145px 145px;
+      grid-template-rows: 145px 145px;
+      column-gap: rem(40);
+      row-gap: rem(15);
+      .terra-badge{
+        height:152px;
+        width: 152px;
+      }
+    }
+
+    &__item {
+      img {
+
+        @include down('large') {
+          height: rem(110);
+          width: rem(110);
+        }
+      }
+
+      &:first-child {
+        grid-area: one;
+      }
+
+      &:nth-child(2) {
+        grid-area: two;
+
+        @include down('large') {
+          margin-top: rem(-30);
+        }
+      }
+
+      &:last-child {
+        grid-area: three;
+
+        @include down('large') {
+          margin-top: rem(-30);
+        }
+      }
+    }
+  }
+}
+
+.u-center-on-mobile{
+  text-align:center !important;
+  @include up('large') {
+    text-align:left !important;
+  }
+}

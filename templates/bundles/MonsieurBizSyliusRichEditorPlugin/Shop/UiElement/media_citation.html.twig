@@ -1,0 +1,49 @@
+<div class="media-citation img-immersive {{ element.bg_color }}">
+    <div class="container static-container">
+        <div class="flush-row u-cross-centered-row fixed-height-row">
+            {% if element.orientation == 'left' %}
+                <div class="@lg:column-6 u-padding-t-3 u-padding-b-3 @lg:u-padding-t-1 @lg:u-padding-b-1 @lg:u-padding-r-12 left-text media-quote">
+                    <div class="">
+                        &laquo;
+                        {{ element.citation | raw }}
+                        &raquo;
+                    </div>
+                    <div class="caption">
+                        {% if element.caption  %}
+                            {{ element.caption | raw }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="column-fill-space @lg:column-6 left-img">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}">
+                </div>
+            {% else %}
+                <div class="column-fill-space u-hidden @lg:u-block @lg:column-6 right-img">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}">
+                </div>
+                <div class="@lg:column-6 u-padding-t-3 u-padding-b-3 @lg:u-padding-t-1 @lg:u-padding-b-1 @lg:u-padding-l-12 left-text">
+                    <div class="media-quote">
+                        &laquo;
+                        {{ element.citation | raw }}
+                        &raquo;
+                    </div>
+                    <div class="caption">
+                        {% if element.caption  %}
+                            {{ element.caption | raw }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="column-fill-space @lg:u-hidden right-img">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}">
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+</div>

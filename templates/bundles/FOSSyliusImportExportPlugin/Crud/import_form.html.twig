@@ -1,0 +1,36 @@
+{% set header = 'sylius.ui.' ~ resource %}
+
+<div class="ui divider"></div>
+
+<div class="ui styled fluid accordion">
+    <div class="title">
+        <i class="dropdown icon"></i>
+        {{ 'fos.import_export.ui.import'|trans }} {{ header|trans }}
+    </div>
+    <div class="content">
+        {{ form_start(form, {
+            'action': path('app_import_data',  {'resource': resource}),
+            'method': 'POST',
+            'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate'}
+        }) }}
+        <div class="ui segment">
+            <div class="field">
+                {{ form_row(form.children['format']) }}
+            </div>
+
+            <label for="{{ form.children['import-data'].vars.id ~ '-' ~ resource }}" class="ui icon labeled button">
+                <i class="cloud upload icon"></i> {{ 'sylius.ui.choose_file'|trans }}
+            </label>
+            <div class="ui hidden element">
+                {{ form_widget(form.children['import-data'], {'id' : form.children['import-data'].vars.id ~ '-' ~ resource}) }}
+            </div>
+        </div>
+
+        {{ form_widget(form.children['_token'], {'id' : form.children['_token'].vars.id ~ '-' ~ resource }) }}
+
+        <button class="ui icon primary button" type="submit">
+            {{ 'fos.import_export.ui.import'|trans }}
+        </button>
+        {{ form_end(form) }}
+    </div>
+</div>

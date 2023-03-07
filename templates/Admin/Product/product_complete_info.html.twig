@@ -1,0 +1,33 @@
+{% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationForm %}
+
+<div class="ui tab" data-tab="complete-info">
+    {% if product.completeInfo is not null and product.completeInfo.translationsPublishedAt is not null %}
+        <div class="ui info message visible">
+            <i class="close icon"></i>
+            <div class="header">
+                {{ 'sylius.ui.info'|trans }}
+            </div>
+            {{ 'app.ui.admin.product.product_complete_info.translations_published'|trans }}
+        </div>
+    {% endif %}
+    <h3 class="ui top attached header">
+        <div style="display: flex; justify-content: start; align-items: center">
+{#            <div class="product-info-container">#}
+                <div class="product-info-icon ui icon button" data-position="bottom left" data-inverted="" data-variation="wide inverted"
+                     data-html="{{ 'app.ui.admin.product.form_menu.complete_info.skeleton_label'|trans }}">
+                    <i class="info circle icon large red"></i>
+                </div>
+{#            </div>#}
+            {{ 'app.ui.admin.product.form_menu.complete_info.label'|trans }}
+        </div>
+    </h3>
+    <div class="ui attached segment">
+        {{ form_errors(form.completeInfo) }}
+        <div class="ui segment">
+            {{ form_row(form.completeInfo.enabled) }}
+        </div>
+        <div id="app_product_complete_info_content">
+            {{ translationForm(form.completeInfo.translations) }}
+        </div>
+    </div>
+</div>

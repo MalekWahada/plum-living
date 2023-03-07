@@ -1,0 +1,26 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% block content %}
+    <div class="u-cross-centered-col t-align-center">
+        <div class="t-header-medium rich-editor__text">
+            {{ 'app.ui.order_awaiting_payment.desc'|trans }}
+        </div>
+        <div class="u-h-tail-spaced-3">
+            <a href="{{ path('sylius_shop_order_show', {'tokenValue': order.tokenValue}) }}">
+                <button class="ps-project__phone-appointment-button button button--inversed u-margin-t-5" type="button">
+                    {{ 'app.ui.order_awaiting_payment.keep'|trans }}
+                    <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                </button>
+            </a>
+
+            <a href="{{ path('app_shop_revert_order_to_cart', { 'id': order.id, '_csrf_token': _csrf_token }) }}">
+                <button class="ps-project__phone-appointment-button button button--inversed u-margin-t-5" type="button">
+                    {{ 'app.ui.order_awaiting_payment.revert'|trans }}
+                    <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                </button>
+            </a>
+        </div>
+    </div>
+{% endblock %}

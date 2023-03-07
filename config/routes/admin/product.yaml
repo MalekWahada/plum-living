@@ -1,0 +1,23 @@
+app_admin_product_complete_info_translation_publish:
+    path: /{id}/complete-info-translation/publish
+    methods: [POST,GET ]
+    defaults:
+        _controller: App\Controller\Product\ProductCompleteInfoTranslationController::publishAction
+
+app_admin_product_complete_info_translation_fetch:
+    path: /{id}/complete-info-translation/{locale}/fetch
+    methods: [POST,GET]
+    defaults:
+        _controller: App\Controller\Product\ProductCompleteInfoTranslationController::fetchLocaleAction
+
+app_admin_product_complete_info_bulk_translation_publish:
+    path: /complete-info-translation/bulk-publish
+    methods: [POST]
+    defaults:
+        _controller: App\Controller\Product\ProductCompleteInfoTranslationController::bulkPublishAction
+        
+app_admin_product_complete_info_bulk_translation_fetch:
+    path: /complete-info-translation/{locale}/bulk-fetch
+    methods: [POST]
+    defaults:
+        _controller: App\Controller\Product\ProductCompleteInfoTranslationController::bulkFetchAction

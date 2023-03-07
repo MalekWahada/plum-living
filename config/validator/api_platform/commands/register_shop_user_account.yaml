@@ -1,0 +1,24 @@
+App\ApiPlatform\Message\Commands\RegisterShopUserAccount:
+    properties:
+        customerId:
+            - Type:
+                groups: [ api_platform ]
+                type: integer
+            - NotBlank: { groups: [ api_platform ] }
+            - Positive: { groups: [ api_platform ] }
+        password:
+            - Type:
+                groups: [ api_platform ]
+                type: string
+            - NotBlank: { groups: [ api_platform ] }
+            - Length:
+                groups: [ api_platform ]
+                min: 6
+        enabled:
+            - Type:
+                groups: [ api_platform ]
+                type: bool
+        emailVerified:
+            - Type:
+                groups: [ api_platform ]
+                type: bool

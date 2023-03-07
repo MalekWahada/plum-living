@@ -1,0 +1,23 @@
+{% extends '@SyliusShop/Account/AddressBook/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block title %}{{ 'sylius.ui.add_address'|trans }} | {{ parent() }}{% endblock %}
+
+{% block subcontent %}
+    <main class="panel account-create-address-panel panel--big-chin panel--big-cheeks">
+        <h1 class="panel__title t-header-medium">{{ 'app.ui.account.create_address.title'|trans }}</h1>
+        {{ form_start(form, {'action': path('sylius_shop_account_address_book_create'), 'attr': {'class': 'panel__content'}}) }}
+            {{ sylius_template_event('sylius.shop.account.address_book.create.after_content_header', {'address': address}) }}
+
+            {% include '@SyliusShop/Common/Form/_address.html.twig' with {'form': form} %}
+
+            {{ sylius_template_event('sylius.shop.account.address_book.create.form', {'address': address}) }}
+
+            <a href="{{ path('sylius_shop_account_address_book_index') }}" class="cancel-button c-grey-light">{{ 'app.ui.generic.cancel'|trans }}</a>
+            <button type="submit" class="big-honking-submit" {{ sylius_test_html_attribute('add-address') }}>{{ 'app.ui.generic.add'|trans }}</button>
+
+        {{ form_row(form._token) }}
+        {{ form_end(form, {'render_rest': false}) }}
+    </main>
+{% endblock %}

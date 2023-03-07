@@ -1,0 +1,28 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set projectContent = project.content|format_cms_content_to_array %}
+
+<div class="cms__item cms__item--project cms-slider__item swiper-slide">
+    <a class="u-block u-v-spaced-2 t-link-wrapper" href={{ path('monsieurbiz_cms_project_page_show', {'slug': project.slug}) }}>
+        {% if project.image.path is defined and project.image.path is not empty %}
+            <img class="slide-cover-image u-cover" src="{{ project.image.path|imagine_filter('app_cms_big_thumbnail') }}" srcset="{{ project.image.path|imagine_filter('app_cms_big_thumbnail_retina') }} 2x" alt=""/>
+        {% endif %}
+        <div class="cms-slider__content">
+            <div class="content-left">
+                <div class="cms-slider__type t-header-xsmall u-inline-block u-margin-b-1 c-basic-blue">
+                    {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_PIECE_TYPE')) | monsieurbiz_richeditor_render_element }}
+                </div>
+                <span class="t-header-xsmall">|</span>
+                <div class="cms-slider__color u-inline-block">
+                    {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_COLOR')) | monsieurbiz_richeditor_render_element }}
+                </div>
+                {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_MAIN_TITLE')) | monsieurbiz_richeditor_render_element }}
+                {% set total = projectContent|get_project_total %}
+                <div class="cms-slider__price t-base-small">
+                    {{ 'app.ui.listing.projects.budget'|trans }}
+                    {{ money.formatPriceWithoutDecimals(total) }}
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

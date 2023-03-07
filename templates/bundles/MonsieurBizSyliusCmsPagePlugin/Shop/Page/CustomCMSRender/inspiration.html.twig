@@ -1,0 +1,8 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+<div class="ui stackable two column grid">
+        {% if page.image.path is defined and page.image.path is not empty %}
+            <img class="ui fluid image" src="{{ page.image.path|imagine_filter('sylius_admin_product_original') }}" alt=""/>
+        {% endif %}
+        {{ page.content|monsieurbiz_richeditor_render_field }}
+</div>

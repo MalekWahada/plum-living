@@ -1,0 +1,37 @@
+###
+### All routes are prefixed by /orders
+###
+
+app_confirm_not_paid_order:
+    path: /confirm-not-paid-order/{tokenValue}
+    controller: App\Controller\Resource\PayumController::confirmNotPaidOrder
+    methods: [GET]
+
+app_shop_revert_order_to_cart:
+    path: /{id}/revert-to-cart
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.order:applyStateMachineTransitionAction
+        _sylius:
+            permission: true
+            state_machine:
+                graph: sylius_order
+                transition: revert_cart
+            redirect: app_shop_revert_order_to_cart_redirection
+
+app_shop_revert_order_to_cart_redirection:
+    path: /redirect-to-home
+    controller: App\Controller\Resource\PayumController::redirectAfterOrderToCart
+    methods: [ GET ]
+
+sylius_shop_order_pay:
+    path: /{tokenValue}/pay
+    methods: [GET, POST]
+    defaults:
+        _controller: App\Funnel\Payment\Infrastructure\Controller\PaymentEntryController
+
+sylius_wire_payment_success:
+    path: /{tokenValue}/success
+    methods: [GET]
+    defaults:
+        _controller: App\Funnel\Payment\Infrastructure\Controller\SuccessWireController

@@ -1,0 +1,68 @@
+sylius_grid:
+    grids:
+        app_admin_product_group:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%app.model.product_group.class%"
+                    repository:
+                        method: createListQueryBuilder
+                        arguments: [ "expr:service('sylius.context.locale').getLocaleCode()", $taxonId ]
+            limits: [50, 100, 25, 10]
+            sorting:
+                mainTaxon: asc
+                position: asc
+            fields:
+                code:
+                    type: string
+                    label: sylius.ui.code
+                    sortable: ~
+                mainTaxon:
+                    type: twig
+                    label: sylius.ui.main_taxon
+                    sortable: ~
+                    options:
+                        template: "@SyliusAdmin/Product/Grid/Field/mainTaxon.html.twig"
+                position:
+                    type: twig
+                    label: app.ui.generic.position
+                    sortable: 
+                    options:
+                        template: "@SyliusUi/Grid/Field/position.html.twig"
+                name:
+                    type: string
+                    label: sylius.ui.name
+                    sortable: translation.name
+                productsAttributes:
+                    path: .
+                    type: twig
+                    label: sylius.ui.attributes
+                    options:
+                        template: "@SyliusAdmin/ProductGroup/Grid/Field/productsAttributes.html.twig"
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [ code, translation.name ]
+                mainTaxon:
+                    type: entity
+                    label: sylius.ui.main_taxon
+                    enabled: true
+                    form_options:
+                        class: "%sylius.model.taxon.class%"
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    details:
+                        label: sylius.ui.details
+                        type: show
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+                bulk:
+                    delete:
+                        type: delete

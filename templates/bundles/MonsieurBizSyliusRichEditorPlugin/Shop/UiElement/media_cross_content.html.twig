@@ -1,0 +1,36 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% if element.pages is not empty %}
+    {% set pages = ui_element.getPagesListing(element.pages) %}
+    <div class="container-fluid bg-beige u-padding-t-7">
+        <div class="u-padding-b-10">
+            <div class="container">
+                <div class="row align-items-center u-fullwidth cross-content-title">
+                    <div class="column-12 @lg:column-11">
+                        <h3 class="t-header-large">{{ 'app.cms_page.media_article.page.cross_content_title'|trans }}</h3>
+                    </div>
+                    <div class="column-1 u-hidden @lg:u-block">
+                        <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78 cms-slider__arrow--right-new">
+                            <use xlink:href="{{ iconLibUrl }}#SVG-arrow-right-fill--white-new"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="cms-slider__container swiper-container">
+                <div class="swiper-wrapper">
+                    {% for singlePage in pages %}
+                        {% if singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_INSPIRATION') %}
+                            {% include 'Shop/Plum/Inspiration/_single_inspiration_page.html.twig' with {'inspiration': singlePage} %}
+                        {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_PROJECT') %}
+                            {% include 'Shop/Plum/Project/_single_project_page.html.twig' with {'project': singlePage} %}
+                        {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_ARTICLE') %}
+                            {% include 'Shop/Plum/Article/_single_article_page.html.twig' with {'article': singlePage} %}
+                        {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_MEDIA_ARTICLE') %}
+                            {% include 'Shop/Plum/Media/_single_article_page.html.twig' with {'article': singlePage} %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

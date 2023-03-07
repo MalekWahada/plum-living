@@ -1,0 +1,5 @@
+App\Entity\Currency\Currency:
+    currency_eur:
+        code: 'EUR'
+        created_at: <dateTime()>
+        updated_at: <dateTime()>

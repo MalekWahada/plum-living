@@ -1,0 +1,21 @@
+App\Entity\Product\ProductOptionValueTranslation:
+#    translation{@product_option-value_*}:
+#        translatable: '@<current()>'
+#        name: '@<current()>->code'
+#        locale: '@locale_fr->code'
+    product_option-value_{design_lisse, design_a_cadre, design_u_shape, design_cannage_classique}_translation:
+        translatable: '@product_option-value_<current()>'
+        value: <(str_replace('_', ' ', ucfirst($current)))>
+        locale: '@locale_fr->code'
+    product_option-value_{finish_laque_mate, finish_chene_naturel, finish_chene_peint, finish_noyer_naturel, finish_laiton}_translation:
+        translatable: '@product_option-value_<current()>'
+        value: <(str_replace('_', ' ', ucfirst($current)))>
+        locale: '@locale_fr->code'
+    product_option-value_{color_asphalte, color_amandier_grise, color_ardoise, color_beige_rose, color_blanc_pur, color_bleu_gris, color_bleu_lagon, color_bleu_nuit, color_bleu_paon, color_ciel_voile, color_gris_nuage, color_sable, color_sombre_forest, color_terra, color_vert_de_gris, color_naturel}_translation:
+        translatable: '@product_option-value_<current()>'
+        value: <(str_replace('_', ' ', ucfirst($current)))>
+        locale: '@locale_fr->code'
+    product_option-value_{finish_handle_brass, finish_handle_chrome, finish_handle_matt_black}_translation:
+        translatable: '@product_option-value_<current()>'
+        value: <(str_replace('_', ' ', ucfirst($current)))>
+        locale: '@locale_fr->code'

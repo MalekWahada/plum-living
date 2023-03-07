@@ -1,0 +1,36 @@
+{#
+'colorCode': colorOptionValue.code,
+                    'colorName': colorOptionValue.value,
+                    'colorDesc': colorOptionValue.description,
+                    'colorHex': colorOptionValue.colorHex,
+                    'chipImage': defaultImage.path|imagine_filter('app_cms_big_thumbnail'),
+                    'displayImage': displayImage
+imageObj:
+    'colorCode': color code,
+    'colorName': color translation name,
+    'colorDesc': color description translation,
+    'chipImage': default image
+    'displayImage': image object of typr "display"
+#}
+<div class="img-slider swiper-container colors-slider" data-content="{{ displayColorImages|json_encode }}">
+    <div class="swiper-wrapper">
+    {% for imageObj in displayColorImages %}
+            <div class="swiper-slide">
+                <div class="u-relative">
+                    <img class="u-cover"
+                         src="{{ imageObj.displayImageLarge }}"
+                         srcset="{{ imageObj.displayImageSmall }} 255w,
+                                 {{ imageObj.displayImageMedium }} 450w,
+                                 {{ imageObj.displayImageLarge }} 642w,
+                                "
+                         sizes="(max-width: 479px) 255px,
+                                (min-width: 480px) and (max-width: 1399px) 450px,
+                                (min-width: 1400px) 642px
+                                "
+                         alt="">
+                    <p class="slide-color-name t-label-medium">{{ displayColorImages[0].colorName }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

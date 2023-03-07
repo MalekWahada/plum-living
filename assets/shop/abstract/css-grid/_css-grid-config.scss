@@ -1,0 +1,116 @@
+@use 'sass:map';
+@use '../../config/sass' as *;
+
+
+$css-grid--include-rtl: false;
+$css-grid--include-push: true;
+$css-grid--include-pull: true;
+$css-grid--number-of-columns: 12;
+
+$small: rem(560);
+$medium: rem(720);
+$large: rem(1000);
+$wide: rem(1280);
+
+
+$css-grid--base: (
+  margins: rem(20),
+  max-width: rem(420),
+  gutters: rem(20)
+);
+
+
+$css-grid--breakpoints: (
+  small: (
+    // virtual: true, // => do not generate container/row/column styles for this breakpoint
+    name: "Small",
+    shorthand: "sm",
+    value: $small,
+      margins: null,
+      max-width: rem(560),
+      gutters: null
+  ),
+
+  medium: (
+    // virtual: true, // => do not generate container/row/column styles for this breakpoint
+    name: "Medium",
+    shorthand: "md",
+    value: $medium,
+      margins: rem(30),
+      max-width: rem(1300),
+      gutters: rem(40)
+  ),
+
+  large: (
+    // virtual: true, // => do not generate container/row/column styles for this breakpoint
+    name: "Large",
+    shorthand: "lg",
+    value: $large,
+      margins: null,
+      max-width: null,
+      gutters: null
+  ),
+
+  wide: (
+    // virtual: true, // => do not generate container/row/column styles for this breakpoint
+    name: "wide",
+    shorthand: "wd",
+    value: $wide,
+      margins: null,
+      max-width: null,
+      gutters: null
+  )
+);
+
+
+@function lastSet ($map, $prop, $first: null, $last: null) {
+  $_found: null;
+  $_started: false;
+  $_ended: false;
+
+  @if $first == null {
+    $_started: true;
+  }
+
+  @each $_key, $_obj in $map {
+    @if ($_started and $_ended == false) or ($_started == false and $_key == $first) {
+      @if $_key == $first {
+        $_started: true;
+      }
+
+      @if $_key == $last {
+        $_ended: true;
+      }
+
+      $_value: map.get($_obj, $prop);
+
+      @if $_value {
+        $_found: $_value;
+      }
+    }
+  }
+
+  @if $_found {
+    @return $_found;
+  } @else {
+    @return map.get($css-grid--base, $prop);
+  }
+}
+
+
+@function css-grid--get-config ($breakpoint, $prop) {
+  @if $breakpoint == 'base' {
+    @return map.get($css-grid--base, $prop);
+  } @else {
+    @return map.get(map.get($css-grid--breakpoints, $breakpoint), $prop);
+  }
+}
+
+
+@function css-grid--get-last-config ($breakpoint, $prop) {
+  @if $breakpoint == 'base' {
+    @return map.get($css-grid--base, $prop);
+  } @else {
+    @return lastSet($css-grid--breakpoints, $prop, null, $breakpoint);
+  }
+}

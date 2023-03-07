@@ -1,0 +1,144 @@
+@use '../../../abstract/css-toolbox/css-toolbox-mixins' as *;
+
+
+// ---------- ---------- ---------- ----------
+// Aligning Chilren
+// ---------- ---------- ---------- ----------
+
+.u-start-on-main {
+  justify-content: flex-start !important;
+}
+
+.u-center-on-main {
+  justify-content: center !important;
+}
+
+.u-end-on-main {
+  justify-content: flex-end !important;
+}
+
+.u-spaced-on-main {
+  justify-content: space-between !important;
+}
+
+.u-distributed-on-main {
+  justify-content: space-around !important;
+}
+
+// ---------- ---------- ---------- ----------
+
+.u-start-on-cross {
+  align-items: flex-start !important;
+}
+
+.u-center-on-cross {
+  align-items: center !important;
+}
+
+.u-end-on-cross {
+  align-items: flex-end !important;
+}
+
+.u-stretch-on-cross {
+  align-items: stretch !important;
+}
+
+.u-align-content-start {
+  align-content: start !important;
+}
+
+// ---------- ---------- ---------- ----------
+
+.u-start-on-self {
+  align-self: flex-start !important;
+}
+
+.u-center-on-self {
+  align-self: center !important;
+}
+
+.u-end-on-self {
+  align-self: flex-end !important;
+}
+
+.u-stretch-on-self {
+  align-self: stretch !important;
+}
+
+// ---------- ---------- ---------- ----------
+
+.u-center-on-both {
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+
+// ---------- ---------- ---------- ----------
+// Aligning Chilren with inline-block
+// ---------- ---------- ---------- ----------
+
+.u-v-align-top { vertical-align: top !important; }
+.u-v-align-middle { vertical-align: middle !important; }
+.u-v-align-baseline { vertical-align: baseline !important; }
+.u-v-align-bottom { vertical-align: bottom !important; }
+.u-v-align-sub { vertical-align: sub !important; }
+
+.u-v-align-inside-top { @include u-va-in(top); }
+.u-v-align-inside-middle { @include u-va-in(middle); }
+.u-v-align-inside-baseline { @include u-va-in(baseline); }
+.u-v-align-inside-bottom { @include u-va-in(bottom); }
+
+.u-v-align-inside-middle {
+  @include u-va-in(middle);
+}
+
+.u-v-align-inside-baseline {
+  @include u-va-in(baseline);
+}
+
+.u-v-align-inside-bottom {
+  @include u-va-in(bottom);
+}
+
+
+// ---------- ---------- ---------- ----------
+// Aligning self
+// ---------- ---------- ---------- ----------
+
+.u-docked-left {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+.u-centered-on-x {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.u-docked-right {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+// ---------- ---------- ---------- ----------
+
+.u-docked-top {
+  margin-top: 0 !important;
+  margin-bottom: auto !important;
+}
+
+.u-centered-on-y {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+.u-docked-bottom {
+  margin-top: auto !important;
+  margin-bottom: 0 !important;
+}
+
+// ---------- ---------- ---------- ----------
+
+.u-centered-on-xy {
+  margin: auto !important;
+}

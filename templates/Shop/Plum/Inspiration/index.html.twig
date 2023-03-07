@@ -1,0 +1,78 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% block metatags %}
+    {% set filters = ['inspiration', 'home_tour', 'tutorial', 'practice', 'address'] %}
+    {% set filter =  app.request.query.all|first %}
+    {% if filter in filters %}
+        <meta property="og:type" content="{{ ('app.cms_page.inspiration.'~filter~'.meta.type')|trans }}"/>
+        <meta property="og:title" content="{{ ('app.cms_page.inspiration.'~filter~'.meta.title')|trans }}"/>
+        <meta name="description" property="og:description" content="{{ ('app.cms_page.inspiration.'~filter~'.meta.description')|trans }}"/>
+    {% else %}
+        <meta property="og:type" content="{{ ('app.cms_page.inspiration.meta.type')|trans }}"/>
+        <meta property="og:title" content="{{ ('app.cms_page.inspiration.meta.title')|trans }}"/>
+        <meta name="description" property="og:description" content="{{ ('app.cms_page.inspiration.meta.description')|trans }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="cms">
+        <div class="cms__container">
+            <div class="cms-header t-align-center">
+                <div class="flush-container u-cross-centered-col u-relative">
+                    <div class="cms-header__title u-margin-l-6 u-margin-r-6 t-header-xlarge">
+                        {{ 'app.cms_page.inspiration.main_caption'|trans|replace({'& ': '&amp;&nbsp;'})|raw }}
+                    </div>
+                    <div class="cms-header-filter u-flex u-center-on-cross u-stretch-on-self u-max-width-100% u-margin-l-5 u-margin-r-5 u-margin-t-5 t-align-center">
+                        {{ form_start(form, {
+                            'action': path('inspiration_index'),
+                            'method': 'POST',
+                            'attr': {
+                                'class': 'u-max-width-100% u-centered-on-x'
+                            }
+                        }) }}
+                        <div class="cms-header-filter__title u-margin-b-9 t-base-medium">
+                            {{ 'app.ui.inspiration.discover_text'|trans|raw }}
+                        </div>
+                        {% include 'Shop/Form/_radio_tabs_field.html.twig' with { field: form.chip } %}
+                        {{ form_end(form, {'render_rest': false}) }}
+                    </div>
+                    <div class="cms__social-links u-absolute u-v-spaced-2">
+                        <a href="https://www.instagram.com/plum.living/" target="_blank" class="icon-button ripple-button u-flex bg-pink c-true-white">
+                            <span class="u-sr-only">Instagram</span>
+                            <svg class="o-icon-24"><use xlink:href="{{ iconLibUrl }}#SVG-icon-instagram"/></svg>
+                        </a>
+                        <a href="https://www.pinterest.fr/PlumLiving/" target="_blank" class="icon-button ripple-button u-flex bg-pink c-true-white">
+                            <span class="u-sr-only">Pinterest</span>
+                            <svg class="o-icon-24"><use xlink:href="{{ iconLibUrl }}#SVG-icon-pinterest"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCABXqwLdsJG0nkW8CODR3bg/videos" target="_blank" class="icon-button ripple-button u-flex bg-pink c-true-white">
+                            <span class="u-sr-only">YouTube</span>
+                            <svg class="o-icon-24"><use xlink:href="{{ iconLibUrl }}#SVG-icon-youtube"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="cms__content container">
+                {% if inspirations|length > 0 %}
+                    {% for inspiration in inspirations %}
+                        {% include 'Shop/Plum/Inspiration/_single_inspiration_page.html.twig' %}
+                    {% endfor %}
+                {% else %}
+                    <div class="column c-grey-mid t-align-center">
+                        {{ 'app.cms_page.inspiration.no_inspiration'|trans }}<br>
+                        <a href="{{ path('inspiration_index') }}" class="link-button hover:c-near-black">
+                            {{ 'app.cms_page.inspiration.discover_all_inspirations'|trans }}
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="cms-cta u-cross-centered-row">
+                <a class="big-honking-button" href="{{ path('project_index') }}">
+                    {{ 'app.ui.inspiration.button_text'|trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

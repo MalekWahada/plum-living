@@ -1,0 +1,34 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set totalPrice = 0 %}
+<div class="ui grid">
+    {% if element is not empty %}
+        <div class="aligned eight wide column">
+            {% if element.cardElementsIkea is not empty %}
+
+                <h3>{{ ('app.cms_page.media_article.page.at_ikea')|trans }}</h3>
+                <p>
+                    {% for cardelement in element.cardElementsIkea %}
+                        <b>{{ cardelement.title }}</b><br>
+                    {% endfor %}
+                </p>
+            {% endif %}
+            {% if element.cardElementsPlum is not empty %}
+
+                <h3>{{ ('app.cms_page.media_article.page.at_plum')|trans }}</h3>
+                <p>
+                    {% for cardelement in element.cardElementsPlum %}
+                        <b>{{ cardelement.title }}</b><br>
+                    {% endfor %}
+                </p>
+            {% endif %}
+
+        </div>
+        <div class="aligned eight wide column">
+            <img src="{{ element.image | raw }}" width="100%"
+                 alt="{{ element.image_alt | raw }}"
+                 title="{{ element.image_title | raw }}">
+        </div>
+    {% endif %}
+</div>
+

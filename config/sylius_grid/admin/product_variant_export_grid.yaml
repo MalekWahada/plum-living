@@ -1,0 +1,10 @@
+sylius_grid:
+    grids:
+        app_admin_product_variant_export:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: '%sylius.model.product_variant.class%'
+                    repository:
+                        method: createListQueryBuilder
+                        arguments: ["expr:service('sylius.context.locale').getLocaleCode()"]

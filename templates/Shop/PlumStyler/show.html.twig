@@ -1,0 +1,63 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block title %}{{ ('app.ui.plum_styler.title')|trans }} | {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+        {{ parent() }}
+        <style>
+            .page-container {
+                padding: 0;
+            }
+
+            .App{
+                font-family: 'Cera', Arial, sans-serif;
+            }
+
+            .plum-nav__link{
+                text-decoration: none;
+                color: inherit;
+                font-family: 'Cera', Arial, sans-serif !important;
+            }
+
+            .plum-nav__link:hover{
+                color: inherit;
+            }
+
+            .expandBtn.btn-primary{
+                top: 119px !important;
+            }
+            .styler__left-nav{
+                 max-height: calc(100vh - 100px) !important;
+                 overflow: auto !important;
+                 padding-bottom: 2rem !important;
+             }
+            .styler__tabs{
+                font-weight: 500 !important;
+            }
+
+            .styler__btn-item.btn-outline-dark{
+                font-weight: 600 !important;
+            }
+
+            .styler__catTitle{
+                font-weight: 500;
+            }
+
+            .styler__carousel.initScreen .carousel .carousel-item img{
+                height: calc(100vh - 100px);
+            }
+            .plum-footer__menu a:hover{
+                color: inherit;
+            }
+
+        </style>
+    {{ encore_entry_link_tags('styler', null, 'styler') }}
+{% endblock %}
+
+{% block content %}
+    <div id="react-styler" data-scene="{{sceneId}}" data-options-url="{{ absolute_url(path('app_plum_styler_options')) }}" data-user-id="{% if app.user is not null %}{{ app.user.id }}{% endif %}" data-session-id="{{sessionId}}" data-locale="{{ app.request.locale }}"></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('styler', null, 'styler') }}
+{% endblock %}

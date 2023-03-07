@@ -1,0 +1,67 @@
+sylius_fixtures:
+    suites:
+        test_projects:
+            fixtures:
+                customer_project:
+                    options:
+                        custom:
+                            -   name: 'project-test'
+                                token: 'project-test'
+                                customer: test+customer@plum-kitchen.com
+                                global_options:
+                                    design: design_lisse
+                                    finish: finish_laque_mate
+                                    color: color_terra
+                                items:
+                                    -   name: Tiroir test
+                                        products:
+                                            -   code: 4020-04F-L
+                                            -   code: 4020-04F-P
+                                            -   code: 4020-04S-L
+                                            -   code: 4020-04S-O
+                                            -   code: 4020-04S-P
+                                            -   code: 4020-04S-W
+                                    -   products:
+                                            -   code: 1313-00S-L
+                                            -   code: 1313-00S-P
+                                        quantity: 4
+                                    -   products:
+                                            -   code: 3986-07S-L
+                                            -   code: 3986-07S-O
+                                            -   code: 3986-07S-P
+                                            -   code: 3986-07S-W
+                                    -   products:
+                                            -   code: 40200-01F-L
+                                            -   code: 40200-01F-P
+                                            -   code: 40200-01S-L
+                                            -   code: 40200-01S-O
+                                            -   code: 40200-01S-P
+                                            -   code: 40200-01S-W
+                                        quantity: 2
+                                    -   products:
+                                            -   code: 4040-04C-P
+                                            -   code: 4040-04F-L
+                                            -   code: 4040-04F-P
+                                            -   code: 4040-04U-L
+                                            -   code: 4040-04U-O
+                                            -   code: 4040-04U-P
+                                            -   code: 4040-04U-W    
+                                            -   code: 4040-04S-L
+                                            -   code: 4040-04S-O
+                                            -   code: 4040-04S-P
+                                            -   code: 4040-04S-W
+                                    -   products:
+                                            -   code: R25-B15
+                                                quantity: 4
+                                            -   code: L50-B15
+                                            -   code: S90-S15
+                                                quantity: 2
+                                            -   code: C42-B15
+                                                quantity: 3
+                                            -   code: 2208-08S-M
+                                                quantity: 6
+                                    -   products:
+                                            -   code: 1313-00S-BP14
+                                                quantity: 5
+                                            -   code: 1313-00S-BF30
+                                                quantity: 2

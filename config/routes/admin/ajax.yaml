@@ -1,0 +1,11 @@
+app_admin_ajax_product_group:
+    resource: "ajax/app_product_group.yaml"
+    prefix: /product-groups
+
+app_admin_ajax_product_variant:
+    resource: "ajax/product_variant.yaml"
+    prefix: /product-variant
+
+app_admin_ajax_product_ikea:
+    resource: "ajax/product_ikea.yaml"
+    prefix: /product-ikea

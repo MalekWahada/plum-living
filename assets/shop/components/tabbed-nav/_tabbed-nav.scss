@@ -1,0 +1,182 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+@use '../../abstract/css-grid/css-grid-config' as *;
+
+
+
+.tabbed-nav {
+  $_container-max-width: css-grid--get-config('base', 'max-width');
+  $_container-margins: css-grid--get-config('base', 'margins');
+  $_container-max-content-width: $_container-max-width - $_container-margins * 2;
+
+  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  font-size: 0;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    width: calc( (100vw - #{$_container-max-content-width}) / 2 );
+    min-width: $_container-margins;
+    max-width: $_container-margins;
+    height: 1px;
+    font-size: 1rem;
+  }
+
+  &__wrapper {
+    display: inline-table;
+    table-layout: fixed;
+    min-width: calc(100vw - #{$_container-margins * 2});
+    font-size: 1rem;
+    white-space: normal;
+  }
+
+    &__item {
+      display: table-cell;
+      vertical-align: middle;
+      min-width: calc( (100vw - #{$_container-margins * 2}) / 2 );
+      padding: rem(10);
+      border-bottom: 1px solid;
+      background: linear-gradient(to top, currentColor 1px, transparent 0) left no-repeat;
+      background-size: 0 100%;
+      color: get-color('grey-mid');
+      transition: background-size 0.3s, color 0.3s;
+
+      &:hover,
+      &:focus {
+        background-size: 100% 100%;
+        color: get-color('black');
+      }
+    }
+
+    &__item--selected {
+      color: get-color('black');
+    }
+}
+
+
+.tabbed-nav--ready {
+  opacity: 1;
+}
+
+
+
+@include up(css-grid--get-config('base', 'max-width')) {
+  .tabbed-nav {
+    $_container-max-width: css-grid--get-config('base', 'max-width');
+    $_container-margins: css-grid--get-config('base', 'margins');
+    $_container-max-content-width: $_container-max-width - $_container-margins * 2;
+
+    &::before,
+    &::after {
+      max-width: none;
+    }
+
+      &__wrapper {
+        min-width: $_container-max-content-width;
+      }
+
+        &__item {
+          min-width: calc( #{$_container-max-content-width} / 2 );
+        }
+  }
+}
+
+
+
+@each $_slug, $_obj in $css-grid--breakpoints {
+  $_i: list.index(map.keys($css-grid--breakpoints), $_slug);
+  $_reset-at: 3;
+
+  $_name: map.get($_obj, "name");
+  $_shorthand: '\\@' + map.get($_obj, "shorthand") + '\\:';
+  $_value: map.get($_obj, "value");
+  $_margins: map.get($_obj, "margins");
+  $_max-width: map.get($_obj, "max-width");
+  $_gutters: map.get($_obj, "gutters");
+
+  @if $_i < $_reset-at and ($_margins or $_max-width) {
+    $_actual-margins: css-grid--get-last-config($_slug, 'margins');
+    $_actual-max-width: math.min(css-grid--get-last-config($_slug, 'max-width'), rem(920) + ($_actual-margins * 2));
+    $_max-content-width: $_actual-max-width  - $_actual-margins * 2;
+
+    $_divider: 3;
+    @if $_i > 1 { $_divider: 4; }
+
+    @include up($_value) {
+      .tabbed-nav {
+        &::before,
+        &::after {
+          width: calc( (100vw - #{$_max-content-width}) / 2 );
+
+          @if $_margins {
+            min-width: $_margins;
+            max-width: $_margins;
+          }
+        }
+
+          &__wrapper {
+            min-width: calc(100vw - #{$_actual-margins * 2});
+          }
+
+            &__item {
+              min-width: calc( (100vw - #{$_actual-margins * 2}) / #{$_divider} );
+            }
+      }
+    }
+
+    @include up($_actual-max-width) {
+      .tabbed-nav {
+        &::before,
+        &::after {
+          max-width: none;
+        }
+
+          &__wrapper {
+            min-width: $_max-content-width;
+          }
+
+            &__item {
+              min-width: calc( (#{$_max-content-width}) / #{$_divider} );
+            }
+      }
+    }
+  }
+  @else if $_i == $_reset-at {
+    @include up($_value) {
+      .tabbed-nav {
+        width: auto;
+        margin-left: 0;
+
+        &::before,
+        &::after {
+          content: none;
+          display: none;
+        }
+
+          &__wrapper {
+            display: flex;
+          }
+
+            &__item {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex: 1 0 0%;
+              min-width: 0;
+            }
+      }
+    }
+  }
+}

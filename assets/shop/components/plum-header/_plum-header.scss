@@ -1,0 +1,387 @@
+@use 'sass:color';
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+@use './plum-header-config' as *;
+
+
+/*
+  Index
+  ---------- ---------- ---------- ---------- ----------
+  • In-component styles
+  • Styles outside of the components
+*/
+
+
+/*
+  • In-component styles
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.plum-header {
+  --normal-height: #{$total-height};
+  --compact-height: #{$total-height};
+  height: $total-height;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: #fff;
+  text-align: center;
+  transition: height 0.3s, transform 0.3s;
+
+  &::after {
+    pointer-events: none;
+    content: '';
+    display: block;
+    border-bottom: 1px solid rgba($color--near-black, 0.1);
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__banner {
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: block;
+    position: absolute;
+    top: -$banner-height;
+    width: 100%;
+    height: $banner-height;
+    background: $color--pink--light;
+    font-size: 0;
+    text-align: center;
+    white-space: nowrap;
+
+    .cms__text{
+      font-size: rem(12);
+      line-height: 145%;
+      letter-spacing: -0.5px;
+
+      @include up('large') {
+        line-height: 175%;
+        font-size: rem(14);
+      }
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+    }
+
+    & > div {
+      overflow: hidden;
+      display: inline-block;
+      padding: 0 rem(10);
+      vertical-align: middle;
+      font-size: 1rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    a {
+      overflow: visible;
+      min-width: 0;
+      background:
+        linear-gradient(to top, currentColor 2px, transparent 0) left center no-repeat,
+        linear-gradient(to top, transparent 1px, currentColor 1px, currentColor 1px, transparent 2px) left center no-repeat;
+      background-size: 0% 100%, 100% 100%;
+      color: $color--near-black;
+      transition: background-size 0.2s;
+
+      &:hover,
+      &:focus {
+        background-size: 100% 100%;
+        color: currentColor;
+      }
+    }
+  }
+
+  &__main {
+    height: ($total-height - $top-margin - $bottom-margin);
+    position: relative;
+    transition: transform 0.3s;
+  }
+
+  &__left-area {
+    flex: 0 0 0%;
+    margin-left: $side-margin;
+
+    & > * + * {
+      margin-left: rem(4);
+    }
+  }
+
+  &__right-area {
+    flex: 0 0 0%;
+    margin-right: $side-margin;
+    transition: color 0.3s 0s;
+
+    & > * + * {
+      margin-left: rem(4);
+    }
+  }
+
+  &__center-area {
+    flex: 1 0 0%;
+    justify-content: flex-start;
+    margin: 0 $side-margin;
+  }
+
+  &__logo {
+    height: rem(40);
+    img, svg {
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  .user-icon{
+    padding-left: 1px;
+  }
+  // Hidden on mobile
+}
+
+.plum-header{
+  .plum-header__logo{
+    @media (max-width: 1000px){
+      position:absolute;
+      left: 50%;
+      right: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, 0);
+      -moz-transform: translate(-50%, 0);
+    }
+  }
+}
+
+.plum-header--compact {
+  // No compact state for mobile
+}
+
+
+@include up(large) {
+  .plum-header {
+    --normal-height: #{$lg--total-height};
+    --compact-height: #{rem(90)};
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: $lg--total-height;
+    padding-bottom: $lg--bottom-margin;
+
+    &__main {
+      height: $lg--main-height;
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      right: 0;
+      top: $lg--top-margin;
+      max-width: 1408px;
+      margin: auto;
+    }
+
+    &__left-area {
+      height: 100%;
+      position: absolute;
+      @media screen and (min-width:1000px) and (max-width: 1340px){
+      left: 90px;
+      }
+      @media screen and (min-width:1341px){
+        left: 115px;
+      }
+      left: $lg--side-margin;
+      margin-left: 0;
+
+      & > * + * {
+        margin-left: rem(8);
+      }
+    }
+
+    &__right-area {
+      height: 80%;
+      position: absolute;
+      right: $lg--side-margin;
+      margin-right: 0;
+
+      & > * + * {
+        margin-left: rem(8);
+      }
+    }
+
+    &__center-area {
+      justify-content: center;
+      padding: 0 rem(20);
+      margin: 0 $lg--side-margin;
+    }
+
+    &__logo {
+      height: rem(40);
+    }
+
+    .plum-nav {
+      transition: visibility 0s 0s, opacity 0.3s 0s;
+    }
+  }
+
+  .plum-header--compact {
+    height: rem(60);
+  }
+}
+
+
+/*
+  • Styles outside of the components
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+// The header is fixed, we have to "push" the content manually.
+// That's why a body style is in a header component file.
+body {
+  padding-top: $total-height;
+}
+
+.has-header-ribbon {
+  padding-top: ($total-height + $banner-height);
+
+  .plum-header:not(.plum-header--compact) {
+    transform: translateY(#{$banner-height});
+  }
+}
+
+.plum-header .plum-menu-toggle {
+  visibility: hidden;
+}
+
+@include up(large) {
+  // The header is fixed, we have to "push" the content manually.
+  // That's why a body style is in a header component file.
+  body {
+    padding-top: $lg--total-height;
+  }
+
+  .has-header-ribbon {
+    padding-top: ($lg--total-height + $banner-height);
+  }
+}
+
+// fix menu display on intermediary screen
+
+@media (min-width: 1000px) and (max-width: 1110px){
+  .plum-nav{
+    font-size: 0.92rem !important;
+    &__parent, &__link{
+      margin-right: 3px !important;
+    }
+  }
+}
+
+.plum-header__locales{
+  right: 0;
+  position: absolute;
+  top: -2.5rem;
+  background: #fbf3f2;
+
+  span{
+    pointer-events: none;
+  }
+
+  .country-code{
+    text-transform: uppercase;
+  }
+
+  .select {
+    cursor: pointer;
+    position: relative;
+    color: $color--asphalte;
+  }
+
+  .select:hover .options {
+    display: block;
+  }
+
+  svg{
+    padding-top: 3px;
+    margin-left: 6px;
+  }
+
+  .options {
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    padding-top: 44px;
+    display: none;
+    right: 0;
+    left: auto;
+    width: max-content;
+    min-width: 250px;
+    .country-code{
+      display:none;
+    }
+  }
+
+  .options ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .options ul li {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .option {
+    align-items: center;
+    display: flex;
+    justify-content: end;
+    padding: 6px 30px 6px 15px;
+    width: 100%;
+    transition: all ease-in-out 0.3s;
+    -webkit-transition: all ease-in-out 0.3s;
+    -moz-transition: all ease-in-out 0.3s;
+  }
+
+  .current:hover .option:after {
+    transform: rotate(0);
+  }
+
+  .lang-bloc{
+    display:flex;
+    align-items: center;
+  }
+
+  .lang-icon{
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    margin-left: 7px;
+  }
+  .current {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    position: relative;
+    .lang-name{
+      display:none;
+    }
+  }
+
+  .languages-box{
+    background:white;
+    .option:hover {
+      background: #c9d7cc;
+    }
+  }
+}

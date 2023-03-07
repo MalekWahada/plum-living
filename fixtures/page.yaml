@@ -1,0 +1,16 @@
+App\Entity\Page\Page:
+    ikea-mode-demploi:
+        code: 'ikea-mode-d''emploi'
+        type: 'media_article'
+        category: 'practice'
+        reference_locale_code: 'fr'
+    step-by-step-lingere:
+        code: 'step-by-step-lingere'
+        type: 'project'
+        category: null
+        reference_locale_code: 'fr'
+    home-page:
+        code: 'home-page'
+        type: 'home_page'
+        category: null
+        reference_locale_code: 'fr'

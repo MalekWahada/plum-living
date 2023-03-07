@@ -1,0 +1,7 @@
+App\Entity\Shipping\ShippingCategory:
+    shipping_category_facade:
+        code: 'facade'
+        name: 'Facade'
+        description: null
+        created_at: <dateTime()>
+        updated_at: <dateTime()>

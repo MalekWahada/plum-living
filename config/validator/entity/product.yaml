@@ -1,0 +1,10 @@
+App\Entity\Product\Product:
+    properties:
+        completeInfo:
+            - Valid:
+                  groups: [sylius]
+        groups:
+            - All:
+                  - App\Validator\ProductConstraint\ProductGroupConsistency:
+                        message: app.product.groups.consistency_error
+                        groups: [sylius]

@@ -1,0 +1,17 @@
+<div class="ui grid">
+    <div class="aligned eight wide column">
+        {% set url = monsieurbiz_richeditor_youtube_link(element.video) %}
+        {% if url is not null %}
+            <iframe
+                src="{{ url }}"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        {% endif %}
+    </div>
+    <div class="aligned eight wide column">
+        <h3>{{ element.title | raw }}</h3>
+        <p>
+            {{ element.description | raw }}
+        </p>
+    </div>
+</div>

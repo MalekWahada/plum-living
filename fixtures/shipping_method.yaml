@@ -1,0 +1,86 @@
+App\Entity\Shipping\ShippingMethod:
+    shipping_method_without_facade:
+        category: '@shipping_category_facade'
+        zone: '@zone_france'
+        tax_category: '@tax_category_vat'
+        code: 'without_facade'
+        configuration: ['a:1:{s:7:"PLUM_FR";a:2:{s:6:"amount";i:11000;s:10:"table_rate";O:64:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRate":5:{s:68:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateid";i:5;s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecode";s:12:"france_poste";s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatename";s:21:"France - voie postale";s:74:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecurrency";O:28:"App\Entity\Currency\Currency":4:{s:5:"*id";i:10;s:7:"*code";s:3:"EUR";s:12:"*createdAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}s:12:"*updatedAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}}s:83:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateweightLimitToRate";a:3:{i:0;a:2:{s:11:"weightLimit";d:0.3;s:4:"rate";i:4900;}i:1;a:2:{s:11:"weightLimit";i:1;s:4:"rate";i:7900;}i:2;a:2:{s:11:"weightLimit";i:200;s:4:"rate";i:11900;}}}}}']
+        category_requirement: 0
+        calculator: 'table_rate'
+        position: 1
+        archived_at: null
+        created_at: <dateTime()>
+        updated_at: <dateTime()>
+    shipping_method_with_facade_idf_rdc:
+        category: '@shipping_category_facade'
+        zone: '@zone_idf'
+        tax_category: '@tax_category_vat'
+        code: 'with_facade_idf_rdc'
+        configuration: ['a:1:{s:7:"PLUM_FR";a:1:{s:10:"table_rate";O:64:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRate":5:{s:68:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateid";i:1;s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecode";s:16:"france_paris_rdc";s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatename";s:41:"Ile de France -transport spécialisé RDC";s:74:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecurrency";O:28:"App\Entity\Currency\Currency":4:{s:5:"*id";i:10;s:7:"*code";s:3:"EUR";s:12:"*createdAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}s:12:"*updatedAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}}s:83:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateweightLimitToRate";a:4:{i:0;a:2:{s:11:"weightLimit";i:15;s:4:"rate";i:19000;}i:1;a:2:{s:11:"weightLimit";i:30;s:4:"rate";i:35000;}i:2;a:2:{s:11:"weightLimit";i:60;s:4:"rate";i:69000;}i:3;a:2:{s:11:"weightLimit";i:999999;s:4:"rate";i:79000;}}}}}']
+        category_requirement: 1
+        calculator: 'table_rate'
+        position: 2
+        archived_at: null
+        created_at: <dateTime()>
+        updated_at: <dateTime()>
+    shipping_method_with_facade_idf_etage:
+        category: '@shipping_category_facade'
+        zone: '@zone_idf'
+        tax_category: '@tax_category_vat'
+        code: 'with_facade_idf_etage'
+        configuration: ['a:1:{s:7:"PLUM_FR";a:1:{s:10:"table_rate";O:64:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRate":5:{s:68:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateid";i:2;s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecode";s:11:"paris_etage";s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatename";s:45:"Ile de France - transport spécialisé étage";s:74:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecurrency";O:28:"App\Entity\Currency\Currency":4:{s:5:"*id";i:10;s:7:"*code";s:3:"EUR";s:12:"*createdAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}s:12:"*updatedAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}}s:83:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateweightLimitToRate";a:5:{i:0;a:2:{s:11:"weightLimit";i:5;s:4:"rate";i:19000;}i:1;a:2:{s:11:"weightLimit";i:11;s:4:"rate";i:27000;}i:2;a:2:{s:11:"weightLimit";i:21;s:4:"rate";i:39000;}i:3;a:2:{s:11:"weightLimit";i:30;s:4:"rate";i:57000;}i:4;a:2:{s:11:"weightLimit";i:999999;s:4:"rate";i:69000;}}}}}']
+        category_requirement: 1
+        calculator: 'table_rate'
+        position: 3
+        archived_at: null
+        created_at: <dateTime()>
+        updated_at: <dateTime()>
+    shipping_method_with_facade_metropole_not_idf:
+        category: '@shipping_category_facade'
+        zone: '@zone_not_idf'
+        tax_category: '@tax_category_vat'
+        code: 'with_facade_metropole_not_idf'
+        configuration: ['a:1:{s:7:"PLUM_FR";a:2:{s:6:"amount";i:26000;s:10:"table_rate";O:64:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRate":5:{s:68:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateid";i:3;s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecode";s:23:"france_horsidfcorse_rdc";s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatename";s:58:"France hors IDF et hors Corse - transport spécialisé RDC";s:74:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecurrency";O:28:"App\Entity\Currency\Currency":4:{s:5:"*id";i:10;s:7:"*code";s:3:"EUR";s:12:"*createdAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}s:12:"*updatedAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}}s:83:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateweightLimitToRate";a:4:{i:0;a:2:{s:11:"weightLimit";i:5;s:4:"rate";i:10000;}i:1;a:2:{s:11:"weightLimit";i:11;s:4:"rate";i:17000;}i:2;a:2:{s:11:"weightLimit";i:21;s:4:"rate";i:23000;}i:3;a:2:{s:11:"weightLimit";i:999999;s:4:"rate";i:36000;}}}}}']
+        category_requirement: 1
+        calculator: 'table_rate'
+        position: 4
+        archived_at: null
+        created_at: <dateTime()>
+        updated_at: <dateTime()>
+    shipping_method_with_facade_corse:
+        category: '@shipping_category_facade'
+        zone: '@zone_corse'
+        tax_category: '@tax_category_vat'
+        code: 'with_facade_corse'
+        configuration: ['a:1:{s:7:"PLUM_FR";a:2:{s:6:"amount";i:150000;s:10:"table_rate";O:64:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRate":5:{s:68:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateid";i:4;s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecode";s:9:"corse_rdc";s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatename";s:34:"Corse - transport spécialisé RDC";s:74:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecurrency";O:28:"App\Entity\Currency\Currency":4:{s:5:"*id";i:10;s:7:"*code";s:3:"EUR";s:12:"*createdAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}s:12:"*updatedAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}}s:83:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateweightLimitToRate";a:4:{i:0;a:2:{s:11:"weightLimit";i:15;s:4:"rate";i:32500;}i:1;a:2:{s:11:"weightLimit";i:30;s:4:"rate";i:62500;}i:2;a:2:{s:11:"weightLimit";i:60;s:4:"rate";i:90830;}i:3;a:2:{s:11:"weightLimit";i:999999;s:4:"rate";i:115830;}}}}}']
+        category_requirement: 1
+        calculator: 'table_rate'
+        position: 5
+        archived_at: null
+        created_at: <dateTime()>
+        updated_at: <dateTime()>
+    shipping_method_with_facade_BE:
+        category: '@shipping_category_facade'
+        zone: '@zone_benelux'
+        tax_category: '@tax_category_vat'
+        code: 'with_facade_BE'
+        configuration: ['a:1:{s:7:"PLUM_FR";a:1:{s:10:"table_rate";O:64:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRate":5:{s:68:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateid";i:4;s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecode";s:9:"corse_rdc";s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatename";s:34:"Corse - transport spécialisé RDC";s:74:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecurrency";O:28:"App\Entity\Currency\Currency":4:{s:5:"*id";i:10;s:7:"*code";s:3:"EUR";s:12:"*createdAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}s:12:"*updatedAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}}s:83:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateweightLimitToRate";a:4:{i:0;a:2:{s:11:"weightLimit";i:15;s:4:"rate";i:32500;}i:1;a:2:{s:11:"weightLimit";i:30;s:4:"rate";i:62500;}i:2;a:2:{s:11:"weightLimit";i:60;s:4:"rate";i:90830;}i:3;a:2:{s:11:"weightLimit";i:999999;s:4:"rate";i:115830;}}}}}']
+        category_requirement: 1
+        calculator: 'table_rate'
+        position: 6
+        archived_at: null
+        created_at: <dateTime()>
+        updated_at: <dateTime()>
+    shipping_method_without_facade_europe:
+        category: '@shipping_category_facade'
+        zone: '@zone_benelux'
+        tax_category: '@tax_category_vat'
+        code: 'without_facade_europe'
+        configuration: ['a:1:{s:7:"PLUM_FR";a:1:{s:10:"table_rate";O:64:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRate":5:{s:68:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateid";i:4;s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecode";s:9:"corse_rdc";s:70:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatename";s:34:"Corse - transport spécialisé RDC";s:74:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRatecurrency";O:28:"App\Entity\Currency\Currency":4:{s:5:"*id";i:10;s:7:"*code";s:3:"EUR";s:12:"*createdAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}s:12:"*updatedAt";O:8:"DateTime":3:{s:4:"date";s:26:"2021-02-16 14:55:52.000000";s:13:"timezone_type";i:3;s:8:"timezone";s:12:"Europe/Paris";}}s:83:"Webgriffe\SyliusTableRateShippingPlugin\Entity\ShippingTableRateweightLimitToRate";a:4:{i:0;a:2:{s:11:"weightLimit";i:15;s:4:"rate";i:32500;}i:1;a:2:{s:11:"weightLimit";i:30;s:4:"rate";i:62500;}i:2;a:2:{s:11:"weightLimit";i:60;s:4:"rate";i:90830;}i:3;a:2:{s:11:"weightLimit";i:999999;s:4:"rate";i:115830;}}}}}']
+        category_requirement: 0
+        calculator: 'table_rate'
+        position: 7
+        archived_at: null
+        created_at: <dateTime()>
+        updated_at: <dateTime()>
+    

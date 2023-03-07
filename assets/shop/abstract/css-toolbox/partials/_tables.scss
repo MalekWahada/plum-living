@@ -1,0 +1,82 @@
+@use '../../../config/sass' as *;
+
+
+.table {
+  tr {
+
+  }
+
+    th {
+      padding: rem(8) 0;
+    }
+
+    td {
+      padding: rem(8) 0;
+    }
+
+  thead {
+    th {
+      padding: rem(8) 0 rem(24);
+    }
+  }
+
+  tbody {
+
+  }
+
+  tfoot {
+
+  }
+
+    .table-separator-row {
+      td {
+        height: 0;
+        padding: rem(30) 0;
+        background: linear-gradient(
+          to top,
+          transparent 0,
+          transparent #{rem(30)},
+          currentColor #{rem(30)},
+          currentColor #{rem(31)},
+          transparent #{rem(31)}
+        );
+      }
+    }
+
+    .table-separator-row--s {
+      td {
+        padding: rem(15) 0;
+        background: linear-gradient(
+          to top,
+          transparent 0,
+          transparent #{rem(15)},
+          currentColor #{rem(15)},
+          currentColor #{rem(16)},
+          transparent #{rem(16)}
+        );
+      }
+    }
+
+    .table-separator-row--xs {
+      td {
+        padding: rem(6) 0;
+        background: linear-gradient(
+          to top,
+          transparent 0,
+          transparent #{rem(6)},
+          currentColor #{rem(6)},
+          currentColor #{rem(7)},
+          transparent #{rem(7)}
+        );
+      }
+    }
+}
+
+
+.table-container,
+.table--responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  display: block;
+}

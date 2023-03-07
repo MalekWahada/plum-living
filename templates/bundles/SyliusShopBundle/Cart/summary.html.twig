@@ -1,0 +1,79 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set header = 'sylius.ui.your_shopping_cart' %}
+
+{% block title %}{{ header|trans }} | {{ parent() }}{% endblock %}
+
+{% set json %}{% apply spaceless %}
+{
+    "cartId": "{{ cart.id }}",
+    {% if cart.id is not null %}"cartToken": "{{ csrf_token(cart.id) }}",{% endif %}
+    "itemCount": {{ cart.totalQuantity }},
+    "total": "{{ money.calculateTotaItemsWithTax(cart) }}",
+    "items": [
+        {% for key, item in cart.items %}
+            {
+                {% set imageProvider = item.variant.hasImages ? item.variant : item.variant.product %}
+                "id": "{{ item.id }}",
+                "name": "{{ item.productName }}",
+                "totalPrice": "{{ money.calculateTotal(item) }}",
+                "quantity": {{ item.quantity }},
+                {% if imageProvider.imagesByType('thumbnail') is not empty %}
+                    "image": "{{ imageProvider.imagesByType('thumbnail').first.path|imagine_filter(filter|default('sylius_shop_product_thumbnail')) }}",
+                {% elseif imageProvider.images.first %}
+                    "image": "{{ imageProvider.images.first.path|imagine_filter(filter|default('sylius_shop_product_thumbnail')) }}",
+                {% else %}
+                    "image": "{{ asset('build/shop/images/no-image.png', 'shop')|imagine_filter(filter|default('sylius_shop_product_thumbnail')) }}",
+                {% endif %}
+                "options":
+                    {% if item.variant.product.hasOptions() %}
+                        [
+                        {% for option in item.variant.optionValues %}
+                            "{{ option.value }}"
+                            {% if not loop.last %},{% endif %}
+                        {% endfor %}
+                        ]
+                    {% else %}
+                        null
+                    {% endif %}
+            }
+            {% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+{% endapply %}{% endset %}
+
+{% block content %}
+    <input id="plum-json-cart" type="hidden" value="{{ json|escape }}"></input>
+    <div class="container">
+        {% if not cart.empty %}
+            {{ sylius_template_event('sylius.shop.cart.header', {'header': header, 'cart': cart}) }}
+            <div class="cart-main-row row">
+                <main class="column @lg:column-7">
+                    <div class="panel cart-content-panel">
+                        {{ sylius_template_event('sylius.shop.cart.items', {'cart': cart, 'form': form}) }}
+                    </div>
+                </main>
+                <aside class="column @lg:column-5 u-margin-t-5 @lg:u-margin-t-0">
+                    <div class="cart-summary-panel panel panel--aside">
+                        {{ sylius_template_event('sylius.shop.cart.summary', {'cart': cart, 'form': form}) }}
+                    </div>
+                </aside>
+            </div>
+            {{ sylius_template_event('sylius.shop.cart.suggestions', {'cart': cart}) }}
+        {% else %}
+            <p class="t-header-small t-align-center c-grey-mid">{{ 'sylius.ui.your_cart_is_empty'|trans }}</p>
+        {% endif %}
+    </div>
+
+    <div id="plum-cart-confirmation-modal" class="ui-modal ui-modal--dark" data-source-url="{{ path('app_validate_cart') }}"></div>
+
+    {# Share cart modal #}
+    <div class="cart-share-modal ui-modal ui-modal--dark"></div>
+    {# End of share cart modal #}
+{% endblock %}
+

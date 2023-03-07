@@ -1,0 +1,10 @@
+<div class="tunnel-modal-right__header">
+    <div id="sylius-product-name" class="tunnel-modal-right__title u-margin-r-2 t-header-small " {{ sylius_test_html_attribute('product-name', product.name) }}>
+        {{ product.name }}
+    </div>
+    <div class="tunnel-modal-right__price t-header-small">
+        {% if not product.enabledVariants.empty() %}
+            {% include 'Shop/Tunnel/Shopping/Product/_price.html.twig' %}
+        {% endif %}
+    </div>
+</div>

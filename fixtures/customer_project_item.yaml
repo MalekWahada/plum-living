@@ -1,0 +1,18 @@
+App\Entity\CustomerProject\ProjectItem:
+    customer_project_item (template):
+        comment: <sentence()>
+
+    customer_project_item_paint_{1..5} (extends customer_project_item):
+        project: '@customer_project_<numberBetween(1, 5)>'
+        plum_label: '@product_paint_<numberBetween(1, 5)>->name'
+        chosen_variant: '@customer_project_item_variant_paint_1_<current()>'
+        
+    customer_project_item_accessory_{1..5} (extends customer_project_item):
+        project: '@customer_project_<numberBetween(1, 5)>'
+        plum_label: '@product_accessory_<numberBetween(1, 4)>->name'
+        chosen_variant: '@customer_project_item_variant_accessory_1_<current()>'
+        
+    customer_project_item_metod_4010_{1..5} (extends customer_project_item):
+        project: '@customer_project_<numberBetween(1, 5)>'
+        plum_label: '@product_metod_4010_<numberBetween(1, 8)>->name'
+        chosen_variant: '@customer_project_item_variant_product_metod_4010_1_1_<current()>'

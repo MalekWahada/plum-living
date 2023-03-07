@@ -1,0 +1,118 @@
+- code: monsieurbiz.h1
+  data:
+      content: Chez Hugo & Valentine
+- code: app.color_ui
+  data:
+      color: color_sombre_forest
+- code: app.project_piece
+  data:
+      piece: kitchen
+- code: monsieurbiz.text
+  data:
+      content: Cet appartement haussmanien de 70m2 a tout d'un grand. Une belle hauteur
+          sous plafond, de magnifiques détails architecturaux, et de grandes fenêtres
+          qui laissent entrer la lumière.&nbsp;
+- code: monsieurbiz.image_collection
+  data:
+      images:
+          - image:
+            alt:
+            title:
+            link:
+          - image:
+            alt:
+            title:
+            link:
+      type: slider_right
+- code: monsieurbiz.button
+  data:
+      label: "Découvrez le budget détaillé"
+      link:
+      type: default
+- code: monsieurbiz.text
+  data:
+      content: Hugo et Valentine se sont improvisés architectes et chefs de chantier,
+          et ont créé une ambiance aux codes délicieusement rétros, jusque dans la cuisine.<p><br></p><p>Ils
+          ont opté pour les portes à cadre PLUM en laque mate, dans la teinte Sombre Forest,
+          et les ont associées à un plan de travail effet marbré. Pour accentuer l'effet
+          volume de la pièce, ils ont choisi de monter les meubles colonnes à 2m80 et
+          de les border d'un coffrage blanc. Le bloc colonnes ainsi encastré crée un agencement
+          haut de gamme visuellement.</p>
+- code: app.card_total
+  data:
+      cardMainTitle: Budget détaillé
+      cardTotalTitle: total
+      cardTotalDetails: "*Hors électroménager, robinetterie, évier et plan de travail"
+      cardElements:
+          - title: Structure mobilier IKEA
+            description: Caissons, tiroirs, quincaillerie
+            price: 32100
+          - title: Habillage Plum
+            description: Façades, côtés, plinthes
+            price: 57000
+- code: monsieurbiz.image_collection
+  data:
+      images:
+          '3':
+              image:
+              alt:
+              title:
+              link:
+          '4':
+              image:
+              alt:
+              title:
+              link:
+          '5':
+              image:
+              alt:
+              title:
+              link:
+      type: slider_plans
+- code: app.project_plan
+  data:
+      file:
+- code: monsieurbiz.button
+  data:
+      label: Découvrir le tuto
+      link:
+      type: simple_link
+- code: monsieurbiz.image_collection
+  data:
+      images:
+          '3':
+              image:
+              alt:
+              title:
+              link:
+          '4':
+              image:
+              alt:
+              title:
+              link:
+          '5':
+              image:
+              alt:
+              title:
+              link:
+      type: mosaic
+- code: monsieurbiz.h2
+  data:
+      content: À vous de jouer !
+- code: monsieurbiz.button
+  data:
+      label: Estimez votre projet
+      link:
+      type: default
+- code: monsieurbiz.h2
+  data:
+      content: Ces sujets pourraient vous plaire.
+- code: monsieurbiz.button
+  data: 
+    label: Découvrir notre journal
+    link: null
+    type: simple_link
+- code: app.pages_listing
+  data:
+      pages:
+          - project-1

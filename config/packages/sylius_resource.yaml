@@ -1,0 +1,96 @@
+# config/packages/sylius_resource.yaml
+sylius_resource:
+    resources:
+        app.combination:
+            classes:
+                form: App\Form\Type\Resources\CombinationType
+                model: App\Entity\Tunnel\Shopping\Combination
+                repository: App\Repository\Tunnel\Shopping\CombinationRepository
+
+        app.combination_image:
+            classes:
+                model: App\Entity\Tunnel\Shopping\CombinationImage
+                form: App\Form\Type\Resources\CombinationImageType
+
+        app.product_option_value_image:
+            classes:
+                model: App\Entity\Product\ProductOptionValueImage
+                form: App\Form\Type\Resources\ProductOptionValueImageType
+
+        monsieurbiz_cms_page.page:
+            classes:
+                model: App\Entity\Page\Page
+                form: App\Form\Type\Resources\Page\ConfiguredPageType
+                repository: App\Repository\Page\PageRepository
+
+        app.page_image:
+            classes:
+                model: App\Entity\Page\PageImage
+                form: App\Form\Type\Resources\PageImageType
+
+        app.project:
+            classes:
+                form: App\Form\Type\CustomerProject\ProjectType
+                model: App\Entity\CustomerProject\Project
+                repository: App\Repository\CustomerProject\ProjectRepository
+
+        app.project_item:
+            classes:
+                form: App\Form\Type\CustomerProject\ProjectItemType
+                model: App\Entity\CustomerProject\ProjectItem
+
+        app.project_item_variant:
+            classes:
+                model: App\Entity\CustomerProject\ProjectItemVariant
+
+        app.erp_entity:
+            classes:
+                model: App\Entity\Erp\ErpEntity
+                repository: App\Repository\Erp\ErpEntityRepository
+
+        app.delivery_date_calculation_config:
+            classes:
+                form: App\Form\Type\Resources\DeliveryDateCalculationConfigType
+                model: App\Entity\Product\DeliveryDateCalculationConfig
+                repository: App\Repository\Product\DeliveryDateCalculationConfigRepository
+
+        app.product_complete_info:
+            classes:
+                model: App\Entity\Product\ProductCompleteInfo
+                form: App\Form\Type\Resources\ProductCompleteInfo\ProductCompleteInfoType
+            translation:
+                classes:
+                    model: App\Entity\Product\ProductCompleteInfoTranslation
+                    form: App\Form\Type\Resources\ProductCompleteInfo\ProductCompleteInfoTranslationType
+        
+        app.product_group:
+            classes:
+                model: App\Entity\Product\ProductGroup
+                form: App\Form\Type\Product\ProductGroupType
+                repository: App\Repository\Product\ProductGroupRepository
+            translation:
+                classes:
+                    model: App\Entity\Product\ProductGroupTranslation
+                    form: App\Form\Type\Product\ProductGroupTranslationType
+
+        app.product_ikea:
+            classes:
+                model: App\Entity\ProductIkea\ProductIkea
+                form: App\Form\Type\ProductIkea\ProductIkeaType
+                repository: App\Repository\ProductIkea\ProductIkeaRepository
+            translation:
+                classes:
+                    model: App\Entity\ProductIkea\ProductIkeaTranslation
+                    form: App\Form\Type\ProductIkea\ProductIkeaTranslationType
+
+        app.product_ikea_image:
+            classes:
+                model: App\Entity\ProductIkea\ProductIkeaImage
+                form: App\Form\Type\Resources\ProductIkeaImageType
+                repository: App\Repository\ProductIkea\ProductIkeaImageRepository
+
+        app.product_ikea_channel_pricing:
+            classes:
+                model: App\Entity\ProductIkea\ProductIkeaChannelPricing
+                form: App\Form\Type\Resources\ProductIkeaChannelPricingType
+                repository: App\Repository\ProductIkea\ProductIkeaChannelPricingRepository

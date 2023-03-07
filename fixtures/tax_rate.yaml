@@ -1,0 +1,11 @@
+App\Entity\Taxation\TaxRate:
+    tax_rate_vat:
+        category: '@tax_category_vat'
+        zone: '@zone_france'
+        code: 'TVA'
+        name: 'TVA France'
+        amount: '0.20000'
+        included_in_price: false
+        calculator: 'default'
+        created_at: <dateTime()>
+        updated_at: <dateTime()>

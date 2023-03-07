@@ -1,0 +1,26 @@
+<div class="ten wide column">
+    <h1 class="ui header">
+        <i class="circular object ungroup outline icon"></i>
+        <div class="content">
+            {{ product_group.name|default('app.ui.product_group'|trans) }}
+            <div class="sub header">
+                <div class="ui horizontal divided list">
+                    {% if product_group.mainTaxon is not null %}
+                        <div class="item">
+                            <span class="ui pink label">
+                                <i class="icon tag"></i> {{ product_group.mainTaxon.name }}
+                            </span>
+                        </div>
+                    {% endif %}
+                    {% for option in product_group.productsOptions %}
+                        <div class="item">
+                            <span class="ui olive label">
+                                <i class="icon paint brush"></i>{{ 'app.ui.option'|trans }} {{ option.name }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </h1>
+</div>

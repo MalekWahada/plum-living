@@ -1,0 +1,39 @@
+sylius_import_export:
+    resource: "@FOSSyliusImportExportPlugin/Resources/config/routing.yml"
+    prefix: /
+
+app_export_data_product_variant:
+    path: /export/product_variant/{format}
+    methods: [GET]
+    defaults:
+        resource: sylius.product_variant
+        _controller: sylius.controller.export_data_product_variant::exportAction
+        _sylius:
+            filterable: true
+            grid: app_admin_product_variant_export
+            
+app_export_data_order_custom:
+    path: /export/order_custom/csv
+    methods: [GET]
+    defaults:
+        _controller: App\Controller\Exporter\ExportOrderController
+
+app_export_data_combination:
+    path: /export/combination/{format}
+    methods: [GET]
+    defaults:
+        resource: app.combination
+        _controller: app.controller.export_data_combination::exportAction
+        _sylius: 
+            filterable: true
+            grid: app_admin_combination_export
+
+app_export_data_product_group:
+    path: /export/product_group/{format}
+    methods: [GET]
+    defaults:
+        resource: app.product_group
+        _controller: app.controller.export_data_product_group::exportAction
+        _sylius:
+            filterable: true
+            grid: app_admin_product_group_export

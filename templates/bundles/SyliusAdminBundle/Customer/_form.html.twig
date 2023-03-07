@@ -1,0 +1,53 @@
+{{ form_errors(form) }}
+<div class="ui two column stackable grid">
+    <div class="column">
+        <div class="ui segment">
+            <h4 class="ui dividing header">{{ 'sylius.ui.customer_details'|trans }}</h4>
+            <div class="two fields">
+                {{ form_row(form.firstName) }}
+                {{ form_row(form.lastName) }}
+            </div>
+            {{ form_row(form.email) }}
+            {{ form_row(form.group) }}
+            {{ form_row(form.customerType) }}
+        </div>
+        <div class="ui segment">
+            <h4 class="ui dividing header">{{ 'sylius.ui.extra_information'|trans }}</h4>
+            {{ form_row(form.gender) }}
+            {{ form_row(form.birthday) }}
+            {{ form_row(form.phoneNumber) }}
+            {{ form_row(form.subscribedToNewsletter) }}
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui segment">
+            <h4 class="ui dividing header">{{ 'sylius.ui.account_credentials'|trans }}</h4>
+            {% if customer.user is empty or customer.user.id is null %}
+                <div class="field">
+                    <div class="ui toggle checkbox">
+                        {{ form_row(form.createUser) }}
+                    </div>
+                </div>
+            {% endif %}
+            {% if form.user is defined %}
+                <div id="user-form" {% if form.user.vars.data.id is not defined %} style="display: none" {% endif %}>
+                    {{ form_row(form.user.plainPassword) }}
+                    {{ form_row(form.user.enabled) }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="ui segment">
+            <h4 class="ui dividing header">{{ 'sylius.ui.b2b_program'|trans }}</h4>
+            {{ form_row(form.b2bProgram) }}
+            {{ form_row(form.b2bCouponCode) }}
+            {{ form_row(form.companyName) }}
+            {{ form_row(form.companyStreet) }}
+            {{ form_row(form.companyPostcode) }}
+            {{ form_row(form.companyCity) }}
+            {{ form_row(form.companyCountryCode) }}
+            {{ form_row(form.vatNumber) }}
+            {{ form_row(form.companyInstagram) }}
+            {{ form_row(form.companyWebsite) }}
+        </div>
+    </div>
+</div>

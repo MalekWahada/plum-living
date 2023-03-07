@@ -1,0 +1,17 @@
+@font-face {
+	font-family: 'Canela';
+	src: url('Canela-LightItalic-Web.eot');
+	src: url('Canela-LightItalic-Web.eot?#iefix') format('embedded-opentype'),
+		 url('Canela-LightItalic-Web.woff2') format('woff2'),
+		 url('Canela-LightItalic-Web.woff') format('woff'),
+		 url('Canela-LightItalic-Web.ttf') format('truetype');
+	font-weight: 300;
+	font-style: italic;
+}
+
+.canela-300-italic {
+	font-family: 'Canela';
+	font-stretch: normal;
+	font-style:   italic;
+	font-weight:  300;
+}

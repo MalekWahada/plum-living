@@ -1,0 +1,12 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+{% set facadeCode =  facadeType.code ?? app.request.attributes.get('facadeTypeCode') %}
+{% set finishCode =  finish.code ?? app.request.attributes.get('finishCode') %}
+{% set designCode =  design.code ?? app.request.attributes.get('designCode') %}
+{% set colorCode =  color.code ?? app.request.attributes.get('colorCode') %}
+
+{% set variant = product|app_tunnel_resolve_variant(facadeCode, designCode, finishCode, colorCode) %}
+{% set hasDiscount = variant|sylius_has_discount({'channel': sylius.channel}) %}
+
+<span id="product-price" class="price" {{ sylius_test_html_attribute('product-price', money.calculatePrice(variant)) }}>
+    {{ money.calculatePriceWithTax(variant, [], taxRate ?? null) }}
+</span>

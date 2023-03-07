@@ -1,0 +1,32 @@
+{% if  app.request.attributes.get('facadeTypeCode') is not null %}
+    {% set selectedOptionsValues = {
+        facadeTypeCode: app.request.attributes.get('facadeTypeCode'),
+        designCode: app.request.attributes.get('designCode'),
+        finishCode: app.request.attributes.get('finishCode'),
+        colorCode: app.request.attributes.get('colorCode')
+    }
+    %}
+{% endif %}
+{% if product.enabledVariants.empty or product.simple and not sylius_inventory_is_available(product.enabledVariants.first) %}
+    {% include '@SyliusShop/Product/Show/_outOfStock.html.twig' %}
+{% elseif product is not null and has_valid_selected_options(selectedOptionsValues) and product.hasFacadeOptions %}
+    {% if product.hasOptionValue(
+        constant('App\\Entity\\Product\\ProductOptionValue::DESIGN_UNIQUE_CODE')
+    ) %}
+        {% set selectedOptionsValues.designCode =  constant('App\\Entity\\Product\\ProductOptionValue::DESIGN_UNIQUE_CODE') %}
+    {% elseif %}
+    {{ render(url('facade_cart_add_item',
+        {
+            'template': 'Shop/Tunnel/Shopping/Product/Card/_form_add_to_cart.html.twig',
+            'selectedOptionsValues': selectedOptionsValues,
+            'productId': product.id
+        }
+    )) }}
+{% else %}
+    {{ render(url('app_cart_add_item',
+        {
+            'template': 'Shop/Tunnel/Shopping/Product/Card/_form_add_to_cart.html.twig',
+            'productId': product.id
+        }
+    )) }}
+{% endif %}

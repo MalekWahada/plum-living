@@ -1,0 +1,60 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set cartPromotionTotal = cart.adjustmentsTotalRecursively(constant('Sylius\\Component\\Core\\Model\\AdjustmentInterface::ORDER_PROMOTION_ADJUSTMENT')) %}
+
+<h2 class="panel__title t-header-medium">{{ 'app.ui.cart.summary_panel_title'|trans }}</h2>
+{{ sylius_template_event('sylius.shop.cart.summary.totals', {'cart': cart}) }}
+<table class="table order-summary-table t-label-small u-margin-b-4">
+    <tbody>
+    <tr>
+        <td>
+            <p>{{ 'app.ui.generic.sub_total'|trans }}</p>
+            <p class="c-grey-mid t-base-xsmall">
+                {{ 'app.ui.generic.vat_included'|trans }}
+            </p>
+        </td>
+        <td class="price">{{ money.calculateTotaItemsWithTax(cart) }}</td>
+    </tr>
+    {% if form.promotionCoupon is defined %}
+        <tr>
+            <td class="u-padding-t-3" colspan="3">
+                {{ form_start(form, {'action': path('sylius_shop_cart_save'), 'method': 'PATCH', 'attr': {'class': 'form order-summary-table__form', 'novalidate': 'novalidate', 'id': form.vars.id}}) }}
+                {{ sylius_template_event('sylius.shop.cart.coupon', {'cart': cart, 'form': form, 'main_form': form.vars.id}) }}
+                {{ form_errors(form) }}
+                {{ form_row(form._token) }}
+                {{ form_end(form, {'render_rest': false}) }}
+            </td>
+        </tr>
+    {% endif %}
+    {% if cartPromotionTotal %}
+        <tr>
+            <td>
+                <p>{{ 'sylius.ui.discount'|trans }}:</p>
+                <p class="c-grey-mid t-base-xsmall">
+                    {{ 'app.ui.generic.vat_included'|trans }}
+                </p>
+            </td>
+            <td class="price" id="sylius-cart-promotion-total" {{ sylius_test_html_attribute('cart-promotion-total') }} class="right aligned">{{ money.convertAndFormat(cartPromotionTotal) }}</td>
+        </tr>
+    {% endif %}
+    <tr><td colspan="3"></td></tr>
+    <tr>
+        <td class="t-align-center" colspan="3">{% include 'Shop/Cart/Delivery/_delivery_min_max_delays.html.twig' with {'cart': cart} %}</td>
+    </tr>
+    <tr class="table-separator-row"><td colspan="3"></td></tr>
+    <tr class="t-label-large">
+        {% set cartItemsTotal = cart.itemsTotal %}
+        <td>
+            <p>{{ 'app.ui.generic.total_without_shipping'|trans }}</p>
+            <p class="c-grey-mid t-base-xsmall">{{ 'app.ui.checkout.order_summary.shipping_fee_calculated_next'|trans }}</p>
+        </td>
+        <td class="price" id="sylius-cart-grand-total" {{ sylius_test_html_attribute('cart-grand-total') }} class="right aligned">{{ money.convertAndFormat(cartItemsTotal + cartPromotionTotal) }}</td>
+    </tr>
+    {% if cart.currencyCode is not same as(sylius.currencyCode) %}
+        <tr>
+            <td>{{ 'sylius.ui.base_currency_order_total'|trans }}</td>
+            <td class="price" id="sylius-cart-base-grand-total" {{ sylius_test_html_attribute('cart-base-grand-total') }} class="right aligned">{{ money.format(cart.itemsTotal, cart.currencyCode) }}</td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>

@@ -1,0 +1,9 @@
+services:
+    # override order sequential number generator number length(4th arg)
+    sylius.sequential_order_number_generator:
+        class: Sylius\Bundle\OrderBundle\NumberGenerator\SequentialOrderNumberGenerator
+        arguments:
+            - '@sylius.repository.order_sequence'
+            - '@sylius.factory.order_sequence'
+            - 1
+            - 7

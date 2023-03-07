@@ -1,0 +1,14 @@
+{% set product = variant.product %}
+{% set include_image = include_image|default(false) %}
+
+<div class="u-flex">
+    {% if include_image %}
+        {% include 'Shop/Product/_thumbnail.html.twig' with { 'variant': variant } %}
+    {% endif %}
+    <div class="u-fill-space {% if include_image %} u-margin-l-2 {% endif %}">
+        <a class="u-block t-label-small u-margin-b-0.5" data-variant-code="{{ variant.code }}">
+            <span class="sylius-product-name" {{ sylius_test_html_attribute('product-name', item.productName) }}>{{ item.productName }}</span>
+        </a>
+        {% include 'Shop/Product/_selected_options.html.twig' with { variant: item.variant } %}
+    </div>
+</div>

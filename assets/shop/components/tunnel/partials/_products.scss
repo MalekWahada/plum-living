@@ -1,0 +1,434 @@
+//tunnel products - third step
+$-transition-duration: 0.25s;
+
+.tunnel-products {
+  &__list {
+    flex-wrap: wrap;
+  }
+
+  //productss item
+  &-item {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+
+    //products item img
+    &__img {
+      display: block;
+      padding-top: (250 / 363 * 100%);
+      position: relative;
+
+      img {
+        object-fit: contain;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: height ($-transition-duration - 0.05s) ease-out;
+      }
+
+      .no-image {
+        background-color: get-color(placeholder-grey);
+      }
+    }
+    //End products item img
+
+    &__form {
+      padding: 1rem 1rem 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      background: $color--true-white;
+      transition: background-color 0.3s;
+      width: 100%;
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        min-height: rem(121);
+
+        .color-select-field__options--open {
+          max-height: rem(234);
+        }
+      }
+
+      .select-box {
+        margin-right: rem(10);
+        flex-grow: 1;
+      }
+
+      .number-field {
+        .field__widget {
+          height: 100%;
+          align-items: stretch;
+          background: $color--true-white;
+        }
+
+        input[type="number"] {
+          height: 100%;
+        }
+      }
+
+      .button {
+        margin-top: rem(15);
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
+        margin-right: -1rem;
+      }
+
+      //select
+      &-select {
+        width: 100%;
+        margin-right: rem(10);
+      }
+      //End select
+
+      //counter
+      &-counter {
+        .field {
+          height: 100%;
+
+          &__widget {
+            height: 100%;
+
+            input {
+              height: 100%;
+            }
+          }
+        }
+      }
+      //End counter
+    }
+
+    //products item footer
+    &-footer {
+      position: relative;
+      transition: transform $-transition-duration ease-out;
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        @include down('large') {
+          font-size: rem(13);
+          line-height: 154%;
+          letter-spacing: 0.02em;
+        }
+      }
+
+      .desc {
+        color: $color--grey-mid;
+        padding-top: rem(4);
+        min-height: rem(24);
+        max-height: rem(30);
+        font-size: rem(12);
+        @include up('large'){
+          font-size: rem(14);
+          line-height: rem(16);
+          padding-top: 0;
+        }
+      }
+
+      //Content top
+      &__top {
+        padding: rem(10);
+        position: relative;
+        background-color: $color--true-white;
+        transition: background-color $-transition-duration, transform $-transition-duration ease-out;
+
+        @include up('large') {
+          padding: rem(20);
+        }
+
+        &.block-top {
+          transform: translateY(-60px);
+          transition: transform $-transition-duration ease-out;
+        }
+      }
+    }
+    //End products item footer
+
+    @include up('large') {
+      $-transition-duration: 0.25s;
+
+      &.validate {
+        .tunnel-products-item {
+          &__img {
+            img {
+              height: calc(100% - 4rem);
+              transition: height ($-transition-duration + 0.05s) ease-out;
+            }
+          }
+        }
+      }
+
+      &.item-purchase {
+        overflow: visible;
+        transition: overflow 3s ease;
+        z-index: 1;
+
+        .tunnel-products-item {
+          &__img {
+            img {
+              height: calc(100% - 8.5rem);
+              transition: height ($-transition-duration + 0.05s) ease-out;
+            }
+          }
+
+          &__form {
+            background: $color--near-black;
+          }
+
+          &-footer {
+            transform: translateY(#{rem(-136)});
+
+            &__top {
+              background: $color--near-black;
+
+              .name,
+              .price {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include down('medium') {
+      height: 100%;
+    }
+  }
+  //End products item
+
+  //Block infos pratiques
+  .infos {
+    order: 0;
+
+    @include up('large') {
+      order: 1;
+    }
+
+    @include up('wide') {
+      order: 2;
+    }
+  }
+
+  &-infos {
+    padding: rem(20);
+    order: 2;
+    background-color: $color--green-light;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    @include up('wide') {
+      padding: rem(30) rem(20) rem(20) rem(20);
+      width: auto;
+      margin-bottom: 0;
+    }
+
+    &__title {
+      text-align: center;
+    }
+
+    &__list {
+      ul {
+        list-style-type: none;
+      }
+
+      li {
+        flex-wrap: wrap;
+        font-family: $font--cera;
+        font-size: rem(14);
+        letter-spacing: 0.02em;
+        line-height: 145%;
+        margin-top: rem(12);
+        padding-left: rem(32);
+        position: relative;
+
+        @include up('large') {
+          line-height: 175%;
+        }
+
+        &::marker {
+          content: none;
+        }
+
+        &::after {
+          position: absolute;
+          $-color: str-replace('#', '%23', #{get-color('near-black')});
+          content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M16 6.82841V8.82528C13.6595 9.60837 10.9353 11.9968 10.5516 15.599H8.59472C8.97842 11.6052 11.3189 9.60837 13.2758 8.82528H0V6.82841H13.2758C11.3189 6.04532 8.97842 4.04844 8.59472 0.0546875H10.5516C10.8969 3.6569 13.6595 6.04532 16 6.82841Z' fill='#{$-color}'/%3E%3C/svg%3E");
+          display: inline-block;
+          left: 0;
+          top: 0;
+          width: rem(16);
+          height: rem(16);
+        }
+
+        a {
+          display: inline;
+          font-size: rem(13) !important;
+          line-height: 145%;
+          margin-top: 0;
+
+          @include up('large') {
+            line-height: 175%;
+          }
+        }
+      }
+
+      a {
+        display: inline-block;
+        background: linear-gradient(to top, transparent 1px, currentColor 1px, currentColor 1px, transparent 2px) left center no-repeat;
+        font-family:  $font--canela;;
+        font-style: italic;
+        font-size: rem(15) !important;
+        line-height: 141%;
+        color: $color--near-black;
+        margin-top: rem(16);
+        background-color: transparent !important;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: currentColor;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    &-item {
+      display: flex;
+
+      svg {
+        margin-right: rem(12);
+      }
+
+      &:not(:last-child) {
+        margin-bottom: rem(20);
+      }
+    }
+
+    &__link {
+      margin-top: rem(20);
+    }
+  }
+  //End block infos pratique
+}
+
+// Images should fill (cover) in the "accessoires" taxon tunnel section
+#accessoires {
+  .tunnel-products-item__img {
+    padding-top: 100%;
+
+    img {
+      object-fit: cover;
+    }
+  }
+}
+
+// Difference size card in third step tunnel and page listing accessoire and echantillons
+.standalone-products {
+  .tunnel-products {
+    &-item {
+      //products item img
+      &__img {
+        padding-top: 100%;
+
+        img {
+          object-fit: cover;
+        }
+      }
+      //End products item img
+
+      &.item-purchase {
+        .tunnel-products-item {
+          &-footer {
+            &__top {
+              padding-bottom: 0;
+              padding-top: rem(16);
+            }
+          }
+          &__form {
+            padding-top: rem(10);
+          }
+        }
+      }
+    }
+  }
+}
+
+//Btn validation shopping
+.btn-validate {
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+  background: $color--near-black linear-gradient(to top, #{$color--green} 100%, transparent 0) no-repeat left center;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+
+  &.validate {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+  }
+}
+//End validation shopping
+
+
+// Fix PAX Infos block variable height
+
+.facade_get_designs, .facade_get_products{
+  @include up('wide') {
+
+    #Portes.pax{
+      .tunnel-products__list{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 0px 0px;
+        grid-template-areas:
+        ". . infos"
+        ". . infos"
+        ". . .";
+        .infos {
+          grid-area: infos;
+          height: fit-content;
+        }
+        &> *{
+          flex-basis: 100%;
+          max-width: 100%;
+        }
+      }
+    }
+    #Panneaux-Plinthes.pax{
+      .tunnel-products__list{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0px 0px;
+        grid-template-areas:
+        ". . infos"
+        ". . infos"
+        ". . .";
+        .infos {
+          grid-area: infos;
+          height: fit-content;
+        }
+        &> *{
+          flex-basis: 100%;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

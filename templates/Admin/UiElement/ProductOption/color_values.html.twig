@@ -1,0 +1,49 @@
+<table class="ui very basic collapsing celled table">
+    <thead>
+    <tr>
+        <th>{{ 'app.ui.cms.admin.product_option.color_table.color'|trans }}</th>
+        <th>{{ 'app.ui.cms.admin.product_option.color_table.image_display'|trans }}</th>
+        <th>{{ 'app.ui.cms.admin.product_option.color_table.description'|trans }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for color in optionsValues %}
+        {% set defaultImage = color|filter_images(constant('App\\Entity\\Product\\ProductOptionValueImage::PRODUCT_OPTION_VALUE_IMAGE_TYPE_DEFAULT')) %}
+        {% set displayImage = color|filter_images(constant('App\\Entity\\Product\\ProductOptionValueImage::PRODUCT_OPTION_VALUE_IMAGE_TYPE_DISPLAY')) %}
+
+        <tr class="{{ defaultImage is null or displayImage is null ? 'error' : '' }}">
+            <td>
+                <h4 class="ui image header">
+                    {% if defaultImage.path is defined and defaultImage.path is not empty %}
+                        <img src="{{ defaultImage.path|imagine_filter('app_cms_slider_chip') }}"
+                             class="ui mini rounded image">
+                    {% else %}
+                        <img class="ui mini rounded image">
+                    {% endif %}
+                    <div class="content">
+                        {{ color.value }}
+                        {% if defaultImage is null or defaultImage.path is empty %}
+                            <div class="sub header"> {{ 'app.ui.cms.admin.product_option.color_table.no_image'|trans }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </h4>
+            </td>
+            <td>
+                {% if displayImage.path is defined and displayImage.path is not empty %}
+                    <img style="height: 10rem;" src="{{ displayImage.path|imagine_filter('app_cms_slider_thumbnail') }}"
+                    >
+                {% else %}
+                    <div class="sub header"> {{ 'app.ui.cms.admin.product_option.color_table.no_image'|trans }}
+                    </div>
+                {% endif %}
+            </td>
+            <td>
+                <div class="cms__text t-base-small">
+                    {{ color.description }}
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,62 @@
+.cms {
+  //Card
+  &-card {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $color--beige;
+
+    @include up('large') {
+      width: 36%;
+    }
+
+    //Card header
+    &-header {
+      padding: rem(50) rem(23.5);
+      background-color: $color--beige;
+
+      //Card header title
+      &__title {
+        padding-bottom: rem(57);
+      }
+      //End card header title
+
+      //Card header element
+      &-element {
+        //Card header element text
+        &__text {
+          display: flex;
+          justify-content: space-between;
+        }
+        //End card header element text
+
+        &:not(:last-child) {
+          padding-bottom: rem(38);
+        }
+
+      }
+      //End card header element
+    }
+    //End card header
+
+    //Card total
+    &-total {
+      padding: rem(30);
+      background-color: $color--green-dark;
+      color: $color--true-white;
+      width: 100%;
+      bottom: 0;
+
+      &-element {
+        &__text {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+    //End card total
+  }
+  //End Card
+}

@@ -1,0 +1,30 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% if current > 1 or current < total %}
+<nav aria-label="">
+    <div class="row t-align-center">
+        <div class="column-fill-space">
+            <ul class="pagination">
+                {% if current > 1 %}
+                    <li class="page-item u-inline-flex">
+                        <a href="?page={{ current-1 }}" aria-label="Previous">
+                            <svg class="slider-thematique--arrow slider-thematique--arrow--left o-icon-48 u-inline-flex">
+                                <use xlink:href="{{ iconLibUrl }}#SVG-arrow-left-fill--beige-new"/>
+                            </svg>
+                        </a>
+                    </li>
+                {% endif %}
+                {% if current < total %}
+                    <li class="page-item u-inline-flex">
+                        <a href="?page={{ current+1 }}" aria-label="Next">
+                            <svg class="slider-thematique--arrow slider-thematique--arrow--right o-icon-48 u-inline-flex">
+                                <use xlink:href="{{ iconLibUrl }}#SVG-arrow-right-fill--beige-new"/>
+                            </svg>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endif %}

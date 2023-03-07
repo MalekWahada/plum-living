@@ -1,0 +1,20 @@
+services:
+    App\Order\Applicator\OrderItemsTaxesApplicator:
+        decorates: sylius.taxation.order_items_taxes_applicator
+        autowire: true
+        autoconfigure: true
+
+    sylius.promotion_applicator:
+        class: App\Promotion\Applicator\PromotionApplicator
+        arguments:
+            - '@sylius.registry_promotion_action'
+            - '@App\Promotion\Resolver\AfterTaxesPromotionResolver'
+
+    App\Promotion\Applicator\AfterTaxesPromotionApplicator:
+        autowire: true
+        bind:
+            $registry: '@sylius.registry_promotion_action'
+
+    App\Promotion\Applicator\FixedDiscountPromotionAdjustmentApplicator:
+        autowire: true
+        autoconfigure: true

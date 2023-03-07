@@ -1,0 +1,5 @@
+'Invalid credentials':
+    '': 'Si vous aviez un compte sur notre ancien site web, votre mot de passe a été changé par mesure de sécurité, veuillez cliquer sur "Mot de passe oublié"'
+    lokalise_sanitize_two_single_quotes: 'Si vous aviez un compte sur notre ancien site web, votre mot de passe a été changé par mesure de sécurité, veuillez cliquer sur "Mot de passe oublié"'
+app:
+    email_not_verified: 'Votre compte n''est pas validé, merci de valider votre compte en cliquant sur le lien que nous vous avons envoyé par e-mail.'

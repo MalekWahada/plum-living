@@ -1,0 +1,255 @@
+{% set totalPrice = 0 %}
+{% set totalPriceIkea = 0 %}
+{% set totalPricePlum = 0 %}
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+<div class="media-two-hybrids-columns img-immersive shoppinglist shoppinglist-container
+    {% if element.bg_color is defined  %}
+        {{ element.bg_color }}
+    {% endif %}" id="budget-container">
+    <div class="container static-container">
+        <div class="row u-cross-centered-row fixed-height-row">
+            {% if element.orientation == 'left' or element.orientation is not defined %}
+                <div class="@lg:column-6 u-padding-t-3 u-padding-b-3 @lg:u-padding-t-1 @lg:u-padding-b-1 @lg:u-padding-r-12 left-text">
+                    <div class="shoppinglist u-padding-t-8 u-padding-b-8 @lg:u-padding-t-15 @lg:u-padding-b-15">
+                        <h2 class="t-header-xlarge u-margin-b-4">
+                            {{ ('app.cms_page.media_article.page.budget_detaille')|trans }}
+                        </h2>
+                        {# products ikea #}
+
+                        {% if element.cardElementsIkea is not empty %}
+                            {% for cardelement in element.cardElementsIkea %}
+                                {% set totalPriceIkea = totalPriceIkea + cardelement.price %}
+                            {% endfor %}
+                            <div class="shoppinglist_ikea">
+                                <table class="shoppinglist_table">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="t-header-xsmall u-margin-b-2">
+                                                {{ ('app.cms_page.media_article.page.at_ikea')|trans }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="shoppinglist_price u-margin-b-2 c-asphalte t-align-right">
+                                                <b>{{ money.formatPriceWithoutDecimals(totalPriceIkea) }}</b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                    {% for cardelement in element.cardElementsIkea %}
+                                        <tr class="shoppinglist_item-line">
+                                            <td class="shoppinglist_image-container">
+                                                <img src="{{ cardelement.image }}"
+                                                     class="shoppinglist_image" />
+                                            </td>
+                                            <td class="shoppinglist_item">
+                                                <b>{{ cardelement.title }}</b>
+                                                <br>
+                                                <span class="c-grey-mid">
+                                            {{ cardelement.description }}
+                                        </span>
+                                            </td>
+                                            <td class="shoppinglist_price t-align-right">
+                                                <b>{{ money.formatPriceWithoutDecimals(cardelement.price) }}</b>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        {% endif %}
+                        {% if element.cardElementsPlum is not empty %}
+                            {% for cardelement in element.cardElementsPlum %}
+                                {% set totalPricePlum = totalPricePlum + cardelement.price %}
+                            {% endfor %}
+                            <div class="shoppinglist_plum u-margin-t-4">
+                                <table class="shoppinglist_table">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="t-header-xsmall u-margin-b-2">
+                                                {{ ('app.cms_page.media_article.page.at_plum')|trans }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="shoppinglist_price u-margin-b-2 c-asphalte t-align-right">
+                                                <b>{{ money.formatPriceWithoutDecimals(totalPricePlum) }}</b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                    {% for cardelement in element.cardElementsPlum %}
+                                        <tr class="shoppinglist_item-line">
+                                            <td class="shoppinglist_image-container">
+                                                <img src="{{ cardelement.image }}"
+                                                     class="shoppinglist_image" />
+                                            </td>
+                                            <td class="shoppinglist_item">
+                                                <b>{{ cardelement.title }}</b>
+                                                <br>
+                                                <span class="c-grey-mid">
+                                            {{ cardelement.description }}
+                                        </span>
+                                            </td>
+                                            <td class="shoppinglist_price t-align-right">
+                                                <b>{{ money.formatPriceWithoutDecimals(cardelement.price) }}</b>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        {% endif %}
+                        <div class="shoppinglist_total u-margin-t-4">
+                            <div>
+                                <table class="shoppinglist_table">
+                                    <thead>
+                                    <tr>
+                                        <td class="u-fullwidth">
+                                            <div class="t-header-xsmall u-margin-b-4">
+                                                {{ ('app.ui.account.projects.total')|trans }}<br>
+                                                <span class="c-grey-mid details-total">{{ element.cardTotalDetails }}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="shoppinglist_price u-margin-b-4 c-asphalte t-align-right">
+                                                <b>{{ money.formatPriceWithoutDecimals(totalPriceIkea + totalPricePlum) }}</b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="column-fill-space @lg:column-6 left-img">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}"
+                         id="budget-left-img">
+                </div>
+            {% else %}
+                <div class="column-fill-space @lg:column-6 right-img">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}"
+                         id="budget-left-img">
+                </div>
+                <div class="@lg:column-6 u-padding-t-3 u-padding-b-3 @lg:u-padding-t-1 @lg:u-padding-b-1 @lg:u-padding-l-12 left-text">
+                    <div class="shoppinglist u-padding-t-8 u-padding-b-8 @lg:u-padding-t-15 @lg:u-padding-b-15">
+                        <h2 class="t-header-xlarge u-margin-b-4">
+                            {{ ('app.cms_page.media_article.page.budget_detaille')|trans }}
+                        </h2>
+                        {# products ikea #}
+
+                        {% if element.cardElementsIkea is not empty %}
+                            {% for cardelement in element.cardElementsIkea %}
+                                {% set totalPriceIkea = totalPriceIkea + cardelement.price %}
+                            {% endfor %}
+                            <div class="shoppinglist_ikea">
+                                <table class="shoppinglist_table">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="t-header-xsmall u-margin-b-2">
+                                                {{ ('app.cms_page.media_article.page.at_ikea')|trans }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="shoppinglist_price u-margin-b-2 c-asphalte t-align-right">
+                                                <b>{{ money.formatPriceWithoutDecimals(totalPriceIkea) }}</b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                    {% for cardelement in element.cardElementsIkea %}
+                                        <tr class="shoppinglist_item-line">
+                                            <td class="shoppinglist_image-container">
+                                                <img src="{{ cardelement.image }}"
+                                                     class="shoppinglist_image" />
+                                            </td>
+                                            <td class="shoppinglist_item">
+                                                <b>{{ cardelement.title }}</b>
+                                                <br>
+                                                <span class="c-grey-mid">
+                                            {{ cardelement.description }}
+                                        </span>
+                                            </td>
+                                            <td class="shoppinglist_price t-align-right">
+                                                <b>{{ money.formatPriceWithoutDecimals(cardelement.price) }}</b>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        {% endif %}
+                        {% if element.cardElementsPlum is not empty %}
+                            {% for cardelement in element.cardElementsPlum %}
+                                {% set totalPricePlum = totalPricePlum + cardelement.price %}
+                            {% endfor %}
+                            <div class="shoppinglist_plum u-margin-t-4">
+                                <table class="shoppinglist_table">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="t-header-xsmall u-margin-b-2">
+                                                {{ ('app.cms_page.media_article.page.at_plum')|trans }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="shoppinglist_price u-margin-b-2 c-asphalte t-align-right">
+                                                <b>{{ money.formatPriceWithoutDecimals(totalPricePlum) }}</b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                    {% for cardelement in element.cardElementsPlum %}
+                                        <tr class="shoppinglist_item-line">
+                                            <td class="shoppinglist_image-container">
+                                                <img src="{{ cardelement.image }}"
+                                                     class="shoppinglist_image" />
+                                            </td>
+                                            <td class="shoppinglist_item">
+                                                <b>{{ cardelement.title }}</b>
+                                                <br>
+                                                <span class="c-grey-mid">
+                                            {{ cardelement.description }}
+                                        </span>
+                                            </td>
+                                            <td class="shoppinglist_price t-align-right">
+                                                <b>{{ money.formatPriceWithoutDecimals(cardelement.price) }}</b>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        {% endif %}
+                        <div class="shoppinglist_total u-margin-t-4">
+                            <div>
+                                <table class="shoppinglist_table">
+                                    <thead>
+                                    <tr>
+                                        <td class="u-fullwidth">
+                                            <div class="t-header-xsmall u-margin-b-4">
+                                                {{ ('app.ui.account.projects.total')|trans }}<br>
+                                                <span class="c-grey-mid details-total">{{ element.cardTotalDetails }}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="shoppinglist_price u-margin-b-4 c-asphalte t-align-right">
+                                                <b>{{ money.formatPriceWithoutDecimals(totalPriceIkea + totalPricePlum) }}</b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

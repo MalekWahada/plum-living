@@ -1,0 +1,140 @@
+- code: app.chip
+  data:
+      chip: tutorial
+- code: monsieurbiz.h1
+  data:
+      content: Une bibliothèque construite grâce au Ikea Hack
+- code: monsieurbiz.text
+  data:
+      content: '<p><span style="font-size: 1rem;">Une bibliothèque construite grâce
+      au Ikea Hack</span><br></p><p>La question revient dans toutes les interviews,
+      ou presque. “Comment vous est venue l’idée de proposer des habillages pour caissons
+      Ikea?”.&nbsp;</p>'
+- code: monsieurbiz.button
+  data:
+      label: Lire l’article
+      link:
+      type: default    
+- code: monsieurbiz.text
+  data:
+      content: Le concept est né dans la cuisine, en observant de nombreux architectes
+          concevoir des agencements inédits à partir de modules Metod. Détournés de leur
+          fonction première, ils étaient ensuite habillés de façades et bandeaux sur mesure.
+          Au fil des projets, nous avons étendu le principe à l’ensemble des pièces de
+          la maison. Un exemple? Ces bibliothèques installées sur l’ensemble d’un mur,
+          qui combinent à la fois rangements fermés et ouverts. Robustes et bon marché,
+          les caissons Ikea jouent alors le rôle de base, sur laquelle des étagères viennent
+          se greffer pour donner une dimension magistrale à la pièce. Tour d’horizon de
+          nos inspirations préférées.&nbsp;
+- code: monsieurbiz.h3
+  data:
+      content: Lignes épurées, maxi effet
+- code: monsieurbiz.text
+  data:
+      content: Avec ses panneaux en chêne naturel imbriqués de façon à créer des étagères
+          minimalistes, cette bibliothèque installée dans une maison de Byron Bay, en
+          Australie, repose sur une rangée de caissons habillés de façades à poignées
+          intégrées (comme notre design U-shape). A la fois pratiques et esthétiques,
+          les portes cachent le joyeux bazar du quotidien, tandis que les étagères offrent
+          une vitrine aux livres et objets fétiches des propriétaires. Légère et aérienne,
+          la partie haute de cette bibliothèque peut être réalisée à partir de panneaux
+          de finition en 39 cm de profondeur. Il faudra alors les fixer au mur et aux
+          caissons, avant de venir y visser des étagères que vous pourrez tailler dans
+          des fileurs de 15 cm de large.&nbsp;
+- code: monsieurbiz.image
+  data:
+      image:
+      alt:
+      title:
+      link:
+- code: app.caption
+  data:
+      caption: Projet d’inspiration non réalisé par Plum, signé Mr & Mrs White
+- code: monsieurbiz.h3
+  data:
+      content: Jusqu’au moindre recoin
+- code: monsieurbiz.text
+  data:
+      content: En déco comme dans la vie, tout est une question de point de vue. Alors
+          que certains verraient dans les décrochés un énième problème à contourner, on
+          préfère y trouver de nouvelles opportunités. Une niche? Qu’à cela ne tienne!
+          Voici l’endroit parfait pour installer une bibliothèque. Ici, le duo d’architectes
+          formé par Dorothée Delaye et Daphné Desjeux a pris le parti du bicolore pour
+          habiller le pourtour de la cheminée. Les caissons bleu nuit sont ainsi surmontés
+          d’étagères sur-mesure soulignées de blanc pour un effet graphique. A noter,
+          le module haut qui ne monte pas jusqu’au plafond, pour laisser la vedette aux
+          moulures haussmanniennes de cet appartement de caractère.&nbsp;
+- code: monsieurbiz.image
+  data:
+      image:
+      alt:
+      title:
+      link:
+- code: app.caption
+  data:
+      caption: Projet d’inspiration non réalisé par Plum, signé Desjeux Delaye
+- code: monsieurbiz.h3
+  data:
+      content: White is white
+- code: monsieurbiz.text
+  data:
+      content: Pièce maîtresse de ce duplex, la bibliothèque imaginée par les architectes
+          de Space Factory s’habille de blanc pour s’effacer au profit des objets qu’elle
+          abrite. Simple et efficace, la structure sur-mesure réalisée par un menuisier
+          vient s’implanter sur un linéaire de caissons donc les portes s’étirent jusqu’au
+          sol. La bonne idée ? Prolonger ce module au-delà des étagères, pour faire de
+          la bibliothèque un fil rouge qui s’étend de l’escalier à la fenêtre à laquelle
+          elle donne une nouvelle dimension.&nbsp;
+- code: monsieurbiz.image
+  data:
+      image:
+      alt:
+      title:
+      link:
+- code: app.caption
+  data:
+      caption: Projet d’inspiration non réalisé par Plum, signé Space Factory
+- code: monsieurbiz.h3
+  data:
+      content: Bleu smoking
+- code: monsieurbiz.text
+  data:
+      content: Bleu nuit, bleu ardoise, gris profond… Aussi séduisantes qu’elles soient,
+          les couleurs sombres peuvent faire peur au moment de les imaginer sur un mur.
+          Sautez le pas! Intenses et profondes, elles changent radicalement l’allure d’une
+          pièce, sans la priver de lumière pour autant. Preuve en est avec cette bibliothèque
+          signée Décor Intérieur, qui déploie son bleu smoking de haut en bas du mur sur
+          toute sa largeur. Élégantes, les étagères se font ainsi vitrines pour les livres
+          et objets plus clairs. Les poignées en laiton, elles, soulignent les caissons
+          qui permettent de cacher le superflu.&nbsp;
+- code: monsieurbiz.image
+  data:
+      image:
+      alt:
+      title:
+      link:
+- code: app.caption
+  data:
+      caption: Projet d’inspiration non réalisé par Plum, signé Décor Intérieur
+- code: monsieurbiz.h2
+  data:
+      content: Découvrez les projets de nos clients
+- code: monsieurbiz.button
+  data:
+      label: Tous nos projets
+      link:
+      type: default
+- code: monsieurbiz.h2
+  data:
+      content: Ces sujets pourraient vous plaire.
+- code: monsieurbiz.button
+  data:
+      label: Découvrir notre journal
+      link: null
+      type: simple_link
+- code: app.pages_listing
+  data:
+      pages:
+          - article-1
+          - article-2
+          - article-3

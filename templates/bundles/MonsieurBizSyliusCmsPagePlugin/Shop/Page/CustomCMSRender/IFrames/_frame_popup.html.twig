@@ -1,0 +1,9 @@
+{# popup content to use in plum scanner 3rd step + before 48 hours quotation (from the shop nav menu) #}
+<div class="cms__i-frame-popup">
+    {% set meetingPopupPage = get_page_content(constant('App\\Entity\\Page\\Page::PAGE_TYPE_FRAME'), pageCode) %}
+    {% if meetingPopupPage.content is defined and meetingPopupPage.content is not empty %}
+        {{ (meetingPopupPage.content|format_cms_content_to_array)|monsieurbiz_richeditor_render_elements }}
+    {% else %}
+        <h3>{{ 'app.ui.cms.type_form.no_content'|trans }}</h3>
+    {% endif %}
+</div>

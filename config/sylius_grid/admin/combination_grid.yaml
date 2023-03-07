@@ -1,0 +1,67 @@
+sylius_grid:
+    grids:
+        app_admin_combination:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: '%app.model.combination.class%'
+            fields:
+                facadeType:
+                    type: string
+                    label: app.ui.tunnel_shopping.type_facade
+                design:
+                    type: string
+                    label: app.ui.tunnel_shopping.design
+                finish:
+                    type: string
+                    label: app.ui.tunnel_shopping.finish
+                color:
+                    type: string
+                    label: app.ui.tunnel_shopping.color
+                image:
+                    type: twig
+                    label: sylius.ui.image
+                    path: .
+                    options:
+                        template: "@SyliusAdmin/Combination/Grid/Field/_image.html.twig"
+                enabled:
+                    type: twig
+                    label: sylius.ui.enabled
+                    options:
+                        template: "@SyliusUi/Grid/Field/enabled.html.twig"
+
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+
+            filters:
+                facadeType:
+                    type: entity
+                    label: app.ui.tunnel_shopping.type_facade
+                    form_options:
+                        class: "%sylius.model.taxon.class%"
+                        query_builder: App\Grid\QueryBuilder\CombinationQueryBuilder::filterByFacade
+                design:
+                    type: entity
+                    label: app.ui.tunnel_shopping.design
+                    form_options:
+                        class: "%sylius.model.product_option_value.class%"
+                        query_builder: App\Grid\QueryBuilder\CombinationQueryBuilder::filterByDesignOptionCode
+                finish:
+                    type: entity
+                    label: app.ui.tunnel_shopping.finish
+                    form_options:
+                        class: "%sylius.model.product_option_value.class%"
+                        query_builder: App\Grid\QueryBuilder\CombinationQueryBuilder::filterByFinishOptionCode
+                color:
+                    type: entity
+                    label: app.ui.tunnel_shopping.color
+                    form_options:
+                        class: "%sylius.model.product_option_value.class%"
+                        query_builder: App\Grid\QueryBuilder\CombinationQueryBuilder::filterByColorOptionCode

@@ -1,0 +1,24 @@
+<div class="row">
+    {% for step in element.imagesSteps %}
+        <div class="cms-steps-item @lg:column-4 u-margin-b-5 @lg:u-margin-b-0">
+            <div class="bg-beige">
+                {% if step.imageStep is defined and step.imageStep is not empty %}
+                    <div class="cms-steps-item__img">
+                        <img class="u-cover" src="{{ step.imageStep|imagine_filter('app_cms_steps_thumbnail') }}" srcset="{{ step.imageStep|imagine_filter('app_cms_steps_thumbnail_retina') }} 2x" alt=""/>
+                        {% if element.type is defined and element.type == constant('App\\Provider\\CMS\\ImagesSteps\\ImagesStepsProvider::IMAGES_STEPS_TYPE_INDEXED') %}
+                            <div class="cms-steps-item__number @lg:u-cross-centered-row u-hidden"> {{ loop.index }}</div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                <div class="u-margin-t-2 u-padding-b-3 @lg:u-margin-t-3 cms-steps-item__content u-padding-l-4 u-padding-r-4">
+                    {% if step.titleStep is not empty %}
+                        <div class="cms-steps-item__title t-header-medium">{{ step.titleStep }}</div>
+                    {% endif %}
+                    <div class="cms-steps-item__text t-base-small t-align-center u-centered-on-x rich-editor__text">
+                        {{ step.descriptionStep|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

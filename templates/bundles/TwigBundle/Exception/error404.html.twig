@@ -1,0 +1,21 @@
+{% extends '@SyliusShop/error404.html.twig' %}
+{% block content %}
+    {% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+    <div class="errors">
+        <div class="errors__container container">
+            <div class="flush-row">
+                <div class="u-centered-on-x u-cross-centered-col">
+                    <div class="u-flex u-center-on-cross md:u-margin-b-2 @md:u-margin-b-7">
+                        <h2 class="t-header-xxlarge">
+                            {{ "app.error_page.oups" |trans }}
+                        </h2>
+                    </div>
+                    <div class="errors__desc t-base-large">{{ "app.error_page.text"|trans }}</div>
+                    <div class="u-flex u-center-on-cross md:u-margin-b-2 u-margin-t-7">
+                        <a href="{{ path('sylius_shop_homepage') }}" class="big-honking-button">{{ "app.error_page.btn_back"|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

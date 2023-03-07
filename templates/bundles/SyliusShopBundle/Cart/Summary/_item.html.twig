@@ -1,0 +1,22 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set product_variant = item.variant %}
+
+<tr {{ sylius_test_html_attribute('cart-product-row', item.productName) }}>
+    <td class="u-v-align-middle @sm:u-padding-r-4" {{ sylius_test_html_attribute('cart-item', loop_index|default(null) ) }}>
+        {% include '@SyliusShop/Product/_info.html.twig' with { 'variant': product_variant } %}
+    </td>
+    <td class="qty u-v-align-middle">
+        {{ form.quantity.vars.value }}
+    </td>
+    <td class="price u-v-align-middle @sm:u-padding-l-2">
+        <span class="sylius-total" {{ sylius_test_html_attribute('cart-product-subtotal') }}>
+            {%- if item.product.isType(constant('App\\Entity\\Taxonomy\\Taxon::TAXON_SAMPLE_CODE'))
+                and (cart.promotionCoupon and cart.promotionCoupon.isB2bProgramPromotion)  -%}
+                {{ 'app.ui.cart.free'|trans }}
+            {%- else -%}
+                {{ money.calculateTotal(item) }}
+            {%- endif -%}
+        </span>
+    </td>
+</tr>

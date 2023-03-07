@@ -1,0 +1,55 @@
+{% set isPlumScanner = 'app_plum_scanner_' in app.request.attributes.get('_route') %}
+{% set nextRoute = isPlumScanner ? 'app_plum_scanner_get_color_combination' : 'facade_get_color_combination' %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="details-choices-color @lg:u-margin-t-3">
+    <div class="details-choices-finish__title t-label-col u-margin-b-2">{{ "app.ui.tunnel_shopping.color"|trans }}</div>
+    <div class="details-colors-list u-flex u-flex-wrapping u-relative
+         {% if finish is not defined %}
+            select-finish-first
+         {% endif %}
+         {% if finish.code is defined and finish.code == constant('App\\Entity\\Product\\ProductOptionValue::FINISH_WALNUT_NATURAL_CODE') or finish.code is defined and finish.code == constant('App\\Entity\\Product\\ProductOptionValue::FINISH_OAK_NATURAL_CODE') %}
+            no-available-color
+         {% endif %}
+        ">
+        <div class="tooltip-choice u-absolute u-fullwidth u-fullheight t-align-center">
+            <div class="u-padding-r-1 u-padding-l-1 t-base-small">
+                <svg class="o-icon-16 u-margin-r-1 u-v-align-sub"><use xlink:href="{{ iconLibUrl }}#SVG-icon-infos"/></svg>
+                {% if finish is not defined %}
+                    {{ 'app.ui.tunnel_shopping.tooltip_choice'|trans }}
+                {% endif %}
+                {% if finish.code is defined and finish.code == constant('App\\Entity\\Product\\ProductOptionValue::FINISH_WALNUT_NATURAL_CODE') or finish.code is defined and finish.code == constant('App\\Entity\\Product\\ProductOptionValue::FINISH_OAK_NATURAL_CODE') %}
+                    {{ 'app.ui.tunnel_shopping.tooltip_no_color'|trans }}
+                {% endif %}
+            </div>
+        </div>
+        {% for availableColor in allAvailableColors %}
+            <div {% set class="details-colors-item u-cross-centered-row u-start-on-main flush-column-2 @lg:flush-column-4 u-margin-b-2 @lg:u-margin-b-3 @lg:u-padding-r-2 facade" %}
+                    {% if color is defined and color.code == availableColor.code %}
+                        {% set class = class ~ " active" %}
+                    {% endif %}
+                    {% if finish is defined and availableColor in colors %}
+                        data-url="{{ path(nextRoute, {
+                            'facadeTypeCode': facadeType.code,
+                            'designCode': design.code,
+                            'finishCode': finish.code,
+                            'colorCode': availableColor.code
+                        }) }}"
+                        data-breadcrumb-type="color"
+                        data-breadcrumb-value="{{ availableColor }}"
+                    {% endif %}
+                    {% if finish is not defined or availableColor not in colors %}
+                        disabled
+                        {% set class = class ~ " disabled" %}
+                    {% endif %}
+                    class="{{ class }}">
+                    {% set colorImage = availableColor|filter_images(constant('App\\Entity\\Product\\ProductOptionValueImage::PRODUCT_OPTION_VALUE_IMAGE_TYPE_DEFAULT')) %}
+                    {% if colorImage.path|default(null) is not null %}
+                        <span class="details-colors-item__pastille" style="background-image: url({{ colorImage.path|imagine_filter('app_tunnel_finish_color_chip_tumbnail') }});"></span>
+                    {% endif %}
+                    <div class="details-colors-item__text t-base-small @lg:u-margin-l-2">{{ availableColor }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+

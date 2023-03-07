@@ -1,0 +1,32 @@
+<div class="hero-article {{ element.bg_color }}">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="column-fill-space">
+                <img src="{{ element.image | raw }}" width="100%"
+                     alt="{{ element.image_alt | raw }}"
+                     title="{{ element.image_title | raw }}">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row u-padding-b-3 u-padding-t-3  @lg:u-padding-b-7 @lg:u-padding-t-7">
+            <div class="column-fill-space">
+                <div class="t-header-xsmall c-vert-de-gris">
+                    {{ ('app.cms_page.media_article.category.' ~ page.category ~ '.title')|trans }}
+                </div>
+                <h1 class="t-header-xlarge u-margin-b-2 u-margin-t-2">{{ element.title | raw }}</h1>
+                <p class="t-base-medium">
+                    {{ element.description | raw }}
+                </p>
+                {% if element.link_label and element.link_url %}
+                    <a class="button u-margin-t-4"
+                        {% if element.link_target %} target="{{ element.link_target }}"{% endif %}
+                       href="{{ element.link_url | raw }}">
+                        {{ element.link_label | raw }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+

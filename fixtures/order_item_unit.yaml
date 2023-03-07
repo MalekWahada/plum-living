@@ -1,0 +1,6 @@
+App\Entity\Order\OrderItemUnit:
+    order_item_unit_{1..25}:
+        __construct: ['@order_item_<numberBetween(1, 25)>']
+        shipment: '@shipment_<numberBetween(1, 25)>'
+        created_at: <dateTime()>
+        updated_at: <dateTime()>

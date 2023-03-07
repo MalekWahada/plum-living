@@ -1,0 +1,9 @@
+{% if data is not empty %}
+    {% if optionsValues is not empty %}
+        <p class="cms-palette__subtitle t-header-xsmall">{{ data.title }}</p>
+        <p class="cms-palette__title t-header-large color-combination-name">{{ optionsValues[0].value }}</p>
+        <p class="cms-palette__desc color-combination-desc t-base-small">
+            {{ optionsValues[0].description }}
+        </p>
+    {% endif %}
+{% endif %}

@@ -1,0 +1,8 @@
+App\Entity\Addressing\Country:
+    country_FR:
+        code: 'FR'
+        enabled: true
+    country_DE:
+        code: 'DE'
+        enabled: true
+    

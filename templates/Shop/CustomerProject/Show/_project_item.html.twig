@@ -1,0 +1,259 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+{% use 'Shop/Form/_field_commons.html.twig' %}
+{% set projectItem = item.vars.data %}
+
+{% set itemAttr = {
+    'data-taxons': projectItem.variantsTaxons|map(t => t.code)|join(',')
+} %}
+
+{% if projectItem.hasVariantsWithTaxonCode(constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_METOD_DRAWER_CODE')) %}
+    {% set itemIcon = 'tiroir' %}
+{% elseif projectItem.hasVariantsWithTaxonCode(constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_METOD_DOOR_CODE')) or
+    projectItem.hasVariantsWithTaxonCode(constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_PAX_DOOR_CODE')) %}
+    {% set itemIcon = 'door' %}
+{% elseif projectItem.hasVariantsWithTaxonCode(constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_CODE')) %}
+    {% set itemIcon = 'panneau' %}
+{% elseif projectItem.hasVariantsWithTaxonCode(constant('App\\Entity\\Taxonomy\\Taxon::TAXON_PAINT_CODE')) %}
+    {% set itemIcon = 'paint' %}
+{% elseif projectItem.hasVariantsWithTaxonCode(constant('App\\Entity\\Taxonomy\\Taxon::TAXON_TAP_CODE')) %}
+    {% set itemIcon = 'tap' %}
+{% else %}
+    {% set itemIcon = 'accessoire' %}
+{% endif %}
+
+<div class="ps-project-item" {% if item.vars.value.id is null %} data-new-item {% endif %} {% with {'attributes': itemAttr|merge(item.vars.attr)} %}{{ block('field_attributes') }}{% endwith %}>
+    <input type="hidden" class="ps-project-item__id" value="{{ item.vars.value.id }}">
+
+    <input
+        type="hidden"
+        id="{{ item.groupId.vars.id }}"
+        name="{{ item.groupId.vars.full_name }}"
+        value="{{ item.groupId.vars.value }}"
+        class="ps-project-item__group_id">
+
+    <div class="ps-project-item__header">
+        <div class="flush-row ps-project-item__invalid-message">
+            <div class="t-base-small u-margin-b-2 c-terra">
+                <svg class="o-icon-24"><use xlink:href="{{ iconLibUrl }}#SVG-icon-warning"/></svg>
+                <span>{{ 'app.ui.plum_scanner.step_three.checkout.warning_item'|trans }}</span>
+            </div>
+        </div>
+        <div class="flush-row u-center-on-cross u-padding-b-3">
+            {% set cabinetRefExists = item.vars.value.cabinetReference is defined and item.vars.value.cabinetReference is not empty %}
+
+            <div class="flush-column-10 @md:flush-column-fill-space u-margin-b-auto t-label-medium">
+                <div class="row u-flex u-center-on-cross">
+                    <div class="column-1">
+                        <svg class="o-icon-24 u-margin-r-2">
+                            <use xlink:href="{{ iconLibUrl }}#SVG-icon-{{ itemIcon }}" class="ps-project-item__icon-link"/>
+                        </svg>
+                    </div>
+                    <div class="column-10">
+                        <h3 class="t-label-medium">
+                            {% if item.vars.value.plumLabel is not null %}
+                                {{ item.vars.value.plumLabel }}
+                            {% else %}
+                                {{ item.vars.value.variant is defined and item.vars.value.variant is not null ? item.vars.value.variant.productVariant.product.name : '' }}
+                            {% endif %}
+                        </h3>
+                        {% if cabinetRefExists %}
+                            <p class="ps-project-item__name flush-column-fit-content t-label-small c-grey-mid">
+                                {{ item.vars.value.cabinetReference }}
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="flush-column u-margin-b-2 @md:u-hidden"></div>
+
+            {% include 'Shop/Form/_number_field.html.twig' with {
+                'field': item.quantity,
+                'attributes': {
+                    'class': 'ps-project-item__quantity-field number-field--light flush-column-fit-content @md:u-margin-l-3'
+                },
+                'widget_attributes': {
+                    'class': 'ps-project-item__quantity'
+                },
+                'default_value': 1
+            } %}
+
+            <div class="ps-project-item__price flush-column-fill-space @md:flush-column-fit-content u-flex u-end-on-main u-margin-l-3 t-align-right">
+                <div>
+                    {% set unitPrice = item.vars.value.variant is defined and item.vars.value.variant is not null ? item.vars.value.variant.productVariant|calculate_price_with_tax : 0 %}
+                    <div class="ps-project-item__unit-price-container {% if unitPrice == 0 %}c-grey-light{% endif %} t-label-small">
+                        <span class="ps-project-item__unit-price">{{ money.convertAndFormat(unitPrice, sylius.currencyCode) }}</span>
+                        {{ 'app.ui.plum_scanner.step_three.modulate_articles.unit_price'|trans }}
+                    </div>
+                    <div class="ps-project-item__total-price-container {% if unitPrice == 0 or (item.vars.value.variant is defined and item.vars.value.variant is not null and item.vars.value.variant.quantity == 1) %}u-hidden{% endif %} t-label-small">
+                        <span class="ps-project-item__total-price"
+                         data-unit-price="{{ unitPrice }}"
+                         data-currency-code="{{ sylius.currencyCode }}">
+                            {{ money.format(unitPrice * (item.vars.value.variant is defined and item.vars.value.variant is not null ? item.vars.value.variant.quantity : 1), sylius.currencyCode) }}</span>
+                        {{ 'app.ui.plum_scanner.step_three.modulate_articles.total_price'|trans }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ps-project-item__options-container{{ item.validationError.vars.errors is empty and not projectItem.hasOptionsWithMultipleValues ? ' u-hidden' : '' }}">
+        <div class="row u-padding-b-3">
+            {% if projectItem.hasAnyVariantsWithOption %}
+                {% if projectItem.hasVariantsWithDesignOption %}
+                    <div class="column-fill-space u-margin-b-3 @md:u-margin-b-auto u-padding-r-1">
+                        {% include 'Shop/Form/_select_field.html.twig' with {
+                            'field': item.design,
+                            'attributes': {
+                                'class': 'ps-project-item__design-field select-field--alt t-base-small ' ~ (item.design.vars.valid == false ? 'field--warning'),
+                                'labelClass': 't-label-col',
+                                'data-empty-label': 'app.form.select_field.placeholder'|trans
+                            },
+                            'widget_attributes': {
+                                'class': 'ps-project-item__design',
+                                'data-option-type': 'design'
+                            }
+                        } %}
+                    </div>
+                {% endif %}
+
+                {% if projectItem.hasVariantsWithFinishOption %}
+                    <div class="column-fill-space u-margin-b-3 @md:u-margin-b-auto u-padding-r-1 u-padding-l-1">
+                        {% set isDisabled =
+                            (projectItem.hasVariantsWithDesignOption and item.design.vars.valid == false)
+                            or item.finish.vars.valid == false
+                        %}
+                        {% include 'Shop/Form/_color_select_field.html.twig' with {
+                            'field': item.finish,
+                            'showLabel': true,
+                            'isDisabled': isDisabled,
+                            'attributes': {
+                                'class': 'ps-project-item__finish-field ' ~ (item.finish.vars.valid == false ? 'field--warning'),
+                                'labelClass': 't-label-col'
+                            },
+                            'widget_attributes': {
+                                'class': 'ps-project-item__finish',
+                                'data-option-type': 'finish'
+                            }
+                        } %}
+                    </div>
+                {% endif %}
+
+                {% if projectItem.hasVariantsWithColorOption %}
+                    <div class="column @md:column-fill-space u-padding-l-1">
+                        {% set isDisabled =
+                            (projectItem.hasVariantsWithDesignOption and item.design.vars.valid == false)
+                            or (projectItem.hasVariantsWithFinishOption and item.finish.vars.valid == false)
+                            or item.color.vars.valid == false
+                        %}
+                        {% include 'Shop/Form/_color_select_field.html.twig' with {
+                            'field': item.color,
+                            'showLabel': true,
+                            'isDisabled': isDisabled,
+                            'attributes': {
+                                'class': 'ps-project-item__color-field ',
+                                'labelClass': 't-label-col'
+                            },
+                            'widget_attributes': {
+                                'class': 'ps-project-item__color',
+                                'data-option-type': 'color'
+                            }
+                        } %}
+                    </div>
+                {% endif %}
+
+                {% if projectItem.hasVariantsWithHandleFinishOption %}
+                    <div class="column @md:column-fill-space">
+                        {% include 'Shop/Form/_select_field.html.twig' with {
+                            'field': item.handleFinish,
+                            'attributes': {
+                                'class': 'ps-project-item__finish_handle-field select-field--alt t-base-small ' ~ (item.handleFinish.vars.valid == false ? 'field--warning'),
+                                'labelClass': 't-label-col',
+                                'data-empty-label': 'app.form.select_field.placeholder'|trans
+                            },
+                            'widget_attributes': {
+                                'class': 'ps-project-item__finish_handle',
+                                'data-option-type': 'finish_handle'
+                            }
+                        } %}
+                    </div>
+                {% endif %}
+
+                {% if projectItem.hasVariantsWithTapFinishOption %}
+                    <div class="column @md:column-fill-space">
+                        {% include 'Shop/Form/_select_field.html.twig' with {
+                            'field': item.tapFinish,
+                            'attributes': {
+                                'class': 'ps-project-item__finish_tap-field select-field--alt t-base-small ' ~ (item.tapFinish.vars.valid == false ? 'field--warning'),
+                                'labelClass': 't-label-col',
+                                'data-empty-label': 'app.form.select_field.placeholder'|trans
+                            },
+                            'widget_attributes': {
+                                'class': 'ps-project-item__finish_tap',
+                                'data-option-type': 'finish_tap'
+                            }
+                        } %}
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="column-fill-space u-margin-b-3 @md:u-margin-b-auto">
+                    {% include 'Shop/Form/_select_field.html.twig' with {
+                        'field': item.variant,
+                        'attributes': {
+                            'class': 'ps-project-item__variant-field select-field--alt t-base-small ' ~ (item.variant.vars.valid == false ? 'field--warning'),
+                            'labelClass': 't-label-col',
+                            'data-empty-label': 'app.form.select_field.placeholder'|trans
+                        },
+                        'widget_attributes': {
+                            'class': 'ps-project-item__variant',
+                            'data-option-type': 'variant'
+                        }
+                    } %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column-fill-space">
+            <div class="ps-project-item__comment-container">
+                {% include 'Shop/Form/_textarea_field.html.twig' with {
+                    'field': item.comment,
+                    'label': item.comment.vars.attr.placeholder|trans,
+                    'autogrow': true,
+                    'attributes': {
+                        'class': 'ps-project-item__comment-field' ~ (item.comment.vars.value is empty ? ' u-invisible' : '')
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-project-item__comment t-label-small',
+                        'placeholder': '',
+                        'maxlength': 255
+                    }
+                } %}
+                <button type="button" class="ps-project-item__comment-button small-link-button c-grey-mid hover:c-near-black {{ (item.comment.vars.value is not empty ? ' u-hidden' : '') }}">
+                    {{ item.comment.vars.attr.placeholder|trans }}
+                </button>
+            </div>
+        </div>
+        <div class="column-fit-content u-flex u-center-on-cross">
+            <button type="button" class="ps-project-item__remove-button icon-button no-bg c-grey-mid hover:c-near-black">
+                <svg class="o-icon-20">
+                    <use xlink:href="{{ iconLibUrl }}#SVG-icon-trash"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    {% if item.validationError.vars.errors is not empty %}
+        <div class="row">
+            <div class="column-fill-space">
+                <label class="field field--invalid field--has-initial-error">
+                    <div class="field__message field__message--visible t-base-small">
+                        {% for error in item.validationError.vars.errors %}
+                            <p>{{ error.message }}</p>
+                        {% endfor %}
+                    </div>
+                </label>
+            </div>
+        </div>
+    {% endif %}
+</div>

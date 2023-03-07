@@ -1,0 +1,6 @@
+{% set delivery_delays = get_delivery_delays_dates(cart) %}
+
+{{ 'app.ui.delivery.delivery_delais_message'| trans({
+    '%min_date%': delivery_delays.min|date("d/m"),
+    '%max_date%':  delivery_delays.max|date("d/m")
+}) }}

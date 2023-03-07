@@ -1,0 +1,38 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% if element.cards is not empty %}
+    <div class="flush-container container--compressed">
+
+        {% for card in element.cards %}
+            <div class="help-card cms__content__default u-relative u-padding-3 u-padding-t-5 @lg:u-padding-6 {% if loop.last == false %} u-margin-b-10 @lg:u-margin-b-15 {% endif %} u-margin-r-3 @md:u-margin-r-0 bg-true-white t-align-center">
+                {% if card.image is defined and card.image is not empty %}
+                    <div class="help-card__medaillon u-absolute">
+                        <img width="120" height="120" class="u-image u-width-100% u-height-100%" src="{{ card.image.image|imagine_filter('app_cms_image') }}"
+                             alt="{{ card.image.alt|default('') }}" title="{{ card.image.title|default('') }}"/>
+                        {% if card.withIcon %}
+                            <div class="help-card__icon u-absolute bg-near-black c-true-white">
+                                <svg class="o-icon-20 u-block"><use xlink:href="{{ iconLibUrl }}#SVG-icon-phone"/></svg>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                <div class="cms__text cms-body-alt u-padding-0 u-margin-t-0 t-base-medium t-align-center">
+                    {{ card.content | raw }}
+                </div>
+
+                {% if card.link is not null and card.linkLabel is not null %}
+                    {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ButtonLink/classic_button_link.html.twig' with {
+                        'element': {
+                            'label': card.linkLabel,
+                            'link': card.link,
+                            'classList': 't-sailec t-normal',
+                            'isDark': true
+                        }
+                    } %}
+                {% endif %}
+            </div>
+        {% endfor %}
+
+    </div>
+{% endif %}

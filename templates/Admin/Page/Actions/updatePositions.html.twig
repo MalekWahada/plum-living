@@ -1,0 +1,8 @@
+<form id="app-pages-positions" action="{{ path('app_admin_update_pages_positions') }}" method="post">
+    <input type="hidden" name="_method" value="PUT" />
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('update-pages-positions') }}" />
+    <button class="ui labeled loadable icon button sylius-save-position" type="submit">
+        <i class="icon checkmark"></i>
+        {{ 'sylius.ui.save_positions'|trans }}
+    </button>
+</form>

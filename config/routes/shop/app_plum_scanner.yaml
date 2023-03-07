@@ -1,0 +1,65 @@
+###
+### All routes are prefixed by /plum-scanner
+###
+
+app_plum_scanner_get_designs:
+    path: /quote/options
+    methods: [GET]
+    controller: App\Controller\PlumScanner\ScannerController::getFacadeOption
+    defaults:
+        _template: 'Shop/Common/Partial/_design_list.html.twig'
+
+app_plum_scanner_get_finishes:
+    path: /quote/options/{designCode}
+    methods: [GET]
+    controller: App\Controller\PlumScanner\ScannerController::getFacadeOption
+    defaults:
+        _template: 'Shop/Common/Partial/_finish_list.html.twig'
+
+app_plum_scanner_get_colors:
+    path: /quote/options/{designCode}/{finishCode}
+    methods: [GET]
+    controller: App\Controller\PlumScanner\ScannerController::getFacadeOption
+    defaults:
+        _template: 'Shop/Common/Partial/_finish_list.html.twig'
+
+app_plum_scanner_get_color_combination:
+    path: /quote/options/{designCode}/{finishCode}/{colorCode}
+    methods: [GET]
+    controller:  App\Controller\PlumScanner\ScannerController::getFacadeOption
+    defaults:
+        _template: 'Shop/Common/Partial/_finish_list.html.twig'
+
+app_plum_scanner_login:
+    path: /quote/login/{designCode}/{finishCode}/{colorCode}
+    methods: [ GET, POST ]
+    defaults:
+        _controller: sylius.controller.security:loginAction
+        _sylius:
+            template: 'Shop/PlumScanner/Quote/StepTwo/login.html.twig'
+            logged_in_route:
+                path: app_plum_scanner_share_plan
+                parameters:
+                    - designCode
+                    - finishCode
+                    - colorCode
+
+app_plum_scanner_share_plan:
+    path: /quote/share-plan/{designCode}/{finishCode}/{colorCode}
+    methods: [GET]
+    controller: App\Controller\PlumScanner\ScannerController::sharePlan
+
+app_plum_scanner_project_status:
+    path: /quote/project-status/{token}
+    methods: [GET]
+    controller: App\Controller\PlumScanner\ScannerController::projectStatus
+
+app_plum_scanner_project_scan_timeout:
+    path: /quote/project-scan-timeout/{token}
+    methods: [GET]
+    controller: App\Controller\PlumScanner\ScannerController::projectScanTimeout
+
+app_plum_scanner_share_plan_via_link:
+    path: /quote/share-plan-via-link/{designCode}/{finishCode}/{colorCode}
+    methods: [ GET, POST ]
+    controller: App\Controller\PlumScanner\ScannerController::sharePlanViaLink

@@ -1,0 +1,9 @@
+{% if variant.product.hasOptions() %}
+    <p class="c-grey-light u-h-tail-spaced-1 t-base-xsmall">
+        {% for option in variant.optionValues %}
+            {% if option.code != constant('App\\Entity\\Product\\ProductOptionValue::DESIGN_UNIQUE_CODE') %}
+                <span>{{ option.value }}</span>
+            {% endif %}
+        {% endfor %}
+    </p>
+{% endif %}

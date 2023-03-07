@@ -1,0 +1,25 @@
+<div class="faq-item u-margin-t-2 u-margin-b-3 @lg:column-6">
+    <div class="faq__category u-margin-b-2 u-padding-b-2" style="border-bottom: 1px solid">
+        <h2 class="t-header-medium">{{ category.name }}</h2>
+    </div>
+    <div class="faq-item__accordion ui accordion">
+        {% for section in category.sections %}
+            {% if section.articles is defined %}
+                <div class="faq__subcategory title">
+                    <svg class="o-icon-16 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                    {{ section.name }}
+                </div>
+                <div class="content u-y-scrollable">
+                    {% for article in section.articles %}
+                        <div class="transition hidden @lg:u-margin-l-5 u-margin-b-2">
+                            <a class="link-button link-button--inline" href="{{ path('app_faq_article', {articleId: article.id}) }}">
+                                {{ article.title }}
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+

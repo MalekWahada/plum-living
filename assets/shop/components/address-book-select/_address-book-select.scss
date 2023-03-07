@@ -1,0 +1,26 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+
+
+
+.address-book-select {
+
+}
+
+
+
+@include up(small) {
+  .address-book-select {
+    .field__label {
+      justify-content: center;
+      left: rem(32);
+      right: rem(32);
+      transform-origin: center;
+    }
+
+    .field__widget {
+      justify-content: center;
+      padding-left: rem(32);
+    }
+  }
+}

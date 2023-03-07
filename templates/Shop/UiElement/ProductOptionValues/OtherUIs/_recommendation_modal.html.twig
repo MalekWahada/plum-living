@@ -1,0 +1,11 @@
+{% if combination is not empty %}
+    <div id="{{ combination.id }}">
+        <div class="content">
+            {% if combination.recommendation is defined and combination.recommendation is not empty %}
+                {{ combination.recommendation|monsieurbiz_richeditor_render_field }}
+            {% else %}
+                {{ 'app.ui.recommendation.no_content'|trans }}
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

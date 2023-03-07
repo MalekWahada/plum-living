@@ -1,0 +1,19 @@
+{% set articleContent = article.content|format_cms_content_to_array %}
+
+<div class="cms__item cms__item--article cms-slider__item swiper-slide">
+    <a class="u-block u-v-spaced-2 t-link-wrapper" href={{ path('monsieurbiz_cms_inspiration_page_show', {'slug': article.slug}) }}>
+        <div class="cms__img u-relative">
+            {% if article.image.path is defined and article.image.path is not empty %}
+                <img class="slide-cover-image u-cover" src="{{ article.image.path|imagine_filter('app_cms_big_thumbnail') }}" srcset="{{ article.image.path|imagine_filter('app_cms_big_thumbnail_retina') }} 2x" alt=""/>
+            {% endif %}
+        </div>
+        <div class="cms-slider__content">
+            <div class="content-left">
+                <div class="cms__category-tag u-margin-b-1">
+                    {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_CHIP')) | monsieurbiz_richeditor_render_element }}
+                </div>
+                {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_MAIN_TITLE')) | monsieurbiz_richeditor_render_element }}
+            </div>
+        </div>
+    </a>
+</div>

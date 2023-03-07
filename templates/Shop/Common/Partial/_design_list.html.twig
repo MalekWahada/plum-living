@@ -1,0 +1,69 @@
+{% set isPlumScanner = 'app_plum_scanner_' in app.request.attributes.get('_route') %}
+{% set nextRoute = isPlumScanner ? 'app_plum_scanner_get_finishes' : 'facade_get_finishes' %}
+{% set nextRouteCannage = isPlumScanner ? 'app_plum_scanner_get_colors' : 'facade_get_colors' %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="tunnel-first">
+    <div class="tunnel-first__container">
+        <div class="row">
+            {% for designCombination in designCombinations %}
+
+                <div class="facade column @md:column-6 u-flex-row u-margin-b-5 @lg:u-margin-b-10 link-button-wrapper"
+                    {% if 'cannage' in designCombination.design.code %}
+                        {% set finish = 'finish_chene_peint' %}
+                        data-url="{{ path(nextRouteCannage, {
+                            'facadeTypeCode': facadeType.code,
+                            'designCode': designCombination.design.code,
+                            'finishCode': finish
+                        }) }}"
+                    {% else %}
+                        data-url="{{ path(nextRoute, {
+                            'facadeTypeCode': facadeType.code,
+                            'designCode': designCombination.design.code
+                        }) }}"
+                    {% endif %}
+                     data-breadcrumb-type="design"
+                     data-breadcrumb-value="{{ designCombination.design.translation.value }}"
+                >
+
+                    <div class="flush-column-fill-space">
+                        <h5 class="t-header-medium u-margin-b-5">{{ designCombination.design.translation.value }}</h5>
+                        <div class="small-link-button-proxy">
+                            <svg class="o-icon-16 u-margin-r-1 fix-arrow-size"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                            {{ "app.ui.tunnel_shopping.link_design"|trans }}
+                        </div>
+                    </div>
+                    <div class="flush-column-8">
+
+                        {% if designCombination.image.path|default(null) is not null %}
+                            <img class="u-block u-cover u-fullwidth"
+                                 src="{{ designCombination.image.path|imagine_filter('app_tunnel_design_thumbnail') }}"
+                                 srcset="{{ designCombination.image.path|imagine_filter('app_tunnel_design_thumbnail_retina') }} 2x"
+                                 alt="{{ designCombination.image.type }}"
+                            />
+                        {% else %}
+                            {% set defaultImage = designCombination.design|filter_images(constant('App\\Entity\\Product\\ProductOptionValueImage::PRODUCT_OPTION_VALUE_IMAGE_TYPE_DEFAULT')) %}
+                            {% if defaultImage.path|default(null) is not null %}
+                                <img class="u-block u-cover u-fullwidth"
+                                     src="{{ defaultImage.path|imagine_filter('app_tunnel_design_thumbnail') }}"
+                                     srcset="{{ defaultImage.path|imagine_filter('app_tunnel_design_thumbnail_retina') }} 2x"
+                                     alt="{{ defaultImage.type }}"
+                                />
+                            {% endif %}
+                        {% endif %}
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% if not isPlumScanner %}
+            <div class="box u-margin-t-8 @md:u-margin-t-3 u-centered-on-x">
+                <div class="cms__text">
+                    <div class="t-base-small">{{ "app.ui.tunnel_shopping.box_text"|trans }}</div>
+                </div>
+                <a href="{{ path('listing_sample_facade') }}" class="link-button">{{ "app.ui.tunnel_shopping.box_link"|trans }}</a>
+                <img alt="" src="{{ asset('build/shop/images/box-img.png', 'shop')|imagine_filter('app_box_image') }}" srcset="{{ asset('build/shop/images/box-img.png', 'shop')|imagine_filter('app_box_image_retina') }} 2x">
+            </div>
+        {% endif %}
+    </div>
+</div>

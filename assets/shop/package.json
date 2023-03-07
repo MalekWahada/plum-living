@@ -1,0 +1,32 @@
+{
+  "name": "@plum/shop",
+  "version": "1.0.0",
+  "description": "Plum Shop",
+  "main": "shop.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "author": "Plum-Living.com",
+  "license": "proprietary",
+  "dependencies": {
+    "@plum/fonts": "link:../_fonts",
+    "@stripe/stripe-js": "^1.21.1",
+    "axios": "^0.24.0",
+    "babel-polyfill": "^6.26.0",
+    "chart.js": "^2.9.3",
+    "currency-symbol-map": "^4.0.4",
+    "jquery": "^3.5.0",
+    "jquery.dirtyforms": "^2.0.0",
+    "js-cookie": "^2.2.1",
+    "lightbox2": "^2.9.0",
+    "normalize.css": "^8.0.1",
+    "semantic-ui-css": "^2.2.0",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^6.3.5",
+    "underscore": "^1.12.0"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.8"
+  }
+}

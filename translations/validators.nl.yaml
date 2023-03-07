@@ -1,0 +1,50 @@
+app:
+    b2b_program:
+        cannot_use_for_b2c_type: 'Terra Club kan niet worden gebruikt voor een %customerType% -gebruiker.'
+    channel:
+        default_country:
+            enabled: 'Het standaard land moet aanwezig zijn in de lijst van geactiveerde landen.'
+            not_blank: 'Voer het standaardland van het kanaal in.'
+        unique_countries: 'De volgende landen worden reeds door een ander kanaal gebruikt: %countries%.'
+        unique_default_country: 'Het standaard land wordt al gebruikt door een ander kanaal.'
+    cms_content: 'Respecteer alstublieft het skelet.'
+    combination:
+        already_use: 'Deze combinatie bestaat al.'
+        design_not_null: 'Kies het ontwerp.'
+        finish_not_null: 'Kies de afwerking.'
+        image_not_null: 'De afbeelding is vereist.'
+    constraints:
+        project_plan: 'Upload een bestand in PDF-formaat'
+    customer_project:
+        chosen_variant:
+            error_occurred: 'Er is een fout opgetreden met dit item.'
+            not_set: 'Let op, configureer dit artikel om uw project op te slaan.'
+    form:
+        address:
+            city:
+                no_digit: 'De tekst mag geen cijfers bevatten.'
+            postCode:
+                format: 'Het postcodeformaat komt niet overeen met het geselecteerde land.'
+    page:
+        code:
+            not_blank: 'Geef alstublieft een code aan de pagina'
+    product:
+        groups:
+            consistency_error: 'De geselecteerde groepen hebben niet dezelfde opties of taxa gemeen als dit product.'
+    product_group:
+        consistency_error: 'De geselecteerde producten hebben niet dezelfde opties of taxa gemeen.'
+    product_image:
+        position:
+            not_blank: 'Kies een bestelling'
+    product_option_value:
+        position:
+            not_blank: 'Kies een bestelling'
+    promotion_coupon:
+        code:
+            regex: 'De actiecode mag alleen bestaan uit letters, cijfers, streepjes, onderstrepingstekens en de speciale tekens @ + #! ? & /'
+    translation:
+        empty_translation_bag: 'Er is geen vertaling gevonden.'
+        missing_page_translation_for_locale_key: 'Een of meer sleutels zijn niet vertaald voor taal %locale% : %details%'
+        missing_page_translation_key: 'Een of meer vertaalsleutels ontbreken: %details%'
+        translator_client_locale_not_found: 'De taal %locale% is niet geconfigureerd in Lokalize of er is geen sleutel gecontroleerd voor deze taal.'
+        validation_failed_on_field: 'Validatie mislukt op veld "%field%": %error%'

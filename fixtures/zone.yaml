@@ -1,0 +1,26 @@
+App\Entity\Addressing\Zone:
+    zone_france:
+        code: 'FR'
+        name: 'France'
+        type: 'country'
+        scope: 'all'
+    zone_idf:
+        code: 'idf_shipping'
+        name: 'Ile de France'
+        type: 'province'
+        scope: 'shipping'
+    zone_not_idf:
+        code: 'not_idf_shipping'
+        name: 'France hors Ile de France et hors Corse'
+        type: 'province'
+        scope: 'shipping'
+    zone_corse:
+        code: 'corse_shipping'
+        name: 'Corse'
+        type: 'province'
+        scope: 'shipping'
+    zone_benelux:
+        code: 'BENELUX'
+        name: 'BENELUX - ALLEMAGNE - ESPAGNE - PORTUGAL - ITALIE'
+        type: 'province'
+        scope: 'shipping'

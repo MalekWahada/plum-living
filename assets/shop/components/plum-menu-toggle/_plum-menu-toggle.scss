@@ -1,0 +1,201 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+@use '../../components/plum-header/plum-header-config' as header;
+
+
+/*
+  Index
+  ---------- ---------- ---------- ---------- ----------
+  • Private variables
+  • Component styles
+  • Specific instance: #HeaderMenuToggle
+*/
+
+
+/*
+  • Private variables
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+$-base-size: 40;
+$-zoom-factor: 1.2;
+$-real-size: $-base-size * $-zoom-factor;
+$-padding: (($-real-size - $-base-size) / 2);
+
+$-lg--base-size: 64;
+$-lg--zoom-factor: 1.2;
+$-lg--real-size: $-lg--base-size * $-lg--zoom-factor;
+$-lg--padding: (($-lg--real-size - $-lg--base-size) / 2);
+
+
+/*
+  • Component styles
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.plum-menu-toggle {
+  min-width: rem($-real-size) !important;
+  min-height: rem($-real-size) !important;
+  border-radius: 100% !important;
+
+  &:before {
+    content: '';
+    background: transparent;
+    display: block;
+    border-radius: 100%;
+    position: absolute;
+    z-index: -1;
+    left: rem($-padding);
+    right: rem($-padding);
+    top: rem($-padding);
+    bottom: rem($-padding);
+    transition: transform 0.2s;
+  }
+
+  &__bar {
+    width: rem(16);
+    height: 2px;
+    position: absolute;
+    left: calc(50% - #{rem(8)});
+    top: calc(50% - 1px);
+    background: $color--near-black;
+    transition: opacity 0.2s 0.1s, transform 0.2s 0.1s;
+
+    &:nth-child(1) {
+      transform: translateY(-4px);
+    }
+
+    &:nth-child(3) {
+      transform: translateY(4px);
+    }
+  }
+}
+
+.plum-menu-toggle:not(.plum-menu-toggle--close-form):hover,
+.plum-menu-toggle--focus-form {
+  &:before {
+    transform: scale(1.2);
+  }
+
+  .plum-menu-toggle { // For nesting
+    &__bar {
+      &:nth-child(1) {
+        transform: translateY(-8px);
+      }
+
+      &:nth-child(2) {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+
+      &:nth-child(3) {
+        transform: translateY(8px);
+      }
+    }
+  }
+}
+
+.plum-menu-toggle--close-form {
+  &:before {
+    transform: scale(1.2);
+    background: transparent;
+    border:none;
+  }
+
+  .plum-menu-toggle { // For nesting
+    &__bar {
+      transition: opacity 0.2s 0s, transform 0.2s 0s;
+
+      &:nth-child(1) {
+        transform: translateY(0) rotate(45deg);
+        background: white;
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+        background: white;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(0) rotate(-45deg);
+        background: white;
+      }
+    }
+  }
+}
+
+@include up(large) {
+  .plum-menu-toggle {
+    min-width: rem($-lg--real-size) !important;
+    min-height: rem($-lg--real-size) !important;
+
+    &::before {
+      left: rem($-lg--padding);
+      right: rem($-lg--padding);
+      top: rem($-lg--padding);
+      bottom: rem($-lg--padding);
+    }
+
+    &__bar {
+      width: rem(24);
+      left: calc(50% - #{rem(12)});
+    }
+  }
+}
+
+
+/*
+  • Specific instance: #HeaderMenuToggle
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+#HeaderMenuToggle {
+  position: fixed;
+  z-index: 300;
+  left: header.$side-margin;
+  top: (header.$top-margin + header.$main-height / 2 - rem($-real-size) / 2);
+  transition: top 0.3s, transform 0.3s;
+
+  &.plum-menu-toggle--when-header-is-compact {
+    // No change on mobile
+  }
+}
+
+.has-header-ribbon #HeaderMenuToggle {
+  top: (header.$top-margin + header.$main-height / 2 - rem($-real-size) / 2 + header.$banner-height);
+
+  &.plum-menu-toggle--when-header-is-compact {
+    transform: translateY(#{header.$banner-height * -1});
+  }
+}
+
+
+@include up(large) {
+  #HeaderMenuToggle {
+    left: header.$lg--side-margin;
+    top: (header.$lg--top-margin + header.$lg--main-height / 2 - rem($-lg--real-size) / 2);
+
+    &.plum-menu-toggle--when-header-is-compact {
+      transform: translateY(#{rem(-15)});
+    }
+
+    &.plum-menu-toggle--close-form {
+      transform: inherit;
+      top: rem(42);
+    }
+  }
+
+  .has-header-ribbon #HeaderMenuToggle {
+    top: (header.$lg--top-margin + header.$lg--main-height / 2 - rem($-lg--real-size) / 2 + header.$banner-height);
+
+    &.plum-menu-toggle--when-header-is-compact {
+      transform: translateY(-40px);
+    }
+
+    &.plum-menu-toggle--close-form {
+      transform: inherit;
+      top: rem(42);
+    }
+  }
+}

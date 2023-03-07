@@ -1,0 +1,32 @@
+@import '../../assets/variables';
+
+.styler {
+  &__tabs-container {
+     display: inline-flex;
+     flex-direction: row;
+     width: auto !important;
+   }
+
+  &__tabs {
+    color: $grey-1 !important;
+    text-transform: uppercase;
+    background: none !important;
+    border: none !important;
+    outline: none;
+    font-size: 14px;
+    font-weight: 600 !important;
+    line-height: 18px;
+    letter-spacing: 0.05em;
+    text-align: left;
+    padding: 0 !important;
+
+    &:active, &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    &.active {
+      color: $asphalte !important;
+    }
+  }
+}

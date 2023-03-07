@@ -1,0 +1,417 @@
+@use 'sass:map';
+@use '../../../config/sass' as *;
+@use '../css-grid-config' as *;
+@use '../css-grid-mixins' as *;
+
+
+// ---------- ---------- ---------- ----------
+// Summary
+//
+// - Container base
+// - Row base
+// - Column base
+// - Breakpoints
+// - Right to left
+// ---------- ---------- ---------- ----------
+
+
+// ---------- ---------- ---------- ----------
+// - Container base
+// ---------- ---------- ---------- ----------
+
+%container-base {
+  box-sizing: border-box;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+%container-margins {
+  padding-left: map.get($css-grid--base, "margins");
+  padding-right: map.get($css-grid--base, "margins");
+}
+
+%container-max-width {
+  max-width: map.get($css-grid--base, "max-width");
+}
+
+%container-adjusted-max-width {
+  max-width: (map.get($css-grid--base, "max-width") + map.get($css-grid--base, "margins") * 2);
+}
+
+
+.container {
+  @extend %container-base;
+  @extend %container-margins;
+  @extend %container-adjusted-max-width;
+}
+
+.fluid-container {
+  @extend %container-base;
+  @extend %container-margins;
+}
+
+.flush-container {
+  @extend %container-base;
+  @extend %container-max-width;
+}
+
+.full-container {
+  @extend %container-base;
+}
+
+
+// ---------- ---------- ---------- ----------
+// - Row base
+// ---------- ---------- ---------- ----------
+
+%row-base {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: flex-start;
+  box-sizing: border-box;
+}
+
+%row-gutter {
+  margin-left: (-1 * map.get($css-grid--base, "gutters") / 2);
+  margin-right: (-1 * map.get($css-grid--base, "gutters") / 2);
+}
+
+
+.row {
+  @extend %row-base;
+  @extend %row-gutter;
+}
+
+.flush-row {
+  @extend %row-base;
+}
+
+
+// ---------- ---------- ---------- ----------
+// - Column base
+// ---------- ---------- ---------- ----------
+
+%column-base {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+
+%column-gutter {
+  padding-left: (map.get($css-grid--base, "gutters") / 2);
+  padding-right: (map.get($css-grid--base, "gutters") / 2);
+}
+
+%column-fit-content {
+  flex-grow: 0;
+  flex-basis: auto;
+  width: auto;
+}
+
+%column-fill-space {
+  flex-grow: 1;
+  flex-basis: 0%;
+  width: 0%;
+}
+
+
+.column {
+  @extend %column-base;
+  @extend %column-gutter;
+}
+
+.column-fit-content {
+  @extend %column-base;
+  @extend %column-gutter;
+  @extend %column-fit-content;
+}
+
+.column-fill-space {
+  @extend %column-base;
+  @extend %column-gutter;
+  @extend %column-fill-space;
+}
+
+.flush-column {
+  @extend %column-base;
+}
+
+.flush-column-fit-content {
+  @extend %column-base;
+  @extend %column-fit-content;
+}
+
+.flush-column-fill-space {
+  @extend %column-base;
+  @extend %column-fill-space;
+}
+
+@for $_i from 1 to $css-grid--number-of-columns {
+  .column-#{$_i} {
+    @extend %column-base;
+    @extend %column-gutter;
+  }
+
+  .flush-column-#{$_i} {
+    @extend %column-base;
+  }
+
+  .column-#{$_i}, .flush-column-#{$_i} {
+    flex-basis: (100% / $css-grid--number-of-columns) * $_i;
+    max-width: (100% / $css-grid--number-of-columns) * $_i;
+  }
+}
+
+@each $_slug, $_obj in $css-grid--breakpoints {
+  $_virtual: if(map.has-key($_obj, "virtual"), map.get($_obj, "virtual"), false);
+
+  @if $_virtual != true {
+    $_name: map.get($_obj, "name");
+    $_shorthand: '\\@' + map.get($_obj, "shorthand") + '\\:';
+    $_value: map.get($_obj, "value");
+    $_margins: map.get($_obj, "margins");
+    $_max-width: map.get($_obj, "max-width");
+    $_gutters: map.get($_obj, "gutters");
+
+    .#{$_shorthand}column {
+      @extend %column-base;
+      @extend %column-gutter;
+    }
+
+    .#{$_shorthand}flush-column {
+      @extend %column-base;
+    }
+
+    .#{$_shorthand}column-fit-content {
+      @extend %column-base;
+      @extend %column-gutter;
+    }
+
+    .#{$_shorthand}flush-column-fit-content {
+      @extend %column-base;
+    }
+
+    .#{$_shorthand}column-fill-space {
+      @extend %column-base;
+      @extend %column-gutter;
+    }
+
+    .#{$_shorthand}flush-column-fill-space {
+      @extend %column-base;
+    }
+
+    @for $_i from 1 to $css-grid--number-of-columns {
+      .#{$_shorthand}column-#{$_i} {
+        @extend %column-base;
+        @extend %column-gutter;
+      }
+
+      .#{$_shorthand}flush-column-#{$_i} {
+        @extend %column-base;
+      }
+    }
+  }
+}
+
+@if $css-grid--include-push {
+  @for $_i from 1 to $css-grid--number-of-columns {
+    .push-#{$_i} {
+      margin-left: (100% / $css-grid--number-of-columns) * $_i;
+    }
+  }
+}
+
+@if $css-grid--include-pull {
+  @for $_i from 1 to $css-grid--number-of-columns {
+    .pull-#{$_i} {
+      margin-right: (100% / $css-grid--number-of-columns) * $_i;
+    }
+  }
+}
+
+
+// ---------- ---------- ---------- ----------
+// - Breakpoints
+// ---------- ---------- ---------- ----------
+
+@each $_slug, $_obj in $css-grid--breakpoints {
+  $_virtual: if(map.has-key($_obj, "virtual"), map.get($_obj, "virtual"), false);
+
+  @if $_virtual != true {
+    $_name: map.get($_obj, "name");
+    $_shorthand: '\\@' + map.get($_obj, "shorthand") + '\\:';
+    $_value: map.get($_obj, "value");
+    $_margins: map.get($_obj, "margins");
+    $_max-width: map.get($_obj, "max-width");
+    $_gutters: map.get($_obj, "gutters");
+
+    @include up($_value) {
+      @if $_margins or $_max-width {
+        .container {
+          $lastSetMargins: css-grid--get-last-config($_slug, "margins");
+          $lastSetMaxWidth: css-grid--get-last-config($_slug, "max-width");
+          max-width: ($lastSetMaxWidth + $lastSetMargins * 2);
+        }
+      }
+
+      @if $_margins {
+        .container,
+        .fluid-container {
+          padding-left: $_margins;
+          padding-right: $_margins;
+        }
+      }
+
+      @if $_max-width {
+        .flush-container {
+          max-width: $_max-width;
+        }
+      }
+
+      @if $_gutters {
+        .row {
+          margin-left: (-$_gutters / 2);
+          margin-right: (-$_gutters / 2);
+        }
+
+        %column-gutter#{$_shorthand} {
+          padding-left: ($_gutters / 2);
+          padding-right: ($_gutters / 2);
+        }
+
+        .column {
+          @extend %column-gutter#{$_shorthand};
+        }
+
+        .column-fit-content {
+          @extend %column-gutter#{$_shorthand};
+        }
+
+        .column-fill-space {
+          @extend %column-gutter#{$_shorthand};
+        }
+
+        @for $_i from 1 to $css-grid--number-of-columns {
+          .column-#{$_i} {
+            @extend %column-gutter#{$_shorthand};
+          }
+        }
+
+        @each $loop_slug, $loop_obj in $css-grid--breakpoints {
+          $loop_virtual: if(map.has-key($_obj, "virtual"), map.get($_obj, "virtual"), false);
+
+          @if $loop_virtual != true {
+            $loop_shorthand: '\\@' + map.get($loop_obj, "shorthand") + '\\:';
+
+            .#{$loop_shorthand}column {
+              @extend %column-gutter#{$_shorthand};
+            }
+
+            .#{$loop_shorthand}column-fit-content {
+              @extend %column-gutter#{$_shorthand};
+            }
+
+            .#{$loop_shorthand}column-fill-space {
+              @extend %column-gutter#{$_shorthand};
+            }
+
+            @for $_i from 1 to $css-grid--number-of-columns {
+              .#{$loop_shorthand}column-#{$_i} {
+                @extend %column-gutter#{$_shorthand};
+              }
+            }
+          }
+        }
+      }
+
+      .#{$_shorthand}column-fill-space, .#{$_shorthand}flush-column-fill-space {
+        flex-grow: 1;
+        flex-basis: 0%;
+        width: 0%;
+        max-width: 100%;
+      }
+
+      .#{$_shorthand}column-fit-content, .#{$_shorthand}flush-column-fit-content {
+        flex-grow: 0;
+        flex-basis: auto;
+        width: auto;
+        max-width: 100%;
+      }
+
+      .#{$_shorthand}column, .#{$_shorthand}flush-column {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+
+      @for $_i from 1 to $css-grid--number-of-columns {
+        .#{$_shorthand}column-#{$_i}, .#{$_shorthand}flush-column-#{$_i} {
+          flex-basis: (100% / $css-grid--number-of-columns) * $_i;
+          max-width: (100% / $css-grid--number-of-columns) * $_i;
+        }
+      }
+
+      @if $css-grid--include-push {
+        .#{$_shorthand}no-push {
+          margin-left: 0;
+        }
+
+        @for $_i from 1 to $css-grid--number-of-columns {
+          .#{$_shorthand}push-#{$_i} {
+            margin-left: (100% / $css-grid--number-of-columns) * $_i;
+          }
+        }
+      }
+
+      @if $css-grid--include-pull {
+        .#{$_shorthand}no-pull {
+          margin-right: 0;
+        }
+
+        @for $_i from 1 to $css-grid--number-of-columns {
+          .#{$_shorthand}pull-#{$_i} {
+            margin-right: (100% / $css-grid--number-of-columns) * $_i;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// ---------- ---------- ---------- ----------
+// - Right to left
+// ---------- ---------- ---------- ----------
+
+@if $css-grid--include-rtl {
+  %reverse-row {
+    flex-direction: row-reverse;
+  }
+
+  .row--reverse {
+    @extend %reverse-row;
+  }
+}
+
+
+// Left / right side padding into fluid-container
+.container-fluid{
+  .left-side{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    @include up('large'){
+      padding-left: 6rem;
+      padding-right: 6rem;
+    }
+  }
+  .right-side{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    @include up('large'){
+      padding-left: 6rem;
+      padding-right: 6rem;
+    }
+  }
+}

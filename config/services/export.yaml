@@ -1,0 +1,208 @@
+parameters:
+    app.import_export.fields.combination: ['Id', 'FacadeType', 'Design', 'Finish', 'Color', 'Recommendation', 'Image']
+    app.import_export.fields.customer: ['Email', 'Email_canonical', 'FirstName' , 'LastName' ,  'Birthday', 'Gender', 'PhoneNumber', 'SubscribedToNewsletter','HowYouKnowAboutUs', 'HowYouKnowAboutUsDetails', 'CustomerType', 'B2bProgram', 'PersonalCoupon', 'CompanyName', 'CompanyStreet', 'CompanyPostcode', 'CompanyCity', 'CompanyCountryCode', 'CompanyVATNumber', 'CompanyInstagram', 'CompanyWebsite', 'CreatedAt', 'UpdatedAt']
+    app.import_export.fields.product: ['Code', 'MainTaxon', 'Taxons', 'Channels', 'Enabled', 'Price', 'DeliveryCategory', 'Groups']
+    app.import_export.fields.product_group: ['Code', 'MainTaxon', 'Position', 'Products']
+    app.import_export.fields.product_variant: ['Code', 'ProductCode', 'Channels', 'Price', 'Width', 'Height', 'Depth', 'Weight', 'Enabled', 'OnHand', 'OnHold', 'Design', 'Finish', 'Color', 'DesignHandle', 'FinishHandle', 'DesignTap', 'FinishTap', 'DeliveryCalculationMode', 'MinDayDelivery', 'MaxDayDelivery', 'DeliveryCategory']
+    app.import_export.fields.product_ikea: ['Id', 'Price', 'TypeName', 'PriceGB', 'TypeNameEN', 'PriceDE', 'TypeNameDE', 'PriceBE', 'TypeNameNL', 'PriceNL', 'ItemMeasureReferenceText', 'ImageLink']
+    app.import_export.localized_fields.product: ['Name', 'Description', 'ShortDescription', 'MetaDescription', 'MetaKeywords', 'DeliveryDescription']
+    app.import_export.localized_fields.product_variant: ['Name']
+    app.import_export.localized_fields.product_group: ['Name']
+
+services:            
+    # CSV Exporters
+
+    ## Product Exporter services
+    sylius.exporter.plugin.resource.products:
+        class: App\Export\Plugin\ProductResourcePlugin
+        arguments:
+            - '@sylius.repository.product'
+            - '@property_accessor'
+            - '@doctrine.orm.entity_manager'
+            - '@sylius.repository.channel_pricing'
+            - '@App\Formatter\Money\MoneyFormatter'
+            - '@App\Transformer\MonsieurBiz\TextTransformer'
+            - '@App\Provider\ImportExport\LocalizedFieldsProvider'
+
+    sylius.exporter.pluginpool.products:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\Plugin\ProductPluginPool
+        arguments:
+            - [ '@sylius.exporter.plugin.resource.products' ]
+            - '@=service("App\\Provider\\ImportExport\\LocalizedFieldsProvider").mergeLocalizedFields(parameter("app.import_export.fields.product"), parameter("app.import_export.localized_fields.product"))'
+            - '@sylius.service.attributes_code'
+            - '@sylius.service.product_image_code'
+
+    sylius.exporter.products.csv:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\ProductResourceExporter
+        arguments:
+            - '@sylius.exporter.csv_writer'
+            - '@sylius.exporter.pluginpool.products'
+            - '@=service("App\\Provider\\ImportExport\\LocalizedFieldsProvider").mergeLocalizedFields(parameter("app.import_export.fields.product"), parameter("app.import_export.localized_fields.product"))'
+            - '@sylius.service.attributes_code'
+            - '@sylius.service.product_image_code'
+            - '@sylius.exporters_transformer_pool'
+        tags:
+            - { name: sylius.exporter, type: sylius.product, format: csv }
+
+    sylius.controller.export_data_product:
+        public: true
+        class: App\Controller\Exporter\ExportDataController
+        arguments:
+            - '@sylius.exporters_registry'
+            - '@sylius.resource_controller.request_configuration_factory'
+            - '@sylius.resource_controller.resources_collection_provider'
+            - '@sylius.repository.product'
+            - '%sylius.resources%'
+        tags: [ 'controller.service_arguments' ]
+        
+    ## ProductVariant Exporter services
+    sylius.exporter.plugin.resource.product_variants:
+        class: App\Export\Plugin\ProductVariantResourcePlugin
+        arguments:
+            - '@sylius.repository.product_variant'
+            - '@property_accessor'
+            - '@doctrine.orm.entity_manager'
+            - '@App\Formatter\Money\MoneyFormatter'
+            - '@App\Provider\ImportExport\LocalizedFieldsProvider'
+                
+    sylius.exporter.pluginpool.product_variants:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\Plugin\PluginPool
+        arguments:
+            - ['@sylius.exporter.plugin.resource.product_variants']
+            - '@=service("App\\Provider\\ImportExport\\LocalizedFieldsProvider").mergeLocalizedFields(parameter("app.import_export.fields.product_variant"), parameter("app.import_export.localized_fields.product_variant"))'
+
+    sylius.exporter.product_variants.csv:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\ResourceExporter
+        arguments:
+            - '@sylius.exporter.csv_writer'
+            - '@sylius.exporter.pluginpool.product_variants'
+            - '@=service("App\\Provider\\ImportExport\\LocalizedFieldsProvider").mergeLocalizedFields(parameter("app.import_export.fields.product_variant"), parameter("app.import_export.localized_fields.product_variant"))'
+            - '@sylius.exporters_transformer_pool' # Optional
+        tags:
+            - { name: sylius.exporter, type: sylius.product_variant, format: csv }
+
+    sylius.controller.export_data_product_variant:
+        public: true
+        class: App\Controller\Exporter\ExportDataController
+        arguments:
+            - '@sylius.exporters_registry'
+            - '@sylius.resource_controller.request_configuration_factory'
+            - '@sylius.resource_controller.resources_collection_provider'
+            - '@sylius.repository.product_variant'
+            - '%sylius.resources%'
+        tags: ['controller.service_arguments']
+        
+    ## Combination Exporter services
+    app.exporter.plugin.resource.combination:
+        class: App\Export\Plugin\CombinationResourcePlugin
+        arguments:
+            - '@app.repository.combination'
+            - '@property_accessor'
+            - '@doctrine.orm.entity_manager'
+
+    app.exporter.pluginpool.combination:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\Plugin\PluginPool
+        arguments:
+            - ['@app.exporter.plugin.resource.combination']
+            - '%app.import_export.fields.combination%'
+
+    app.exporter.combination.csv:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\ResourceExporter
+        arguments:
+            - '@sylius.exporter.csv_writer'
+            - '@app.exporter.pluginpool.combination'
+            - '%app.import_export.fields.combination%'
+            - '@sylius.exporters_transformer_pool' # Optional
+        tags:
+            - { name: sylius.exporter, type: app.combination, format: csv }
+
+    app.controller.export_data_combination:
+        public: true
+        class: FriendsOfSylius\SyliusImportExportPlugin\Controller\ExportDataController
+        arguments:
+            - '@sylius.exporters_registry'
+            - '@sylius.resource_controller.request_configuration_factory'
+            - '@sylius.resource_controller.resources_collection_provider'
+            - '@app.repository.combination'
+            - '%sylius.resources%'
+        tags: ['controller.service_arguments']
+
+    ## ProductGroup Exporter services
+    app.exporter.plugin.resource.product_group:
+        class: App\Export\Plugin\ProductGroupResourcePlugin
+        arguments:
+            - '@app.repository.product_group'
+            - '@property_accessor'
+            - '@doctrine.orm.entity_manager'
+            - '@App\Provider\ImportExport\LocalizedFieldsProvider'
+
+    app.exporter.pluginpool.product_group:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\Plugin\PluginPool
+        arguments:
+            - ['@app.exporter.plugin.resource.product_group']
+            - '@=service("App\\Provider\\ImportExport\\LocalizedFieldsProvider").mergeLocalizedFields(parameter("app.import_export.fields.product_group"), parameter("app.import_export.localized_fields.product_group"))'
+    
+    app.exporter.product_group.csv:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\ResourceExporter
+        arguments:
+            - '@sylius.exporter.csv_writer'
+            - '@app.exporter.pluginpool.product_group'
+            - '@=service("App\\Provider\\ImportExport\\LocalizedFieldsProvider").mergeLocalizedFields(parameter("app.import_export.fields.product_group"), parameter("app.import_export.localized_fields.product_group"))'
+            - '@sylius.exporters_transformer_pool' # Optional
+        tags:
+            - { name: sylius.exporter, type: app.product_group, format: csv }
+
+    app.controller.export_data_product_group:
+        public: true
+        class: FriendsOfSylius\SyliusImportExportPlugin\Controller\ExportDataController
+        arguments:
+            - '@sylius.exporters_registry'
+            - '@sylius.resource_controller.request_configuration_factory'
+            - '@sylius.resource_controller.resources_collection_provider'
+            - '@app.repository.product_group'
+            - '%sylius.resources%'
+        tags: ['controller.service_arguments']
+
+    ## Customer Exporter services
+    sylius.exporter.customers.csv:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\ResourceExporter
+        arguments:
+            - '@sylius.exporter.csv_writer'
+            - '@sylius.exporter.pluginpool.customers'
+            - '%app.import_export.fields.customer%'
+            - '@sylius.exporters_transformer_pool'
+        tags:
+            - { name: sylius.exporter, type: sylius.customer, format: csv }
+
+    sylius.exporter.customers.json:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\JsonResourceExporter
+        arguments:
+            - "@sylius.exporter.pluginpool.customers"
+            - '%app.import_export.fields.customer%'
+            - "@sylius.exporters_transformer_pool"
+        tags:
+            - { name: sylius.exporter, type: sylius.customer, format: json }
+    
+    sylius.exporter.pluginpool.customers:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\Plugin\PluginPool
+        arguments:
+            - ['@sylius.exporter.plugin.resource.customers']
+            - '%app.import_export.fields.customer%'
+            
+    sylius.exporter.customers.xlsx:
+        class: FriendsOfSylius\SyliusImportExportPlugin\Exporter\ResourceExporter
+        arguments:
+            - "@sylius.exporter.spreadsheet_writer"
+            - "@sylius.exporter.pluginpool.customers"
+            - '%app.import_export.fields.customer%'
+            - "@sylius.exporters_transformer_pool"
+        tags:
+            - { name: sylius.exporter, type: sylius.customer, format: xlsx }
+                
+    sylius.exporter.plugin.resource.customers:
+        class: App\Export\Plugin\CustomerResourcePlugin
+        arguments:
+            - '@sylius.repository.customer'
+            - '@property_accessor'
+            - '@doctrine.orm.entity_manager'
+    

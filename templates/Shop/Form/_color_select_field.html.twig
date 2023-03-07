@@ -1,0 +1,93 @@
+{% import _self as _self %}
+{% use 'Shop/Form/_field_commons.html.twig' %}
+
+{% set props = field.vars %}
+{% set showLabel = showLabel|default(false) %}
+{% set classAttr = attributes.class|default('') %}
+{% set labelClassAttr = attributes.labelClass|default('t-label-small') %}
+{% set optionClassAttr = attributes.optionClass|default('t-base-small') %}
+
+{% if props.choices is defined %}
+    {% set options = props.choices %}
+
+    {% set item_template %}{% apply spaceless %}
+        <button
+            type="button"
+            class="color-select-field__option func-button {{ optionClassAttr }}"
+            data-value="%VALUE%">
+            <span class="color" style="background-image: url(%IMAGE_URL%);"></span>
+            <span>%LABEL%</span>
+        </button>
+    {% endapply %}{% endset %}
+
+    {% macro widget_value(options, preselected) %}
+        {% set label = 'app.form.select_field.placeholder' %}
+        {% for choice in options %}
+            {% if choice.value == preselected %}
+                {% set label = choice.label %}
+            {% endif %}
+        {% endfor %}
+        <span>{{ label|trans }}</span>
+    {% endmacro %}
+
+    {% apply spaceless %}
+        <div
+            class="field color-select-field {{ props.value is not empty ? 'field--fill' }} {{ props.errors is not empty ? 'field--invalid field--has-initial-error' }} {{ classAttr }}"
+            data-item-template="{{ item_template|escape('html_attr') }}"
+            data-empty-label="{{ 'app.form.select_field.placeholder'|trans }}"
+            {{ block('field_container_attributes') }}>
+            <label class="field__label {{ not showLabel ? 'u-sr-only' }} {{ labelClassAttr }}" for="{{ props.id }}">
+                {% if label is defined and label is not empty %}
+                    {{ label }}
+                {% else %}
+                    {{ props.label|trans }}
+                {% endif %}
+            </label>
+            <div class="field__widget" data-custom-type="custom-color-select">
+                <input
+                    type="text" tabIndex="-1"
+                    {{ block('field_widget_attributes') }}
+                    {{ block('field_widget_value_attribute') }}>
+                <select data-option="{{ props.name }}" tabIndex="-1" aria-hidden="true">
+                    {% for choice in props.choices %}
+                        <option value="{{ choice.value }}" {% if choice.value == props.value %} selected {% endif %}></option>
+                    {% endfor %}
+                </select>
+                <div
+                    class="color-select-field__selected-option color-select-field__option t-base-small"
+                    tabIndex="0"
+                    {% if props.value is defined %} data-value="{{ props.value }}" {% endif %}>
+                    {% if props.data is not null and props.data.getImagesByType('default').first %}
+                        <span class="color"
+                              style="background-image: url({{ props.data.getImagesByType('default').first.path|imagine_filter('app_common_form_chip_thumbnail') }});"></span>
+                    {% endif %}
+                    {{ _self.widget_value(props.choices, props.value) }}
+                </div>
+                <div class="color-select-field__options u-y-scrollable" data-custom-type="custom-color-select-options">
+                    {% for choice in props.choices %}
+                        <button
+                            type="button"
+                            class="color-select-field__option func-button {{ optionClassAttr }}"
+                            {% if choice.value is defined %}
+                                data-value="{{ choice.value }}"
+                                {% if product.code is defined %}
+                                    data-variant-image-url="{{ path('product_variant_ajax_get_image' , {
+                                        productCode: product.code,
+                                        colorCode: choice.value
+                                    }) }}"
+                                {% endif %}>
+                            {% endif %}
+                            {% if choice.data.getImagesByType('default').first %}
+                                <span class="color"
+                                      style="background-image: url({{ choice.data.getImagesByType('default').first.path|imagine_filter('app_common_form_chip_thumbnail') }});"></span>
+                            {% endif %}
+                            <span>{{ choice.label|trans }}</span>
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+            {{ block('field_help_or_description') }}
+            {{ block('field_errors') }}
+        </div>
+    {% endapply %}
+{% endif %}

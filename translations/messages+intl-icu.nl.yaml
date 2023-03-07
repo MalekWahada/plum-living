@@ -1,0 +1,16 @@
+app:
+    ui:
+        cart:
+            summary_modal:
+                accessoires: '{items_count, plural, one {1 accessoire} other {# accessoires}}'
+                door: '{items_count, plural, one {1 deur} other {# deuren}}'
+                drawer: '{items_count, plural, one {1 lade} other {# lades}}'
+                echantillon: '{items_count, plural, one {1 kleurstaal} other {# kleurstalen}}'
+                panel_and_plinth: '{items_count, plural, one {1 afwerkingsplaat of plint} other {# afwerkingsplaten of plinten}}'
+                peinture: '{items_count, plural, one {1 schilderij} other {# schilderijen}}'
+        shop:
+            article:
+                days: '{days, plural, one {een dag geleden} other {# dagen geleden}}'
+                lecture_time: '{time, plural, one {één minuut lezen} other {# minuten lezen}}'
+                months: '{months, plural, one {een maand geleden} other {# maanden geleden}}'
+                years: '{years, plural, one {een jaar geleden} other {# jaar geleden}}'

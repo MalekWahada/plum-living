@@ -1,0 +1,10 @@
+{% set page = data %}
+
+{% if page.type in constant('App\\Entity\\Page\\Page::NOT_SIMPLE_PAGE_TYPES') %}
+    <div style="width: 100%; text-align: center;">
+        <div class="ui input position" style="width: 50px;">
+            <input type="text" value="{{ page.position }}" name="pages[{{ page.id }}]" form="app-pages-positions"
+                   style="text-align: center;"/>
+        </div>
+    </div>
+{% endif %}

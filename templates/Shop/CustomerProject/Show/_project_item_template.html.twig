@@ -1,0 +1,259 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{# %ID% is intended to be searched and replaced in JS #}
+<div class="ps-project-item" id="%ID%" data-new-item>
+    <input type="hidden" class="ps-project-item__id" value="">
+
+    <input
+        type="hidden"
+        id="{{ form.groupId.vars.id }}"
+        name="{{ form.groupId.vars.full_name }}"
+        class="ps-project-item__group_id">
+
+    {% include 'Shop/Form/_select_field.html.twig' with {
+        'field': form.addItemChoices.metodFronts,
+        'attributes': {
+            'class': 'ps-project-item__type-field select-field--alt u-margin-b-3',
+            'labelClass': 't-label-col',
+            'data-type': constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_METOD'),
+        },
+        'widget_attributes': {
+            'class': 'ps-project-item__type'
+        }
+    } %}
+
+    {% include 'Shop/Form/_select_field.html.twig' with {
+        'field': form.addItemChoices.paxFronts,
+        'attributes': {
+            'class': 'ps-project-item__type-field select-field--alt u-margin-b-3',
+            'labelClass': 't-label-col',
+            'data-type': constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_PAX')
+        },
+        'widget_attributes': {
+            'class': 'ps-project-item__type'
+        }
+    } %}
+
+    {% include 'Shop/Form/_select_field.html.twig' with {
+        'field': form.addItemChoices.paints,
+        'attributes': {
+            'class': 'ps-project-item__type-field select-field--alt u-margin-b-3',
+            'labelClass': 't-label-col',
+            'data-type': constant('App\\Entity\\Taxonomy\\Taxon::TAXON_PAINT_CODE')
+        },
+        'widget_attributes': {
+            'class': 'ps-project-item__type'
+        }
+    } %}
+
+    {% include 'Shop/Form/_select_field.html.twig' with {
+        'field': form.addItemChoices.accessoriesHandles,
+        'attributes': {
+            'class': 'ps-project-item__type-field select-field--alt u-margin-b-3',
+            'labelClass': 't-label-col',
+            'data-type': constant('App\\Entity\\Taxonomy\\Taxon::TAXON_ACCESSORY_HANDLE_CODE')
+        },
+        'widget_attributes': {
+            'class': 'ps-project-item__type'
+        }
+    } %}
+
+    {% include 'Shop/Form/_select_field.html.twig' with {
+        'field': form.addItemChoices.accessories,
+        'attributes': {
+            'class': 'ps-project-item__type-field select-field--alt u-margin-b-3',
+            'labelClass': 't-label-col',
+            'data-type': constant('App\\Entity\\Taxonomy\\Taxon::TAXON_ACCESSORY_CODE')
+        },
+        'widget_attributes': {
+            'class': 'ps-project-item__type'
+        }
+    } %}
+
+    {% include 'Shop/Form/_select_field.html.twig' with {
+        'field': form.addItemChoices.taps,
+        'attributes': {
+            'class': 'ps-project-item__type-field select-field--alt u-margin-b-3',
+            'labelClass': 't-label-col',
+            'data-type': constant('App\\Entity\\Taxonomy\\Taxon::TAXON_TAP_CODE')
+        },
+        'widget_attributes': {
+            'class': 'ps-project-item__type'
+        }
+    } %}
+
+    <div class="ps-project-item__header u-hidden">
+        <div class="flush-row ps-project-item__invalid-message">
+            <div class="t-base-small u-margin-b-2 c-grey-mid">
+                <svg class="o-icon-20 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-infos"/></svg>
+                <span>{{ 'app.ui.plum_scanner.step_three.checkout.warning_item_add'|trans }}</span>
+            </div>
+        </div>
+        <div class="flush-row u-center-on-cross u-padding-b-3">
+            <div class="flush-column-10 @md:flush-column-fill-space u-margin-b-auto t-label-medium">
+                <div class="row u-flex u-center-on-cross">
+                    <div class="column-1">
+                        <svg class="o-icon-24 u-margin-r-2">
+                            <use xlink:href="{{ iconLibUrl }}#SVG-icon-accessoire" class="ps-project-item__icon-link"/>
+                        </svg>
+                    </div>
+                    <div class="column-fill-space">
+                        <h3 class="ps-project-item__name t-label-medium"></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="flush-column u-margin-b-2 @md:u-hidden"></div>
+
+            {% include 'Shop/Form/_number_field.html.twig' with {
+                'field': form.quantity,
+                'attributes': {
+                    'class': 'ps-project-item__quantity-field number-field--light flush-column-fit-content @md:u-margin-l-3'
+                },
+                'widget_attributes': {
+                    'class': 'ps-project-item__quantity'
+                }
+            } %}
+
+            <div class="ps-project-item__price flush-column-fill-space @md:flush-column-fit-content u-flex u-end-on-main u-margin-l-3 t-align-right">
+                <div>
+                    <div class="ps-project-item__unit-price-container t-label-small c-grey-light">
+                        <span class="ps-project-item__unit-price">{{ money.convertAndFormat(0, sylius.currencyCode) }}</span>
+                        {{ 'app.ui.plum_scanner.step_three.modulate_articles.unit_price'|trans }}
+                    </div>
+                    <div class="ps-project-item__total-price-container t-label-small u-hidden">
+                        <span class="ps-project-item__total-price"
+                         data-unit-price="0"
+                         data-currency-code="{{ sylius.currencyCode }}"></span>
+                        {{ 'app.ui.plum_scanner.step_three.modulate_articles.total_price'|trans }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ps-project-item__options-container u-hidden">
+        <div class="row u-padding-b-3">
+            <div class="column-fill-space u-margin-b-3 @md:u-margin-b-auto">
+                {% include 'Shop/Form/_select_field.html.twig' with {
+                    'field': form.design,
+                    'attributes': {
+                        'class': 'ps-project-item__design-field select-field--alt t-base-small ' ~ (form.design.vars.valid == false ? 'field--warning'),
+                        'labelClass': 't-label-col',
+                        'data-empty-label': 'app.form.select_field.placeholder'|trans
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-project-item__design',
+                        'data-option-type': 'design'
+                    }
+                } %}
+            </div>
+
+            <div class="column-fill-space u-margin-b-3 @md:u-margin-b-auto">
+                {% set isDisabled = form.design.vars.valid == false %}
+                {% include 'Shop/Form/_color_select_field.html.twig' with {
+                    'field': form.finish,
+                    'showLabel': true,
+                    'attributes': {
+                        'class': 'ps-project-item__finish-field ' ~ (form.finish.vars.valid == false ? 'field--warning'),
+                        'labelClass': 't-label-col'
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-project-item__finish',
+                        'data-option-type': 'finish'
+                    }
+                } %}
+            </div>
+
+            <div class="column @md:column-fill-space">
+                {% include 'Shop/Form/_color_select_field.html.twig' with {
+                    'field': form.color,
+                    'showLabel': true,
+                    'attributes': {
+                        'class': 'ps-project-item__color-field ',
+                        'labelClass': 't-label-col'
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-project-item__color',
+                        'data-option-type': 'color'
+                    }
+                } %}
+            </div>
+
+            <div class="column @md:column-fill-space">
+                {% include 'Shop/Form/_select_field.html.twig' with {
+                    'field': form.handleFinish,
+                    'attributes': {
+                        'class': 'ps-project-item__finish_handle-field select-field--alt t-base-small ' ~ (form.handleFinish.vars.valid == false ? 'field--warning'),
+                        'labelClass': 't-label-col',
+                        'data-empty-label': 'app.form.select_field.placeholder'|trans
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-project-item__finish_handle',
+                        'data-option-type': 'finish_handle'
+                    }
+                } %}
+            </div>
+
+            <div class="column @md:column-fill-space">
+                {% include 'Shop/Form/_select_field.html.twig' with {
+                    'field': form.tapFinish,
+                    'attributes': {
+                        'class': 'ps-project-item__finish_tap-field select-field--alt t-base-small ' ~ (form.tapFinish.vars.valid == false ? 'field--warning'),
+                        'labelClass': 't-label-col',
+                        'data-empty-label': 'app.form.select_field.placeholder'|trans
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-project-item__finish_tap',
+                        'data-option-type': 'finish_tap'
+                    }
+                } %}
+            </div>
+
+            <div class="column-fill-space u-margin-b-3 @md:u-margin-b-auto">
+                {% include 'Shop/Form/_select_field.html.twig' with {
+                    'field': form.variant,
+                    'attributes': {
+                        'class': 'ps-project-item__variant-field select-field--alt t-base-small ' ~ (form.variant.vars.valid == false ? 'field--warning'),
+                        'labelClass': 't-label-col',
+                        'data-empty-label': 'app.form.select_field.placeholder'|trans
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-project-item__variant',
+                        'data-option-type': 'variant'
+                    }
+                } %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column-fill-space">
+            <div class="ps-project-item__comment-container u-hidden">
+                {% include 'Shop/Form/_textarea_field.html.twig' with {
+                    'field': form.comment,
+                    'label': form.comment.vars.attr.placeholder|trans,
+                    'autogrow': true,
+                    'attributes': {
+                        'class': 'ps-project-item__comment-field u-invisible'
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-project-item__comment t-label-small',
+                        'placeholder': '',
+                        'maxlength': 255
+                    }
+                } %}
+                <button type="button" class="ps-project-item__comment-button small-link-button c-grey-mid hover:c-near-black">
+                    {{ form.comment.vars.attr.placeholder|trans }}
+                </button>
+            </div>
+        </div>
+        <div class="column-fit-content u-flex u-center-on-cross">
+            <button type="button" class="ps-project-item__remove-button icon-button no-bg c-grey-mid hover:c-near-black">
+                <svg class="o-icon-20">
+                    <use xlink:href="{{ iconLibUrl }}#SVG-icon-trash"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+<div>

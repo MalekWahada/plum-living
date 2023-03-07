@@ -1,0 +1,100 @@
+monsieurbiz_cms_inspiration_page_show:
+    path: /journal/{slug}
+    methods: [GET]
+    defaults:
+        _controller: monsieurbiz_cms_page.controller.page:showAction
+        _sylius:
+            template: "@MonsieurBizSyliusCmsPagePlugin/Shop/Page/show.html.twig"
+            repository:
+                method: findOneEnabledBySlugAndChannelCode
+                arguments:
+                    - $slug
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+                    - "expr:service('sylius.context.channel').getChannel().getCode()"
+    requirements:
+        slug: .+
+    condition: "context.checkPageSlug(request.getPathInfo())"
+
+monsieurbiz_cms_project_page_show:
+    path: /home-projects/{slug}
+    methods: [GET]
+    defaults:
+        _controller: monsieurbiz_cms_page.controller.page:showAction
+        _sylius:
+            template: "@MonsieurBizSyliusCmsPagePlugin/Shop/Page/show.html.twig"
+            repository:
+                method: findOneEnabledBySlugAndChannelCode
+                arguments:
+                    - $slug
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+                    - "expr:service('sylius.context.channel').getChannel().getCode()"
+    requirements:
+        slug: .+
+    condition: "context.checkPageSlug(request.getPathInfo())"
+
+monsieurbiz_cms_page_show:
+    path: /{slug}
+    methods: [GET]
+    controller: App\Controller\Page\PageController::showDefaultTypeOrRedirectAction
+    requirements:
+        slug: .+
+    condition: "context.checkPageSlug(request.getPathInfo())"
+
+inspiration_index:
+    path: 
+        fr: /inspirations
+        en: /inspiration
+        de: /inspirationen
+        nl: /inspiraties
+    controller: App\Controller\Inspiration\InspirationController::index
+    methods: [GET, POST]
+
+project_index:
+    path: 
+        fr: /home-projects
+        en: /home-projects
+        de: /home-projekte
+        nl: /home-projecten
+    controller: App\Controller\Project\ProjectController::index
+    methods: [GET, POST]
+
+send_project_plan:
+    path: /home-projects/sendplan
+    controller: App\Controller\Project\ProjectController::sendPlan
+    methods: [POST]
+
+app_conception:
+    path: 
+        fr: /conception
+        en: /conception
+        de: /design
+        nl: /ontwerp
+    controller: App\Controller\Conception\ConceptionController
+    methods: GET
+
+app_conception_completed:
+    path: 
+        fr: /conception-completed
+        en: /conception-completed
+        de: /design-erstellt
+        nl: /ontwerp-voltooid
+    controller: App\Controller\Conception\ConceptionController::completedAction
+    methods: GET
+
+app_media_category:
+    path: /media/{category}
+    controller: App\Controller\Media\CategoryController::index
+    methods: [GET, POST]
+
+app_media_article:
+    path: /media/{category}/{slug}
+    controller: App\Controller\Media\ArticleController::index
+    methods: [GET, POST]
+    requirements:
+        slug: .+
+
+app_media_home_project:
+    path: /new-home-projects
+    controller: App\Controller\Media\HomeProjectController::index
+    methods: [GET, POST]
+

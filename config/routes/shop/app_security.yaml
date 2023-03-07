@@ -1,0 +1,4 @@
+app_verify_non_logged_user:
+    path: /verify-non-logged
+    controller: App\Controller\SecurityController::verifyNonLoggedUser
+    methods: [GET]

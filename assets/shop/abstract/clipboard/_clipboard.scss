@@ -1,0 +1,23 @@
+@use '../../config/sass' as *;
+
+
+
+*[data-clipboard] {
+  cursor: pointer;
+  display: inline-block;
+
+  &::after {
+    content: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 2.25C9.0335 2.25 8.25 3.0335 8.25 4V5H9.75V4C9.75 3.86193 9.86193 3.75 10 3.75H18C18.1381 3.75 18.25 3.86193 18.25 4V16C18.25 16.1381 18.1381 16.25 18 16.25H17V17.75H18C18.9665 17.75 19.75 16.9665 19.75 16V4C19.75 3.0335 18.9665 2.25 18 2.25H10Z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6 6.25C5.0335 6.25 4.25 7.0335 4.25 8V20C4.25 20.9665 5.0335 21.75 6 21.75H14C14.9665 21.75 15.75 20.9665 15.75 20V8C15.75 7.0335 14.9665 6.25 14 6.25H6ZM5.75 8C5.75 7.86193 5.86193 7.75 6 7.75H14C14.1381 7.75 14.25 7.86193 14.25 8V20C14.25 20.1381 14.1381 20.25 14 20.25H6C5.86193 20.25 5.75 20.1381 5.75 20V8Z' fill='%23000'/%3E%3C/svg%3E%0A");
+    display: inline-block;
+    vertical-align: baseline;
+    width: rem(16);
+    height: rem(16);
+    opacity: 0.5;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 0.8;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use '../../../config/sass' as *;
+@use '../../../abstract/css-grid/css-grid-config' as *;
+@use '../../../abstract/css-grid/css-grid-mixins' as *;
+
+
+
+.u-relative {
+  position: relative !important;
+}
+
+.u-absolute {
+  position: absolute !important;
+}
+
+
+
+@each $_slug, $_obj in $css-grid--breakpoints {
+  $_name:    map.get($_obj, "name");
+  $_shorthand: '\\@' + map.get($_obj, "shorthand") + '\\:';
+  $_value:   map.get($_obj, "value");
+  $_margins:   map.get($_obj, "margins");
+
+  @include up($_value) {
+    .#{$_shorthand}u-relative {
+      position: relative !important;
+    }
+
+    .#{$_shorthand}u-absolute {
+      position: absolute !important;
+    }
+  }
+}

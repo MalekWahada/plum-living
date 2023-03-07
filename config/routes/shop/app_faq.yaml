@@ -1,0 +1,15 @@
+###
+### All routes are prefixed by /faq
+###
+
+app_faq_index:
+    path: /
+    controller: App\Controller\FAQ\FAQController::index
+    methods: [GET]
+
+app_faq_article:
+    path: /{articleId}
+    controller: App\Controller\FAQ\FAQController::getArticle
+    methods: [GET]
+    requirements:
+        articleId: '\d+'

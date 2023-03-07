@@ -1,0 +1,5 @@
+App\Entity\Product\ProductGroupTranslation:
+    properties:
+        name:
+            -   NotBlank:
+                    groups: [Default, sylius]

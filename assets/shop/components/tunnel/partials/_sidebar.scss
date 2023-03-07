@@ -1,0 +1,338 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../../../config/sass' as *;
+@use '../../../abstract/css-grid/css-grid-mixins' as *;
+@use '../../../abstract/css-grid/css-grid-config' as *;
+@use '../../../components/plum-header/plum-header-config' as header;
+
+
+
+//Sidebar
+.tunnel-sidebar {
+  $_container-max-width: css-grid--get-config('base', 'max-width');
+  $_container-margins: css-grid--get-config('base', 'margins');
+  // $_container-max-content-width: $_container-max-width - $_container-margins * 2;
+
+  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100vw;
+  padding: rem(10) 0;
+  position: sticky;
+  top: header.$total-height;
+  z-index: 2;
+  margin-left: calc(50% - 50vw);
+  background: get-color('beige');
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    flex: 0 0 auto;
+    width: calc( (100vw - #{$_container-max-width}) / 2 );
+    min-width: $_container-margins;
+    max-width: $_container-margins;
+    height: 1px;
+  }
+
+  @include up(large) {
+    padding: 0;
+    top: rem(120);
+    background: transparent;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+
+    @include up(large) {
+      flex-direction: column;
+      overflow-x: initial;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-product-section {
+      display: flex;
+      flex-direction: row;
+
+      @include up(large) {
+        flex-direction: column;
+      }
+
+      .item-content {
+        border: 1px solid $color--near-black;
+
+        a,
+        svg {
+          color: $color--near-black;
+        }
+      }
+    }
+  }
+
+  &__item {
+
+    &:not(:last-child) {
+      margin-right: rem(6);
+
+      @include up(large) {
+        margin-right: 0;
+        margin-bottom: rem(20);
+      }
+    }
+
+    &.active {
+      will-change: auto;
+
+      @include up(large) {
+        margin-bottom: rem(40);
+      }
+
+      .item-content {
+        border: none;
+        background-color: $color--near-black;
+        color: $color--true-white;
+
+        a,div {
+          color: $color--true-white;
+        }
+
+        .item-choice {
+          position: fixed;
+          bottom: 0;
+          background-color: $color--true-white;
+          padding: rem(8) rem(20);
+          width: 100%;
+          z-index: 2;
+          left: 0;
+          color: $color--near-black;
+
+          @include up(large) {
+            display: block;
+            padding: 0;
+            background-color: transparent;
+            margin-top: rem(10);
+            position: relative;
+            bottom: initial;
+            left: initial;
+          }
+        }
+      }
+    }
+
+    &.validate {
+
+      @include up(large) {
+        margin-bottom: rem(40);
+      }
+
+      .item-content {
+        border: none;
+        background-color: $color--green;
+        color: $color--near-black;
+        margin-bottom: 0;
+
+        a {
+          color: $color--near-black;
+        }
+      }
+    }
+
+    &.product-category {
+
+      &.active {
+        will-change: auto;
+
+        .item-content {
+          color:$color--true-white;
+        }
+      }
+
+      &:not(.active) {
+        will-change: auto;
+
+        .item-content {
+          border: 1px solid $color--near-black;
+          color: $color--near-black;
+
+          a, div {
+            color: $color--near-black;
+          }
+        }
+      }
+    }
+
+    .item-content {
+      display: flex;
+      align-items: center;
+      border: 1px solid $color--grey;
+      padding: rem(15);
+      color: $color--grey;
+      height: rem(42);
+      cursor: pointer;
+
+      @include up(large) {
+        padding: rem(20);
+        height: rem(56);
+
+      }
+
+      a, div {
+        max-width: 62px;
+        color: $color--grey;
+      }
+
+      svg {
+        margin-right: rem(6);
+      }
+
+      &.next {
+        @include up(large) {
+          margin-top: rem(40);
+          margin-bottom: rem(40);
+        }
+      }
+    }
+
+    .item-choice {
+      display: none;
+      color:  $color--near-black;
+
+      @include up(large) {
+        display: block;
+        padding: 0;
+        background-color: transparent;
+        margin-top: rem(10);
+        position: relative;
+      }
+    }
+
+    &__categories {
+      display:flex;
+      @include up('large') {
+        display: block;
+      }
+    }
+  }
+
+  .item-choice-mobile {
+
+    @include up('large') {
+      display: none
+    }
+  }
+}
+
+
+@include down('large') {
+
+  .tunnel-sidebar {
+    background: #fff;
+    top: header.$total-height + rem(40);
+    transition: 0.3s;
+
+    &.tunnel-sidebar--when-header-is-compact {
+      top: header.$total-height;
+    }
+  }
+
+  .tunnel-sidebar--sticky {
+    background: #fff;
+    box-shadow: 0 -1px 0 0 rgba($color--near-black, 0.1) inset;
+  }
+
+  .item-choice-mobile {
+    width: 100%;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: $color--true-white;
+    padding: rem(10) rem(20);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@include up(css-grid--get-config('base', 'max-width')) {
+  .tunnel-sidebar {
+    &::before,
+    &::after {
+      max-width: none;
+    }
+  }
+}
+
+
+
+@each $_slug, $_obj in $css-grid--breakpoints {
+  $_i: list.index(map.keys($css-grid--breakpoints), $_slug);
+  $_reset-at: 3;
+
+  $_name: map.get($_obj, "name");
+  $_shorthand: '\\@' + map.get($_obj, "shorthand") + '\\:';
+  $_value: map.get($_obj, "value");
+  $_margins: map.get($_obj, "margins");
+  $_max-width: map.get($_obj, "max-width");
+  $_gutters: map.get($_obj, "gutters");
+
+  @if $_i < $_reset-at and ($_margins or $_max-width) {
+    $_actual-margins: css-grid--get-last-config($_slug, 'margins');
+    $_actual-max-width: css-grid--get-last-config($_slug, 'max-width');
+    $_max-content-width: $_actual-max-width  - $_actual-margins * 2;
+
+    @include up($_value) {
+      .tunnel-sidebar {
+        &::before,
+        &::after {
+          width: calc( (100vw - #{$_actual-max-width}) / 2 );
+
+          @if $_margins {
+            min-width: $_margins;
+            max-width: $_margins;
+          }
+        }
+      }
+    }
+
+    @include up($_actual-max-width) {
+      .tunnel-sidebar {
+        &::before,
+        &::after {
+          max-width: none;
+        }
+      }
+    }
+  }
+  @else if $_i == $_reset-at {
+    @include up($_value) {
+      .tunnel-sidebar {
+        width: auto;
+        margin-left: 0;
+
+        &::before,
+        &::after {
+          content: none;
+          display: none;
+        }
+      }
+    }
+  }
+}

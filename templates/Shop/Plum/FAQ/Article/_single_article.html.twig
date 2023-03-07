@@ -1,0 +1,19 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block content %}
+    <div class="faq-single">
+        <div class="container">
+            <div class="faq-single__content flush-row u-center-on-main">
+                <div class="@md:flush-column-7">
+                    <h3 class="t-header-medium u-margin-b-3 t-align-center">{{ article.title }}</h3>
+                    <div class="u-v-spaced-2">
+                        <p>{{ article.body | raw }}</p>
+                    </div>
+                </div>
+                <div class="faq-single__return u-margin-t-4">
+                    <a href="{{ path('app_faq_index') }}" class="link-button link-button--inline">{{ 'app.cms_page.faq.return'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

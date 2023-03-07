@@ -1,0 +1,146 @@
+@use '../../../config/sass' as *;
+@use '../../../abstract/css-grid/css-grid-mixins' as *;
+
+.CMS_devis-home, .CMS_quotation-home {
+  background: get-color('true-white') linear-gradient(to bottom, get-color('beige'), get-color('beige')) center top no-repeat;
+  background-size: 100% rem(360);
+
+  .page-container {
+    padding-top: rem(50);
+    padding-bottom: rem(80);
+  }
+  .cms-button-ui-fix{
+    button{
+      background-color: get-color('green');
+    }
+  }
+}
+
+.help-card {
+  &__medaillon {
+    width: rem(100);
+    height: rem(100);
+    right: rem(-32);
+    top: rem(-64);
+
+    img {
+      border-radius: 1000px;
+    }
+  }
+
+  &__icon {
+    padding: rem(6);
+    border-radius: 1000px;
+    right: rem(4);
+    bottom: rem(-4);
+  }
+}
+
+.help-fullwdith-card{
+
+  .cms__text{
+    text-align: center !important;
+    @include up('large') {
+     text-align:left !important;
+      max-width: 642px;
+    }
+  }
+  img:not(.o-icon-40){
+    height: 200px;
+    @include up('large') {
+      height: 450px;
+    }
+  }
+
+  &__icon {
+    &.left{
+      right: 45%;
+      left: auto;
+      top: auto;
+      bottom: -14px;
+      padding: rem(6);
+      border-radius: 1000px;
+
+      @include up('large'){
+        right: -28px;
+        top: 4rem;
+        padding: rem(6);
+        border-radius: 1000px;
+        bottom: auto;
+      }
+
+      .o-icon-40{
+        width: 2.6rem;
+        height: 2.6rem;
+        padding: 0 4px;
+        &.discount-icon{
+          padding-top: 4px;
+          padding-left: 10px;
+        }
+      }
+    }
+    &.right{
+      right: 45%;
+      left: auto;
+      top: auto;
+      bottom: -14px;
+      padding: rem(6);
+      border-radius: 1000px;
+
+      @include up('large'){
+        left: -28px;
+        top: 3rem;
+        right: auto;
+        bottom: auto;
+      }
+
+      .o-icon-40{
+        width: 2.6rem;
+        height: 2.6rem;
+        padding: 0 4px;
+        &.discount-icon{
+          padding-top: 4px;
+          padding-left: 10px;
+        }
+        &.camera-icon{
+          padding-top: 4px;
+          padding-left: 6px;
+        }
+      }
+    }
+  }
+  .gift-badge{
+    width: 113px;
+    height: auto !important;
+  }
+}
+
+.cross-content-slider {
+  background-color: get-color('true-white');
+}
+
+@include up('large') {
+  .CMS_devis-home {
+    .page-container {
+      padding-top: rem(70);
+      padding-bottom: rem(120);
+    }
+  }
+
+  .routing-card {
+    &::after {
+      content: '';
+      display: block;
+      height: var(--padder-height, 0px);
+    }
+  }
+
+  .help-card {
+    &__medaillon {
+      width: rem(120);
+      height: rem(120);
+      right: rem(-60);
+      top: rem(-30);
+    }
+  }
+}

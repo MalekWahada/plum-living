@@ -1,0 +1,1485 @@
+app:
+    admin:
+        erp_registered: 'Gesynchroniseerde ERP'
+        payment_refund: 'De betaling zal niet worden terugbetaald op Stripe!'
+        tax_rate_must_be_unique: 'Als onderdeel van Plum''s unieke internationale prijsbeleid moet het BTW-tarief 20% bedragen, ongeacht het land van levering.'
+        warning: Waarschuwing
+    cms_page:
+        article:
+            main_caption: 'Interessante artikelen'
+        concept:
+            links_text: 'Hebt u een vraag over onze producten, de installatie ervan of onze leveringstermijnen?'
+            top_title: 'Ons concept'
+        conception_services:
+            cta: 'Ik boek mijn Ontwerp afspraak'
+            devis_cta: 'Ik bereken mijn project'
+            devis_title: 'Hebt u al een plan?'
+            form_confirmation:
+                signature: 'Het Plum Team'
+                subtitle: 'Uw ontwerp afspraak is bevestigd.'
+                text: 'Uw Plum Planner heeft u een uitnodiging per e-mail gestuurd.<br><br> Om inspiratie op te doen, vindt u nieuwe inhoud van Studio Plum op onze <a href="%URL%" target="_blank">Inspiratie pagina</a> en op onze netwerken!<br><br>Tot ziens,<br>'
+                title: Bedankt!
+            info_italic: 'Deze dienst wordt aangeboden voor Metod keukens en inrichtingen.'
+            info_text: 'Uw Plum Planner ontwerpt uw keuken of Metod inrichting vanuit het niets. <br><br> Aan het einde van het videogesprek, stuurt hij je : <br><br><svg class=''o-icon-24 c-green u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Uw Ikea-plan in PDF en de Ikea-artikelenlijst<br><br><svg class=''o-icon-24 c-green u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>De link naar je online Ikea plan<br><br><svg class=''o-icon-24 c-green u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Uw Plum lijst'
+            info_title: 'Waaruit bestaat deze dienst?'
+            price: '89,00€'
+            title: 'Onze Plum Planners maken uw plan'
+            top_text: 'Tijdens een videogesprek van 1,5 uur stelt één van onze Plum Planners uw Ikea-plan op aan de hand van uw wensen. U ontvangt daarbij tevens een lijst met alle aan te kopen artikelen.'
+        design_finish:
+            happy2022:
+                cta: 'Ik bestel mijn proefplanken'
+                subtitle: 'Maak in 2022 uw project werkelijkheid: 3 proefplanken worden u aangeboden met de code <strong>LETSGO</strong>'
+            top_title: 'Designs & Afwerkingen'
+        devis_services:
+            call_italic: 'Zij zullen uw vragen over uw plan beantwoorden en controleren of uw Plum-winkelmand compleet is.'
+            call_text: 'Zodra u uw prijsopgave op onze website hebt gedaan, bieden wij u een telefoongesprek van 15 minuten aan waarin wij uw plan en uw lijst met artikelen zullen controleren.'
+            call_title: 'Controleer uw kosten met een Plum Planner'
+            conception_cta: 'Ontdek onze Ontwerpdienst'
+            conception_title: 'Hebt u geen plan?'
+            title: 'Onze Plum Planners begeleiden u'
+            visio_cta: 'Ik boek mijn Ontwerp afspraak'
+            visio_italic: 'Onze ontwerpservice wordt aangeboden voor €89.'
+            visio_text: 'Tijdens een videogesprek van 1,5 uur stelt één van onze Plum Planners uw plan op aan de hand van uw wensen. U ontvangt daarbij tevens een lijst met alle aan te kopen artikelen.'
+            visio_title: 'Hebt u geen plan?'
+        eshop:
+            accessoires:
+                meta:
+                    description: 'Laat u inspireren door onze Metod en Pax Ikea meubelaccessoires en personaliseer uw interieurinrichting in een handomdraai.'
+                    title: 'Meubel accessoires Ikea | Plum'
+                    type: pagina
+            echantillon_facade:
+                meta:
+                    description: 'Laat u inspireren door onze Ikea ladefront proefplanken en wij betalen ze terug vanaf uw eerste bestelling!'
+                    title: 'Ladefront proefplanken Ikea | Plum'
+                    type: pagina
+            echantillon_peinture:
+                meta:
+                    description: 'Laat u inspireren door onze Ikea verfstalen en wij betalen ze terug vanaf uw eerste bestelling!'
+                    title: 'Verfstalen | Plum'
+                    type: pagina
+            metod:
+                meta:
+                    description: 'Laat u inspireren door onze Metod Ikea ladefrontontwerpen en personaliseer uw interieurinrichting in een handomdraai.'
+                    title: 'Metod ladefronten Ikea | Plum'
+                    type: pagina
+            pax:
+                meta:
+                    description: 'Laat u inspireren door onze Pax Ikea ladefrontontwerpen en personaliseer uw interieurinrichting in een handomdraai.'
+                    title: 'Pax Ikea ladefronten | Plum'
+                    type: pagina
+            peinture:
+                meta:
+                    description: 'Laat u inspireren door onze in Frankrijk vervaardigde muurverven met satijnglans en personaliseer uw interieurinrichting in een handomdraai.'
+                    title: 'Muurschildering | Plum'
+                    type: pagina
+        faq:
+            meta:
+                descritpion: 'De antwoorden op uw vragen om u te helpen inspiratie op te doen, u de beste producten aan te bieden en u advies te geven bij de uitvoering van uw project.'
+                title: 'Veel gestelde vragen | Plum'
+                type: Pagina
+            return: Terug
+            title: FAQ
+        inspiration:
+            address:
+                meta:
+                    description: 'Laat u leiden door ons adresboek en maak uw interieurinrichting op maat met de beste leveranciers van accessoires.'
+                    title: 'Keukenaccessoires | Plum'
+                    type: Pagina
+            discover_all_inspirations: 'Ontdek al onze projecten'
+            filter_text: 'Ik ontdek'
+            home_tour:
+                meta:
+                    description: 'Laat u inspireren door de projecten en ervaringen van onze klanten en personaliseer uw interieurinrichting in een handomdraai.'
+                    title: 'Klantenbezoeken en -interviews | Plum'
+                    type: Pagina
+            inspiration:
+                meta:
+                    description: 'Laat u inspireren door de projecten van grote binnenhuisarchitecten en personaliseer uw interieurinrichting in een handomdraai.'
+                    title: 'Architectprojecten | Plum'
+                    type: Pagina
+            main_caption: 'Inspiratie & gids'
+            meta:
+                description: 'Laat u inspireren door onze designprojecten en personaliseer uw interieurinrichting in een handomdraai.'
+                title: 'Inspiratie & Gids | Plum'
+                type: Pagina
+            no_inspiration: 'Sorry, we hebben geen inspiratie die aan uw criteria voldoet'
+            practice:
+                meta:
+                    description: 'Alles wat u altijd al wilde weten over onze inrichtingsoplossingen om uw interieur in een oogwenk te personaliseren.'
+                    title: 'Praktische gidsen voor interieurontwerp | Plum'
+                    type: Pagina
+            tutorial:
+                meta:
+                    description: 'Laat u leiden door onze tutorials en ontwerptips en personaliseer uw interieurinrichting in een oogwenk.'
+                    title: 'Interieurontwerp tutorials | Plum'
+                    type: Pagina
+        media_article:
+            article:
+                read-btn: 'Lees meer'
+            category:
+                address:
+                    meta:
+                        description: Adresboek
+                        title: 'Adresboek | Plum'
+                        type: Pagina
+                    title: Adresboek
+                all: 'Alle categorieën'
+                home_project:
+                    meta:
+                        description: 'Home project'
+                        title: 'Home project | Plum'
+                        type: Pagina
+                    title: 'Home project'
+                home_tour:
+                    meta:
+                        description: 'Home Tour'
+                        title: 'Home Tour | Plum'
+                        type: Pagina
+                    title: 'Home Tour'
+                inspiration:
+                    meta:
+                        description: 'Creatieve Ideeën'
+                        title: 'Creatieve ideeën | Plum'
+                        type: Pagina
+                    title: 'Creatieve Ideeën'
+                interview:
+                    meta:
+                        description: Interview
+                        title: 'Interviews | Plum'
+                        type: Pagina
+                    title: Interview
+                no_content: 'Geen artikelen in deze categorie'
+                not_found: 'Deze categorie bestaat niet'
+                practice:
+                    meta:
+                        description: 'Praktische gidsen'
+                        title: 'Praktische gidsen | Plum'
+                        type: Pagina
+                    title: 'Praktische gidsen'
+                toolbox:
+                    meta:
+                        description: Gereedschapskist
+                        title: 'Gereedschapskist | Plum'
+                        type: Pagina
+                    title: Gereedschapskist
+                tuto_ikea:
+                    meta:
+                        description: 'Ikea handleiding'
+                        title: 'Ikea handleiding | Plum'
+                        type: Pagina
+                    title: 'Ikea handleiding'
+                tutorial:
+                    meta:
+                        description: 'Step by Step'
+                        title: 'Step by Step | Plum'
+                        type: Pagina
+                    title: 'Step by Step'
+            form:
+                category: 'Categorie (sticker)'
+                theme: Thema
+            page:
+                cross_content_title: 'Misschien vindt u deze onderwerpen leuk'
+                home_projects: 'Home Projecten'
+                not_found: 'Deze pagina bestaat niet'
+                shopping_list: 'Shopping List'
+            slider:
+                discover: Ontdekken
+            theme:
+                all: 'Alle thema''s'
+                au-royaume-des-kids:
+                    meta:
+                        description: 'In het rijk van kinderen'
+                        title: 'In het rijk van kinderen | Plum'
+                        type: Pagina
+                    title: 'In het rijk van kinderen'
+                chambres-dressing-en-couleurs:
+                    meta:
+                        description: 'Slaapkamers & kleedkamers, in kleur'
+                        title: 'Slaapkamers & kleedkamers, in kleur | Plum'
+                        type: Pagina
+                    title: 'Slaapkamers & kleedkamers, in kleur'
+                cuisine-conseils-et-bonnes-adresses:
+                    meta:
+                        description: 'Keuken - tips & goede adressen'
+                        title: 'Keuken - tips & goede adressen | Plum'
+                        type: Pagina
+                    title: 'Keuken - tips & goede adressen'
+                cuisine-toutes-nos-inspirations:
+                    meta:
+                        description: 'Keuken - al onze inspiraties'
+                        title: 'Keuken - al onze inspiraties | Plum'
+                        type: Pagina
+                    title: 'Keuken - al onze inspiraties'
+                faire-mon-plan-avec-le-ikea-kitchen-planner:
+                    meta:
+                        description: 'Mijn plan maken met de Ikea keukenplan'
+                        title: 'Mijn plan maken met de Ikea keukenplan | Plum'
+                        type: Pagina
+                    title: 'Mijn plan maken met de Ikea keukenplan: instructievideo''s'
+                je-veux-un-meuble-dentree-ou-de-salon:
+                    meta:
+                        description: 'Ik wil een meubelstuk voor de entree of de woonkamer!'
+                        title: 'Ik wil een meubelstuk voor de entree of de woonkamer! | Plum'
+                        type: Pagina
+                    title: 'Ik wil een meubelstuk voor de entree of de woonkamer!'
+                jeux-de-peinture:
+                    meta:
+                        description: 'Speels schilderen | Plum'
+                        title: 'Speels schilderen | Plum'
+                        type: Pagina
+                    title: 'Speels schilderen'
+                la-cuisine-en-couleurs:
+                    meta:
+                        description: 'De keuken, in kleur'
+                        title: 'De keuken, in kleur | Plum'
+                        type: Pagina
+                    title: 'De keuken, in kleur'
+                les-details-qui-changent-tout:
+                    meta:
+                        description: 'De details die het verschil maken'
+                        title: 'De details die het verschil maken | Plum'
+                        type: Pagina
+                    title: 'De details die het verschil maken'
+                no_content: 'Geen artikelen in dit thema'
+                not_found: 'Dit thema bestaat niet'
+                petit-budget-maxi-effet:
+                    meta:
+                        description: 'Minimaal budget, maximaal effect'
+                        title: 'Minimaal budget, maximaal effect | Plum'
+                        type: Pagina
+                    title: 'Minimaal budget, maximaal effect'
+                secrets-d_archi:
+                    meta:
+                        description: 'Architectonische geheimen'
+                        title: 'Architectonische geheimen | Plum'
+                        type: Pagina
+                    title: 'Architectonische geheimen'
+                tout-sur-la-chambre-et-le-dressing:
+                    meta:
+                        description: 'Alles over de Slaapkamer en de Dressing'
+                        title: 'Alles over de Slaapkamer en de Dressing | Plum'
+                        type: Pagina
+                    title: 'Alles over de Slaapkamer en de Dressing'
+                une-salle-de-bain-sinon-rien:
+                    meta:
+                        description: 'Een Plum badkamer of niets'
+                        title: 'Een Plum badkamer of niets | Plum'
+                        type: Pagina
+                    title: 'Een Plum badkamer of niets'
+        project:
+            bathroom:
+                meta:
+                    description: 'Geef uiting aan uw creativiteit of neem een blanco vel papier en laat u inspireren door onze designprojecten en personaliseer uw badkamer in een handomdraai.'
+                    title: 'Badkamer ontwerpen | Plum'
+                    type: Pagina
+            creation_banner:
+                cta: 'Ik bereken mijn project'
+                desc: 'Bereken uw project in enkele minuten.'
+                title: 'Maak uw project'
+            discover_all_projects: 'Ontdek al onze projecten'
+            kitchen:
+                meta:
+                    description: 'Geef uiting aan uw creativiteit of neem een blanco vel papier en laat u inspireren door onze designprojecten en personaliseer uw keuken in een handomdraai.'
+                    title: 'Keukenontwerpen | Plum'
+                    type: Pagina
+            main_caption: 'Neem een blanco vel papier, en laat u inspireren.'
+            meta:
+                description: 'Beheer uw budget naargelang uw project en laat u inspireren door onze voorbeelden om uw binnenhuisinrichting te personaliseren.'
+                title: 'Voorbeelden en prijzen van interieurinrichting | Plum'
+                type: Pagina
+            no_project: 'Sorry, we hebben geen projecten die aan uw criteria voldoen'
+            other:
+                meta:
+                    description: 'Geef uiting aan uw creativiteit of neem een blanco vel papier en laat u inspireren door onze designprojecten en personaliseer uw interieurinrichting in een handomdraai.'
+                    title: 'Interieurinrichting ontwerpen | Plum'
+                    type: Pagina
+            room:
+                meta:
+                    description: 'Geef uiting aan uw creativiteit of neem een blanco vel papier en laat u inspireren door onze designprojecten en personaliseer uw slaapkamer en uw dressing in een handomdraai.'
+                    title: 'Slaapkamer en kleedkamer ontwerpen | Plum'
+                    type: Pagina
+            top_title: 'Uw projecten'
+        terra_club:
+            already_signed: 'Hebt u al een Plum account?'
+            already_signed_link: 'Ik update mijn profiel'
+            cta: 'Ik word lid van de Terra Club'
+            echantillons:
+                italic: 'Voor elke bestelling van ladefronten krijgt u een korting van 10% op het bedrag van de ladefronten op accessoires en verf.'
+                text: 'Wilt u Plum aan uw klanten voorstellen? <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg> Uw gratis doosjes met proefplanken <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg> Een directe korting op accessoires en verf'
+                title: 'Stalen & kortingen'
+            how_it_works:
+                cta: 'Zie onze FAQ'
+                help_mail: '<a class="link-button" href="mailto:terraclub@plum-living.com">terraclub@plum-living.com</a>'
+                help_text: 'Ons professionele team beantwoordt uw vragen:'
+                title: 'Hoe werkt de Terra Club?'
+            services:
+                text: 'Onze Plum Planners helpen u gratis: <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Een Plum offerte op basis van uw technisch plan <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Uw technisch plan omgezet in een Ikea plan <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg> Een klantendienst toegewijd aan professionals'
+                title: 'Exclusieve diensten'
+            shooting:
+                text: 'Bent u trots op uw eerste Plum project? Laten we het samen in de kijker zetten! <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>12 foto''s van uw project<br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Deel uw project met onze gemeenschap'
+                title: 'Gratis fotoshoot'
+            title: 'Terra Club'
+            top_subtitle: 'Een programma en voordelen op maat van uw projecten.'
+            top_title: 'Ontworpen voor professionals'
+    combination:
+        title: Combinatie
+    email:
+        body_text: 'Hier is de pdf van het projectplan. Veel leesplezier'
+        email_subject: 'Hier is het plan van het project dat u interesseert!'
+    error_page:
+        btn_back: 'Terug naar home'
+        faq:
+            btn_back: 'Terug naar de FAQ-pagina'
+            text: 'Het artikel dat u zoekt bestaat niet.'
+        oups: Oeps!
+        text: 'De opgevraagde pagina bestaat niet of niet meer.'
+    facade:
+        title: Ladefront
+        tunnel_shopping:
+            accessoires: Accessoires
+            door: Deuren
+            drawer: Lades
+            panels_and_plinths: 'Panelen Plinten'
+            panels_and_plinths_listing: 'Bedekkingspanelen en plinten'
+    footer:
+        shop:
+            about: 'Over ons'
+            contact_us: 'Schrijf ons op <a href="mailto:%email%">%email%</a> voor al uw vragen'
+            contact_us_label: 'Contacteer ons'
+            copyright: 'Plum, 2022. Alle rechten voorbehouden.'
+            follow_us: 'Volg ons!'
+            follow_us_label: 'Volg ons'
+            help: Help
+            inspire_me: 'Inspireer me!'
+            inspire_me_label: 'Inspireer me'
+            my_email_address: 'Mijn e-mailadres'
+            offers: Aanbiedingen
+            personal_data: 'Ik aanvaard dat de op dit formulier ingevulde persoonlijke gegevens voor commerciële doeleinden kunnen worden gebruikt. U hebt het recht op toegang tot en rectificatie van informatie die op u betrekking heeft.'
+            subscribe: Aanmelden
+    form:
+        accordion:
+            add_element: 'een accordeon toevoegen'
+            detail: 'accordeon detail'
+            title: 'accordeon titel'
+        address:
+            shipping_notes:
+                label: 'Deel belangrijke informatie met de bezorger'
+                placeholder: 'Code van het gebouw, intercom, etage, toegankelijkheid van de weg, enz.'
+        button_link:
+            label: 'Type knopweergave'
+            link: 'Link (plaats een absolute link of een slug van een pagina, bv. voor een conceptpagina "https://plum-living.com/fr/concept" plaats "concept")'
+        caption: Onderschrifttekst
+        card:
+            content: inhoud
+            link: link
+            link_label: 'link label'
+            with_icon: 'Geef de afbeelding met het pictogram weer 📞'
+        card_element:
+            description: 'beschrijving van een gedetailleerd element'
+            price: 'prijs van een gedetailleerd element'
+            title: 'titel van een gedetailleerd element'
+        card_total:
+            add_button_label: 'een item toevoegen aan de gedetailleerde begroting'
+            label: 'Elementen van de gedetailleerde begroting'
+            main_title: 'Hoofdtitel van de gedetailleerde begroting'
+            total: 'totale objecttitel'
+            total_details: 'aanvullende details over het totaal'
+            total_to_display: 'totaal weergegeven'
+        cart_item:
+            comment: Opmerking
+            comment_placeholder: 'Voeg een opmerking toe'
+        channel:
+            default_country: 'Standaard land'
+        chip: 'Lijst van pellets'
+        color: 'Lijst van kleuren'
+        customer:
+            accept_privacy_policy: 'Ik accepteer het privacybeleid'
+            birthday: Geboortedatum
+            customer_type:
+                choices:
+                    company_all_trades: 'Multidisciplinair bedrijf'
+                    interior_designer: Binnenhuisarchitect
+                    other_professional: 'Andere vakman'
+                    other_renovation_agency: 'Andere renovatie vakman'
+                    particular_customer: 'Particuliere klant'
+                    real_estate_developer: Vastgoedontwikkelaar
+                    renovation_agency: 'Renovatie professional'
+                label: 'Privé of professioneel?'
+            gender:
+                choices:
+                    men: Meneer
+                    not_indicated: 'Ik geef liever geen antwoord'
+                    women: Mevrouw
+                label: Aanspreektitel
+            how_you_know_about_us:
+                choices:
+                    blog_magazine: 'Blog / Magazine'
+                    by_a_colleague: 'Door een collega'
+                    by_a_friend: 'Door een vriend'
+                    by_a_relative: 'Door een familielid'
+                    by_my_architect: 'Door mijn architect'
+                    by_my_contractor: 'Door mijn aannemer'
+                    facebook: Facebook
+                    instagram: Instagram
+                    internet_magazine_media: 'Zoeken op internet blog / online artikel Tijdschrift / pers TV Radio'
+                    metro_bus: 'Metro / Bus'
+                    partnership: Partnerschap
+                    pinterest: Pinterest
+                    tv_replay: 'TV / Replay'
+                    we_contact_you: 'U hebt contact met mij opgenomen'
+                    youtube: YouTube
+                label: 'Hoe hebt u van Plum gehoord?'
+            how_you_know_about_us_details:
+                architect: 'Vertel ons de naam van uw architect als u wilt!'
+                contractor: 'Laat ons de naam van uw aannemer weten als u dat wenst!'
+                default: 'Vertel ons meer als u wilt!'
+            preferred_translation_slug: 'Regio '
+        customer_project:
+            additional_cabinet_reference: AANVULLEND
+            comment_placeholder: 'Voeg een opmerking toe aan het project'
+            item_comment_placeholder: 'Voeg een opmerking toe'
+            product: 'Soort product'
+            product_placeholder: Kies
+        design: 'Lijst van ontwerpen'
+        facade: 'Soort ladefront'
+        finish: 'Lijst van afwerkingen'
+        image_step_element:
+            image_step_description: 'beschrijving van een stapafbeelding'
+            image_step_image: 'afbeelding van een stap afbeelding'
+            image_step_title: 'titel van een stapafbeelding'
+        images_collection:
+            label: 'Type weergave van de beeldverzameling'
+        images_steps:
+            add_button_label: 'stap afbeeldingen toevoegen'
+            label: 'Elementen van stapafbeeldingen'
+            type: 'Type afbeeldingen stappen'
+        media:
+            cross_content:
+                pages: 'Lijst van pagina''s'
+            default:
+                bg_color:
+                    beige: Beige
+                    blue: Pastelblauw
+                    green: Pastelgroen
+                    rose: Pastelroze
+                    title: 'Achtergrond kleur'
+                    white: Wit
+                caption: Afbeeldingsonderschrift
+                citation: Citaat
+                description: Beschrijving
+                image: Afbeelding
+                image_alt: 'Alternatieve tekst bij de afbeelding'
+                image_title: 'Titel afbeelding'
+                link_alignment: 'Link uitlijning'
+                link_label: 'Titel van de link'
+                link_target: 'Wilt u de link in een nieuw tabblad openen?'
+                link_url: 'Link URL'
+                text_color:
+                    black: Zwart
+                    title: Tekstkleur
+                    white: Wit
+                title: Titel
+                video: 'Youtube video'
+            hero:
+                tag: 'Naam van de tag of categorie'
+            slider:
+                add_element: 'Een item toevoegen'
+                order: 'Volgorde van weergave'
+            two_hybrid_columns:
+                margin: 'Kolommen met marge of meeslepend?'
+                margin_immersive: 'Meeslepende kolommen'
+                margin_marge: 'Kolommen met marge'
+                orientation: 'Kies de oriëntatie van de kolommen'
+                orientation_left: 'Teksten links en afbeelding rechts'
+                orientation_right: 'Teksten rechts en afbeelding links'
+            zoning_image:
+                left: 'Linker positie (automatisch berekend)'
+                manual: 'OF Maak de inhoud handmatig aan door de volgende velden in te vullen, Titel :'
+                position: 'Positie berekenen (klik op de afbeelding)'
+                product: Product
+                top: 'Top positie (automatisch berekend)'
+        page:
+            image: 'Hoofdafbeelding van de pagina'
+            position: Volgorde
+            reference_locale_code: Referentietaal
+            translations_published: 'Vertalingen gepubliceerd op Lokalize'
+            type: 'Soort pagina'
+        page_card:
+            code: 'link (de lijst bevat links naar CMS-pagina''s en interne routes)'
+            content: inhoud
+            hint: 'specifieke informatie'
+            label: 'link label'
+        pages_listing:
+            label: 'Lijst van pagina''s'
+        product:
+            delivery: Verzendgegevens
+            groups: 'Geassocieerde groepen'
+            position: Positie
+        product_group:
+            name: Weergavenaam
+            position: 'Volgorde van weergave'
+            products: 'Verwante producten'
+            translations: Vertalingen
+        product_ikea:
+            description: Beschrijving
+            price: Prijs
+        product_info:
+            content: Inhoud
+            links:
+                add_label: 'Een link toevoegen'
+                label: 'Nuttige links'
+        product_info_accessory:
+            facade_type: 'type ladefront'
+        product_option:
+            label: 'Productoptie(s) gegroepeerd op basis van hun codes'
+        product_option_value_image_type:
+            label: 'Type afbeelding'
+        product_value:
+            add_button_label: 'Nog een afbeelding toevoegen'
+            combination: 'Gekoppelde aanbeveling'
+            combination_label: 'Label van de weer te geven aanbeveling'
+            combination_placeholder: 'Kies een aanbeveling'
+            description: Beschrijving
+            image: Afbeelding
+            position: Bevel
+        project_piece:
+            label: 'Soort project'
+        project_plan:
+            label: 'Upload een *pdf bestand'
+        recommendation:
+            label: Aanbevelingen
+            option:
+                add: 'Een optie toevoegen'
+                description: 'Beschrijving van de optie'
+                image: 'Beeld van de optie'
+                list: 'Lijst met opties'
+                title: Titel
+            subtitle: Ondertitel
+        select_field:
+            placeholder: Selecteer
+        taxon_translation:
+            product_info: Productinformatie
+        tunnel_shopping:
+            color: Kleur
+            design: Ontwerp
+            facade: Ladefront
+            finish: Afwerking
+            handle_finish: 'Afwerking handgreep'
+            image: Afbeelding
+            tap_finish: 'Mengkraan afwerking'
+            variant: Variant
+        variant:
+            max_day_delivery: 'Maximale leveringstermijn (dagen)'
+            min_day_delivery: 'Minimale leveringstermijn (dagen)'
+    header:
+        shop:
+            burger_menu_label: Hoofdmenu
+            cart_dismiss: 'Verder winkelen'
+            cart_label: Winkelmand
+            cart_proceed_to_checkout: 'Mijn winkelmand bevestigen'
+            cart_summary_clear_label: 'Mijn winkelmand leegmaken'
+            cart_summary_close_label: 'Winkelmand verbergen'
+            cart_view_and_edit: 'Mijn winkelmand bewerken'
+            other_countries: 'EU - Andere landen (Engels)'
+    media:
+        slider:
+            link_label: 'Ontdek alles'
+    menu:
+        shop:
+            aside_header:
+                about: 'Wie zijn wij?'
+                delivery: Levering
+                faq: FAQ
+                label: 'extra menukop'
+                manufacturing: Productie
+            footer:
+                cgv: AVL
+                confidentiality: Privacy
+                find_a_room_installer: 'Vind een installateur'
+                installation_manual: Installatiehandleiding
+                legal_mentions: 'Wettelijke informatie'
+                terra_club: 'Terra Club'
+            nav:
+                account:
+                    login: Inloggen
+                concept:
+                    design_finish: 'Designs & Afwerkingen'
+                    faq: FAQ
+                    functionality: 'Hoe het werkt'
+                    label: Concept
+                e_shop:
+                    accessory: Accessoires
+                    facade_method: 'Metod ladefronten'
+                    facade_pax: 'Pax ladefronten'
+                    label: Winkel
+                    paints: Muurschildering
+                    sample:
+                        facade: Ladefrontstalen
+                        paint_mural: 'Muurverf stalen'
+                    taps: Mengkranen
+                header: Hoofdnavigatiemenu
+                inspiration_and_design:
+                    address_book: Adresboek
+                    creative_ideas: 'Creatieve ideeën'
+                    home_tours_interviews: 'Home tours & Interviews'
+                    label: Inspiratie
+                    practical_guides: 'Praktische gidsen'
+                    shopping_lists_by_step: 'Shopping lists & Step by step'
+                    toolbox: Gereedschapskist
+                projects_and_budgets:
+                    bathroom: Badkamer
+                    kitchen: Keuken
+                    label: Projecten
+                    others: 'Andere kamers'
+                    rooms_and_dressing: 'Slaapkamer en kleedkamer'
+                quotation: '</span><svg class="o-icon-16 u-margin-r-1"><use xlink:href="%ICON_LIB_URL%#SVG-icon-arrow-right"></svg><span>Offerte</span>'
+                quotation_button: Offerte
+                services:
+                    conception_home: 'Mijn plan uitvoeren'
+                    find_installer: 'Vind een installateur'
+                    label: Diensten
+                    quotation_home: 'Mijn project met 2 kliks berekenen'
+                    styler_home: 'Create my design in 3D <div class="u-badge bg-pink-light c-near-black">New</div>'
+                styler_button: '3D Styler'
+    promotion:
+        b2b_program_promotion:
+            label: 'Promotie van het B2B-programma'
+        contains_only_main_taxon_promotion:
+            label: 'Alle producten in de winkelmand hebben het volgende hoofdtaxon (in de lijst)'
+        contains_only_sample_shipping_category_promotion:
+            label: 'Alle producten in de winkelmand hebben de verzendingscategorie "Proefplank".'
+        front_sample_promotion:
+            label: 'Promotie op de ladefront proefplank (interne regel, niet te gebruiken in productie)'
+        paint_sample_promotion:
+            label: 'Promotie op de verfstaal (intern voorschrift, niet in productie te gebruiken)'
+    ui:
+        account:
+            addresses:
+                add_new_address: 'Een adres toevoegen'
+                default_address: 'Standaard adres'
+                delete_confirmation_confirm: Ja
+                delete_confirmation_dismiss: Nee
+                delete_confirmation_message: 'Weet u zeker dat u dit adres wilt verwijderen: %address_name%?'
+                delete_confirmation_title: 'Weet u het zeker?'
+                no_addresses_defined: 'U heeft geen adres opgeslagen'
+                other_address: 'Mijn adressen'
+                title: 'Mijn adressen'
+            b2b_code:
+                link: '<a href="%url%" class="link-button link-button--inline small-link-button"> <svg class="o-icon-16 fix-arrow-size"><use xlink:href="%ICON_LIB_URL%#SVG-icon-arrow-right"></svg> Ontdek alle voordelen en diensten van de Terra Club</a>'
+                need_help: 'Heb je een vraag? Schrijf ons op <a href="mailto:terraclub@plum-living.com">terraclub@plum-living.com</a>'
+                text: 'Mijn Terra code voor al mijn voordelen<br/>'
+                title: 'Lid van Terra <span class="t-canela">Club</span>'
+            create_address:
+                title: 'Nieuw adres'
+            hello: 'Welkom %firstName%'
+            menu:
+                address_book: 'Mijn adressen'
+                order_history: 'Mijn bestellingen'
+                personal_information: 'Mijn profiel'
+                pro_advantages: 'Mijn professionele voordelen'
+                projects: 'Mijn projecten'
+            modify_address:
+                title: 'Een adres wijzigen'
+            order_details:
+                any_question: 'Vragen over uw bestelling? Neem contact met ons op'
+                contact_infos: Contactgegevens
+                no_tel: 'Geen telefoonnummer aangegeven'
+                order_date: Besteldatum
+                payment_method: Betaling
+                shipping_date: Leveringsdatum
+                shipping_method: Leveringsmethode
+                title: 'Mijn bestelling volgen'
+            orders:
+                back: 'Terug naar de vorige pagina'
+                completed_orders: 'Mijn eerdere bestellingen'
+                new_orders: 'Mijn huidige bestellingen'
+                no_orders: 'U heeft geen bestellingen'
+                see_order_details: 'Zie de details van mijn bestelling'
+                title: 'Mijn bestellingen'
+            password:
+                title: 'Wachtwoord wijzigen'
+            profile:
+                title: 'Mijn profiel'
+            projects:
+                date: Datum
+                delete_my_project: 'Mijn project verwijderen'
+                duplicate_my_project: 'Mijn project dupliceren'
+                last_saved_date: 'Laatst opgeslagen datum'
+                no_projects: 'Je hebt geen projecten'
+                project: Project
+                project_number: 'Project nr.'
+                see_my_project: 'Bekijk mijn project'
+                status: Status
+                status_list:
+                    error_invalid_mail: 'Ongeldige e-mail'
+                    error_other: 'Andere Fout'
+                    not_found: 'Project niet gevonden'
+                    ok: 'Artikel module'
+                    processing: 'In behandeling'
+                    waiting_for_mail: 'Wachten op de e-mail'
+                title: 'Mijn projecten'
+                total: Totaal
+        admin:
+            order:
+                cart_state:
+                    back: 'Terug naar bestellingen'
+                    title: 'De bestelling die u zoekt is nog een winkelmand'
+            page:
+                fetch_translation: 'Ophalen uit Lokalize'
+                publish_translation: 'Publiceer taal <b>%locale%</b> naar Lokalize'
+                translations_published: 'Het artikel is al gepubliceerd op Lokalize. Elke verdere wijziging van de referentietaal moet opnieuw worden gepubliceerd.'
+            product:
+                form_menu:
+                    complete_info:
+                        label: 'Aanvullende informatie'
+                        skeleton_label: 'Zorg ervoor dat het skelet in deze volgorde wordt gebouwd: <br><ol><li>* Text Blad </li><li>* Accordeon Blad</li><li>* Blad Verzameling Afbeeldingen van het type mozaïek </li><li>* H3 Blad</li><li>* Blad Knop </li><li>* H3 Blad</li><li>* Blad Knop </li><li>* Cross Content Blad</li></ol>'
+                product_complete_info:
+                    fetch_translation: 'Aanvullende informatie ophalen uit Lokalize'
+                    publish_translation: 'Publiceer aanvullende info in %locale% naar Lokalise'
+                    translation_button: 'Aanvullende informatie'
+                    translations_published: 'De informatie is al gepubliceerd op Lokalize. Elke nieuwe wijziging in de Franse taal moet opnieuw worden gepubliceerd.'
+            taxon:
+                fetch_translation: 'Vertalingen ophalen uit Lokalise'
+                publish_translation: 'Publiceer vertalingen in %locale% naar Lokalise'
+                translation_button: Vertalingen
+                translations_published: 'Vertalingen van de taxon zijn reeds gepubliceerd op Lokalize. Elke nieuwe wijziging in de Franse taal dient opnieuw te worden gepubliceerd.'
+            translation:
+                fetch_translation_confirm: 'Weet u zeker dat u vertalingen van Lokalize wilt ophalen? De structuur van de doeltaal wordt volledig gereset door de referentietaal %locale%.'
+                fetch_translation_error: 'Fout bij het ophalen van taalvertalingen %locale%'
+                fetch_translation_result: '%nb% vertalingen zijn opgehaald voor de taal %locale%'
+                nothing_to_process: 'Geen te behandelen entiteiten'
+                publish_translation_error: 'Fout bij het publiceren van vertalingen'
+                publish_translation_result: '%nb% nieuwe vertalingen zijn gepubliceerd voor de referentietaal %locale%.'
+                translation_reference_content_has_changed: 'De inhoud van de referentietaal %locale% is veranderd sinds de laatste publicatie in Lokalize. Publiceer het alstublieft opnieuw.'
+                translation_task_error: 'Er is een fout opgetreden in de vertaaltaak: %error%'
+        cart:
+            edit_checkout: 'Mijn winkelmand bewerken'
+            free: Aangeboden
+            main_panel_title: 'Uw winkelmand'
+            proceed_to_checkout: 'Ga verder naar betaling'
+            remove_product: 'Verwijder het artikel'
+            share_cart:
+                email_placeholder: 'Voer het e-mailadres van de ontvanger in'
+                email_subject: '%name% wil graag zijn winkelmand met u delen.'
+                label: 'Delen via e-mail'
+                modal_desc: 'Zorg ervoor dat de winkelmand van de ontvanger leeg is voordat u de uwe opent, zo niet, dan worden de artikelen aan de bestaande winkelmand toegevoegd.'
+                modal_title: 'Deel mijn winkelmand per e-mail'
+                no_customer_name: 'Een Plum klant'
+                open_cart: 'Open de gedeelde winkelmand'
+                tooltip_title: 'Deel mijn lijst van artikelen per e-mail'
+            summary_panel_title: 'Samenvatting van mijn toekomstige bestelling'
+            to_share_the_cart: 'Om uw winkelmand per e-mail te delen, klikt u op het %icon%'
+            to_update_the_cart: 'Om uw winkelmand bij te werken, klik op het icoon %icon% rechts bovenaan'
+            update_cart: 'Winkelmand bijwerken'
+        channel:
+            all_channels: Alle
+            no_channel: 'Zonder kanaal'
+        checkout:
+            confirmation_modal:
+                original_order:
+                    input_placeholder: 'Voer uw oorspronkelijke bestelnummer in'
+                    question: 'Is dit een aanvulling op een reeds geplaatste bestelling?'
+                proceed: 'Ga verder naar betaling'
+                product_count:
+                    checkbox_label: 'Ik heb al mijn artikelen goed gecontroleerd.'
+                    hint: 'Twee keer is beter dan één keer! Wij raden u aan uw elementen nog een laatste keer te controleren om er zeker van te zijn dat u niets vergeten bent.'
+                    question: 'Hebt u uw artikelen zorgvuldig gecontroleerd?'
+                    selection: 'Je hebt momenteel geselecteerd'
+                target_room:
+                    options:
+                        adult-bedroom: 'Kamer voor volwassenen'
+                        bathroom: Badkamer
+                        children-bedroom: Kinderkamer
+                        entry: Ingang
+                        kitchen: Keuken
+                        office: Kantoor
+                        other: Andere
+                        saloon: Woonkamer
+                    question: 'Welke kamer richt u in?'
+                    select_placeholder: 'Kies mijn kamer'
+                title: '3 belangrijke vragen voordat u uw bestelling bevestigt!'
+            order_summary:
+                change_my_order: 'Mijn bestelling wijzigen'
+                coupon: 'Voer uw promotiecode in'
+                coupon_submit: Ok
+                price_does_not_include_shipping: 'De prijs is exclusief levering'
+                price_included_in_product: 'Prijs inbegrepen in het product'
+                shipping_fee_calculated_next: 'De verzendkosten zullen in de volgende stap worden berekend'
+                shipping_total: Verzendkosten
+                title: 'Samenvatting van mijn toekomstige bestelling'
+            payment_content:
+                page_subtitle: 'Er is een e-mail met een samenvatting naar u verzonden.'
+                page_title: 'Betaal veilig!'
+                panel_title: 'Uw betalingsgegevens'
+                secure_text: 'De betaling is veilig, wij slaan uw bankgegevens niet op.'
+            step_1_content:
+                page_title: 'Bestel in een paar stappen!'
+                tab_title: 'Factuur en leveringsadres'
+            step_2_content:
+                more_infos_in_faq: 'Meer informatie in onze FAQ'
+                page_title: 'Bestel in een paar stappen!'
+                panel_title: Leveringsmethode
+                tab_title: Leveringsmethode
+            step_3_content:
+                page_title: 'Bestel in een paar stappen!'
+                panel_title: Betalingsmethode
+                tab_title: Betalingsmethode
+            step_4_content:
+                page_title: 'Bestel in een paar stappen!'
+                panel_title: 'Samenvatting vóór betaling'
+                tab_title: Samenvatting
+            step_5_content:
+                page_title: 'Uw bestelling is gevalideerd!'
+                panel_title: Samenvatting
+                see_my_orders: 'Bekijk mijn bestellingen'
+                summary_title: 'Samenvatting van mijn bestelling'
+            steps_nav:
+                back: 'Terug naar de vorige stap'
+                proceed_to_payment: 'Mijn bestelling bevestigen en betalen'
+                step_1: Adressen
+                step_2: Leveringsmethode
+                step_3: Betalingsmethode
+                step_4: 'Definitieve validatie vóór betaling'
+            stripe:
+                chargement: 'Bezig met laden...'
+            transfer_content:
+                amount: BEDRAG
+                beneficiary:
+                    name: BEGUNSTIGDE
+                    value: 'Plum (Amma Design SAS bedrijf)'
+                bic: BIC
+                iban: IBAN
+                info_text: 'In geval van een fout in het referentienummer of het bedrag zal de validatie van uw bestelling met ongeveer een week worden vertraagd.'
+                page_subtitle: 'Uw bestelling zal definitief worden gevalideerd na ontvangst van uw overschrijving. Er is een e-mail met een samenvatting naar u verzonden.'
+                page_title: 'Betalen via bankoverschrijving'
+                panel_title: 'Uit te voeren overboekingsopdracht'
+                payment_method: 'Via bankoverschrijving'
+                ref: REFERENTIE
+                ref_info: 'Kopieer en plak deze code gewoon bij het invoeren van de overschrijving op uw website of bankprogramma'
+            warnings:
+                no_payment_methods_available: 'Er zijn momenteel geen betaalmethodes beschikbaar voor uw bestelling'
+                no_shipping_methods_available: 'Er is momenteel geen verzendmethode beschikbaar voor uw afleveradres'
+        cms:
+            admin:
+                actions:
+                    article: 'Artikel pagina'
+                    media_article: 'Mediapagina artikel'
+                    media_home: 'Media startpagina'
+                    project: 'Project pagina'
+                    simple: 'Enkele pagina'
+                alternative_total_to_display: 'het totaal van de gedetailleerde begrotingsposten zal worden getoond'
+                cards:
+                    with_icon: 'Het pictogram 📞 wordt weergegeven bij de afbeelding'
+                fields:
+                    category: Categorie
+                    page_type: Paginatype
+                    translations_published: 'Gepubliceerde vertalingen LK'
+                preview: Voorbeeldpagina
+                product_option:
+                    color_table:
+                        color: Kleur
+                        description: Beschrijving
+                        image_display: 'Te presenteren afbeelding'
+                        no_image: 'Geen afbeelding'
+                project_plan: 'De pdf zal worden gebruikt om het projectplan te verzenden'
+                subheader:
+                    article: 'CMS inhoudsbeheer van een artikelpagina'
+                    media_article: 'CMS inhoudsbeheer van een artikel media pagina'
+                    media_home: 'CMS inhoudsbeheer van de media homepage'
+                    project: 'CMS inhoudsbeheer van een projectpagina'
+            button_link:
+                type_classic: klassiek
+                type_default: standaard
+                type_simple_link: 'enkele link'
+            chip:
+                admin:
+                    type_address: adresboek
+                    type_home_tour: 'home tour'
+                    type_inspiration: inspiratie
+                    type_interview: interview
+                    type_practice: 'praktische gidsen'
+                    type_toolbox: gereedschapskist
+                    type_tuto_ikea: 'Ikea handleiding'
+                    type_tutorial: tutorials
+                room:
+                    type_kitchen: Keuken
+                    type_other_rooms: 'Andere kamers'
+                shop:
+                    type_address: Adressen
+                    type_home_tour: 'Rondleidingen & itw'
+                    type_inspiration: Ideeën
+                    type_practice: Praktisch
+                    type_toolbox: Gereedschapskist
+                    type_tutorial: 'Step by step'
+            image_collection:
+                type_default: standaard
+                type_mosaic: mozaïek
+                type_slider: schuifregelaar
+                type_slider_plans: 'schuifregelaar plannen'
+                type_slider_right: 'schuifregelaar rechts'
+            images_steps:
+                type_default: 'Niet geïndexeerd'
+                type_indexed: Geïndexeerd
+            instagram_tag: plumliving
+            instagram_url: 'https://www.instagram.com/plum.living.eu/'
+            project:
+                receive_plan_mail:
+                    input_placeholder: 'Voer uw e-mail adres in om het plan te ontvangen'
+                    submit_text: OK
+            project_piece:
+                type_bathroom: Badkamer
+                type_kitchen: Keuken
+                type_other: 'Andere kamer'
+                type_room: Kamer
+            type_form:
+                no_content: 'Deze pop-up heeft geen inhoud, probeer het later opnieuw'
+        combination: 'Beheer uw combinaties'
+        combinations: Combinaties
+        customer_project:
+            add_item:
+                accessory: 'Messing accessoires'
+                handles: Handgrepen
+                main: 'Een artikel toevoegen'
+                metod: 'METOD fronten'
+                paint: Muurschildering
+                pax: 'PAX fronten'
+                tap: Mengkraan
+            contact:
+                cta: 'Telefonisch een afspraak maken'
+                title: 'Onze Plum Planners zijn beschikbaar om uw project te controleren en te valideren.'
+            popin_handles:
+                accessories_link: 'Ontdek onze handgrepen'
+                add_link: 'Voeg ontbrekende %handles_count% handgrepen toe'
+                text: 'U heeft %drawers_count% lades en %doors_count% deuren die handgrepen nodig hebben in uw lijst. Wilt u er nog meer toevoegen?'
+        delivery:
+            delivery_delais_label: Leveringstermijn
+            delivery_delais_message: 'Levering tussen %min_date% en %max_date%'
+        delivery_date_calculation_config:
+            duration: Duur
+            header: 'Configuratie van leveringstermijnen'
+            max_date: 'Laatste datum'
+            min_date: 'Vroegste datum'
+            mode: Modus
+            modes:
+                dynamic: 'Dynamische modus'
+                fixed_date_range_lacquer: 'Vaste data Gelakte afwerking'
+                fixed_date_range_wood: 'Vaste data voor Hout en gelakte houten afwerkingen'
+            subheader: 'Bepaal de minimale en maximale leveringsinterval voor de verschillende berekeningswijzen'
+            unspecified: 'Niet gespecificeerd'
+        delivery_date_calculation_configs: Levertijden
+        delivery_date_calculation_mode: 'Methode voor het berekenen van de levertijd'
+        edit_combination: 'Een combinatie wijzigen'
+        edit_product_group: 'Een productgroep bewerken'
+        email_content:
+            cart:
+                checklist:
+                    ikea:
+                        button: Installatiechecklist
+                        desc: 'Denk er op zijn minst aan om je scharnieren bij Ikea te bestellen ( ⚠️Utrusta scharnieren voor Metod fronten en Komplement scharnieren voor PAX fronten), en neem ook onze checklist door zodat je niets vergeet bij Ikea.'
+                        title: 'Om niets te vergeten bij Ikea'
+                    poser:
+                        button: 'Checklist installateurs'
+                        desc: 'Hier is de essentiële informatie om te lezen en door te geven aan uw installateur, zodat hij uw keuken gemakkelijk kan installeren.'
+                        title: 'Informatie om door te geven aan uw installateur'
+                indication: 'Zorg ervoor dat de winkelmand die aan uw account gekoppeld is leeg is voordat u het opent!'
+                open_order: 'De gedeelde winkelmand openen'
+            common:
+                contact: '<strong>Om ons te contacteren: %email%:</strong><br>%email%<br>'
+                copyright: 'Copyright © AMMA DESIGN SAS. Alle rechten voorbehouden.'
+            forget_password:
+                desc: 'Wij hebben een verzoek ontvangen om het wachtwoord van uw account te resetten.<br>Als u dit verzoek hebt ingediend, klik dan op de link hieronder om het bij te werken.<br><br><a href=''%link%''>Reset mijn wachtwoord</a><br><br> Als u niet degene bent die dit verzoek heeft gedaan, negeer dit bericht dan en schrijf ons op %email% om ons dat te laten weten.<br><br>Tot ziens,<br> het Plum Team'
+                title: 'Reset je wachtwoord.'
+            order_confirmation:
+                button_text: 'Open mijn bestelling'
+                desc: 'Wij hebben uw bestelling ontvangen en danken u voor uw vertrouwen!<br><br>Om de lijst van bestelde producten te raadplegen, alsook de leveringstermijn van<br>uw bestelling, nodigen wij u uit op de onderstaande link te klikken.<br><br>Wij blijven tot uw beschikking per e-mail op <strong>%email%</strong><br>of op de chat op onze website. Tot ziens<br><br><br>,<br><br>het Plum team'
+                email_subject: 'Uw ordernummer %order_number% is bevestigd'
+            project_plan:
+                details:
+                    first:
+                        btn: 'Ontdek onze krant'
+                        desc_1: 'Wij nodigen u uit een kijkje te nemen in het gedeelte "Inspiratie & Gids" van onze site, dat vol staat met ideeën en goede raad voor uw toekomstige interieurinrichting. Praktische gidsen, adresboeken, huisbezichtigingen'
+                        desc_2: 'het is een schat aan informatie!'
+                        title: 'Om uw project te ontwerpen...'
+                    second:
+                        btn: 'Meer informatie'
+                        desc: 'Onze mat gelakte ladefronten en handgrepen worden in Frankrijk gemaakt, en onze eiken- en notenhouten fronten in Portugal. Wij hebben onze fabrikanten gekozen omdat zij al meer dan dertig jaar specialist zijn in hun respectieve materialen en afwerkingen.'
+                        title: 'Onze productie'
+                main_caption:
+                    desc: 'We delen met u, als bijlage bij deze e-mail, het plan van het project dat u interesseert.'
+                    title: 'Hier is het plan van het project dat u interesseert!'
+            user_registration:
+                b2b_program_email_subject: 'Welkom bij de Terra Club'
+                desc: 'We zijn blij u bij ons te hebben.<br><br>U kunt nu de wereld van Plum ontdekken, en op een concretere<br>manier aan uw project beginnen.<br><br><br><strong>Hebt u een vraag over onze producten, de installatie of over onze leveringstermijnen?</strong><br>Bekijk onze FAQ (een schat aan informatie!) of neem contact met ons op<br>via de chat of per e-mail op %email%.<br><br>Tot snel,<br><br>het Plum team'
+                email_subject: 'Uw account is geregistreerd'
+            verification:
+                button: 'Ik valideer mijn e-mail'
+                desc: 'Wij hebben uw verzoek om een account aan te maken ontvangen, erg bedankt voor uw interesse!<br>Wij nodigen u uit op de onderstaande knop te klikken om uw e-mailadres te valideren.<br><br>Tot ziens,<br>The Plum team'
+                email_subject: 'Bevestiging van uw e-mailadres'
+        find_installer:
+            cta: 'Ik vind mijn installateur'
+            cta_url_be: 'https://www.needhelp.com/fr-be/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_de: 'https://www.needhelp.com/de-de/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_eu: 'https://www.needhelp.com/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_fr: 'https://www.needhelp.com/de-de/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_nl: 'https://www.needhelp.com/nl-nl/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_nl-be: 'https://www.needhelp.com/nl-be/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            info_text: 'Plum voert geen installaties uit. Onze partner Needhelp is een platform dat mensen in contact brengt met professionals op het gebied van binnenhuisarchitectuur en woningverbetering. U zult veel ervaren installateurs vinden met de "Ikea badge".'
+            subtitle: 'Ons partnerschap met Needhelp'
+            title: 'Vind een installateur'
+            top_text: 'Plum en Needhelp bundelen hun krachten om u te helpen de beste installateur te vinden.'
+        free_shipping: Aangeboden
+        generic:
+            add: Toevoegen
+            billing: Facturering
+            billing_address: Factuuradres
+            cancel: Annuleren
+            cart: Winkelmand
+            connexion: Verbinding
+            copied: Gekopieerd!
+            delete: Verwijderen
+            discount: Korting
+            email_not_verified: 'E-mail niet geverifieerd'
+            form_errors_label: 'Gelieve de volgende velden te corrigeren'
+            imported_project: 'Geïmporteerd project'
+            logout: Afmelden
+            minus: Minder
+            modify: Bewerken
+            my_account: 'Mijn account'
+            order_number: Bestelnummer
+            pay: Betalen
+            payment: Betalingsmethode
+            plus: Meer
+            position: Volgorde
+            price: Prijs
+            proceed: Doorgaan
+            proceed_to_payment: 'Mijn bestelling hervatten'
+            product: Product
+            project: Project
+            quantity: Hoeveelheid
+            register: Aanmelden
+            room: Kamer
+            save: Opslaan
+            scanned_project: 'Gescand project'
+            set_as_default: Standaard
+            shipment: Verzending
+            shipping: Leveringsmethode
+            shipping_address: Bezorgadres
+            sub_total: Subtotaal
+            tax: Belasting
+            total: Totaal
+            total_without_shipping: 'Totaal exclusief levering'
+            vat_included: '20% BTW inbegrepen'
+            verify_now: 'Nu controleren'
+            warning: Waarschuwing
+        import_export:
+            export_combinations: 'Combinaties exporteren'
+            export_product_groups: 'Productgroepen exporteren'
+            export_product_variants: 'Productvarianten exporteren'
+            export_products: 'Producten exporteren'
+        inspiration:
+            button_text: 'Ontdek onze projecten'
+            discover_text: 'U kunt de nieuwe content van Studio Plum ook op onze netwerken vinden!'
+            filter_text: 'alle soorten inhoud'
+        listing:
+            inspirations:
+                type_address: Adresboeken
+                type_all_types: 'Alle soorten inhoud'
+                type_home_tour: 'Huisbezichtigingen & Interviews'
+                type_inspiration: 'Creatieve ideeën'
+                type_practice: 'Praktische gidsen'
+                type_toolbox: Gereedschapskist
+                type_tutorial: 'Shopping lists & Step by step'
+            projects:
+                budget: 'Budget Plum :'
+                color_filter: 'alle kleuren'
+                having: in
+                label: 'Ik ben geïnspireerd om'
+                piece_filter: 'alle kamers'
+                pieces_filter:
+                    type_all_pieces: 'alle kamers'
+                    type_bathroom: 'mijn badkamer'
+                    type_kitchen: 'mijn keuken'
+                    type_other: 'een andere kamer'
+                    type_room: 'mijn slaapkamer en kleedkamer'
+            tunnel:
+                samples_subtitle: 'De proefplanken worden terugbetaald vanaf uw eerste bestelling van ladefronten!'
+        login_register:
+            b2b_section_title: 'Uw bedrijf'
+            btn_reset_password: Resetten
+            choose_your_password: 'Kies uw wachtwoord'
+            have_an_account_login: 'Bent u al lid?'
+            have_an_account_login_link: Inloggen
+            reset_of_your_password: 'Uw wachtwoord opnieuw instellen'
+        new_combination: 'Nieuwe combinatie'
+        new_product_group: 'Nieuwe productgroep'
+        no_content: 'Deze pagina heeft geen inhoud'
+        option: Optie
+        order:
+            state_cancelled: Geannuleerd
+            state_confimed: Bevestigd
+            state_fulfilled: Geleverd!
+            state_fully_paid: Gevalideerd
+            state_fully_shipped: 'Wordt op dit moment verzonden'
+            state_in_cart: 'In uw winkelmand'
+            state_partially_paid: 'In afwachting van betaling'
+            state_partially_shipped: 'In voorbereiding / productie'
+            state_pending: 'In afwachting van betaling'
+            step_state_partially_shipped: 'In productie'
+        order_awaiting_payment:
+            desc: 'Uw betaling is niet gelukt'
+            keep: 'Terug naar de vorige stap'
+            revert: 'Mijn winkelmand ophalen en wijzigen'
+        page:
+            type_all_types: 'alle soorten inhoud'
+            type_article: artikel
+            type_default: standaard
+            type_frame: I-frame
+            type_home_page: Startpagina
+            type_inspiration: inspiratie
+            type_media_article: 'media artikel'
+            type_media_home: 'media home'
+            type_project: project
+            type_ribbon: hoofdband
+        page_linker:
+            app_plum_scanner_get_designs: 'Onmiddellijke offerte ** interne link'
+        plum_scanner:
+            heading: 'Bereken uw project in een paar klikken <br class="u-hidden @sm:u-inline">met de Plum Scanner'
+            login: 'Om verder te gaan, nodigen wij u uit in te loggen'
+            login_button: Inloggen
+            mobile_not_avaialble: '<p>De Plum Scanner is alleen beschikbaar op een desktop computer!</p><p>Met deze tool kunt u uw IKEA-plan scannen en de exacte lijst krijgen van de ladefronten waaruit uw inrichting bestaat.</p>'
+            previous_step: 'Terug naar de vorige stap'
+            register: Aanmelden
+            rotate_your_device: 'Draai uw tablet'
+            scan_success: 'Hier is uw lijst van Plum artikelen'
+            share_project:
+                email_placeholder: 'Voer het e-mailadres van de ontvanger in'
+                email_subject: 'Bekijk dit project op Plum Kitchen'
+            step_one:
+                title: 'Kies uw opties'
+            step_three:
+                actions:
+                    desc: 'Onze Plum Planners zullen u begeleiden om uw project te valideren en uw vragen te beantwoorden'
+                    download_quote_file: 'Download mijn lijst van artikelen'
+                    download_quote_file_loader: 'Het document wordt geladen...'
+                    heading: 'Sla uw project op in uw Plum-account'
+                    save_project: 'Mijn project registreren'
+                    share_project: 'Mijn lijst met artikelen delen'
+                    take_appointment: 'Mijn kosten laten controleren / een afspraak maken'
+                adjust_options:
+                    heading: 'Pas uw opties aan'
+                    heading_facade: 'Pas uw ladefrontopties aan'
+                    hint: 'Twijfelt u nog? U kunt uw opties op elk moment aanpassen.'
+                    link: 'Ontdek onze afwerkingen'
+                auto_save:
+                    confirm_button_label: 'Probeer het opnieuw'
+                    error_aside_message: 'Als het probleem aanhoudt, laadt de pagina opnieuw zonder opnieuw te proberen op te slaan, u zult alleen de laatste wijziging verliezen.'
+                    error_main_message: 'Fout bij het automatisch opslaan van wijzigingen. Probeer uw project opnieuw op te slaan.'
+                    error_title: Waarschuwing
+                checkout:
+                    heading: 'Uw Plum budget'
+                    hint_charges: 'Inclusief BTW, exclusief verzendkosten.'
+                    hint_cost: 'De oorspronkelijke prijsberekening van Plum omvat alleen de ladefronten, deuren, bedekkingspanelen en -plinten die op uw Ikea-plan staan.'
+                    warning: 'Sommige opties zijn niet compatibel met de elementen waaruit uw lay-out is opgebouwd. Pas uw opties aan zodat uw budget wordt weergegeven.'
+                    warning_item: 'Dit item is niet beschikbaar met de geselecteerde opties. Pas uw opties aan, alstublieft.'
+                    warning_item_add: 'Kies uw opties.'
+                modulate_articles:
+                    add_button: 'Een artikel toevoegen'
+                    heading: 'Moduleer uw artikelen'
+                    remove_button: 'Verwijder het artikel'
+                    total_price: Totaal
+                    unit_price: 'Per stuk'
+                title: 'Pas uw budget aan'
+            step_two:
+                connect_ikea:
+                    budgets_examples: 'Bekijk onze voorbeeldbegrotingen'
+                    how_to_use: 'Hoe gebruikt men de Ikea Keukenplanner'
+                    ikea_version_modal:
+                        new: 'De oude versie'
+                        old: 'De oude versie'
+                    need_help: 'Hebt u geen Ikea-plan?'
+                    new_version_btn: 'Nieuwe versie'
+                    old_version_btn: 'Oude versie'
+                    title: '<strong>Inloggen op de Ikea Keukenplanner</strong>'
+                    warning: 'Ikea heeft onlangs een nieuw software programma ontwikkeld. Laat ons<br>hieronder weten welke versie u gebruikt:'
+                    which_ikea_version: 'Hoe herkent u de versies?'
+                missing_front:
+                    modal_button_text: Genoteerd
+                    modal_content: 'Open uw plan in de Ikea Keukenplanner en voeg de ladefronten en bedekkingspanelen toe voordat u uw plan deelt met de Plum Scanner.'
+                    modal_subtitle: 'De Plum scanner kan uw plan niet lezen omdat het geen ladefronten bevat.'
+                    modal_title: Waarschuwing!
+                prepare_front:
+                    modal_button_text: 'Ik stuur mijn aanvraag'
+                    modal_content: 'Wij maken alleen offertes voor METOD keukens of inrichtingen. Voor uw PAX-projecten gaat u rechtstreeks naar onze e-shop!'
+                    modal_subtitle: 'Om uw offerte voor te bereiden, hebben we uw plan nodig van de Ikea Keukenplanner, <b>inclusief de ladefronten</b>.'
+                    modal_title: 'Om te weten!'
+                project_status:
+                    hint: 'Kun je niet wachten? Wij ook niet! Verlaat deze pagina niet, uw project wordt binnen enkele ogenblikken geopend.'
+                    timeout_modal_confirm: 'Opnieuw verzenden'
+                    timeout_modal_dismiss: 'Blijf wachten'
+                    timeout_modal_message: 'Het duurt ongebruikelijk lang om uw project op te halen. Kunt u teruggaan naar de vorige stap en uw project opnieuw verzenden naar het door u opgegeven e-mailadres?'
+                    timeout_modal_title: Waarschuwing
+                    title: 'We scannen uw plan...'
+                share_plan:
+                    guide: 'Is het niet duidelijk?<br class="@sm:u-hidden">Volg de video gids!'
+                    sent: 'Het is verzonden!'
+                    title:
+                        first_item: '<strong>Deel uw plan met ons via de Ikea Keukenplanner</strong>'
+                        second_item: '<p>Open uw plan in de <a href="%URL%" target="_blank">Ikea Keukenplanner</a>, <strong>inclusief de ladefronten</strong>, dan :</p><ul class="t-list-style-outside"><li>Klik op <strong>Bestand</strong> en dan op <strong>E-mail</strong></li><li>Stuur uw plan naar het onderstaande adres en klik op "Verzonden!</li></ul>'
+                share_plan_new:
+                    action_desc: '<p>Om uw te delen link te krijgen, opent u uw plan, <strong>slaat u het op (belangrijk)</strong>, klikt u vervolgens op de stap "Realiseer het" en <span class="t-nowrap">"Delen"</span>. <span class="t-nowrap"> <svg class="o-icon-24"><use xlink:href="%ICON_LIB_URL%#SVG-icon-ikea-share"/></svg></span></p><p class="t-base-initial">U kunt de link ook rechtstreeks vanuit uw browser kopiëren.</p>'
+                    link_placeholder: 'Voeg hier de link van uw plan in'
+                    scan_plan_btn: 'Ik scan mijn plan'
+                    title: '<strong>Deel je Ikea-plan met ons, inclusief de ladefronten.</strong>'
+                title: 'Deel uw IKEA plan'
+            title: 'Plum Scanner'
+        plum_styler:
+            index:
+                description: 'Met onze Plum Styler zijn er geen grenzen meer aan uw verbeelding! Kies één van de scènes hieronder, configureer het ontwerp van de fronten, verander de kleur van de muren, test de afwerkingen van de mengkraan... en creëer het interieur van uw dromen!'
+                select_scene: 'Selecteer een scène om aan de slag te gaan'
+            title: 'Plum Styler'
+        product_group: Productgroep
+        product_groups: Productgroepen
+        product_option:
+            color: Kleur
+            design: Ontwerp
+            facade: Ladefront
+            finish: Afwerking
+        product_option_value_image:
+            type_default: Hoofdafbeelding
+            type_display: 'Te presenteren beeld'
+            type_styler: 'Styler foto'
+        project:
+            button_text: 'Onze ontwerpen en afwerkingen'
+        recommendation:
+            no_content: 'Er zijn geen aanbevelingen'
+            title: Aanbevelingen
+        server_has_encountered_some_errors: 'Er zijn fouten opgetreden op de server. <br>Als het probleem zich opnieuw voordoet, neem dan contact met onze teams op via <a href="mailto:%email%">%email%</a>'
+        tunnel_shopping:
+            accessoires: Accessoires
+            add_product: Toegevoegd
+            box_link: 'Ik kies mijn proefplanken'
+            box_link_icon: '<svg class="o-icon-16 u-margin-r-1"><use xlink:href="%ICON_LIB_URL%#SVG-icon-arrow-right"></svg> Ik bestel mijn proefplanken'
+            box_text: 'Hebt u een project dat u wilt verwezenlijken? Ontvang 3 proefplanken met de code LETSGO'
+            btn_noted: Genoteerd!
+            color: Kleur
+            combination: Combinatie
+            combinations: Combinaties
+            design: Ontwerp
+            doors: Deuren
+            drawers: Lades
+            finish: Afwerking
+            finishes_and_colors: 'Afwerking Kleur'
+            info_article: 'Enkele artikelen om u te helpen'
+            info_article_link_one: 'Hoe vergeet je niets bij Ikea?'
+            info_article_link_two: 'Ik heb een vraag.'
+            info_one: 'Ladegeleiders worden niet bij onze fronten geleverd.'
+            info_three: 'Onze boringen zijn niet geschikt voor Ikea Utrusta ladegeleiders.'
+            info_two: 'Onze ladefronten zijn voorgeboord om op de Ikea Maximera ladegeleiders te passen.'
+            infos_title: 'Praktische informatie'
+            link_design: Kies
+            modal_return: 'Levering en retourzendingen'
+            new_combination: 'Een combinatie toevoegen'
+            next_step: 'Volgende stap'
+            no_delivery_details: 'Er zijn geen leveringsgegevens.'
+            no_product_info: 'Er is geen informatie!'
+            paints: Muurschildering
+            panels: Panelen
+            panels_and_plinths: Paneelplinten
+            plinths: Plinten
+            products: Producten
+            recommendations: Aanbevelingen
+            recommendations_suggestion: 'Onze aanbevelingen'
+            samples:
+                facade:
+                    name: 'Ladefront proefplanken'
+                    sub_title: '3 proefplanken worden u aangeboden met de code LETSGO, de volgende worden terugbetaald wanneer u uw ladefronten bestelt.'
+                find_out_more: 'Meer informatie'
+                main: Stalen
+                paint_mural:
+                    name: Verfstalen
+                    sub_title: 'De verfstalen worden terugbetaald bij uw eerste verfbestelling!'
+            see_complete_info: 'Bekijk meer details'
+            subtitle: 'Begin met het kiezen van uw ontwerp.'
+            taps: Mengkranen
+            title: 'Plum e-shop'
+            title_finish: 'Afwerkingen en kleuren'
+            tooltip_choice: 'Gelieve een afwerking te kiezen alvorens een kleur te kiezen'
+            tooltip_no_color: 'Kleur niet beschikbaar voor deze afwerking, klik op de "Volgende stap" knop om verder te gaan'
+            type_facade: 'Soort ladefront'
+    ui_element:
+        accordion:
+            description: 'Een element om één of meer accordeons toe te voegen'
+            title: Accordeonblad
+        address_book_select:
+            new_address: 'Nieuw adres'
+            select_address_from_book: 'Selecteer een opgeslagen adres'
+        caption:
+            description: 'Een element om een bijschrift toe te voegen'
+            title: 'Bijschrift Blad'
+        card_total:
+            description: 'Een element om een gedetailleerd budget weer te geven'
+            title: 'Gedetailleerd bladbudget'
+        cards:
+            description: 'Een blad om simpele kaarten met media toe te voegen'
+            title: Kaartenblad
+        chip:
+            description: 'Een element om een pellet toe te voegen'
+            title: 'Pellet mes'
+        color_ui:
+            description: 'Een element om een kleur te kiezen'
+            title: Bladkleur
+        h4:
+            description: 'Een blad met titel naar keuze'
+            title: 'Blad titel'
+        home_project:
+            creation_banner:
+                description: 'Blok dat naar de Plum Scanner leidt'
+                title: 'Home Project - Maak uw project'
+            hero:
+                description: 'Hero van één pagina Home Project pagina, titel, tekst en carrousel'
+                title: 'Home Project - Titel Carrousel'
+        images_steps:
+            description: 'Een element voor het construeren van geënsceneerde afbeeldingen'
+            title: 'Afbeeldingen in stappen'
+        media:
+            citation:
+                description: 'Het citaat toevoegen (afbeelding + citaat)'
+                title: 'Media - Citaat'
+            content_highlight:
+                description: 'Thema''s of andere inhoud op Home Media markeren'
+                title: 'Media - Inhoud highlight'
+            cross_content:
+                description: 'Cross content pagina''s toevoegen'
+                title: 'Media - Cross Content'
+            footer_immersive:
+                description: 'Bevat een titel en link boven de afbeelding'
+                title: 'Media - Meeslepende voettekst'
+            hero:
+                description: 'Bevat een afbeelding + tag + titel + beschrijving)'
+                title: 'Media - Hero'
+            hero_video:
+                description: 'Bevat een Youtube video + titel + beschrijving'
+                title: 'Media - Hero Video'
+            home_slider:
+                description: 'Markeren van artikelen bovenaan de Home Media'
+                title: 'Media - Home Schuifregelaar'
+            panoramic_photo_only:
+                description: 'Bevat een panoramafoto + bijschrift'
+                title: 'Media - Panoramafoto XL'
+            panoramic_photo_xl:
+                description: 'Bevat een titel + panoramafoto + alinea'
+                title: 'Media - Panoramafoto XL + tekst'
+            shoppinglist:
+                title: 'Media - Shopping List'
+            slider:
+                description: 'Schuifregelaar toevoegen aan de bestemmingspagina'
+                title: 'Media - Schuifregelaar'
+            slider_thematique:
+                description: 'Schuifregelaar per thema'
+                title: 'Media - Schuifregelaar thema'
+            text_only:
+                description: 'Bevat vrije tekst (titels, alinea''s, enz.)'
+                title: 'Media - Enkel tekst'
+            two_hybrid_columns:
+                description: '2 kolommen toevoegen'
+                title: 'Media - 2 hybride kolommen'
+            two_photo_columns:
+                description: '2 afbeeldingen naast elkaar toevoegen'
+                title: 'Media - 2 fotokolommen'
+            zoning_image:
+                description: 'Zoning overlay toevoegen'
+                title: 'Media - Image zoning'
+        pages_cards:
+            description: 'Een element om één of meer kaarten te bouwen voor CMS of interne pagina''s'
+            title: 'Blad van paginakaarten'
+        pages_listing:
+            description: 'Een element om één of meer bestaande CMS-pagina(''s) te kiezen voor een cross-content'
+            title: 'Cross Content blad'
+        product_info:
+            description: 'Een element om informatie te geven over producten onder een taxon'
+            title: Productinformatieblad
+        product_info_accessory:
+            description: 'Een element om informatie te geven over accessoireproducten'
+            title: 'Info Blad accesoireproducten'
+        product_option:
+            description: 'Een element om één of meer productopties te kiezen'
+            title: 'Blad van productopties'
+        project_piece:
+            description: 'Een element om het type project te kiezen'
+            title: 'Blad van projectonderdelen'
+        project_plan:
+            description: 'Een element om een pdf te uploaden'
+            title: 'Bladen PDF'
+        recommendation:
+            description: 'Een element voor het toevoegen van een aanbeveling'
+            title: 'Aanbeveling blad'
+        scan_banner:
+            description: 'Blok "Scan uw plan" (startpagina)'
+            title: '"Scan uw plan" blok'
+noksi_sylius_plum_hubspot_plugin:
+    newsletter:
+        invalid_csrf_token: 'Het CSRF token is ongeldig. Gelieve het formulier opnieuw in te dienen.'
+        subscribed_successfully: 'U hebt zich succesvol ingeschreven voor onze nieuwsbrief.'
+sylius:
+    form:
+        address:
+            street: Adres
+        checkout:
+            addressing:
+                different_billing_address: 'Een ander factuuradres gebruiken?'
+        customer:
+            b2b_coupon_code: 'Code B2B'
+            b2b_enabled: Geactiveerd
+            b2b_subscription: 'Ik word lid van <a href="%url%">Terra Club</a> en profiteer van professionele voordelen'
+            company_address: Bedrijfsadres
+            company_city: Stad
+            company_country: Land
+            company_instagram: 'Instagram account'
+            company_name: Bedrijfsnaam
+            company_postcode: Postcode
+            company_website: Website
+            gender: Aanspreektitel
+            preferred_locale: Voorkeurstaal
+            subscribed_to_newsletter: 'Ik schrijf me in voor de nieuwsbrief'
+            vat_number: 'Intracommunautair BTW-nummer'
+        login:
+            remember_me: 'Verbonden blijven'
+            username: 'Gebruikersnaam (e-mailadres)'
+        promotion_action:
+            item_fixed_discount: 'Vaste productkorting (exclusief btw)'
+            item_percentage_discount: 'Kortingspercentage product'
+            order_fixed_discount: 'Korting op de bestelling (inclusief btw)'
+            order_percentage_discount: 'Kortingspercentage bestelling (inclusief btw)'
+            order_percentage_of_front_items_discount: 'Kortingspercentage van de ladefrontproducten op de overige producten van de bestelling (proefplanken en verfstalen uitgezonderd, inclusief btw)'
+        user:
+            password:
+                confirmation: 'Bevestig het nieuwe wachtwoord'
+    menu:
+        shop:
+            account:
+                address_book: Adressen
+                change_password: Wachtwoord
+                dahsboard: Home
+                order_history: Bestellingen
+                personal_information: Profiel
+    ui:
+        app:
+            combination: Combinatie
+            product_group: Productgroep
+        b2b_program: 'Terra Club'
+        customer:
+            b2b_program:
+                company_address: Bedrijfsadres
+                company_name: Bedrijfsnaam
+                coupon_code: 'Code Pro'
+                enabled: 'Programma geactiveerd'
+        customer_group: Klantgroep
+        forgot_password: 'Uw wachtwoord vergeten ?'
+        grid:
+            b2b_program_enabled: 'Terra Club'
+        items_total: 'Totale prijs (inclusief btw)'
+        new_customer: 'Nieuwe klant ?'
+        product_variant: Productvariant
+        promotion_total: 'Totale korting (exclusief btw)'
+        shipping_total: 'Totale verzendkosten (inclusief btw)'
+        total: 'Totale prijs (inclusief btw)'

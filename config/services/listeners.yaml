@@ -1,0 +1,127 @@
+services:
+    _defaults:
+        autoconfigure: false
+        autowire: true
+        public: false
+
+    App\Menu\ShopNavigationBuilder:
+        tags:
+            - { name: knp_menu.menu_builder, method: createShopNavigationMenu, alias: shop_navigation }
+            - { name: knp_menu.menu_builder, method: createShopAsideHeaderMenu, alias: shop_aside_header }
+            - { name: knp_menu.menu_builder, method: createShopFooterMenu, alias: shop_footer }
+
+    # add combination + CMS image listener
+    Sylius\Bundle\CoreBundle\EventListener\ImageUploadListener:
+        tags:
+            - { name: kernel.event_listener, event: app.combination.pre_create, method: uploadImage }
+            - { name: kernel.event_listener, event: app.combination.pre_update, method: uploadImage }
+            - { name: kernel.event_listener, event: app.product_ikea.pre_create, method: uploadImage }
+            - { name: kernel.event_listener, event: app.product_ikea.pre_update, method: uploadImage }
+            - { name: kernel.event_listener, event: monsieurbiz_cms_page.page.pre_create, method: uploadImage }
+            - { name: kernel.event_listener, event: monsieurbiz_cms_page.page.pre_update, method: uploadImage }
+
+    # add product option value image listener
+    App\EventListener\ProductOptionValueImagesUploadListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.product_option.pre_create, method: uploadImages }
+            - { name: kernel.event_listener, event: sylius.product_option.pre_update, method: uploadImages }
+
+    App\EventListener\AdminExportGridListener:
+        arguments:
+            - ['csv']
+        tags:
+            - { name: kernel.event_listener, event: sylius.grid.admin_product_variant, method: onProductVariantGrid }
+            - { name: kernel.event_listener, event: sylius.grid.admin_product, method: onProductGrid }
+            - { name: kernel.event_listener, event: sylius.grid.app_admin_combination, method: onCombinationGrid }
+            - { name: kernel.event_listener, event: sylius.grid.app_admin_product_group, method: onProductGroupGrid }
+        calls:
+            - setRequest: ['@request_stack']
+
+    # when updating a page content (PageTranslation) we need to update the 'updatedAt' attribute.
+    App\EventListener\PageUpdateListener:
+        tags:
+            - { name: kernel.event_listener, event: monsieurbiz_cms_page.page.pre_update, method: onPageTranslationUpdate }
+
+    App\EventListener\AfterPaymentListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+    google_tag_manager.product_modal_click.javascripts:
+        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+        arguments:
+            - 'Shop/GoogleTagManager/product_click.javascripts.twig'
+        tags:
+            - { name: kernel.event_listener, event: sonata.block.event.sylius.shop.layout.javascripts, method: onBlockEvent }
+
+    google_tag_manager.cart_item_add.javascripts:
+        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+        arguments:
+            - 'Shop/GoogleTagManager/cart_add_item.javascripts.twig'
+        tags:
+            - { name: kernel.event_listener, event: sonata.block.event.sylius.shop.layout.javascripts, method: onBlockEvent }
+
+    google_tag_manager.open_project_from_scanner.javascripts:
+        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+        arguments:
+            - 'Shop/GoogleTagManager/open_project_from_scanner.javascripts.twig'
+        tags:
+            - { name: kernel.event_listener, event: sonata.block.event.sylius.shop.layout.javascripts, method: onBlockEvent }
+
+    App\EventListener\ApiOrderTotalInconsistencyErrorListener:
+        tags:
+            - { name: kernel.event_listener, event: app.api_order.total_inconsistency_error, method: onError }
+
+    App\EventListener\OrderCompleteListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.order.pre_complete, method: setCustomerDefaultInfo }
+            - { name: kernel.event_listener, event: sylius.order.pre_complete, method: setMailingWorkflowType }
+            - { name: kernel.event_listener, event: sylius.order.pre_complete, method: setCustomerPreferredChannelAndLocaleCode }
+
+    App\EventListener\CartBlamerListener:
+        decorates: sylius.listener.cart_blamer
+        arguments:
+            - '@sylius.manager.order'
+            - '@sylius.context.cart.customer_and_channel_based'
+            - '@sylius.context.cart.session_and_channel_based'
+
+    App\EventListener\CustomerB2bProgramListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.customer.post_register, method: generateB2bProgramCoupon, priority: 10 }
+            - { name: kernel.event_listener, event: sylius.customer.post_update, method: generateB2bProgramCoupon, priority: 10 }
+
+    App\EventListener\MailerListener:
+        decorates: sylius.listener.user_mailer_listener
+        tags:
+            - { name: kernel.event_listener, event: sylius.user.password_reset.request.pin, method: sendResetPasswordPinEmail }
+            - { name: kernel.event_listener, event: sylius.user.password_reset.request.token, method: sendResetPasswordTokenEmail }
+            - { name: kernel.event_listener, event: sylius.user.email_verification.token, method: sendVerificationTokenEmail }
+            - { name: kernel.event_listener, event: sylius.customer.post_register, method: sendUserRegistrationEmail }
+            - { name: kernel.event_listener, event: sylius.customer.post_register, method: sendUserRegistrationB2bProgram, priority: 100 } # must be executed before coupon generation
+            - { name: kernel.event_listener, event: sylius.customer.post_update, method: sendUserRegistrationB2bProgram, priority: 100 } # must be executed before coupon generation
+
+    App\EventListener\ProductLifecycleListener:
+        tags:
+            - { name: doctrine.orm.entity_listener, event: postRemove, entity: App\Entity\Product\Product, method: onProductDeleted }
+            - { name: doctrine.orm.entity_listener, event: postRemove, entity: App\Entity\Product\ProductVariant, method: onProductVariantDeleted }
+
+    App\EventListener\CustomerListener:
+        tags:
+            - { name: doctrine.orm.entity_listener, event: prePersist, entity: App\Entity\Customer\Customer, method: onPersistAssignLocaleAndChannel }
+            - { name: kernel.event_listener, event: security.interactive_login, method: onInteractiveLogin }
+
+    App\EventListener\IncorrectSwitchableTranslationExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+
+    App\EventListener\RouterContextSwitchableTranslationSlugListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 16 }
+    
+    App\EventListener\NonChannelSwitchableTranslationSlugListener:
+        decorates: sylius.listener.non_channel_request_locale
+        arguments:
+            $firewallMap: '@security.firewall.map'
+            $firewallNames: 
+                - '%sylius_shop.firewall_context_name%' # Only for shop section
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: restrictRequestLocale, priority: 0 } # must be executed after SwitchableTranslationSlugListener

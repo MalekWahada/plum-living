@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="Sylius\Component\Core\Model\Customer">
+        <attribute name="firstName">
+            <group>customer:read</group>
+            <group>customer:create</group>
+            <group>customer:update</group>
+        </attribute>
+
+        <attribute name="lastName">
+            <group>customer:read</group>
+            <group>customer:create</group>
+            <group>customer:update</group>
+        </attribute>
+
+        <attribute name="id">
+            <group>customer:read</group>
+        </attribute>
+
+        <attribute name="email">
+            <group>customer:read</group>
+            <group>customer:create</group>
+            <group>customer:update</group>
+        </attribute>
+
+        <attribute name="birthday">
+            <group>customer:read</group>
+            <group>customer:create</group>
+            <group>customer:update</group>
+        </attribute>
+
+        <attribute name="gender">
+            <group>customer:read</group>
+            <group>customer:create</group>
+            <group>customer:update</group>
+        </attribute>
+
+        <attribute name="defaultAddress">
+            <group>customer:read</group>
+            <group>customer:create</group>
+            <group>customer:update</group>
+        </attribute>
+
+        <attribute name="addresses">
+            <group>customer:read</group>
+        </attribute>
+
+        <attribute name="phoneNumber">
+            <group>customer:read</group>
+            <group>customer:create</group>
+            <group>customer:update</group>
+        </attribute>
+
+        <attribute name="subscribedToNewsletter">
+            <group>customer:read</group>
+            <group>customer:create</group>
+            <group>customer:update</group>
+        </attribute>
+
+        <attribute name="customerType">
+            <group>customer:read</group>
+            <group>customer:create</group>
+            <group>customer:update</group>
+        </attribute>
+
+        <attribute name="howYouKnowAboutUs">
+            <group>customer:read</group>
+            <group>customer:create</group>
+            <group>customer:update</group>
+        </attribute>
+
+        <attribute name="howYouKnowAboutUsDetails">
+            <group>customer:read</group>
+            <group>customer:create</group>
+            <group>customer:update</group>
+        </attribute>
+    </class>
+</serializer>

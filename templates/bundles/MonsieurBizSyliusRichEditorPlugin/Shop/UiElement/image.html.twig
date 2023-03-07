@@ -1,0 +1,22 @@
+{#
+UI Element template
+type: image
+element fields :
+    image
+    alt
+    title
+    link
+#}
+{% if element.image is defined and element.image is not empty %}
+    {% set imageFilter = 'CMS_PAGE_TYPE_article' in getCMSPageClasses(page) ? 'app_cms_image_single_article' : 'app_cms_image' %}{# TODO remove when all old articles are deleted #}
+    {% set imageFilterRetina = 'CMS_PAGE_TYPE_article' in getCMSPageClasses(page) ? 'app_cms_image_single_article_retina' : 'app_cms_image_retina' %}
+    <div class="cms__img">
+        {% if element.link is not empty %}
+            <a href="{{ element.link }}">
+                <img class="u-cover" src="{{ element.image|imagine_filter('app_cms_image') }}" srcset="{{ element.image|imagine_filter('app_cms_image_retina') }} 2x" alt="{{ element.alt|default('') }}" title="{{ element.title|default('') }}" />
+            </a>
+        {% else %}
+            <img class="u-cover" src="{{ element.image|imagine_filter('app_cms_image') }}" srcset="{{ element.image|imagine_filter('app_cms_image_retina') }} 2x" alt="{{ element.alt|default('') }}" title="{{ element.title|default('') }}" />
+        {% endif %}
+    </div>
+{% endif %}

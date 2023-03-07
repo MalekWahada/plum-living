@@ -1,0 +1,40 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="scan-banner container container-custom-paddin u-padding-t-6">
+    <div class="row u-cross-centered-row">
+        <div class="column @lg:column-5">
+            <h2 class="t-header-xlarge u-margin-b-2">
+                {{ element.title }}<br>
+                {% if element.title_secondary %}
+                    <span class="c-basic-blue">{{ element.title_secondary }}</span>
+                {% endif %}
+            </h2>
+            {% if element.description %}
+                <p class="t-base-medium">
+                    {{ element.description | raw }}
+                </p>
+            {% endif %}
+            {% if element.link_label and element.link_url %}
+                <a class="button button--small u-margin-t-3" style="border:none !important;"
+                    {% if element.link_target %} target="{{ element.link_target }}"{% endif %}
+                   href="{{ element.link_url | raw }}">
+                    {{ element.link_label | raw }}
+                </a><br>
+            {% endif %}
+            {% if element.link_secondary_label and element.link_secondary_url %}
+                <a class="link-button small-link-button u-margin-t-3" style="border:none !important;"
+                    {% if element.link_secondary_target %} target="{{ element.link_secondary_target }}"{% endif %}
+                   href="{{ element.link_secondary_url | raw }}">
+                    <svg class="o-icon-16 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                    {{ element.link_secondary_label | raw }}
+                </a>
+            {% endif %}
+        </div>
+        <div class="column @lg:column-7 u-padding-0">
+            <img class="u-fullwidth"
+                 src="{{ element.image | raw }}"
+                 alt="{{ element.image_alt | raw }}"
+                 title="{{ element.image_title | raw }}">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+App\Entity\Product\ProductCompleteInfoTranslation:
+    properties:
+        content:
+            - App\Validator\CMSContentConstraint\ProductCompleteInfoContent:
+                groups: [sylius]
+            - Type:
+                type: string
+                groups: [sylius]
+            - NotBlank:
+                groups: [sylius]

@@ -1,0 +1,25 @@
+<main class="panel account-orders-panel panel--big-cheeks">
+    <h1 class="panel__title t-header-medium">{{ 'app.ui.account.orders.title'|trans }}</h1>
+    <div class="panel__content">
+        {% if resources.data|length > 0 %}
+            {% set new_orders = resources.data|filter(order => order.erpStatus == 'new') %}
+            {% set completed_orders = resources.data|filter(order => order.erpStatus != 'new') %}
+
+            {% if new_orders|length > 0 %}
+                <h3 class="t-header-small u-margin-b-3">{{ 'app.ui.account.orders.new_orders'|trans }}</h3>
+                {% include 'Shop/Account/Order/_list.html.twig' with { 'orders': new_orders } %}
+            {% endif %}
+            {% if completed_orders|length > 0 %}
+                {% if new_orders|length > 0 %}
+                    <hr class="hr--l-space">
+                {% endif %}
+                <h3 class="t-label-medium u-margin-b-3">{{ 'app.ui.account.orders.completed_orders'|trans }}</h3>
+                {% include 'Shop/Account/Order/_list.html.twig' with { 'orders': completed_orders } %}
+            {% endif %}
+        {% else %}
+            <div class="column c-grey-mid t-align-center">
+                {{ 'app.ui.account.orders.no_orders'|trans }}
+            </div>
+        {% endif %}
+    </div>
+</main>

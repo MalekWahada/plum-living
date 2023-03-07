@@ -1,0 +1,47 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set depth = depth|default(1) %}
+{% set linkClass = blockName|default('nav') ~ '__link' %}
+{% set parentClass = blockName|default('nav') ~ '__parent' %}
+{% set expanderClass = blockName|default('nav') ~ '__expander' %}
+{% set menuClass = blockName|default('nav') ~ '__menu' %}
+{% set depth_1_class = depth_1_class|default(null) %}
+{% set depth_2_class = depth_2_class|default(null) %}
+{% set depth_n_class = depth_n_class|default(null) %}
+{% set styleClass = depth_n_class|default('') %}
+
+{% if depth == 1 %}
+    {% set styleClass = depth_1_class|default(styleClass) %}
+{% elseif depth == 2 %}
+    {% set styleClass = depth_2_class|default(styleClass) %}
+{% endif %}
+
+{% for item in itemList %}
+    {% if item.children is not empty %}
+        <div class="{{parentClass}}" data-nav-depth="{{depth}}" data-item-image="{{ asset('build/shop/images/' ~ item.name ~ '.jpg', 'shop') }}">
+            <a class="{{linkClass}} {{styleClass}} {{ item.attribute('class') }}" data-link-index="{{ loop.index0 }}" {{ item.uri != null ? "href=" ~ item.uri : '' }}>
+                <span>{{ item.label|trans|replace({
+                    '%ICON_LIB_URL%': iconLibUrl,
+                    ' & ': '<i class="t-canela-300-italic">&nbsp; &amp; &nbsp;</i>'
+                })|raw }}</span>
+                <svg class="{{expanderClass}} o-icon o-icon--right ripple-button"><use xlink:href="{{ iconLibUrl }}#SVG-icon-chevron-down"/></svg>
+            </a>
+            <div class="{{menuClass}}">
+                {% include 'Shop/Plum/Layout/Topbar/_nav_items.html.twig' with {
+                    'itemList': item.children,
+                    'blockName': blockName,
+                    'depth': depth + 1,
+                    'depth_1_class': depth_1_class,
+                    'depth_2_class': depth_2_class,
+                    'depth_n_class': depth_n_class
+                } %}
+            </div>
+        </div>
+    {% else %}
+        <a class="{{linkClass}} {{styleClass}} {{ item.attribute('class') }}" data-link-index="{{ loop.index0 }}" href="{{ item.uri }}" data-nav-depth="{{depth}}" data-item-image="{{ asset('build/shop/images/' ~ item.name ~ '.jpg', 'shop') }}">
+            <span>{{ item.label|trans|replace({
+                '%ICON_LIB_URL%': iconLibUrl,
+                ' & ': ' &amp; '
+            })|raw }}</span>
+        </a>
+    {% endif %}
+{% endfor %}

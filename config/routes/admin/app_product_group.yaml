@@ -1,0 +1,26 @@
+_crud:
+    resource: |
+        alias: app.product_group
+        section: admin
+        path: /
+        templates: '@SyliusAdmin\\Crud'
+        except: ['show']
+        redirect: show
+        grid: app_admin_product_group
+        vars:
+            all:
+                subheader: app.ui.product_groups
+                templates:
+                    form: '@SyliusAdmin\ProductGroup\_form.html.twig'
+            index:
+                icon: 'object group outline'
+    type: sylius.resource
+
+app_admin_product_group_show:
+    path: /{id}
+    defaults:
+        _controller: app.controller.product_group:showAction
+        _sylius:
+            section: admin
+            template: "@SyliusAdmin/ProductGroup/show.html.twig"
+            permission: true

@@ -1,0 +1,40 @@
+sylius_mailer:
+    sender:
+        name: '%env(string:MAIL_SENDER_NAME)%'
+        address: '%env(string:MAIL_ADDRESS)%'
+    emails:
+        share_plan:
+            template: "Email/share_plan.html.twig"
+        share_cart:
+            template: "Email/share_cart.html.twig"
+        api_order_total_inconsistency:
+            template: "Email/api_order_total_inconsistency.html.twig"
+            sender:
+                name: "Plum Sylius Website"
+                address: sylius@plum-living.com
+        order_adjustments_inconsistency:
+            template: "Email/order_adjustments_inconsistency.html.twig"
+            sender:
+                name: "Plum Sylius Website"
+                address: sylius@plum-living.com
+        wire_payment_information:
+            template: "Email/wire_payment_information.html.twig"
+        wire_payment_validated:
+            template: "Email/wire_payment_validated.html.twig"
+            
+        # user_registration and user_registration_b2b_program are disabled. They are sent by HS Workflow on account_created event.
+        user_registration:
+            enabled: false
+        user_registration_b2b_program:
+            enabled: false
+            template: "@SyliusShop/Email/userRegistrationB2bProgram.html.twig"
+            sender:
+                name: "Terra Club by Plum"
+                address: terraclub@plum-living.com
+        ### Netsuite will handle the sending of shipment + order confirmation emails ###
+        shipment_confirmation:
+            enabled: false
+        order_confirmation_resent:
+            enabled: false
+        order_confirmation:
+            enabled: false

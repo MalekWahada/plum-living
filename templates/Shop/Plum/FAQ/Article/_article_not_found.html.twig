@@ -1,0 +1,19 @@
+{% extends '@SyliusShop/error404.html.twig' %}
+{% block content %}
+    {% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+    <div class="errors">
+        <div class="errors__container container">
+            <div class="flush-row">
+                <div class="u-centered-on-x u-cross-centered-col">
+                    <div class="u-flex u-center-on-cross md:u-margin-b-2 @md:u-margin-b-7">
+                        <a href="{{ path('app_faq_index') }}" class="big-honking-button">{{ "app.error_page.faq.btn_back"|trans }}</a>
+                        <svg class="errors__text">
+                            <use xlink:href="{{ iconLibUrl }}#SVG-error"/>
+                        </svg>
+                    </div>
+                    <div class="errors__desc t-base-large">{{ "app.error_page.faq.text"|trans }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

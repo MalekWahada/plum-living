@@ -1,0 +1,36 @@
+{% set articleContent = article.content|format_cms_content_to_array %}
+
+<div class="swiper-slide @lg:column-3 column-6">
+    <div class="card card-media card-article-category">
+        <a class="u-block u-v-spaced-2 t-link-wrapper u-fullwidth u-fullheight"
+           href={{ get_url_from_page(article) }}>
+            <div class="cms__item cms__item--media_category u-relative">
+                <div class="cms__img u-relative">
+                    {% if article.image.path is defined and article.image.path is not empty %}
+                        <img class="slide-cover-image"
+                             src="{{ article.image.path | imagine_filter('app_cms_big_thumbnail') }}"
+                             srcset="{{ article.image.path | imagine_filter('app_cms_big_thumbnail_retina') }} 2x"/>
+                    {% else %}
+                        <img class="slide-cover-image"
+                             src="{{ asset('build/shop/images/no-image.png', 'shop') }}"
+                             srcset="{{ asset('build/shop/images/no-image.png', 'shop') }}"/>
+                    {% endif %}
+                </div>
+                <div class="cms__item--media_category--content c-true-white">
+                        <div class="t-header-xsmall u-margin-b-1">
+                            {% if article.category %}
+                                {% set baseTranslation = 'app.cms_page.media_article.category.' ~ article.category %}
+                                {{ (baseTranslation ~ '.title') | trans }}
+                            {% endif %}
+                        </div>
+                    <h4 class="t-header-small t-shadow">{{ article.title }}</h4>
+                </div>
+                <div class="background-opacity">
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+

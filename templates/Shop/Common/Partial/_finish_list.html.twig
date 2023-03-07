@@ -1,0 +1,88 @@
+{% set isPlumScanner = 'app_plum_scanner_' in app.request.attributes.get('_route') %}
+{% set nextRoute = isPlumScanner ? 'app_plum_scanner_get_colors' : 'facade_get_colors' %}
+{% set hasRecommandations = combination is defined and combination is not null and combination.recommendation is not null %}
+
+{% include 'Shop/Common/Partial/_design_list.html.twig' with {'designCombinations' : designCombinations} %}
+
+<div class="tunnel-second u-margin-t-13">
+    <div class="tunnel-second__container">
+        <div class="details">
+            <div class="details__title t-header-large u-margin-b-3 @lg:u-margin-b-5">{{ "app.ui.tunnel_shopping.title_finish"|trans }}</div>
+            <div class="details__content row">
+                <div class="details__img column @md:column-6">
+                    {% if combination is defined and combination.image.path|default(null) is not null %}
+                        <img class="u-block u-cover u-fullwidth u-fullheight"
+                             src="{{ combination.image.path|imagine_filter('app_tunnel_finish_thumbnail') }}"
+                             srcset="{{ combination.image.path|imagine_filter('app_tunnel_finish_thumbnail_retina') }} 2x"
+                             alt="{{ combination.image.type }}"
+                        />
+                    {% endif %}
+                </div>
+                <div class="details-choices @md:column-6 u-flex-column u-padding-t-3 @wd:u-padding-t-0 ">
+                    <div class="details-choices-finish">
+                        <div class="details-choices-finish__title t-label-col u-margin-b-2">{{ "app.ui.tunnel_shopping.finish"|trans }}</div>
+                        <div class="details-colors-list u-flex u-flex-wrapping @lg:flush-column-8">
+                            {% set class = 'details-colors-item u-cross-centered-row u-start-on-main flush-column-2 @lg:flush-column-6 u-margin-b-2 @lg:u-margin-b-3 @lg:u-padding-r-2 facade' %}
+                            {% for availableFinish in finishes %}
+                                <div class=" {{ (finish is defined and availableFinish == finish) ? class ~ ' active' : class }}"
+                                     data-url="{{ path(nextRoute, {
+                                         'facadeTypeCode': facadeType.code,
+                                         'designCode': design.code,
+                                         'finishCode': availableFinish.code
+                                     }) }}"
+                                     data-breadcrumb-type="finish"
+                                     data-breadcrumb-value="{{ availableFinish }}"
+                                     style="order: {{ loop.index % 2 == 0 }};"
+                                >
+
+                                    {% set finishImage = availableFinish|filter_images(constant('App\\Entity\\Product\\ProductOptionValueImage::PRODUCT_OPTION_VALUE_IMAGE_TYPE_DEFAULT')) %}
+                                    {% if finishImage.path|default(null) is not null %}
+                                        <span class="details-colors-item__pastille" style="background-image: url({{ finishImage.path|imagine_filter('app_tunnel_finish_color_chip_tumbnail') }});"></span>
+                                    {% endif %}
+                                    <div class="details-colors-item__text t-base-small @lg:u-margin-l-2">{{ availableFinish }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% include 'Shop/Common/Partial/_color_list.html.twig' with {'colors': colors ?? null, 'allColors': allAvailableColors} %}
+                </div>
+            </div>
+            {% if hasRecommandations %}
+                {{ (combination.recommendation|format_cms_content_to_array)|monsieurbiz_richeditor_render_elements }}
+            {% endif %}
+            <div class="row t-align-center">
+                <a
+                    class="facade tunnel-second__button big-honking-button u-centered-on-x {% if not hasRecommandations %} @md:u-margin-t-12 u-margin-t-10 {% endif %}"
+                    data-second-btn="{{ "app.ui.tunnel_shopping.btn_noted"|trans }}"
+                    {% if hasRecommandations %}
+                        data-has-recommendations="true"
+                    {% endif %}
+                    {% if color is defined %}
+                    {% if isPlumScanner %}
+                        href="{{ path('app_plum_scanner_login', {
+                            'designCode': design.code,
+                            'finishCode': finish.code,
+                            'colorCode': color.code
+                        }) }}"
+                    {% else %}
+                        data-url="{{ path('facade_get_products', {
+                            'facadeTypeCode': facadeType.code,
+                            'designCode': design.code,
+                            'finishCode': finish.code,
+                            'colorCode': color.code
+                        }) }}"
+                        data-breadcrumb-type="product"
+                    {% endif %}
+                {% else %}
+                    disabled
+                    {% endif %}>
+                    {{ "app.ui.tunnel_shopping.next_step"|trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

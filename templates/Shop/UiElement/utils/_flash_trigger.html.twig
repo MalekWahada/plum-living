@@ -1,0 +1,3 @@
+{% set appTrig = app %}
+{{ appTrig.session.flashBag.add(type, message) }}
+{% include '@SyliusShop/_flashes.html.twig' with {app: appTrig} %}

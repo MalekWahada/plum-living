@@ -1,0 +1,98 @@
+sylius_grid:
+    grids:
+        monsieurbiz_cms_page:
+            actions:
+                main:
+                    create:
+                        type: links
+                        label: monsieurbiz_cms_page.ui.actions.create
+                        options:
+                            class: primary
+                            icon: plus
+                            header:
+                                icon: cube
+                                label: sylius.ui.type
+                            links:
+                                simple:
+                                    label: app.ui.cms.admin.actions.simple
+                                    icon: plus
+                                    route: monsieurbiz_cms_page_admin_page_create
+                                project:
+                                    label: app.ui.cms.admin.actions.project
+                                    icon: plus
+                                    route: app_admin_cms_project_create
+                                article:
+                                    label: app.ui.cms.admin.actions.article
+                                    icon: plus
+                                    route: app_admin_cms_article_create
+                                media_home:
+                                    label: app.ui.cms.admin.actions.media_home
+                                    icon: plus
+                                    route: app_admin_cms_media_home_create
+                                media_article:
+                                    label: app.ui.cms.admin.actions.media_article
+                                    icon: plus
+                                    route: app_admin_cms_media_article_create
+                    update_positions:
+                        type: update_pages_positions
+                bulk:
+                    delete:
+                        type: delete
+            fields:
+                image:
+                    position: 1
+                    type: twig
+                    label: sylius.ui.image
+                    path: .
+                    options:
+                        template: "Admin/Page/Grid/Field/_mainImage.html.twig"
+                position:
+                    type: twig
+                    label: sylius.ui.position
+                    path: .
+                    sortable: page.position
+                    options:
+                        template: "Admin/Page/Grid/position.html.twig"
+                type:
+                    type: string
+                    label: app.ui.cms.admin.fields.page_type
+                category:
+                    type: string
+                    label: app.ui.cms.admin.fields.category
+                translationsPublishedAt:
+                    type: datetime
+                    label: app.ui.cms.admin.fields.translations_published
+                    sortable: ~
+            filters:
+                # Misspelled filter names inside monsieurBizCMS grid config file
+                # `@MonsieurBizSyliusCmsPagePlugin/Resources/config/sylius/grid.yaml`
+                # are set to `enabled: false`, because they belong to `PageTranslation` Entity fields and not to the `Page` Entity
+                code:
+                    enabled: false
+                title:
+                    enabled: false
+                content:
+                    enabled: false
+                search:
+                    position: 1
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [ code, translations.title ]
+                type:
+                    type: select
+                    label: app.form.page.type
+                    form_options:
+                        choices:
+                            app.ui.page.type_default: !php/const App\Entity\Page\Page::PAGE_TYPE_DEFAULT
+                            app.ui.page.type_article: !php/const App\Entity\Page\Page::PAGE_TYPE_ARTICLE
+                            app.ui.page.type_media_home: !php/const App\Entity\Page\Page::PAGE_TYPE_MEDIA_HOME
+                            app.ui.page.type_media_article: !php/const App\Entity\Page\Page::PAGE_TYPE_MEDIA_ARTICLE
+                            app.ui.page.type_project: !php/const App\Entity\Page\Page::PAGE_TYPE_PROJECT
+                            app.ui.page.type_inspiration: !php/const App\Entity\Page\Page::PAGE_TYPE_INSPIRATION
+                            app.ui.page.type_frame: !php/const App\Entity\Page\Page::PAGE_TYPE_FRAME
+                            app.ui.page.type_home_page: !php/const App\Entity\Page\Page::PAGE_TYPE_HOME_PAGE
+                            app.ui.page.type_ribbon: !php/const App\Entity\Page\Page::PAGE_TYPE_RIBBON
+                translationsPublishedAt:
+                    type: date
+                    label: app.form.page.translations_published

@@ -1,0 +1,15 @@
+<fieldset class="checkout-shipping-shipment form-section">
+    {% if loop.length > 1 %}
+        <legend class="form-section__title t-label-small">{{ 'app.ui.generic.shipment'|trans }} {{ loop.index }}</legend>
+    {% endif %}
+    <div class="field-group" {{ sylius_test_html_attribute('shipments') }}>
+        {% include 'Shop/Form/_errors.html.twig' with { 'form': form.method } %}
+        {% for key, choice_form in form.method %}
+            {% set method = form.method.vars.choices[key].data %}
+            {% set fee = form.method.vars.shipping_costs[choice_form.vars.value] %}
+            {% include '@SyliusShop/Checkout/SelectShipping/_choice.html.twig' with {'form': choice_form, 'method': method, 'fee': fee} %}
+        {% else %}
+            {% include '@SyliusShop/Checkout/SelectShipping/_unavailable.html.twig' %}
+        {% endfor %}
+    </div>
+</fieldset>

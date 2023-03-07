@@ -1,0 +1,189 @@
+.sylius_shop_homepage {
+  background: $color--true-white;
+
+  .page-container {
+    padding-top: 0;
+  }
+
+  .homepage {
+
+    //Images steps
+    .cms-steps-item {
+      &__text {
+        font-size: rem(15);
+        line-height: 146%;
+
+        @include up('large') {
+          font-size: rem(20);
+          line-height: 160%;
+          max-width: 300px;
+          letter-spacing: -0.5px;
+          p{
+            line-height: 160%;
+          }
+        }
+      }
+      &__content{
+
+        @include up('large') {
+          height: 222px;
+        }
+      }
+    }
+
+    .homepage-steps-cta{
+      .big-honking-button{
+        font-size: rem(16);
+        padding: 10px 16px 10px 24px;
+        border: 1px solid !important;
+        &::after{
+          content:none;
+        }
+        &::before{
+          content: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18.7,7.3l-6.7-7c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4L15.7,7H1C0.4,7,0,7.5,0,8s0.4,1,1,1h14.6l-5.1,5.3 c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3c0.3,0,0.5-0.1,0.7-0.3l6.7-7C19.1,8.3,19.1,7.7,18.7,7.3z' fill='white'/%3E%3C/svg%3E");
+          display: block;
+          width: 1.2rem;
+          height: 0.8rem;
+          left: -6px;
+          position: relative;
+          transition: transform 0.2s;
+        }
+      }
+    }
+
+    .home-project-creation-banner{
+      margin-top: rem(60);
+    }
+
+    .cms-palette{
+      margin-top: 0;
+      .cms-cta{
+        .big-honking-button{
+          font-size: rem(16);
+          padding: 10px 16px 10px 24px;
+          border: 1px solid !important;
+          &::after{
+            content:none;
+          }
+          &::before{
+            content: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18.7,7.3l-6.7-7c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4L15.7,7H1C0.4,7,0,7.5,0,8s0.4,1,1,1h14.6l-5.1,5.3 c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3c0.3,0,0.5-0.1,0.7-0.3l6.7-7C19.1,8.3,19.1,7.7,18.7,7.3z' fill='currentColor'/%3E%3C/svg%3E");
+            display: block;
+            width: 1.2rem;
+            height: 0.8rem;
+            left: -6px;
+            position: relative;
+            transition: transform 0.2s;
+            background:none;
+          }
+        }
+      }
+    }
+
+      //End images steps
+
+    //Slider
+    &-slider {
+      .homepage-cta {
+        position: relative;
+        top: rem(60);
+      }
+    }
+    //End slider
+  }
+  .cms-mosaic__item{
+    opacity: 0;
+    @include up('medium'){
+      opacity: 1;
+    }
+  }
+
+}
+
+.o-visible{
+  overflow:visible;
+}
+
+
+.cms-slider-home__container.new-slider{
+  background-color: $color--asphalte;
+  .swiper-wrapper{
+    .swiper-slide{
+      height: 400px;
+      max-width: 100%;
+      width: 100%;
+      @include up('wide') {
+        height: 506px;
+      }
+    }
+    img{
+      filter: opacity(0.7);
+    }
+  }
+
+  .container-pagination{
+    top: auto !important;
+    z-index: 1;
+    .swiper-pagination-two{
+      left: auto;
+      .swiper-pagination-bullet{
+        height: 12px;
+        width: 12px;
+        margin: 0 4px;
+        &-active{
+          background: white;
+        }
+      }
+    }
+  }
+
+  .swiper-pagination-two{
+    position:absolute;
+    bottom: 30px;
+    transform: translateZ(0);
+    transition: opacity .3s;
+    z-index: 10;
+  }
+  .container{
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include up('large') {
+
+    }
+
+    .button{
+      font-size: rem(14);
+      padding: 10px 2px;
+      width: 168px;
+      height: 42px;
+      border:none;
+      min-height: auto;
+
+      @include up('large') {
+        font-size: rem(16);
+        height: auto;
+        padding: 9px 16px;
+        width: 168px;
+        min-height: auto;
+      }
+
+      &:hover, &:focus{
+        background-color: #f5f5f5 !important;
+      }
+    }
+  }
+  .t-header-xxlarge{
+    max-width: 90%;
+    @include up('large') {
+      max-width: 70%;
+    }
+  }
+}
+
+.scan-banner{
+  text-align: center;
+  @include up('large'){
+    text-align: left;
+  }
+}

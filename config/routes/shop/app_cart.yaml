@@ -1,0 +1,37 @@
+app_validate_cart:
+    path: /validate-order
+    methods: [ GET, POST ]
+    defaults:
+        _controller: sylius.controller.order::updateAction
+        _sylius:
+            form: App\Form\Type\Cart\CartValidationType
+            repository:
+                method: find
+                arguments:
+                    - "expr:notFoundOnNull(service('sylius.context.cart').getCart().getId())"
+            template: '@SyliusShop/Cart/_confirmationModal.html.twig'
+            redirect: sylius_shop_checkout_address
+            flash: false
+        
+app_share_cart:
+    path: /share-order/{tokenValue}
+    methods: [ GET, POST ]
+    controller: App\Controller\Cart\CartController::shareCart
+        
+app_duplicate_cart:
+    path: /duplicate-order/{orderCacheToken}
+    methods: [ GET, POST ]
+    controller: App\Controller\Cart\CartController::duplicateCart
+        
+app_add_to_cart_via_link:
+    path: /add-to-cart/{variants_codes_quantities}
+    methods: [ GET, POST ]
+    controller: App\Controller\Cart\AddToCartController::addToCartViaLink
+    defaults:
+        variants_codes_quantities: null
+        
+ajax_get_select_shipping_method_price:
+    path: /select-shipping-method/{order}/{method}
+    controller: App\Controller\Checkout\ShippingController::ajaxGetShippingMethodPrice
+    defaults:
+        method: null

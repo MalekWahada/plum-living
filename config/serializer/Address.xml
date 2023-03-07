@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="Sylius\Component\Core\Model\Address">
+        <attribute name="firstName">
+            <group>cart:address</group>
+            <group>order:read</group>
+            <group>customer:read</group>
+        </attribute>
+        <attribute name="lastName">
+            <group>cart:address</group>
+            <group>order:read</group>
+            <group>customer:read</group>
+        </attribute>
+        <attribute name="city">
+            <group>cart:address</group>
+            <group>order:read</group>
+            <group>customer:read</group>
+        </attribute>
+        <attribute name="street">
+            <group>cart:address</group>
+            <group>order:read</group>
+            <group>customer:read</group>
+        </attribute>
+        <attribute name="postcode">
+            <group>cart:address</group>
+            <group>order:read</group>
+            <group>customer:read</group>
+        </attribute>
+        <attribute name="countryCode">
+            <group>cart:address</group>
+            <group>order:read</group>
+            <group>customer:read</group>
+        </attribute>
+        <attribute name="phoneNumber">
+            <group>cart:address</group>
+            <group>order:read</group>
+            <group>customer:read</group>
+        </attribute>
+        <attribute name="customer">
+            <group>address:read</group>
+            <group>address:create</group>
+            <group>address:update</group>
+        </attribute>
+        <attribute name="provinceCode">
+            <group>address:read</group>
+            <group>address:create</group>
+            <group>address:update</group>
+        </attribute>
+        <attribute name="shippingNotes">
+            <group>address:read</group>
+            <group>address:create</group>
+            <group>address:update</group>
+            <group>order:read</group>
+        </attribute>
+    </class>
+</serializer>

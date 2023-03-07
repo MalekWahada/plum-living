@@ -1,0 +1,2 @@
+{% set order_status = order|get_account_status_label %}
+{{ 'app.ui.order.%s'|format(order_status)|trans }}

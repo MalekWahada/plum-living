@@ -1,0 +1,58 @@
+{% set imageFilter = element.option == constant('App\\Entity\\Product\\ProductOption::PRODUCT_OPTION_DESIGN') ? 'app_cms_medium_thumbnail' : 'app_cms_square_thumbnail' %}
+{% set imageFilterRetina = element.option == constant('App\\Entity\\Product\\ProductOption::PRODUCT_OPTION_DESIGN') ? 'app_cms_medium_thumbnail_retina' : 'app_cms_square_thumbnail_retina' %}
+<div class="cms-products u-flex">
+    <div class="row">
+        {% for optionValue in optionsValues %}
+            <div class="cms-products-item u-flex u-flex-wrapping u-align-content-start @md:column-6 u-margin-b-7">
+
+                {# Option value image #}
+                <div class="cms-products-item__img column-fill-space">
+                    {% set optionValueImage = optionValue|filter_images(constant('App\\Entity\\Product\\ProductOptionValueImage::PRODUCT_OPTION_VALUE_IMAGE_TYPE_DEFAULT')) %}
+
+                    {% if optionValueImage.path is defined and optionValueImage.path is not empty %}
+                        <img class="u-block u-cover" alt=""
+                             src="{{ optionValueImage.path|imagine_filter(imageFilter) }}" srcset="{{ optionValueImage.path|imagine_filter(imageFilterRetina) }} 2x"/>
+                    {% endif %}
+                </div>
+                {# End of Option value image #}
+
+                {# Option value Desc #}
+                {% if optionValue.description is not empty %}
+                    <div class="cms-products-item__desc">
+                        {# Option value title #}
+                            <h5 class="t-header-medium">{{ optionValue.value }}</h5>
+                        {# End of Option value title #}
+                        <p class="t-base-medium">{{ optionValue.description|raw }}</p>
+                        {# Combination(recommendation) #}
+                        {% if optionValue.combinationLabel is defined and optionValue.combinationLabel is not empty %}
+                            <div class="cms-product__link u-margin-t-3 @lg:u-margin-t-4">
+                                <a class="link-button link-button--inline c-near-black recommendation-trigger"
+                                   data-target="{{ optionValue.combination.id }}">
+                                    <svg class="o-icon-16 u-margin-r-1">
+                                        <use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/>
+                                    </svg>
+                                    {{ optionValue.combinationLabel }}
+                                </a>
+                            </div>
+                        {% endif %}
+                        {# End of Combination(recommendation) #}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{# recommendation modal #}
+{% for optionValue in optionsValues %}
+    {% if optionValue.combinationLabel is defined and optionValue.combinationLabel is not empty %}
+        <div id="recommendation-modal-{{ optionValue.combination.id }}" class="recommendation-modal ui-modal">
+            <div class="ui-modal__scrollbox u-y-scrollable">
+                <div class="ui-modal__dialog">
+                    {% include 'Shop/UiElement/ProductOptionValues/OtherUIs/_recommendation_modal.html.twig' with { combination: optionValue.combination } %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{%  endfor %}
+{# recommendation modal #}

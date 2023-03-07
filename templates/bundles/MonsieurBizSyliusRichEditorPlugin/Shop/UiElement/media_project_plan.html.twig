@@ -1,0 +1,47 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="home-project-plan container container-custom-padding u-padding-t-5 u-padding-b-5">
+    <div class="row u-cross-centered-row">
+        <div class="@lg:column-6 u-padding-0">
+            <div class="cms-slider-home-project-plans__container">
+                <div class="swiper-wrapper">
+                    {% for slide in element.slider %}
+                        {% if slide.image is not empty %}
+                            <div class="swiper-slide">
+                                <img src="{{ slide.image |raw }}"
+                                     srcset="{{ slide.image |raw }} 2x"
+                                     alt="{{ slide.image_alt|default('') }}"
+                                     title="{{ slide.image_title|default('') }}"
+                                     class="u-fullwidth" />
+                            </div>
+                        {% endif %}
+                    {% endfor  %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="@lg:column-6 u-padding-t-6 @lg:u-padding-b-15 @lg:u-padding-t-15 @lg:u-padding-l-6">
+            <h3 class="t-header-medium u-margin-b-4">
+                {{ 'app.ui.cms.project.receive_plan_mail.input_placeholder' | trans }}
+            </h3>
+            <label class="field text-field">
+                <div class="field__wrapper">
+                    <span class="field__label">{{ 'app.footer.shop.my_email_address'|trans }}</span>
+                    <input required id="mail_receive_plan_input" class="field__widget" type="email">
+                </div>
+            </label>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token(page.code) }}">
+            <button class="button u-margin-t-4"
+                   id="receive_plan_btn"
+                   data-page="{{ page.code }}"
+                   data-href="{{ path('send_project_plan') }}"
+                   data-error-message="{{ 'app.cms.project_plan.error'|trans([], 'flashes') }}"
+            >
+                <svg class="o-icon-20 u-margin-r-2">
+                    <use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/>
+                </svg>
+                {{ 'app.ui.cms.project.receive_plan_mail.send_text' | trans }}
+            </button>
+        </div>
+    </div>
+</div>

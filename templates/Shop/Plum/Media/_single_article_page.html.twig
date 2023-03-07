@@ -1,0 +1,40 @@
+<div class="cms__item cms__item--article cms-slider__item swiper-slide">
+    <a class="u-block u-v-spaced-2 t-link-wrapper"
+       href={{ get_url_from_page(article) }}>
+        <div class="cms__img u-relative">
+            {% if article.image.path is defined and article.image.path is not empty %}
+                <img class="slide-cover-image"
+                     src="{{ article.image.path | imagine_filter('app_cms_big_thumbnail') }}"
+                     srcset="{{ article.image.path | imagine_filter('app_cms_big_thumbnail_retina') }} 2x"/>
+            {% else %}
+                <img class="slide-cover-image"
+                     src="{{ asset('build/shop/images/no-image.png', 'shop') }}"
+                     srcset="{{ asset('build/shop/images/no-image.png', 'shop') }}"/>
+            {% endif %}
+        </div>
+        <div class="cms-slider__content">
+            <div class="content-left">
+                <div class="cms__category-tag u-margin-b-1">
+                    <p class="t-header-xsmall">
+                        {% if article.category and article.category != 'home_project' %}
+                            {% set baseTranslation = 'app.cms_page.media_article.category.' ~ article.category %}
+                            {{ (baseTranslation ~ '.title') | trans }}
+                        {% endif %}
+                        {% if article.category == 'home_project' %}
+                            {% if article.room is defined and article.room is not empty %}
+                                {{ ('app.ui.cms.chip.room.type_' ~ article.room ~ '')|trans }} |
+                            {% endif %}
+                            {% if article.color is defined and article.color is not empty %}
+                                {{ get_color_from_page(article) }} |
+                            {% endif %}
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="cms__title">
+                    <h4>{{ article.title }}</h4>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+

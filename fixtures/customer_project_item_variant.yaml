@@ -1,0 +1,105 @@
+App\Entity\CustomerProject\ProjectItemVariant:
+    customer_project_item_variant (template):
+        quantity: '1'
+
+    customer_project_item_variant_paint_1_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_paint_<current()>'
+        product_variant: '@product_variant_paint_1'
+    customer_project_item_variant_paint_2_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_paint_<current()>'
+        product_variant: '@product_variant_paint_2'
+    customer_project_item_variant_paint_3_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_paint_<current()>'
+        product_variant: '@product_variant_paint_3'
+    customer_project_item_variant_paint_4_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_paint_<current()>'
+        product_variant: '@product_variant_paint_4'
+    customer_project_item_variant_paint_5_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_paint_<current()>'
+        product_variant: '@product_variant_paint_5'
+
+    customer_project_item_variant_accessory_1_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_accessory_<current()>'
+        product_variant: '@product_variant_accessory_1'
+    customer_project_item_variant_accessory_2_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_accessory_<current()>'
+        product_variant: '@product_variant_accessory_2'
+    customer_project_item_variant_accessory_3_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_accessory_<current()>'
+        product_variant: '@product_variant_accessory_3'
+    customer_project_item_variant_accessory_4_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_accessory_<current()>'
+        product_variant: '@product_variant_accessory_4'
+
+    customer_project_item_variant_product_metod_4010_1_1_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_1_1'
+    customer_project_item_variant_product_metod_4010_1_2_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_1_2'
+    customer_project_item_variant_product_metod_4010_1_3_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_1_3'
+    customer_project_item_variant_product_metod_4010_2_1_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_2_1'
+    customer_project_item_variant_product_metod_4010_2_2_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_2_2'
+    customer_project_item_variant_product_metod_4010_2_3_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_2_3'
+    customer_project_item_variant_product_metod_4010_3_1_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_3_1'
+    customer_project_item_variant_product_metod_4010_3_2_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_3_2'
+    customer_project_item_variant_product_metod_4010_3_3_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_3_3'
+    customer_project_item_variant_product_metod_4010_4_1_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_4_1'
+    customer_project_item_variant_product_metod_4010_4_2_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_4_2'
+    customer_project_item_variant_product_metod_4010_4_3_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_4_3'
+    customer_project_item_variant_product_metod_4010_5_1_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_5_1'
+    customer_project_item_variant_product_metod_4010_5_2_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_5_2'
+    customer_project_item_variant_product_metod_4010_5_3_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_5_3'
+    customer_project_item_variant_product_metod_4010_6_1_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_6_1'
+    customer_project_item_variant_product_metod_4010_6_2_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_6_2'
+    customer_project_item_variant_product_metod_4010_6_3_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_6_3'
+    customer_project_item_variant_product_metod_4010_7_1_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_7_1'
+    customer_project_item_variant_product_metod_4010_7_2_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_7_2'
+    customer_project_item_variant_product_metod_4010_7_3_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_7_3'
+    customer_project_item_variant_product_metod_4010_8_1_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_8_1'
+    customer_project_item_variant_product_metod_4010_8_2_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_8_2'
+    customer_project_item_variant_product_metod_4010_8_3_{1..5} (extends customer_project_item_variant):
+        project_item: '@customer_project_item_metod_4010_<current()>'
+        product_variant: '@product_variant_metod_4010_8_3'

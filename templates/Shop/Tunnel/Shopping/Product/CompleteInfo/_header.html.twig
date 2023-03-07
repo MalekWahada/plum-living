@@ -1,0 +1,10 @@
+<div class="u-flex u-spaced-on-main u-h-tail-spaced-3 u-margin-b-3">
+    <div id="sylius-product-name" class="t-header-medium" {{ sylius_test_html_attribute('product-name', product.name) }}>
+        {{ product.name }}
+    </div>
+    <div class="t-header-medium">
+        {% if not product.enabledVariants.empty() %}
+            {% include 'Shop/Tunnel/Shopping/Product/_price.html.twig' %}
+        {% endif %}
+    </div>
+</div>

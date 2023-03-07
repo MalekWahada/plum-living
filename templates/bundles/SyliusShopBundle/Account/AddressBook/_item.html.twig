@@ -1,0 +1,38 @@
+{% import '@SyliusUi/Macro/buttons.html.twig' as buttons %}
+
+{% set modify_path = path('sylius_shop_account_address_book_update', {'id': address.id}) %}
+{% set set_as_default_path = path('sylius_shop_account_address_book_set_as_default', {'id': address.id}) %}
+{% set remove_path = path('sylius_shop_account_address_book_delete', {'id': address.id}) %}
+{% set address_name = '%s %s, %s'|format(address.firstName, address.lastName, address.street) %}
+
+{% if address.company is not null %}
+    {% set address_name = '%s, %s'|format(address.company, address_name) %}
+{% endif %}
+
+<div class="other-address">
+    <h3 class="t-header-small u-margin-b-2 c-grey-mid">{{ 'app.ui.account.addresses.other_address'|trans }}</h3>
+
+    {% include '@SyliusShop/Common/_address.html.twig' with {'address': address} %}
+
+    <div class="u-margin-t-3">
+        {{ render(set_as_default_path) }}
+        <a class="link-button small-link-button c-grey-mid u-margin-l-2" href="{{ modify_path }}">
+            {{ 'app.ui.generic.modify'|trans }}
+        </a>
+        <form
+         class="form u-inline-flex u-margin-l-2"
+         action="{{ remove_path }}"
+         method="post"
+         data-form-requires-confirmation
+         data-confirmation-title="{{ 'app.ui.account.addresses.delete_confirmation_title'|trans }}"
+         data-confirmation-message="{{ 'app.ui.account.addresses.delete_confirmation_message'|trans({ '%address_name%': address_name }) }}"
+         data-confirmation-dismiss="{{ 'app.ui.account.addresses.delete_confirmation_dismiss'|trans }}"
+         data-confirmation-confirm="{{ 'app.ui.account.addresses.delete_confirmation_confirm'|trans }}">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="link-button small-link-button c-grey-mid" type="submit" {{ sylius_test_html_attribute('delete-button') }}>
+                {{ 'app.ui.generic.delete'|trans }}
+            </button>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token(address.id) }}" />
+        </form>
+    </div>
+</div>

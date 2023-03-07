@@ -1,0 +1,37 @@
+App\Entity\Product\Product:
+    product (template):
+        erp_entity: null
+        created_at: <dateTimeBetween("-1 year", "now")>
+        updated_at: null
+        enabled: true
+        variant_selection_method: 'match'
+        average_rating: '0'
+        position: <numberBetween(1, 70)>
+        channels: ['@channel_main']
+        currentLocale: '@locale_fr->code'
+    product_metod (template, extends product):
+        options: ['@product_option_design', '@product_option_finish', '@product_option_color']
+        main_taxon: '@taxon_metod'
+    product_pax (template, extends product):
+        options: ['@product_option_design', '@product_option_finish', '@product_option_color']
+        main_taxon: '@taxon_pax'
+    product_paint (template, extends product):
+        options: ['@product_option_color']
+        main_taxon: '@taxon_paint'
+    product_accessory (template, extends product):
+        main_taxon: '@taxon_accessories'
+        
+#    product_DE_{1..25} (extends product):
+#        main_taxon: '@taxon_accessories'
+#        code (unique): <randomElement(['2500P-D18','2500P-D17','2500P-D16','2500P-D15','2500P-D14','2500P-D13','2500P-D12','2500P-D11','2500P-D10','2500P-D09','2500P-D08','2500P-D07','2500P-D06','2500P-D05','2500P-D04','2500P-D03','2500P-D02','2500P-D01','2500P-D25','2500P-D24','2500P-D23','2500P-D22','2500P-D21','2500P-D20','2500P-D19'])>
+#        channels: ['@channel_DE']
+#        currentLocale: '@locale_de'
+
+    product_metod_4010_{1..8} (extends product_metod):
+        code (unique): <randomElement(['4010-04S-L', '4010-04S-O', '4010-04S-P', '4010-04S-W', '4010-04U-L', '4010-04U-O', '4010-04U-P', '4010-04U-W'])>
+    product_pax_35201_{1..4} (extends product_pax):
+        code (unique): <randomElement(['35201-17S-L', '35201-17S-O', '35201-17S-P', '35201-17S-W'])>    
+    product_paint_{1..5} (extends product_paint):
+        code (unique): <randomElement(['2500P-S02', '2500P-AS03', '2500P-S04', '2500P-S05', '2500P-S07', '2500P-S08', '2500P-S09', '2500P-S10', '2500P-S11', '2500P-S13', '2500P-S14', '2500P-S17'])>
+    product_accessory_{1..4} (extends product_accessory):
+        code (unique): <randomElement(['2208-08S-M', 'P136-S15', 'S90-S15', 'D110-B19'])>  

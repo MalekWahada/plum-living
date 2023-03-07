@@ -1,0 +1,7 @@
+App\Entity\Order\OrderItem:
+    order_item_{1..25}:
+        order: '@order_<numberBetween(1, 25)>' 
+        variant: '@product_variant_paint_<numberBetween(1, 5)>' 
+        product_name: <randomElement()>
+        variant_name: <randomElement()>
+        comment: null

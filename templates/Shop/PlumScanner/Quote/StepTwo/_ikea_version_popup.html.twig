@@ -1,0 +1,21 @@
+<div class="ui-modal__content flush-row u-center-on-main t-align-center">
+    <div class="u-margin-b-10 @sm:flush-column-10 @md:flush-column-fill-space @md:u-margin-r-4 @md:u-margin-b-0">
+        <h2 class="u-margin-b-2 t-header-medium">
+            {{ 'app.ui.plum_scanner.step_two.connect_ikea.ikea_version_modal.new'|trans }}
+        </h2>
+        <a class="t-link c-pink" target="_blank" href="{{ constant('App\\Provider\\PlumScanner\\IkeaKitchenPlannerProvider::IKP_NEW_VERSION_LONG_URL') }}">
+            {{ constant('App\\Provider\\PlumScanner\\IkeaKitchenPlannerProvider::IKP_NEW_VERSION_SHORT_URL') }}
+        </a>
+        <img class="u-block u-fullwidth u-margin-t-5" src="{{ asset('build/shop/images/ikp-new-demo-poster.jpg', 'shop') }}" />
+    </div>
+    <div class="@sm:flush-column-10 @md:flush-column-fill-space @md:u-margin-l-4">
+        <h2 class="u-margin-b-2 t-header-medium">
+            {{ 'app.ui.plum_scanner.step_two.connect_ikea.ikea_version_modal.old'|trans }}
+        </h2>
+        <a class="t-link c-pink" target="_blank" href="{{ constant('App\\Provider\\PlumScanner\\IkeaKitchenPlannerProvider::IKP_OLD_VERSION_LONG_URL') }}">
+            {{ constant('App\\Provider\\PlumScanner\\IkeaKitchenPlannerProvider::IKP_OLD_VERSION_SHORT_URL') }}
+        </a>
+        <img class="u-block u-fullwidth u-margin-t-5" src="{{ asset('build/shop/images/ikp-demo-poster.jpg', 'shop') }}" />
+    </div>
+</div>
+

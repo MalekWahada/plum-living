@@ -1,0 +1,7 @@
+{% if contactEmail is not defined %}
+    {% set contactEmail = sylius.channel.contactEmail %}
+{% endif %}
+<td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #656565;font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 10px;line-height: 125%;text-align: center;">
+    <em>{{ 'app.ui.email_content.common.copyright'|trans }}</em><br>
+    {{ 'app.ui.email_content.common.contact'|trans({'%email%': contactEmail})|raw }}
+</td>

@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+
+<!--
+
+This file should be merged with the next Sylius v1.9 ApiBundle version
+TODO: merge with Sylius 1.9 definition
+
+-->
+
+<resources xmlns="https://api-platform.com/schema/metadata"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
+>
+    <resource class="%sylius.model.address.class%" shortName="Address">
+        <attribute name="route_prefix">admin</attribute>
+
+        <!-- Serializer groups are defined in config/serializer -->
+        <attribute name="normalization_context">
+            <attribute name="groups">
+                <attribute>cart:address</attribute>
+                <attribute>address:read</attribute>
+            </attribute>
+        </attribute>
+
+        <attribute name="validation_groups">sylius</attribute>
+
+        <collectionOperations>
+            <collectionOperation name="admin_post">
+                <attribute name="method">POST</attribute>
+                <attribute name="denormalization_context">
+                    <attribute name="groups">
+                        <attribute>cart:address</attribute>
+                        <attribute>address:create</attribute>
+                    </attribute>
+                </attribute>
+            </collectionOperation>
+        </collectionOperations>
+
+        <itemOperations>
+            <itemOperation name="admin_get">
+                <attribute name="method">GET</attribute>
+            </itemOperation>
+
+            <itemOperation name="admin_put">
+                <attribute name="method">PUT</attribute>
+                <attribute name="denormalization_context">
+                    <attribute name="groups">
+                        <attribute>cart:address</attribute>
+                        <attribute>address:update</attribute>
+                    </attribute>
+                </attribute>
+            </itemOperation>
+        </itemOperations>
+
+        <property name="id" identifier="true" writable="false" />
+        <property name="customer" writable="true" readable="true">
+            <subresource resourceClass="%sylius.model.customer.class%" />
+        </property>
+        <property name="firstName" writable="true" readable="true" />
+        <property name="lastName" writable="true" readable="true" />
+        <property name="phoneNumber" writable="true" readable="true" />
+        <property name="countryCode" writable="true" readable="true" />
+        <property name="provinceCode" writable="true" readable="true" />
+        <property name="street" writable="true" readable="true" />
+        <property name="city" writable="true" readable="true" />
+        <property name="postcode" writable="true" readable="true" />
+    </resource>
+</resources>

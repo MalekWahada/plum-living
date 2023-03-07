@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="Sylius\Component\Core\Model\Order">
+        <attribute name="minDateDelivery">
+            <group>order:read</group>
+        </attribute>
+        <attribute name="maxDateDelivery">
+            <group>order:read</group>
+        </attribute>
+        <attribute name="originalOrderNumber">
+            <group>order:read</group>
+            <group>checkout:read</group>
+        </attribute>
+        <attribute name="mailingWorkflowType">
+            <group>order:read</group>
+            <group>checkout:read</group>
+        </attribute>
+        <attribute name="shippingAddress">
+            <group>order:read</group>
+            <group>checkout:read</group>
+        </attribute>
+        <attribute name="shipments">
+            <group>order:read</group>
+            <group>checkout:read</group>
+        </attribute>
+        <attribute name="billingAddress">
+            <group>order:read</group>
+            <group>checkout:read</group>
+        </attribute>
+        <attribute name="erpRegistered">
+            <group>order:read</group>
+        </attribute>
+        <attribute name="erpStatus">
+            <group>order:read</group>
+            <group>checkout:read</group>
+            <group>order:update</group>
+        </attribute>
+        <attribute name="createdAt">
+            <group>order:read</group>
+            <group>checkout:read</group>
+        </attribute>
+        <attribute name="updatedAt">
+            <group>order:read</group>
+            <group>checkout:read</group>
+        </attribute>
+        <attribute name="targetedRoom">
+            <group>order:read</group>
+            <group>checkout:read</group>
+        </attribute>
+        <attribute name="channelCode">
+            <group>order:read</group>
+        </attribute>
+        <attribute name="localeCode">
+            <group>order:read</group>
+        </attribute>
+    </class>
+</serializer>

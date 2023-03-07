@@ -1,0 +1,24 @@
+<div id="sylius-shipping-address" class="checkout-shipping-address" {{ sylius_test_html_attribute('shipping-address') }}>
+    <div class="panel__header">
+        <h2 class="panel__title t-header-medium">{{ 'app.ui.generic.shipping_address'|trans }}</h2>
+        {% include '@SyliusShop/Checkout/Address/_addressBookSelect.html.twig' with { target: 'shipping', class: 'u-margin-b-4 @md:u-margin-b-5' } %}
+    </div>
+    {% if app.user is null %}
+        {% include '@SyliusShop/Common/Form/_login.html.twig' with {'form': form.customer} %}
+    {% endif %}
+
+    {% include '@SyliusShop/Common/Form/_address.html.twig' with {'form': form.shippingAddress, 'order': order, 'type': 'shipping'} %}
+    {% include 'Shop/Form/_checkbox_field.html.twig' with { field: form.differentBillingAddress, 'attributes': { 'class': 'u-margin-t-4 @md:u-margin-t-5' } } %}
+    {{ sylius_template_event('sylius.shop.checkout.address.shipping_address_form', {'order': order}) }}
+</div>
+
+
+<div id="sylius-billing-address" class="checkout-billing-address u-margin-t-4" {{ sylius_test_html_attribute('billing-address') }}>
+    <hr class="hr--l-space">
+    <div class="panel__header">
+        <h2 class="panel__title t-header-medium">{{ 'app.ui.generic.billing_address'|trans }}</h2>
+        {% include '@SyliusShop/Checkout/Address/_addressBookSelect.html.twig' with { target: 'billing', class: 'u-margin-b-4 @md:u-margin-b-5' } %}
+    </div>
+    {% include '@SyliusShop/Common/Form/_address.html.twig' with {'form': form.billingAddress, 'order': order, 'type': 'billing'} %}
+    {{ sylius_template_event('sylius.shop.checkout.address.billing_address_form', {'order': order}) }}
+</div>

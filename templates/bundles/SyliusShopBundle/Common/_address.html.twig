@@ -1,0 +1,16 @@
+<address class="t-base-small" {{ sylius_test_html_attribute('address-context', "%s %s"|format(address.firstName, address.lastName)) }}>
+    {% if address.company is not null %}
+        {{ address.company }}<br>
+    {% endif %}
+    <span {{ sylius_test_html_attribute('full-name ', "%s %s"|format(address.firstName, address.lastName)) }}>{{ address.firstName }} {{ address.lastName }}</span><br>
+    {# phone number should be displayed in the last order when completing the checkout #}
+    {% if isPhoneLast is not defined and address.phoneNumber is not null %}
+        {{ address.phoneNumber|phone_number_parse|phone_number_format('INTERNATIONAL') }}<br/>
+    {% endif %}
+    {{ address.street }}<br/>
+    {{ address.city }}, {{ address.postcode }}<br/>
+    {{ address.countryCode|sylius_country_name }}
+    {% if isPhoneLast is defined and address.phoneNumber is not null %}
+        <br/>{{ address.phoneNumber|phone_number_parse|phone_number_format('INTERNATIONAL') }}
+    {% endif %}
+</address>

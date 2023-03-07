@@ -1,0 +1,27 @@
+{{ form_start(form, {'action': path('sylius_shop_login_check'), 'attr': {'class': 'panel__content'}}) }}
+    {% include '@SyliusShop/Login/_form.html.twig' %}
+
+    {{ sylius_template_event('sylius.shop.login.form', {'form': form}) }}
+
+
+
+    <div class="row u-cross-centered-row u-margin-b-4">
+        <div class="column u-cross-centered-col u-center-on-cross">
+            <button type="submit" class="button ripple-button u-block u-margin-auto u-margin-t-6 u-fullwidth" {{ sylius_test_html_attribute('login-button') }}>
+                <svg class="o-icon-16 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                {{ 'sylius.ui.login'|trans }}
+            </button>
+        </div>
+    </div>
+
+
+    <a href="{{ path('sylius_shop_request_password_reset_token') }}" class="link-button">
+        <svg class="o-icon-16 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+        {{ 'sylius.ui.forgot_password'|trans }}</a>
+    {% if not isVerified %}
+        <br><br>
+        <a href="{{ path('app_verify_non_logged_user') }}" class="link-button">{{ 'app.ui.generic.verify_now'|trans }}</a>
+    {% endif %}
+
+    <input type="hidden" name="_csrf_shop_security_token" value="{{ csrf_token('shop_authenticate') }}">
+{{ form_end(form, {'render_rest': false}) }}

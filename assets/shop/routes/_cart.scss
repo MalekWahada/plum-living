@@ -1,0 +1,126 @@
+@use '../config/sass' as *;
+@use '../abstract/css-grid/css-grid-mixins' as *;
+
+
+
+.sylius_shop_cart_summary {
+
+}
+
+
+
+.cart {
+  &-main-row {
+
+  }
+
+    &-content-panel {
+
+    }
+
+    &-summary-panel {
+
+    }
+}
+
+
+@include down(small) {
+  .cart-items-table {
+    display: block;
+
+    thead {
+      display: none;
+    }
+
+    tbody,
+    .table-separator-row,
+    .table-separator-row td {
+      display: block;
+    }
+
+    tbody {
+      // Item infos
+      tr {
+        display: flex;
+        flex-wrap: wrap;
+
+        td:first-child {
+          flex: 0 0 100%;
+          padding-right: 0;
+        }
+
+        .qty {
+          flex: 0 0 50%;
+          text-align: left;
+        }
+
+        .price {
+          flex: 0 0 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+      }
+
+      // Item actions
+      tr + tr:not(.table-separator-row) {
+        &::after {
+          content: '';
+          flex: 1 0 0%;
+          display: block;
+          height: 100%;
+        }
+
+        td[colspan="2"] {
+          flex: 1 0 0%;
+        }
+
+        td[colspan="2"] ~ td {
+          flex: 0 0 auto;
+          padding-top: rem(16);
+        }
+      }
+    }
+  }
+}
+
+
+#plum-cart-confirmation-modal {
+  .original-order-number-field {
+    overflow: hidden;
+    transition: height 0.3s, opacity 0.3s;
+
+    &::before {
+      content: '';
+      display: block;
+      height: space(3);
+    }
+  }
+}
+
+
+
+@include up(large) {
+  .cart-main-row {
+    .panel {
+      position: sticky;
+      top: rem(90 + 30); /* 1 */
+
+      /* 1. Height of the header + a little margin */
+    }
+  }
+}
+
+.cart__email-sharing-button, .top-cart{
+  .icon-button {
+    background: rgba(28,33,40,.05);
+    color: get-color(near-black);
+  }
+  &:hover{
+    .small-link-button{
+      background-size: 100% 100%;
+      color: currentColor;
+    }
+  }
+}

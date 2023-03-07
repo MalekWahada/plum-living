@@ -1,0 +1,22 @@
+.recommendation-modal .ui-modal__dialog{
+  max-width: rem(1120);
+}
+
+.devis-modal {
+  a {
+    overflow: visible;
+    min-width: 0;
+    background:
+      linear-gradient(to top, currentColor 2px, transparent 0) left center no-repeat,
+      linear-gradient(to top, transparent 1px, currentColor 1px, currentColor 1px, transparent 2px) left center no-repeat;
+    background-size: 0% 100%, 100% 100%;
+    color: $color--true-white;
+    transition: background-size 0.2s;
+
+    &:hover,
+    &:focus {
+      background-size: 100% 100%;
+      color: currentColor;
+    }
+  }
+}

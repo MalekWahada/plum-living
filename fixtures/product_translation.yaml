@@ -1,0 +1,36 @@
+App\Entity\Product\ProductTranslation:
+    product_translation (template):
+        description: <text()>
+        meta_description: <lexify()>
+        short_description: <text()>
+        deliveryDescription: null
+        
+    product_translation_fr (template, extends product_translation):
+        locale: '@locale_fr->code'
+    product_translation_de (template, extends product_translation):
+        locale: '@locale_de->code'
+
+#    product_translation_de_DE_{1..25} (extends product_translation_de):
+#        translatable: '@product_DE_<current()>'
+#        name: 'product_<current()>_de'
+#        slug: 'product_<current()>_de_slug'
+
+    product_translation_metod_4010_{1..8} (extends product_translation_fr):
+        translatable: '@product_metod_4010_<current()>'
+        name: 'product_metod_4010_<current()>_fr'
+        slug: 'product_metod_4010_<current()>_fr_slug'
+
+    product_translation_pax_35201_{1..4} (extends product_translation_fr):
+        translatable: '@product_pax_35201_<current()>'
+        name: 'product_pax_35201_<current()>_fr'
+        slug: 'product_pax_35201_<current()>_fr_slug'
+
+    product_translation_paint_{1..5} (extends product_translation_fr):
+        translatable: '@product_paint_<current()>'
+        name: 'product_paint_<current()>_fr'
+        slug: 'product_paint_<current()>_fr_slug'
+
+    product_translation_accessory_{1..4} (extends product_translation_fr):
+        translatable: '@product_accessory_<current()>'
+        name: 'product_accessory_<current()>_fr'
+        slug: 'product_accessory_<current()>_fr_slug'

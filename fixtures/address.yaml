@@ -1,0 +1,57 @@
+App\Entity\Addressing\Address:
+    address{1..50}:
+        customer: '@customer_<current()>'
+        first_name: <fr:firstName()>
+        last_name: <fr:lastName()>
+        phone_number: <fr:phoneNumber()>
+        street: <fr:streetAddress()>
+        company: <fr:company()>
+        city: <fr:city()>
+        postcode: <fr:postCode()>
+        created_at: <dateTime()>
+        updated_at: null
+        country_code: 'FR'
+        province_code: '@province_FR_<current()>->code'
+        shipping_notes: <fr:text()>
+    cart_address:
+        customer: '@cart_customer'
+        first_name: 'Cart'
+        last_name: 'User'
+        phone_number: '0612345678'
+        street: '12 rue de la cart'
+        company: 'Fnac'
+        city: 'Paris'
+        postcode: '75001'
+        created_at: <dateTime()>
+        updated_at: null
+        country_code: 'FR'
+        province_code: 'FR-75'
+        shipping_notes: null
+    basic_address:
+        customer: '@basic_customer'
+        first_name: 'Basic'
+        last_name: 'User'
+        phone_number: '0612345678'
+        street: '12 rue de la paix'
+        company: 'Meero'
+        city: 'Paris'
+        postcode: '75001'
+        created_at: <dateTime()>
+        updated_at: null
+        country_code: 'FR'
+        province_code: 'FR-75'
+        shipping_notes: null
+    basic_address_DE_{1..10}:
+        customer: '@customer_DE_<current()>'
+        first_name: <de:firstName()>
+        last_name: <de:lastName()>
+        phone_number: <de:phoneNumber()>
+        street: <de:streetAddress()>
+        company: <de:company()>
+        city: <de:city()>
+        postcode: <de:postCode()>
+        created_at: <dateTime()>
+        updated_at: null
+        country_code: 'DE'
+        province_code: '@province_DE_<current()>->code'
+        shipping_notes: <de:text()>

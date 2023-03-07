@@ -1,0 +1,20 @@
+App\Entity\Tunnel\Shopping\Combination:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [color,design,facadeType,finish]
+            message: app.combination.already_use
+            ignoreNull: false
+            groups: [sylius]
+
+    properties:
+        design:
+            - NotNull:
+                message: app.combination.design_not_null
+                groups: [design_not_null]
+        finish:
+            - NotNull:
+                message: app.combination.finish_not_null
+                groups: [finish_not_null]
+        image:
+            - Valid: ~
+ 

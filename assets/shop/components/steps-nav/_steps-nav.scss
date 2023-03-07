@@ -1,0 +1,172 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+@use '../../abstract/css-grid/css-grid-config' as *;
+
+
+
+.steps-nav {
+  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  // display: flex;
+  width: 100vw;
+  position: relative;
+  margin-left: calc(50% - 50vw);
+  margin-bottom: rem(50);
+  color: $color--grey-clear;
+  font-size: 0;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    // flex: 0 0 25%;
+    width: 25%;
+    height: 1px;
+  }
+
+  &__step {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    // flex: 0 0 50%;
+    width: 50%;
+    color: inherit;
+    font-size: 1rem;
+    white-space: normal;
+
+    &:not(:only-child) {
+      background: linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent #{rem(18)},
+        $color--grey-clear #{rem(18)},
+        $color--grey-clear #{rem(19)},
+        transparent #{rem(19)}
+      ) no-repeat;
+    }
+
+    &:first-child {
+      background-position: right center;
+      background-size: 50% 100%;
+    }
+
+    &:last-child {
+      background-position: left center;
+      background-size: 50% 100%;
+    }
+  }
+
+  a.steps-nav__step:hover,
+  &__step--active {
+    color: $color--near-black;
+  }
+
+    &__index {
+      /* 1. The font baseline is a little high in its container
+      and makes the index appear off-centered, so we offset it
+      down by a few pixels. */
+
+      /* 2. When using an icon instead of text, the 1. makes it
+      off-centered, so we offset it back up */
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: rem(36);
+      height: rem(36);
+      padding-top: 4px; /* 1 */
+      margin: 0 auto rem(10);
+      border-radius: 100%;
+      background: $color--grey-clear;
+      color: #fff;
+      transition: background-color 0.2s;
+
+      [class*="o-icon-"] {
+        position: relative;
+        top: -2px; /* 2 */
+      }
+    }
+
+    a.steps-nav__step:hover &__index,
+    &__step--active &__index {
+      background: $color--near-black;
+    }
+
+    &__title {
+      display: block;
+    }
+}
+
+
+@keyframes slide-in-from-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-in-from-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.steps-nav--ready {
+  opacity: 1;
+
+  .steps-nav__step .steps-nav__index {
+    animation: slide-in-from-right 0.3s both;
+  }
+
+  .steps-nav__step--active ~ .steps-nav__step .steps-nav__index {
+    animation: slide-in-from-left 0.3s both;
+  }
+
+  .steps-nav__step--active .steps-nav__index {
+    animation: none;
+  }
+}
+
+
+@include up(medium) {
+  .steps-nav {
+    &::before,
+    &::after {
+      // flex-basis: calc((100% - #{rem(200)}) / 2);
+      width: calc((100% - #{rem(200)}) / 2);
+    }
+
+    &__step {
+      max-width: rem(200);
+    }
+  }
+}
+
+
+@include up(large) {
+  .steps-nav {
+    margin-bottom: rem(40);
+
+    &::before,
+    &::after {
+      // flex-basis: css-grid--get-last-config('large', 'margins');
+      width: css-grid--get-last-config('large', 'margins');
+    }
+  }
+}
+
+
+$wide-breakpoint-margins: css-grid--get-last-config('wide', 'margins');
+@if $wide-breakpoint-margins {
+  @include up(wide) {
+    .steps-nav {
+      &::before,
+      &::after {
+        // flex-basis: $wide-breakpoint-margins;
+        width: $wide-breakpoint-margins;
+      }
+    }
+  }
+}

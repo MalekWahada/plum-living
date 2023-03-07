@@ -1,0 +1,12 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<a class="cart__email-sharing-button u-flex u-center-on-cross u-fit-content"
+        data-modal-source-url="{{ path('app_share_cart', {'tokenValue': order.tokenValue}) }}"
+        data-error-message="{{ 'app.share_cart.error'|trans([], 'flashes') }}"
+        title="{{ 'app.ui.cart.share_cart.tooltip_title'|trans }}" >
+    <span class="u-sr-only">{{ 'app.ui.cart.share_cart.tooltip_title'|trans }}</span>
+    <span class="u-hidden @lg:u-inline-block small-link-button link-button--small c-grey-mid">{{ 'app.ui.cart.share_cart.label'|trans }}</span>
+    <div class="icon-button ripple-button u-margin-l-1" data-dark-ripple>
+        <svg class="o-icon-24 " data-no-link-fx><use xlink:href="{{ iconLibUrl }}#SVG-icon-mail"/></svg>
+    </div>
+</a>

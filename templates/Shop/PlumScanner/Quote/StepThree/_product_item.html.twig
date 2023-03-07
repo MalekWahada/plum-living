@@ -1,0 +1,168 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+<div class="ps-product" {% if item.vars.value.id is null %} data-new-item {% endif %}>
+    <input type="hidden" class="ps-product__id" value="{{ item.vars.value.id }}">
+
+    {# For pre-filled items, the product type select field is hidden unless there is an error #}
+    <input
+    type="hidden"
+    id="{{ item.plumLabel.vars.id }}"
+    name="{{ item.plumLabel.vars.full_name }}"
+    value="{{ item.plumLabel.vars.value }}">
+
+    {% if item.vars.value.id is null %}
+        {% include 'Shop/Form/_select_field.html.twig' with {
+            'field': item.signId,
+            'attributes': {
+                'class': 'ps-product__type-field select-field--alt u-margin-b-3' ~ (item.signId.vars.valid != false ? ' u-hidden'),
+                'labelClass': 't-label-col'
+            },
+            'widget_attributes': {
+                'class': 'ps-product__type'
+            }
+        } %}
+    {% endif %}
+
+    <div class="ps-product__header">
+        <div class="flush-row ps-product__invalid-message">
+           <div class="t-base-small u-margin-b-2 c-terra">
+               <svg class="o-icon-24"><use xlink:href="{{ iconLibUrl }}#SVG-icon-warning"/></svg>
+                <span>{{ 'app.ui.plum_scanner.step_three.checkout.warning_item'|trans }}</span>
+           </div>
+        </div>
+        <div class="flush-row u-center-on-cross u-padding-b-3">
+            {% set cabinetRefExists = item.vars.value.cabinetReference is defined and item.vars.value.cabinetReference is not empty %}
+
+            {% if cabinetRefExists %}
+                <p class="ps-product__name flush-column-fit-content t-label-small">
+                    {{ item.vars.value.cabinetReference }}<br>
+                    <small class="t-base-xsmall c-grey-light">{{ item.vars.value.ikeaSku }}</small>
+                </p>
+            {% endif %}
+
+            <h3 class="flush-column-fill-space {% if cabinetRefExists %} u-margin-l-3 {% endif %} u-margin-b-auto t-label-small">
+                {% if item.vars.value.plumLabel is not null %}
+                    {{ item.vars.value.plumLabel }}
+                {% else %}
+                    {{ item.vars.value.chosenVariant != null ? item.vars.value.chosenVariant.productVariant.product.name : '' }}
+                {% endif %}
+            </h3>
+
+
+            <div class="flush-column u-margin-b-2 @md:u-hidden"></div>
+
+            {% include 'Shop/Form/_number_field.html.twig' with {
+                'field': item.chosenVariant.quantity,
+                'attributes': {
+                    'class': 'ps-product__quantity-field number-field--light flush-column-fit-content @md:u-margin-l-3'
+                },
+                'widget_attributes': {
+                    'class': 'ps-product__quantity'
+                },
+                'default_value': 1
+            } %}
+
+            <div class="ps-product__price flush-column-fill-space @md:flush-column-fit-content u-flex u-end-on-main u-margin-l-3 t-align-right">
+                <div>
+                    {% set unitPrice = item.vars.value.chosenVariant != null ? item.vars.value.chosenVariant.productVariant|calculate_price_with_tax : 0 %}
+                    <div class="ps-product__unit-price-container {% if unitPrice == 0 %}c-grey-light{% endif %} t-label-small">
+                        <span class="ps-product__unit-price">{{ money.convertAndFormat(unitPrice, sylius.currencyCode) }}</span>
+                        {{ 'app.ui.plum_scanner.step_three.modulate_articles.unit_price'|trans }}
+                    </div>
+                    <div class="ps-product__total-price-container {% if unitPrice == 0 or (item.vars.value.chosenVariant != null and item.vars.value.chosenVariant.quantity == 1) %}u-hidden{% endif %} t-label-small">
+                        <span class="ps-product__total-price"
+                         data-unit-price="{{ unitPrice }}"
+                         data-currency-code="{{ sylius.currencyCode }}">
+                            {{ money.format(unitPrice * (item.vars.value.chosenVariant != null ? item.vars.value.chosenVariant.quantity : 1), sylius.currencyCode) }}</span>
+                        {{ 'app.ui.plum_scanner.step_three.modulate_articles.total_price'|trans }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ps-product__options-container">
+        <div class="row u-padding-b-3">
+            <div class="column-fill-space u-margin-b-3 @md:u-margin-b-auto">
+                {% include 'Shop/Form/_select_field.html.twig' with {
+                    'field': item.chosenVariant.design,
+                    'attributes': {
+                        'class': 'ps-product__design-field select-field--alt t-base-small ' ~ (item.chosenVariant.design.vars.valid == false ? 'field--warning'),
+                        'labelClass': 't-label-col',
+                        'data-empty-label': 'app.form.select_field.placeholder'|trans
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-product__design',
+                        'data-option-type': 'design'
+                    }
+                } %}
+            </div>
+
+            <div class="column-fill-space u-margin-b-3 @md:u-margin-b-auto">
+                {% set isDisabled = item.chosenVariant.design.vars.valid == false %}
+                {% include 'Shop/Form/_color_select_field.html.twig' with {
+                    'field': item.chosenVariant.finish,
+                    'showLabel': true,
+                    'isDisabled': isDisabled,
+                    'attributes': {
+                        'class': 'ps-product__finish-field ' ~ (item.chosenVariant.finish.vars.valid == false ? 'field--warning'),
+                        'labelClass': 't-label-col'
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-product__finish',
+                        'data-option-type': 'finish'
+                    }
+                } %}
+            </div>
+
+            <div class="column @md:column-fill-space">
+                {% set isDisabled =
+                    item.chosenVariant.design.vars.valid == false
+                    or item.chosenVariant.finish.vars.valid == false
+                    or item.chosenVariant.color.vars.valid == false
+                %}
+                {% include 'Shop/Form/_color_select_field.html.twig' with {
+                    'field': item.chosenVariant.color,
+                    'showLabel': true,
+                    'isDisabled': isDisabled,
+                    'attributes': {
+                        'class': 'ps-product__color-field ',
+                        'labelClass': 't-label-col'
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-product__color',
+                        'data-option-type': 'color'
+                    }
+                } %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column-fill-space">
+            <div class="ps-product__comment-container">
+                {% include 'Shop/Form/_textarea_field.html.twig' with {
+                    'field': item.comment,
+                    'label': item.comment.vars.attr.placeholder|trans,
+                    'autogrow': false,
+                    'attributes': {
+                        'class': 'ps-product__comment-field' ~ (item.comment.vars.value is empty ? ' u-invisible' : '')
+                    },
+                    'widget_attributes': {
+                        'class': 'ps-product__comment t-label-small autosize',
+                        'placeholder': '',
+                        'maxlength': '255'
+                    }
+                } %}
+                <button type="button" class="ps-product__comment-button small-link-button c-grey-mid hover:c-near-black {{ (item.comment.vars.value is not empty ? ' u-hidden' : '') }}">
+                    {{ item.comment.vars.attr.placeholder|trans }}
+                </button>
+            </div>
+        </div>
+        <div class="column-fit-content u-flex u-center-on-cross">
+            <button type="button" class="ps-product__remove-button small-link-button c-grey-mid hover:c-near-black">
+                {{ 'app.ui.plum_scanner.step_three.modulate_articles.remove_button'|trans }}
+            </button>
+        </div>
+    </div>
+</div>

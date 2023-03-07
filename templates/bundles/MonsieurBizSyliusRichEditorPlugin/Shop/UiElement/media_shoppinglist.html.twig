@@ -1,0 +1,304 @@
+{% set total = 0 %}
+{% set lines = 0 %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="media-two-hybrids-columns img-immersive shoppinglist shoppinglist-container
+    {% if element.bg_color is defined %}
+        {{ element.bg_color }}
+    {% endif %}" id="shoppinglist-container">
+    <div class="container static-container">
+        <div class="row u-cross-centered-row fixed-height-row">
+            {% if element.orientation == 'left' or element.orientation is not defined %}
+                <div class="@lg:column-6 u-padding-t-3 u-padding-b-3 @lg:u-padding-t-1 @lg:u-padding-b-1 @lg:u-padding-r-12 left-text">
+                    <div class="shoppinglist u-padding-t-8 u-padding-b-8 @lg:u-padding-t-15 @lg:u-padding-b-15">
+                        <h2 class="t-header-xlarge u-margin-b-4">
+                            {{ ('app.cms_page.media_article.page.shopping_list')|trans }}
+                        </h2>
+
+                        {# products ikea #}
+                        {% set elements = get_shoppinglist_ikea(element.ikea) %}
+                        {% set total = total + elements.total %}
+                        {% set lines = lines + (elements.items|length) %}
+                        {% set cartIkea = [] %}
+                        {% if elements.items %}
+                            {% for item in elements.items %}
+                                {% set cartIkea = cartIkea | merge([item.code ~ ':' ~ item.quantity]) %}
+                            {% endfor %}
+                            <div class="shoppinglist_ikea">
+                                <table class="shoppinglist_table">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="t-header-xsmall u-margin-b-2">
+                                                {{ ('app.cms_page.media_article.page.at_ikea')|trans }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="shoppinglist_price u-margin-b-2 c-asphalte t-align-right">
+                                                <b>{{ (elements.total / 1000)|round(2, 'floor') }} €</b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                    {% for item in elements.items %}
+                                        <tr class="shoppinglist_item-line">
+                                            <td class="shoppinglist_image-container">
+                                                <img src="{{ item.image }}"
+                                                     class="shoppinglist_image" />
+                                            </td>
+                                            <td class="shoppinglist_item">
+                                                <b>{{ item.quantity }} x {{ item.name }}</b>
+                                                <br>
+                                                <span class="c-grey-mid">
+                                            {{ 'app.cms_page.media_article.page.ref_ikea'|trans }} {{ item.code }}
+                                        </span>
+                                            </td>
+                                            <td class="shoppinglist_price t-align-right">
+                                                <b>{{ (item.quantity * item.price / 1000)|round(2, 'floor') }} €</b>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        {% endif %}
+
+                        {# products plum #}
+                        {% set elements = get_shoppinglist_plum(element.plum) %}
+                        {% set total = total + elements.total %}
+                        {% set lines = lines + (elements.items|length) %}
+                        {% set cartPlum = [] %}
+                        {% for item in elements.items %}
+                            {% set cartPlum = cartPlum | merge([item.code ~ '|' ~ item.quantity]) %}
+                        {% endfor %}
+
+                        <div class="shoppinglist_plum u-margin-t-4">
+                            <table class="shoppinglist_table">
+                                <thead>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="t-header-xsmall u-margin-b-2">
+                                            {{ ('app.cms_page.media_article.page.at_plum')|trans }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="shoppinglist_price u-margin-b-2 c-asphalte t-align-right">
+                                            <b>{{ (elements.total / 1000)|round(2, 'floor') }} €</b>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </thead>
+                                {% for item in elements.items %}
+                                    <tr class="shoppinglist_item-line">
+                                        <td class="shoppinglist_image-container">
+                                            <img src="/media/image/{{ item.image }}"
+                                                 class="shoppinglist_image" />
+                                        </td>
+                                        <td class="shoppinglist_item">
+                                            <b>{{ item.quantity }} x {{ item.name }}</b>
+                                            <br>
+                                            <span class="c-grey-mid">
+                                        {{  item.values|join(', ') }}
+                                    </span>
+                                        </td>
+                                        <td class="shoppinglist_price t-align-right">
+                                            <b>{{ (item.quantity * item.price / 1000)|round(2, 'floor') }} €</b>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        <div class="shoppinglist_total u-margin-t-4">
+                            <div>
+                                <table class="shoppinglist_table">
+                                    <thead>
+                                    <tr>
+                                        <td class="u-fullwidth">
+                                            <div class="t-header-xsmall u-margin-b-4">
+                                                {{ ('app.ui.account.projects.total')|trans }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="shoppinglist_price u-margin-b-4 c-asphalte t-align-right">
+                                                <b>{{ (total / 1000)|round(2, 'floor') }} €</b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                        {% if cartIkea|length %}
+                            <a href="https://www.ikea.com/fr/fr/favourites/receive-share/{{ cartIkea|join(',') }}"
+                               target="_blank"
+                               class="button button--inversed u-fullwidth u-margin-b-3">
+                                <svg class="o-icon-20 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                                {{ ('app.cms_page.media_article.page.ikea_cart')| trans }}
+                            </a>
+                        {% endif %}
+                        <br>
+                        {% if cartPlum|length %}
+                            {% set route = path('app_add_to_cart_via_link', {
+                                'variants_codes_quantities': cartPlum|join(';'),
+                            }) %}
+                            <a href="{{ route }}?url={{ app.request.uri }}#shoppinglist-container"  class="button button--inversed u-fullwidth u-margin-b-3">
+                                <svg class="o-icon-20 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                                {{ ('app.cms_page.media_article.page.plum_cart')| trans }}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="column-fill-space @lg:column-6 left-img">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}"
+                         id="shoppinglist-left-img">
+                </div>
+            {% else %}
+                <div class="column-fill-space @lg:column-6 right-img">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}"
+                         id="shoppinglist-left-img">
+                </div>
+                <div class="@lg:column-6 u-padding-t-3 u-padding-b-3 @lg:u-padding-t-1 @lg:u-padding-b-1 @lg:u-padding-l-12 left-text">
+                    <div class="shoppinglist u-padding-t-8 u-padding-b-8 @lg:u-padding-t-15 @lg:u-padding-b-15">
+                        <h2 class="t-header-xlarge u-margin-b-4">
+                            {{ ('app.cms_page.media_article.page.shopping_list')|trans }}
+                        </h2>
+
+                        {# products ikea #}
+                        {% set elements = get_shoppinglist_ikea(element.ikea) %}
+                        {% set total = total + elements.total %}
+                        {% set lines = lines + (elements.items|length) %}
+                        {% set cartIkea = [] %}
+                        {% if elements.items %}
+                            {% for item in elements.items %}
+                                {% set cartIkea = cartIkea | merge([item.code ~ ':' ~ item.quantity]) %}
+                            {% endfor %}
+                            <div class="shoppinglist_ikea">
+                                <table class="shoppinglist_table">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="t-header-xsmall u-margin-b-2">
+                                                {{ ('app.cms_page.media_article.page.at_ikea')|trans }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="shoppinglist_price u-margin-b-2 c-asphalte t-align-right">
+                                                <b>{{ (elements.total / 1000)|round(2, 'floor') }} €</b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                    {% for item in elements.items %}
+                                        <tr class="shoppinglist_item-line">
+                                            <td class="shoppinglist_image-container">
+                                                <img src="{{ item.image }}"
+                                                     class="shoppinglist_image" />
+                                            </td>
+                                            <td class="shoppinglist_item">
+                                                <b>{{ item.quantity }} x {{ item.name }}</b>
+                                                <br>
+                                                <span class="c-grey-mid">
+                                            {{ 'app.cms_page.media_article.page.ref_ikea'|trans }} {{ item.code }}
+                                        </span>
+                                            </td>
+                                            <td class="shoppinglist_price t-align-right">
+                                                <b>{{ (item.quantity * item.price / 1000)|round(2, 'floor') }} €</b>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        {% endif %}
+                        {# products plum #}
+                        {% set elements = get_shoppinglist_plum(element.plum) %}
+                        {% set total = total + elements.total %}
+                        {% set lines = lines + (elements.items|length) %}
+                        {% set cartPlum = [] %}
+                        {% for item in elements.items %}
+                            {% set cartPlum = cartPlum | merge([item.code ~ '|' ~ item.quantity]) %}
+                        {% endfor %}
+
+                        <div class="shoppinglist_plum u-margin-t-4">
+                            <table class="shoppinglist_table">
+                                <thead>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="t-header-xsmall u-margin-b-2">
+                                            {{ ('app.cms_page.media_article.page.at_plum')|trans }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="shoppinglist_price u-margin-b-2 c-asphalte t-align-right">
+                                            <b>{{ (elements.total / 1000)|round(2, 'floor') }} €</b>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </thead>
+                                {% for item in elements.items %}
+                                    <tr class="shoppinglist_item-line">
+                                        <td class="shoppinglist_image-container">
+                                            <img src="/media/image/{{ item.image }}"
+                                                 class="shoppinglist_image" />
+                                        </td>
+                                        <td class="shoppinglist_item">
+                                            <b>{{ item.quantity }} x {{ item.name }}</b>
+                                            <br>
+                                            <span class="c-grey-mid">
+                                        {{  item.values|join(', ') }}
+                                    </span>
+                                        </td>
+                                        <td class="shoppinglist_price t-align-right">
+                                            <b>{{ (item.quantity * item.price / 1000)|round(2, 'floor') }} €</b>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        <div class="shoppinglist_total u-margin-t-4">
+                            <div>
+                                <table class="shoppinglist_table">
+                                    <thead>
+                                    <tr>
+                                        <td class="u-fullwidth">
+                                            <div class="t-header-xsmall u-margin-b-4">
+                                                {{ ('app.ui.account.projects.total')|trans }}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="shoppinglist_price u-margin-b-4 c-asphalte t-align-right">
+                                                <b>{{ (total / 1000)|round(2, 'floor') }} €</b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        {% if cartIkea|length %}
+                            <a href="https://www.ikea.com/fr/fr/favourites/receive-share/{{ cartIkea|join(',') }}"
+                               target="_blank"
+                               class="button button--inversed u-fullwidth u-margin-b-3">
+                                <svg class="o-icon-20 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                                {{ ('app.cms_page.media_article.page.ikea_cart')| trans }}
+                            </a>
+                        {% endif %}
+                        <br>
+                        {% if cartPlum|length %}
+                            {% set route = path('app_add_to_cart_via_link', {
+                                'variants_codes_quantities': cartPlum|join(';'),
+                            }) %}
+                            <a href="{{ route }}?url={{ app.request.uri }}#shoppinglist-container" class="button button--inversed u-fullwidth u-margin-b-3">
+                                <svg class="o-icon-20 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                                {{ ('app.cms_page.media_article.page.plum_cart')| trans }}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

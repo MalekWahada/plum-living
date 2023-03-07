@@ -1,0 +1,16 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+
+$banner-height: rem(40);
+
+$total-height: rem(60);
+$side-margin: rem(20);
+$top-margin: rem(0);
+$bottom-margin: rem(0);
+$main-height: $total-height - $top-margin - $bottom-margin;
+
+$lg--total-height: rem(60);
+$lg--side-margin: rem(60);
+$lg--top-margin: rem(5);
+$lg--bottom-margin: rem(30);
+$lg--main-height: rem(60);

@@ -1,0 +1,1485 @@
+app:
+    admin:
+        erp_registered: 'Synchronised ERP'
+        payment_refund: 'Payment will not be refunded on stripe!'
+        tax_rate_must_be_unique: 'As part of Plum''s international pricing policy, the VAT rate must be 20%, regardless of the country of delivery.'
+        warning: Attention
+    cms_page:
+        article:
+            main_caption: 'Interesting articles'
+        concept:
+            links_text: 'A question about our products, their installation, or our delivery times?'
+            top_title: 'Our concept'
+        conception_services:
+            cta: 'Book my Design appointment'
+            devis_cta: 'Quote my project'
+            devis_title: 'Already have a plan?'
+            form_confirmation:
+                signature: 'The Plum Team'
+                subtitle: 'Your design appointment is confirmed.'
+                text: 'Your Plum Planner has sent you an invitation by email.<br><br> To get inspired, find new content from Studio Plum on our <a href="%URL%" target="_blank">Inspiration page</a> and on our networks!<br><br>See you soon,<br>'
+                title: 'Thank you!'
+            info_italic: 'This service is offered for Metod kitchens and fittings.'
+            info_text: 'Your Plum Planner will design your kitchen or Metod layout from scratch. <br><br> At the end of the video call, they will send you: <br><br><svg class=''o-icon-24 c-green u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Your Ikea plan in PDF and the Ikea item list<br><br><svg class=''o-icon-24 c-green u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>The link to your online Ikea plan<br><br><svg class=''o-icon-24 c-green u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Your Plum list'
+            info_title: 'What does this service include?'
+            price: 89.00€
+            title: 'Our Plum Planners create your plan'
+            top_text: 'During a 1.5 hour video call, one of our Plum Planners will create your Ikea plan according to your wishes and provide you with a list of all the items to be purchased.'
+        design_finish:
+            happy2022:
+                cta: 'Order my samples'
+                subtitle: 'In 2022, make your project a reality: 3 samples are offered to you with the code <strong>LETSGO</strong>'
+            top_title: 'Designs & Finishes'
+        devis_services:
+            call_italic: 'They will answer your questions about your plan and check that your Plum basket is complete.'
+            call_text: 'Once your costing has been completed on our site, we will offer you a 15-minute telephone appointment during which we will check your plan and your list of items.'
+            call_title: 'Check your costing with a Plum Planner'
+            conception_cta: 'Discover our Design Department'
+            conception_title: 'Don''t have a plan?'
+            title: 'Our Plum Planners accompany you'
+            visio_cta: 'Book my Design appointment'
+            visio_italic: 'Our design service is offered at €89.'
+            visio_text: 'During a 1.5 hour video call, one of our Plum Planners will create your plan according to your wishes and provide you with a list of all the elements to be purchased.'
+            visio_title: 'Don''t have a plan?'
+        eshop:
+            accessoires:
+                meta:
+                    description: 'Let yourself be inspired by our Metod and Pax Ikea furniture accessories and personalize your interior design in the blink of an eye.'
+                    title: 'Ikea furniture accessories | Plum'
+                    type: page
+            echantillon_facade:
+                meta:
+                    description: 'Let yourself be inspired by our Ikea front samples, and we''ll refund them from your first order!'
+                    title: 'Ikea front samples | Plum'
+                    type: page
+            echantillon_peinture:
+                meta:
+                    description: 'Get inspired with our wall paint samples, and we''ll refund them from your first order!'
+                    title: 'Wall paint samples | Plum'
+                    type: page
+            metod:
+                meta:
+                    description: 'Let yourself be inspired by our Metod Ikea front designs and personalize your interior layout in the blink of an eye.'
+                    title: 'Ikea Metod fronts | Plum'
+                    type: page
+            pax:
+                meta:
+                    description: 'Let yourself be inspired by our Pax Ikea front designs and personalize your interior layout in the blink of an eye.'
+                    title: 'Ikea Pax fronts | Plum'
+                    type: page
+            peinture:
+                meta:
+                    description: 'Let yourself be inspired by our satin wall paints made in France and personalize your interior layout in the blink of an eye.'
+                    title: 'Wall paint | Plum'
+                    type: page
+        faq:
+            meta:
+                descritpion: 'The answers to your questions to allow you to be inspired, to offer you the best products, and to give you advice for implementing your project.'
+                title: 'Frequently Asked Questions | Plum'
+                type: Page
+            return: Return
+            title: FAQs
+        inspiration:
+            address:
+                meta:
+                    description: 'Let our address book guide you and personalize your interior layout with the best accessory suppliers.'
+                    title: 'Kitchen accessories | Plum'
+                    type: Page
+            discover_all_inspirations: 'Discover our projects'
+            filter_text: Discover
+            home_tour:
+                meta:
+                    description: 'Let yourself be inspired by the projects and experiences of our customers and personalize your interior layout in the blink of an eye.'
+                    title: 'Customer visits and interviews | Plum'
+                    type: Page
+            inspiration:
+                meta:
+                    description: 'Let yourself be inspired by the projects of great interior designers and personalize your interior layout in the blink of an eye.'
+                    title: 'Architect projects | Plum'
+                    type: Page
+            main_caption: 'Inspiration & guide'
+            meta:
+                description: 'Let yourself be inspired by our design projects and personalize your interior layout in the blink of an eye.'
+                title: 'Inspiration & Guide | Plum'
+                type: Page
+            no_inspiration: 'Sorry, we don''t have any inspiration that matches your criteria.'
+            practice:
+                meta:
+                    description: 'Everything you always wanted to know about our layout solutions to personalize your interior layout in the blink of an eye.'
+                    title: 'Interior design practical guides | Plum'
+                    type: Page
+            tutorial:
+                meta:
+                    description: 'Let yourself be guided by our tutorials and layout advice and personalize your interior layout in the blink of an eye.'
+                    title: 'Interior design tutorials | Plum'
+                    type: Page
+        media_article:
+            article:
+                read-btn: 'Read more'
+            category:
+                address:
+                    meta:
+                        description: 'Address book'
+                        title: 'Address book | Plum'
+                        type: Page
+                    title: 'Address book'
+                all: 'All categories'
+                home_project:
+                    meta:
+                        description: 'Home project'
+                        title: 'Home project | Plum'
+                        type: Page
+                    title: 'Home project'
+                home_tour:
+                    meta:
+                        description: 'Home Tour'
+                        title: 'Home Tour | Plum'
+                        type: Page
+                    title: 'Home Tour'
+                inspiration:
+                    meta:
+                        description: 'Creative Ideas'
+                        title: 'Creative Ideas | Plum'
+                        type: Page
+                    title: 'Creative Ideas'
+                interview:
+                    meta:
+                        description: Interview
+                        title: 'Interviews | Plum'
+                        type: Page
+                    title: Interview
+                no_content: 'No articles in this category'
+                not_found: 'This category does not exist'
+                practice:
+                    meta:
+                        description: 'Practical Guides'
+                        title: 'Practical guides | Plum'
+                        type: Page
+                    title: 'Practical Guides'
+                toolbox:
+                    meta:
+                        description: Toolbox
+                        title: 'Toolbox | Plum'
+                        type: Page
+                    title: Toolbox
+                tuto_ikea:
+                    meta:
+                        description: 'Ikea Tutorials'
+                        title: 'Ikea Tutorials | Plum'
+                        type: Page
+                    title: 'Ikea Tutorials'
+                tutorial:
+                    meta:
+                        description: 'Step by Step'
+                        title: 'Step by Step | Plum'
+                        type: Page
+                    title: 'Step by Step'
+            form:
+                category: 'Category (sticker)'
+                theme: Thematic
+            page:
+                cross_content_title: 'You might like these topics'
+                home_projects: 'Home Projects'
+                not_found: 'This page does not exist'
+                shopping_list: 'Shopping List'
+            slider:
+                discover: Discover
+            theme:
+                all: 'All themes'
+                au-royaume-des-kids:
+                    meta:
+                        description: 'Kids Kingdom'
+                        title: 'Kids Kingdom | Plum'
+                        type: Page
+                    title: 'Kids Kingdom'
+                chambres-dressing-en-couleurs:
+                    meta:
+                        description: 'Bedrooms & wardrobes, in colour'
+                        title: 'Bedrooms & wardrobes, in colour | Plum'
+                        type: Page
+                    title: 'Bedrooms & wardrobes, in colour'
+                cuisine-conseils-et-bonnes-adresses:
+                    meta:
+                        description: 'Kitchen - tips & shopping guide'
+                        title: 'Kitchen - tips & shopping guide | Plum'
+                        type: Page
+                    title: 'Kitchen - tips & shopping guide'
+                cuisine-toutes-nos-inspirations:
+                    meta:
+                        description: 'Kitchen - your inspiration'
+                        title: 'Kitchen - your inspiration | Plum'
+                        type: Page
+                    title: 'Kitchen - your inspiration'
+                faire-mon-plan-avec-le-ikea-kitchen-planner:
+                    meta:
+                        description: 'Create your plan with the Ikea Kitchen Planner'
+                        title: 'Create your plan with the Ikea Kitchen Planner | Plum'
+                        type: Page
+                    title: 'Create your plan with the Ikea Kitchen Planner : tuto videos'
+                je-veux-un-meuble-dentree-ou-de-salon:
+                    meta:
+                        description: 'I want a piece of furniture for my entrance or living room!'
+                        title: 'I want a piece of furniture for my entrance or living room | Plum'
+                        type: Page
+                    title: 'I want a piece of furniture for my entrance or living room!'
+                jeux-de-peinture:
+                    meta:
+                        description: 'Playful painting | Plum'
+                        title: 'Playful painting | Plum'
+                        type: Page
+                    title: 'Playful painting'
+                la-cuisine-en-couleurs:
+                    meta:
+                        description: 'The kitchen, in colour'
+                        title: 'The kitchen, in colour | Plum'
+                        type: Page
+                    title: 'The kitchen, in colour'
+                les-details-qui-changent-tout:
+                    meta:
+                        description: 'Details that make a difference'
+                        title: 'Details that make a difference | Plum'
+                        type: Page
+                    title: 'Details that make a difference'
+                no_content: 'No articles in this theme'
+                not_found: 'This theme does not exist'
+                petit-budget-maxi-effet:
+                    meta:
+                        description: 'Minimum budget, maximum effect'
+                        title: 'Minimum budget, maximum effect | Plum'
+                        type: Page
+                    title: 'Minimum budget, maximum effect'
+                secrets-d_archi:
+                    meta:
+                        description: 'Architectural secrets'
+                        title: 'Architectural secrets | Plum'
+                        type: Page
+                    title: 'Architectural secrets'
+                tout-sur-la-chambre-et-le-dressing:
+                    meta:
+                        description: 'All things bedroom & wardrobe'
+                        title: 'All things bedroom & wardrobe | Plum'
+                        type: Page
+                    title: 'All things bedroom & wardrobe'
+                une-salle-de-bain-sinon-rien:
+                    meta:
+                        description: 'A Plum bathroom or nothing'
+                        title: 'Farbspiele für Ihr Bad | Plum'
+                        type: Page
+                    title: 'A Plum bathroom or nothing'
+        project:
+            bathroom:
+                meta:
+                    description: 'Express your creativity or take a blank canvas and let yourself be inspired by our design projects and personalize your bathroom in the blink of an eye.'
+                    title: 'Bathroom Designs | Plum'
+                    type: Page
+            creation_banner:
+                cta: 'Quote my project'
+                desc: 'Quote your project in a few minutes.'
+                title: 'Create your project'
+            discover_all_projects: 'Discover our projects'
+            kitchen:
+                meta:
+                    description: 'Express your creativity or take a blank canvas, and let yourself be inspired by our design projects and personalize your kitchen in the blink of an eye.'
+                    title: 'Kitchen designs | Plum'
+                    type: Page
+            main_caption: 'Take a blank canvas, and let yourself be inspired.'
+            meta:
+                description: 'Control your budget according to your project and let yourself be inspired by our examples to personalize your interior fittings.'
+                title: 'Examples and prices of interior fittings | Plum'
+                type: Page
+            no_project: 'Sorry, we don''t have any projects that match your criteria.'
+            other:
+                meta:
+                    description: 'Express your creativity or take a blank canvas, and let yourself be inspired by our design projects and personalize your interior layout in the blink of an eye.'
+                    title: 'Interior layout designs | Plum'
+                    type: Page
+            room:
+                meta:
+                    description: 'Express your creativity or take a blank canvas, and let yourself be inspired by our design projects and personalize your bedroom and wardrobe in the blink of an eye.'
+                    title: 'Bedroom and wardrobe designs | Plum'
+                    type: Page
+            top_title: 'Your projects'
+        terra_club:
+            already_signed: 'Already have a Plum account?'
+            already_signed_link: 'Update my profile'
+            cta: 'Join the Terra Club'
+            echantillons:
+                italic: 'For all front orders, get a 10% discount on the price of the front, accessories and paint.'
+                text: 'Would you like to introduce Plum to your customers? <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg> Your free sample boxes <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg> An immediate discount on accessories and paint'
+                title: 'Samples & Discounts'
+            how_it_works:
+                cta: 'Check out our FAQs'
+                help_mail: '<a class="link-button" href="mailto:terraclub@plum-living.com">terraclub@plum-living.com</a>'
+                help_text: 'Our professional team answers your questions:'
+                title: 'How does the Terra Club work?'
+            services:
+                text: 'Our Plum Planners will help you for free: <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>A Plum quote based on your technical plan <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Your technical plan converted into an Ikea plan <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg> A customer service dedicated to professionals'
+                title: 'Exclusive services'
+            shooting:
+                text: 'Are you proud of your first Plum project? Let''s show it off together! <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>12 photos of your project<br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Share your project with our community'
+                title: 'Free shoot'
+            title: 'Terra Club'
+            top_subtitle: 'A program and benefits designed for your projects.'
+            top_title: 'Designed for professionals'
+    combination:
+        title: Combination
+    email:
+        body_text: 'Here is the pdf project plan. Happy reading!'
+        email_subject: 'Here is the plan of the project that interests you!'
+    error_page:
+        btn_back: 'Return to home'
+        faq:
+            btn_back: 'Back to the FAQs page'
+            text: 'The item you are looking for does not exist.'
+        oups: Oops!
+        text: 'The requested page does not exist or no longer exists.'
+    facade:
+        title: Front
+        tunnel_shopping:
+            accessoires: Accessories
+            door: Doors
+            drawer: Drawers
+            panels_and_plinths: 'Plinth Panels'
+            panels_and_plinths_listing: 'Finishing panels and plinths'
+    footer:
+        shop:
+            about: 'About us'
+            contact_us: 'Write to us at <a href="mailto:%email%">%email%</a> with any questions'
+            contact_us_label: 'Contact us'
+            copyright: 'Plum, 2022. All rights reserved.'
+            follow_us: 'Follow us!'
+            follow_us_label: 'Follow us'
+            help: Help
+            inspire_me: 'Inspire me!'
+            inspire_me_label: 'Inspire me'
+            my_email_address: 'My email address'
+            offers: Offers
+            personal_data: 'I accept that the personal data entered on this form may be used for commercial purposes. You have the right to access and rectify information concerning you.'
+            subscribe: 'Sign up'
+    form:
+        accordion:
+            add_element: 'add an accordion'
+            detail: 'accordion detail'
+            title: 'accordion title'
+        address:
+            shipping_notes:
+                label: 'Important information for the delivery person'
+                placeholder: 'Building code, intercom, floor, accessibility of the road, etc.'
+        button_link:
+            label: 'Button display type'
+            link: 'Link (put either an absolute link or a slug of a page e.g. for a concept page "https://plum-living.com/fr/concept" put "concept")'
+        caption: 'Caption text'
+        card:
+            content: contents
+            link: link
+            link_label: 'link label'
+            with_icon: 'Display the image with the icon 📞'
+        card_element:
+            description: 'description of a detailed element'
+            price: 'detailed item price'
+            title: 'title of a detailed element'
+        card_total:
+            add_button_label: 'add an item to the detailed budget'
+            label: 'Elements of the detailed budget'
+            main_title: 'Main title of the detailed budget'
+            total: 'total item title'
+            total_details: 'how the total is calculated'
+            total_to_display: 'total displayed'
+        cart_item:
+            comment: Comment
+            comment_placeholder: 'Add a comment'
+        channel:
+            default_country: 'Default country'
+        chip: 'List of pellets'
+        color: 'List of colours'
+        customer:
+            accept_privacy_policy: 'I accept the privacy policy'
+            birthday: 'Date of Birth'
+            customer_type:
+                choices:
+                    company_all_trades: 'All trades company'
+                    interior_designer: 'Interior designer'
+                    other_professional: 'Other professional'
+                    other_renovation_agency: 'Other renovation professional'
+                    particular_customer: 'Individual client'
+                    real_estate_developer: 'Property developer'
+                    renovation_agency: 'Renovation professional'
+                label: 'Individual or Professional?'
+            gender:
+                choices:
+                    men: Mr.
+                    not_indicated: 'I prefer not to answer'
+                    women: Ms.
+                label: Civility
+            how_you_know_about_us:
+                choices:
+                    blog_magazine: 'Blog / Magazine'
+                    by_a_colleague: 'From a colleague'
+                    by_a_friend: 'From a friend'
+                    by_a_relative: 'From a relative'
+                    by_my_architect: 'From my architect'
+                    by_my_contractor: 'From my contractor'
+                    facebook: Facebook
+                    instagram: Instagram
+                    internet_magazine_media: 'Search Internet Blog / online article Magazine / press TV Radio'
+                    metro_bus: 'Metro / Bus'
+                    partnership: Partnership
+                    pinterest: Pinterest
+                    tv_replay: 'TV / Replay'
+                    we_contact_you: 'You contacted me'
+                    youtube: YouTube
+                label: 'How did you hear about Plum?'
+            how_you_know_about_us_details:
+                architect: 'Tell us the name of your architect if you wish!'
+                contractor: 'Tell us the name of your contractor if you wish!'
+                default: 'Tell us more if you wish!'
+            preferred_translation_slug: Region
+        customer_project:
+            additional_cabinet_reference: ADDITIONAL
+            comment_placeholder: 'Add a comment about the project'
+            item_comment_placeholder: 'Add a comment'
+            product: 'Type of product'
+            product_placeholder: Choose
+        design: 'List of designs'
+        facade: 'Front type'
+        finish: 'List of finishes'
+        image_step_element:
+            image_step_description: 'description of an image step'
+            image_step_image: 'image of a step image'
+            image_step_title: 'title of an image step'
+        images_collection:
+            label: 'Image collection display type'
+        images_steps:
+            add_button_label: 'add images steps'
+            label: 'Elements of step images'
+            type: 'Type of images and steps'
+        media:
+            cross_content:
+                pages: 'List of pages'
+            default:
+                bg_color:
+                    beige: Beige
+                    blue: 'Pastel blue'
+                    green: 'Pastel green'
+                    rose: 'Pastel pink'
+                    title: 'Background colour'
+                    white: White
+                caption: 'Image caption'
+                citation: Quote
+                description: Description
+                image: Image
+                image_alt: 'Alternate Image Text'
+                image_title: 'Image title'
+                link_alignment: 'Link alignment'
+                link_label: 'Link title'
+                link_target: 'Open the link in a new tab?'
+                link_url: 'Link URL'
+                text_color:
+                    black: Black
+                    title: 'Text colour'
+                    white: White
+                title: Title
+                video: 'Youtube video'
+            hero:
+                tag: 'Tag or category name'
+            slider:
+                add_element: 'Add an item'
+                order: 'Display order'
+            two_hybrid_columns:
+                margin: 'Columns with margin or immersive?'
+                margin_immersive: 'Immersive columns'
+                margin_marge: 'Columns with margin'
+                orientation: 'Choose column orientation'
+                orientation_left: 'Text on the left and image on the right'
+                orientation_right: 'Text on the right and image on the left'
+            zoning_image:
+                left: 'Left position (automatically calculated)'
+                manual: 'OR Create the content manually by filling in the following fields, Title:'
+                position: 'Calculate position (click the image)'
+                product: Product
+                top: 'Top position (automatically calculated)'
+        page:
+            image: 'Home page image'
+            position: Order
+            reference_locale_code: 'Reference language'
+            translations_published: 'Translations published on Lokalize'
+            type: 'Page type'
+        page_card:
+            code: 'link (the list contains links to CMS pages and internal routes)'
+            content: contents
+            hint: 'specific information'
+            label: 'link label'
+        pages_listing:
+            label: 'List of pages'
+        product:
+            delivery: 'Delivery details'
+            groups: 'Associated groups'
+            position: Position
+        product_group:
+            name: 'Display name'
+            position: 'Display order'
+            products: 'Related products'
+            translations: Translations
+        product_ikea:
+            description: Description
+            price: Price
+        product_info:
+            content: Contents
+            links:
+                add_label: 'Add link'
+                label: 'Useful links'
+        product_info_accessory:
+            facade_type: 'front type'
+        product_option:
+            label: 'Product option(s) grouped by code'
+        product_option_value_image_type:
+            label: 'Image type'
+        product_value:
+            add_button_label: 'Add another image'
+            combination: 'Linked recommendation'
+            combination_label: 'Label of the recommendation displayed'
+            combination_placeholder: 'Choose a recommendation'
+            description: Description
+            image: Image
+            position: Order
+        project_piece:
+            label: 'Type of project'
+        project_plan:
+            label: 'Upload a *pdf file'
+        recommendation:
+            label: Recommendations
+            option:
+                add: 'Add an option'
+                description: 'Description of the option'
+                image: 'Image of the option'
+                list: 'List of options'
+                title: Title
+            subtitle: Subtitle
+        select_field:
+            placeholder: Select
+        taxon_translation:
+            product_info: 'Product Information'
+        tunnel_shopping:
+            color: Colour
+            design: Design
+            facade: Front
+            finish: Finish
+            handle_finish: 'Handle finish'
+            image: Image
+            tap_finish: 'Tap finish'
+            variant: Variant
+        variant:
+            max_day_delivery: 'Maximum delivery time (days)'
+            min_day_delivery: 'Minimum delivery time (days)'
+    header:
+        shop:
+            burger_menu_label: 'Main Menu'
+            cart_dismiss: 'Continue shopping'
+            cart_label: Basket
+            cart_proceed_to_checkout: 'Confirm my basket'
+            cart_summary_clear_label: 'Empty my basket'
+            cart_summary_close_label: 'Hide basket'
+            cart_view_and_edit: 'Modify my basket'
+            other_countries: 'EU - Other countries (english)'
+    media:
+        slider:
+            link_label: 'Discover all'
+    menu:
+        shop:
+            aside_header:
+                about: 'Who are we?'
+                delivery: Delivery
+                faq: FAQs
+                label: 'extra menu header'
+                manufacturing: Manufacturing
+            footer:
+                cgv: GTC
+                confidentiality: Privacy
+                find_a_room_installer: 'Find a fitter'
+                installation_manual: 'Installation guide'
+                legal_mentions: 'Legal information'
+                terra_club: 'Terra Club'
+            nav:
+                account:
+                    login: Login
+                concept:
+                    design_finish: 'Designs & Finishes'
+                    faq: FAQs
+                    functionality: 'How it works'
+                    label: Concept
+                e_shop:
+                    accessory: Accessories
+                    facade_method: 'Metod fronts'
+                    facade_pax: 'Pax fronts'
+                    label: Shop
+                    paints: 'Wall painting'
+                    sample:
+                        facade: 'Front samples'
+                        paint_mural: 'Wall paint samples'
+                    taps: Taps
+                header: 'Navigation menu'
+                inspiration_and_design:
+                    address_book: 'Address Book'
+                    creative_ideas: 'Creative ideas'
+                    home_tours_interviews: 'Home tours & Interviews'
+                    label: Inspiration
+                    practical_guides: 'Practical Guides'
+                    shopping_lists_by_step: 'Shopping lists & Step by step'
+                    toolbox: Toolbox
+                projects_and_budgets:
+                    bathroom: Bathroom
+                    kitchen: Kitchen
+                    label: Projects
+                    others: 'Other rooms'
+                    rooms_and_dressing: 'Bedroom and Wardrobe'
+                quotation: '</span><svg class="o-icon-16 u-margin-r-1"><use xlink:href="%ICON_LIB_URL%#SVG-icon-arrow-right"></svg><span>Quote</span>'
+                quotation_button: Quote
+                services:
+                    conception_home: 'Design my plan'
+                    find_installer: 'Find a fitter'
+                    label: Services
+                    quotation_home: 'Quote my project in 2 clicks'
+                    styler_home: 'Create my design in 3D <div class="u-badge bg-pink-light c-near-black">New</div>'
+                styler_button: '3D Styler'
+    promotion:
+        b2b_program_promotion:
+            label: 'Promotion of the B2B program'
+        contains_only_main_taxon_promotion:
+            label: 'All products in the basket have the following main taxon (in the list)'
+        contains_only_sample_shipping_category_promotion:
+            label: 'All products in the basket have the shipping category "Sample"'
+        front_sample_promotion:
+            label: 'Promotion on the Front sample (internal rule, not to be used in production)'
+        paint_sample_promotion:
+            label: 'Promotion on the Paint sample (internal rule, not to be used in production)'
+    ui:
+        account:
+            addresses:
+                add_new_address: 'Add an address'
+                default_address: 'Default address'
+                delete_confirmation_confirm: 'Yes'
+                delete_confirmation_dismiss: 'No'
+                delete_confirmation_message: 'Are you sure you want to delete this address: %address_name%?'
+                delete_confirmation_title: 'Are you sure?'
+                no_addresses_defined: 'You have no saved addresses'
+                other_address: 'Other address'
+                title: 'My addresses'
+            b2b_code:
+                link: '<a href="%url%" class="link-button link-button--inline small-link-button"> <svg class="o-icon-16 fix-arrow-size"><use xlink:href="%ICON_LIB_URL%#SVG-icon-arrow-right"></svg> Discover all the advantages and services of the Terra Club</a>'
+                need_help: 'Have a question? Write to us at <a href="mailto:terraclub@plum-living.com">terraclub@plum-living.com</a>'
+                text: 'My Terra code for all my benefits<br/>'
+                title: 'Terra <span class="t-canela">Club</span>Member'
+            create_address:
+                title: 'New address'
+            hello: 'Welcome %firstName%!'
+            menu:
+                address_book: 'My addresses'
+                order_history: 'My orders'
+                personal_information: 'My profile'
+                pro_advantages: 'My pro benefits'
+                projects: 'My projects'
+            modify_address:
+                title: 'Modify an address'
+            order_details:
+                any_question: 'Questions about your order? Contact us'
+                contact_infos: 'Contact details'
+                no_tel: 'No phone number given'
+                order_date: 'Order date'
+                payment_method: Payment
+                shipping_date: 'Delivery date'
+                shipping_method: 'Delivery method'
+                title: 'Track my order'
+            orders:
+                back: 'Return to previous page'
+                completed_orders: 'My past orders'
+                new_orders: 'My current orders'
+                no_orders: 'You have no orders'
+                see_order_details: 'View the details of my order'
+                title: 'My orders'
+            password:
+                title: 'Change password'
+            profile:
+                title: 'My profile'
+            projects:
+                date: Date
+                delete_my_project: 'Delete my project'
+                duplicate_my_project: 'Duplicate my project'
+                last_saved_date: 'Last backup date'
+                no_projects: 'You have no plans'
+                project: Project
+                project_number: 'Project No.'
+                see_my_project: 'View my project'
+                status: Status
+                status_list:
+                    error_invalid_mail: 'Invalid email'
+                    error_other: 'Other Error'
+                    not_found: 'Project Not Found'
+                    ok: 'Article module'
+                    processing: Processing
+                    waiting_for_mail: 'Waiting for the email'
+                title: 'My projects'
+                total: Total
+        admin:
+            order:
+                cart_state:
+                    back: 'Back to orders'
+                    title: 'The order you are looking for is still in your basket'
+            page:
+                fetch_translation: 'Retrieve from Lokalize'
+                publish_translation: 'Publish language <b>%locale%</b> to Lokalize'
+                translations_published: 'The article has already been published on Lokalize. Any further changes to the reference language must be published again.'
+            product:
+                form_menu:
+                    complete_info:
+                        label: 'Additional info'
+                        skeleton_label: 'Make sure the skeleton is built in this order: <br> <ol> <li> * Text Blade </li> <li> * Accordion Blade </li> <li> Mozaic Images Collection Blade </li> <li> * H3 Blade </li> <li> * Button Blade </li> <li> * H3 Blade </li> <li> * Button Blade </li> <li> * Cross Content Blade </li> </ol>'
+                product_complete_info:
+                    fetch_translation: 'Retrieve additional information from Lokalize'
+                    publish_translation: 'Publish additional info in %locale% to Lokalise'
+                    translation_button: 'Additional info'
+                    translations_published: 'The information has already been published on Lokalize. Any changes to the French language must be republished.'
+            taxon:
+                fetch_translation: 'Retrieving translations from Lokalise'
+                publish_translation: 'Publish translations in %locale% to Lokalise'
+                translation_button: Translations
+                translations_published: 'Translations of the taxon have already been published on Lokalise. Any new modification to the French must be republished.'
+            translation:
+                fetch_translation_confirm: 'Are you sure you want to get the translations from Lokalize? The target language structure will be completely reset by the reference language %locale%.'
+                fetch_translation_error: 'Error retrieving language translations %locale%'
+                fetch_translation_result: '%nb% translations have been retrieved for the language %locale%.'
+                nothing_to_process: 'No entities to process'
+                publish_translation_error: 'Error when publishing translations'
+                publish_translation_result: '%nb% new translations have been published for the reference language %locale%.'
+                translation_reference_content_has_changed: 'The content of the reference language %locale% has changed since the last publication to Lokalize. Please republish it.'
+                translation_task_error: 'An error occurred in the translation task: %error%'
+        cart:
+            edit_checkout: 'Modify my basket'
+            free: Offered
+            main_panel_title: 'your basket'
+            proceed_to_checkout: 'Proceed to payment'
+            remove_product: 'Delete item'
+            share_cart:
+                email_placeholder: 'Enter the recipient''s email address'
+                email_subject: '%name% would like to share their basket with you.'
+                label: 'Share by email'
+                modal_desc: 'Make sure the basket linked to your recipient''s account is empty before opening yours, otherwise the items will be added to their existing basket.'
+                modal_title: 'Share my basket by email'
+                no_customer_name: 'A Plum customer'
+                open_cart: 'Open shared basket'
+                tooltip_title: 'Share my basket by email'
+            summary_panel_title: 'Order summary'
+            to_share_the_cart: 'To share your shopping basket by email, click the %icon%'
+            to_update_the_cart: 'To update your basket, click on the %icon% at the top right'
+            update_cart: 'Update basket'
+        channel:
+            all_channels: All
+            no_channel: 'Without channel'
+        checkout:
+            confirmation_modal:
+                original_order:
+                    input_placeholder: 'Enter your original order number'
+                    question: 'Are you adding to an existing order?'
+                proceed: 'Proceed to payment'
+                product_count:
+                    checkbox_label: 'I have checked all of my items.'
+                    hint: 'Better twice than once! We advise you to check your items one last time to be sure that you haven''t forgotten anything.'
+                    question: 'Have you checked your items carefully?'
+                    selection: 'You have selected'
+                target_room:
+                    options:
+                        adult-bedroom: Bedroom
+                        bathroom: Bathroom
+                        children-bedroom: 'Children''s bedroom'
+                        entry: Entrance
+                        kitchen: Kitchen
+                        office: Office
+                        other: Other
+                        saloon: 'Living room'
+                    question: 'What room are you furnishing?'
+                    select_placeholder: 'Choose my room'
+                title: '3 important questions before placing your order!'
+            order_summary:
+                change_my_order: 'Modify my order'
+                coupon: 'Enter your promo code'
+                coupon_submit: Okay
+                price_does_not_include_shipping: 'The price does not include delivery'
+                price_included_in_product: 'Price included in the product'
+                shipping_fee_calculated_next: 'Delivery costs will be calculated in the next step'
+                shipping_total: 'Delivery costs'
+                title: 'Summary of my order'
+            payment_content:
+                page_subtitle: 'A summary email has been sent to you.'
+                page_title: 'Pay securely!'
+                panel_title: 'Your payment information'
+                secure_text: 'The payment is secure, and your bank information is not stored.'
+            step_1_content:
+                page_title: 'Order in just a few steps!'
+                tab_title: 'Billing and delivery address'
+            step_2_content:
+                more_infos_in_faq: 'More information in our FAQ'
+                page_title: 'Order in a just few steps!'
+                panel_title: 'Delivery method'
+                tab_title: 'Delivery method'
+            step_3_content:
+                page_title: 'Order in just a few steps!'
+                panel_title: 'Payment method'
+                tab_title: 'Payment method'
+            step_4_content:
+                page_title: 'Order in just a few steps!'
+                panel_title: 'Summary before payment'
+                tab_title: Summary
+            step_5_content:
+                page_title: 'Your order is confirmed!'
+                panel_title: Summary
+                see_my_orders: 'View my orders'
+                summary_title: 'Order summary'
+            steps_nav:
+                back: 'Return to previous step'
+                proceed_to_payment: 'Confirm and pay for my order'
+                step_1: Addresses
+                step_2: 'Delivery method'
+                step_3: 'Payment method'
+                step_4: 'Confirm your order before payment'
+            stripe:
+                chargement: Loading...
+            transfer_content:
+                amount: AMOUNT
+                beneficiary:
+                    name: BENEFICIARY
+                    value: 'Plum (Amma Design SAS company)'
+                bic: BIC
+                iban: IBAN
+                info_text: 'In the event of a reference or amount error, the confirmation of your order will be delayed by approximately one week.'
+                page_subtitle: 'Your order will be validated after receipt of your transfer. A summary email has been sent to you.'
+                page_title: 'Pay by bank transfer'
+                panel_title: 'Transfer order to be made'
+                payment_method: 'By direct transfer'
+                ref: REFERENCE
+                ref_info: 'Simply copy and paste this code when entering the transfer on your website or banking application'
+            warnings:
+                no_payment_methods_available: 'There are currently no payment methods available for your order.'
+                no_shipping_methods_available: 'There are currently no shipping methods available for your delivery address.'
+        cms:
+            admin:
+                actions:
+                    article: 'Article page'
+                    media_article: 'Media page article'
+                    media_home: 'Media home page'
+                    project: 'Project page'
+                    simple: 'Single page'
+                alternative_total_to_display: 'the total of detailed budget items will be displayed'
+                cards:
+                    with_icon: 'The icon 📞 will be displayed with the image'
+                fields:
+                    category: Category
+                    page_type: 'Page type'
+                    translations_published: 'Published translations LK'
+                preview: 'Preview page'
+                product_option:
+                    color_table:
+                        color: Colour
+                        description: Description
+                        image_display: 'Image to present'
+                        no_image: 'No image'
+                project_plan: 'The PDF will be used to send the project plan'
+                subheader:
+                    article: 'CMS content management of an article page'
+                    media_article: 'CMS content management of an article media page'
+                    media_home: 'CMS content management of the media homepage'
+                    project: 'CMS content management of a project page'
+            button_link:
+                type_classic: classic
+                type_default: default
+                type_simple_link: 'single link'
+            chip:
+                admin:
+                    type_address: 'address book'
+                    type_home_tour: 'home tour'
+                    type_inspiration: inspiration
+                    type_interview: interview
+                    type_practice: 'practical guides'
+                    type_toolbox: toolbox
+                    type_tuto_ikea: 'Ikea tutorials'
+                    type_tutorial: tutorials
+                room:
+                    type_kitchen: Kitchen
+                    type_other_rooms: 'Other rooms'
+                shop:
+                    type_address: Addresses
+                    type_home_tour: 'Tours & itw'
+                    type_inspiration: Ideas
+                    type_practice: Practical
+                    type_toolbox: Toolbox
+                    type_tutorial: 'Step by step'
+            image_collection:
+                type_default: default
+                type_mosaic: mosaic
+                type_slider: slider
+                type_slider_plans: 'slider plans'
+                type_slider_right: 'right slider'
+            images_steps:
+                type_default: 'Not indexed'
+                type_indexed: Indexed
+            instagram_tag: plumliving
+            instagram_url: 'https://www.instagram.com/plum.living.eu/'
+            project:
+                receive_plan_mail:
+                    input_placeholder: 'Enter your email address to receive the plan'
+                    submit_text: Okay
+            project_piece:
+                type_bathroom: Bathroom
+                type_kitchen: Kitchen
+                type_other: 'Other room'
+                type_room: Bedroom
+            type_form:
+                no_content: 'This popup has no content, please try again later'
+        combination: 'Manage your combinations'
+        combinations: Combinations
+        customer_project:
+            add_item:
+                accessory: Accessories
+                handles: Handles
+                main: 'Add item'
+                metod: 'METOD fronts'
+                paint: 'Wall paint'
+                pax: 'PAX fronts'
+                tap: Tap
+            contact:
+                cta: 'Make an appointment by phone'
+                title: 'Our Plum Planners are available to check and validate your project.'
+            popin_handles:
+                accessories_link: 'Discover our handles'
+                add_link: 'Add missing %handles_count% handles'
+                text: 'You have %drawers_count% drawers and %doors_count% doors requiring handles are on your list. Would you like to add more?'
+        delivery:
+            delivery_delais_label: 'Delivery time'
+            delivery_delais_message: 'Delivery between %min_date% and %max_date%'
+        delivery_date_calculation_config:
+            duration: Duration
+            header: 'Configuration of delivery times'
+            max_date: 'Maximum date'
+            min_date: 'Minimum date'
+            mode: Mode
+            modes:
+                dynamic: 'Dynamic mode'
+                fixed_date_range_lacquer: 'Fixed dates for Lacquered finish'
+                fixed_date_range_wood: 'Fixed dates for Wood and Painted Wood finishes'
+            subheader: 'Set the minimum and maximum delivery interval for the different calculation modes'
+            unspecified: 'Not specified'
+        delivery_date_calculation_configs: 'Delivery times'
+        delivery_date_calculation_mode: 'Calculate delivery time'
+        edit_combination: 'Modify a combination'
+        edit_product_group: 'Edit a product group'
+        email_content:
+            cart:
+                checklist:
+                    ikea:
+                        button: 'Installation Checklist'
+                        desc: 'Make sure to order your hinges from Ikea (⚠️ Utrusta hinges for Metod cabinets and Komplement hinges for PAX cabinets), and review our checklist so you don''t forget anything at Ikea.'
+                        title: 'To not to forget anything at Ikea'
+                    poser:
+                        button: 'Fitters checklist'
+                        desc: 'Here is the essential information to read and pass on to your fitter, so they can create your kitchen with ease.'
+                        title: 'Information to pass on to your fitter'
+                indication: 'Make sure that the shopping basket linked to your account is empty before opening it!'
+                open_order: 'Open shared basket'
+            common:
+                contact: '<strong> To contact us: </strong> <br> %email% <br>'
+                copyright: 'Copyright © AMMA DESIGN SAS. All rights reserved.'
+            forget_password:
+                desc: 'We received a password reset request for your account. <br> If you made this request, click the link below to update it. <br> <br><a href=''%link%''> Reset my password </a> <br> <br> If you are not the originator of this request, please ignore this message and write to us at %email% to let us know. <br> <br> See you soon, <br> The Plum team'
+                title: 'Reset your password.'
+            order_confirmation:
+                button_text: 'View my order'
+                desc: 'We have received your order and thank you for your trust! <br> <br> To review the list of products ordered, as well as the estimated delivery time, <br> please click on the link below. <br> <br> We remain at your disposal by e-mail at <strong> %email% </strong> <br> or via the chat section of our website. <br> <br> See you soon, <br> <br> The Plum Team'
+                email_subject: 'Your order number %order_number% is confirmed'
+            project_plan:
+                details:
+                    first:
+                        btn: 'Discover our newspaper'
+                        desc_1: 'We invite you to take a look at the "Inspiration & Guide" section of our website, which is full of ideas and advice for imagining your future layout. Practical guides, address books, and home tours.'
+                        desc_2: 'it''s a mine of information!'
+                        title: 'Design your project...'
+                    second:
+                        btn: 'Learn more'
+                        desc: 'Our matte lacquered fronts and handles are made in France, and our oak and walnut fronts in Portugal. We have chosen our manufacturers because they have been specialists in their respective materials and finishes for over thirty years.'
+                        title: 'Our production'
+                main_caption:
+                    desc: 'Attached to this email is the project plan that you are interested in.'
+                    title: 'Here is the plan of the project you are interested in!'
+            user_registration:
+                b2b_program_email_subject: 'Welcome to the Terra Club'
+                desc: 'We are happy to have you among us. <br> <br> You can now discover the world of Plum, and start your <br> project in a more concrete way. <br> <br> <strong> Have a question about our products, their installation, our delivery times? </strong> <br> Consult our FAQ (a wealth of information!) or contact us <br> via chat or by e-mail at %email%. <br> <br> See you soon, <br> <br> The Plum team'
+                email_subject: 'Your account has been successfully created'
+            verification:
+                button: 'Validate my e-mail'
+                desc: 'We have received your account creation request, thank you very much for your interest! <br> We invite you to click on the button below to validate your e-mail address. <br> <br> See you soon, <br> The Plum team'
+                email_subject: 'Confirmation of your email address'
+        find_installer:
+            cta: 'Find my fitter'
+            cta_url_be: 'https://www.needhelp.com/fr-be/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_de: 'https://www.needhelp.com/de-de/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_eu: 'https://www.needhelp.com/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_fr: 'https://www.needhelp.com/de-de/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_nl: 'https://www.needhelp.com/nl-nl/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_nl-be: 'https://www.needhelp.com/nl-be/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            info_text: 'Plum does not carry out installations. Our partner Needhelp is a platform that puts individuals in touch with professionals in the field of interior design and home improvement. You will find many experienced fitters with the "Ikea badge".'
+            subtitle: 'Our partnership with Needhelp'
+            title: 'Find a fitter'
+            top_text: 'Plum and Needhelp join forces to help you find the best fitter.'
+        free_shipping: Offered
+        generic:
+            add: Add
+            billing: Billing
+            billing_address: 'Billing address'
+            cancel: Cancel
+            cart: Basket
+            connexion: Login
+            copied: Copied!
+            delete: Delete
+            discount: Reduction
+            email_not_verified: 'Email not verified'
+            form_errors_label: 'Please correct the following fields'
+            imported_project: 'Imported project'
+            logout: 'Sign out'
+            minus: Less
+            modify: Edit
+            my_account: 'My account'
+            order_number: 'Order number'
+            pay: Pay
+            payment: 'Payment method'
+            plus: More
+            position: Order
+            price: Price
+            proceed: Continue
+            proceed_to_payment: 'Manage my order'
+            product: Product
+            project: Project
+            quantity: Quantity
+            register: 'Sign up'
+            room: Room
+            save: Save
+            scanned_project: 'Scanned project'
+            set_as_default: 'By default'
+            shipment: 'Mail to'
+            shipping: 'Delivery method'
+            shipping_address: 'Delivery address'
+            sub_total: Subtotal
+            tax: Tax
+            total: Total
+            total_without_shipping: 'Total excluding delivery'
+            vat_included: '20% VAT included'
+            verify_now: 'Check now'
+            warning: Warning
+        import_export:
+            export_combinations: 'Export Combinations'
+            export_product_groups: 'Export Product Groups'
+            export_product_variants: 'Export Product Variants'
+            export_products: 'Export Products'
+        inspiration:
+            button_text: 'Discover our projects'
+            discover_text: 'You can also find new content from Plum Studio on our networks!'
+            filter_text: 'all types of content'
+        listing:
+            inspirations:
+                type_address: 'Address books'
+                type_all_types: 'All types of content'
+                type_home_tour: 'Home tours & Interviews'
+                type_inspiration: 'Creative ideas'
+                type_practice: 'Practical Guides'
+                type_toolbox: Toolbox
+                type_tutorial: 'Shopping lists & Step by step'
+            projects:
+                budget: 'Plum Budget:'
+                color_filter: 'all colours'
+                having: in
+                label: 'I am inspired to'
+                piece_filter: 'all rooms'
+                pieces_filter:
+                    type_all_pieces: 'all rooms'
+                    type_bathroom: 'my bathroom'
+                    type_kitchen: 'my kitchen'
+                    type_other: 'another room'
+                    type_room: 'my bedroom and wardrobe'
+            tunnel:
+                samples_subtitle: 'The samples will be reimbursed from your first order of fronts!'
+        login_register:
+            b2b_section_title: 'Your company'
+            btn_reset_password: Reset
+            choose_your_password: 'Create your password'
+            have_an_account_login: 'Already a member?'
+            have_an_account_login_link: 'Log in'
+            reset_of_your_password: 'Reset your password'
+        new_combination: 'New combination'
+        new_product_group: 'New product group'
+        no_content: 'This page has no content'
+        option: Option
+        order:
+            state_cancelled: Cancelled
+            state_confimed: Confirmed
+            state_fulfilled: Delivered!
+            state_fully_paid: Validated
+            state_fully_shipped: 'In shipment'
+            state_in_cart: 'Your basket'
+            state_partially_paid: 'Awaiting payment'
+            state_partially_shipped: 'In preparation / production'
+            state_pending: 'Awaiting payment'
+            step_state_partially_shipped: 'In production'
+        order_awaiting_payment:
+            desc: 'Your payment was unsuccessful'
+            keep: 'Back to previous step'
+            revert: 'Retrieve and modify my basket'
+        page:
+            type_all_types: 'all types of content'
+            type_article: article
+            type_default: default
+            type_frame: I-frame
+            type_home_page: homepage
+            type_inspiration: inspiration
+            type_media_article: 'media article'
+            type_media_home: 'media home'
+            type_project: project
+            type_ribbon: headband
+        page_linker:
+            app_plum_scanner_get_designs: 'Get an immediate quote ** internal link'
+        plum_scanner:
+            heading: 'Calculate your project in a few clicks <br class="u-hidden @sm:u-inline">with the Plum Scanner'
+            login: 'To continue, please log in'
+            login_button: 'Log in'
+            mobile_not_avaialble: '<p>The Plum Scanner is available on desktop only!</p> <p> This tool will allow you to scan your IKEA plan and thus obtain the exact list of fronts that make up your layout.</p>'
+            previous_step: 'Return to previous step'
+            register: 'Sign up'
+            rotate_your_device: 'Turn your tablet'
+            scan_success: 'Here''s your list of Plum items'
+            share_project:
+                email_placeholder: 'Enter the recipient''s email address'
+                email_subject: 'Please see this project on Plum Kitchen'
+            step_one:
+                title: 'Choose your options'
+            step_three:
+                actions:
+                    desc: 'Our Plum Planners will accompany you to validate your project and answer your questions'
+                    download_quote_file: 'Download my list of items'
+                    download_quote_file_loader: 'The document is loading...'
+                    heading: 'Save my project to my Plum account'
+                    save_project: 'Save my project'
+                    share_project: 'Share my items'
+                    take_appointment: 'Have my costing checked / make an appointment'
+                adjust_options:
+                    heading: 'Adjust your selections'
+                    heading_facade: 'Adjust your front selections'
+                    hint: 'Still in doubt? You can adjust your selections at any time.'
+                    link: 'Discover our finishes'
+                auto_save:
+                    confirm_button_label: 'Try again'
+                    error_aside_message: 'If the problem persists, reload the page without trying to save again, you will only lose the last change.'
+                    error_main_message: 'Error during automatic saving of changes. Please try to save your project again.'
+                    error_title: Attention
+                checkout:
+                    heading: 'Your Plum budget'
+                    hint_charges: 'Including VAT, excluding postage.'
+                    hint_cost: 'The initial Plum costing includes only the drawer fronts, doors, panels and plinths that are in your Ikea plan.'
+                    warning: 'Some options are not compatible with the elements that make up your layout. Please adjust your options so that your budget is displayed.'
+                    warning_item: 'This item is not available with the selected options. Please adjust your options.'
+                    warning_item_add: 'Select your options.'
+                modulate_articles:
+                    add_button: 'Add item'
+                    heading: 'Modify your items'
+                    remove_button: 'Delete item'
+                    total_price: Total
+                    unit_price: 'Per piece'
+                title: 'Adjust your budget'
+            step_two:
+                connect_ikea:
+                    budgets_examples: 'See our sample budgets'
+                    how_to_use: 'How to use the Ikea Kitchen Planner'
+                    ikea_version_modal:
+                        new: 'The new version'
+                        old: 'The old version'
+                    need_help: 'You don''t have an Ikea plan?'
+                    new_version_btn: 'New version'
+                    old_version_btn: 'Old version'
+                    title: '<strong>Login to the Ikea Kitchen Planner</strong>'
+                    warning: 'Ikea recently developed new software. Tell us which <br> version you are using below:'
+                    which_ikea_version: 'How to recognize the versions?'
+                missing_front:
+                    modal_button_text: Noted
+                    modal_content: 'Open your plan in the Ikea Kitchen Planner then add the front and side finishing panels before sharing your plan with the Plum Scanner.'
+                    modal_subtitle: 'The Plum Scanner cannot read your plan because it does not include fronts.'
+                    modal_title: Warning!
+                prepare_front:
+                    modal_button_text: 'Send my request'
+                    modal_content: 'We make quotes for METOD kitchens or fittings only. For your PAX projects, go directly to our e-shop!'
+                    modal_subtitle: 'To prepare your quote, we need your plan from the Ikea Kitchen Planner, <b>fronts included</b> .'
+                    modal_title: 'To know more!'
+                project_status:
+                    hint: 'Impatient? So are we! Don''t leave this page, your project will open in a few moments.'
+                    timeout_modal_confirm: Re-send
+                    timeout_modal_dismiss: 'Continue to wait'
+                    timeout_modal_message: 'The recovery of your project is taking an unusually long time. Can you go back to the previous step and re-send your project to the email address provided?'
+                    timeout_modal_title: Attention
+                    title: 'We scan your plan...'
+                share_plan:
+                    guide: 'Not clear?<br class="@sm:u-hidden"> Follow the video guide!'
+                    sent: 'It''s sent!'
+                    title:
+                        first_item: '<strong> Share your plan from the Ikea Kitchen Planner </strong>'
+                        second_item: '<p>Open your plan in the <a href="%URL%" target="_blank">Ikea Kitchen Planner </a>, <strong> fronts included </strong> then: </p> <ul class="t-list-style-outside"> <li> Click <strong> File </strong> then <strong> E-mail </strong> </li> <li> Share your plan to the address below then click on "Send It". </li> </ul>'
+                share_plan_new:
+                    action_desc: '<p>To obtain your share link, open your plan, <strong>save it (important)</strong>, then click the "Make it reality" step and<span class="t-nowrap">"Share" <svg class="o-icon-24"><use xlink:href="%ICON_LIB_URL%#SVG-icon-ikea-share"/></svg></span></p> <p class="t-base-initial">You can also copy the link directly from your browser.</p>'
+                    link_placeholder: 'Insert the link to your plan here'
+                    scan_plan_btn: 'Scan my plan'
+                    title: '<strong>Share your Ikea plan with us, including the fronts.</strong>'
+                title: 'Share your IKEA plan'
+            title: 'Plum Scanner'
+        plum_styler:
+            index:
+                description: 'Let your imagination run wild with our Plum Styler! Select one of the scenes below: configure the fronts, colour the walls, choose your finishing touches... and create the interior of your dreams!'
+                select_scene: 'Select a scene to get started'
+            title: 'Plum Styler'
+        product_group: 'Product group'
+        product_groups: 'Product groups'
+        product_option:
+            color: Colour
+            design: Design
+            facade: Front
+            finish: Finish
+        product_option_value_image:
+            type_default: 'Main image'
+            type_display: 'Image to present'
+            type_styler: 'Styler picture'
+        project:
+            button_text: 'Our designs and finishes'
+        recommendation:
+            no_content: 'There are no recommendations'
+            title: Recommendations
+        server_has_encountered_some_errors: 'The server has encountered errors.<br>If the problem occurs again, please contact our team at <a href="mailto:%email%">%email%</a>'
+        tunnel_shopping:
+            accessoires: Accessories
+            add_product: Added
+            box_link: 'Choose my samples'
+            box_link_icon: '<svg class="o-icon-16 u-margin-r-1"><use xlink:href="%ICON_LIB_URL%#SVG-icon-arrow-right"></svg> Order your samples'
+            box_text: 'Do you have a project to achieve? Receive 3 samples with the code LETSGO'
+            btn_noted: 'Got it!'
+            color: Colour
+            combination: Combination
+            combinations: Combinations
+            design: Design
+            doors: Doors
+            drawers: Drawers
+            finish: Finish
+            finishes_and_colors: 'Colour Finish'
+            info_article: 'Some articles to help you'
+            info_article_link_one: 'How to not forget anything at Ikea?'
+            info_article_link_two: 'I have a question'
+            info_one: 'Drawer systems are not supplied with our fronts.'
+            info_three: 'Our drillings are not suitable for Ikea Utrusta interior drawer rails.'
+            info_two: 'Our drawer fronts are pre-drilled to be installed to Ikea Maximera drawer systems.'
+            infos_title: 'Practical information'
+            link_design: Choose
+            modal_return: 'Delivery and returns'
+            new_combination: 'Adding a combination'
+            next_step: 'Next step'
+            no_delivery_details: 'There are no delivery details.'
+            no_product_info: 'There is no information!'
+            paints: 'Wall paint'
+            panels: Panels
+            panels_and_plinths: 'Plinth Panels'
+            plinths: Plinths
+            products: Products
+            recommendations: Recommendations
+            recommendations_suggestion: 'Our recommendations'
+            samples:
+                facade:
+                    name: 'Front samples'
+                    sub_title: '3 samples are offered with the code LETSGO, any following samples will be refunded on your first order of fronts.'
+                find_out_more: 'Learn more'
+                main: Samples
+                paint_mural:
+                    name: 'Wall paint samples'
+                    sub_title: 'Samples will be refunded on your first paint order!'
+            see_complete_info: 'See more details'
+            subtitle: 'Start by choosing your design.'
+            taps: Taps
+            title: 'Plum Shop'
+            title_finish: 'Finishes and colours'
+            tooltip_choice: 'Please select a finish before choosing a colour'
+            tooltip_no_color: 'Colour not available for this finish, click on the "Next Step" button to continue'
+            type_facade: 'Front type'
+    ui_element:
+        accordion:
+            description: 'An element to add one or more accordions'
+            title: 'Accordion Blade'
+        address_book_select:
+            new_address: 'New address'
+            select_address_from_book: 'Select a registered address'
+        caption:
+            description: 'An element to add a caption'
+            title: 'Blade Caption'
+        card_total:
+            description: 'An element to display a detailed budget'
+            title: 'Detailed Budget blade'
+        cards:
+            description: 'A blade to add single cards with media'
+            title: 'Card blade'
+        chip:
+            description: 'An element to add a pellet'
+            title: 'Pellet Blade'
+        color_ui:
+            description: 'An element for selecting a colour'
+            title: 'Blade Colour'
+        h4:
+            description: 'A slide containing the title of your choice'
+            title: '<h4>Blade Title'
+        home_project:
+            creation_banner:
+                description: 'Block leading to the Plum Scanner'
+                title: 'Home Project - Create your project'
+            hero:
+                description: 'One-page hero Home Project, title, text and carousel'
+                title: 'Home Project - Title Carousel'
+        images_steps:
+            description: 'An element for building step images'
+            title: 'Staged images'
+        media:
+            citation:
+                description: 'Adding the quote (image + quote)'
+                title: 'Media - Quote'
+            content_highlight:
+                description: 'Highlighting themes or other content on the Home Media'
+                title: 'Media - Content Highlight'
+            cross_content:
+                description: 'Adding cross content pages'
+                title: 'Media - Cross Content'
+            footer_immersive:
+                description: 'Contains a title and a link above the image'
+                title: 'Media - Immersive Footer'
+            hero:
+                description: 'Contains an image + tag + title + description'
+                title: 'Media - Hero'
+            hero_video:
+                description: 'Contains a Youtube video + title + description '
+                title: 'Media - Hero Video'
+            home_slider:
+                description: 'Highlighting articles at the top of Home Media'
+                title: 'Media - Home Slider'
+            panoramic_photo_only:
+                description: 'Contains a panoramic photo + caption'
+                title: 'Media - Panoramic photo XL'
+            panoramic_photo_xl:
+                description: 'Contains a title + panoramic photo + paragraph '
+                title: 'Media - Panoramic photo XL + text'
+            shoppinglist:
+                title: 'Media - Shopping List'
+            slider:
+                description: 'Adding the Landing page slider'
+                title: 'Media - Slider'
+            slider_thematique:
+                description: 'Slider by theme'
+                title: 'Media - Thematic Slider'
+            text_only:
+                description: 'Contains free text (titles, paragraphs, etc.)'
+                title: 'Media - Text only'
+            two_hybrid_columns:
+                description: 'Adding 2 columns'
+                title: 'Media - 2 Hybrid Columns'
+            two_photo_columns:
+                description: 'Adding 2 images side by side'
+                title: 'Media - 2 Photo Columns'
+            zoning_image:
+                description: 'Adding zoning overlay'
+                title: 'Media - Image zoning'
+        pages_cards:
+            description: 'An element to build one or more maps for CMS or internal pages'
+            title: 'Page map blade'
+        pages_listing:
+            description: 'An element to select existing CMS page(s) for cross content'
+            title: 'Cross Content Blade'
+        product_info:
+            description: 'An element for information on products under a taxon'
+            title: 'Product information Blade'
+        product_info_accessory:
+            description: 'An element for information on accessory products'
+            title: 'Information Blade Accessory products'
+        product_option:
+            description: 'An element to select one or more product options'
+            title: 'Product Options Blade'
+        project_piece:
+            description: 'An element for choosing the project type'
+            title: 'Project Piece Blade'
+        project_plan:
+            description: 'An element to upload a PDF'
+            title: 'Blade PDF'
+        recommendation:
+            description: 'An element for adding a recommendation'
+            title: 'Recommendation blade'
+        scan_banner:
+            description: 'Block "Scan your plan" (homepage)'
+            title: 'Block "Scan your plan"'
+noksi_sylius_plum_hubspot_plugin:
+    newsletter:
+        invalid_csrf_token: 'The CSRF token is invalid. Please resubmit the form.'
+        subscribed_successfully: 'You have successfully subscribed to our newsletter.'
+sylius:
+    form:
+        address:
+            street: Address
+        checkout:
+            addressing:
+                different_billing_address: 'Use a different billing address?'
+        customer:
+            b2b_coupon_code: 'B2B code'
+            b2b_enabled: Activated
+            b2b_subscription: 'Join the <a href="%url%">Terra Club</a> and enjoy the pro benefits'
+            company_address: 'Company address'
+            company_city: City
+            company_country: Country
+            company_instagram: 'Instagram account'
+            company_name: 'Company name'
+            company_postcode: Postcode
+            company_website: Website
+            gender: Civility
+            preferred_locale: 'Preferred language'
+            subscribed_to_newsletter: 'Subscribe to our newsletter'
+            vat_number: 'Intra-community VAT number'
+        login:
+            remember_me: 'Stay connected'
+            username: 'Username (email address)'
+        promotion_action:
+            item_fixed_discount: 'Fixed product discount (on VAT)'
+            item_percentage_discount: 'Product discount percentage'
+            order_fixed_discount: 'Order discount (on VAT)'
+            order_percentage_discount: 'Product discount percentage (on VAT)'
+            order_percentage_of_front_items_discount: 'Discount percentage on front products or other products in the order (excluding samples, on VAT)'
+        user:
+            password:
+                confirmation: 'Confirm your new password'
+    menu:
+        shop:
+            account:
+                address_book: Addresses
+                change_password: Password
+                dahsboard: Home
+                order_history: Orders
+                personal_information: Profile
+    ui:
+        app:
+            combination: Combination
+            product_group: 'Product group'
+        b2b_program: 'Terra Club'
+        customer:
+            b2b_program:
+                company_address: 'Company address'
+                company_name: 'Company name'
+                coupon_code: 'Promo Code'
+                enabled: 'Program activated'
+        customer_group: 'Customer group'
+        forgot_password: 'Forgot your password?'
+        grid:
+            b2b_program_enabled: 'Terra Club'
+        items_total: 'Total (incl. VAT)'
+        new_customer: 'New customer?'
+        product_variant: 'Product variant'
+        promotion_total: 'Total discounts (excl. VAT)'
+        shipping_total: 'Total shipping costs (incl. VAT)'
+        total: 'Total (incl. VAT)'

@@ -1,0 +1,29 @@
+{% set refLocale = constant('App\\Entity\\Product\\ProductCompleteInfoTranslation::PUBLISHED_LOCALE') %}
+
+<div class="ui labeled icon dropdown secondary link button disabled" tabindex="0">
+    <i class="info icon"></i> <span class="text">{{ 'app.ui.admin.product.product_complete_info.translation_button'|trans }}</span>
+    <div class="menu" tabindex="-1">
+        <div class="header">
+            <i class="cloud upload icon"></i> {{ 'app.ui.admin.product.product_complete_info.publish_translation'|trans({'%locale%':  refLocale|language_name}) }}
+        </div>
+        <div class="divider"></div>
+        <form action="{{ path('app_admin_product_complete_info_bulk_translation_publish') }}" method="post">
+            <button class="ui labeled icon basic button fluid" type="submit" data-bulk-action-requires-confirmation disabled>
+                <i class="icon cloud upload"></i> {{ 'app.ui.admin.product.product_complete_info.publish_translation'|trans({'%locale%':  refLocale|language_name}) }}
+            </button>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('app_translation_publish') }}">
+        </form>
+        <div class="header">
+            <i class="cloud download icon"></i> {{ 'app.ui.admin.product.product_complete_info.fetch_translation'|trans }}
+        </div>
+        <div class="divider"></div>
+        {% for locale in get_locales()|filter(x => x.code != refLocale) %}
+            <form action="{{ path('app_admin_product_complete_info_bulk_translation_fetch', {'locale': locale.code}) }}" method="post">
+                <button class="item ui labeled icon basic button fluid" type="submit" name="form" data-bulk-action-requires-confirmation data-requires-confirmation-message="{{ 'app.ui.admin.translation.fetch_translation_confirm'|trans({'%locale%': refLocale|language_name}) }}" disabled>
+                    <i class="icon flag"></i> {{ locale.code|locale_name }}
+                </button>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('app_translation_fetch') }}">
+            </form>
+        {% endfor %}
+    </div>
+</div>

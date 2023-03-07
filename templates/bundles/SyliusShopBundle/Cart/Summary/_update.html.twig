@@ -1,0 +1,6 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<button type="submit" class="button" id="sylius-cart-update" {{ sylius_test_html_attribute('cart-update-button') }} form="{{ main_form }}">
+    {{ 'app.ui.cart.update_cart'|trans }}
+    <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+</button>

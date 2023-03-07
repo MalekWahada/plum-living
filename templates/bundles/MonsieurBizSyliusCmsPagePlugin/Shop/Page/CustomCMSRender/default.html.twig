@@ -1,0 +1,21 @@
+{% if page.code == constant('App\\Provider\\CMS\\PageCode\\PageCodeProvider::PAGE_CONCEPT_CODE') %}
+    {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/Defaults/concept.html.twig' %}
+{% elseif page.code == constant('App\\Provider\\CMS\\PageCode\\PageCodeProvider::PAGE_DESIGN_FINISH_CODE') %}
+    {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/Defaults/design_finish.html.twig' %}
+{% elseif page.code == constant('App\\Provider\\CMS\\PageCode\\PageCodeProvider::PAGE_QUOTATION_HOME_CODE') %}
+    {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/Defaults/quotation_home_page.html.twig' %}
+{% elseif page.code == constant('App\\Provider\\CMS\\PageCode\\PageCodeProvider::PAGE_FIND_INSTALLER_CODE') %}
+    {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/Defaults/find_installer.html.twig' %}
+{% elseif page.code == constant('App\\Provider\\CMS\\PageCode\\PageCodeProvider::PAGE_CONCEPTION_HOME_CODE') %}
+    {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/Defaults/conception_home.html.twig' %}
+{% elseif page.code == constant('App\\Provider\\CMS\\PageCode\\PageCodeProvider::PAGE_TERRA_CLUB_CODE') %}
+    {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/Defaults/terra_club.html.twig' %}
+{% else %}
+    <div class="cms__content cms__content__default container">
+        <div class="flush-row u-center-on-main">
+            <div class="@md:flush-column-7">
+                {{ (page.content|format_cms_content_to_array)|monsieurbiz_richeditor_render_elements }}
+            </div>
+        </div>
+    </div>
+{% endif %}

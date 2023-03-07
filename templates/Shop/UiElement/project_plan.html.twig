@@ -1,0 +1,16 @@
+{% if ui_element.planFileExists(element.file) %}
+    <fieldset class="budget-plan">
+        <label class="field text-field">
+            <div class="field__wrapper">
+                <span class="field__label">{{ 'app.ui.cms.project.receive_plan_mail.input_placeholder'|trans }}</span>
+                <input required id="mail_receive_plan_input" class="field__widget" type="email">
+            </div>
+        </label>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token(page.code) }}">
+        <input data-page="{{ page.code }}"
+               data-href="{{ path('send_project_plan') }}"
+               data-error-message="{{ 'app.cms.project_plan.error'|trans([], 'flashes') }}"
+               id="receive_plan_btn" class="link-button" type="submit"
+               value="{{ 'app.ui.cms.project.receive_plan_mail.submit_text'|trans }}">
+    </fieldset>
+{% endif %}

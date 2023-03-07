@@ -1,0 +1,8 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<a href="{{ path('sylius_shop_checkout_start') }}"
+ class="button button--inversed ripple-button u-fullwidth {% if cart.needsConfirmationModal %} js-toggle-modal {% endif %}"
+ {% if cart.needsConfirmationModal %}data-modal=".js-cart-confirmation-modal" data-content-url="{{ path('app_validate_cart') }}" {% endif %}>
+    {{ 'app.ui.cart.proceed_to_checkout'|trans }}
+    <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+</a>

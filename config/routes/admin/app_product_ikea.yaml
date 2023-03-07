@@ -1,0 +1,16 @@
+_crud:
+    resource: |
+        alias: app.product_ikea
+        section: admin
+        path: /
+        templates: '@SyliusAdmin\\Crud'
+        redirect: update
+        grid: app_admin_product_ikea
+        vars:
+            all:
+                subheader: app.ui.product_ikea
+                templates:
+                    form: '@SyliusAdmin\ProductIkea\_form.html.twig'
+            index:
+                icon: 'file image outline'
+    type: sylius.resource

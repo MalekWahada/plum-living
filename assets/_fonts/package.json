@@ -1,0 +1,12 @@
+{
+  "name": "@plum/fonts",
+  "version": "1.0.0",
+  "description": "Plum Fonts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "author": "Plum-Living.com",
+  "license": "proprietary"
+}

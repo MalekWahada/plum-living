@@ -1,0 +1,5 @@
+<div class="ui labels">
+    {% for attribute in data.productsAttributes %}
+        {% include('@SyliusAdmin/ProductGroup/Grid/Field/_attribute.html.twig') %}
+    {% endfor %}
+</div>

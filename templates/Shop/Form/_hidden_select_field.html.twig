@@ -1,0 +1,14 @@
+{% import _self as _self %}
+{% use 'Shop/Form/_field_commons.html.twig' %}
+
+{% set props = field.vars %}
+
+{% macro widget_value(options) %}
+    {%- if options.value is defined -%}
+        {{- options.value -}}
+    {%- endif -%}
+{% endmacro %}
+
+{% apply spaceless %}
+    <input {{ block('field_widget_attributes') }} type="hidden" value="{{- _self.widget_value(props) -}}" >
+{% endapply %}

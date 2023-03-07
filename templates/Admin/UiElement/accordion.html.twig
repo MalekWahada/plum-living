@@ -1,0 +1,14 @@
+<div class="ui styled accordion">
+    {% for accordion in element.accordions %}
+        <div class="title {% if loop.index == 1 %} active {% endif %}">
+            <i class="dropdown icon"></i>
+            {{ accordion.title }}
+        </div>
+        <div class="content {% if loop.index == 1 %} active {% endif %}">
+            <p class="transition {% if loop.index == 1 %} visible {% else %} hidden {% endif %}"
+                {% if loop.index == 1 %} style="display: block !important;" {% endif %}>
+                {{ accordion.detail|raw }}
+            </p>
+        </div>
+    {% endfor %}
+</div>

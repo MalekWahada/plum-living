@@ -1,0 +1,1102 @@
+[
+  {
+    "sceneId": 7,
+    "tabs": [
+      {
+        "code": "all",
+        "name": "Tout",
+        "icon": "Tous.svg",
+        "categories": [
+          {
+            "name": "Facade",
+            "icon": "Facade.svg",
+            "variables": [
+              "FAH",
+              "FAB",
+              "PFH",
+              "PFB",
+              "PLI"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Cotés",
+            "icon": "Cote.svg",
+            "variables": [
+              "PFH",
+              "PFB"
+            ],
+            "options": [
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Poignées",
+            "icon": "Poignee.svg",
+            "variables": [
+              "PGH",
+              "PGB"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Mitigeur",
+            "icon": "Mitigeur.svg",
+            "variables": [
+              "MIT"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Plan de t.",
+            "icon": "PDT.svg",
+            "variables": [
+              "PLT"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Credence",
+            "icon": "Credence.svg",
+            "variables": [
+              "CRED"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Mur",
+            "icon": "Peinture.svg",
+            "variables": [
+              "MUR"
+            ],
+            "options": [
+              {
+                "name": "Couleur",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "top",
+        "name": "Haut",
+        "icon": "Haut.svg",
+        "categories": [
+          {
+            "name": "Façades",
+            "icon": "Facade.svg",
+            "variables": [
+              "FAH"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Côtés",
+            "icon": "Cote.svg",
+            "variables": [
+              "PFH"
+            ],
+            "options": [
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Poignées",
+            "icon": "Poignee.svg",
+            "variables": [
+              "PGH"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "bottom",
+        "name": "Bas",
+        "icon": "Bas.svg",
+        "categories": [
+          {
+            "name": "Façades",
+            "icon": "Facade.svg",
+            "variables": [
+              "FAB"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Côtés",
+            "icon": "Cote.svg",
+            "variables": [
+              "PFB"
+            ],
+            "options": [
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Poignées",
+            "icon": "Poignee.svg",
+            "variables": [
+              "PGB"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Plinthe",
+            "icon": "Plinthe.svg",
+            "variables": [
+              "PLI"
+            ],
+            "options": [
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Mitigeur",
+            "icon": "Mitigeur.svg",
+            "variables": [
+              "MIT"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Plan de travail",
+            "icon": "PDT.svg",
+            "variables": [
+              "PLT"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Crédence",
+            "icon": "Credence.svg",
+            "variables": [
+              "CRED"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Mur",
+            "icon": "Peinture.svg",
+            "variables": [
+              "MUR"
+            ],
+            "options": [
+              {
+                "name": "Couleur",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Sol",
+            "icon": "Sol.svg",
+            "variables": [
+              "SOL"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sceneId": 19,
+    "tabs": [
+      {
+        "code": "all",
+        "name": "Tout",
+        "icon": "Tous.svg",
+        "categories": [
+          {
+            "name": "Facade",
+            "icon": "Facade.svg",
+            "variables": [
+              "FAH",
+              "FAB",
+              "PFH",
+              "PFB",
+              "PLI"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Cotés",
+            "icon": "Cote.svg",
+            "variables": [
+              "PFH",
+              "PFB"
+            ],
+            "options": [
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Poignées",
+            "icon": "Poignee.svg",
+            "variables": [
+              "PGH",
+              "PGB"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Mitigeur",
+            "icon": "Mitigeur.svg",
+            "variables": [
+              "MIT"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Plan de t.",
+            "icon": "PDT.svg",
+            "variables": [
+              "PLT"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Credence",
+            "icon": "Credence.svg",
+            "variables": [
+              "CRED"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Mur",
+            "icon": "Peinture.svg",
+            "variables": [
+              "MUR"
+            ],
+            "options": [
+              {
+                "name": "Couleur",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "top",
+        "name": "Haut",
+        "icon": "Haut.svg",
+        "categories": [
+          {
+            "name": "Façades",
+            "icon": "Facade.svg",
+            "variables": [
+              "FAH"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Côtés",
+            "icon": "Cote.svg",
+            "variables": [
+              "PFH"
+            ],
+            "options": [
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Poignées",
+            "icon": "Poignee.svg",
+            "variables": [
+              "PGH"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "bottom",
+        "name": "Bas",
+        "icon": "Bas.svg",
+        "categories": [
+          {
+            "name": "Façades",
+            "icon": "Facade.svg",
+            "variables": [
+              "FAB"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Côtés",
+            "icon": "Cote.svg",
+            "variables": [
+              "PFB"
+            ],
+            "options": [
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Poignées",
+            "icon": "Poignee.svg",
+            "variables": [
+              "PGB"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Plinthe",
+            "icon": "Plinthe.svg",
+            "variables": [
+              "PLI"
+            ],
+            "options": [
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Mitigeur",
+            "icon": "Mitigeur.svg",
+            "variables": [
+              "MIT"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Plan de travail",
+            "icon": "PDT.svg",
+            "variables": [
+              "PLT"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Crédence",
+            "icon": "Credence.svg",
+            "variables": [
+              "CRED"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Mur",
+            "icon": "Peinture.svg",
+            "variables": [
+              "MUR"
+            ],
+            "options": [
+              {
+                "name": "Couleur",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Sol",
+            "icon": "Sol.svg",
+            "variables": [
+              "SOL"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "sceneId": 29,
+    "tabs": [
+      {
+        "code": "all",
+        "name": "Tout",
+        "icon": "Tous.svg",
+        "categories": [
+          {
+            "name": "Facade",
+            "icon": "Facade.svg",
+            "variables": [
+              "FAH",
+              "FAB",
+              "PFH",
+              "PFB",
+              "PLI"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Cotés",
+            "icon": "Cote.svg",
+            "variables": [
+              "PFH",
+              "PFB"
+            ],
+            "options": [
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Poignées",
+            "icon": "Poignee.svg",
+            "variables": [
+              "PGH",
+              "PGB"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Mitigeur",
+            "icon": "Mitigeur.svg",
+            "variables": [
+              "MIT"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Plan de t.",
+            "icon": "PDT.svg",
+            "variables": [
+              "PLT"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Credence",
+            "icon": "Credence.svg",
+            "variables": [
+              "CRED"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Mur",
+            "icon": "Peinture.svg",
+            "variables": [
+              "MUR"
+            ],
+            "options": [
+              {
+                "name": "Couleur",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "top",
+        "name": "Haut",
+        "icon": "Haut.svg",
+        "categories": [
+          {
+            "name": "Façades",
+            "icon": "Facade.svg",
+            "variables": [
+              "FAH"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Côtés",
+            "icon": "Cote.svg",
+            "variables": [
+              "PFH"
+            ],
+            "options": [
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Poignées",
+            "icon": "Poignee.svg",
+            "variables": [
+              "PGH"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "bottom",
+        "name": "Bas",
+        "icon": "Bas.svg",
+        "categories": [
+          {
+            "name": "Façades",
+            "icon": "Facade.svg",
+            "variables": [
+              "FAB"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Poignées",
+            "icon": "Poignee.svg",
+            "variables": [
+              "PGB"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Plinthe",
+            "icon": "Plinthe.svg",
+            "variables": [
+              "PLI"
+            ],
+            "options": [
+              {
+                "name": "Finitions",
+                "type": "surface",
+                "selector": "image"
+              },
+              {
+                "name": "Couleurs",
+                "type": "color",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Mitigeur",
+            "icon": "Mitigeur.svg",
+            "variables": [
+              "MIT"
+            ],
+            "options": [
+              {
+                "name": "Design",
+                "type": "shape",
+                "selector": "image"
+              },
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Plan de travail",
+            "icon": "PDT.svg",
+            "variables": [
+              "PLT"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Crédence",
+            "icon": "Credence.svg",
+            "variables": [
+              "CRED"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          },
+          {
+            "name": "Mur",
+            "icon": "Peinture.svg",
+            "variables": [
+              "MUR"
+            ],
+            "options": [
+              {
+                "name": "Couleur",
+                "type": "surface",
+                "selector": "color"
+              }
+            ]
+          },
+          {
+            "name": "Sol",
+            "icon": "Sol.svg",
+            "variables": [
+              "SOL"
+            ],
+            "options": [
+              {
+                "name": "Matière",
+                "type": "surface",
+                "selector": "image"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

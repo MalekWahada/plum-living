@@ -1,0 +1,39 @@
+<div class="ui grid {{ element.bg_color }}">
+    {% if element.orientation == 'left' %}
+        <div class="aligned eight wide column">
+            <h3>{{ element.title | raw }}</h3>
+            <p>
+                {{ element.description | raw }}
+            </p>
+            {% if element.link_label and element.link_url %}
+                <a class="btn"
+                   href="{{ element.link_url | raw }}">
+                    {{ element.link_label | raw }}
+                </a>
+            {% endif %}
+        </div>
+        <div class="aligned eight wide column">
+            <img src="{{ element.image | raw }}" width="100%"
+                 alt="{{ element.image_alt | raw }}"
+                 title="{{ element.image_title | raw }}">
+        </div>
+    {% else %}
+        <div class="aligned eight wide column">
+            <img src="{{ element.image | raw }}" width="100%"
+                 alt="{{ element.image_alt | raw }}"
+                 title="{{ element.image_title | raw }}">
+        </div>
+        <div class="aligned eight wide column">
+            <h3>{{ element.title | raw }}</h3>
+            <p>
+                {{ element.description | raw }}
+            </p>
+            {% if element.link_label and element.link_url %}
+                <a class="btn"
+                   href="{{ element.link_url | raw }}">
+                    {{ element.link_label | raw }}
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

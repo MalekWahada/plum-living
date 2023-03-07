@@ -1,0 +1,19 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% for taxonCode, taxonName in productTaxons %}
+    <div class="tunnel-sidebar__item category product-category">
+        <div class="item-content">
+            <svg class="tunnel-sidebar__icon o-icon-20">
+                {% if taxonCode == constant('App\\Entity\\Taxonomy\\Taxon::CUSTOM_TAXON_PANEL_AND_PLINTH_CODE') %}
+                    <use xlink:href="{{ iconLibUrl }}#SVG-icon-panneau"/>
+                {% elseif taxonCode  == constant('App\\Entity\\Taxonomy\\Taxon::TAXON_ACCESSORY_CODE') %}
+                    <use xlink:href="{{ iconLibUrl }}#SVG-icon-accessoire"/>
+                {% elseif taxonCode in [constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_METOD_DOOR_CODE'), constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_PAX_DOOR_CODE')] %}
+                    <use xlink:href="{{ iconLibUrl }}#SVG-icon-door"/>
+                {% elseif taxonCode == constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_METOD_DRAWER_CODE') %}
+                    <use xlink:href="{{ iconLibUrl }}#SVG-icon-tiroir"/>
+                {% endif %}
+            </svg>
+            <div class="t-base-xsmall product-category" data-link="{{ taxonCode ~ '-tunnel-list' }}">{{ taxonName }}</div>
+        </div>
+    </div>
+{% endfor %}

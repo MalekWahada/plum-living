@@ -1,0 +1,10 @@
+sylius_grid:
+    grids:
+        sylius_admin_promotion:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%sylius.model.promotion.class%"
+                    repository:
+                        method: findNotGeneratedPromotionsQueryBuilder
+            limits: [50, 25, 10]

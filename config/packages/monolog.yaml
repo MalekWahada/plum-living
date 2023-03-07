@@ -1,0 +1,38 @@
+monolog:
+    channels: ['erp_import', 'csv_import', 'order_prices', 'translation']
+    handlers:
+        erp_import_all:
+            type: stream
+            path: "%kernel.logs_dir%/erp_import_%kernel.environment%.log"
+            channels: erp_import
+            max_files: 10
+        erp_import_errors:
+            type: stream
+            path: "%kernel.logs_dir%/erp_import_errors_%kernel.environment%.log"
+            level: error
+            channels: erp_import
+            max_files: 10
+        erp_import_warnings:
+            type: stream
+            path: "%kernel.logs_dir%/erp_import_warnings_%kernel.environment%.log"
+            level: warning
+            channels: erp_import
+            max_files: 10
+        csv_import:
+            type: stream
+            path: "%kernel.logs_dir%/csv_import_%kernel.environment%.log"
+            level: info
+            channels: csv_import
+            max_files: 10
+        order_prices_errors:
+            type: stream
+            path: "%kernel.logs_dir%/order_prices_errors_%kernel.environment%.log"
+            level: error
+            channels: order_prices
+            max_files: 10
+        translation:
+            type: stream
+            path: "%kernel.logs_dir%/translation_%kernel.environment%.log"
+            level: info
+            channels: translation
+            max_files: 10

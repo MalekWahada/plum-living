@@ -1,0 +1,62 @@
+# Sylius Core
+sylius_admin:
+    resource: "@SyliusAdminBundle/Resources/config/routing.yml"
+    prefix: /%sylius_admin.path_name%
+
+# Plugins
+fos_sylius_import_export:
+    resource: "admin/fos_sylius_import_export.yaml"
+    prefix: /%sylius_admin.path_name%
+    
+webgriffe_sylius_table_rate_shipping_plugin:
+    resource: "admin/webgriffe_sylius_table_rate_shipping_plugin.yaml"
+    prefix: /%sylius_admin.path_name%
+    
+setono_sylius_analytics:
+    resource: "admin/setono_sylius_analytics.yaml"
+    prefix: /%sylius_admin.path_name%
+
+sylius_paypal_admin:
+    resource: "@SyliusPayPalPlugin/Resources/config/admin_routing.yml"
+    prefix: /%sylius_admin.path_name%
+    
+monsieur_biz_rich_editor_plugin:
+    resource: "@MonsieurBizSyliusRichEditorPlugin/Resources/config/routing/admin.yaml"
+    prefix: /%sylius_admin.path_name%
+
+monsieurbiz_cms_page_admin:
+    resource: "@MonsieurBizSyliusCmsPagePlugin/Resources/config/routing/admin.yaml"
+    prefix: /%sylius_admin.path_name%
+
+# App
+app_admin_combination:
+    resource: "admin/app_combination.yaml"
+    prefix: /%sylius_admin.path_name%/combinations
+
+app_admin_product_group:
+    resource: "admin/app_product_group.yaml"
+    prefix: /%sylius_admin.path_name%/product-groups
+
+app_admin_product_ikea:
+    resource: "admin/app_product_ikea.yaml"
+    prefix: /%sylius_admin.path_name%/product-ikea
+    
+app_admin_delivery_date_calculation_config:
+    resource: "admin/app_delivery_date_calculation_config.yaml"
+    prefix: /%sylius_admin.path_name%/delivery-date-calculation
+
+app_admin_ajax:
+    resource: "admin/ajax.yaml"
+    prefix: /%sylius_admin.path_name%/ajax
+    
+app_admin_cms_pages:
+    resource: "admin/app_cms.yaml"
+    prefix: /%sylius_admin.path_name%/pages
+
+sylius_admin_taxon:
+    resource: "admin/taxon.yaml"
+    prefix: /%sylius_admin.path_name%/taxons
+
+app_admin_product:
+    resource: "admin/product.yaml"
+    prefix: /%sylius_admin.path_name%/products

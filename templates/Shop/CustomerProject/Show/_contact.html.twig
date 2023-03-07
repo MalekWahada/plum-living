@@ -1,0 +1,65 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="row u-margin-b-1">
+    <div class="column-fill-space">
+        <a class="ps-project__share-project-button u-flex u-center-on-cross u-fit-content icon-button-container" type="button">
+            <div class="icon-button ripple-button u-padding-t-1 u-padding-l-1 u-margin-r-2" data-dark-ripple>
+                <svg class="o-icon-24 " data-no-link-fx><use xlink:href="{{ iconLibUrl }}#SVG-icon-share"/></svg>
+            </div>
+            <span class="link-button c-near-black">{{ 'app.ui.plum_scanner.step_three.actions.share_project'|trans }}</span>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="column-fill-space">
+        <a class="ps-project__download-quote-file-button u-flex u-center-on-cross u-fit-content icon-button-container" id="{{ form.downloadQuoteFile.vars.id }}" name="{{ form.downloadQuoteFile.vars.full_name }}" type="button">
+            <div class="icon-button ripple-button u-margin-r-2" data-dark-ripple>
+                <svg class="o-icon-24 " data-no-link-fx><use xlink:href="{{ iconLibUrl }}#SVG-icon-download"/></svg>
+            </div>
+            <span class="link-button c-near-black">{{ form.downloadQuoteFile.vars.label|trans }}</span>
+        </a>
+    </div>
+
+</div>
+
+<div id="loaderPdf" class="u-hidden u-margin-b-3">
+    <div class="loader u-margin-r-1">
+        <svg version="1.1" id="rotating-loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="13px" height="23px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+          <path opacity="0.3" fill="#1c2128" d="M22.3,0C10,0,0,10,0,22.3c0,12.3,10,22.3,22.3,22.3s22.3-10,22.3-22.3C44.5,10,34.6,0,22.3,0z M22.3,39.3
+          c-9.4,0-17-7.6-17-17c0-9.4,7.6-17,17-17s17,7.6,17,17C39.3,31.6,31.6,39.3,22.3,39.3z"/>
+            <path fill="#1c2128" d="M5.3,22.5v-0.3c0-9.4,7.6-17,17-17c9.4,0,17,7.6,17,17s-8,17-17,17v5.3c12,0,22.2-10,22.2-22.3S34.6,0,22.3,0
+                C10,0,0,10.1,0,22.4l0,0.1H5.3z">
+                <animateTransform attributeType="xml"
+                                  attributeName="transform"
+                                  type="rotate"
+                                  from="0 22 22"
+                                  to="360 22 22"
+                                  dur="0.9s"
+                                  repeatCount="indefinite"/>
+            </path>
+      </svg>
+    </div>
+    <span class="t-base-small c-grey-mid">
+        {{ 'app.ui.plum_scanner.step_three.actions.download_quote_file_loader'|trans }}
+    </span>
+</div>
+
+<div class="panel__download-heading u-margin-t-2 c-grey-mid t-base-small">
+    {{ 'app.ui.plum_scanner.step_three.actions.heading'|trans }}
+</div>
+
+<div class="u-flex u-start-on-cross u-margin-b-3">
+    {% include 'Shop/Form/_text_field.html.twig' with {
+        'field': form.name,
+        'attributes': {
+            'class': 'u-fill-space'
+        },
+        'widget_attributes': form.name.vars.attr
+    } %}
+
+    <button type="submit" class="icon-button ripple-button u-v-align-top u-fit-content u-margin-r-0 download-button" id="{{ form.saveProject.vars.id }}" name="{{ form.saveProject.vars.full_name }}" title="{{ form.saveProject.vars.label|trans }}" data-dark-ripple>
+        <span class="u-sr-only">{{ form.saveProject.vars.label|trans }}</span>
+        <svg class="o-icon-24" data-no-link-fx><use xlink:href="{{ iconLibUrl }}#SVG-icon-save"/></svg>
+    </button>
+</div>

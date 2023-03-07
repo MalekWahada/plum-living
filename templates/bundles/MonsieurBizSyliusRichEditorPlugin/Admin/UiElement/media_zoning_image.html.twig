@@ -1,0 +1,19 @@
+<div class="ui gridseme">
+    <img src="{{ element.image | raw }}" width="100%"
+         alt="{{ element.image_alt | raw }}"
+         title="{{ element.image_title | raw }}">
+    {% for position in element.zone %}
+        <i class="circle outline icon" style="
+            position:absolute;
+            top:{{ position.top }}%;
+            left:{{ position.left }}%;
+            "></i>
+
+        {% if position.product and position.product.product_variant %}
+            Produit #{{ loop.index }}: {{ position.product.product_variant }}
+        {% else %}
+            Manuel: {{ position.manual }}<br>
+        {% endif %}
+        <br>
+    {% endfor %}
+</div>

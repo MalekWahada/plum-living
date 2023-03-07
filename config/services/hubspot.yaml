@@ -1,0 +1,26 @@
+imports:
+    - { resource: "@NoksiSyliusPlumHubspotPlugin/Resources/config/listeners/customer.xml" }
+    - { resource: "@NoksiSyliusPlumHubspotPlugin/Resources/config/listeners/customer_behavior.xml" }
+    - { resource: "@NoksiSyliusPlumHubspotPlugin/Resources/config/listeners/common_behavior.xml" }
+    - { resource: "@NoksiSyliusPlumHubspotPlugin/Resources/config/listeners/newsletter.xml" }
+    - { resource: "@NoksiSyliusPlumHubspotPlugin/Resources/config/listeners/newsletter_behavior.xml" }
+    - { resource: "@NoksiSyliusPlumHubspotPlugin/Resources/config/listeners/channel.xml" }
+    - { resource: "@NoksiSyliusPlumHubspotPlugin/Resources/config/listeners/sales.xml" }
+#    - { resource: "@NoksiSyliusPlumHubspotPlugin/Resources/config/listeners/catalog.xml" } # traitement par lot retenu pour le catalogue
+          
+services:
+    _defaults:
+        autoconfigure: false
+        autowire: true
+        public: false
+        
+    App\EventListener\PlumScanner:
+      arguments:
+          $scanStatusEventName: '%hubspot_eventname_plum_scanner_status%'
+      tags: 
+        - { name: kernel.event_listener, event: plum_scanner.scan_status, method: onScanStatus }
+
+#    Pou désactiver un adapter du bundle, on ajoute "enabled: false" à la définition du tag 
+#    Noksi\SyliusPlumHubspotPlugin\Service\Sales\Adapter\OrderShippingLineAdapter:
+#        tags:
+#            - { name: 'hubspot.adapter.order', enabled: false }

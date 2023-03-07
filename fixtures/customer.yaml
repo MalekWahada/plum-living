@@ -1,0 +1,65 @@
+App\Entity\Customer\Customer:
+    customer_{1..50}:
+        defaultAddress: '@address<current()>'
+        email: <email()>
+        email_canonical: <email()>
+        first_name: <firstName()>
+        last_name: <lastName()>
+        birthday: <dateTime()>
+        gender: <gender()>
+        created_at: <dateTime()>
+        updated_at: <dateTime()>
+        phone_number: <phoneNumber()>
+        subscribed_to_newsletter: <boolean(50)>
+        plumScannerUserId: null
+        howYouKnowAboutUs: <recommendation()>
+        customerType: <customerType()>
+        howYouKnowAboutUsDetails: null    
+    basic_customer:
+        defaultAddress: '@basic_address'
+        email: 'basic-user@mail.com'
+        email_canonical: 'basic-user@mail.com'
+        first_name: 'Basic'
+        last_name: 'User'
+        birthday: <dateTime('1990-01-10')>
+        gender: 'm'
+        created_at: <dateTime()>
+        updated_at: null
+        phone_number: '0612345678'
+        subscribed_to_newsletter: false
+        plumScannerUserId: null
+        howYouKnowAboutUs: <recommendation()>
+        customerType: <customerType()>
+        howYouKnowAboutUsDetails: null     
+    cart_customer:
+        defaultAddress: '@cart_address'
+        email: 'cart-user@mail.com'
+        email_canonical: 'cart-user@mail.com'
+        first_name: 'Cart'
+        last_name: 'User'
+        birthday: <dateTime('1990-01-10')>
+        gender: 'm'
+        created_at: <dateTime()>
+        updated_at: null
+        phone_number: '0612345678'
+        subscribed_to_newsletter: false
+        plumScannerUserId: null
+        howYouKnowAboutUs: <recommendation()>
+        customerType: <customerType()>
+        howYouKnowAboutUsDetails: null     
+    customer_DE_{1..10}:
+        defaultAddress: '@basic_address_DE_<current()>'
+        email: <de:email()>
+        email_canonical: <de:email()>
+        first_name: <de:firstName()>
+        last_name: <de:lastName()>
+        birthday: <dateTime()>
+        gender: <gender()>
+        created_at: <dateTime()>
+        updated_at: null
+        phone_number: <de:phoneNumber()>
+        subscribed_to_newsletter: <boolean(50)>
+        plumScannerUserId: null
+        howYouKnowAboutUs: <recommendation()>
+        customerType: <customerType()>
+        howYouKnowAboutUsDetails: null    

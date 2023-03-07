@@ -1,0 +1,12 @@
+services:
+    App\Promotion\Processor\AfterTaxesOrderPromotionProcessor:
+        autowire: true
+        tags:
+            - { name: sylius.order_processor, priority: 5 }
+
+    App\Promotion\Processor\AfterTaxesPromotionProcessor:
+        autowire: true
+        autoconfigure: true
+        bind:
+            $preQualifiedPromotionsProvider: '@sylius.active_promotions_provider'
+            $promotionEligibilityChecker: '@sylius.promotion_eligibility_checker'

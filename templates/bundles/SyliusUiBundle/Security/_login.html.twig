@@ -1,0 +1,37 @@
+{% form_theme form '@SyliusUi/Form/theme.html.twig' %}
+{% import '@SyliusUi/Macro/messages.html.twig' as messages %}
+
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        {{ sylius_template_event('sylius.admin.login.before_form', {'form': form}) }}
+
+        {# Plum Logo #}
+        <a
+        style="display: block; max-width: 15rem; margin: 0 auto 3rem; color: #000;"
+        href="{{ path('sylius_admin_dashboard') }}">
+            <svg aria-label="Plum Kitchen" viewBox="0 0 90 40"><use xlink:href="{{ iconLibUrl }}#SVG-logo-full"/></svg>
+        </a>
+        {# End Plum Logo #}
+
+        {% if last_error %}
+            <div class="ui left aligned basic segment">
+                {{ messages.error(last_error.messageKey) }}
+            </div>
+        {% endif %}
+
+        {{ form_start(form, {'action': action|default('/'), 'attr': {'class': 'ui large loadable form', 'novalidate': 'novalidate'}}) }}
+        <div class="ui left aligned very padded segment">
+            {{ form_row(form._username, {'value': last_username|default('')}) }}
+            {{ form_row(form._password) }}
+            {{ form_row(form._remember_me) }}
+            <input type="hidden" name="_csrf_admin_security_token" value="{{ csrf_token('admin_authenticate') }}">
+            <button type="submit" class="ui fluid large primary submit button">{{ 'app.ui.generic.connexion'|trans }}</button>
+        </div>
+
+        {{ sylius_template_event('sylius.admin.login.form', {'form': form}) }}
+
+        {{ form_end(form, {'render_rest': false}) }}
+    </div>
+</div>

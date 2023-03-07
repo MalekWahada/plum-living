@@ -1,0 +1,22 @@
+{#
+UI Element template
+type: image_collection
+element fields :
+    images
+#}
+<div class="ui stackable four column grid">
+    <div class="column">
+        <img src="{{ element.image1 | raw }}"
+             alt="{{ element.image1_alt | raw }}"
+             title="{{ element.image1_title | raw }}" style="height:200px; width:auto;">
+        <h2>{{ element.title1 }}</h2>
+    </div>
+    {% if element.image2 %}
+    <div class="column">
+        <img src="{{ element.image2 | raw }}"
+             alt="{{ element.image2_alt | raw }}"
+             title="{{ element.image2_title | raw }}" style="height:200px; width:auto;">
+        <h2>{{ element.title2 }}</h2>
+    </div>
+    {% endif %}
+</div>

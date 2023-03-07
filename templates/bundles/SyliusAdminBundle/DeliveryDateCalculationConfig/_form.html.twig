@@ -1,0 +1,18 @@
+{% form_theme form '@SyliusAdmin/Form/theme.html.twig' %}
+
+<div class="ui segment">
+    <h2>{{ ('app.ui.delivery_date_calculation_config.modes.' ~ resource.mode)|trans  }}</h2>
+    <div class="ui form loadable loading" id="delivery_date_calculation_config_form">
+        <div class="fields">
+            <div class="seven wide field">
+                {{ form_row(form.minDateDelivery, {'type': 'date'}) }}
+            </div>
+            <div class="two wide field">
+                {{ form_row(form.duration) }}
+            </div>
+            <div class="seven wide field">
+                {{ form_row(form.maxDateDelivery, {'type': 'date'}) }}
+            </div>
+        </div>
+    </div>
+</div>

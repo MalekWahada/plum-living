@@ -1,0 +1,7 @@
+App\Entity\Taxation\TaxCategory:
+    tax_category_vat:
+        code: 'tva'
+        name: 'TVA'
+        description: 'Taxe sur la Valeur Ajoutée'
+        created_at: <dateTime()>
+        updated_at: <dateTime()>

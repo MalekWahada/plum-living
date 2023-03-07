@@ -1,0 +1,46 @@
+.cms {
+  &__chip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: absolute;
+    height: rem(60);
+    width: rem(60);
+    border-radius: 50%;
+    padding: rem(2) rem(4) 0;
+    background-color: $color--pink;
+    color: $color--true-white;
+    transform: rotate(15deg);
+    text-align: center;
+    bottom: rem(-35);
+    right: rem(18);
+
+    @include up('large') {
+      height: rem(84);
+      width: rem(84);
+      bottom: rem(-40);
+    }
+
+    p {
+      font-family: $font--canela;
+      line-height: 1;
+    }
+  }
+  &__chip-button {
+    cursor: pointer;
+    padding: 7px 15px;
+    border-radius: 50px;
+    border: 1px solid $color--near-black;
+    color: $color--near-black;
+    display: inline-block;
+    margin:5px;
+    transition: all ease-in-out 0.3s;
+
+    &.active,
+    &:hover{
+      background-color: $color--near-black;
+      color: $color--near-white;
+    }
+  }
+}

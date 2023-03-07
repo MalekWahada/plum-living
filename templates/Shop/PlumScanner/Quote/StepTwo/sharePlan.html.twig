@@ -1,0 +1,52 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block title %}
+    {{ "app.ui.plum_scanner.title"|trans }}
+{% endblock %}
+
+{% block content %}
+    <div class="container container--compact">
+        <input type="hidden" id="plum-scanner-progress" data-content-url="{{ path(
+            'app_plum_scanner_project_status',
+            { 'token': project.token }
+        ) }}">
+
+        <h1 class="page-title t-header-large">{{ "app.ui.plum_scanner.heading"|trans|raw }}</h1>
+
+        {% include 'Shop/PlumScanner/Quote/Partial/_steps.html.twig' with { step: 2 } %}
+
+        <div class="panel panel--medium-chin u-padding-t-5 u-margin-b-15">
+            <div class="flush-row u-margin-b-6">
+                <div class="flush-column @md:flush-column-fit-content t-header-small @md:u-margin-r-3">2.</div>
+                <div class="flush-column @md:flush-column-fill-space u-v-spaced-3">
+                    <div class="t-header-small">
+                        {{ 'app.ui.plum_scanner.step_two.share_plan.title.first_item'|trans|raw }}
+                    </div>
+                    <div class="bodycopy t-base-medium">
+                        {% set url = constant('App\\Provider\\PlumScanner\\IkeaKitchenPlannerProvider::IKP_OLD_VERSION_LONG_URL') %}
+                        {{ 'app.ui.plum_scanner.step_two.share_plan.title.second_item'|trans({ '%URL%': url })|raw }}
+                    </div>
+                    <div class="t-base-medium">
+                        <a class="t-link c-electric-blue hover:c-electric-blue"
+                        data-clipboard="{{ project.scannerTransferEmail }}"
+                        data-clipboard-copied-text="{{ 'app.ui.generic.copied'|trans }}">
+                            {{ project.scannerTransferEmail }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <a class="big-honking-submit ripple-button" href="{{ path('app_plum_scanner_project_status', {'token': project.token}) }}">
+                {{ 'app.ui.plum_scanner.step_two.share_plan.sent'|trans }}
+            </a>
+        </div>
+
+        <p class="t-header-small u-margin-b-4 t-align-center">
+            {{ 'app.ui.plum_scanner.step_two.share_plan.guide'|trans|raw }}
+        </p>
+
+        <video class="u-block u-fullwidth" controls="controls" preload="metadata" poster="{{ asset('build/shop/images/ikp-demo-poster.jpg', 'shop') }}">
+            <source src="{{ asset('build/shop/images/ikp-demo.mp4', 'shop') }}" type="video/mp4">
+        </video>
+    </div>
+{% endblock %}

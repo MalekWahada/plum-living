@@ -1,0 +1,21 @@
+{% if app.user is not null %}
+    {% set typeform_data = app.user|shop_user_export_typeform %}
+{% else %}
+    {% set typeform_data = [] %}
+{% endif %}
+<script src="https://embed.typeform.com/embed.js"></script>
+<script>
+    window.addEventListener("DOMContentLoaded", function() {
+        const el = document.querySelector(".typeform-widget");
+        const data = JSON.parse("{{ typeform_data|json_encode|e('js') }}");
+        const url = new URL(el.dataset.url);
+        Object.keys(data).forEach(key => url.searchParams.append(key, data[key])); {# Append data to current URL #}
+        window.typeformEmbed.makeWidget(el, url.toString(), {
+            onSubmit: function() {
+                dataLayer.push({
+                    'event': '{{ constant('App\\TagManager\\TagManagerEventInterface::ASK_FOR_QUOTE_MONITORING_EVENT') }}',
+                });
+            }
+        });
+    });
+</script>

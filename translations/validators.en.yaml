@@ -1,0 +1,50 @@
+app:
+    b2b_program:
+        cannot_use_for_b2c_type: 'The Terra Club cannot be used for a %customerType% user.'
+    channel:
+        default_country:
+            enabled: 'The default country must be present in the list of enabled countries.'
+            not_blank: 'Please enter the default country of the channel.'
+        unique_countries: 'The following countries are already used by another channel: %countries%.'
+        unique_default_country: 'The default country is already used by another channel.'
+    cms_content: 'Please respect the skeleton.'
+    combination:
+        already_use: 'This combination already exists.'
+        design_not_null: 'Please choose design.'
+        finish_not_null: 'Please choose finish.'
+        image_not_null: 'The image is required.'
+    constraints:
+        project_plan: 'Upload a PDF format file'
+    customer_project:
+        chosen_variant:
+            error_occurred: 'An error has occurred with this item.'
+            not_set: 'Attention, please configure this item to save your project.'
+    form:
+        address:
+            city:
+                no_digit: 'The text must not contain numbers.'
+            postCode:
+                format: 'The postcode format does not match the selected country.'
+    page:
+        code:
+            not_blank: 'Please enter a code'
+    product:
+        groups:
+            consistency_error: 'The selected groups do not have the same options or taxa in common.'
+    product_group:
+        consistency_error: 'The selected products do not have the same options or taxa in common'
+    product_image:
+        position:
+            not_blank: 'Please choose an order'
+    product_option_value:
+        position:
+            not_blank: 'Please choose an order'
+    promotion_coupon:
+        code:
+            regex: 'The promotion code can only consist of letters, numbers, dashes, underscores and special characters @ + # ! ? & /'
+    translation:
+        empty_translation_bag: 'No translation was found.'
+        missing_page_translation_for_locale_key: 'One or more keys are not translated for the language %locale% : %details%'
+        missing_page_translation_key: 'One or more translation keys are missing: %details%'
+        translator_client_locale_not_found: 'The language %locale% is not configured in Lokalize or no key is checked for this language.'
+        validation_failed_on_field: 'Validation failed on field "%field%": %error%'

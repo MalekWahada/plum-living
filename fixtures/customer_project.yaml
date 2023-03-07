@@ -1,0 +1,14 @@
+App\Entity\CustomerProject\Project:
+    customer_project_{1..5}:
+        facade: '@taxon_metod'
+        design: '@product_option-value_design_lisse'
+        finish: '@product_option-value_finish_laque_mate'
+        color: '@product_option-value_color_bleu_lagon'
+        customer: '@basic_customer'
+        name: 'Project #<current()>'
+        token: <uuid()>
+        scanner_project_id: null
+        scanner_fetched: false
+        scanner_status: 'waiting_for_mail'
+        comment: <sentence()>
+        created_at: <dateTimeBetween("-200 days", "now")>

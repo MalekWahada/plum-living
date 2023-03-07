@@ -1,0 +1,33 @@
+{% set refLocale = constant('App\\Entity\\Product\\ProductCompleteInfoTranslation::PUBLISHED_LOCALE') %}
+
+<div class="ui right floated buttons">
+    <div class="ui labeled icon dropdown secondary link button" tabindex="0">
+        <i class="info icon"></i> <span class="text">{{ 'app.ui.admin.taxon.translation_button'|trans }}</span>
+        <div class="menu" tabindex="-1">
+            <div class="header">
+                <i class="cloud upload icon"></i> {{ 'app.ui.admin.taxon.publish_translation'|trans({'%locale%':  refLocale|language_name}) }}
+            </div>
+            <div class="divider"></div>
+            <form action="{{ path('app_admin_taxon_translation_publish', {'id': taxon.id}) }}" method="post">
+                <button class="ui labeled icon basic button fluid" type="submit">
+                    <i class="icon cloud upload"></i> {{ 'app.ui.admin.taxon.publish_translation'|trans({'%locale%':  refLocale|language_name}) }}
+                </button>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('app_translation_publish') }}">
+            </form>
+            <div class="header">
+                <i class="cloud download icon"></i> {{ 'app.ui.admin.taxon.fetch_translation'|trans }}
+            </div>
+            <div class="divider"></div>
+            {% for locale in get_locales()|filter(x => x.code != refLocale) %}
+                <form action="{{ path('app_admin_taxon_translation_fetch', {'id': taxon.id, 'locale': locale.code}) }}" method="post">
+                    <button class="item ui labeled icon basic button fluid" type="submit" name="form" data-requires-confirmation-message="{{ 'app.ui.admin.translation.fetch_translation_confirm'|trans({'%locale%': refLocale|language_name}) }}">
+                        <i class="icon flag"></i> {{ locale.code|locale_name }}
+                    </button>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('app_translation_fetch') }}">
+                </form>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+

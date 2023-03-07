@@ -1,0 +1,18 @@
+{% if product.images|length > 0 %}
+    {% for image in product.images %}
+        {% set source_path = image.path %}
+        {% set original_path = source_path|imagine_filter('sylius_shop_product_original') %}
+        {% set path = source_path|imagine_filter('app_tunnel_modal_thumbnail') %}
+        {% set pathRetina = source_path|imagine_filter('app_tunnel_modal_thumbnail_retina') %}
+        <div class="single-product-header__left-img u-cross-centered-row swiper-slide">
+            <img class="u-fullwidth u-fullheight u-cover" src="{{ path }}" srcset="{{ pathRetina|default(path) }} 2x" id="main-image-{{ loop.index }}"
+                 alt="{{ product.name }}" {{ sylius_test_html_attribute('main-image-' ~ loop.index) }} />
+        </div>
+    {% endfor %}
+{% else %}
+    {% set path = asset('build/shop/images/no-image.png', 'shop') %}
+    <div class="tunnel-modal-left__img u-cross-centered-row swiper-slide">
+        <img src="{{ path }}" srcset="{{ pathRetina|default(path) }} 2x" id="main-image"
+             alt="{{ product.name }}" {{ sylius_test_html_attribute('main-image') }} class="no-image u-cover"/>
+    </div>
+{% endif %}

@@ -1,0 +1,9 @@
+{% if cart is defined %}
+    <div id="plum-cart-summary" class="plum-cart-summary" data-refresh-url="{{ path('sylius_shop_cart_summary') }}" data-update-url="{{ path('ajax_cart_update') }}" data-clear-url="{{ path('sylius_shop_cart_clear') }}">
+        <div class="plum-cart-summary__container u-flex-column cart-summary-route-target" data-cart-is-updated="false">
+            {{ sylius_template_event('sylius.shop.cart.widget.popup', {'cart': cart}) }}
+        </div>
+    </div>
+{% else %}
+    {{ render(url('sylius_shop_partial_cart_summary', {'template': 'Shop/Plum/Layout/Topbar/_cart_summary.html.twig'})) }}
+{% endif %}

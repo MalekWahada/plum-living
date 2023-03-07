@@ -1,0 +1,16 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+
+{% block title %}{{ 'sylius.ui.order'|trans ~' #'~ order.number }} {{ parent() }}{% endblock %}
+
+{% set customer = order.customer %}
+
+{% block content %}
+    {% if order.state == constant('Sylius\\Component\\Order\\Model\\OrderInterface::STATE_CART') and
+        order.checkoutState == constant('Sylius\\Component\\Core\\OrderCheckoutStates::STATE_CART') and
+        order.paymentState == constant('Sylius\\Component\\Core\\OrderPaymentStates::STATE_CART') and
+        order.shippingState == constant('Sylius\\Component\\Core\\OrderShippingStates::STATE_CART') %}
+        {% include '@SyliusAdmin/Order/Show/_cart_state.html.twig' %}
+    {% else %}
+        {{ sylius_template_event('sylius.admin.order.show.content', _context) }}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,74 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div id="smallcardredirect" class="js-zoning-container u-hidden @lg:u-block">
+    <div class="container container-custom-padding u-padding-t-12 u-padding-b-12">
+        <div class="row">
+            <div class="column-fill-space">
+                <img src="{{ element.image | raw }}" width="100%"
+                     alt="{{ element.image_alt | raw }}"
+                     title="{{ element.image_title | raw }}">
+                {% for position in element.zone %}
+                    {% if position.product and position.product.product_variant %}
+                        {% set route = path('catalog_product_smallcard_ajax', {
+                            '_locale': sylius.localeCode,
+                            'code': position.product.product_variant
+                        }) %}
+                        <div class="js-zoning-element zoning-circle pulse
+                             {% if position.color %}
+                                {{ position.color}}
+                             {% endif %}"
+                           data-route="{{ route }}"
+                           style="
+                        position:absolute;
+                        top:{{ position.top }}%;
+                        left:{{ position.left }}%;
+                        ">
+                            <span>+</span>
+                        </div>
+                    {% elseif (position.manual) %}
+                        <div class="js-zoning-element zoning-circle pulse
+                            {% if position.color %}
+                                {{ position.color}}
+                             {% endif %}"
+                           style="
+                               position:absolute;
+                               top:{{ position.top }}%;
+                               left:{{ position.left }}%;
+                               ">
+                            <span>+</span>
+                        </div>
+                        <div class="zoning-card u-hidden">
+                            <div class="content">
+                                <div class="header t-base-medium u-margin-b-2">{{ position.manual }}</div>
+                                <div class="meta">
+                                    <img src="{{ position.image }}"
+                                         title="{{ position.image_title }}"
+                                         alt="{{ position.image_alt }}">
+                                    {% if position.link_url is defined and position.link_label is defined and position.link_label is not empty %}
+                                        <a class="button button--small u-fullwidth" href="{{ position.link_url }}"
+                                            {% if position.link_target %} target="{{ position.link_target }}"{% endif %}>
+                                            {{ position.link_label }}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="js-zoning-card u-hidden"
+                     style="
+                          position: absolute;
+                          top: 200px;
+                          right: 200px;
+                          z-index: 10;
+                         ">
+                    <div class="close">
+                        <svg class="o-icon-24"><use xlink:href="{{ iconLibUrl }}#SVG-icon-close"/></svg>
+                    </div>
+                    <div class="body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

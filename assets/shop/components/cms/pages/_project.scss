@@ -1,0 +1,621 @@
+.CMS_PAGE_TYPE_project {
+  .page-container {
+    padding-top: 0;
+  }
+
+  .cms {
+    background: $color--true-white;
+
+    //Header
+    &-header {
+
+      @include up('large') {
+      }
+
+      //Project header container
+      &__container {
+        flex-direction: column;
+        padding-bottom: rem(124);
+        position: relative;
+
+        @include up('large') {
+          flex-direction: row;
+          justify-content: center;
+          padding-bottom: 0;
+        }
+      }
+      //End project header container
+
+      //Project header left : title + informationns + text + button
+      &__left {
+        position: initial;
+
+        @include between('large', 'wide') {
+          padding-left: rem(50);
+        }
+
+        @include up('wide') {
+          padding-left: rem(100);
+        }
+
+        //Title
+        .cms__title {
+          max-width: 250px;
+
+          @include up('large') {
+            max-width: 436px;
+          }
+        }
+        //End title
+      }
+      //End project header left
+
+      //Project header left informations : color pastille + color name + color type + price
+      &__infos {
+        display: flex;
+        align-items: center;
+        padding-top: rem(25);
+
+        @include up('large') {
+          padding-top: rem(30);
+        }
+
+        div:not(:last-child) {
+          margin-right: rem(15);
+        }
+      }
+      //End project header left informations : color pastille + color name + color type + price
+
+      //Project header left informations : color pastille + color name
+      &__color {
+        display: flex;
+
+        img {
+          width: rem(14);
+          height: rem(14);
+          margin-top: rem(2);
+          border-radius: 50%;
+          border: 1px solid currentColor;
+          margin-right: rem(4);
+        }
+
+      }
+      //End project header left informations : color pastille + color name
+
+      //Project header left informations : color type
+      &__type {
+
+      }
+      //End project header left informations : color type
+
+      //Project header left text
+      &__text {
+        padding-top: rem(25);
+
+        .cms__text{
+          font-size: rem(15);
+          line-height: 146%;
+          letter-spacing: -0.5px;
+
+          @include up('large') {
+            font-size: rem(20);
+            line-height: 160%;
+          }
+
+        }
+
+        @include between('large', 'wide') {
+          max-width: rem(316);
+        }
+        @include up('wide') {
+          max-width: rem(436);
+        }
+
+        @include up('large') {
+          min-height: rem(160);
+        }
+      }
+      //End project header left text
+
+      //Project header left button
+      &__btn {
+        position: relative;
+        margin-top: 20px;
+
+        @include up('large') {
+          left: inherit;
+          transform: inherit;
+        }
+
+        a {
+          color: $color--true-white;
+          padding-right: rem(30);
+
+          &:hover,
+          &:focus {
+            color: $color--true-white;
+          }
+
+          &::before {
+            background: $color--beige;
+          }
+
+          &::after {
+            transform: rotate(90deg);
+          }
+        }
+      }
+      //Project header left button
+
+      //Project header right
+      &__right {
+        padding-top: rem(50);
+        padding-left: rem(15);
+        position: relative;
+
+        @include up('large') {
+          padding-top: 0;
+          padding-left: 0;
+        }
+
+        .swiper-slide {
+          width: 80%;
+          height: rem(400);
+
+
+          img {
+            height: 100%;
+            object-fit: cover;
+          }
+
+          @include up('medium') {
+            width: auto;
+            height: auto;
+          }
+        }
+      }
+      //End project header right
+    }
+    //End header
+
+    //Project content
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: rem(60);
+
+      @include up('large') {
+        padding-top: rem(125);
+      }
+
+      //Project project content title + caption
+      .cms__title,
+      .cms__caption {
+
+        @include up('large') {
+          min-width: rem(760);
+        }
+      }
+      //End project content project title + caption
+
+      //Project content text
+      .cms__text {
+        @include up('large') {
+          max-width: rem(760);
+        }
+      }
+
+      .cms__text span{
+        font-size: rem(14) !important;
+        line-height: 146% !important;
+        letter-spacing: -0.5px !important;
+
+        @include up('large') {
+          font-size: rem(18) !important;
+          line-height: 160% !important;
+        }
+      }
+      //End project content text
+    }
+    //End project content
+
+    //Project section Budget
+    &-section-budget {
+      margin-top: rem(80);
+      display: flex;
+      flex-direction: column;
+      padding-left: 20px;
+      padding-right: 20px;
+      scroll-behavior: smooth;
+
+      @include up('large') {
+        margin-top: rem(151);
+        flex-direction: row;
+        padding-left: rem(100);
+        padding-right: 0;
+      }
+    }
+    //End project section Budget
+
+    &-cta {
+      margin-top: rem(100);
+      position: relative;
+
+    }
+
+    &-slider {
+      padding-top: rem(90);
+
+      @include up('large') {
+        padding-top: rem(90);
+      }
+      .link-button{
+        display:none;
+      }
+    }
+    .cms-mosaic__content{
+      background: white;
+    }
+    .cms-mosaic{
+      margin-bottom: 200px;
+    }
+  }
+}
+
+
+// New Projects Pages
+
+.CMS_PAGE_home_project {
+  .cms {
+    .tunnel-second{
+      .details-colors-item{
+        cursor: pointer;
+        display: inline-flex !important;
+        width: 40px !important;
+        height: 40px !important;
+        vertical-align: middle;
+        margin: 15px;
+        &__pastille{
+          .tooltip{
+            background: $color--asphalte;
+            pointer-events:none;
+            color: #fff;
+            border-radius:4px;
+            filter: alpha(opacity=0);
+            font-size: .8em;
+            font-weight: 400;
+            left: 50%;
+            right: 50%;
+            transform: translate(-50%, 0);
+            line-height: 1.5em;
+            margin-left: 0;
+            opacity: 0;
+            padding: 12px 12px;
+            position: absolute;
+            text-align: center;
+            text-transform: none;
+            top: -1em;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease-in-out;
+            -o-transition: all .3s ease;
+            transition: all .3s ease-in-out;
+            width: auto;
+            min-width: 115px;
+            z-index: 2;
+            &:after{
+              border-color: $color--asphalte transparent;
+              border-style: solid;
+              border-width: 15px 15px 0;
+              bottom: -15px;
+              content: "";
+              display: block;
+              left: 50%;
+              position: absolute;
+              width: 0;
+              right: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+          &:hover{
+            .tooltip{
+              opacity: 1;
+              filter: alpha(opacity=100);
+              top: -2em;
+              left: 50%;
+              right: 50%;
+              transform: translate(-50%, -50%);
+              z-index: 99;
+              -webkit-transition: all 0.2s ease;
+              -moz-transition: all 0.2s ease;
+              -o-transition: all 0.2s ease;
+              transition: all 0.2s ease;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.page-media-article{
+  .home-projects-hero{
+    &.color_ciel_voile{
+      background-color: $color--ciel-voile;
+    }
+    &.color_gris_nuage{
+      background-color: $color--gris-nuage;
+    }
+    &.color_sable{
+      background-color: $color--sable;
+      p{
+        color: $color--true-black;
+      }
+    }
+    &.color_beige_rose{
+      background-color: $color--beige-rose;
+    }
+    &.color_amandier_grise{
+      background-color: $color--amandier-grise;
+    }
+    &.color_asphalte{
+      background-color: $color--asphalte;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+    &.color_vert_de_gris{
+      background-color: $color--vert-de-gris;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+    &.color_bleu_lagon{
+      background-color: $color--bleu-lagon;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+    &.color_bleu_paon{
+      background-color: $color--bleu-paon;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+    &.color_terra{
+      background-color: $color--terra;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+    &.color_moka{
+      background-color: $color--moka;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+    &.color_stone{
+      background-color: $color--stone;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+    &.color_bleu_nuit{
+      background-color: $color--bleu-nuit;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+    &.color_bleu_gris{
+      background-color: $color--bleu-gris;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+    &.color_ardoise{
+      background-color: $color--vert-ardoise;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+    &.color_sombre_forest{
+      background-color: $color--sombre-forest;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+    &.color_vert_sauvage{
+      background-color: $color--vert-sauvage;
+      color: $color--true-white;
+      p{
+        color: $color--true-white;
+      }
+    }
+  }
+  .js-zoning-card{
+    .close{
+      position: absolute;
+      right: 12px;
+      top: 11px;
+      cursor: pointer;
+    }
+  }
+  .zoning-card{
+    background: #fff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    padding: 30px;
+    .content{
+      width: 215px;
+      img{
+        width: 215px;
+        height: 215px;
+        object-fit: cover;
+      }
+      .header{
+        font-weight: 500;
+      }
+    }
+  }
+
+
+  .pulse {
+    animation: pulse-animation 1.8s infinite;
+  }
+
+  @keyframes pulse-animation {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 0 30px rgba(255, 255, 255, 0);
+    }
+  }
+
+  .zoning-circle{
+    height:40px;
+    width: 40px;
+    background: $color--amandier-grise;
+    border-radius: 100px;
+    border:4px solid #ffffff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    text-align:center;
+    line-height: 2rem;
+    span{
+      font-size: 1.5rem;
+      color: white;
+      font-weight: 600;
+    }
+    &.color_ciel_voile{
+      background-color: $color--ciel-voile;
+    }
+    &.color_gris_nuage{
+      background-color: $color--gris-nuage;
+    }
+    &.color_sable{
+      background-color: $color--sable;
+    }
+    &.color_beige_rose{
+      background-color: $color--beige-rose;
+    }
+    &.color_amandier_grise{
+      background-color: $color--amandier-grise;
+    }
+    &.color_asphalte{
+      background-color: $color--asphalte;
+    }
+    &.color_vert_de_gris{
+      background-color: $color--vert-de-gris;
+    }
+    &.color_bleu_lagon{
+      background-color: $color--bleu-lagon;
+    }
+    &.color_bleu_paon{
+      background-color: $color--bleu-paon;
+    }
+    &.color_terra{
+      background-color: $color--terra;
+    }
+    &.color_moka{
+      background-color: $color--moka;
+    }
+    &.color_stone{
+      background-color: $color--stone;
+    }
+    &.color_bleu_nuit{
+      background-color: $color--bleu-nuit;
+    }
+    &.color_bleu_gris{
+      background-color: $color--bleu-gris;
+    }
+    &.color_ardoise{
+      background-color: $color--vert-ardoise;
+    }
+    &.color_sombre_forest{
+      background-color: $color--sombre-forest;
+    }
+    &.color_vert_sauvage{
+      background-color: $color--vert-sauvage;
+    }
+    &.color_blanc_pur{
+      background-color: white;
+    }
+  }
+  .home-project-plan{
+    text-align:center;
+    @include up ('large'){
+      text-align:left;
+    }
+  }
+  .cms-slider-home-project-plans__container{
+    overflow:hidden;
+    position: relative;
+    .swiper-pagination-bullet{
+      height: 12px;
+      width: 12px;
+      margin: 0 4px;
+      &-active{
+        background: $color--asphalte;
+      }
+    }
+  }
+}
+
+.shoppinglist.media-two-hybrids-columns.img-immersive{
+
+  .shoppinglist_price{
+    color: $color--grey-mid;
+    width: 80px;
+  }
+
+  .c-grey-mid{
+    font-size: 14px;
+  }
+  .shoppinglist_table{
+    b{
+      font-weight: 500;
+    }
+    td{
+      vertical-align: middle;
+    }
+    tr{
+      border-bottom: 1px solid rgba(28, 33, 40, 0.05);
+    }
+    .shoppinglist_item-line{
+       td{
+         padding-top:5px;
+         padding-bottom:5px;
+       }
+      .shoppinglist_image-container{
+        width: 80px;
+        .shoppinglist_image{
+          width: 40px;
+          height: 40px;
+          object-fit: cover;
+          position: relative;
+          vertical-align: middle;
+        }
+      }
+    }
+    tr:last-child{
+      border-bottom:none;
+    }
+  }
+  .details-total{
+    text-transform: none;
+    font-weight: normal;
+    letter-spacing: normal;
+  }
+}

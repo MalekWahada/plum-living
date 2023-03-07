@@ -1,0 +1,17 @@
+{% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationForm %}
+
+<div class="ui segment">
+    {{ form_row(form) }}
+</div>
+
+{% apply spaceless %}
+{% if form.image.vars.value.path|default(null) is not null %}
+    <img class="ui small bordered image"
+        src="{{ form.image.vars.value.path|imagine_filter('sylius_small') }}"
+        alt="{{ form.image.vars.value.type }}"
+    />
+{% endif %}
+<div class="ui hidden element">
+    {{ form_widget(form.image) }}
+</div>
+{% endapply %}

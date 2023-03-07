@@ -1,0 +1,29 @@
+{% set pageContent = item.content | format_cms_content_to_array %}
+{% set route = get_url_from_page(item) %}
+
+<div class="cms__item cms__item--project cms-slider__item swiper-slide">
+    <a class="u-block u-v-spaced-2 t-link-wrapper"  href="{{ route | raw }}">
+        {% if item.image.path is defined and item.image.path is not empty %}
+            <img class="slide-cover-image u-cover"
+                 src="{{ item.image.path | imagine_filter('app_cms_big_thumbnail') }}"
+                 srcset="{{ item.image.path | imagine_filter('app_cms_big_thumbnail_retina') }} 2x"/>
+        {% else %}
+            <img class="slide-cover-image u-cover"
+                 src="{{ asset('build/shop/images/no-image.png', 'shop') }}"
+                 srcset="{{ asset('build/shop/images/no-image.png', 'shop') }}"/>
+        {% endif %}
+        <div class="cms-slider__content">
+            <div class="content-left">
+                <div class="cms-slider__type t-header-xsmall u-inline-block u-margin-b-1 c-basic-blue">
+                    {{ ('app.ui.cms.chip.room.type_' ~ item.room ~ '')|trans }} |
+                    {{ get_color_from_page(item) }}
+                </div>
+                <h3 class="t-header-medium">{{ item.title }}</h3>
+                <div class="cms-slider__price t-base-small">
+                    {{ 'app.ui.listing.projects.budget'|trans }}
+                    {{ (item.budget / 100) }} €
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

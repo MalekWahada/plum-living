@@ -1,0 +1,13 @@
+{% use 'Shop/Form/_field_commons.html.twig' %}
+
+{% set props = field.vars %}
+
+<div class="row">
+    <div class="column-6 u-padding-r-1">
+        {% include 'Shop/Form/_select_field.html.twig' with { field: field.country, label: field.vars.label|trans } %}
+    </div>
+    <div class="column-6 u-padding-l-1">
+        {% include 'Shop/Form/_text_field.html.twig' with { field: field.number, attributes: { type: 'tel' } } %}
+    </div>
+</div>
+{{ block('field_errors') }}

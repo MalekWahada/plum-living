@@ -1,0 +1,27 @@
+sylius_grid:
+    grids:
+        app_admin_delivery_calculation_mode_config:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: '%app.model.delivery_date_calculation_config.class%'
+            fields:
+                mode:
+                    type: twig
+                    label: app.ui.delivery_date_calculation_config.mode
+                    options:
+                        template: '@SyliusAdmin/DeliveryDateCalculationConfig/Grid/Field/_mode.html.twig'
+                min_date_delivery:
+                    type: twig
+                    label: app.ui.delivery_date_calculation_config.min_date
+                    options:
+                        template: '@SyliusAdmin/DeliveryDateCalculationConfig/Grid/Field/_date.html.twig'
+                max_date_delivery:
+                    type: twig
+                    label: app.ui.delivery_date_calculation_config.max_date
+                    options:
+                        template: '@SyliusAdmin/DeliveryDateCalculationConfig/Grid/Field/_date.html.twig'
+            actions:
+                item:
+                    update:
+                        type: update

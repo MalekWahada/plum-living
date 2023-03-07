@@ -1,0 +1,51 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set baseTranslation = 'app.cms_page.media_article.theme.' ~ categoryTranslationKey %}
+
+{% block metatags %}
+    <meta property="og:type" content="{{ (baseTranslation ~ '.meta.type') | trans }}"/>
+    <meta property="og:title" content="{{ (baseTranslation ~ '.meta.title') | trans }}"/>
+    <meta name="description" property="og:description" content="{{ (baseTranslation ~ '.meta.description') | trans }}"/>
+{% endblock %}
+
+{% block content %}
+    <div class="cms">
+        <div class="cms__container">
+            <div class="cms-header">
+                <div class="container u-relative">
+                    <div class="row">
+                        <div class="column-fill-space">
+                            <div class="cms-header__title">
+                                <h1 class="t-header-medium u-margin-b-2 @lg:u-margin-b-4 c-vert-ardoise">{{ (baseTranslation ~ '.title') | trans }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cms__content container">
+                {% if items | length > 0 %}
+                    <div class="row">
+                        {% for item in items %}
+                            <div class="column-6 @lg:column-3">
+                                <div class="card card-media card-article-category u-margin-b-6">
+                                    {% include 'Shop/Plum/Media/_single_bloc_page.html.twig' %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% include 'Shop/Common/Partial/_pagination.html.twig' with {
+                        'total': totalPages,
+                        'current': currentPage
+                    } only %}
+                {% else %}
+                    <div class="column c-grey-mid t-base-medium t-align-center">
+                        {{ 'app.cms_page.media_article.theme.no_content' | trans }}
+                    </div>
+                {% endif %}
+            </div>
+            {# footer categories #}
+            {% include 'Shop/Plum/Media/_footer_categories.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

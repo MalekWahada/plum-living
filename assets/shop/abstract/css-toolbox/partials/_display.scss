@@ -1,0 +1,137 @@
+@use 'sass:map';
+@use '../../../config/sass' as *;
+@use '../../../abstract/css-grid/css-grid-config' as *;
+@use '../../../abstract/css-grid/css-grid-mixins' as *;
+@use '../../../abstract/css-toolbox/css-toolbox-mixins' as *;
+
+
+.u-invisible {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.u-hidden {
+  @include u-hidden;
+}
+
+.u-inline {
+  @include u-visible(inline);
+}
+
+.u-block {
+  @include u-visible(block);
+}
+
+.u-inline-block {
+  @include u-visible(inline-block);
+}
+
+.u-flex {
+  @include u-visible(flex);
+}
+
+.u-inline-flex {
+  @include u-visible(inline-flex);
+}
+
+.u-table {
+  @include u-visible(table);
+}
+
+.u-inline-table {
+  @include u-visible(inline-table);
+}
+
+.u-table-cell {
+  @include u-visible(table-cell);
+}
+
+@each $_slug, $_obj in $css-grid--breakpoints {
+  $_shorthand: '\\@' + map.get($_obj, "shorthand") + '\\:';
+  $_value: map.get($_obj, "value");
+
+  @include up($_value) {
+    .#{$_shorthand}u-hidden {
+      @include u-hidden;
+    }
+    .#{$_shorthand}u-inline {
+      @include u-visible(inline);
+    }
+    .#{$_shorthand}u-block {
+      @include u-visible;
+    }
+    .#{$_shorthand}u-inline-block {
+      @include u-visible(inline-block);
+    }
+    .#{$_shorthand}u-flex {
+      @include u-visible(flex);
+    }
+    .#{$_shorthand}u-inline-flex {
+      @include u-visible(inline-flex);
+    }
+    .#{$_shorthand}u-table {
+      @include u-visible(table);
+    }
+    .#{$_shorthand}u-inline-table {
+      @include u-visible(inline-table);
+    }
+    .#{$_shorthand}u-table-cell {
+      @include u-visible(table-cell);
+    }
+  }
+}
+
+
+.u-sr-only {
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+}
+
+.u-hidden-anchor {
+  overflow: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  visibility: hidden !important;
+}
+
+.u-clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.u-x-scrollable {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overscroll-behavior: contain;
+}
+
+.u-y-scrollable {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overscroll-behavior: contain;
+}
+
+.u-ellpsis {
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.u-relative{
+  position: relative;
+}

@@ -1,0 +1,92 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+<div class="tunnel-sidebar__list">
+    <div class="tunnel-sidebar__item{% if design is defined and design is null  %} active {% else %} validate{% endif %}">
+        <div class="item-content">
+            <svg class="tunnel-sidebar__icon o-icon-20">
+                <use xlink:href="{{ iconLibUrl }}#SVG-icon-design"/>
+            </svg>
+            <a href="{{ path('facade_get_designs', {'facadeTypeCode': facadeType.code}) }}" class="t-base-xsmall">{{ "app.ui.tunnel_shopping.design"|trans }}</a>
+        </div>
+        <a {% if design is defined and design is not null %}
+            {% set selectedDesign = design %}
+            href="{{
+            path(
+                'facade_get_finishes',
+                {
+                    'facadeTypeCode': facadeType.code,
+                    'designCode': design.code
+                }
+            )
+            }}"
+        {% endif %}
+                class="item-choice t-base-xsmall design-breadcrumb">
+            {{ selectedDesign ?? ''}}
+        </a>
+    </div>
+    <div class="tunnel-sidebar__item{% if design is not null and finish is defined and (color is not defined or color is null) %} active {% elseif color is defined and color is not null %} validate{% endif %}">
+        {%  set classFinish="details-colors-item ui facade" %}
+        <div class="item-content">
+            <svg class="tunnel-sidebar__icon o-icon-20">
+                <use xlink:href="{{ iconLibUrl }}#SVG-icon-finition"/>
+            </svg>
+            <a class="t-base-xsmall">{{ "app.ui.tunnel_shopping.finishes_and_colors"|trans }}</a>
+        </div>
+        <a {% if finish is defined and finish is not null %}
+            {% set selectedFinish = finish %}
+            href="{{
+            path(
+                'facade_get_colors',
+                {
+                    'facadeTypeCode': facadeType.code,
+                    'designCode': design.code,
+                    'finishCode': finish.code
+                }
+            )
+            }}"
+        {% endif %}
+                class="item-choice t-base-xsmall finish-breadcrumb">
+            {{ selectedFinish ?? ''}}
+        </a>
+        <a {% if color is defined and color is not null %}
+            {% set selectedColor = color %}
+            href="{{
+            path(
+                'facade_get_products',
+                {
+                    'facadeTypeCode': facadeType.code,
+                    'designCode': design.code,
+                    'finishCode': finish.code,
+                    'colorCode': color.code
+                }
+            )
+            }}"
+        {% endif %}
+                class="item-choice t-base-xsmall color-breadcrumb">
+            {{ selectedColor ?? '' }}
+        </a>
+    </div>
+    <div class="tunnel-sidebar__item__categories">
+        {% if productTaxons is defined %}
+            {% for taxonCode, taxonName in productTaxons %}
+                <div class="tunnel-sidebar__item {% if loop.index == 1 %}active {% endif %}category product-category" data-link="{{ taxonCode }}">
+                    <div class="item-content">
+                        <svg class="tunnel-sidebar__icon o-icon-20">
+                            {% if taxonCode == constant('App\\Entity\\Taxonomy\\Taxon::CUSTOM_TAXON_PANEL_AND_PLINTH_CODE') %}
+                                <use xlink:href="{{ iconLibUrl }}#SVG-icon-panneau"/>
+                            {% elseif taxonCode  == constant('App\\Entity\\Taxonomy\\Taxon::TAXON_ACCESSORY_CODE') %}
+                                <use xlink:href="{{ iconLibUrl }}#SVG-icon-accessoire"/>
+                            {% elseif taxonCode in [constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_METOD_DOOR_CODE'), constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_PAX_DOOR_CODE')] %}
+                                <use xlink:href="{{ iconLibUrl }}#SVG-icon-door"/>
+                            {% elseif taxonCode == constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_METOD_DRAWER_CODE') %}
+                                <use xlink:href="{{ iconLibUrl }}#SVG-icon-tiroir"/>
+                            {% else %}
+                                <use xlink:href="{{ iconLibUrl }}#SVG-icon-door"/>
+                            {% endif %}
+                        </svg>
+                        <div class="t-base-xsmall">{{ taxonName }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

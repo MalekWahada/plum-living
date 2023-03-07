@@ -1,0 +1,39 @@
+{% set route = app.request.attributes.get('_route') %}
+{% set route_params = app.request.attributes.get('_route_params', []) %}
+{% set params = route_params|merge(app.request.query.all) %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set slug = get_current_translation_slug() %}
+{% set currentTranslation = get_switchable_translation(slug) %}
+{% set translations = get_switchable_translations()|filter(x => x.slug is not same as(slug) and x.isEnabled) %}
+
+{% if translations is not empty %}
+    <div class="plum-header__locales">
+        <div class="select">
+            <div class="current t-base-small">
+                <div class="option t-base-small">
+                    <div class="lang-bloc">
+                        <span class="country-code">{{ currentTranslation.displayCode|default(constant('App\\Entity\\Locale\\Locale::DEFAULT_LOCALE_CODE')) }}</span>
+                        <svg class="o-icon-24"><use xlink:href="{{ iconLibUrl }}#SVG-icon-flag-{{ currentTranslation.countryFlag|default(constant('App\\Entity\\Locale\\Locale::DEFAULT_LOCALE_CODE'))|lower }}"/></svg>
+                    </div>
+                </div>
+            </div>
+            {% if translations|length > 1 %}
+                <div class="options">
+                    <ul id="language-box" class="languages-box">
+                        {% for translation in translations %}
+                            <li>
+                                <div class="option t-base-small">
+                                    <a class="lang-bloc c-asphalte" href="{{ url('sylius_shop_switch_locale', {'code': translation.slug}) }}">
+                                        <span class="lang-name">{{ translation.names[sylius.localeCode]|default(translation.countryCode|country_name) }}</span>
+                                        <svg class="o-icon-24"><use xlink:href="{{ iconLibUrl }}#SVG-icon-flag-{{ translation.countryFlag|lower }}"/></svg>
+                                    </a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

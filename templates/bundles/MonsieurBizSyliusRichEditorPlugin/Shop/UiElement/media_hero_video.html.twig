@@ -1,0 +1,32 @@
+<div class="media-hero-video bg-asphalte c-true-white u-padding-t-7 u-padding-b-7">
+    <div class="container CMS_concept bg-asphalte">
+        <div class="cms-sheets u-cross-centered-col u-margin-t-0">
+            <div class="cms-sheets__right @lg:flush-column-10">
+
+                {% set url = monsieurbiz_richeditor_youtube_link(element.video) %}
+                {% if url is not null %}
+                    <div class="cms__youtube u-relative u-flex u-justify-content-center" style="--video-ratio: 0.56">
+                        <iframe
+                            class="u-width-100% u-height-100% u-absolute"
+                            width="1000"
+                            height="562"
+                            src="{{ url }}"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        </iframe>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row t-align-center u-margin-t-7">
+                <div class="column-fill-space">
+                    <h1 class="u-margin-b-2">{{ element.title | raw }}</h1>
+                    <p class="c-true-white">
+                        {{ element.description | raw }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

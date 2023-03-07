@@ -1,0 +1,103 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="homepage__container">
+    {% if page.content is defined and page.content is not empty %}
+        {% set content = monsieurbiz_richeditor_get_elements(page.content) %}
+        <div class="homepage-main-slider">
+            {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_MAIN_SLIDER')) | monsieurbiz_richeditor_render_element }}
+        </div>
+
+        <div class="homepage-steps u-margin-t-8">
+            <div class="container container-custom-padding u-cross-centered-col">
+                <div class="homepage-steps__title t-align-center">
+                    {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_MAIN_TITLE')) | monsieurbiz_richeditor_render_element }}
+                </div>
+
+                <div class="homepage-steps__desc u-margin-t-1 @lg:u-margin-t-1 t-align-center">
+                    {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_IMAGES_STEPS_DESC')) | monsieurbiz_richeditor_render_element }}
+                </div>
+                <div class="homepage-steps__items u-margin-t-5 @lg:u-margin-t-6">
+                    {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_IMAGES_STEPS')) | monsieurbiz_richeditor_render_element }}
+                </div>
+                <div class="homepage-steps-cta @lg:u-margin-t-5 @lg:u-margin-t-6">
+                    {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_DISCOVER_CONCEPT_BUTTON')) | monsieurbiz_richeditor_render_element }}
+                </div>
+            </div>
+        </div>
+        {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_CREATION_BANNER')) | monsieurbiz_richeditor_render_element }}
+
+        {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_SCAN_BANNER')) | monsieurbiz_richeditor_render_element }}
+
+        <div class="cms-palette">
+            <div class="flush-row">
+                {# Render color option [content, mainTitle, buttonLinks] #}
+                {% set colorMainTitle = (content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_OPTION_COLOR_TITLE'))).data %}
+                {% set designFinishButton = (content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_DESIGN_FINISH_BUTTON'))) %}
+                {% set orderButton = (content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_ORDER_BUTTON'))) %}
+
+                {% set colors = content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_OPTION_COLOR_CODE')) %}
+                {% set data = colors.data|merge({
+                    'pageType': constant('App\\Entity\\Page\\Page::PAGE_TYPE_HOME_PAGE'),
+                    'title': colorMainTitle.content is defined ? colorMainTitle.content : null,
+                    'buttonLinks': [designFinishButton, orderButton]
+                }) %}
+
+                {% set colors = colors|merge({'data': data}) %}
+                {{ colors | monsieurbiz_richeditor_render_element }}
+                {# End render color option [content, mainTitle, buttonLinks] #}
+            </div>
+        </div>
+
+        <div class="homepage-slider u-cross-centered-col u-padding-b-10">
+            <div class="cms-slider__header container">
+                <div class="row align-items-center u-fullwidth cross-content-title">
+                    <div class="column-12 @lg:column-11">
+                        {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_OTHER_PAGES_TITLE')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                    <div class="column-1 u-hidden @lg:u-block">
+                        <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78 cms-slider__arrow--right-new">
+                            <use xlink:href="{{ iconLibUrl }}#SVG-arrow-right-fill--white-new"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="cms-slider__container swiper-container">
+                <div class="swiper-wrapper">
+                    {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_OTHER_PAGES')) | monsieurbiz_richeditor_render_element }}
+                </div>
+            </div>
+            <!--div class="homepage-cta"> // TODO : remove this after test
+                {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_DISCOVER_OTHER_PAGES_BUTTON')) | monsieurbiz_richeditor_render_element }}
+            </div-->
+        </div>
+
+        <div class="cms-values">
+            <div class="cms-values__container container container-custom-padding u-flex">
+                <div class="cms-values__left">
+                    <div class="cms-values__title">
+                        {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_MANUFACTURING_TITLE')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                    <div class="cms-values__desc u-margin-t-2 @lg:u-margin-t-4">
+                        {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_MANUFACTURING_DESC')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+
+                    <div class="cms-values__btn u-margin-t-4">
+                            {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_MANUFACTURING_BUTTON')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                </div>
+                {{ content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_MANUFACTURING_IMAGES')) | monsieurbiz_richeditor_render_element }}
+            </div>
+        </div>
+
+        {% set moazaicTitle = (content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_MOSAIC_IMAGES_TITLE'))).data %}
+        {% set mozaicImages = (content | get_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::HOME_MOSAIC_IMAGES'))).data %}
+
+        {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ImageCollection/mozaic_image_collection.html.twig' with {
+            mozaicMainTitle: moazaicTitle.content is defined ? moazaicTitle.content : null,
+            mozaicImagesCollection: mozaicImages.images is defined ? mozaicImages.images : null
+        } only %}
+
+    {% else %}
+        {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/no_content.html.twig' %}
+    {% endif %}
+</div>

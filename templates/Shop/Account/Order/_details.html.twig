@@ -1,0 +1,102 @@
+{% import _self as _self %}
+
+{% set contactEmail = sylius.channel.contactEmail %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="row">
+    <div class="column @lg:column-fill-space u-margin-b-4 @lg:u-margin-b-auto">
+        <h3 class="t-label-small u-margin-b-2 c-grey-mid">{{ 'app.ui.generic.order_number'|trans }}</h3>
+        <p class="t-label-medium">{{ order.number }}</p>
+    </div>
+    <div class="column-6 @lg:column-fill-space u-margin-b-4 @lg:u-margin-b-auto">
+        <h3 class="t-label-small u-margin-b-2 c-grey-mid">{{ 'app.ui.account.order_details.order_date'|trans }}</h3>
+        <p class="t-label-medium">
+            {% if order.checkoutCompletedAt is not null %}
+                {{ order.checkoutCompletedAt|format_date }}
+            {% else %}
+                -
+            {% endif %}
+        </p>
+    </div>
+    <div class="column-6 @lg:column-fill-space">
+        <h3 class="t-label-small u-margin-b-2 c-grey-mid">{{ 'app.ui.account.order_details.shipping_date'|trans }}</h3>
+        <p class="t-label-medium">
+            {% include 'Shop/Cart/Delivery/_delivery_min_max_delays.html.twig' with {'cart': order} %}
+        </p>
+    </div>
+</div>
+
+<hr class="hr--l-space c-grey-clear">
+
+{% macro addressAndCoords(address, title) %}
+    <div class="column @lg:column-fill-space u-margin-b-4 @lg:u-margin-b-auto">
+        <h3 class="t-label-small c-grey-mid u-margin-b-2">{{ title|trans }}</h3>
+        <address
+            class="t-base-small" {{ sylius_test_html_attribute('address-context', "%s %s"|format(address.firstName, address.lastName)) }}>
+            {% if address.company is not null %}
+                {{ address.company }}<br>
+            {% endif %}
+            {{ address.street }}<br/>
+            {{ address.city }}, {{ address.postcode }}<br/>
+            {% if address|sylius_province_name is not empty %}
+                {{ address|sylius_province_name }}<br/>
+            {% endif %}
+            {{ address.countryCode|sylius_country_name }}
+        </address>
+    </div>
+    <div class="column @lg:column-fill-space u-margin-b-4 @lg:u-margin-b-auto">
+        <h3 class="t-label-small c-grey-mid u-margin-b-2">{{ 'app.ui.account.order_details.contact_infos'|trans }}</h3>
+        <address
+            class="t-base-small" {{ sylius_test_html_attribute('address-context', "%s %s"|format(address.firstName, address.lastName)) }}>
+            <span {{ sylius_test_html_attribute('full-name ', "%s %s"|format(address.firstName, address.lastName)) }}>{{ address.firstName }} {{ address.lastName }}</span><br>
+            {% if address.phoneNumber is not null %}
+                {{ address.phoneNumber|phone_number_parse|phone_number_format('INTERNATIONAL') }}<br/>
+            {% else %}
+                <span class="c-grey-mid">{{ 'app.ui.account.order_details.no_tel'|trans }}</span>
+            {% endif %}
+        </address>
+    </div>
+{% endmacro %}
+
+<div class="row">
+    {{ _self.addressAndCoords(order.shippingAddress, 'app.ui.generic.shipping_address') }}
+    <div class="column @lg:column-fill-space">
+        <h3 class="t-label-small c-grey-mid u-margin-b-2">{{ 'app.ui.account.order_details.shipping_method'|trans }}</h3>
+        {% for shipment in order.shipments %}
+            <p class="t-base-small">{{ shipment.method }}</p>
+        {% endfor %}
+    </div>
+</div>
+
+<hr class="hr--l-space c-grey-clear">
+
+<div class="row">
+    {{ _self.addressAndCoords(order.billingAddress, 'app.ui.generic.billing_address') }}
+    <div class="column @lg:column-fill-space">
+        <h3 class="t-label-small c-grey-mid u-margin-b-2">{{ 'app.ui.account.order_details.payment_method'|trans }}</h3>
+        {% set payment = order.lastPayment() %}
+        {% if payment %}
+            {% if payment.method.code is same as(constant('App\\Entity\\Payment\\PaymentMethod::STRIPE_PAYMENT_METHOD_WIRE_CODE'))  %}
+                <p class="t-base-small">{{ 'app.ui.checkout.transfer_content.payment_method'|trans }}</p>
+                <p class="t-base-small">{{ 'app.ui.checkout.transfer_content.ref'|trans }} : {{ payment.wireDetails.reference }}</p>
+                <p class="t-base-small">{{ 'app.ui.checkout.transfer_content.beneficiary.name'|trans }} : {{ 'app.ui.checkout.transfer_content.beneficiary.value'|trans }}</p>
+                <p class="t-base-small">{{ 'app.ui.checkout.transfer_content.bic'|trans }} : {{ payment.wireDetails.bic }}</p>
+                <p class="t-base-small">{{ 'app.ui.checkout.transfer_content.iban'|trans }} : {{ payment.wireDetails.iban }}</p>
+            {% else %}
+                <p class="t-base-small">{{ payment.method }}</p>
+            {% endif %}
+        {% else %}
+                -
+        {% endif %}
+    </div>
+</div>
+
+<hr class="hr--l-space c-grey-clear">
+
+<div class="t-align-center @md:u-flex u-end-on-main">
+    <a href="mailto:{{ contactEmail }}"
+       class="small-link-button c-grey-dark t-align-left">
+        <svg class="o-icon-16 u-margin-r-1 fix-arrow-size"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+        {{ 'app.ui.account.order_details.any_question'|trans }}
+    </a>
+</div>

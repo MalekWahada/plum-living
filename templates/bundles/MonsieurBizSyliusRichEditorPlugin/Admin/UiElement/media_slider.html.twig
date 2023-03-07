@@ -1,0 +1,26 @@
+{#
+UI Element template
+type: media_slider
+element fields :
+    title
+    slider
+#}
+<h4>{{ element.title }}</h4>
+<div class="ui stackable four column grid">
+    {% for slide in element.slider %}
+        <div class="column">
+            {# image #}
+            {% if slide.image %}
+                <img class="ui fluid image"
+                     src="{{ slide.image }}"
+                     alt="{{ slide.image_alt|default('') }}"
+                     title="{{ slide.image_title|default('') }}"
+                />
+            {% endif %}
+            {# lien #}
+            {% if slide.link_url is not empty %}
+                <a href="{{ slide.link_url }}">{{ slide.link_label }}</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

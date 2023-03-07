@@ -1,0 +1,18 @@
+<form action="{{ path('bitbag_sylius_mailchimp_plugin_newsletter_subscribe') }}" method="POST" class="newsletter-form footer-newsletter-form">
+    <h6 class="t-header-xsmall">{{ 'app.footer.shop.inspire_me_label'|trans }}</h6>
+    <input type="hidden" id="newsletter-token" name="_token" value="{{ csrf_token('newsletter') }}">
+    <fieldset>
+        <label class="newsletter-form__email-field field text-field" data-field-required>
+            <div class="field__wrapper">
+                <span class="field__label">{{ 'app.footer.shop.my_email_address'|trans }}</span>
+                <input class="field__widget" type="email" name="email">
+            </div>
+        </label>
+        <label class="field checkbox-field t-base-xsmall" data-field-required>
+            <input type="checkbox" required><div class="field__widget field--inversed"></div>
+            <span class="field__label field__label--leave-font-size t-base-xsmall">{{ 'app.footer.shop.personal_data'|trans|raw }}</span>
+        </label>
+        <svg class="o-icon-16 u-margin-r-1 u-margin-t-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+        <input class="link-button" type="submit" value="{{ 'app.footer.shop.subscribe'|trans }}">
+    </fieldset>
+</form>

@@ -1,0 +1,80 @@
+.cms {
+  //Sheets
+  &-sheets {
+    margin-top: rem(100);
+    width: 100%;
+
+    @include up('large') {
+      margin-top: rem(150);
+    }
+
+    //Sheets container
+    &__container {
+      display: flex;
+      flex-direction: column;
+      background: $color--true-white;
+      padding: rem(50) rem(20) rem(120) rem(20);
+      position: relative;
+
+      @include up('large') {
+        flex-direction: row;
+        padding: rem(75) rem(50);
+      }
+    }
+    //End sheets container
+
+    //Sheets container left : title + text + links + cta
+    &__left {
+      padding-top: 0;
+
+      @include up('large') {
+        padding-top: rem(100);
+      }
+    }
+    //End sheets container left : title + text + links + cta
+
+
+    //Sheets container left cta
+    &__cta {
+      position: absolute;
+      bottom: rem(-60);
+      left: 50%;
+      transform: translateX(-50%);
+
+      @include up('large') {
+        position: absolute;
+        bottom: rem(-95);
+        left: inherit;
+        transform: inherit;
+      }
+    }
+    //End sheets container left cta
+
+    //Sheets container right : video
+    &__right {
+      position: relative;
+      padding-top: 18.5rem;
+      margin-top: rem(60);
+
+      @include up('large') {
+        padding-top: 28.5rem;
+        margin-top: 0;
+      }
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+
+        @include down('large') {
+          height: 100%;
+        }
+      }
+    }
+    //End sheets container right : video
+  }
+  //End sheets
+}

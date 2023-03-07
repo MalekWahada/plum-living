@@ -1,0 +1,16 @@
+<script>
+    function gtmConceptionServiceStarted() {
+        const obj = {
+            'event': '{{ constant('App\\TagManager\\TagManagerEventInterface::CONCEPTION_SERVICE_STARTED_EVENT') }}',
+        };
+
+        dataLayer.push(obj);
+    }
+    function gtmConceptionServiceCompleted() {
+        const obj = {
+            'event': '{{ constant('App\\TagManager\\TagManagerEventInterface::CONCEPTION_SERVICE_COMPLETED_EVENT') }}',
+        };
+
+        dataLayer.push(obj);
+    }
+</script>

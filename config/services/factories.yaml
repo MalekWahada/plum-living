@@ -1,0 +1,54 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        bind:
+            string $templatesDirectory: '%cms_skeletons.directory%'
+
+    App\Factory\Order\OrderFactory:
+        decorates: sylius.factory.order
+
+    App\Factory\Order\OrderItemFactory:
+        class: App\Factory\Order\OrderItemFactory
+        decorates: sylius.factory.order_item
+
+    App\Factory\CustomerProject\ProjectFactory:
+        class: App\Factory\CustomerProject\ProjectFactory
+        decorates: app.factory.project
+
+    App\Factory\CustomerProject\ProjectFactoryInterface: '@App\Factory\CustomerProject\ProjectFactory'
+
+    App\Factory\CustomerProject\ProjectItemFactory:
+        class: App\Factory\CustomerProject\ProjectItemFactory
+        decorates: app.factory.project_item
+
+    App\Factory\CustomerProject\ProjectItemFactoryInterface: '@App\Factory\CustomerProject\ProjectItemFactory'
+
+    App\Factory\CustomerProject\ProjectItemVariantFactory:
+        class: App\Factory\CustomerProject\ProjectItemVariantFactory
+        decorates: app.factory.project_item_variant
+
+    App\Factory\CustomerProject\ProjectItemVariantFactoryInterface: '@App\Factory\CustomerProject\ProjectItemVariantFactory'
+
+    App\Factory\Page\ConfiguredPageFactory:
+        decorates: monsieurbiz_cms_page.factory.page
+
+    App\Factory\Customer\CustomerFactory:
+        decorates: sylius.factory.customer
+
+    App\Factory\Promotion\PromotionRuleFactory:
+        class: App\Factory\Promotion\PromotionRuleFactory
+        decorates: sylius.factory.promotion_rule
+        
+    App\Factory\Promotion\PromotionRuleFactoryInterface: '@App\Factory\Promotion\PromotionRuleFactory'
+
+    App\Factory\Product\ProductCompleteInfoTranslationFactory:
+        class: App\Factory\Product\ProductCompleteInfoTranslationFactory
+        decorates: app.factory.product_complete_info_translation
+    
+    App\Factory\Promotion\PromotionFactory:
+        class: App\Factory\Promotion\PromotionFactory
+        decorates: sylius.factory.promotion
+        
+    App\Factory\Promotion\PromotionFactoryInterface: '@App\Factory\Promotion\PromotionFactory'

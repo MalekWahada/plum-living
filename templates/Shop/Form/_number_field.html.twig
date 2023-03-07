@@ -1,0 +1,33 @@
+{% use 'Shop/Form/_field_commons.html.twig' %}
+
+{% set props = field.vars %}
+{% set classAttr = attributes.class|default('') %}
+{% set min = attributes.min|default(props.attr.min is defined ? props.attr.min : null) %}
+{% set max = attributes.max|default(props.attr.max is defined ? props.attr.max : null) %}
+{% set step = attributes.step|default(prop.attr.step is defined ? props.attr.step : null) %}
+{% set oninput = attributes.oninput|default(props.attr.oninput is defined ? props.attr.oninput : null) %}
+{% if props.value is empty and default_value is defined %}
+    {% set props = props|merge({'value': default_value}) %}
+{% endif %}
+
+{% apply spaceless %}
+    <label
+     class="field number-field {{ props.value is not empty ? 'field--fill' }} {{ props.errors is not empty ? 'field--invalid field--has-initial-error' }} {{ classAttr }}"
+     {{ block('field_container_attributes') }}>
+        <div class="field__widget">
+            <span class="func-button" data-field-action="decrement"><span class="u-sr-only">{{ 'app.ui.generic.minus' }}</span></span>
+            <input
+             type="number"
+             {{ block('field_widget_attributes') }}
+             {{ block('number_field_widget_value_attribute') }}
+             {% if min is not null %} min="{{ min }}" {% endif %}
+             {% if max is not null %} max="{{ max }}" {% endif %}
+             {% if step is not null %} step="{{ step }}" {% endif %}
+             {% if oninput is not null %} oninput="{{ oninput }}" {% endif %}
+            >
+            <span class="func-button" data-field-action="increment"><span class="u-sr-only">{{ 'app.ui.generic.plus' }}</span></span>
+        </div>
+        {{ block('field_help_or_description') }}
+        {{ block('field_errors') }}
+    </label>
+{% endapply %}

@@ -1,0 +1,33 @@
+services:
+    _defaults:
+        autoconfigure: false
+        autowire: true
+        public: false
+
+    app.grid.filter.product_channel:
+        class: App\Grid\Filter\ProductChannelFilter
+        tags:
+            -   name: sylius.grid_filter
+                type: product_channel
+                form_type: App\Form\Type\Filter\ProductChannelFilterType
+
+    app.grid.filter.product_taxonomy:
+        class: App\Grid\Filter\ProductTaxonomyFilter
+        tags:
+            -   name: sylius.grid_filter
+                type: product_taxonomy
+                form_type: App\Form\Type\Filter\ProductTaxonomyFilterType
+
+    app.grid.filter.skippable_exists:
+        class: App\Grid\Filter\SkippableExistsFilter
+        tags:
+            -   name: sylius.grid_filter
+                type: skippable_exists
+                form_type: Sylius\Bundle\GridBundle\Form\Type\Filter\BooleanFilterType # Use the boolean form to have the "All" option
+
+    app.grid.filter.order_state:
+        class: App\Grid\Filter\OrderStateFilter
+        tags:
+            -   name: sylius.grid_filter
+                type: order_state
+                form_type: Sylius\Bundle\GridBundle\Form\Type\Filter\SelectFilterType

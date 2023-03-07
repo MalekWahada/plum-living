@@ -1,0 +1,4 @@
+sylius_grid:
+    grids:
+        sylius_admin_shipping_method:
+            limits: [100, 50, 25, 10]

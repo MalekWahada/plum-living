@@ -1,0 +1,15 @@
+<div class="ui stackable two column grid">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {% for image in images %}
+                <div class="swiper-slide">
+                    <img src="{{ image.image }}">
+                </div>
+            {% endfor %}
+
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>

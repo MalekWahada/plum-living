@@ -1,0 +1,68 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set taxonCode = app.request.attributes.get('_taxonCode') %}
+{% set containerId = app.request.attributes.get('_taxonName')|trans|striptags('<br>')|replace({ ' ': '_', '<br>': '_' }) %}
+
+<div class="tunnel-products u-flex-column u-margin-b-12 @wd:u-margin-b-18">
+    <div class="page-header">
+        <h1 class="page-title u-margin-b-2 t-header-large">{{ app.request.attributes.get('_taxonName')|trans|raw }}</h1>
+        {% include 'Tunnel/Listing/_sub_title.html.twig' %}
+    </div>
+
+    <div class="tunnel-products__list products standalone-products row" id="{{ containerId }}">
+    {% for product in products %}
+        {% set formPath = path('app_cart_add_item',
+            {
+                'template': 'Shop/Tunnel/Shopping/Product/Card/_form_add_to_cart.html.twig',
+                'productId': product.id
+            }
+        ) %}
+        {% set modalUrl = path('listing_ajax_product_show',
+            {
+                slug: product.slug,
+                template: 'Shop/Tunnel/Shopping/Product/_show.html.twig'
+            }
+        ) %}
+        <div class="tunnel-products column-6 @lg:column-4 u-flex-column u-margin-b-2 @lg:u-margin-b-6" style="order: {{ loop.index }};">
+            <div class="tunnel-products-item u-flex u-flex-column" data-form-url="{{ formPath }}">
+                <a class="tunnel-products-item__img image product-modal"
+                   data-object="{{ product }}"
+                   data-url="{{ modalUrl }}">
+
+                    {% include 'Tunnel/Listing/_product_preview_image.html.twig' with {'product': product} %}
+
+                </a>
+                <div class="tunnel-products-item-footer  t-align-center">
+                    <div class="tunnel-products-item-footer__top">
+                        <div class="tunnel-products-item-footer__left">
+                            {% if product.shortDescription is defined and product.shortDescription is not empty %}
+                            <div class="desc t-header-xsmall c-vert-de-gris u-margin-b-2">
+                                {{ product.shortDescription }}
+                            </div>
+                            {% endif %}
+                            <div class="name t-header-small product-modal u-margin-b-2"
+                            data-object="{{ product }}"
+                            data-url="{{ modalUrl }}">
+                                {{ product.name }}
+                            </div>
+                        </div>
+                        <div class="tunnel-products-item-footer__right t-label-large">
+                            {% include 'Shop/Tunnel/Shopping/Product/_price.html.twig' %}
+                        </div>
+                    </div>
+                    <div class="tunnel-products-item-footer-form">
+                    {# This block contain the response of ajax call to generate a form add to cart #}
+                    </div>
+                </div>
+                    <div class="btn-validate button">
+                        {{ "app.ui.tunnel_shopping.add_product"|trans }} <span class="quantity-added"></span>
+                    </div>
+            </div>
+        </div>
+    {% endfor %}
+        {% if taxonCode == constant('App\\Entity\\Taxonomy\\Taxon::TAXON_PAINT_CODE') %}
+            <div class="infos @lg:column-6 @wd:column-4 u-margin-b-2 @lg:u-margin-b-6">
+                {% include 'Shop/Tunnel/Shopping/Partial/_product_infos_list.html.twig' with {'taxonCode': taxonCode} %}
+            </div>
+        {% endif %}
+    </div>
+</div>

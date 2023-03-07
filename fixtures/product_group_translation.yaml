@@ -1,0 +1,19 @@
+App\Entity\Product\ProductGroupTranslation:
+    product_group_translation (template):
+        locale: '@locale_fr->code'
+        
+    product_group_translation_metod_4010 (extends product_group_translation):
+        translatable: '@product_group_metod_4010'
+        name: 'product_group_metod_4010'
+
+    product_group_translation_pax_35201 (extends product_group_translation):
+        translatable: '@product_group_pax_35201'
+        name: 'product_group_pax_35201'
+
+    product_group_translation_accessory (extends product_group_translation):
+        translatable: '@product_group_accessory'
+        name: 'product_group_accessory'
+
+    product_group_translation_paint (extends product_group_translation):
+        translatable: '@product_group_paint'
+        name: 'product_group_paint'

@@ -1,0 +1,97 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{#
+   For JS use / Start
+   All % delimited strings are intended to be searched and replaced in JS
+#}
+<input
+    type="hidden"
+    id="Flash-ui-data"
+    data-success="{{ 'sylius.ui.success'|trans }}"
+    data-error="{{ 'sylius.ui.error'|trans }}"
+    data-warning="{{ 'sylius.ui.warning'|trans }}"
+    data-info="{{ 'sylius.ui.info'|trans }}"
+    data-icon-lib-url="{{ iconLibUrl }}">
+
+<script type="text/x-template" id="Flash-container-template">
+    <div class="ui-flash u-padding-b-1 @md:u-padding-b-3">
+        <div class="ui-flash__list u-y-scrollable">
+            %MESSAGE%
+        </div>
+        <button class="ui-flash__close-button func-button c-near-black bg-true-white hover:bg-true-white">
+            <svg class="ui-flash__timer o-icon-32" viewBox="0 0 32 32">
+                <circle cx="16" cy="16" r="13"/>
+            </svg>
+            <svg class="o-icon-24 c-grey-mid hover:c-near-black">
+                <use xlink:href="%ICON_LIB_URL%#SVG-icon-close"/>
+            </svg>
+        </button>
+    </div>
+</script>
+
+<script type="text/x-template"  id="Flash-message-template">
+    <div class="%CLASSNAME%">
+        <svg class="o-icon-40 u-fit-content u-margin-r-2">
+            <use xlink:href="%ICON_LIB_URL%#SVG-icon-%ICON%"/>
+        </svg>
+        <div class="u-fill-space">
+            <p class="t-label-small c-grey-mid u-flex u-center-on-cross" style="height:40px">%HEADER%</p>
+            <p class="t-base-medium c-near-black">%CONTENT%</p>
+        </div>
+    </div>
+</script>
+{# For JS use / End #}
+
+{% if app.session is not null and app.session.started and app.session.flashbag.peekAll()|length > 0 %}
+    <div class="ui-flash u-padding-b-1 @md:u-padding-b-3">
+        <div class="ui-flash__list u-y-scrollable">
+            {% for type in ['success', 'error', 'info', 'warning'] %}
+                {% for flash in app.session.flashbag.get(type) %}
+                    {% set className = 'message u-flex u-start-on-cross u-padding-2 u-padding-r-3' %}
+
+                    {% if type == 'success' %}
+                        {% set className = className ~ ' bg-green-light c-true-white' %}
+                        {% set icon = 'check' %}
+                    {% elseif type == 'error' %}
+                        {% set className = className ~ ' bg-pink-light c-pink' %}
+                        {% set icon = 'warning' %}
+                    {% elseif type == 'warning' %}
+                        {% set className = className ~ ' bg-beige c-near-black' %}
+                        {% set icon = 'warning' %}
+                    {% else %}
+                        {% set className = className ~ ' bg-beige c-near-black' %}
+                        {% set icon = 'arrow-right' %}
+                    {% endif %}
+
+                    {% set header = 'sylius.ui.'~type %}
+
+                    <div class="{{ className }}" {{ sylius_test_html_attribute('flash-messages') }}>
+                        <svg class="o-icon-40 u-fit-content u-margin-r-2">
+                            <use xlink:href="{{ iconLibUrl }}#SVG-icon-{{ icon }}"/>
+                        </svg>
+                        <div class="u-fill-space">
+                            <p class="t-label-small c-grey-mid u-flex u-center-on-cross" style="height:40px">
+                                {{ header|trans }}
+                            </p>
+                            <p class="t-base-medium c-near-black">
+                                {% if flash is iterable %}
+                                    {{ flash.message|trans(flash.parameters, 'flashes') }}
+                                {% else %}
+                                    {{ flash|trans({}, 'flashes') }}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <button class="ui-flash__close-button func-button c-near-black bg-true-white hover:bg-true-white">
+            <svg class="ui-flash__timer o-icon-32" viewBox="0 0 32 32">
+                <circle cx="16" cy="16" r="13"/>
+            </svg>
+            <svg class="o-icon-24 c-grey-mid hover:c-near-black">
+                <use xlink:href="{{ iconLibUrl }}#SVG-icon-close"/>
+            </svg>
+        </button>
+    </div>
+{% endif %}

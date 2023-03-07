@@ -1,0 +1,219 @@
+#tunnel-modal .ui-modal__scrollbox {
+  padding-top: rem(62);
+}
+
+#tunnel-modal .ui-modal__dialog {
+  max-width: rem(960);
+
+  &:focus {
+    outline: none;
+  }
+
+  @include down(medium) {
+    padding: rem(70) 0 rem(20) 0;
+  }
+
+  @include up(large) {
+    padding: 0;
+  }
+
+  @include up(wide) {
+    padding: 0;
+
+    .tunnel-modal {
+      min-height: rem(660);
+    }
+  }
+
+  .tunnel-modal {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $color--grey-clear;
+
+    @include up(large) {
+     flex-direction: row;
+    }
+
+    &-left {
+      flex: 0 0 56%;
+      min-height: 100%;
+      position: relative;
+
+      .swiper-wrapper {
+        width: auto;
+      }
+
+      &__img {
+        height: 100%;
+
+        img {
+          width: 100%;
+        }
+
+        .no-image {
+          background-color: get-color(placeholder-grey);
+        }
+      }
+    }
+
+    &-right {
+      background-color: $color--near-black;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &__header {
+        display: flex;
+        justify-content: space-between;
+        padding: rem(50) rem(24) rem(15) rem(24);
+
+        @include up(large) {
+          padding: rem(50) rem(50) rem(15) rem(50);
+        }
+      }
+
+      &__title {
+        color: $color--true-white;
+      }
+
+      &__price {
+        color: $color--true-white;
+      }
+
+      &__desc {
+        color: $color--true-white;
+        padding-left: rem(20);
+        padding-right: rem(20);
+
+        @include up(large) {
+          padding-left: rem(50);
+          padding-right: rem(50);
+        }
+      }
+
+      &-term {
+        padding: rem(50);
+        background-color: $color--beige;
+
+        &__text {
+          margin-top: rem(15);
+          font-size: .8125rem;
+          line-height: 170%;
+          .t-base-initial, .cms__text{
+            font-size: .8125rem;
+            line-height: 170%;
+          }
+        }
+      }
+    }
+
+    &-form {
+      padding: rem(20) rem(20) rem(50) rem(20);
+      flex-grow: 1;
+
+      @include up(large) {
+        padding: rem(15) rem(50) rem(50) rem(50);
+      }
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+
+        .select-box {
+          margin-right: rem(10);
+          flex-grow: 1;
+          z-index: 2;
+        }
+
+        .color-select-field {
+          z-index: 2;
+        }
+
+        .number-field {
+          min-height: rem(46);
+
+          .field__widget {
+            height: 100%;
+            align-items: stretch;
+            background: $color--true-white;
+          }
+
+          input[type="number"] {
+            height: 100%;
+          }
+        }
+
+        .color-select-field__options--open {
+          max-height: rem(120);
+        }
+      }
+
+      &__button {
+        position: relative;
+        width: 100%;
+
+        .button {
+          width: 100%;
+          margin-top: rem(25);
+        }
+
+        .btn-validate {
+          position: absolute;
+          display: none;
+          left: 0;
+          top: 0;
+
+          &.validate {
+            display: block;
+            transition: all 0.3s ease;
+          }
+        }
+      }
+    }
+
+    &-arrow {
+      position: absolute;
+      right: rem(16);
+      top: rem(16);
+      z-index: 1;
+      width: rem(48);
+      height: rem(48);
+      cursor: pointer;
+
+      &--left {
+        transform: rotate(180deg);
+        right: rem(80);
+      }
+
+      @include up('large') {
+        right: rem(24);
+        top: rem(18);
+        width: rem(56);
+        height: rem(56);
+
+        &--left {
+          right: rem(96);
+        }
+      }
+    }
+  }
+}
+
+
+.listing_echantillon,
+.listing_accessoires,
+.listing_tap,
+.listing_paint{
+  #tunnel-modal .ui-modal__dialog {
+    .tunnel-modal {
+      &-left {
+        &__img {
+          img {
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}

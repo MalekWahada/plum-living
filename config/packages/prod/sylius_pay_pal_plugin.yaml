@@ -1,0 +1,2 @@
+sylius_pay_pal:
+    sandbox: false

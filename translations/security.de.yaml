@@ -1,0 +1,5 @@
+'Invalid credentials':
+    '': 'Wenn Sie ein Konto auf unserer alten Webseite hatten, wurde Ihr Passwort aus Sicherheitsgründen geändert. Bitte klicken Sie auf "Passwort vergessen"'
+    lokalise_sanitize_two_single_quotes: 'Wenn Sie ein Konto auf unserer alten Webseite hatten, wurde Ihr Passwort aus Sicherheitsgründen geändert. Bitte klicken Sie auf "Passwort vergessen".'
+app:
+    email_not_verified: 'Ihr Konto wurde nicht validiert. Bitte validieren Sie Ihr Konto, indem Sie auf den Link klicken, den wir Ihnen per E-Mail gesendet haben.'

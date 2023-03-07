@@ -1,0 +1,23 @@
+{% use 'Shop/Form/_field_commons.html.twig' %}
+
+{% set props = field.vars %}
+{% set classAttr = attributes.class|default('') %}
+{% set labelClassAttr = attributes.labelClass|default('t-label-small') %}
+
+{% apply spaceless %}
+    <label
+    id="custom-payment-radio"
+    class="field radio-field {{ props.errors is not empty ? 'field--invalid field--has-initial-error' }} {{ classAttr }}"
+    {{ block('field_container_attributes') }}>
+        <input
+        type="radio"
+        {{ block('field_widget_attributes') }}
+        {{ block('field_widget_value_attribute') }}
+        {{ block('field_widget_checked_attribute') }}>
+        <div class="field__widget"></div>
+        {{ block('field_label') }}
+        {{ block('field_help_or_description') }}
+        {{ block('field_errors') }}
+
+    </label>
+{% endapply %}

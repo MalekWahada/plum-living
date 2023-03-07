@@ -1,0 +1,184 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+
+$height: 20;
+
+
+.plum-nav {
+  justify-content: center;
+  align-items: center;
+  height: rem($height);
+  font-size: rem(15);
+  line-height: 146%;
+
+  @include up('large') {
+    font-size: rem(16);
+    line-height: 141%;
+    letter-spacing: -0.5px;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .o-icon {
+    width: rem(16);
+    height: rem(16);
+    color: $color--basic-blue;
+  }
+
+  .button {
+    height: rem(44);
+    min-height: 0;
+    font: inherit;
+  }
+
+  &__link:not(.button) { // Every link
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: rem(64);
+    transition: background 0.3s 0s, opacity 0.2s 0s, transform 0.3s 0s;
+
+    &.t-plum-em {
+      span {
+        position: relative;
+
+        &::before {
+          content: url("data:image/svg+xml,%3Csvg width='38' height='11' viewBox='0 0 38 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.482355 2.85081C0.495331 2.74675 0.523397 2.64458 0.693708 2.02454L0.693448 2.02458C0.913934 1.91617 1.1481 1.77336 1.39135 1.62501C1.86306 1.33732 2.36892 1.0288 2.87538 0.910022L2.95945 0.900207C4.80821 0.684366 6.70026 0.463472 8.5784 0.387839C10.5748 0.345453 12.572 0.293344 14.5693 0.241234C20.4079 0.0889027 26.2463 -0.0634241 32.0614 0.0272053C33.2436 0.077423 34.3951 0.254758 35.5528 0.43305C36.1599 0.526545 36.7687 0.620302 37.3845 0.69613C37.8729 0.676464 38.0816 1.25304 37.9711 2.875C37.6946 6.70028 36.2191 10.5797 35.0657 10.6261C33.3342 10.6256 31.6101 10.6592 29.8863 10.6928C28.0932 10.7277 26.3004 10.7626 24.4995 10.7591C22.9415 10.7516 21.3694 10.779 19.797 10.8065C18.1624 10.8351 16.5275 10.8637 14.908 10.8529C14.8266 10.8508 14.7451 10.8488 14.6636 10.8468C12.5423 10.7939 10.421 10.741 8.28641 10.827C7.35733 10.8003 6.42876 10.8553 5.50152 10.9102C4.27387 10.9829 3.04855 11.0555 1.82743 10.938C-0.170071 10.5768 -0.378791 10.0002 0.475459 2.91661C0.477821 2.89194 0.479794 2.87134 0.482355 2.85081Z' fill='%23ECA796'/%3E%3C/svg%3E");
+          display: block;
+          position: absolute;
+          z-index: -1;
+          right: rem(-10);
+          bottom: rem(-6);
+          transform: rotate(-12deg);
+        }
+      }
+    }
+  }
+
+  &__link { // Every link
+    white-space: nowrap;
+  }
+
+  &__unlink {
+    cursor: default;
+  }
+
+  &__parent { // Every parent
+    position: relative;
+  }
+
+  &__expander {
+    width: rem(16);
+    height: rem(16);
+  }
+
+  &__menu { // Every sub-menu
+    min-width: rem(240);
+    position: absolute;
+    z-index: 1;
+    left: calc(100% - #{rem(15)});
+    top: 0;
+    visibility: hidden;
+    transition: visibility 0s 0.3s;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: #fff;
+      transform-origin: top;
+      transform: scaleY(0);
+      transition: transform 0.3s 0s;
+    }
+  }
+
+  &__menu > &__link,
+  &__menu > &__parent { // Every item in a sub-menu
+    opacity: 0;
+    transform: translateY(#{rem(-16)});
+  }
+
+  &__menu &__link { // Every link in a sub-menu
+    padding-left: rem(24);
+    padding-right: rem(24);
+
+    &:hover {
+      background: $color--green;
+    }
+  }
+
+  &__menu &__link + &__link,
+  &__menu &__parent + &__link,
+  &__menu &__link + &__parent,
+  &__menu &__parent + &__parent {
+    border-top: 1px solid rgba($color--near-black, 0.1);
+  }
+
+  &__parent:hover > &__menu { // Every child sub-menu while hovering parent
+    visibility: visible;
+    transition: visibility 0s 0s;
+
+    &::before {
+      transform: scaleY(1);
+    }
+  }
+
+  &__parent:hover > &__menu > &__link,
+  &__parent:hover > &__menu > &__parent { // Every child sub-menu items while hovering parent
+    opacity: 1;
+    transform: translateY(0);
+    transition: background 0.3s 0s, opacity 0.3s 0.1s, transform 0.3s 0.1s;
+  }
+
+  &__link[data-nav-depth="1"]:not(.button),
+  &__parent[data-nav-depth="1"] { // First level items only
+    height: 100%;
+  }
+
+  &__link[data-nav-depth="1"],
+  &__parent[data-nav-depth="1"] { // First level items only
+    margin: 0 rem(18);
+  }
+
+  &__link[data-nav-depth="1"] { // First level links only
+
+  }
+
+  &__parent[data-nav-depth="1"] { // First level parents only
+    height: calc(100% + #{rem($height * 2)});
+    padding-top: rem($height);
+    padding-bottom: rem($height);
+  }
+
+  &__parent[data-nav-depth="1"] > &__link:not(.button) { // Links of first level parents only
+    height: 100%;
+  }
+
+  &__parent[data-nav-depth="1"] > &__menu { // Sub-menus of first level parents only
+    left: rem(-24);
+    top: rem($height * 3 - 1);
+  }
+
+  &__link[data-nav-depth="1"]:not(.button),
+  &__parent[data-nav-depth="1"] > &__link { // Links of first level and links of first level parents
+    background: linear-gradient(to top, #000 1px, transparent 0) left bottom no-repeat;
+    background-size: 0 100%;
+
+    & > span:not(.ripple-button__ripple) {
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  &__link[data-nav-depth="1"]:not(.button):hover,
+  &__parent[data-nav-depth="1"]:hover > &__link { // Links of first level and links of first level parents while hovering
+    background-size: 100% 100%;
+  }
+}

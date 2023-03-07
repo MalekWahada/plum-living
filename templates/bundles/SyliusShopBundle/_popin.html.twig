@@ -1,0 +1,24 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="popin__samples bg-white">
+    <div class="row">
+        <div class="u-hidden @lg:u-block @lg:column-3">
+            <img class="popin__samples-img" alt="" src="{{ asset('build/shop/images/box-img-w-background.png', 'shop')|imagine_filter('app_box_image') }}" srcset="{{ asset('build/shop/images/box-img-w-background.png', 'shop')|imagine_filter('app_box_image_retina') }} 2x">
+        </div>
+        <div class="column-12 @lg:column-8 u-padding-r-1">
+            <div class="popin__samples-text u-padding-t-3 u-padding-r-3 u-padding-l-3">
+                <div class="t-base-small">{{ "app.ui.tunnel_shopping.box_text"|trans }}</div>
+            </div>
+            <div class="popin__samples-links u-padding-l-3 u-padding-t-2 u-padding-b-3 u-padding-r-1">
+                <a href="{{ path('listing_sample_facade') }}" class="link-button small-link-button t-align-left">
+                    {{ "app.ui.tunnel_shopping.box_link"|trans }}
+                </a>
+            </div>
+            <button class="popin__samples-close-button close-button func-button">
+                <span class="close-button__bar"></span>
+                <span class="close-button__bar"></span>
+            </button>
+        </div>
+    </div>
+</div>
+

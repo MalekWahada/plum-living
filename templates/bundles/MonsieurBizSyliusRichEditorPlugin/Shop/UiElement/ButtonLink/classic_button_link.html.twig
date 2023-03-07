@@ -1,0 +1,10 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set isDark = element.isDark | default(false) %}
+{% set classList = element.classList | default('') %}
+
+<a href="{{ element.link }}">
+    <button class="ps-project__phone-appointment-button button {% if not isDark %} button--inversed {% endif %} u-margin-t-5 {{ classList }}" type="button">
+        {{ element.label }}
+        <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+    </button>
+</a>

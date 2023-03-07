@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="{{ app.request.locale|slice(0, 2) }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="mask-icon" href="{{ asset('safari-pinned-tab.svg') }}" color="#c9d7cc">
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+
+    <title>{% block title %}Plum{% endblock %}</title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    {% block metatags %}
+    {% endblock %}
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        const stripeApiKey = '{{ STRIPE_API_KEY_PUBLIC }}';
+        const thankYouUrl = '{{ url('sylius_shop_order_thank_you') }}';
+    </script>
+    {# Sentry.io integration #}
+    {#<script
+        src="https://browser.sentry-cdn.com/6.8.0/bundle.tracing.min.js"
+        integrity="sha384-PEpz3oi70IBfja8491RPjqj38s8lBU9qHRh+tBurFb6XNetbdvlRXlshYnKzMB0U"
+        crossorigin="anonymous"
+    ></script>
+    <script>
+        Sentry.init({
+            dsn: '{{ SENTRY_DSN_JAVASCRIPT }}',
+            // this assumes your build process sets "npm_package_version" in the env
+            // release: "plum-kitchen@1.0.0",
+            integrations: [new Sentry.Integrations.BrowserTracing()],
+
+            // We recommend adjusting this value in production, or using tracesSampler
+            // for finer control
+            tracesSampleRate: 0.001,
+            ignoreErrors: [
+                // "top.GLOBALS",
+            ],
+        });
+    </script>#}
+
+    {% block stylesheets %}
+        {{ sylius_template_event('sylius.shop.layout.stylesheets') }}
+    {% endblock %}
+
+    {{ sylius_template_event('sylius.shop.layout.head') }}
+</head>
+
+{% set headerRibbon = get_page_content(constant('App\\Entity\\Page\\Page::PAGE_TYPE_RIBBON')) %}
+{% set hasHeaderRibbon =  headerRibbon.content is defined and headerRibbon.content is not empty %}
+
+<body class="{% block body_class %}{{ getCurrentRouteClasses() }} {% if page is defined %}{{ getCMSPageClasses(page) }}{% endif %}{% endblock %} {{ hasHeaderRibbon ? 'has-header-ribbon' : '' }}">
+{{ sylius_template_event('sylius.shop.layout.before_body') }}
+
+{% block top %}
+    {{ sylius_template_event('sylius.shop.layout.topbar') }}
+{% endblock %}
+
+<div class="page-container">
+    {% include '@SyliusShop/_flashes.html.twig' %}
+
+    {{ sylius_template_event('sylius.shop.layout.before_content') }}
+
+    {% block content %}
+    {% endblock %}
+
+    {{ sylius_template_event('sylius.shop.layout.after_content') }}
+</div>
+
+{% block footer %}
+    {% include 'Shop/Plum/Layout/_footer.html.twig' %}
+{% endblock %}
+
+   {% include '@SyliusShop/_popin.html.twig' %}
+
+{% block javascripts %}
+    {{ sylius_template_event('sylius.shop.layout.javascripts') }}
+{% endblock %}
+
+{% block confirmationModal %}
+    {% include '@SyliusUi/Modal/_confirmation.html.twig' %}
+    {{ sylius_template_event('sylius.shop.layout.after_body') }}
+{% endblock %}
+</body>
+</html>

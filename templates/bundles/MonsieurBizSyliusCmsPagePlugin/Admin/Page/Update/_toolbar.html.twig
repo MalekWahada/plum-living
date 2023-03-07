@@ -1,0 +1,25 @@
+<div class="ui right floated buttons">
+    <form action="{{ path('app_admin_cms_page_translation_publish', {'id': resource.id}) }}" method="post">
+        <button class="ui labeled icon button" type="submit">
+            <i class="icon cloud upload"></i> {{ 'app.ui.admin.page.publish_translation'|trans({'%locale%':  resource.referenceLocaleCode|language_name})|raw }}
+        </button>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('app_translation_publish') }}">
+    </form>
+    <div class="ui labeled icon floating dropdown secondary link button" tabindex="0">
+        <i class="cloud download icon"></i> <span class="text">{{ 'app.ui.admin.page.fetch_translation'|trans }}</span>
+        <div class="menu" tabindex="-1">
+            <div class="header">
+                <i class="flag icon"></i> {{ 'sylius.ui.locale'|trans }}
+            </div>
+            <div class="divider"></div>
+            {% for locale in get_locales()|filter(x => x.code != resource.referenceLocaleCode) %}
+                <form action="{{ path('app_admin_cms_page_translation_fetch', {'id': resource.id, 'locale': locale.code}) }}" method="post">
+                    <button class="item ui labeled icon basic button fluid" type="submit" name="form" data-requires-confirmation-message="{{ 'app.ui.admin.translation.fetch_translation_confirm'|trans({'%locale%': resource.referenceLocaleCode|language_name}) }}">
+                        <i class="icon flag"></i> {{ locale.code|locale_name }}
+                    </button>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('app_translation_fetch') }}">
+                </form>
+            {% endfor %}
+        </div>
+    </div>
+</div>

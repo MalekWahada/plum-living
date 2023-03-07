@@ -1,0 +1,27 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% block metatags %}
+    <meta property="og:type" content="{{ 'app.cms_page.faq.meta.type'|trans }}"/>
+    <meta property="og:title" content="{{ 'app.cms_page.faq.meta.title'|trans }}"/>
+    <meta name="description" property="og:description" content="{{ 'app.cms_page.faq.meta.descritpion'|trans }}"/>
+{% endblock %}
+
+{% block content %}
+    <div class="faq">
+        <h1 class="faq__title t-align-center t-header-xlarge u-margin-b-7">{{ 'app.cms_page.faq.title'|trans }}</h1>
+        <div class="container">
+            <div class="flush-row u-center-on-main">
+                <div class="@lg:flush-column-11">
+                    <div class="row panel">
+                        {% for category in categories %}
+                            {% if category.sections is defined %}
+                                {% include 'Shop/Plum/FAQ/Category/_single_category.html.twig' %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

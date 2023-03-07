@@ -1,0 +1,10 @@
+{% if element.color is not empty %}
+    {% set colorValue = ui_element.getOptionValue(element.color) %}
+    {% if colorValue is not empty %}
+        {% set imageChip = colorValue|filter_images(constant('App\\Entity\\Product\\ProductOptionValueImage::PRODUCT_OPTION_VALUE_IMAGE_TYPE_DEFAULT')) %}
+        {% if imageChip.path is defined and imageChip.path is not empty %}
+            <!--img alt="" src="{{ imageChip.path|imagine_filter('app_cms_slider_chip') }}" srcset="{{ imageChip.path|imagine_filter('app_cms_slider_chip_retina') }} 2x"/-->
+        {% endif %}
+        <p class="t-header-xsmall color_target" data-color="{{ colorValue|get_cross_content_color }}">{{ colorValue.value }}</p>
+    {% endif %}
+{% endif %}

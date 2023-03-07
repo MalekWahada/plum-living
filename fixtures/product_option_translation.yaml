@@ -1,0 +1,25 @@
+App\Entity\Product\ProductOptionTranslation:
+#    translation_{@product_option_*}:
+#        translatable: <current()>
+#        name: '@<current()>->code'
+#        locale: '@locale_fr->code'
+    product_option_design_translation:
+        translatable: '@product_option_design'
+        name: 'design'
+        locale: '@locale_fr->code'
+    product_option_finish_translation:
+        translatable: '@product_option_finish'
+        name: 'finish'
+        locale: '@locale_fr->code'
+    product_option_color_translation:
+        translatable: '@product_option_color'
+        name: 'color'
+        locale: '@locale_fr->code'
+    product_option_design_handle_translation:
+        translatable: '@product_option_design_handle'
+        name: 'design_handle'
+        locale: '@locale_fr->code'
+    product_option_finish_handle_translation:
+        translatable: '@product_option_finish_handle'
+        name: 'finish_handle'
+        locale: '@locale_fr->code'

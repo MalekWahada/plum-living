@@ -1,0 +1,14 @@
+App\Entity\Order\Order:
+    properties:
+        originalOrderNumber:
+            - Length:
+                max: 255
+                groups: [sylius, Default]
+        targetedRoom:
+            - Length:
+                max: 32
+                groups: [sylius, Default]
+        mailingWorkflowType:
+            - Length:
+                max: 32
+                groups: [sylius, Default]

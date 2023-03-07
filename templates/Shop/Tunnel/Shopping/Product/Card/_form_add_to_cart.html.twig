@@ -1,0 +1,49 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set product = order_item.variant.product %}
+{% set selectedOptionsValues = configuration.request.query.get('selectedOptionsValues') ?? null %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+<div class="tunnel-products-item__form purchase-form" id="sylius-product-selecting-variant" {{ sylius_test_html_attribute('product-selecting-variant') }}>
+    {{ sylius_template_event('sylius.shop.product.show.before_add_to_cart', {'product': product, 'order_item': order_item}) }}
+    {% if product is not null %}
+        {% if not has_valid_selected_options(selectedOptionsValues) %}
+            {% set formActionPath = path('sylius_shop_ajax_cart_add_item', {'productId': product.id}) %}
+        {% else %}
+            {% set formActionPath = path('facade_ajax_cart_add_item',
+                {
+                    'selectedOptionsValues': selectedOptionsValues,
+                    'productId': product.id
+                }
+            ) %}
+        {% endif %}
+
+        {{ form_start(form, {
+            'action': formActionPath,
+            'attr': {
+                'id': 'sylius-product-adding-to-cart-card',
+                'class': 'form-cart-tunnel-card',
+            }
+        }) }}
+        {% if not product.simple %}
+            {% include 'Shop/Tunnel/Shopping/Product/_options.html.twig' %}
+        {% endif %}
+
+        {% include 'Shop/Form/_number_field.html.twig' with {
+            'field': form.cartItem.quantity,
+            'min': 0,
+            'attributes': {
+                'class': 'number-field--light u-inline-block',
+                'oninput': 'validity.valid||(value="");'
+            }
+        } %}
+
+        <button type="submit" class="btn button ripple-button u-flex" {{ sylius_test_html_attribute('add-to-cart-button') }}>
+            {{ 'sylius.ui.add_to_cart'|trans }}<svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+        </button>
+        {{ form_row(form._token) }}
+        {{ form_end(form, {'render_rest': false}) }}
+
+    {% endif %}
+
+</div>

@@ -1,0 +1,9 @@
+<script>
+    function gtmPlumScannerToProjectRedirect() {
+        var obj = {
+            'event': '{{ constant('App\\TagManager\\TagManagerEventInterface::BACK_TO_SCANNER_AND_OPEN_PROJECT_EVENT') }}',
+        };
+
+        dataLayer.push(obj);
+    }
+</script>

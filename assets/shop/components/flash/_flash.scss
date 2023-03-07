@@ -1,0 +1,73 @@
+@use '../../config/sass' as *;
+
+
+
+.ui-flash {
+  width: calc(100vw - #{rem(24)});
+  max-width: rem(500);
+  position: fixed;
+  z-index: 500;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) translateY(105%);
+  transition: transform 0.3s;
+
+  .message + .message {
+    border-top: 1px solid rgba(get-color(near-black), 0.1);
+  }
+
+  &__list {
+    max-height: 50vh;
+  }
+
+  &__close-button {
+    cursor: pointer;
+    width: rem(40);
+    height: rem(40);
+    border-radius: 50%;
+    padding: rem(8);
+    position: absolute;
+    right: rem(-16);
+    top: rem(-16);
+
+    [class^="o-icon-"] {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+    &__timer {
+      position: absolute;
+      left: rem(4);
+      top: rem(4);
+
+      circle {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 4px;
+        stroke-dasharray: 82px;
+        stroke-dashoffset: 82px;
+        transform-origin: center;
+        rotate: -90deg;
+        transition: stroke-dashoffset linear 0.3s;
+      }
+    }
+}
+
+
+.ui-flash--waiting {
+  .ui-flash__timer {
+    circle {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+
+.ui-flash--ready {
+  transform: translateX(-50%);
+}
+
+.ui-flash--leaving {
+  transform: translateX(-50%) translateY(105%);
+}

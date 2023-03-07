@@ -1,0 +1,47 @@
+{% import '@SyliusUi/Macro/messages.html.twig' as messages %}
+{% set data = product_group.products %}
+
+<div class="ui hidden divider"></div>
+<div class="sylius-grid-wrapper">
+    {% if data|length > 0 %}
+        <div class="ui segment spaceless sylius-grid-table-wrapper">
+            <table class="ui sortable stackable very basic celled table" {{ sylius_test_html_attribute('grid-table') }}>
+                <thead>
+                <tr>
+                    <th class="sylius-table-column-image">{{ 'sylius.ui.image'|trans }}</th>
+                    <th class="sylius-table-column-code">{{ 'sylius.ui.code'|trans }}</th>
+                    <th class="sylius-table-column-name">{{ 'sylius.ui.name'|trans }}</th>
+                    <th class="sylius-table-column-name">{{ 'sylius.ui.attributes'|trans }}</th>
+                    <th class="sylius-table-column-actions">{{ 'sylius.ui.actions'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in data %}
+                    <tr class="item">
+                        <td>{% include('@SyliusAdmin/Product/Grid/Field/image.html.twig') with {'data': row} %}</td>
+                        <td>{{ row.code }}</td>
+                        <td>{{ row.name }}</td>
+                        <td>
+                            <div class="ui labels">
+                                {% for attribute in row.attributes %}
+                                    {% include('@SyliusAdmin/ProductGroup/Grid/Field/_attribute.html.twig') %}
+                                {% endfor %}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="ui buttons">
+                                <a class="ui labeled icon button" href="{{ path('sylius_admin_product_show', {'id': row.id}) }}">
+                                    <i class="icon search"></i>
+                                    {{ 'sylius.ui.details'|trans }}
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        {{ messages.info('sylius.ui.no_results_to_display') }}
+    {% endif %}
+</div>

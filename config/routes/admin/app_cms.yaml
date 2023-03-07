@@ -1,0 +1,139 @@
+monsieurbiz_cms_page_admin_page_update: # Override route to add custom toolbar
+    path: /{id}/edit
+    methods: [GET, PUT, PATCH]
+    defaults:
+        _controller: monsieurbiz_cms_page.controller.page:updateAction
+        _sylius:
+            section: admin
+            permission: false
+            template: "@SyliusAdmin/Crud/update.html.twig"
+            redirect: monsieurbiz_cms_page_admin_page_update
+            vars:
+                subheader: monsieurbiz_cms_page.ui.pages_subheader
+                templates:
+                    form: "@MonsieurBizSyliusCmsPagePlugin/Admin/Page/_form.html.twig"
+                    toolbar: "@MonsieurBizSyliusCmsPagePlugin/Admin/Page/Update/_toolbar.html.twig"
+
+app_admin_update_pages_positions:
+    path: /update-positions
+    controller: App\Controller\Page\PagePositionController::updatePagesPositions
+    methods: [POST, PUT]
+
+app_admin_cms_project_create:
+    path: /project
+    methods: [GET, POST]
+    defaults:
+        _controller: monsieurbiz_cms_page.controller.page::createAction
+        _sylius:
+            factory:
+                method: createProject
+            form: App\Form\Type\Resources\Page\ConfiguredPageType
+            section: admin
+            permission: true
+            template: "@SyliusAdmin/Crud/create.html.twig"
+            redirect: monsieurbiz_cms_page_admin_page_update
+            vars:
+                subheader: app.ui.cms.admin.subheader.project
+                templates:
+                    form: "@MonsieurBizSyliusCmsPagePlugin/Admin/Page/_form.html.twig"
+                route:
+                    name: app_admin_cms_project_create
+
+app_admin_cms_article_create:
+    path: /article
+    methods: [GET, POST]
+    defaults:
+        _controller: monsieurbiz_cms_page.controller.page::createAction
+        _sylius:
+            factory:
+                method: createArticle
+            form: App\Form\Type\Resources\Page\ConfiguredPageType
+            section: admin
+            permission: true
+            template: "@SyliusAdmin/Crud/create.html.twig"
+            redirect: monsieurbiz_cms_page_admin_page_update
+            vars:
+                subheader: app.ui.cms.admin.subheader.article
+                templates:
+                    form: "@MonsieurBizSyliusCmsPagePlugin/Admin/Page/_form.html.twig"
+                route:
+                    name: app_admin_cms_article_create
+
+app_admin_cms_media_home_create:
+    path: /media_home
+    methods: [GET, POST]
+    defaults:
+        _controller: monsieurbiz_cms_page.controller.page::createAction
+        _sylius:
+            factory:
+                method: createMediaHome
+            form: App\Form\Type\Resources\Page\ConfiguredPageType
+            section: admin
+            permission: true
+            template: "@SyliusAdmin/Crud/create.html.twig"
+            redirect: monsieurbiz_cms_page_admin_page_update
+            vars:
+                subheader: app.ui.cms.admin.subheader.media_home
+                templates:
+                    form: "@MonsieurBizSyliusCmsPagePlugin/Admin/Page/_form.html.twig"
+                route:
+                    name: app_admin_cms_media_home_create
+
+app_admin_cms_media_article_create:
+    path: /media_article
+    methods: [GET, POST]
+    defaults:
+        _controller: monsieurbiz_cms_page.controller.page::createAction
+        _sylius:
+            factory:
+                method: createMediaArticle
+            form: App\Form\Type\Resources\Page\ConfiguredPageType
+            section: admin
+            permission: true
+            template: "@SyliusAdmin/Crud/create.html.twig"
+            redirect: monsieurbiz_cms_page_admin_page_update
+            vars:
+                subheader: app.ui.cms.admin.subheader.media_article
+                templates:
+                    form: "@MonsieurBizSyliusCmsPagePlugin/Admin/Page/_form.html.twig"
+                route:
+                    name: app_admin_cms_media_article_create
+                    
+# Ajax call to auto generate a slug for a page
+app_admin_cms_page_ajax_generate_page_slug:
+    path: /page/generate-slug
+    methods: [GET]
+    defaults:
+        _controller: App\Controller\Page\PageSlugController::generateAction
+        
+app_admin_cms_page_preview:
+    path: /{pageId}/preview
+    methods: GET
+    defaults:
+        _controller: App\Controller\Page\PagePreviewController
+    requirements:
+        pageId: '\d+'
+
+app_admin_cms_page_translation_publish:
+    path: /{id}/translation/publish
+    methods: [POST]
+    defaults:
+        _controller: App\Controller\Page\PageTranslationController::publishAction
+
+app_admin_cms_page_translation_fetch:
+    path: /{id}/translation/{locale}/fetch
+    methods: [POST]
+    defaults:
+        _controller: App\Controller\Page\PageTranslationController::fetchLocaleAction
+
+app_admin_cms_page_bulk_translation_publish:
+    path: /translation/bulk-publish
+    methods: [POST]
+    defaults:
+        _controller: App\Controller\Page\PageTranslationController::bulkPublishAction
+
+app_admin_cms_page_bulk_translation_fetch:
+    path: /translation/{locale}/bulk-fetch
+    methods: [POST]
+    defaults:
+        _controller: App\Controller\Page\PageTranslationController::bulkFetchAction

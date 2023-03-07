@@ -1,0 +1,13 @@
+{
+  "entrypoints": {
+    "styler": {
+      "js": [
+        "/build/styler/runtime.b4f842ef.js",
+        "/build/styler/styler.71e038d0.js"
+      ],
+      "css": [
+        "/build/styler/styler.828baa50.css"
+      ]
+    }
+  }
+}

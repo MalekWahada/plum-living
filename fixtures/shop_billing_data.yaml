@@ -1,0 +1,15 @@
+Sylius\Component\Core\Model\ShopBillingData:
+    shop_billing_data:
+        company: null
+        tax_id: null
+        country_code: null
+        street: null
+        city: null
+        postcode: null
+    shop_billing_data_DE:
+        company: null
+        tax_id: null
+        country_code: null
+        street: null
+        city: null
+        postcode: null

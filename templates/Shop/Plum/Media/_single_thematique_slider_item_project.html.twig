@@ -1,0 +1,33 @@
+{% set projectContent = project.content|format_cms_content_to_array %}
+
+<div class="swiper-slide @lg:column-3 column-6">
+    <div class="card card-media card-article-category">
+        <a class="u-block u-v-spaced-2 t-link-wrapper u-fullwidth u-fullheight"
+           href={{ get_url_from_page(project) }}>
+            <div class="cms__item cms__item--media_category u-relative">
+                <div class="cms__img u-relative">
+                    {% if project.image.path is defined and project.image.path is not empty %}
+                        <img class="slide-cover-image"
+                             src="{{ project.image.path | imagine_filter('app_cms_big_thumbnail') }}"
+                             srcset="{{ project.image.path | imagine_filter('app_cms_big_thumbnail_retina') }} 2x"/>
+                    {% else %}
+                        <img class="slide-cover-image"
+                             src="{{ asset('build/shop/images/no-image.png', 'shop') }}"
+                             srcset="{{ asset('build/shop/images/no-image.png', 'shop') }}"/>
+                    {% endif %}
+                </div>
+                <div class="cms__item--media_category--content c-true-white">
+                        <div class="t-header-xsmall u-margin-b-1">
+                            {{ 'app.cms_page.media_article.page.home_projects' | trans }}
+                        </div>
+                    <h4 class="t-header-small t-shadow">{{ project.title }}</h4>
+                </div>
+                <div class="background-opacity">
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+

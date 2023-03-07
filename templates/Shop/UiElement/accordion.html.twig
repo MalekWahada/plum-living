@@ -1,0 +1,19 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="single-product-content__accordion ui accordion u-v-tail-spaced-6">
+    {% for accordion in element.accordions %}
+        <div class="">
+            <div class="single-product-content__accordion-title title">
+                <svg class="o-icon-24 icon"><use xlink:href="{{ iconLibUrl }}#SVG-icon-chevron-down"/></svg>
+                {{ accordion.title }}
+            </div>
+            <div class="content u-y-scrollable u-padding-t-2">
+                <div class="transition hidden">
+                    <p class="t-base-small">
+                        {{ accordion.detail|raw }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

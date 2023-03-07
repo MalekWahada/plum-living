@@ -1,0 +1,10 @@
+@use '../../../config/sass' as *;
+
+
+
+.product-thumbnail {
+  flex: 0 0 rem(80);
+  width: rem(80);
+  height: rem(90);
+  object-fit: cover;
+}

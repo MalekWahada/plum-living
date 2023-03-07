@@ -1,0 +1,14 @@
+framework:
+    translator: { fallbacks: ["%locale%"] }
+    secret: '%env(APP_SECRET)%'
+    form: true
+    csrf_protection: true
+    templating: { engines: ["twig"] }
+    session:
+        handler_id: ~
+    validation: { enabled: true }
+    http_client:
+        scoped_clients:
+            plum_scanner_api_client:
+                base_uri: '%env(PLUM_SCANNER_API_BASE_URL)%'
+                auth_basic: '%env(PLUM_SCANNER_API_BASIC_AUTH)%'

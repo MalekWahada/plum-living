@@ -1,0 +1,14 @@
+<div id="groups">
+    <h4 class="ui top attached large header">{{ 'app.ui.product_groups'|trans }}</h4>
+    <div class="ui attached segment">
+        {% if product.groups is not empty %}
+            {% for group in product.groups %}
+                <ul class="ui bulleted list">
+                    <li>{{ group.name }}</li>
+                </ul>
+            {% endfor %}
+        {% else %}
+            <span>-</span>
+        {% endif %}
+    </div>
+</div>

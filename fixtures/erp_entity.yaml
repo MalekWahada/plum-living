@@ -1,0 +1,13 @@
+App\Entity\Erp\ErpEntity:
+    erp_entity_blue:
+        name: 'METOD - side 16 mm - 15x240cm - Straight - Painted - 02 Bleu Lagon'
+        type: 'product_variant'
+        erpId: 1
+    erp_entity_terra:
+        name: 'METOD - side 16 mm - 15x240cm - Straight - Painted - 09 Terra'
+        type: 'product_variant'
+        erpId: 2
+    erp_entity_ardoise:
+        name: 'METOD - side 16 mm - 15x240cm - Straight - Painted - 12 Ardoise'
+        type: 'product_variant'
+        erpId: 3

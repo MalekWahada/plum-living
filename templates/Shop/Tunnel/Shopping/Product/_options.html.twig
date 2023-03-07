@@ -1,0 +1,16 @@
+{% if form.cartItem.variant.vars.attr.hasToBeDisplayed %}
+    <div class="select-box u-inline-block">
+        {% for option_form in form.cartItem.variant %}
+            {# If this is a choice type, render with custom style #}
+            {% if option_form.vars.choices is defined %}
+                {% include 'Shop/Form/_color_select_field.html.twig' with { 'field': option_form } %}
+            {% else %}
+                {{ form_row(option_form) }}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% else %}
+    <div hidden>
+        {{ form_widget(form.cartItem.variant) }}
+    </div>
+{% endif %}

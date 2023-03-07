@@ -1,0 +1,2 @@
+lexik_jwt_authentication:
+    token_ttl: 2678400 # token TTL in seconds, defaults to 1 hour , here 1 month for DEV ! 

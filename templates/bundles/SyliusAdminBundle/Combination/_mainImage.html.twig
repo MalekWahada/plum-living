@@ -1,0 +1,7 @@
+{% if combination.image %}
+    {% set path = combination.image.path|imagine_filter(filter|default('sylius_admin_product_thumbnail')) %}
+{% else %}
+    {% set path = '//placehold.it/50x50' %}
+{% endif %}
+
+<img src="{{ path }}" alt="" class="ui bordered image" />

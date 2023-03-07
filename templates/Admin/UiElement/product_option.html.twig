@@ -1,0 +1,8 @@
+{% if element.option is not empty %}
+    {% set optionsValues = ui_element.getProductOptions(element.option) %}
+    {% if element.option == constant('App\\Entity\\Product\\ProductOption::PRODUCT_OPTION_COLOR') %}
+        {% include 'Admin/UiElement/ProductOption/color_values.html.twig' %}
+    {% else %}
+        {% include 'Shop/UiElement/ProductOptionValues/design_finish_values.html.twig' %}
+    {% endif %}
+{% endif %}

@@ -1,0 +1,37 @@
+{% from 'bundles/MonsieurBizSyliusCmsPagePlugin/Admin/Macro/translationForm.html.twig' import translationFormWithSlug %}
+
+{% set channelPricingsForm = form.channelPricings %}
+{% set translationForm = form.translations %}
+
+{{ form.offsetUnset('translations') }}
+{{ form.offsetUnset('channelPricings') }}
+{{ form_errors(form) }}
+{{ form_rest(form) }}
+
+{% apply spaceless %}
+    {% if form.image.vars.value.path|default(null) is not null %}
+        <img class="ui small bordered image"
+             src="{{ form.image.vars.value.path }}"
+             alt="{{ form.image.vars.value.type }}"
+        />
+    {% endif %}
+    <div class="ui hidden element">
+        {{ form_widget(form.image) }}
+    </div>
+{% endapply %}
+
+<div class="ui segment">
+    <div class="ui one column stackable grid">
+        <div class="column">
+            <h4 class="ui dividing header">{{ 'sylius.ui.pricing'|trans }}</h4>
+            {% include "bundles/SyliusAdminBundle/ProductIkea/_channel_pricing.html.twig" with {
+                product: product_ikea,
+                channelPricingsForm: channelPricingsForm,
+            } only %}
+        </div>
+    </div>
+</div>
+
+<div class="ui segment">
+    {{ form_row(translationForm) }}
+</div>

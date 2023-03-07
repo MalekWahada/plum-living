@@ -1,0 +1,11 @@
+@import '../../assets/variables';
+
+.styler {
+  &__catTitle {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: $asphalte;
+    text-transform: uppercase;
+  }
+}

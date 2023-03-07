@@ -1,0 +1,5 @@
+'Invalid credentials':
+    '': 'If you had an account on our old website, your password has been changed for security, please click on "Forgot password"'
+    lokalise_sanitize_two_single_quotes: 'If you had an account on our old website, your password has been changed for security, please click "Forgot password".'
+app:
+    email_not_verified: 'Your account is not validated, please validate your account by clicking on the link we sent you by e-mail.'

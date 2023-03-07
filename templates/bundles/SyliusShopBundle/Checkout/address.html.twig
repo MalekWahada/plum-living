@@ -1,0 +1,36 @@
+{% extends '@SyliusShop/Checkout/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block title %}{{ 'app.ui.checkout.step_1_content.tab_title'|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title t-header-large">{{ 'app.ui.checkout.step_1_content.page_title'|trans }}</h1>
+
+        {{ sylius_template_event(['sylius.shop.checkout.address.steps', 'sylius.shop.checkout.steps'], _context) }}
+
+        <div class="checkout-main-row row">
+            <main class="column @lg:column-7">
+                <div class="checkout-address-panel panel">
+                    {{ sylius_template_event('sylius.shop.checkout.address.before_form', {'order': order}) }}
+                    
+                    {{ form_start(form, {'action': path('sylius_shop_checkout_address'), 'attr': {'class': 'panel__content', 'id': form.vars.id}}) }}
+                        {% include 'Shop/Form/_errors.html.twig' with { 'form': form } %}
+                        
+                        <input type="hidden" name="_method" value="PUT" />
+                        {% include '@SyliusShop/Checkout/Address/_form.html.twig' %}
+                        
+                        {{ sylius_template_event('sylius.shop.checkout.address.before_navigation', {'order': order}) }}
+                        {% include '@SyliusShop/Checkout/_navigation.html.twig' %}
+
+                        {{ form_row(form._token) }}
+                    {{ form_end(form, {'render_rest': false}) }}
+                </div>
+            </main>
+            <aside class="column @lg:column-5 u-margin-t-5 @lg:u-margin-t-0">
+                {{ sylius_template_event(['sylius.shop.checkout.address.sidebar', 'sylius.shop.checkout.sidebar'], _context) }}
+            </aside>
+        </div>
+    </div>
+{% endblock %}

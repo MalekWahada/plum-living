@@ -1,0 +1,48 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set imageFilter = 'app_cms_image_collection_slider' %}
+{% set imageFilterRetina = 'app_cms_image_collection_slider_retina' %}
+
+<h4>{{ element.title }}</h4>
+<div class="cms-slider-home__container new-slider">
+    <div class="swiper-wrapper">
+        {% for slide in element.slider %}
+            <div class="swiper-slide">
+                {% if slide.image is not empty %}
+                    {% if slide.link_url is not empty %}
+                        <a href="{{ slide.link_url }}">
+                            <img src="{{ slide.image|imagine_filter(imageFilter) }}"
+                                 srcset="{{ slide.image|imagine_filter(imageFilterRetina) }} 2x"
+                                 alt="{{ slide.image_alt|default('') }}"
+                                 title="{{ slide.image_title|default('') }}"/>
+                        </a>
+                    {% else %}
+                        <img src="{{ slide.image|imagine_filter(imageFilter) }}"
+                             srcset="{{ slide.image|imagine_filter(imageFilterRetina) }} 2x"
+                             alt="{{ slide.image_alt|default('') }}"
+                             title="{{ slide.image_title|default('') }}"/>
+                    {% endif %}
+                    {% if slide.image_title is not empty %}
+                        <div class="swiper-slide-home-content c-true-white">
+                            {% if false and slide.image_category is not empty %}
+                                <div class="category t-header-xsmall u-margin-b-1">
+                                    {{ slide.image_category }}
+                                </div>
+                            {% endif %}
+                            <h1 class="t-header-xlarge u-margin-b-2">
+                                {{ slide.image_title }}
+                            </h1>
+                            {% if slide.link_url is not empty %}
+                                <a class="button button--inversed" href="{{ slide.link_url }}">
+                                    <svg class="o-icon-20 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                                    {{ 'app.cms_page.media_article.slider.discover'|trans }}
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

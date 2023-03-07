@@ -1,0 +1,7 @@
+{% extends '@SyliusShop/Account/layout.html.twig' %}
+
+{% block title %}{{ 'sylius.ui.order_history'|trans }} | {{ parent() }}{% endblock %}
+
+{% block subcontent %}
+    {{ sylius_template_event('sylius.shop.account.order.index.subcontent', _context) }}
+{% endblock %}

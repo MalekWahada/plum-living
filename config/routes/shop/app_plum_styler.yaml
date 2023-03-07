@@ -1,0 +1,14 @@
+app_plum_styler_index:
+    path: /styler
+    controller: App\Controller\PlumStyler\StylerController::indexAction
+    methods: [GET]
+
+app_plum_styler_show:
+    path: /styler/app
+    controller: App\Controller\PlumStyler\StylerController::showAction
+    methods: [GET]
+
+app_plum_styler_options:
+    path: /styler/options
+    controller: App\Controller\PlumStyler\StylerOptionsController::listAction
+    methods: [GET]

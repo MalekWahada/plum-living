@@ -1,0 +1,44 @@
+{% extends '@SyliusShop/Checkout/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block title %}{{ 'app.ui.checkout.step_2_content.tab_title'|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title t-header-large">{{ 'app.ui.checkout.step_2_content.page_title'|trans }}</h1>
+
+        {{ sylius_template_event(['sylius.shop.checkout.select_shipping.steps', 'sylius.shop.checkout.steps'], _context|merge({'active': 'select_shipping', 'orderTotal': order.total})) }}
+
+        <div class="t-align-center u-margin-b-6">
+            <a class="link-button" href="{{ path('sylius_shop_checkout_address') }}">{{ 'app.ui.checkout.steps_nav.back'|trans }}</a>
+        </div>
+        <div class="checkout-main-row row">
+            <main class="column @lg:column-7">
+                <div class="checkout-shipping-panel panel" id="shipping-selected-url" data-shipping-selected-url="{{ path('ajax_get_select_shipping_method_price', {'order': order.id}) }}">
+                    <h2 class="panel__title t-header-medium">{{ 'app.ui.checkout.step_2_content.panel_title'|trans }}</h2>
+                    {{ sylius_template_event('sylius.shop.checkout.select_shipping.before_form', {'order': order}) }}
+
+                    {{ form_start(form, {'action': path('sylius_shop_checkout_select_shipping'), 'attr': {'class': 'panel__content', 'id': form.vars.id}}) }}
+                        {% include 'Shop/Form/_errors.html.twig' with { 'form': form } %}
+
+                        <input type="hidden" name="_method" value="PUT" />
+                        {% include '@SyliusShop/Checkout/SelectShipping/_form.html.twig' %}
+
+                        {{ sylius_template_event('sylius.shop.checkout.select_shipping.before_navigation', {'order': order}) }}
+                        {% include '@SyliusShop/Checkout/_navigation.html.twig' %}
+
+                        <div class="t-align-center @lg:u-inline-block">
+                            <a class="link-button u-margin-t-6" target="_blank" href="{{ path('app_faq_index') }}">{{ 'app.ui.checkout.step_2_content.more_infos_in_faq'|trans }}</a>
+                        </div>
+
+                        {{ form_row(form._token) }}
+                    {{ form_end(form, {'render_rest': false}) }}
+                </div>
+            </main>
+            <aside class="column @lg:column-5 u-margin-t-5 @lg:u-margin-t-0">
+                {{ sylius_template_event(['sylius.shop.checkout.select_shipping.sidebar', 'sylius.shop.checkout.sidebar'], _context) }}
+            </aside>
+        </div>
+    </div>
+{% endblock %}

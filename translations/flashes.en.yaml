@@ -1,0 +1,49 @@
+app:
+    cart:
+        error: 'Error: Your basket has not been updated'
+        success: 'Your basket has been successfully updated.'
+    cms:
+        page_position:
+            success: 'Positions are updated successfully'
+        project_plan:
+            error: 'An internal error has occurred, please try again later'
+            success: 'The email was sent successfully'
+            warning: 'Check that your email address has been entered correctly'
+    duplicate_cart:
+        error: 'The order does not exist, your basket has not been updated.'
+        success: 'Your basket has been successfully updated.'
+    facade:
+        facade_not_exist: 'Your choice of front does not exist.'
+    order:
+        awaiting_payment:
+            not_allowed: 'You have been logged out, your pending orders are still accessible in your space'
+            not_found: 'An error has occurred'
+            to_cart_success: 'Your order has not been finalized. Your items are still in your basket.'
+        order_not_exist: 'Order Not Found.'
+    plum_scanner:
+        create_project_error: 'An unexpected problem occurred while creating your project. Please try again.'
+        create_project_success: 'Your project has been successfully created.'
+        error_invalid_mail: 'The email you sent us is not from the IKEA Kitchen Planner.'
+        error_invalid_pdf: 'The plan you sent us is not valid.'
+        error_other: 'An unexpected problem occurred while scanning your plan. Please try again.'
+        not_found: 'Project Not Found.'
+        project_successfully_saved: 'Your project has been saved successfully.'
+        project_successfully_shared: 'The project was successfully shared via email.'
+    product:
+        not_found: 'The product you are looking for does not exist!'
+    project:
+        create_project_success: 'Your project has been successfully created.'
+        delete_project_success: 'Your project has been successfully deleted.'
+        duplicate_project_error: 'An unexpected problem occurred while duplicating your project. Please try again.'
+        duplicate_project_success: 'Your project has been successfully duplicated.'
+    share_cart:
+        error: 'An internal error has occurred, please try again later.'
+        success: 'Your basket has been successfully shared by email.'
+    user:
+        mail_verified: 'Your email is already verified'
+sylius:
+    address:
+        delete: 'Your address has been deleted'
+    customer:
+        register: 'Thank you for registering, you will receive an email to verify your account shortly.'
+        update: 'Your profile has been successfully updated.'

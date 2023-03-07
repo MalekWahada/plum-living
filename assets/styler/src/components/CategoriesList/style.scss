@@ -1,0 +1,38 @@
+@import '../../assets/variables';
+
+.styler {
+  &__btn-item.btn-outline-dark {
+    border: 1.5px solid $grey-3;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: -0.5px;
+    color: $grey-2;
+    height: 80px;
+    width: 100%;
+    transition: border-color ease-in-out 0.3s;
+
+    img {
+      display: block;
+      margin: auto;
+      opacity: 0.5;
+      margin-bottom: 10px;
+      pointer-events: none;
+    }
+
+    &.active, &:hover {
+      border-color: $asphalte;
+      color: $asphalte;
+      background: transparent;
+
+      img {
+        opacity: 1;
+      }
+    }
+
+    &:active, &:focus {
+      box-shadow: none !important;
+      outline: none !important;
+    }
+  }
+}

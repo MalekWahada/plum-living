@@ -1,0 +1,26 @@
+/*
+  Node modules
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+// @use '../node_modules/normalize.css/normalize.css';
+// Normalize is already imported by Sylius in
+// /vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/Resources/private/entry.js
+
+// Uncomment to use Swiper carousels on admin pages.
+// @use '../node_modules/swiper/swiper-bundle.min.css';
+
+/*
+  Needs cleaning
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+@use './utils/jquery-ui.min.css';
+@use './utils/slim.min.css';
+@use './components/card/card';
+@use './components/media/form';
+
+/*
+  Own modules
+  ---------- ---------- ---------- ---------- ----------
+*/

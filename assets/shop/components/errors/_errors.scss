@@ -1,0 +1,18 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+
+.errors {
+  &__text {
+    @include down('large') {
+      width: rem(193);
+      height: rem(102);
+    }
+  }
+
+  &__desc {
+    @include down('large') {
+      text-align: center;
+      max-width: rem(280);
+    }
+  }
+}

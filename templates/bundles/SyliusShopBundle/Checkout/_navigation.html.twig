@@ -1,0 +1,11 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set step = resolve_checkout_step() %}
+
+<button class="button ripple-button u-fullwidth u-margin-t-6 @lg:u-hidden" type="submit" form="{{ form.vars.id }}" {{ sylius_test_html_attribute('next-step') }}>
+    {% if step == 4 %}
+        {{ 'app.ui.checkout.steps_nav.proceed_to_payment'|trans }}
+    {% else %}
+        {{ 'app.ui.generic.proceed'|trans }}
+    {% endif %}
+    <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+</button>

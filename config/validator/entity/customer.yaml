@@ -1,0 +1,31 @@
+App\Entity\Customer\Customer:
+    constraints:
+        - App\Validator\CustomerConstraint\B2bProgramMatchesCustomerType:
+              groups:
+                  - sylius_admin_customer_profile
+                  - b2b_profile
+    properties:
+        howYouKnowAboutUsDetails:
+            - Length:
+                max: 500
+                groups: [sylius]
+        companyName:
+            - NotBlank:
+                groups: [b2b_profile]
+        companyStreet:
+            - NotBlank:
+                groups: [b2b_profile]
+        companyPostcode:
+            - NotBlank:
+                groups: [b2b_profile]
+        companyCity:
+            - NotBlank:
+                groups: [b2b_profile]
+        companyCountryCode:
+            - NotBlank:
+                groups: [b2b_profile]
+            - Length:
+                min: 2
+                max: 2
+                groups: [b2b_profile]
+                    

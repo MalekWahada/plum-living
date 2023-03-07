@@ -1,0 +1,280 @@
+imports:
+    - { resource: 'services/'}
+    - { resource: "sylius_grid/admin.yaml" }
+    - { resource: "sylius_grid/shop.yaml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: !php/const App\Entity\Locale\Locale::DEFAULT_LOCALE_CODE
+    translatable_slug_validation_regex: ^[A-Za-z]{2,4}(-([A-Za-z]{4}|[0-9]{3}))?(-([A-Za-z]{2}|[0-9]{3}))?$
+    plum_scanner_api_base_url: '%env(PLUM_SCANNER_API_BASE_URL)%'
+    cms_skeletons.directory: '%kernel.project_dir%/config/cms_skeletons/'
+    currency_dividing_amount: 1000 # Tenth of a cent, warning : if change, verify /assets/plum-scanner.js  and verify MoneyType.php ->setDefault('scale' => 3)
+    currency_default_base_unit_divisor: 10 # base unit used to convert any cost (stored in cents in the database) to a well formatted cost in payment gateway
+    upload_dir_cms: '%kernel.project_dir%/public'
+    default_cache_dir: '%kernel.project_dir%/var/cache'
+    # custom validation
+    sylius.form.type.address.validation_groups: [app_address, sylius]
+    # mailchimp
+    mailchimp.api_key: '%env(MAIL_CHIMP_API_KEY)%'
+    mailchimp.list_id: '%env(MAIL_CHIMP_LIST_ID)%'
+    mailchimp.webhook_secret: '%env(resolve:MAIL_CHIMP_WEBHOOK_SECRET)%'
+    # cart session
+    session_cart_key_name: '_sylius.cart'
+    # lokalize
+    lokalize_api_key: '%env(LOKALIZE_API_KEY)%'
+    lokalize_cms_project_id: '%env(LOKALIZE_CMS_PROJECT_ID)%'
+    lokalize_product_complete_info_project_id: '%env(LOKALIZE_PRODUCT_COMPLETE_INFO_PROJECT_ID)%'
+    lokalize_taxon_project_id: '%env(LOKALIZE_TAXON_PROJECT_ID)%'
+    env(LOKALIZE_FETCH_ONLY_VERIFIED_KEYS): true # default env
+    
+services:
+    # Default configuration for services in *this* file
+    _defaults:
+        # Automatically injects dependencies in your services
+        autowire: true
+
+        # Automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+
+        # Allows optimizing the container by removing unused services; this also means
+        # fetching services directly from the container via $container->get() won't work
+        public: false
+        bind:
+            string $zendeskApiSubdomain: '%env(ZENDESK_API_SUBDOMAIN)%'
+            string $zendeskApiUsername: '%env(ZENDESK_API_USERNAME)%'
+            string $zendeskApiToken: '%env(ZENDESK_API_TOKEN)%'
+            int $defaultDivisor: '%currency_dividing_amount%'
+            int $defaultBaseUnitDivisor: '%currency_default_base_unit_divisor%'
+            string $kernelEnvironment: '%kernel.environment%'
+            string $uploadDirCMS: '%upload_dir_cms%'
+            string $defaultCacheDir: '%default_cache_dir%'
+            string $cartSessionKeyName: '%session_cart_key_name%'
+            bool $lokalizeFechOnlyVerifiedKeys: '%env(bool:LOKALIZE_FETCH_ONLY_VERIFIED_KEYS)%'
+            string $adminEmailAddress: '%env(ADMIN_MAIL_ADDRESS)%'
+
+    _instanceof:
+        Sylius\Bundle\ResourceBundle\Controller\ResourceController:
+            autowire: false
+        Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType:
+            autowire: false
+        App\Erp\Adapters\Product\ProductAdapterInterface:
+            tags:
+                - { name: 'erp.adapter' }
+        App\Erp\Adapters\ProductVariant\ProductVariantAdapterInterface:
+            tags:
+                - { name: 'erp.adapter' }
+
+    # Makes classes in src/ available to be used as services;
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude:
+            - '../src/Entity'
+            - '../src/EventListener'
+            - '../src/Factory'
+            - '../src/Fixtures'
+            - '../src/Form/Type/Resources'
+            - '../src/Menu'
+            - '../src/Migrations'
+            - '../src/Grid'
+            - '../src/Provider/Stripe'
+            - '../src/Provider/Dashboard'
+            - '../src/Promotion/{Action,Applicator,Processor}'
+            - '../src/Order/{Applicator,Resolver}'
+            - '../src/ApiPlatform/Serializer'
+            - '../src/Tests'
+            - '../src/Kernel.php'
+            - '../src/Model'
+            - '../src/Form/Extension/{CountryTypeExtension.php,CartItemTypeExtension.php}' # Services already extended in Sylius core (see forms.yaml)
+            - '../src/Context'
+
+    # Controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller'
+        exclude:
+            - '../src/Controller/Exporter/ExportDataController.php'
+        tags: ['controller.service_arguments']
+
+    App\Checkout\Delivery\UpdateDateDelivery:
+        public: true
+
+    Sylius\Component\Core\Calculator\ProductVariantPricesCalculatorInterface: '@sylius.calculator.product_variant_price'
+    Sylius\Component\Attribute\Factory\AttributeFactoryInterface: '@sylius.factory.product_attribute'
+    Sylius\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface: '@sylius.translation_locale_provider'
+
+    app.authentication.failure_handler:
+        class: App\Authentication\AuthenticationFailureHandler
+
+    sylius.controller.security:
+        class: App\Controller\SecurityController
+        tags: ['controller.service_arguments']
+
+    App\Broker\PlumScannerApiClient:
+        arguments:
+            - '%plum_scanner_api_base_url%'
+            - '@plum_scanner_api_client'
+            - '@App\Calculator\ProductPriceTaxCalculator'
+            - '@sylius.repository.customer'
+                
+    App\Translation\Client\TranslatorClientInterface:
+        class: App\Translation\Client\LokalizeClient
+        arguments:
+            - '%lokalize_api_key%'
+            - { cms: '%lokalize_cms_project_id%', product_complete_info: '%lokalize_product_complete_info_project_id%', taxon: '%lokalize_taxon_project_id%' }
+
+    sylius.money_formatter:
+        class: App\Formatter\Money\MoneyFormatter
+        autowire: true
+        autoconfigure: true
+
+    Sylius\Component\Registry\ServiceRegistryInterface: '@sylius.importers_registry'
+    Sylius\Bundle\ResourceBundle\Controller\RequestConfigurationFactoryInterface : '@sylius.resource_controller.request_configuration_factory'
+    Sylius\Bundle\ResourceBundle\Controller\ResourcesCollectionProviderInterface: '@sylius.resource_controller.resources_collection_provider'
+
+    App\Erp\Adapters\AdapterProvider:
+        arguments:
+            - !tagged_iterator { tag: erp.adapter }
+
+    App\Promotion\Generator\PromotionSampleGenerator:
+        public: true
+
+    ###> used on revert to order callbacks ###
+    App\Promotion\Remover\PromotionSampleRemover:
+        public: true
+
+    App\Order\Processor\RevertToCartDatesProcessor:
+        public: true
+
+    App\Order\Processor\OrderToCartSessionProcessor:
+        public: true
+    ###< used on revert to order callbacks ###
+
+    # Promotion custom rules
+    App\Promotion\Checker\Rule\FrontSamplePromotionRuleChecker:
+        tags:
+            - { name: sylius.promotion_rule_checker, type: !php/const App\Promotion\Checker\Rule\FrontSamplePromotionRuleChecker::TYPE, form_type: App\Form\Type\Rule\SamplesPromotionConfigurationType, label: app.promotion.front_sample_promotion.label }
+
+    App\Promotion\Checker\Rule\PaintSamplePromotionRuleChecker:
+        tags:
+            - { name: sylius.promotion_rule_checker, type: !php/const App\Promotion\Checker\Rule\PaintSamplePromotionRuleChecker::TYPE, form_type: App\Form\Type\Rule\SamplesPromotionConfigurationType, label: app.promotion.paint_sample_promotion.label }
+
+    App\Promotion\Checker\Rule\ContainsOnlySampleShippingCategoryPromotionRuleChecker:
+        tags:
+            - { name: sylius.promotion_rule_checker, type: !php/const App\Promotion\Checker\Rule\ContainsOnlySampleShippingCategoryPromotionRuleChecker::TYPE, form_type: App\Form\Type\Rule\ContainsOnlySampleShippingCategoryPromotionConfigurationType, label: app.promotion.contains_only_sample_shipping_category_promotion.label }
+
+    App\Form\Extension\CartItemTypeExtension:
+        tags:
+            - { name: form.type_extension, extended_type: Sylius\Bundle\OrderBundle\Form\Type\CartItemType, priority: -1 }
+
+    App\Promotion\Checker\Rule\B2bProgramPromotionRuleChecker:
+        tags:
+            - { name: sylius.promotion_rule_checker, type: !php/const App\Promotion\Checker\Rule\B2bProgramPromotionRuleChecker::TYPE, form_type: App\Form\Type\Rule\B2bProgramPromotionConfigurationType, label: app.promotion.b2b_program_promotion.label }
+
+    App\Promotion\Checker\Rule\ContainsOnlyMainTaxonRuleChecker:
+        tags:
+            - { name: sylius.promotion_rule_checker, type: !php/const App\Promotion\Checker\Rule\ContainsOnlyMainTaxonRuleChecker::TYPE, form_type: App\Form\Type\Rule\ContainsOnlyMainTaxonConfigurationType, label: app.promotion.contains_only_main_taxon_promotion.label }
+    
+    # Redefine priority of cart selected after authenticated user
+    sylius.context.cart.session_and_channel_based:
+        class: Sylius\Bundle\CoreBundle\Context\SessionAndChannelBasedCartContext
+        arguments:
+            - "@sylius.storage.cart_session"
+            - "@sylius.context.channel"
+        tags:
+            - { name: sylius.context.cart, priority: -222 }
+
+    App\TagManager\GoogleTagManagerEvent:
+        arguments:
+            - "@google_tag_manager"
+
+    App\Checkout\Shipping\ShippingPriceCalculator:
+        arguments:
+            - '@sylius.shipping_calculator'
+            - '@sylius.tax_calculator'
+            - '@sylius.promotion_action.shipping_percentage_discount'
+
+    App\Order\Processor\OrderAdjustmentsClearer:
+        decorates: sylius.order_processing.order_adjustments_clearer
+        autowire: true
+        autoconfigure: true
+
+    App\Order\Generator\SequentialOrderNumberGenerator:
+        decorates: sylius.sequential_order_number_generator
+        autowire: true
+        autoconfigure: true
+        
+    App\Funnel\Payment\Application\StripeWebhookHandler:
+        arguments:
+            - '@sm.factory'
+            - '@sylius.manager.payment'
+            - '%env(STRIPE_WEBHOOK_SECRET)%'
+    
+    App\Funnel\Payment\Application\PaymentEntryHandler:
+        arguments:
+            - '%env(STRIPE_API_SECRET_KEY)%'
+            - '%env(STRIPE_API_VERSION)%'
+            - '@session'
+     
+    App\Funnel\Payment\Application\Creator\StripeCustomerCreator:
+        arguments:
+            - '@sylius.manager.payment'
+    
+    monolog.json_formatter:
+        class: Monolog\Formatter\JsonFormatter
+
+    Monolog\Processor\WebProcessor:
+        tags: ['monolog.processor']
+
+    App\Monolog\ClientIpProcessor:
+        tags: ['monolog.processor']
+        
+    App\Monolog\CustomerProcessor:
+        tags: 
+            - { name: monolog.processor }
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+        
+    App\Routing\RequestContext:
+        decorates: MonsieurBiz\SyliusCmsPagePlugin\Routing\RequestContext
+        arguments:
+            - '@App\Routing\RequestContext.inner'
+
+    App\Funnel\Payment\Infrastructure\Controller\SuccessWireController:
+        arguments:
+            - '@sylius.manager.payment'
+            - '@sylius.email_sender'
+            - '@monolog.logger'
+            - '@session'
+
+    App\Datadog\Application\DatadogClient:
+        arguments:
+            - '%env(DATADOG_HOST)%'
+            - '%env(int:DATADOG_PORT)%'
+    App\Datadog\Application\DatadogClientInterface: '@App\Datadog\Application\DatadogClient'
+        
+    App\Alice\Locator\CustomOrderFilesLocator:
+        arguments:
+            - '@hautelook_alice.locator.environmentless'
+            - '%kernel.project_dir%/'
+
+    hautelook_alice.locator: '@App\Alice\Locator\CustomOrderFilesLocator'
+    
+    App\Faker\Provider\UniqueElementProvider:
+        tags:
+            - { name: nelmio_alice.faker.provider }
+
+    App\Command\WiretransferReminderCommand:
+        arguments:
+            $hubspotTransactionalConfig: '%noksi_sylius_plum_hubspot.transactionnal_email%'
+
+    App\Twig\CMSRichEditorExtension:
+        decorates: MonsieurBiz\SyliusRichEditorPlugin\Twig\RichEditorExtension
+
+    # Locale switcher
+    App\Controller\LocaleSwitchController:
+        decorates: sylius.controller.shop.locale_switch
+        
+    App\Order\Resolver\PaymentMethodsResolver:
+        decorates: sylius.payment_methods_resolver

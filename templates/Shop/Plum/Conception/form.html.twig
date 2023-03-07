@@ -1,0 +1,19 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block content %}
+    <div class="cms">
+        <div class="typeform-widget"></div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% include 'Shop/GoogleTagManager/conception_service.javascripts.twig' %}
+    <script src="https://embed.typeform.com/embed.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", function() {
+          const el = document.querySelector(".typeform-widget");
+          window.typeformEmbed.makeWidget(el, "{{ formUrl }}");
+          gtmConceptionServiceStarted();
+      });
+    </script>
+{% endblock %}

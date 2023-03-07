@@ -1,0 +1,23 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="media-footer-immersive t-align-center">
+    <div class="row u-relative">
+        <div class="column-fill-space">
+            <img src="{{ element.image | raw }}"
+                 alt="{{ element.image_alt | raw }}"
+                 title="{{ element.image_title | raw }}">
+        </div>
+        <div class="u-absolute">
+            <div class="t-header-xsmall c-true-white u-margin-b-3">{{ element.tag | raw }}</div>
+            <h2 class="t-header-large c-true-white t-shadow">{{ element.title | raw }}</h2>
+            {% if element.link_label and element.link_url %}
+                <a class="button u-margin-t-2"
+                   {% if element.link_target %} target="{{ element.link_target }}"{% endif %}
+                   href="{{ element.link_url | raw }}">
+                    <svg class="o-icon-16 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                    {{ element.link_label | raw }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>

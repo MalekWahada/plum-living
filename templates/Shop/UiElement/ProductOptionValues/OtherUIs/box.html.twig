@@ -1,0 +1,11 @@
+<div class="box">
+    {% if boxElements|length > 2 %}
+        {{ boxElements[0] | monsieurbiz_richeditor_render_element }}
+        {{ boxElements[1] | monsieurbiz_richeditor_render_element }}
+
+        {% set boxImage = boxElements[2].data %}
+        {% if boxImage.image is defined and boxImage.image is not empty %}
+            <img src="{{ boxImage.image|imagine_filter('app_box_image') }}" srcset="{{ boxImage.image|imagine_filter('app_box_image_retina') }} 2x">
+        {% endif %}
+    {% endif %}
+</div>

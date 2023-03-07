@@ -1,0 +1,1522 @@
+app:
+    admin:
+        erp_registered: 'Synchronisé ERP'
+        payment_refund: 'Le paiement ne sera pas remboursé sur stripe !'
+        tax_rate_must_be_unique: 'Dans le cadre de la politique de prix uniques à l''international de Plum, le taux de TVA doit être de 20%, quel que soit le pays de livraison.'
+        warning: Attention
+    cms_page:
+        article:
+            main_caption: 'Articles interessants'
+        concept:
+            links_text: 'Une question sur nos produits, leur installation, nos délais de livraison ?'
+            top_title: 'Notre concept'
+        conception_services:
+            cta: 'Je réserve mon RDV Conception'
+            devis_cta: 'Je chiffre mon projet'
+            devis_title: 'Vous avez déjà un plan ?'
+            form_confirmation:
+                signature: 'L’équipe Plum'
+                subtitle: 'Votre rendez-vous conception est confirmé.'
+                text: 'Votre Plum Planner vous a envoyé une invitation par email.<br><br> Pour vous inspirer, retrouvez le contenu inédit du Studio Plum sur notre <a href="%URL%" target="_blank">page Inspiration</a> et sur nos réseaux !<br><br>A bientôt,<br>'
+                title: 'Merci !'
+            info_italic: 'Ce service est proposé pour les cuisines et agencements Metod.'
+            info_text: 'Votre Plum Planner concevra votre cuisine ou agencement Metod en partant d''une feuille blanche. <br><br> A l''issue de cet appel visio, il vous enverra : <br><br><svg class=''o-icon-24 c-green u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Votre plan Ikea en PDF et la liste d''articles Ikea<br><br><svg class=''o-icon-24 c-green u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Le lien vers votre plan Ikea accessible en ligne<br><br><svg class=''o-icon-24 c-green u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Votre liste d''articles Plum'
+            info_title: 'En quoi consiste ce service ?'
+            price: '89,00€'
+            title: 'Nos Plum Planners créent votre plan'
+            top_text: 'Lors d’un appel visio d’1h30, l’un de nos Plum Planners créera votre plan Ikea selon vos souhaits et vous communiquera la liste de l’ensemble des éléments à acheter.'
+        design_finish:
+            happy2022:
+                cta: 'Je commande mes échantillons'
+                subtitle: 'En 2022, concrétisez votre projet : 3 échantillons vous sont offerts avec le code <strong>JEMELANCE</strong>'
+            top_title: 'Designs & Finitions'
+        devis_services:
+            call_italic: 'Celui-ci répondra à vos questions concernant votre plan et vérifiera que votre panier Plum est complet.'
+            call_text: 'Une fois votre chiffrage réalisé sur notre site, nous vous proposerons un rdv téléphonique de 15 minutes au cours duquel nous vérifierons votre plan et votre liste d’articles.'
+            call_title: 'Vérifiez votre chiffrage avec un Plum Planner'
+            conception_cta: 'Découvrir notre Service Conception'
+            conception_title: 'Vous n’avez pas de plan ?'
+            title: 'Nos Plum Planners vous accompagnent'
+            visio_cta: 'Je réserve mon RDV Conception'
+            visio_italic: 'Notre service de conception est proposé à 89 €.'
+            visio_text: 'Lors d’un appel visio d’1h30, l’un de nos Plum Planners créera votre plan selon vos souhaits et vous communiquera la liste de l’ensemble des éléments à acheter.'
+            visio_title: 'Vous n’avez pas de plan ?'
+        eshop:
+            accessoires:
+                meta:
+                    description: 'Laissez-vous inspirer par nos accessoires pour meubles Metod et Pax Ikéa et personnalisez votre agencement intérieur en un clin d''oeil.'
+                    title: 'Accessoires meubles Ikéa | Plum'
+                    type: page
+            echantillon_facade:
+                meta:
+                    description: 'Laissez-vous inspirer par nos échantillons de façades Ikéa et nous vous rembourserons dès votre première commande !'
+                    title: 'Échantillons de façades Ikéa | Plum'
+                    type: page
+            echantillon_peinture:
+                meta:
+                    description: 'Laissez-vous inspirer par nos échantillons de peinture murale et nous vous rembourserons dès votre première commande !'
+                    title: 'Échantillons de peinture murale | Plum'
+                    type: page
+            metod:
+                meta:
+                    description: 'Laissez-vous inspirer par nos designs de façades Metod Ikéa et personnalisez votre agencement intérieur en un clin d''oeil.'
+                    title: 'Façades Metod Ikéa | Plum'
+                    type: page
+            pax:
+                meta:
+                    description: 'Laissez-vous inspirer par nos designs de façades Pax Ikéa et personnalisez votre agencement intérieur en un clin d''oeil.'
+                    title: 'Façades Pax Ikéa | Plum'
+                    type: page
+            peinture:
+                meta:
+                    description: 'Laissez-vous inspirer par nos peintures murales satinées et fabriquées en France et personnalisez votre agencement intérieur en un clin d''oeil.'
+                    title: 'Peinture murale | Plum'
+                    type: page
+        faq:
+            meta:
+                descritpion: 'Les réponses à vos questions pour vous permettre de vous inspirer, vous proposer les meilleurs produits, et vous donner les conseils pour mettre en oeuvre votre projet.'
+                title: 'Foire aux questions | Plum'
+                type: Page
+            return: Retour
+            title: FAQ
+        inspiration:
+            address:
+                meta:
+                    description: 'Laissez-vous guider par notre carnet d’adresses et personnalisez votre agencement intérieur avec les meilleurs fournisseurs d’accessoires.'
+                    title: 'Accessoires cuisines | Plum'
+                    type: Page
+            discover_all_inspirations: 'Découvrez tous nos projets'
+            filter_text: 'Je découvre'
+            home_tour:
+                meta:
+                    description: 'Laissez-vous inspirer par les projets et expériences de nos clients et personnalisez votre agencement intérieur en un clin d''oeil.'
+                    title: 'Visites et interviews clients | Plum'
+                    type: Page
+            inspiration:
+                meta:
+                    description: 'Laissez-vous inspirer par les projets de grands architectes d’intérieurs et personnalisez votre agencement intérieur en un clin d''oeil.'
+                    title: 'Projets d’architectes | Plum'
+                    type: Page
+            main_caption: 'Inspiration & guide'
+            meta:
+                description: 'Laissez-vous inspirer par nos projets de designs et personnalisez votre agencement intérieur en un clin d''oeil.'
+                title: 'Inspiration & Guide | Plum'
+                type: Page
+            no_inspiration: 'Désolé, nous n''avons pas d''inspiration correspondant à votre critère'
+            practice:
+                meta:
+                    description: 'Tout ce que vous avez toujours voulu savoir sur nos solutions d’aménagement pour personnaliser votre agencement intérieur en un clin d''oeil.'
+                    title: 'Guides pratiques aménagement d’intérieur | Plum'
+                    type: Page
+            tutorial:
+                meta:
+                    description: 'Laissez-vous guider par nos tutos et conseils d’aménagement et personnalisez votre agencement intérieur en un clin d''oeil.'
+                    title: 'Tutos aménagement d’intérieur | Plum'
+                    type: Page
+        media_article:
+            article:
+                read-btn: 'Lire la suite'
+            category:
+                address:
+                    meta:
+                        description: 'Carnet d’adresses'
+                        title: 'Carnet d’adresses | Plum'
+                        type: Page
+                    title: 'Carnet d’adresses'
+                all: 'Toutes les catégories'
+                home_project:
+                    meta:
+                        description: 'Home project'
+                        title: 'Home project | Plum'
+                        type: Page
+                    title: 'Home project'
+                home_tour:
+                    meta:
+                        description: 'Home Tour'
+                        title: 'Home Tour | Plum'
+                        type: Page
+                    title: 'Home Tour'
+                inspiration:
+                    meta:
+                        description: 'Creative Ideas'
+                        title: 'Creative Ideas | Plum'
+                        type: Page
+                    title: 'Creative Ideas'
+                interview:
+                    meta:
+                        description: Interview
+                        title: 'Interviews | Plum'
+                        type: Page
+                    title: Interview
+                no_content: 'Aucun article dans cette catégorie'
+                not_found: 'Cette catégorie n''existe pas'
+                practice:
+                    meta:
+                        description: 'Guides pratiques'
+                        title: 'Guides pratiques | Plum'
+                        type: Page
+                    title: 'Guides pratiques'
+                toolbox:
+                    meta:
+                        description: Toolbox
+                        title: 'Toolbox | Plum'
+                        type: Page
+                    title: Toolbox
+                tuto_ikea:
+                    meta:
+                        description: 'Tutoriels Ikea'
+                        title: 'Tuto Ikea | Plum'
+                        type: Page
+                    title: 'Tuto Ikea'
+                tutorial:
+                    meta:
+                        description: 'Step by Step'
+                        title: 'Step by Step | Plum'
+                        type: Page
+                    title: 'Step by Step'
+            form:
+                budget: 'Budget (exprimé en centimes)'
+                category: 'Catégorie (pastille)'
+                color: 'Couleur (pastille)'
+                room: 'Pièce (pastille)'
+                theme: Thématique
+            page:
+                at_ikea: 'Chez Ikea'
+                at_plum: 'Chez Plum'
+                budget_detaille: 'Budget détaillé'
+                cross_content_title: 'Ces sujets pourraient vous plaire'
+                home_projects: 'Home Projects'
+                ikea_cart: 'Créer mon panier IKEA'
+                not_found: 'Cette page n''existe pas'
+                plum_cart: 'Créer mon panier Plum'
+                ref_ikea: 'Ref. Ikea'
+                shopping_list: 'Shopping List'
+            slider:
+                discover: Découvrir
+            theme:
+                all: 'Toutes les thématiques'
+                au-royaume-des-kids:
+                    meta:
+                        description: 'Au royaume des kids'
+                        title: 'Au royaume des kids | Plum'
+                        type: Page
+                    title: 'Au royaume des kids'
+                chambres-dressing-en-couleurs:
+                    meta:
+                        description: 'Chambres & dressing, en couleurs'
+                        title: 'Chambres & dressing, en couleurs | Plum'
+                        type: Page
+                    title: 'Chambres & dressing, en couleurs'
+                cuisine-conseils-et-bonnes-adresses:
+                    meta:
+                        description: 'Cuisine - conseils & bonnes adresses'
+                        title: 'Cuisine - conseils & bonnes adresses | Plum'
+                        type: Page
+                    title: 'Cuisine - conseils & bonnes adresses'
+                cuisine-toutes-nos-inspirations:
+                    meta:
+                        description: 'Cuisine - toutes nos inspirations'
+                        title: 'Cuisine - toutes nos inspirations | Plum'
+                        type: Page
+                    title: 'Cuisine - toutes nos inspirations'
+                faire-mon-plan-avec-le-ikea-kitchen-planner:
+                    meta:
+                        description: 'Faire mon plan avec le Ikea Kitchen Planner'
+                        title: 'Faire mon plan avec le Ikea Kitchen Planner | Plum'
+                        type: Page
+                    title: 'Faire mon plan avec le Ikea Kitchen Planner : vidéos tuto'
+                je-veux-un-meuble-dentree-ou-de-salon:
+                    meta:
+                        description: 'Je veux un meuble d’entrée ou de salon !'
+                        title: 'Je veux un meuble d’entrée ou de salon ! | Plum'
+                        type: Page
+                    title: 'Je veux un meuble d’entrée ou de salon !'
+                jeux-de-peinture:
+                    meta:
+                        description: 'Jeux de peinture | Plum'
+                        title: 'Jeux de peinture | Plum'
+                        type: Page
+                    title: 'Jeux de peinture'
+                la-cuisine-en-couleurs:
+                    meta:
+                        description: 'La cuisine, en couleurs'
+                        title: 'La cuisine, en couleurs | Plum'
+                        type: Page
+                    title: 'La cuisine, en couleurs'
+                les-details-qui-changent-tout:
+                    meta:
+                        description: 'Les détails qui changent tout'
+                        title: 'Les détails qui changent tout | Plum'
+                        type: Page
+                    title: 'Les détails qui changent tout'
+                no_content: 'Aucun article dans cette thématique'
+                not_found: 'Cette thématique n''existe pas'
+                petit-budget-maxi-effet:
+                    meta:
+                        description: 'Mini budget, maxi effet'
+                        title: 'Mini budget, maxi effet | Plum'
+                        type: Page
+                    title: 'Mini budget, maxi effet'
+                secrets-d_archi:
+                    meta:
+                        description: 'Secrets d’archi'
+                        title: 'Secrets d’archi | Plum'
+                        type: Page
+                    title: 'Secrets d’archi'
+                tout-sur-la-chambre-et-le-dressing:
+                    meta:
+                        description: 'Tout sur la Chambre et le Dressing'
+                        title: 'Tout sur la Chambre et le Dressing | Plum'
+                        type: Page
+                    title: 'Tout sur la Chambre et le Dressing'
+                une-salle-de-bain-sinon-rien:
+                    meta:
+                        description: 'Une salle de bain sinon rien'
+                        title: 'Une salle de bain sinon rien | Plum'
+                        type: Page
+                    title: 'Une salle de bain sinon rien'
+        project:
+            bathroom:
+                meta:
+                    description: 'Exprimez votre créativité ou bien prenez une feuille blanche, et laissez-vous inspirer par nos projets de designs et personnalisez votre salle de bain en un clin d''oeil.'
+                    title: 'Designs de salle de bain | Plum'
+                    type: Page
+            creation_banner:
+                cta: 'Je chiffre mon projet'
+                desc: 'Chiffrez votre projet en quelques minutes.'
+                title: 'Créez votre projet'
+            discover_all_projects: 'Découvrez tous nos projets'
+            kitchen:
+                meta:
+                    description: 'Exprimez votre créativité ou bien prenez une feuille blanche, et laissez-vous inspirer par nos projets de designs et personnalisez votre cuisine en un clin d''oeil.'
+                    title: 'Designs de cuisines | Plum'
+                    type: Page
+            main_caption: 'Prenez une feuille blanche, et laissez-vous inspirer.'
+            meta:
+                description: 'Maitrisez votre budget en fonction de votre projet et laissez-vous inspirer par nos exemples pour personnaliser vos aménagements intérieurs.'
+                title: 'Exemples et prix d’aménagement intérieur | Plum'
+                type: Page
+            no_project: 'Désolé, nous n''avons pas de projet correspondant à votre critère'
+            other:
+                meta:
+                    description: 'Exprimez votre créativité ou bien prenez une feuille blanche, et laissez-vous inspirer par nos projets de designs et personnalisez votre agencement intérieur en un clin d''oeil.'
+                    title: 'Designs d’agencements intérieurs | Plum'
+                    type: Page
+            room:
+                meta:
+                    description: 'Exprimez votre créativité ou bien prenez une feuille blanche, et laissez-vous inspirer par nos projets de designs et personnalisez votre chambre et votre dressing en un clin d''oeil.'
+                    title: 'Designs de chambre et de dressing | Plum'
+                    type: Page
+            top_title: 'Vos projets'
+        terra_club:
+            already_signed: 'Vous avez déjà un compte Plum ?'
+            already_signed_link: 'Je mets à jour mon profil'
+            cta: 'Je rejoins le Terra Club'
+            echantillons:
+                italic: 'Pour toute commande de façades, obtenez une remise de 10% du montant des façades sur les accessoires et la peinture.'
+                text: 'Vous souhaitez présenter Plum à vos clients ? <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg> Vos coffrets d’échantillons offerts <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg> Une remise immédiate sur les accessoires et la peinture'
+                title: 'Echantillons & remises'
+            how_it_works:
+                cta: 'Consultez notre FAQ'
+                help_mail: '<a class="link-button" href="mailto:terraclub@plum-living.com">terraclub@plum-living.com</a>'
+                help_text: 'Notre équipe pro vous répond :'
+                title: 'Comment fonctionne le Terra Club ?'
+            services:
+                text: 'Nos Plum Planners vous aident gratuitement : <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Un devis Plum réalisé à partir de votre plan technique <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Votre plan technique converti en plan Ikea <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg> Un service client dédié aux pros'
+                title: 'Services exclusifs'
+            shooting:
+                text: 'Vous êtes fier de votre premier projet Plum ? Mettons le en valeur ensemble ! <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>12 photos de votre projet en partenariat avec <a href=''https://smilzz.com/'' class=''link-button link-button--inline'' target=''_blank''>Smilzz</a> <br><br><svg class=''o-icon-24 c-terra u-margin-r-1''><use xlink:href=''%ICON_LIB_URL%#SVG-icon-check-circle''/></svg>Partage de votre réalisation à notre Communauté'
+                title: 'Shooting offert'
+            title: 'Terra <span class="t-blacklist">Club</span>'
+            top_subtitle: 'Un programme et des avantages imaginés pour vos projets.'
+            top_title: 'Conçu pour les pros'
+    combination:
+        title: Combinaison
+    email:
+        body_text: 'Voila le pdf plan projet. Bonne lecture'
+        email_subject: 'Voici le plan du projet qui vous intéresse !'
+    error_page:
+        btn_back: 'Retour vers la home'
+        faq:
+            btn_back: 'Retour vers la page FAQ'
+            text: 'L''article que vous cherchez n''existe pas.'
+        oups: 'Oups !'
+        text: 'La page demandée n''existe pas ou n''existe plus.'
+    facade:
+        title: Façade
+        tunnel_shopping:
+            accessoires: Accessoires
+            door: Portes
+            drawer: Tiroirs
+            panels_and_plinths: 'Panneaux Plinthes'
+            panels_and_plinths_listing: 'Panneaux de finition et plinthes'
+    footer:
+        shop:
+            about: 'A propos'
+            contact_us: 'Ecrivez-nous sur <a href="mailto:%email%">%email%</a> pour toute question'
+            contact_us_label: 'Nous contacter'
+            copyright: '© Plum, 2022. Tous droits réservés.'
+            follow_us: 'Suivez-nous !'
+            follow_us_label: Suivez-nous
+            help: Aide
+            inspire_me: 'Inspirez-moi !'
+            inspire_me_label: Inspirez-moi
+            my_email_address: 'Mon adresse e-mail'
+            offers: Offres
+            personal_data: 'J''accepte que les données personnelles saisies dans ce formulaire soient utilisées à des fins commerciales. Vous bénéficiez d''un droit d''accès et de rectification aux informations qui vous concernent.'
+            subscribe: 'M''inscrire'
+    form:
+        accordion:
+            add_element: 'ajouter un accordéon'
+            detail: 'détail d''accordéon'
+            title: 'titre d''accordéon'
+        address:
+            shipping_notes:
+                label: 'Partager une information importante pour le livreur'
+                placeholder: 'Code de l’immeuble, interphone, étage, accessibilité de la voie, etc.'
+        button_link:
+            label: 'Type d''affichage du bouton'
+            link: 'Lien (mettez soit un lien absolu soit un slug d''une page e.g. pour une page concept "https://plum-living.com/fr/concept" mettez "concept")'
+        caption: 'Texte du caption'
+        card:
+            content: contenu
+            link: lien
+            link_label: 'label du lien'
+            with_icon: 'Aficher l''image avec l''icone 📞'
+        card_element:
+            description: 'description d''un element détaillé'
+            price: 'prix d''un element détaillé'
+            title: 'titre d''un element détaillé'
+        card_total:
+            add_button_label: 'ajouter un element au budget détaillé'
+            label: 'Elements du budget détaillé'
+            label_ikea: 'Elements IKEA du budget détaillé'
+            label_plum: 'Elements PLUM du budget détaillé'
+            main_title: 'Titre principal du budget détaillé'
+            total: 'titre de l''element total'
+            total_details: 'details supplementaires sur le total'
+            total_to_display: 'total affiché'
+        cart_item:
+            comment: Commentaire
+            comment_placeholder: 'Ajouter un commentaire'
+        channel:
+            default_country: 'Pays par défaut'
+        chip: 'Liste des pastilles'
+        circle_color: 'Couleur du cercle'
+        color: 'Liste des couleurs'
+        customer:
+            accept_privacy_policy: 'J''accepte la politique de confidentialité'
+            birthday: 'Date de naissance'
+            customer_type:
+                choices:
+                    company_all_trades: 'Entreprise tous corps d''état'
+                    interior_designer: 'Architecte d''intérieur'
+                    other_professional: 'Autre professionnel'
+                    other_renovation_agency: 'Autre professionnel de la rénovation'
+                    particular_customer: 'Client particulier'
+                    real_estate_developer: 'Promoteur immobilier'
+                    renovation_agency: 'Professionnel de la rénovation'
+                label: 'Particulier ou Pro ?'
+            gender:
+                choices:
+                    men: Monsieur
+                    not_indicated: 'Je préfère ne pas répondre'
+                    women: Madame
+                label: Civilité
+            how_you_know_about_us:
+                choices:
+                    blog_magazine: 'Blog / Magazine'
+                    by_a_colleague: 'Par un collègue'
+                    by_a_friend: 'Par un ami'
+                    by_a_relative: 'Par un proche'
+                    by_my_architect: 'Par mon architecte'
+                    by_my_contractor: 'Par mon entrepreneur'
+                    facebook: Facebook
+                    instagram: Instagram
+                    internet_magazine_media: 'Recherche Internet Blog / article en ligne Magazine / presse TV Radio'
+                    metro_bus: 'Métro / Bus'
+                    partnership: Partenariat
+                    pinterest: Pinterest
+                    tv_replay: 'TV / Replay'
+                    we_contact_you: 'Vous m''avez contacté.e'
+                    youtube: YouTube
+                label: 'Comment avez-vous connu Plum ?'
+            how_you_know_about_us_details:
+                architect: 'Indiquez-nous le nom de votre architecte si vous le souhaitez !'
+                contractor: 'Indiquez-nous le nom de votre entrepreneur si vous le souhaitez !'
+                default: 'Dites-nous en plus si vous le souhaitez !'
+            preferred_translation_slug: 'Région '
+        customer_project:
+            additional_cabinet_reference: ADDITIONNEL
+            comment_placeholder: 'Ajouter un commentaire au projet'
+            item_comment_placeholder: 'Ajouter un commentaire'
+            product: 'Type de produit'
+            product_placeholder: Choisissez
+        design: 'Liste des designs'
+        facade: 'Type de facade'
+        finish: 'Liste des finitions'
+        image_step_element:
+            image_step_description: 'description d''une image étape'
+            image_step_image: 'image d''une image étape'
+            image_step_title: 'titre d''une image étape'
+        images_collection:
+            label: 'Type d''affichage de la collection des images'
+        images_steps:
+            add_button_label: 'ajouter des images étapes'
+            label: 'Elements des images étapes'
+            type: 'Type des images etapes'
+        media:
+            cross_content:
+                pages: 'Liste des pages'
+            default:
+                bg_color:
+                    beige: Beige
+                    blue: 'Bleu pastel'
+                    green: 'Vert pastel'
+                    rose: 'Rose pastel'
+                    title: 'Couleur de fond'
+                    white: Blanc
+                caption: 'Légende de l''image'
+                citation: Citation
+                description: Description
+                image: Image
+                image_alt: 'Texte alternative de l''image'
+                image_title: 'Titre de l''image'
+                link_alignment: 'Alignement du lien'
+                link_label: 'Titre du lien'
+                link_target: 'Ouvrir le lien dans un nouvel onglet ?'
+                link_url: 'URL du lien'
+                text_color:
+                    black: Noir
+                    title: 'Couleur du texte'
+                    white: Blanc
+                title: Titre
+                video: 'Vidéo Youtube'
+            hero:
+                tag: 'Nom du tag ou de la catégorie'
+            shoppinglist:
+                add_element_ikea: 'Ajouter un produit Ikea'
+                add_element_plum: 'Ajouter un produit Plum'
+                product: 'Produit Ikea'
+                quantity: Quantité
+            slider:
+                add_element: 'Ajouter un élément'
+                order: 'Ordre d''affichage'
+            two_hybrid_columns:
+                margin: 'Colonnes avec marge ou immersive ?'
+                margin_immersive: 'Colonnes immersive'
+                margin_marge: 'Colonnes avec marge'
+                orientation: 'Choisissez l''orientation des colonnes'
+                orientation_left: 'Textes à gauche et image à droite'
+                orientation_right: 'Textes à droite et image à gauche'
+            zoning_image:
+                left: 'Position gauche (calculée automatiquement)'
+                manual: 'OU Créer manuellement le contenu en remplissant les champs suivants, Titre :'
+                position: 'Calculer la position (click sur l''image)'
+                product: Produit
+                top: 'Position top (calculée automatiquement)'
+        page:
+            image: 'Image principale de la page'
+            position: Ordre
+            reference_locale_code: 'Langue de référence'
+            translations_published: 'Traductions publiées sur Lokalize'
+            type: 'Type de la page'
+        page_card:
+            code: 'lien (la liste contient des liens vers des pages CMS et des routes internes)'
+            content: contenu
+            hint: 'information particulière'
+            label: 'label du lien'
+        pages_listing:
+            label: 'Liste des pages'
+        product:
+            delivery: 'Details de livraison'
+            groups: 'Groupes associés'
+            position: Position
+        product_group:
+            name: 'Nom d''affichage'
+            position: 'Ordre d''affichage'
+            products: 'Produits associés'
+            translations: Traductions
+        product_ikea:
+            code: 'Référence produit'
+            description: Description
+            name: 'Nom du produit'
+            price: Prix
+            translations: Traductions
+        product_info:
+            content: Contenu
+            links:
+                add_label: 'Ajouter un lien'
+                label: 'Liens utils'
+        product_info_accessory:
+            facade_type: 'type du facade'
+        product_option:
+            label: 'Option(s) du produit groupées par leurs codes'
+        product_option_value_image_type:
+            label: 'Type de l''image'
+        product_value:
+            add_button_label: 'Ajouter une autre image'
+            combination: 'Recommandation liée'
+            combination_label: 'Label de la recommandation à afficher'
+            combination_placeholder: 'Choisissez une recommandation'
+            description: Description
+            image: Image
+            position: Ordre
+        project_piece:
+            label: 'Type d''un projet'
+        project_plan:
+            label: 'Uploder un fichier *pdf'
+        recommendation:
+            label: Recommandations
+            option:
+                add: 'Ajouter une option'
+                description: 'Description de l''option'
+                image: 'Image de l''option'
+                list: 'Liste des options'
+                title: Titre
+            subtitle: Sous-titre
+        select_field:
+            placeholder: Sélectionnez
+        taxon_translation:
+            product_info: 'Informations sur les produits'
+        tunnel_shopping:
+            color: Couleur
+            design: Design
+            facade: Façade
+            finish: Finition
+            handle_finish: 'Finition poignée'
+            image: Image
+            tap_finish: 'Finition mitigeur'
+            variant: Variante
+        variant:
+            max_day_delivery: 'Délai maximum de livraison (jours)'
+            min_day_delivery: 'Délai minimum de livraison (jours)'
+    header:
+        shop:
+            burger_menu_label: 'Menu principal'
+            cart_dismiss: 'Continuer mes achats'
+            cart_label: Panier
+            cart_proceed_to_checkout: 'Valider mon panier'
+            cart_summary_clear_label: 'Vider mon panier'
+            cart_summary_close_label: 'Masquer le panier'
+            cart_view_and_edit: 'Modifier mon panier'
+            other_countries: 'EU - Autres pays (anglais)'
+    media:
+        slider:
+            link_label: 'Tout découvrir'
+    menu:
+        shop:
+            aside_header:
+                about: 'Qui sommes-nous ?'
+                delivery: Livraison
+                faq: FAQ
+                label: 'extra menu header'
+                manufacturing: Fabrication
+            footer:
+                cgv: CGV
+                confidentiality: Confidentialité
+                find_a_room_installer: 'Trouver un poseur'
+                installation_manual: 'Guide d’installation'
+                legal_mentions: 'Mentions légales'
+                terra_club: 'Terra Club'
+            nav:
+                account:
+                    login: Connexion
+                concept:
+                    design_finish: 'Designs & Finitions'
+                    faq: FAQ
+                    functionality: Fonctionnement
+                    label: Concept
+                e_shop:
+                    accessory: Accessoires
+                    facade_method: 'Façades Metod'
+                    facade_pax: 'Façades Pax'
+                    label: Shop
+                    paints: 'Peinture murale'
+                    sample:
+                        facade: 'Echantillons de façades'
+                        paint_mural: 'Echantillons de peinture murale'
+                    taps: Mitigeurs
+                header: 'menu de navigations principale'
+                inspiration_and_design:
+                    address_book: 'Carnet d''adresses'
+                    creative_ideas: 'Creative ideas'
+                    home_tours_interviews: 'Home tours & Interviews'
+                    label: Inspiration
+                    practical_guides: 'Guides pratiques'
+                    shopping_lists_by_step: 'Shopping lists & Step by step'
+                    toolbox: Toolbox
+                projects_and_budgets:
+                    bathroom: 'Salle de bain'
+                    kitchen: Cuisine
+                    label: Projets
+                    others: 'Autres pièces'
+                    rooms_and_dressing: 'Chambre et Dressing'
+                quotation: '<svg class="o-icon-16 u-margin-r-1"><use xlink:href="%ICON_LIB_URL%#SVG-icon-arrow-right"></svg><span>Devis</span>'
+                quotation_button: Devis
+                services:
+                    conception_home: 'Service Conception'
+                    find_installer: 'Trouver un poseur'
+                    label: Services
+                    quotation_home: 'Chiffrer mon projet en 2 clics'
+                    styler_home: 'Créer mon style en 3D <div class="u-badge bg-pink-light c-near-black">Nouveau</div>'
+                styler_button: 'Styler 3D'
+    promotion:
+        b2b_program_promotion:
+            label: 'Promotion du programme B2B'
+        contains_only_main_taxon_promotion:
+            label: 'Tous les produits du panier ont pour taxon principal (dans la liste)'
+        contains_only_sample_shipping_category_promotion:
+            label: 'Tous les produits du panier ont la catégorie d''expédition "Échantillon"'
+        front_sample_promotion:
+            label: 'Promotion sur l''échantillon Façade (règle interne, ne pas utiliser en production)'
+        paint_sample_promotion:
+            label: 'Promotion sur l''échantillon Peinture (règle interne, ne pas utiliser en production)'
+    ui:
+        account:
+            addresses:
+                add_new_address: 'Ajouter une adresse'
+                default_address: 'Adresse par défaut'
+                delete_confirmation_confirm: Oui
+                delete_confirmation_dismiss: Non
+                delete_confirmation_message: 'Voulez-vous vraiment supprimer cette adresse : %address_name% ?'
+                delete_confirmation_title: 'Êtes-vous sûr.e ?'
+                no_addresses_defined: 'Vous n''avez enregistré aucune adresse'
+                other_address: 'Autre adresse'
+                title: 'Mes adresses'
+            b2b_code:
+                link: '<a href="%url%" class="link-button link-button--inline small-link-button"> <svg class="o-icon-16 fix-arrow-size"><use xlink:href="%ICON_LIB_URL%#SVG-icon-arrow-right"></svg> Découvrez tous les avantages et services du Terra Club</a>'
+                need_help: 'Une question ? Ecrivez-nous à <a href="mailto:terraclub@plum-living.com">terraclub@plum-living.com</a>'
+                text: 'Mon code Terra pour tous mes avantages<br/>'
+                title: 'Membre Terra <span class="t-canela">Club</span>'
+            create_address:
+                title: 'Nouvelle adresse'
+            hello: 'Bienvenue %firstName% !'
+            menu:
+                address_book: 'Mes adresses'
+                order_history: 'Mes commandes'
+                personal_information: 'Mon profil'
+                pro_advantages: 'Mes avantages pro'
+                projects: 'Mes projets'
+            modify_address:
+                title: 'Modifier une adresse'
+            order_details:
+                any_question: 'Des questions sur votre commande ? Contactez nous'
+                contact_infos: Coordonnées
+                no_tel: 'Aucun téléphone renseigné'
+                order_date: 'Date de commande'
+                payment_method: Paiement
+                shipping_date: 'Date de livraison'
+                shipping_method: 'Mode de livraison'
+                title: 'Suivi de ma commande'
+            orders:
+                back: 'Revenir à la page précédente'
+                completed_orders: 'Mes commandes passées'
+                new_orders: 'Mes commandes en cours'
+                no_orders: 'Vous n''avez aucune commande'
+                see_order_details: 'Voir le détail de ma commande'
+                title: 'Mes commandes'
+            password:
+                title: 'Changer de mot de passe'
+            profile:
+                title: 'Mon profil'
+            projects:
+                date: Date
+                delete_my_project: 'Supprimer mon projet'
+                duplicate_my_project: 'Dupliquer mon projet'
+                last_saved_date: 'Dernière date de sauvegarde'
+                no_projects: 'Vous n''avez aucun projet'
+                project: Projet
+                project_number: 'Projet N°'
+                see_my_project: 'Voir mon projet'
+                status: Statut
+                status_list:
+                    error_invalid_mail: 'E-mail invalide'
+                    error_other: 'Autre Erreur'
+                    not_found: 'Project Introuvale'
+                    ok: 'Module des articles'
+                    processing: 'En traitement'
+                    waiting_for_mail: 'Dans l''attente de l''e-mail'
+                title: 'Mes projets'
+                total: Total
+        admin:
+            order:
+                cart_state:
+                    back: 'Retour au commandes'
+                    title: 'La commande que vous recherchez est encore un panier'
+            page:
+                fetch_translation: 'Récupérer depuis Lokalize'
+                publish_translation: 'Publier la langue <b>%locale%</b> vers Lokalize'
+                translations_published: 'L''article a déjà été publié sur Lokalize. Toute nouvelle modification de la langue de référence doit être à nouveau publiée.'
+            product:
+                form_menu:
+                    complete_info:
+                        label: 'Infos complémentaires'
+                        skeleton_label: 'Assurez vous que la squelette est construite selon cet ordre: <br><ol><li>* Lame Texte</li><li>* Lame Accordéon</li><li>Lame Collection Images de type mozaic</li><li>* Lame H3</li><li>* Lame Bouton</li><li>* Lame H3</li><li>* Lame Bouton</li><li>* Lame Cross Content</li></ol>'
+                product_complete_info:
+                    fetch_translation: 'Récupérer les infos complémentaires depuis Lokalize'
+                    publish_translation: 'Publier les infos complémentaires en %locale% vers Lokalise'
+                    translation_button: 'Infos complémentaires'
+                    translations_published: 'Les infos ont déjà été publiées sur Lokalize. Toute nouvelle modification du français doit être à nouveau publiée.'
+            taxon:
+                fetch_translation: 'Récupérer les traductions depuis Lokalise'
+                publish_translation: 'Publier les traductions en %locale% vers Lokalise'
+                translation_button: Traductions
+                translations_published: 'Les traductions du taxon ont déjà été publiées sur Lokalize. Toute nouvelle modification du français doit être à nouveau publiée.'
+            translation:
+                fetch_translation_confirm: 'Voulez-vous vraiment récupérer les traductions depuis Lokalize ? La structure de la langue cible sera intégralement réinitialisée par la langue de référence %locale%.'
+                fetch_translation_error: 'Erreur lors de la récupération des traductions de la langue %locale%'
+                fetch_translation_result: '%nb% traductions ont été récupérées pour la langue %locale%'
+                nothing_to_process: 'Aucune entité à traiter'
+                publish_translation_error: 'Erreur lors de la publication des traductions'
+                publish_translation_result: '%nb% nouvelles traductions ont été publiées'
+                translation_reference_content_has_changed: 'Le contenu de la langue de référence %locale% a été modifié depuis la dernière publication vers Lokalize. Veuillez le publier à nouveau (code: %code%).'
+                translation_task_error: 'Une erreur est survenue dans la tâche de traduction : %error%'
+        cart:
+            edit_checkout: 'Modifier mon panier'
+            free: Offert
+            main_panel_title: 'Votre panier'
+            proceed_to_checkout: 'Procéder au paiement'
+            remove_product: 'Supprimer l''article'
+            share_cart:
+                email_placeholder: 'Entrez l''adresse e-mail du destinataire'
+                email_subject: '%name% souhaite vous partager son panier.'
+                label: 'Partager par e-mail'
+                modal_desc: 'Assurez-vous que le panier relié au compte de votre destinataire soit vide avant d''ouvrir le votre, sinon, les articles s''additionneront à son panier existant.'
+                modal_title: 'Partager mon panier par e-mail'
+                no_customer_name: 'Un client Plum'
+                open_cart: 'Ouvrir le panier partagé'
+                tooltip_title: 'Partager ma liste d''articles par e-mail'
+            summary_panel_title: 'Résumé de ma future commande'
+            to_share_the_cart: 'Pour partager votre panier par e-mail, cliquez sur l''icône %icon%'
+            to_update_the_cart: 'Pour mettre à jour votre panier, cliquez sur l''icône %icon% en haut à droite'
+            update_cart: 'Mettre à jour le panier'
+        channel:
+            all_channels: Tous
+            no_channel: 'Sans canal'
+        checkout:
+            confirmation_modal:
+                original_order:
+                    input_placeholder: 'Saisissez votre numéro de commande initiale'
+                    question: 'Est-ce un complément d''une commande déjà passée ?'
+                proceed: 'Procéder au paiement'
+                product_count:
+                    checkbox_label: 'J''ai bien compté l''ensemble de mes articles.'
+                    hint: 'Mieux vaut deux fois qu''une ! Nous vous conseillons de compter une dernière fois vos éléments pour être sûr.e que vous n''oubliez rien.'
+                    question: 'Avez-vous bien vérifié vos articles ?'
+                    selection: 'Vous avez à ce jour sélectionné'
+                target_room:
+                    options:
+                        adult-bedroom: 'Chambre adulte'
+                        bathroom: 'Salle de bain'
+                        children-bedroom: 'Chambre enfant'
+                        entry: Entrée
+                        kitchen: Cuisine
+                        office: Bureau
+                        other: Autre
+                        saloon: Salon
+                    question: 'Quelle pièce aménagez-vous ?'
+                    select_placeholder: 'Choisier ma pièce'
+                title: '3 questions importantes avant de valider votre commande !'
+            order_summary:
+                change_my_order: 'Modifier ma commande'
+                coupon: 'Entrez votre code promo'
+                coupon_submit: Ok
+                price_does_not_include_shipping: 'Le prix ne comprend pas la livraison'
+                price_included_in_product: 'Prix inclus au produit'
+                shipping_fee_calculated_next: 'Les frais de livraison seront calculés à l''étape suivante'
+                shipping_total: 'Frais de livraison'
+                title: 'Résumé de ma future commande'
+            payment_content:
+                page_subtitle: 'Un e-mail récapitulatif vous a été envoyé.'
+                page_title: 'Payez en toute sécurité !'
+                panel_title: 'Vos informations de paiement'
+                secure_text: 'Le paiement est sécurisé, nous ne conservons pas vos informations bancaires.'
+            step_1_content:
+                page_title: 'Commandez en quelques étapes !'
+                tab_title: 'Adresse de facturation et livraison'
+            step_2_content:
+                more_infos_in_faq: 'Plus d''informations sur notre FAQ'
+                page_title: 'Commandez en quelques étapes !'
+                panel_title: 'Mode de livraison'
+                tab_title: 'Mode de livraison'
+            step_3_content:
+                page_title: 'Commandez en quelques étapes !'
+                panel_title: 'Mode de paiement'
+                tab_title: 'Mode de paiement'
+            step_4_content:
+                page_title: 'Commandez en quelques étapes !'
+                panel_title: 'Récapitulatif avant paiement'
+                tab_title: Récapitulatif
+            step_5_content:
+                page_title: 'Votre commande est validée !'
+                panel_title: Récapitulatif
+                see_my_orders: 'Voir mes commandes'
+                summary_title: 'Résumé de ma commande'
+            steps_nav:
+                back: 'Revenir à l''étape précédente'
+                proceed_to_payment: 'Valider et payer ma commande'
+                step_1: Adresses
+                step_2: 'Mode de livraison'
+                step_3: 'Mode de paiement'
+                step_4: 'Validation finale avant paiement'
+            stripe:
+                chargement: Chargement...
+            transfer_content:
+                amount: MONTANT
+                beneficiary:
+                    name: BENEFICIAIRE
+                    value: 'Plum (société Amma Design SAS)'
+                bic: BIC
+                iban: IBAN
+                info_text: 'En cas d’erreur de référence ou de montant, la validation de votre commande sera retardée d’une semaine environ.'
+                page_subtitle: 'Votre commande sera définitivement validée après réception de votre virement. Un e-mail récapitulatif vous a été envoyé.'
+                page_title: 'Payez par virement bancaire'
+                panel_title: 'Ordre de virement à effectuer'
+                payment_method: 'Par virement'
+                ref: REFERENCE
+                ref_info: 'Il vous suffit de copier-coller ce code au moment de la saisie du virement sur votre site ou application bancaire'
+            warnings:
+                no_payment_methods_available: 'Il n''y a actuellement aucune méthode de paiement disponible pour votre commande'
+                no_shipping_methods_available: 'Il n''y a actuellement aucune méthode d''expédition disponible pour votre adresse de livraison'
+        cms:
+            admin:
+                actions:
+                    article: 'Page article'
+                    media_article: 'Page media article'
+                    media_home: 'Page media home'
+                    project: 'Page projet'
+                    simple: 'Page simple'
+                alternative_total_to_display: 'le total des elements du budget détaillé sera affiché'
+                cards:
+                    with_icon: 'L''icone 📞 sera affichée avec l''image'
+                fields:
+                    category: Catégorie
+                    page_type: 'Type de la page'
+                    translations_published: 'Traductions publiées LK le'
+                preview: 'Prévisualiser la page'
+                product_option:
+                    color_table:
+                        color: Couleur
+                        description: Description
+                        image_display: 'Image a presenter'
+                        no_image: 'Pas d''image'
+                project_plan: 'Le pdf sera utilisé pour l''envoi du plan projet'
+                subheader:
+                    article: 'Gestion des contenus CMS d''une page article'
+                    media_article: 'Gestion des contenus CMS d''une page média article'
+                    media_home: 'Gestion des contenus CMS de la home page des médias'
+                    project: 'Gestion des contenus CMS d''une page projet'
+            button_link:
+                type_classic: classique
+                type_default: default
+                type_simple_link: 'simple lien'
+            chip:
+                admin:
+                    type_address: 'carnet d''adresses'
+                    type_home_project: 'home project'
+                    type_home_tour: 'home tour'
+                    type_inspiration: inspiration
+                    type_interview: interview
+                    type_practice: 'guides pratiques'
+                    type_toolbox: toolbox
+                    type_tuto_ikea: 'Tuto Ikea'
+                    type_tutorial: tutos
+                room:
+                    type_all_rooms: 'Toutes pièces'
+                    type_bathroom: 'Salle de bain'
+                    type_bedroom_dressing: 'Chambre & Dressing'
+                    type_kitchen: Cuisine
+                    type_other_rooms: 'Autres pièces'
+                shop:
+                    type_address: Adresses
+                    type_home_tour: 'Tours & itw'
+                    type_inspiration: Ideas
+                    type_practice: Pratique
+                    type_toolbox: Toolbox
+                    type_tutorial: 'Step by step'
+            image_collection:
+                type_default: default
+                type_mosaic: mosaique
+                type_slider: slider
+                type_slider_plans: 'slider plans'
+                type_slider_right: 'sider droit'
+            images_steps:
+                type_default: 'Non indexées'
+                type_indexed: Indexées
+            instagram_tag: plumliving
+            instagram_url: 'https://www.instagram.com/plum.living/'
+            project:
+                receive_plan_mail:
+                    input_placeholder: 'Saisissez votre e-mail pour recevoir le plan'
+                    send_text: Envoyer
+                    submit_text: OK
+            project_piece:
+                type_bathroom: 'Salle de bain'
+                type_kitchen: Cuisine
+                type_other: 'Autre pièce'
+                type_room: Chambre
+            type_form:
+                no_content: 'Cette popup ne posséde pas de contenu, merci de réessayer plus tard'
+        combination: 'Gérer vos combinaisons'
+        combinations: Combinaisons
+        customer_project:
+            add_item:
+                accessory: 'Accessoires laiton'
+                handles: Poignées
+                main: 'Ajouter un article'
+                metod: 'Façades METOD'
+                paint: 'Peinture murale'
+                pax: 'Façades PAX'
+                tap: Mitigeur
+            contact:
+                cta: 'Prendre RDV par téléphone'
+                title: 'Nos Plum Planners sont disponibles pour vérifier et valider votre projet.'
+            popin_handles:
+                accessories_link: 'Découvrir nos poignées'
+                add_link: 'Ajouter les %handles_count% poignées manquantes'
+                text: '%drawers_count% tiroirs et %doors_count% portes nécessitant des poignées figurent dans votre liste. Souhaiteriez-vous en ajouter ?'
+        delivery:
+            delivery_delais_label: 'Délai de livraison'
+            delivery_delais_message: 'Livraison entre le %min_date% et le %max_date%'
+        delivery_date_calculation_config:
+            duration: Durée
+            header: 'Configuration des délais de livraison'
+            max_date: 'Date maximale'
+            min_date: 'Date minimale'
+            mode: Mode
+            modes:
+                dynamic: 'Mode dynamique'
+                fixed_date_range_lacquer: 'Dates fixes finition Laquée'
+                fixed_date_range_wood: 'Dates fixes finitions Bois et Bois Peint'
+            subheader: 'Définissez l''intervalle minimale et maximale de livraison pour les différents modes de calcul'
+            unspecified: 'Non spécifiée'
+        delivery_date_calculation_configs: 'Délais de livraison'
+        delivery_date_calculation_mode: 'Mode du calcul de délai de livraison'
+        edit_combination: 'Modifier une combinaison'
+        edit_product_group: 'Modifier un groupe de produits'
+        edit_product_ikea: 'Modifier un produit Ikea'
+        email_content:
+            cart:
+                checklist:
+                    ikea:
+                        button: 'Checklist Installation'
+                        desc: 'Pensez à minima à commander vos charnières chez Ikea ( ⚠️charnières Utrusta pour les caissons Metod et charnières Komplement pour les caissons PAX), et passez en revue notre checklist afin de ne rien oublier chez Ikea.'
+                        title: 'Pour ne rien oublier chez Ikea'
+                    poser:
+                        button: 'Checklist poseurs'
+                        desc: 'Voici les infos essentielles à lire et à transmettre à votre poseur afin qu''il réalise votre cuisine facilement.'
+                        title: 'Les infos à transmettre à votre poseur'
+                indication: 'Assurez-vous que le panier relié à votre compte soit vide avant d''ouvrir celui-ci !'
+                open_order: 'Ouvrir le panier partagé'
+            common:
+                contact: '<strong>Pour nous contacter :</strong><br>%email%<br>'
+                copyright: 'Copyright © AMMA DESIGN SAS. All rights reserved.'
+            forget_password:
+                desc: 'Nous avons reçu une demande de réinitialisation de mot de passe pour votre compte.<br>Si vous êtes à l''origine de cette demande, cliquez sur le lien ci-dessous afin de le mettre à jour.<br><br><a href=''%link%''>Réinitialiser mon mot de passe</a><br><br>Si vous n''êtes pas à l''origine de cette demande, ignorez ce message et écrivez nous à l''adresse %email% afin de nous en avertir.<br><br>A très vite,<br>L''équipe Plum'
+                title: 'Réinitialisation de votre mot de passe.'
+            order_confirmation:
+                button_text: 'Ouvrir ma commande'
+                desc: 'Nous avons bien reçu votre commande et vous remercions de votre confiance !<br><br>Pour consulter la liste des produits commandés, ainsi que le délai de livraison de<br> votre commande, nous vous invitons à cliquer sur le lien ci-dessous.<br><br>Nous restons à votre disposition par e-mail à l''adresse <strong>%email%</strong><br> ou bien sur le chat de notre site internet.&nbsp;<br><br>A très vite,&nbsp;<br><br>L''équipe Plum'
+                email_subject: 'Votre commande n° %order_number% est confirmée'
+            project_plan:
+                details:
+                    first:
+                        btn: 'Découvrir notre journal'
+                        desc_1: 'Nous vous invitons à faire un tour sur la section "Inspiration &amp; Guide" de notre site, qui regorge d''idées et de bons conseils pour imaginer votre futur agencement. Guides pratiques, carnets d''adresses, home tours'
+                        desc_2: 'c''est une mine d''informations !'
+                        title: 'Pour concevoir votre projet...'
+                    second:
+                        btn: 'En savoir plus'
+                        desc: 'Nos façades en laque mate ainsi que nos poignées sont fabriquées en France, celles en chêne et en noyer au Portugal. Nous avons choisi nos fabricants car ils sont spécialistes de leurs matières et finitions respectives, depuis plus de trente ans.'
+                        title: 'Notre fabrication'
+                main_caption:
+                    desc: 'Nous vous partageons, en pièce jointe de cet e-mail, le plan du projet qui vous intéresse.'
+                    title: 'Voici le plan du projet qui vous intéresse !'
+            user_registration:
+                b2b_program_email_subject: 'Bienvenue au Terra Club'
+                desc: 'Nous sommes heureux de vous compter parmi nous.<br><br>Vous pouvez maintenant découvrir l''univers de Plum, et entamer votre projet<br>de façon plus concrète.<br><br><strong>Une question sur nos produits, leur installation, nos délais de livraison ?</strong><br>Consultez notre FAQ (une mine d''informations ! ) ou bien contactez-nous<br> via le chat ou par e-mail à l''adresse %email%.<br><br>A très vite,<br><br>L''équipe Plum'
+                email_subject: 'Votre compte a bien été enregistré'
+            verification:
+                button: 'Je valide mon e-mail'
+                desc: 'Nous avons bien reçu votre demande de création de compte, un grand merci de votre intérêt !<br> Nous vous invitons à cliquer sur le bouton ci-dessous afin de valider votre adresse e-mail.<br><br>À très vite,<br>L''équipe Plum'
+                email_subject: 'Confirmation de votre adresse e-mail'
+        find_installer:
+            cta: 'Je trouve mon poseur'
+            cta_url_be: 'https://www.needhelp.com/fr-be/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_de: 'https://www.needhelp.com/de-de/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_eu: 'https://www.needhelp.com/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_fr: 'https://www.needhelp.com/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_nl: 'https://www.needhelp.com/nl-nl/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            cta_url_nl-be: 'https://www.needhelp.com/nl-be/plum?utm_source=150&utm_campaign=plum&utm_medium=website'
+            info_text: 'Plum ne réalise pas de pose. Notre partenaire Needhelp est une plateforme de mise en relation entre particuliers et professionnels de l''agencement et des travaux de la maison. Vous y trouverez de nombreux poseurs expérimentés, détenant le "badge Ikea".'
+            subtitle: 'Notre partenariat avec Needhelp'
+            title: 'Trouver un poseur'
+            top_text: 'Plum et Needhelp s’associent pour vous permettre de trouver le meilleur poseur.'
+        free_shipping: Offert
+        generic:
+            add: Ajouter
+            billing: Facturation
+            billing_address: 'Adresse de facturation'
+            cancel: Annuler
+            cart: Panier
+            connexion: Connexion
+            copied: 'Copié !'
+            delete: Supprimer
+            discount: Réduction
+            email_not_verified: 'E-mail non vérifié'
+            form_errors_label: 'Merci de corriger les champs suivants'
+            imported_project: 'Projet importé'
+            logout: 'Se déconnecter'
+            minus: Moins
+            modify: Modifier
+            my_account: 'Mon compte'
+            order_number: 'N° de commande'
+            pay: Payer
+            payment: 'Mode de paiement'
+            plus: Plus
+            position: Ordre
+            price: Prix
+            proceed: Continuer
+            proceed_to_payment: 'Reprendre ma commande'
+            product: Produit
+            project: Projet
+            quantity: Quantité
+            register: 'S''inscrire'
+            room: Pièce
+            save: Enregistrer
+            scanned_project: 'Projet scanné'
+            set_as_default: 'Par défaut'
+            shipment: Envoi
+            shipping: 'Mode de livraison'
+            shipping_address: 'Adresse de livraison'
+            sub_total: Sous-total
+            tax: Taxe
+            total: Total
+            total_without_shipping: 'Total hors livraison'
+            vat_included: 'TVA de 20% incluse'
+            verify_now: 'Vérifier maintenant'
+            warning: Avertissement
+        import_export:
+            export_combinations: 'Exporter Combinaisons'
+            export_product_groups: 'Exporter Groupes de produits'
+            export_product_variants: 'Exporter Variantes de produit'
+            export_products: 'Exporter Produits'
+        inspiration:
+            button_text: 'Découvrez nos projets'
+            discover_text: 'Retrouvez également le contenu inédit du Studio Plum sur nos réseaux&nbsp;!'
+            filter_text: 'tous types de contenu'
+        listing:
+            inspirations:
+                type_address: 'Carnets d’adresses'
+                type_all_types: 'Tous types de contenus'
+                type_home_tour: 'Home tours & Interviews'
+                type_inspiration: 'Creative ideas'
+                type_practice: 'Guides pratiques'
+                type_toolbox: Toolbox
+                type_tutorial: 'Shopping lists & Step by step'
+            projects:
+                budget: 'Budget Plum :'
+                color_filter: 'toutes les couleurs'
+                having: en
+                label: 'Je m''inspire pour'
+                piece_filter: 'toutes les pièces'
+                pieces_filter:
+                    type_all_pieces: 'toutes les pièces'
+                    type_bathroom: 'ma salle de bain'
+                    type_kitchen: 'ma cuisine'
+                    type_other: 'une autre pièce'
+                    type_room: 'ma chambre et mon dressing'
+            tunnel:
+                samples_subtitle: 'Les échantillons seront remboursés dès votre première commande de façades !'
+        login_register:
+            b2b_section_title: 'Votre société'
+            btn_reset_password: Réinitialiser
+            choose_your_password: 'Choisissez votre mot de passe'
+            have_an_account_login: 'Déja membre ?'
+            have_an_account_login_link: 'Me connecter'
+            reset_of_your_password: 'Réinitialisation de votre mot de passe'
+        new_combination: 'Nouvelle combinaison'
+        new_product_group: 'Nouveau groupe de produits'
+        new_product_ikea: 'Nouveau produit Ikea'
+        no_content: 'Cette page ne possède pas de contenu'
+        option: Option
+        order:
+            state_cancelled: Annulée
+            state_confimed: Confirmée
+            state_fulfilled: 'Livrée !'
+            state_fully_paid: Validée
+            state_fully_shipped: 'En cours d''expédition'
+            state_in_cart: 'Dans votre panier'
+            state_partially_paid: 'En attente de paiement'
+            state_partially_shipped: 'En préparation / production'
+            state_pending: 'En attente de paiement'
+            step_state_partially_shipped: 'En production'
+        order_awaiting_payment:
+            desc: 'Votre paiement n''a pas abouti'
+            keep: 'Retour à l''étape précédente'
+            revert: 'Récupérer mon panier et le modifier'
+        page:
+            type_all_types: 'tous types de contenus'
+            type_article: article
+            type_default: default
+            type_frame: I-frame
+            type_home_page: 'page d''acceuil'
+            type_inspiration: inspiration
+            type_media_article: 'média article'
+            type_media_home: 'média home'
+            type_project: projet
+            type_ribbon: bandeau
+        page_linker:
+            app_plum_scanner_get_designs: 'Devis Chiffrage immédiat ** lien interne'
+        plum_scanner:
+            heading: 'Chiffrez votre projet en quelques clics <br class="u-hidden @sm:u-inline">avec le Plum Scanner'
+            login: 'Pour continuer, nous vous invitons à vous connecter'
+            login_button: 'Se connecter'
+            mobile_not_avaialble: '<p>Le Plum Scanner est disponible sur desktop uniquement !</p><p>Cet outil vous permettra de scanner votre plan IKEA et ainsi obtenir la liste exacte des façades qui composent votre agencement.</p>'
+            previous_step: 'Revenir à l''étape précédente'
+            register: 'S''inscrire'
+            rotate_your_device: 'Tournez votre tablette'
+            scan_success: 'Voici votre liste d''articles Plum'
+            share_project:
+                email_placeholder: 'Entrez l''adresse e-mail du destinataire'
+                email_subject: 'Veuillez consulter ce projet sur Plum Kitchen'
+            step_one:
+                title: 'Choisissez vos options'
+            step_three:
+                actions:
+                    desc: 'Nos Plum Planners vous accompagnent pour valider votre projet et répondre à vos questions'
+                    download_quote_file: 'Télécharger ma liste d''articles'
+                    download_quote_file_loader: 'Le document est en cours de chargement...'
+                    heading: 'Enregistrez votre projet dans votre compte Plum'
+                    save_project: 'Enregistrer mon project'
+                    share_project: 'Partager ma liste d''articles'
+                    take_appointment: 'Faire vérifier mon chiffrage / prendre RDV'
+                adjust_options:
+                    heading: 'Ajustez vos options'
+                    heading_facade: 'Ajustez vos options de façade'
+                    hint: 'Encore un doute ? Vous pouvez ajuster vos options à tout moment.'
+                    link: 'Découvrir nos finitions'
+                auto_save:
+                    confirm_button_label: Ré-essayer
+                    error_aside_message: 'Si le problème persiste, rechargez la page sans ré-essayer d''enregistrer, vous ne perdrez que la dernière modification.'
+                    error_main_message: 'Erreur pendant l''enregistrement automatique des modifications. Veuillez ré-essayer d''enregistrer votre projet.'
+                    error_title: Attention
+                checkout:
+                    heading: 'Votre budget Plum'
+                    hint_charges: 'TTC, hors frais de port.'
+                    hint_cost: 'Le chiffrage Plum initial inclut uniquement les façades de tiroirs, portes, panneaux de finition et plinthes qui figurent sur votre plan Ikea.'
+                    warning: 'Certaines options ne sont pas compatibles avec les éléments qui composent votre agencement. Merci d''ajuster vos options afin que votre budget s''affiche.'
+                    warning_item: 'Cet article n''est pas disponible avec les options sélectionnées. Merci d''ajuster vos options.'
+                    warning_item_add: 'Sélectionnez vos options.'
+                modulate_articles:
+                    add_button: 'Ajouter un article'
+                    heading: 'Modulez vos articles'
+                    remove_button: 'Supprimer l''article'
+                    total_price: Total
+                    unit_price: 'Par pièce'
+                title: 'Modulez votre budget'
+            step_two:
+                connect_ikea:
+                    budgets_examples: 'Consulter nos exemples de budgets'
+                    how_to_use: 'Comment utiliser le Ikea Kitchen Planner'
+                    ikea_version_modal:
+                        new: 'La nouvelle version'
+                        old: 'L’ancienne version'
+                    need_help: 'Vous n''avez pas de plan Ikea ?'
+                    new_version_btn: 'Nouvelle version'
+                    old_version_btn: 'Ancienne version'
+                    title: '<strong>Connectez-vous au Ikea Kitchen Planner</strong>'
+                    warning: 'Ikea a récemment développé un nouveau logiciel. Indiquez-nous la<br> version que vous utilisez ci-dessous:'
+                    which_ikea_version: 'Comment reconnaître les versions ?'
+                missing_front:
+                    modal_button_text: 'C''est noté'
+                    modal_content: 'Ouvrez votre plan dans le Ikea Kitchen Planner puis ajoutez les façades et les panneaux de finition latéraux avant de partager votre plan au Plum Scanner.'
+                    modal_subtitle: 'Le Plum Scanner ne peut lire votre plan car celui-ci ne comporte pas de façades.'
+                    modal_title: 'Attention !'
+                prepare_front:
+                    modal_button_text: 'J''envoie ma demande'
+                    modal_content: 'Nous réalisons des devis pour les cuisines ou agencements METOD uniquement. Pour vos projets PAX rendez-vous directement sur notre e-shop !'
+                    modal_subtitle: 'Pour préparer votre devis, nous avons besoin de votre plan issu du Ikea Kitchen Planner, <b>façades incluses</b>.'
+                    modal_title: 'A savoir !'
+                project_status:
+                    hint: 'Impatient.e ? Nous aussi ! Ne quittez pas cette page, votre projet va s''ouvrir dans quelques instants.'
+                    timeout_modal_confirm: Ré-envoyer
+                    timeout_modal_dismiss: 'Continuer à attendre'
+                    timeout_modal_message: 'La récupération de votre projet est anormalement longue. Pouvez-vous revenir à l''étape précédente et ré-envoyer votre projet à l''adresse email indiquée ?'
+                    timeout_modal_title: Attention
+                    title: 'Nous scannons votre plan ...'
+                share_plan:
+                    guide: 'Ce n''est pas clair&nbsp;?<br class="@sm:u-hidden"> Suivez le  guide en vidéo&nbsp;!'
+                    sent: 'C''est envoyé!'
+                    title:
+                        first_item: '<strong>Partagez-nous votre plan à partir du Ikea Kitchen Planner</strong>'
+                        second_item: '<p>Ouvrez votre plan dans le <a href="%URL%" target="_blank">Ikea Kitchen Planner</a>, <strong>façades&nbsp;incluses</strong> puis :</p><ul class="t-list-style-outside"><li>Cliquez sur <strong>Fichier</strong> puis sur <strong>E-mail</strong></li><li>Partagez votre plan à l''adresse ci-dessous puis cliquez sur "C''est&nbsp;envoyé&nbsp;!".</li></ul>'
+                share_plan_new:
+                    action_desc: '<p>Pour obtenir votre lien de partage, ouvrez votre plan, <strong>enregistrez-le (important)</strong>, puis cliquez sur l''étape "En faire une réalité" et <span class="t-nowrap">"Partagez" <svg class="o-icon-24"><use xlink:href="%ICON_LIB_URL%#SVG-icon-ikea-share"/></svg></span></p><p class="t-base-initial">Vous pouvez également copier le lien directement depuis votre navigateur.</p>'
+                    link_placeholder: 'Insérez le lien de votre plan ici'
+                    scan_plan_btn: 'Je scanne mon plan'
+                    title: '<strong>Partagez-nous votre plan Ikea, façades incluses.</strong>'
+                title: 'Partagez votre plan IKEA'
+            title: 'Plum Scanner'
+        plum_styler:
+            index:
+                description: 'Votre créativité n’a plus de limite ! Sélectionnez l’une des scènes ci-dessous et personnalisez-là dans les moindres détails.'
+                select_scene: 'Sélectionnez une scène pour commencer'
+            title: 'Plum Styler'
+        product_group: 'Groupe de produit'
+        product_groups: 'Groupes de produits'
+        product_ikea: 'Produits Ikea'
+        product_ikeas: 'Liste des produits Ikea'
+        product_option:
+            color: Couleur
+            design: Design
+            facade: Façade
+            finish: Finition
+        product_option_value_image:
+            type_default: 'Image principale'
+            type_display: 'Image à présenter'
+            type_styler: 'Image du styler'
+        project:
+            button_text: 'Nos designs et finitions'
+        recommendation:
+            no_content: 'Il n''y a pas de recommandations'
+            title: Recommandations
+        server_has_encountered_some_errors: 'Le serveur a rencontré des erreurs.<br>Si le problème se reproduit, veuillez contacter nos équipes à <a href="mailto:%email%">%email%</a>'
+        tunnel_shopping:
+            accessoires: Accessoires
+            add_product: Ajouté
+            box_link: 'Je choisis mes échantillons'
+            box_link_icon: '<svg class="o-icon-16 u-margin-r-1"><use xlink:href="%ICON_LIB_URL%#SVG-icon-arrow-right"></svg> Je commande mes échantillons'
+            box_text: 'Un projet à concrétiser ? Recevez 3 échantillons avec le code JEMELANCE'
+            btn_noted: 'C''est noté !'
+            color: Couleur
+            combination: Combinaison
+            combinations: Combinaisons
+            design: Design
+            doors: Portes
+            drawers: Tiroirs
+            finish: Finition
+            finishes_and_colors: 'Finition Couleur'
+            info_article: 'Quelques articles pour vous aider'
+            info_article_link_one: 'Comment ne rien oublier chez Ikea ?'
+            info_article_link_two: 'J''ai une question'
+            info_one: 'Les rails de tiroir ne sont pas fournis avec nos façades.'
+            info_three: 'Nos perçages ne sont pas adaptés aux rails de tiroirs intérieurs Utrusta Ikea.'
+            info_two: 'Nos façades de tiroirs sont pré-percées pour se fixer aux rails de tiroir Maximera Ikea.'
+            infos_title: 'Infos pratiques'
+            link_design: Choisir
+            modal_return: 'Livraison et retours'
+            new_combination: 'Ajout d''une combinaison'
+            next_step: 'Étape suivante'
+            no_delivery_details: 'Il y''a pas de details sur la livraison.'
+            no_product_info: 'Il n y''a pas d''infos!'
+            paints: 'Peinture murale'
+            panels: Panneaux
+            panels_and_plinths: 'Panneaux Plinthes'
+            plinths: Plinthes
+            products: 'Les produits'
+            recommendations: Recommandations
+            recommendations_suggestion: 'Voici ce que nous vous recommandons'
+            samples:
+                facade:
+                    name: 'Échantillons de façades'
+                    sub_title: '3 échantillons vous sont offerts avec le code JEMELANCE, les suivants vous seront remboursés lors de votre commande de façades.'
+                find_out_more: 'En savoir plus'
+                main: Echantillons
+                paint_mural:
+                    name: 'Échantillons de peinture murale'
+                    sub_title: 'Les échantillons seront remboursés dès votre première commande de peinture !'
+            see_complete_info: 'Voir plus de détails'
+            subtitle: 'Commencez par choisir votre design.'
+            taps: Mitigeurs
+            title: 'Plum e-shop'
+            title_finish: 'Finitions et couleurs'
+            tooltip_choice: 'Veuillez choisir une finition avant de choisir une couleur'
+            tooltip_no_color: 'Couleur indisponible pour cette finition, cliquez sur le bouton "Étape suivante" pour continuer'
+            type_facade: 'Type de façade'
+    ui_element:
+        accordion:
+            description: 'Un element pour ajouter une ou des accordéon(s)'
+            title: 'Lame Accordéon'
+        address_book_select:
+            new_address: 'Nouvelle adresse'
+            select_address_from_book: 'Sélectionner une adresse enregistrée'
+        caption:
+            description: 'Un element pour ajouter un caption'
+            title: 'Lame Caption'
+        card_total:
+            description: 'Un element pour afficher un budget détaillé'
+            title: 'Lame Budget détaillé'
+        cards:
+            description: 'Une lame pour ajouter des simples cards avec media'
+            title: 'Lame des cards'
+        chip:
+            description: 'Un element pour ajouter une pastille'
+            title: 'Lame Pastille'
+        color_ui:
+            description: 'Un element pour choisir une couleur'
+            title: 'Lame Couleur'
+        h4:
+            description: 'Une lame contenant le titre de votre choix'
+            title: '<h4> Lame Titre'
+        home_project:
+            budget:
+                description: 'Ajout d''un budget détaillé'
+                title: 'Home Project - Budget détaillé'
+            creation_banner:
+                description: 'Bloc qui mène vers le Plum Scanner'
+                title: 'Home Project - Créez votre projet'
+            hero:
+                description: 'Hero d''une page Home Project, titre, texte et carousel'
+                title: 'Home Project - Titre Carousel'
+        images_steps:
+            description: 'Un element pour construire des images étapes'
+            title: 'Images en étapes'
+        media:
+            citation:
+                description: 'Ajout de la citation (image + citation)'
+                title: 'Media - Citation'
+            content_highlight:
+                description: 'Mise en avant de thématique ou autre contenu sur la Home Media'
+                title: 'Media - Content Highlight'
+            cross_content:
+                description: 'Ajout des pages en cross content'
+                title: 'Media - Cross Content'
+            footer_immersive:
+                description: 'Contient un titre et lien au dessus de l''image'
+                title: 'Media - Footer immersive'
+            hero:
+                description: 'Contient une image + tag + titre + description)'
+                title: 'Media - Hero'
+            hero_video:
+                description: 'Contient une vidéo Youtube + titre + description'
+                title: 'Media - Hero Vidéo'
+            home_slider:
+                description: 'Mise en avant d''articles en haut de la Home Media'
+                title: 'Media - Home Slider'
+            panoramic_photo_only:
+                description: 'Contient une photo panoramique + légende'
+                title: 'Media - Panoramic photo XL'
+            panoramic_photo_xl:
+                description: 'Contient un titre + photo panoramique + paragraphe'
+                title: 'Media - Panoramic photo XL + texte'
+            project_plan:
+                description: 'Upload du plan et partage par email'
+                title: 'Home Project - Plan'
+            shoppinglist:
+                description: 'Ajout d''une shopping list'
+                title: 'Media - Shopping List'
+            slider:
+                description: 'Ajout du slider de Landing page'
+                title: 'Media - Slider'
+            slider_thematique:
+                description: 'Slider par thematique'
+                title: 'Media - Slider Thématique'
+            text_only:
+                description: 'Contient un texte libre (titres, paragraphes...)'
+                title: 'Media - Text only'
+            two_hybrid_columns:
+                description: 'Ajout de 2 colonnes'
+                title: 'Media - 2 Colonnes hybrides'
+            two_photo_columns:
+                description: 'Ajout de 2 images côtes à côtes'
+                title: 'Media - 2 Colonnes photo'
+            zoning_image:
+                description: 'Ajout de zoning overlay'
+                title: 'Media - Zoning d''image'
+        pages_cards:
+            description: 'Un element pour construire une ou plusieurs cartes pour des pages CMS ou internes'
+            title: 'Lame des cartes des pages'
+        pages_listing:
+            description: 'Un element pour choisir une ou des page(s) CMS existantes pour un cross content'
+            title: 'Lame du Cross Content'
+        product_info:
+            description: 'Un element pour donner des infos sur les produits sous un taxon'
+            title: 'Lame des info Produits'
+        product_info_accessory:
+            description: 'Un element pour donner des infos sur les produits accesoires'
+            title: 'Lame des info Produits accesoires'
+        product_option:
+            description: 'Un element pour choisir une ou des options(s) produit'
+            title: 'Lame des Options Produits'
+        project_piece:
+            description: 'Un element pour choisir le type d''un projet'
+            title: 'Lame des Pieces d''un Projet'
+        project_plan:
+            description: 'Un element pour uploder un pdf'
+            title: 'Lame PDF'
+        recommendation:
+            description: 'Un element pour l''ajout de recommandation'
+            title: 'Lame recommandation'
+        scan_banner:
+            description: 'Bloc "Scannez votre plan" (homepage)'
+            title: 'Bloc "Scannez votre plan"'
+noksi_sylius_plum_hubspot_plugin:
+    newsletter:
+        invalid_csrf_token: 'Le jeton CSRF est invalide. Veuillez envoyer le formulaire à nouveau.'
+        subscribed_successfully: 'Vous êtes bien inscrit à notre newsletter.'
+sylius:
+    form:
+        address:
+            street: Adresse
+        checkout:
+            addressing:
+                different_billing_address: 'Utiliser une autre adresse pour la facturation ?'
+        customer:
+            b2b_coupon_code: 'Code B2B'
+            b2b_enabled: Activé
+            b2b_subscription: 'Je rejoins le <a href="%url%">Terra Club</a> et profite des avantages pros'
+            company_address: 'Adresse de votre société'
+            company_city: Ville
+            company_country: Pays
+            company_instagram: 'Compte Instagram'
+            company_name: 'Nom de votre société'
+            company_postcode: 'Code Postal'
+            company_website: 'Site Internet'
+            gender: Civilité
+            preferred_locale: 'Langue préférée'
+            subscribed_to_newsletter: 'Je m''abonne à la newsletter'
+            vat_number: 'SIRET ou N° de TVA intracommunautaire'
+        login:
+            remember_me: 'Rester connecté.e'
+            username: 'Identifiant (adresse e-mail)'
+        promotion_action:
+            item_fixed_discount: 'Remise fixe produit (sur HT)'
+            item_percentage_discount: 'Rabais en pourcentage produit'
+            order_fixed_discount: 'Remise sur la commande (sur TTC)'
+            order_percentage_discount: 'Rabais en pourcentage commande (sur TTC)'
+            order_percentage_of_front_items_discount: 'Rabais en pourcentage des produits façade sur les autres produits de la commande (hors échantillons, sur TTC)'
+        user:
+            password:
+                confirmation: 'Confirmez le nouveau mot de passe'
+    menu:
+        shop:
+            account:
+                address_book: Adresses
+                change_password: 'Mot de passe'
+                dahsboard: Accueil
+                order_history: Commandes
+                personal_information: Profil
+    ui:
+        app:
+            combination: Combinaison
+            product_group: 'Groupe de produit'
+            product_ikea: 'Produit Ikea'
+        b2b_program: 'Terra Club'
+        customer:
+            b2b_program:
+                company_address: 'Adresse de la société'
+                company_name: 'Nom de la société'
+                coupon_code: 'Code Pro'
+                enabled: 'Programme activé'
+        customer_group: 'Groupe de client'
+        forgot_password: 'Mot de passe oublié ?'
+        grid:
+            b2b_program_enabled: 'Terra Club'
+        items_total: 'Total TTC'
+        new_customer: 'Nouveau client ?'
+        product_variant: 'Variante de produit'
+        promotion_total: 'Total des remises (HT)'
+        shipping_total: 'Total des frais de port (TTC)'
+        total: 'Total TTC'

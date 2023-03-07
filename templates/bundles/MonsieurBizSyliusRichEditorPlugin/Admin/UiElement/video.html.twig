@@ -1,0 +1,12 @@
+{#
+    UI Element template
+    type: video
+    element fields :
+        video
+        image
+#}
+{% if element is not empty %}
+<video width="100%" poster="{{ element.image }}" controls>
+    <source src="{{ element.video }}" type="video/{{ element.video|split('.')|last }}">
+</video>
+{% endif %}

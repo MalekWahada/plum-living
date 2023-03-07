@@ -1,0 +1,45 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% block title %}{{ 'sylius.ui.register_in_the_store'|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container container--narrow">
+        {{ sylius_template_event('sylius.shop.register.after_content_header') }}
+        <div class="panel panel--big-chin panel--big-cheeks">
+            {{ sylius_template_event('sylius.shop.register.before_form') }}
+            <h1 class="panel__title t-header-medium">{{ 'app.ui.generic.register'|trans }}</h1>
+            {{ form_start(form, {'action': path('sylius_shop_register'), 'attr': {'class': 'panel__content'}}) }}
+                {% include '@SyliusShop/Register/_form.html.twig' %}
+
+                {{ sylius_template_event('sylius.shop.register.form', {'form': form}) }}
+
+            <div class="row u-cross-centered-row">
+                <div class="@lg:column-7 u-cross-centered-col u-center-on-cross">
+                    <button type="submit" class="button ripple-button u-block u-margin-auto u-margin-t-6 u-fullwidth" {{ sylius_test_html_attribute('register-button') }}>
+                        <svg class="o-icon-16 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                        {{ 'sylius.ui.create_an_account'|trans }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="row u-cross-centered-row u-margin-t-7">
+                <div class="@lg:column-7 u-cross-centered-col u-center-on-cross">
+                    <h2 class="t-header-medium">{{ 'app.ui.login_register.have_an_account_login'|trans }}</h2>
+
+                    <a class="button button--inversed ripple-button u-block u-margin-t-3 u-fullwidth" href="{{ path('sylius_shop_login') }}">
+                        <svg class="o-icon-16 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                        {{ 'app.ui.login_register.have_an_account_login_link'|trans }}
+                    </a>
+                </div>
+            </div>
+
+
+            {{ form_row(form._token) }}
+            {{ form_end(form, {'render_rest': false}) }}
+        </div>
+    </div>
+{% endblock %}

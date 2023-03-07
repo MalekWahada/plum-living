@@ -1,0 +1,46 @@
+{% extends '@SyliusShop/empty_layout.html.twig' %}
+
+{% block title %}
+    {{ "app.ui.plum_scanner.title"|trans }}
+{% endblock %}
+
+{% block content %}
+    {% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+    <input id="icon-lib-url" type="hidden" value="{{ iconLibUrl }}">
+    <input id="scan-timeout-url" type="hidden" value="{{ path('app_plum_scanner_project_scan_timeout', { 'token': project.token }) }}">
+    <input id="scan-timeout-modal-title" type="hidden" value="{{ 'app.ui.plum_scanner.step_two.project_status.timeout_modal_title'|trans }}">
+    <input id="scan-timeout-modal-message" type="hidden" value="{{ 'app.ui.plum_scanner.step_two.project_status.timeout_modal_message'|trans }}">
+    <input id="scan-timeout-modal-confirm" type="hidden" value="{{ 'app.ui.plum_scanner.step_two.project_status.timeout_modal_confirm'|trans }}">
+    <input id="scan-timeout-modal-dismiss" type="hidden" value="{{ 'app.ui.plum_scanner.step_two.project_status.timeout_modal_dismiss'|trans }}">
+
+    {% for i in 1..5 %}
+        <img
+         aria-hidden="true"
+         class="plum-scanner-background u-cover"
+         {{ i == 1 ? 'data-loaded' }}
+         {{ i > 1 ? 'data-' }}src="{{ asset('build/shop/images/plum-scanner-background-' ~ i ~ '.jpg', 'shop') }}"
+         {{ i > 1 ? 'data-' }}srcset="{{ asset('build/shop/images/plum-scanner-background-' ~ i ~ '.jpg', 'shop') }},
+            {{ asset('build/shop/images/plum-scanner-background-' ~ i ~ '-1.5x.jpg', 'shop') }} 1.5x,
+            {{ asset('build/shop/images/plum-scanner-background-' ~ i ~ '-2x.jpg', 'shop') }} 2x">
+    {% endfor %}
+
+    <div class="plum-scanner-loading t-align-center"
+     data-content-url="{{ path(
+        'app_plum_scanner_project_status',
+        { 'token': project.token }
+     ) }}">
+        <div class="plum-scanner-loading__ratio">
+            <div class="ui active loader"></div>
+            <div class="plum-scanner-loading__content u-cross-centered-col u-padding-10 @lg:u-padding-6">
+                <h1 class="t-header-large u-margin-b-4">{{ 'app.ui.plum_scanner.step_two.project_status.title'|trans }}</h1>
+                <p class="t-base-small">{{ 'app.ui.plum_scanner.step_two.project_status.hint'|trans }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ sylius_template_event('app.quote.plum_scanner.scripts') }}
+{% endblock %}

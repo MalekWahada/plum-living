@@ -1,0 +1,9 @@
+@use '../../config/sass' as *;
+
+
+$form--label-color: $color--near-black;
+$form--placeholder-color: rgba(0, 0, 0, 0.4);
+$form--value-color: $color--near-black;
+
+$form--widget-height: rem(36);
+$form--button-height: rem(50);

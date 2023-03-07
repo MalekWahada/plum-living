@@ -1,0 +1,1013 @@
+{% extends '@SyliusShop/Email/layout.html.twig' %}
+
+{%- block subject -%}
+    {{- 'app.ui.email_content.user_registration.b2b_program_email_subject'|trans({}, null, localeCode) -}}
+{%- endblock -%}
+
+{% block body %}
+    {% set url = channel.hostname is not null ? 'http://' ~ channel.hostname ~ path('sylius_shop_homepage', {'_locale': localeCode}) : url('sylius_shop_homepage', {'_locale': localeCode}) %}
+
+    <style type="text/css">
+        p{
+            margin:10px 0;
+            padding:0;
+        }
+        table{
+            border-collapse:collapse;
+        }
+        h1,h2,h3,h4,h5,h6{
+            display:block;
+            margin:0;
+            padding:0;
+        }
+        img,a img{
+            border:0;
+            height:auto;
+            outline:none;
+            text-decoration:none;
+        }
+        body,#bodyTable,#bodyCell{
+            height:100%;
+            margin:0;
+            padding:0;
+            width:100%;
+        }
+        .mcnPreviewText{
+            display:none !important;
+        }
+        #outlook a{
+            padding:0;
+        }
+        img{
+            -ms-interpolation-mode:bicubic;
+        }
+        table{
+            mso-table-lspace:0pt;
+            mso-table-rspace:0pt;
+        }
+        .ReadMsgBody{
+            width:100%;
+        }
+        .ExternalClass{
+            width:100%;
+        }
+        p,a,li,td,blockquote{
+            mso-line-height-rule:exactly;
+        }
+        a[href^=tel],a[href^=sms]{
+            color:inherit;
+            cursor:default;
+            text-decoration:none;
+        }
+        p,a,li,td,body,table,blockquote{
+            -ms-text-size-adjust:100%;
+            -webkit-text-size-adjust:100%;
+        }
+        .ExternalClass,.ExternalClass p,.ExternalClass td,.ExternalClass div,.ExternalClass span,.ExternalClass font{
+            line-height:100%;
+        }
+        a[x-apple-data-detectors]{
+            color:inherit !important;
+            text-decoration:none !important;
+            font-size:inherit !important;
+            font-family:inherit !important;
+            font-weight:inherit !important;
+            line-height:inherit !important;
+        }
+        #bodyCell{
+            padding:10px;
+        }
+        .templateContainer{
+            max-width:600px !important;
+        }
+        a.mcnButton{
+            display:block;
+        }
+        .mcnImage,.mcnRetinaImage{
+            vertical-align:bottom;
+        }
+        .mcnTextContent{
+            word-break:break-word;
+        }
+        .mcnTextContent img{
+            height:auto !important;
+        }
+        .mcnDividerBlock{
+            table-layout:fixed !important;
+        }
+        /*
+        @tab Page
+        @section Background Style
+        @tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
+        */
+        body,#bodyTable{
+            /*@editable*/background-color:#;
+        }
+        /*
+        @tab Page
+        @section Background Style
+        @tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
+        */
+        #bodyCell{
+            /*@editable*/border-top:0;
+        }
+        /*
+        @tab Page
+        @section Email Border
+        @tip Set the border for your email.
+        */
+        .templateContainer{
+            /*@editable*/border:0;
+        }
+        /*
+        @tab Page
+        @section Heading 1
+        @tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
+        @style heading 1
+        */
+        h1{
+            /*@editable*/color:#6d7969;
+            /*@editable*/font-family:'Lora', Georgia, 'Times New Roman', serif;
+            /*@editable*/font-size:16px;
+            /*@editable*/font-style:normal;
+            /*@editable*/font-weight:normal;
+            /*@editable*/line-height:100%;
+            /*@editable*/letter-spacing:2px;
+            /*@editable*/text-align:center;
+        }
+        /*
+        @tab Page
+        @section Heading 2
+        @tip Set the styling for all second-level headings in your emails.
+        @style heading 2
+        */
+        h2{
+            /*@editable*/color:#202020;
+            /*@editable*/font-family:'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            /*@editable*/font-size:16px;
+            /*@editable*/font-style:normal;
+            /*@editable*/font-weight:normal;
+            /*@editable*/line-height:100%;
+            /*@editable*/letter-spacing:normal;
+            /*@editable*/text-align:center;
+        }
+        /*
+        @tab Page
+        @section Heading 3
+        @tip Set the styling for all third-level headings in your emails.
+        @style heading 3
+        */
+        h3{
+            /*@editable*/color:#202020;
+            /*@editable*/font-family:Helvetica;
+            /*@editable*/font-size:20px;
+            /*@editable*/font-style:normal;
+            /*@editable*/font-weight:bold;
+            /*@editable*/line-height:125%;
+            /*@editable*/letter-spacing:normal;
+            /*@editable*/text-align:left;
+        }
+        /*
+        @tab Page
+        @section Heading 4
+        @tip Set the styling for all fourth-level headings in your emails. These should be the smallest of your headings.
+        @style heading 4
+        */
+        h4{
+            /*@editable*/color:#202020;
+            /*@editable*/font-family:Helvetica;
+            /*@editable*/font-size:18px;
+            /*@editable*/font-style:normal;
+            /*@editable*/font-weight:bold;
+            /*@editable*/line-height:125%;
+            /*@editable*/letter-spacing:normal;
+            /*@editable*/text-align:left;
+        }
+        /*
+        @tab Preheader
+        @section Preheader Style
+        @tip Set the background color and borders for your email's preheader area.
+        */
+        #templatePreheader{
+            /*@editable*/background-color:#ffffff;
+            /*@editable*/background-image:none;
+            /*@editable*/background-repeat:no-repeat;
+            /*@editable*/background-position:center;
+            /*@editable*/background-size:cover;
+            /*@editable*/border-top:0;
+            /*@editable*/border-bottom:0;
+            /*@editable*/padding-top:9px;
+            /*@editable*/padding-bottom:9px;
+        }
+        /*
+        @tab Preheader
+        @section Preheader Text
+        @tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
+        */
+        #templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
+            /*@editable*/color:#656565;
+            /*@editable*/font-family:'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            /*@editable*/font-size:12px;
+            /*@editable*/line-height:150%;
+            /*@editable*/text-align:center;
+        }
+        /*
+        @tab Preheader
+        @section Preheader Link
+        @tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
+        */
+        #templatePreheader .mcnTextContent a,#templatePreheader .mcnTextContent p a{
+            /*@editable*/color:#656565;
+            /*@editable*/font-weight:normal;
+            /*@editable*/text-decoration:underline;
+        }
+        /*
+        @tab Header
+        @section Header Style
+        @tip Set the background color and borders for your email's header area.
+        */
+        #templateHeader{
+            /*@editable*/background-color:#ffffff;
+            /*@editable*/background-image:none;
+            /*@editable*/background-repeat:no-repeat;
+            /*@editable*/background-position:center;
+            /*@editable*/background-size:cover;
+            /*@editable*/border-top:1px none ;
+            /*@editable*/border-bottom:0;
+            /*@editable*/padding-top:9px;
+            /*@editable*/padding-bottom:0;
+        }
+        /*
+        @tab Header
+        @section Header Text
+        @tip Set the styling for your email's header text. Choose a size and color that is easy to read.
+        */
+        #templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+            /*@editable*/color:#202020;
+            /*@editable*/font-family:'Arvo', 'Courier', Georgia, serif;
+            /*@editable*/font-size:16px;
+            /*@editable*/line-height:150%;
+            /*@editable*/text-align:left;
+        }
+        /*
+        @tab Header
+        @section Header Link
+        @tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
+        */
+        #templateHeader .mcnTextContent a,#templateHeader .mcnTextContent p a{
+            /*@editable*/color:#007C89;
+            /*@editable*/font-weight:normal;
+            /*@editable*/text-decoration:underline;
+        }
+        /*
+        @tab Body
+        @section Body Style
+        @tip Set the background color and borders for your email's body area.
+        */
+        #templateBody{
+            /*@editable*/background-color:#ffffff;
+            /*@editable*/background-image:none;
+            /*@editable*/background-repeat:no-repeat;
+            /*@editable*/background-position:center;
+            /*@editable*/background-size:cover;
+            /*@editable*/border-top:0;
+            /*@editable*/border-bottom:2px solid #EAEAEA;
+            /*@editable*/padding-top:0;
+            /*@editable*/padding-bottom:9px;
+        }
+        /*
+        @tab Body
+        @section Body Text
+        @tip Set the styling for your email's body text. Choose a size and color that is easy to read.
+        */
+        #templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+            /*@editable*/color:#202020;
+            /*@editable*/font-family:Helvetica;
+            /*@editable*/font-size:16px;
+            /*@editable*/line-height:150%;
+            /*@editable*/text-align:left;
+        }
+        /*
+        @tab Body
+        @section Body Link
+        @tip Set the styling for your email's body links. Choose a color that helps them stand out from your text.
+        */
+        #templateBody .mcnTextContent a,#templateBody .mcnTextContent p a{
+            /*@editable*/color:#6d7969;
+            /*@editable*/font-weight:normal;
+            /*@editable*/text-decoration:underline;
+        }
+        /*
+        @tab Footer
+        @section Footer Style
+        @tip Set the background color and borders for your email's footer area.
+        */
+        #templateFooter{
+            /*@editable*/background-color:#ffffff;
+            /*@editable*/background-image:none;
+            /*@editable*/background-repeat:no-repeat;
+            /*@editable*/background-position:center;
+            /*@editable*/background-size:cover;
+            /*@editable*/border-top:0;
+            /*@editable*/border-bottom:0;
+            /*@editable*/padding-top:9px;
+            /*@editable*/padding-bottom:9px;
+        }
+        /*
+        @tab Footer
+        @section Footer Text
+        @tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
+        */
+        #templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+            /*@editable*/color:#656565;
+            /*@editable*/font-family:'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            /*@editable*/font-size:10px;
+            /*@editable*/line-height:125%;
+            /*@editable*/text-align:center;
+        }
+        /*
+        @tab Footer
+        @section Footer Link
+        @tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
+        */
+        #templateFooter .mcnTextContent a,#templateFooter .mcnTextContent p a{
+            /*@editable*/color:#656565;
+            /*@editable*/font-weight:normal;
+            /*@editable*/text-decoration:underline;
+        }
+        @media only screen and (min-width:768px){
+            .templateContainer{
+                width:600px !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            body,table,td,p,a,li,blockquote{
+                -webkit-text-size-adjust:none !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            body{
+                width:100% !important;
+                min-width:100% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnRetinaImage{
+                max-width:100% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnImage{
+                width:100% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnCartContainer,.mcnCaptionTopContent,.mcnRecContentContainer,.mcnCaptionBottomContent,.mcnTextContentContainer,.mcnBoxedTextContentContainer,.mcnImageGroupContentContainer,.mcnCaptionLeftTextContentContainer,.mcnCaptionRightTextContentContainer,.mcnCaptionLeftImageContentContainer,.mcnCaptionRightImageContentContainer,.mcnImageCardLeftTextContentContainer,.mcnImageCardRightTextContentContainer,.mcnImageCardLeftImageContentContainer,.mcnImageCardRightImageContentContainer{
+                max-width:100% !important;
+                width:100% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnBoxedTextContentContainer{
+                min-width:100% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnImageGroupContent{
+                padding:9px !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnCaptionLeftContentOuter .mcnTextContent,.mcnCaptionRightContentOuter .mcnTextContent{
+                padding-top:9px !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnImageCardTopImageContent,.mcnCaptionBottomContent:last-child .mcnCaptionBottomImageContent,.mcnCaptionBlockInner .mcnCaptionTopContent:last-child .mcnTextContent{
+                padding-top:18px !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnImageCardBottomImageContent{
+                padding-bottom:9px !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnImageGroupBlockInner{
+                padding-top:0 !important;
+                padding-bottom:0 !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnImageGroupBlockOuter{
+                padding-top:9px !important;
+                padding-bottom:9px !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnTextContent,.mcnBoxedTextContentColumn{
+                padding-right:18px !important;
+                padding-left:18px !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcnImageCardLeftImageContent,.mcnImageCardRightImageContent{
+                padding-right:18px !important;
+                padding-bottom:0 !important;
+                padding-left:18px !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            .mcpreview-image-uploader{
+                display:none !important;
+                width:100% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            /*
+            @tab Mobile Styles
+            @section Heading 1
+            @tip Make the first-level headings larger in size for better readability on small screens.
+            */
+            h1{
+                /*@editable*/font-size:22px !important;
+                /*@editable*/line-height:125% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            /*
+            @tab Mobile Styles
+            @section Heading 2
+            @tip Make the second-level headings larger in size for better readability on small screens.
+            */
+            h2{
+                /*@editable*/font-size:20px !important;
+                /*@editable*/line-height:125% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            /*
+            @tab Mobile Styles
+            @section Heading 3
+            @tip Make the third-level headings larger in size for better readability on small screens.
+            */
+            h3{
+                /*@editable*/font-size:18px !important;
+                /*@editable*/line-height:125% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            /*
+            @tab Mobile Styles
+            @section Heading 4
+            @tip Make the fourth-level headings larger in size for better readability on small screens.
+            */
+            h4{
+                /*@editable*/font-size:16px !important;
+                /*@editable*/line-height:150% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            /*
+            @tab Mobile Styles
+            @section Boxed Text
+            @tip Make the boxed text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+            */
+            .mcnBoxedTextContentContainer .mcnTextContent,.mcnBoxedTextContentContainer .mcnTextContent p{
+                /*@editable*/font-size:14px !important;
+                /*@editable*/line-height:150% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            /*
+            @tab Mobile Styles
+            @section Preheader Visibility
+            @tip Set the visibility of the email's preheader on small screens. You can hide it to save space.
+            */
+            #templatePreheader{
+                /*@editable*/display:block !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            /*
+            @tab Mobile Styles
+            @section Preheader Text
+            @tip Make the preheader text larger in size for better readability on small screens.
+            */
+            #templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
+                /*@editable*/font-size:14px !important;
+                /*@editable*/line-height:150% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            /*
+            @tab Mobile Styles
+            @section Header Text
+            @tip Make the header text larger in size for better readability on small screens.
+            */
+            #templateHeader .mcnTextContent,#templateHeader .mcnTextContent p{
+                /*@editable*/font-size:16px !important;
+                /*@editable*/line-height:150% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            /*
+            @tab Mobile Styles
+            @section Body Text
+            @tip Make the body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+            */
+            #templateBody .mcnTextContent,#templateBody .mcnTextContent p{
+                /*@editable*/font-size:16px !important;
+                /*@editable*/line-height:150% !important;
+            }
+
+        }	@media only screen and (max-width: 480px){
+            /*
+            @tab Mobile Styles
+            @section Footer Text
+            @tip Make the footer content text larger in size for better readability on small screens.
+            */
+            #templateFooter .mcnTextContent,#templateFooter .mcnTextContent p{
+                /*@editable*/font-size:14px !important;
+                /*@editable*/line-height:150% !important;
+            }
+
+        }
+    </style>
+    <center>
+        <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+            <tr>
+                <td align="center" valign="top" id="bodyCell">
+                    <!-- BEGIN TEMPLATE // -->
+                    <!--[if (gte mso 9)|(IE)]>
+                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+                        <tr>
+                            <td align="center" valign="top" width="600" style="width:600px;">
+                    <![endif]-->
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
+                        <tr>
+                            <td valign="top" id="templatePreheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%;">
+                                    <tbody class="mcnImageBlockOuter">
+                                    <tr>
+                                        <td valign="top" style="padding:0px" class="mcnImageBlockInner">
+                                            <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
+                                                <tbody><tr>
+                                                    <td class="mcnImageContent" valign="top" style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0; text-align:center;">
+
+                                                        <a href="https://plum-living.com/fr/?utm_source=transactional&utm_medium=email&utm_campaign=account+welcometc" title="" class="" target="_blank">
+                                                            <img align="center" alt="" src="https://mcusercontent.com/54e23277116835a84c2d9ca2b/images/8c884a8a-0085-2f39-e404-0fca2c448fdd.jpg" width="132" style="max-width:300px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnRetinaImage">
+                                                        </a>
+
+                                                    </td>
+                                                </tr>
+                                                </tbody></table>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table></td>
+                        </tr>
+                        <tr>
+                            <td valign="top" id="templateHeader"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%;">
+                                    <tbody class="mcnImageBlockOuter">
+                                    <tr>
+                                        <td valign="top" style="padding:0px" class="mcnImageBlockInner">
+                                            <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
+                                                <tbody><tr>
+                                                    <td class="mcnImageContent" valign="top" style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0; text-align:center;">
+
+                                                        <a href="https://plum-living.com/fr/terra-club?utm_source=transactional&utm_medium=email&utm_campaign=account+welcometc" title="" class="" target="_blank">
+                                                            <img align="center" alt="" src="https://mcusercontent.com/54e23277116835a84c2d9ca2b/images/d1fb4c68-8f56-065e-9c0e-17c66bd56fa2.jpg" width="600" style="max-width:1200px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                                        </a>
+
+                                                    </td>
+                                                </tr>
+                                                </tbody></table>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                                    <tbody class="mcnTextBlockOuter">
+                                    <tr>
+                                        <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                                            <!--[if mso]>
+                                            <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                                                <tr>
+                                            <![endif]-->
+
+                                            <!--[if mso]>
+                                            <td valign="top" width="600" style="width:600px;">
+                                            <![endif]-->
+                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                                                <tbody><tr>
+
+                                                    <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+
+                                                        <div style="text-align: center;">
+                                                            <p dir="ltr" style="text-align: center;"><span style="font-size:21px"><font color="#b0524c" face="playfair display, georgia, times new roman, serif"><strong>Vous êtes membre du Terra <em>Club </em>!</strong></font></span><br>
+                                                                <span style="font-size:13px"><span style="font-family:roboto,helvetica neue,helvetica,arial,sans-serif">On vous dit tout ce qu'il faut savoir.</span></span></p>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                                </tbody></table>
+                                            <!--[if mso]>
+                                            </td>
+                                            <![endif]-->
+
+                                            <!--[if mso]>
+                                            </tr>
+                                            </table>
+                                            <![endif]-->
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                                    <tbody class="mcnTextBlockOuter">
+                                    <tr>
+                                        <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                                            <!--[if mso]>
+                                            <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                                                <tr>
+                                            <![endif]-->
+
+                                            <!--[if mso]>
+                                            <td valign="top" width="600" style="width:600px;">
+                                            <![endif]-->
+                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                                                <tbody><tr>
+
+                                                    <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+
+                                                        <div style="text-align: center;">
+                                                            <p dir="ltr" style="text-align: center;"><span style="font-size:12px"><font color="#b0524c" face="playfair display, georgia, times new roman, serif"><strong>Le must have : votre code Terra</strong></font></span><br>
+                                                                <span style="font-size:12px"><span style="font-family:roboto,helvetica neue,helvetica,arial,sans-serif">Disponible dans votre espace personnel, il vous permet de bénéficier de vos avantages et services exclusifs.</span></span></p>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                                </tbody></table>
+                                            <!--[if mso]>
+                                            </td>
+                                            <![endif]-->
+
+                                            <!--[if mso]>
+                                            </tr>
+                                            </table>
+                                            <![endif]-->
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width:100%;">
+                                    <tbody class="mcnButtonBlockOuter">
+                                    <tr>
+                                        <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;" valign="top" align="center" class="mcnButtonBlockInner">
+                                            <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse: separate !important;border-radius: 5px;background-color: #B0524C;">
+                                                <tbody>
+                                                <tr>
+                                                    <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 12px; padding: 18px;">
+                                                        <a class="mcnButton " title="Je retrouve mon code Terra" href="https://plum-living.com/fr/login?utm_source=transactional&utm_medium=email&utm_campaign=account+welcometc" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Je retrouve mon code Terra</a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+                                    <tbody class="mcnCaptionBlockOuter">
+                                    <tr>
+                                        <td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
+
+
+
+
+                                            <table border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightContentOuter" width="100%">
+                                                <tbody><tr>
+                                                    <td valign="top" class="mcnCaptionRightContentInner" style="padding:0 9px ;">
+                                                        <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" width="264">
+                                                            <tbody><tr>
+                                                                <td class="mcnCaptionRightImageContent" align="center" valign="top">
+
+
+                                                                    <a href="https://plum-living.com/fr/terra-club?utm_source=transactional&utm_medium=email&utm_campaign=account+welcometc" title="" class="" target="_blank">
+
+
+                                                                        <img alt="" src="https://mcusercontent.com/54e23277116835a84c2d9ca2b/images/4b26915f-ae72-5150-5e24-57834b44bb20.jpg" width="264" style="max-width:1200px;" class="mcnImage">
+                                                                    </a>
+
+
+                                                                </td>
+                                                            </tr>
+                                                            </tbody></table>
+                                                        <table class="mcnCaptionRightTextContentContainer" align="right" border="0" cellpadding="0" cellspacing="0" width="264">
+                                                            <tbody><tr>
+                                                                <td valign="top" class="mcnTextContent">
+                                                                    <p dir="ltr"><span style="color:#b0524c"><span style="font-family:playfair display,georgia,times new roman,serif"><span style="font-size:12px"><strong>Echantillons et remises</strong></span></span></span><br>
+                                                                        <span style="font-size:12px"><span style="font-family:roboto,helvetica neue,helvetica,arial,sans-serif">✔️ Vos coffrets d'échantillons offerts<br>
+✔️ Une remise immédiate de 10% du montant des façades, sur les accessoires et la peinture&nbsp;</span></span><br>
+                                                                        <br>
+                                                                        <span style="font-family:roboto,helvetica neue,helvetica,arial,sans-serif"><span style="color:#b0524c"><span style="font-size:12px">Comment en profiter&nbsp;?</span></span></span><br>
+                                                                        <font face="roboto, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:12px">Rien de plus simple ! Entrez votre code Terra lors du passage de votre commande.</span></font></p>
+
+                                                                </td>
+                                                            </tr>
+                                                            </tbody></table>
+                                                    </td>
+                                                </tr>
+                                                </tbody></table>
+
+
+
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+                                    <tbody class="mcnCaptionBlockOuter">
+                                    <tr>
+                                        <td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
+
+
+                                            <table border="0" cellpadding="0" cellspacing="0" class="mcnCaptionLeftContentOuter" width="100%">
+                                                <tbody><tr>
+                                                    <td valign="top" class="mcnCaptionLeftContentInner" style="padding:0 9px ;">
+                                                        <table align="right" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionLeftImageContentContainer" width="264">
+                                                            <tbody><tr>
+                                                                <td class="mcnCaptionLeftImageContent" align="center" valign="top">
+
+
+                                                                    <a href="https://plum-living.com/fr/terra-club?utm_source=transactional&utm_medium=email&utm_campaign=account+welcometc" title="" class="" target="_blank">
+
+                                                                        <img alt="" src="https://mcusercontent.com/54e23277116835a84c2d9ca2b/images/67838986-fba5-09fe-a158-a34409d49ba9.jpg" width="264" style="max-width:1200px;" class="mcnImage">
+                                                                    </a>
+
+                                                                </td>
+                                                            </tr>
+                                                            </tbody></table>
+                                                        <table class="mcnCaptionLeftTextContentContainer" align="left" border="0" cellpadding="0" cellspacing="0" width="264">
+                                                            <tbody><tr>
+                                                                <td valign="top" class="mcnTextContent">
+                                                                    <span style="color:#b0524c"><span style="font-family:playfair display,georgia,times new roman,serif"><span style="font-size:12px"><strong>Service exclusif de Plum Planners </strong></span></span></span><br>
+                                                                    <span style="font-size:12px"><span style="font-family:roboto,helvetica neue,helvetica,arial,sans-serif">✔️ Un devis Plum à partir de votre plan d'archi<br>
+✔️ Votre pla<span style="color:#444444">n techniq</span>ue converti en plan Ikea</span></span><br>
+                                                                    <br>
+                                                                    <font color="#b0524c" face="roboto, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:12px">Comment trouver ce service ?</span></font><br>
+                                                                    <span style="font-size:12px"><span style="font-family:roboto,helvetica neue,helvetica,arial,sans-serif">Connectez-vous à&nbsp;<a href="https://plum-living.com/fr/login" target="_blank"><span style="color:#333333">votre compte Plum</span></a>, et choisissez l'option 'Je dispose d'un plan d'architecte' lors de votre <a href="https://plum-living.com/fr/devis" target="_blank"><span style="color:#333333">demande de devis</span></a>.</span></span>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody></table>
+                                                    </td>
+                                                </tr>
+                                                </tbody></table>
+
+
+
+
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+                                    <tbody class="mcnCaptionBlockOuter">
+                                    <tr>
+                                        <td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
+
+
+
+
+                                            <table border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightContentOuter" width="100%">
+                                                <tbody><tr>
+                                                    <td valign="top" class="mcnCaptionRightContentInner" style="padding:0 9px ;">
+                                                        <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionRightImageContentContainer" width="264">
+                                                            <tbody><tr>
+                                                                <td class="mcnCaptionRightImageContent" align="center" valign="top">
+
+
+                                                                    <a href="https://plum-living.com/fr/terra-club?utm_source=transactional&utm_medium=email&utm_campaign=account+welcometc" title="" class="" target="_blank">
+
+
+                                                                        <img alt="" src="https://mcusercontent.com/54e23277116835a84c2d9ca2b/images/339de142-a30e-59c9-c54f-13c39515f56f.png" width="264" style="max-width:417px;" class="mcnImage">
+                                                                    </a>
+
+
+                                                                </td>
+                                                            </tr>
+                                                            </tbody></table>
+                                                        <table class="mcnCaptionRightTextContentContainer" align="right" border="0" cellpadding="0" cellspacing="0" width="264">
+                                                            <tbody><tr>
+                                                                <td valign="top" class="mcnTextContent">
+                                                                    <span style="color:#b0524c"><span style="font-family:playfair display,georgia,times new roman,serif"><span style="font-size:12px"><strong>Shooting offert</strong></span></span></span><br>
+                                                                    <span style="font-size:12px"><span style="font-family:roboto,helvetica neue,helvetica,arial,sans-serif">✔️ 12 photos de votre réalisation par Smilzz<br>
+✔️ Votre projet partagé à notre communauté</span></span><br>
+                                                                    <br>
+                                                                    <span style="font-size:12px"><span style="font-family:roboto,helvetica neue,helvetica,arial,sans-serif"><font color="#b0524c">Quand l'organiser ?</font><br>
+Une fois votre premier projet Terra Club installé, vous&nbsp;pourrez réserver votre shooting sur le site <a href="https://smilzz.com/" target="_blank"><span style="color:#555555">Smilzz</span></a><span style="color:#555555">.</span> Vous recevrez toutes les infos par e-mail !</span></span>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody></table>
+                                                    </td>
+                                                </tr>
+                                                </tbody></table>
+
+
+
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table></td>
+                        </tr>
+                        <tr>
+                            <td valign="top" id="templateBody"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width:100%;">
+                                    <tbody class="mcnButtonBlockOuter">
+                                    <tr>
+                                        <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;" valign="top" align="center" class="mcnButtonBlockInner">
+                                            <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse: separate !important;border-radius: 5px;background-color: #B0524C;">
+                                                <tbody>
+                                                <tr>
+                                                    <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Roboto, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 12px; padding: 18px;">
+                                                        <a class="mcnButton " title="Je découvre le Terra Club" href="https://plum-living.com/fr/terra-club?utm_source=transactional&utm_medium=email&utm_campaign=account+welcometc" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Je découvre le Terra Club</a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table></td>
+                        </tr>
+                        <tr>
+                            <td valign="top" id="templateFooter"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowBlock" style="min-width:100%;">
+                                    <tbody class="mcnFollowBlockOuter">
+                                    <tr>
+                                        <td align="center" valign="top" style="padding:9px" class="mcnFollowBlockInner">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentContainer" style="min-width:100%;">
+                                                <tbody><tr>
+                                                    <td align="center" style="padding-left:9px;padding-right:9px;">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%; border: 1px none;" class="mcnFollowContent">
+                                                            <tbody><tr>
+                                                                <td align="center" valign="top" style="padding-top:9px; padding-right:9px; padding-left:9px;">
+                                                                    <table align="center" border="0" cellpadding="0" cellspacing="0">
+                                                                        <tbody><tr>
+                                                                            <td align="center" valign="top">
+                                                                                <!--[if mso]>
+                                                                                <table align="center" border="0" cellspacing="0" cellpadding="0">
+                                                                                    <tr>
+                                                                                <![endif]-->
+
+                                                                                <!--[if mso]>
+                                                                                <td align="center" valign="top">
+                                                                                <![endif]-->
+
+
+                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                                                    <tbody><tr>
+                                                                                        <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                                                                <tbody><tr>
+                                                                                                    <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                                                            <tbody><tr>
+
+                                                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                                                    <a href="https://www.instagram.com/plum.living/" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/dark-instagram-48.png" alt="Instagram" style="display:block;" height="24" width="24" class=""></a>
+                                                                                                                </td>
+
+
+                                                                                                            </tr>
+                                                                                                            </tbody></table>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody></table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    </tbody></table>
+
+                                                                                <!--[if mso]>
+                                                                                </td>
+                                                                                <![endif]-->
+
+                                                                                <!--[if mso]>
+                                                                                <td align="center" valign="top">
+                                                                                <![endif]-->
+
+
+                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                                                    <tbody><tr>
+                                                                                        <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                                                                <tbody><tr>
+                                                                                                    <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                                                            <tbody><tr>
+
+                                                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                                                    <a href="https://www.pinterest.fr/PlumLiving/_created/" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/dark-pinterest-48.png" alt="Pinterest" style="display:block;" height="24" width="24" class=""></a>
+                                                                                                                </td>
+
+
+                                                                                                            </tr>
+                                                                                                            </tbody></table>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody></table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    </tbody></table>
+
+                                                                                <!--[if mso]>
+                                                                                </td>
+                                                                                <![endif]-->
+
+                                                                                <!--[if mso]>
+                                                                                <td align="center" valign="top">
+                                                                                <![endif]-->
+
+
+                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                                                    <tbody><tr>
+                                                                                        <td valign="top" style="padding-right:0; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                                                                <tbody><tr>
+                                                                                                    <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                                                            <tbody><tr>
+
+                                                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                                                    <a href="https://www.youtube.com/channel/UCABXqwLdsJG0nkW8CODR3bg/videos" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/dark-youtube-48.png" alt="YouTube" style="display:block;" height="24" width="24" class=""></a>
+                                                                                                                </td>
+
+
+                                                                                                            </tr>
+                                                                                                            </tbody></table>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody></table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    </tbody></table>
+
+                                                                                <!--[if mso]>
+                                                                                </td>
+                                                                                <![endif]-->
+
+                                                                                <!--[if mso]>
+                                                                                </tr>
+                                                                                </table>
+                                                                                <![endif]-->
+                                                                            </td>
+                                                                        </tr>
+                                                                        </tbody></table>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody></table>
+                                                    </td>
+                                                </tr>
+                                                </tbody></table>
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                                    <tbody class="mcnTextBlockOuter">
+                                    <tr>
+                                        <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                                            <!--[if mso]>
+                                            <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                                                <tr>
+                                            <![endif]-->
+
+                                            <!--[if mso]>
+                                            <td valign="top" width="600" style="width:600px;">
+                                            <![endif]-->
+                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                                                <tbody><tr>
+
+                                                    {% include '@SyliusShop/Email/Common/_contact.html.twig' with {'contactEmail': 'terraclub@plum-living.com'} %}
+                                                </tr>
+                                                </tbody></table>
+                                            <!--[if mso]>
+                                            </td>
+                                            <![endif]-->
+
+                                            <!--[if mso]>
+                                            </tr>
+                                            </table>
+                                            <![endif]-->
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table></td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                    </td>
+                    </tr>
+                    </table>
+                    <![endif]-->
+                    <!-- // END TEMPLATE -->
+                </td>
+            </tr>
+        </table>
+    </center>
+{% endblock %}

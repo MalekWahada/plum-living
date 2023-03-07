@@ -1,0 +1,16 @@
+_crud:
+    resource: |
+        alias: app.combination
+        section: admin
+        path: /
+        templates: "@SyliusAdmin\\Crud"
+        redirect: update
+        grid: app_admin_combination
+        vars:
+            all:
+                subheader: app.ui.combination
+                templates:
+                    form: '@SyliusAdmin\Combination\_form.html.twig'
+            index:
+                icon: 'file image outline'
+    type: sylius.resource

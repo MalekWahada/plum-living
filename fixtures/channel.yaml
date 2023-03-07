@@ -1,0 +1,45 @@
+App\Entity\Channel\Channel:
+    channel_main:
+        default_locale: '@locale_fr'
+        default_country: '@country_FR'
+        base_currency: '@currency_eur'
+        default_tax_zone: '@zone_france'
+        menu_taxon: null
+        shop_billing_data: '@shop_billing_data'
+        code: 'PLUM_FR'
+        name: 'Plum'
+        color: '#000000'
+        description: null
+        enabled: true
+        hostname: '127.0.0.1'
+        created_at: <dateTime()>
+        updated_at: <dateTime()>
+        theme_name: null
+        tax_calculation_strategy: 'order_items_based'
+        contact_email: hello@plum-kitchen.com
+        skipping_shipping_step_allowed: false
+        skipping_payment_step_allowed: false
+        account_verification_required: true
+        locales: ['@locale_fr']
+    channel_DE:
+        default_locale: '@locale_de'
+        default_country: '@country_DE'
+        base_currency: '@currency_eur'
+        default_tax_zone: '@zone_benelux'
+        menu_taxon: null
+        shop_billing_data: '@shop_billing_data_DE'
+        code: 'PLUM_DE'
+        name: 'Plum_de'
+        color: '#000000'
+        description: null
+        enabled: true
+        hostname: 'localhost'
+        created_at: <dateTime()>
+        updated_at: null
+        theme_name: null
+        tax_calculation_strategy: 'order_items_based'
+        contact_email: hello@plum-kitchen.com
+        skipping_shipping_step_allowed: false
+        skipping_payment_step_allowed: false
+        account_verification_required: true
+        locales: ['@locale_de']

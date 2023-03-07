@@ -1,0 +1,40 @@
+services:
+    _defaults:
+        autowire: true
+        public: false
+
+    app.context.channel.cached:
+        class: App\Context\CachedPerRequestChannelContext
+        decorates: sylius.context.channel.cached
+
+    App\Context\DefaultChannelContext:
+        tags:
+            - { name: sylius.context.channel, priority: -256 }
+
+    App\Context\RequestBasedChannelResolver:
+        decorates: sylius.context.channel.request_based.resolver.hostname_based
+
+    App\Context\HeaderRequestBasedChannelResolver:
+        tags:
+            - { name: sylius.context.channel.request_based.resolver, priority: -128 } # Executed after RequestBasedChannelResolver
+
+    App\Context\ChannelBasedLocaleContext:
+        decorates: sylius.context.locale.request_based
+    
+    # Switchable translation
+    App\Context\SwitchableTranslation\CompositeSwitchableTranslationContext: ~
+    
+    App\Context\SwitchableTranslation\SwitchableTranslationContextInterface: '@App\Context\SwitchableTranslation\CompositeSwitchableTranslationContext'
+    
+    App\Context\SwitchableTranslation\CustomerBasedSwitchableTranslationContext:
+        tags:
+            - { name: app.context.switchable_translation, priority: 64 }
+                
+    App\Context\SwitchableTranslation\ChannelAndLocaleBasedSwitchableTranslationContext:
+        tags:
+            - { name: app.context.switchable_translation, priority: 0 }
+    
+    App\Context\SwitchableTranslation\DefaultSwitchableTranslationContext:
+        tags:
+            - { name: app.context.switchable_translation, priority: -256 }
+    

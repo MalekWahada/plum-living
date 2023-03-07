@@ -1,0 +1,542 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+
+
+/*
+  Index
+  ---------- ---------- ---------- ---------- ----------
+  • The container
+  • The __main part items
+*/
+
+
+/*
+  • The container
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.plum-menu {
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  visibility: hidden;
+  transition: visibility 0s 0.7s;
+
+  a {
+    color: inherit;
+  }
+
+  & > .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__main,
+  &__aside {
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 100vw;
+      position: absolute;
+      z-index: -1;
+      left: calc(50% - 50vw);
+      top: 0;
+      bottom: 0;
+      opacity: 0;
+      transform: scaleX(0);
+      transition: opacity 0.2s 0.1s, transform 0.3s 0s;
+    }
+  }
+
+  &__main {
+    flex: 0 0 auto;
+    padding: rem(90) 0 rem(50) rem(24);
+    color: #fff;
+
+    &::before {
+      background: $color--near-black;
+      transform-origin: left;
+    }
+  }
+
+  &__aside {
+    flex: 1 0 auto;
+    padding: rem(50) 0 rem(50) rem(24);
+
+    &::before {
+      background: $color--beige;
+      transform-origin: right;
+    }
+
+    & > div {
+      opacity: 0;
+      transition: opacity 0.3s 0s;
+    }
+  }
+
+  &__item {
+    display: block;
+
+    & + & {
+      margin-top: rem(24);
+    }
+  }
+
+  &__image {
+  }
+
+
+  .plum-menu-main__link.t-header-small{
+    font-family: $font--cera;
+    font-weight: 400;
+  }
+
+  // Hidden on mobile
+}
+
+
+.plum-menu--open {
+  visibility: visible;
+  transition: visibility 0s 0s;
+  will-change: transform;
+
+  .plum-menu { // for nesting
+    &__main,
+    &__aside {
+      &::before {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    &__main {
+      &::before {
+        transition: opacity 0.2s 0s, transform 0.4s 0s;
+      }
+    }
+
+    &__aside {
+      &::before {
+        transition: opacity 0.2s 0.1s, transform 0.4s 0.1s;
+      }
+
+      & > div {
+        opacity: 1;
+        transition: opacity 0.3s 0.4s;
+      }
+    }
+  }
+}
+
+
+@include up(large) {
+  .plum-menu {
+    text-align: left;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      min-height: 50em;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      opacity: 0;
+      transform: scaleY(0);
+      transition: opacity 0.2s 0.3s, transform 0.3s 0.2s;
+    }
+
+    &::before {
+      left: 0;
+      width: 56%;
+      background: $color--near-black;
+      transform-origin: top;
+    }
+
+    &::after {
+      right: 0;
+      width: 44%;
+      background: $color--beige;
+      transform-origin: bottom;
+    }
+
+    & > .container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__main,
+    &__aside {
+      padding: rem(50) 0;
+
+      &::before {
+        content: none;
+        display: none;
+      }
+    }
+
+    &__main {
+      flex: 0 0 56%;
+      max-width: rem(400);
+      margin-left: 12%;
+    }
+
+    &__aside {
+      flex: 0 0 44%;
+      max-width: rem(240);
+    }
+
+    &__item {
+      justify-content: flex-start;
+    }
+
+    &__image {
+      width: 32vw;
+      height: 64vh;
+      max-width: rem(420);
+      position: absolute;
+      left: 56%;
+      top: 50%;
+      clip: rect(calc(100vh - 36vh), auto, auto, auto);
+      transform: translate(-50%, -50%);
+      transition: clip 0.3s 0s;
+
+      img {
+        object-fit: cover;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 1;
+        transition: opacity 0.2s;
+
+        &:last-child {
+          opacity: 0;
+        }
+      }
+    }
+
+    &__image--loaded {
+      img {
+        &:last-child {
+          opacity: 1;
+          transition: opacity 0.3s;
+        }
+      }
+    }
+  }
+
+  .plum-menu--open {
+    &::before,
+    &::after {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+
+    &::before {
+      transition: opacity 0.2s 0s, transform 0.3s 0s;
+    }
+
+    &::after {
+      transition: opacity 0.2s 0.1s, transform 0.3s 0.1s;
+    }
+
+    .plum-menu { // for nesting
+      &__image {
+        clip: rect(calc(100vh - 100vh), auto, auto, auto);
+        transition: clip 0.3s 0.4s;
+      }
+    }
+  }
+}
+
+@include between(large, wide) {
+  .plum-menu {
+    &__aside {
+      padding-left: rem(40);
+    }
+  }
+}
+
+
+/*
+  • The __main part items
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.plum-menu-main {
+  .button {
+    font-style: inherit;
+  }
+
+  &__link:not(.button) { // Every link
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    span {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      line-height: 1;
+    }
+
+    &.t-plum-em {
+      span {
+        position: relative;
+
+        &::before {
+          content: url("data:image/svg+xml,%3Csvg width='50' height='15' viewBox='0 0 50 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.57808 3.79582C0.596636 3.58883 0.596636 3.58883 0.859516 2.56392C1.21827 2.38024 1.60486 2.12363 2.00691 1.87004C2.55741 1.52297 3.13884 1.18167 3.72337 1.04159L3.84398 1.0273C6.27794 0.745642 8.7583 0.457464 11.2294 0.369758C13.8613 0.328661 16.4932 0.274033 19.1251 0.219404C26.8135 0.0600291 34.4989 -0.0990953 42.1596 0.0773198C43.7152 0.157258 45.2337 0.412609 46.7615 0.669212C47.5625 0.80403 48.3635 0.939097 49.1769 1.04936C49.4553 1.03958 49.6656 1.18342 49.8047 1.53149C49.9841 1.98781 50.0429 2.79572 49.9687 4.06796C49.6377 9.3559 47.7264 14.7082 46.2079 14.7624C43.9286 14.7463 41.6585 14.7777 39.3885 14.809C37.0257 14.8416 34.6659 14.8741 32.2907 14.8533C28.1063 14.804 23.8445 14.9558 19.6601 14.8987L19.3354 14.8882C16.5396 14.7965 13.7437 14.7047 10.9356 14.8047C9.71394 14.7596 8.49232 14.8275 7.2707 14.8952C5.65322 14.9849 4.03882 15.0746 2.43061 14.9014C-0.204376 14.3842 -0.48272 13.5849 0.57808 3.79582Z' fill='%237B838D'/%3E%3C/svg%3E%0A");
+          display: block;
+          position: absolute;
+          z-index: -1;
+          right: rem(-5);
+          bottom: rem(-8);
+          transform: rotate(-12deg);
+        }
+
+      }
+    }
+  }
+
+  &__parent { // Every parent
+
+  }
+
+  &__expander {
+    align-self: center;
+    width: rem(40);
+    height: rem(40);
+    padding: rem(8);
+    border-radius: 100%;
+    transition: opacity 0.3s, transform 0.3s;
+
+    &:hover {
+
+    }
+  }
+
+  &__menu { // Every sub-menu
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s;
+
+    &::before {
+      content: '';
+      display: block;
+      height: rem(8);
+    }
+  }
+
+  &__menu > &__link,
+  &__menu > &__parent { // Every item in a sub-menu
+    margin-bottom: rem(24);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__parent--open > &__menu { // Every child sub-menu while hovering parent
+
+  }
+
+  &__parent--open > &__menu > &__link,
+  &__parent--open > &__menu > &__parent { // Every child sub-menu items while hovering parent
+
+  }
+
+  &__parent--open > &__link > &__expander {
+    transform: rotate(180deg);
+  }
+
+  &__link[data-nav-depth="1"],
+  &__parent[data-nav-depth="1"] { // First level items only
+    margin-bottom: rem(16);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include between(large, wide) {
+      margin-bottom: 0;
+    }
+
+    @include up(wide) {
+      margin-bottom: rem(24);
+    }
+  }
+
+  &__link[data-nav-depth="1"]:not(.button) { // First level links only
+    padding-top: rem(16);
+    padding-bottom: rem(16);
+  }
+
+  &__link[data-nav-depth="1"].button { // First level links only
+    margin-top: rem(14);
+    font-family: $font--cera;
+    font-weight: 500;
+    font-size: rem(19);
+    padding: 10px 16px 10px 16px;
+  }
+
+  &__parent[data-nav-depth="1"] { // First level parents only
+
+  }
+
+  &__parent[data-nav-depth="1"] > &__link { // Links of first level parents only
+    padding-top: rem(16);
+    padding-bottom: rem(16);
+  }
+
+  &__parent[data-nav-depth="1"] > &__menu { // Sub-menus of first level parents only
+
+  }
+
+  &__link[data-nav-depth="1"],
+  &__parent[data-nav-depth="1"] > &__link { // Links of first level and links of first level parents
+
+  }
+
+  &__link[data-nav-depth="1"]:hover,
+  &__parent[data-nav-depth="1"]:hover > &__link { // Links of first level and links of first level parents while hovering
+
+  }
+
+  &__menu &__link:not([data-nav-depth="1"]),
+  &__menu &__parent:not([data-nav-depth="1"]) { // Items of level 2+
+
+  }
+  .menu-link-login{
+      border-top: 1px solid #405268;
+  }
+}
+
+
+@include up(large) {
+  .plum-menu-main {
+    &__link { // Every link
+      justify-content: flex-start;
+    }
+  }
+}
+
+
+@include up(wide) {
+  .plum-menu-main {
+    &__link { // Every link
+      &.t-plum-em {
+        span {
+          &::before {
+            content: url("data:image/svg+xml,%3Csvg width='73' height='21' viewBox='0 0 73 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.28357 5.06223C1.30552 4.85981 1.35632 4.66052 1.6633 3.45606L1.6628 3.45613C2.07866 3.24893 2.51959 2.9749 2.97762 2.69025C3.86585 2.13825 4.81837 1.54629 5.77697 1.32417L5.93636 1.3066C9.44133 0.920234 13.0284 0.52482 16.5928 0.412291C20.3826 0.366767 24.1738 0.302304 27.965 0.237842C39.0479 0.0494009 50.1304 -0.139035 61.1751 0.145671C63.4212 0.265522 65.6124 0.632582 67.8154 1.00162C68.9707 1.19514 70.1292 1.38921 71.3005 1.54846C72.2273 1.5192 72.6387 2.64695 72.4713 5.80644C72.0459 13.2576 69.3453 20.792 67.1565 20.8611C63.8684 20.8278 60.5955 20.8613 57.3231 20.8947C53.9191 20.9295 50.5155 20.9643 47.0957 20.924C44.1372 20.8803 41.1526 20.9046 38.1676 20.929C35.0643 20.9543 31.9606 20.9796 28.8851 20.9285C28.7303 20.923 28.5756 20.9176 28.4208 20.9121C24.3913 20.7696 20.3618 20.6271 16.3107 20.755C14.5457 20.6856 12.7839 20.7756 11.0246 20.8654C8.69534 20.9843 6.37048 21.103 4.04865 20.8513C0.246184 20.1101 -0.165195 18.9824 1.27214 5.19085C1.276 5.14262 1.27922 5.10236 1.28357 5.06223Z' fill='%237B838D'/%3E%3C/svg%3E%0A");
+            right: rem(-14);
+            bottom: rem(-12);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@include between(large, wide) {
+  .plum-menu-main {
+    .t-header-large {
+      font-size: rem(24);
+    }
+
+    .t-header-small {
+      font-size: rem(18);
+    }
+  }
+}
+
+
+@include down(wide) {
+  .plum-menu-main {
+    &__link[data-nav-depth="1"],
+    &__parent[data-nav-depth="1"] > &__link { // Links of first level and links of first level parents
+      span {
+        position: relative;
+        top: 4px;
+      }
+    }
+  }
+}
+
+
+.plum-menu {
+  .plum-menu-main {
+    &__link {
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.3s;
+
+      & > span {
+        transform: translateY(calc(100% + #{rem(16)}));
+        transition: background-size 0.3s, transform 0.3s 0s;
+      }
+
+      & > svg {
+        opacity: 0;
+        transition: opacity 0.3s 0s, transform 0.3s 0s;
+      }
+
+      &.t-plum-em {
+        span::before {
+          clip: rect(auto, 0px, auto, auto);
+          transition: clip 0.3s 0s, opacity 0.3s 0s, transform 0.3s 0s;
+        }
+      }
+    }
+  }
+}
+
+
+.plum-menu--open {
+  .plum-menu-main {
+    &__link {
+      opacity: 1;
+
+      & > span {
+        transform: translateY(0);
+        transition: background-size 0.3s, transform 0.3s 0.2s;
+      }
+
+      & > svg {
+        opacity: 1;
+        transition: opacity 0.3s 0.25s, transform 0.3s 0.25s;
+      }
+
+      &.t-plum-em {
+        span::before {
+          clip: rect(auto, 120px, auto, auto);
+          transition: clip 0.3s 0.55s, opacity 0.3s 0.35s, transform 0.3s 0.35s;
+        }
+      }
+    }
+
+    @for $i from 1 through 10 {
+      [data-link-index="#{$i}"] {
+        transition: opacity 0.3s (0.2s + $i * 0.06s);
+
+        span {
+          transition: background-size 0.3s, transform 0.3s (0.2s + $i * 0.06s);
+        }
+      }
+    }
+  }
+}

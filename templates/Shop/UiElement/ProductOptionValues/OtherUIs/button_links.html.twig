@@ -1,0 +1,18 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="cms-palette__btn u-flex u-margin-t-2 @lg:u-margin-t-1">
+    {% if buttonLinkElements|length > 1 %}
+        {% set firstButtonLink = buttonLinkElements[0].data %}
+        <div class="cms-cta u-margin-r-5 u-fullwidth">
+            <a class="big-honking-button big-honking-button--inversed" href="{{ firstButtonLink.link }}">
+                {{ firstButtonLink.label }}
+            </a>
+        </div>
+        {% set secondButtonLink = buttonLinkElements[1].data %}
+        <div class="cms-cta u-hidden">
+            <a class="big-honking-button big-honking-button--inversed" href="{{ secondButtonLink.link }}">
+                {{ secondButtonLink.label }}
+            </a>
+        </div>
+    {% endif %}
+</div>

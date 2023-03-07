@@ -1,0 +1,89 @@
+{% if  app.request.attributes.get('facadeTypeCode') is not null %}
+    {% set selectedOptionsValues = {
+        facadeTypeCode: app.request.attributes.get('facadeTypeCode'),
+        designCode: app.request.attributes.get('designCode'),
+        finishCode: app.request.attributes.get('finishCode'),
+        colorCode: app.request.attributes.get('colorCode')
+    }
+    %}
+{% endif %}
+
+{% for product in productsPerTaxon %}
+    {% set filterType = 'sylius_shop_product_original' %}
+    {% if product is not null
+        and has_valid_selected_options(selectedOptionsValues)
+        and product.mainTaxon.code != constant('App\\Entity\\Taxonomy\\Taxon::TAXON_ACCESSORY_CODE')
+    %}
+        {% set design_unique = constant('App\\Entity\\Product\\ProductOptionValue::DESIGN_UNIQUE_CODE') %}
+        {% if product.hasOptionValue(design_unique) %}
+            {% set designCode =  design_unique %}
+        {% else %}
+            {% set designCode = app.request.attributes.get('designCode') %}
+        {% endif %}
+        {% set selectedOptionsValues =  selectedOptionsValues|merge({'designCode': designCode}) %}
+        {% set formPath = path('facade_cart_add_item',
+            {
+                'template': 'Shop/Tunnel/Shopping/Product/Card/_form_add_to_cart.html.twig',
+                'selectedOptionsValues': selectedOptionsValues,
+                'productId': product.id
+            }
+        ) %}
+    {% else %}
+        {% set filterType = 'app_tunnel_product_thumbnail_custom' %}
+        {% set formPath = path('app_cart_add_item',
+            {
+                'template': 'Shop/Tunnel/Shopping/Product/Card/_form_add_to_cart.html.twig',
+                'productId': product.id
+            }
+        ) %}
+    {% endif %}
+    {% set modalUrl = path('facade_ajax_product_show',
+        {
+            facadeTypeCode: selectedOptionsValues.facadeTypeCode,
+            designCode: selectedOptionsValues.designCode,
+            finishCode: selectedOptionsValues.finishCode,
+            colorCode: selectedOptionsValues.colorCode,
+            slug: product.slug,
+            template: 'Shop/Tunnel/Shopping/Product/_show.html.twig'
+        }
+    ) %}
+    <div class="column-6 @wd:column-4 u-flex-column u-margin-b-2 @lg:u-margin-b-6"
+         style="order: {{ loop.index }};">
+        <div class="tunnel-products-item u-flex u-flex-column" data-form-url="{{ formPath }}">
+            <a class="tunnel-products-item__img image product-modal"
+               data-object="{{ product }}"
+               data-url="{{ modalUrl }}">
+                {% for image in product.imagesByType('main') %}
+                    {% if image.path|default(null) is not null %}
+                        <img
+                            src="{{ image.path|imagine_filter(filterType) }}"
+                            alt="{{ product.name }}" />
+                    {% else %}
+                        <img
+                            class="no-image"
+                            src="{{ asset('build/shop/images/no-image.png', 'shop') }}"
+                            alt="{{ product.name }}" />
+                    {% endif %}
+                {% endfor %}
+            </a>
+            <div class="tunnel-products-item-footer">
+                <div class="tunnel-products-item-footer__top u-v-tail-spaced-1">
+                    <div class="name t-label-medium product-modal"
+                    data-object="{{ product }}"
+                    data-url="{{ modalUrl }}">
+                        {{ product.name }}
+                    </div>
+                    <div class="desc t-base-xsmall">
+                        {{ product.shortDescription }}
+                    </div>
+                    {% include 'Shop/Tunnel/Shopping/Product/_price.html.twig' %}
+                </div>
+                <div class="tunnel-products-item-footer-form">
+                </div>
+            </div>
+            <div class="btn-validate button">
+                {{ "app.ui.tunnel_shopping.add_product"|trans }} <span class="quantity-added"></span>
+            </div>
+        </div>
+    </div>
+{% endfor %}

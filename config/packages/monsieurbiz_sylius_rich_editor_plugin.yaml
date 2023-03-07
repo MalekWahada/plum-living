@@ -1,0 +1,439 @@
+imports:
+    - { resource: "@MonsieurBizSyliusRichEditorPlugin/Resources/config/config.yaml" }
+
+monsieurbiz_sylius_richeditor:
+    ui_elements:
+        app.media_hero:
+            title: 'app.ui_element.media.hero.title'
+            description: 'app.ui_element.media.hero.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaHeroType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_hero.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_hero.html.twig'
+
+        app.media_hero_video:
+            title: 'app.ui_element.media.hero_video.title'
+            description: 'app.ui_element.media.hero_video.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaHeroVideoType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_hero_video.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_hero_video.html.twig'
+
+        app.media_citation:
+            title: 'app.ui_element.media.citation.title'
+            description: 'app.ui_element.media.citation.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaCitationType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_citation.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_citation.html.twig'
+
+        app.media_cross_content:
+            title: 'app.ui_element.media.cross_content.title'
+            description: 'app.ui_element.media.cross_content.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaCrossContentType
+                ui_element: App\Model\UiElement\PagesListingModel
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_cross_content.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_cross_content.html.twig'
+
+        app.media_slider_thematique:
+            title: 'app.ui_element.media.slider_thematique.title'
+            description: 'app.ui_element.media.slider_thematique.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaSliderThematiqueType
+                ui_element: App\Model\UiElement\PagesListingModel
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_slider_thematique.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_slider_thematique.html.twig'
+                
+        app.media_content_highlight:
+            title: 'app.ui_element.media.content_highlight.title'
+            description: 'app.ui_element.media.content_highlight.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaContentHighlightType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_content_highlight.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_content_highlight.html.twig'
+
+        app.media_footer_immersive:
+            title: 'app.ui_element.media.footer_immersive.title'
+            description: 'app.ui_element.media.footer_immersive.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaFooterImmersiveType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_footer_immersive.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_footer_immersive.html.twig'
+                
+        app.media_panoramic_photo_xl:
+            title: 'app.ui_element.media.panoramic_photo_xl.title'
+            description: 'app.ui_element.media.panoramic_photo_xl.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaPanoramicPhotoXlType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_panoramic_photo_xl.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_panoramic_photo_xl.html.twig'
+
+        app.media_panoramic_photo_only:
+            title: 'app.ui_element.media.panoramic_photo_only.title'
+            description: 'app.ui_element.media.panoramic_photo_only.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaPanoramicPhotoOnlyType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_panoramic_photo_only.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_panoramic_photo_only.html.twig'
+
+        app.media_text_only:
+            title: 'app.ui_element.media.text_only.title'
+            description: 'app.ui_element.media.text_only.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaTextOnlyType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_text_only.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_text_only.html.twig'
+
+        app.media_shoppinglist:
+            title: 'app.ui_element.media.shoppinglist.title'
+            description: 'app.ui_element.media.shoppinglist.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaShoppinglistType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_shoppinglist.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_shoppinglist.html.twig'
+
+        app.media_slider:
+            title: 'app.ui_element.media.slider.title'
+            description: 'app.ui_element.media.slider.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaSliderType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_slider.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_slider.html.twig'
+
+        app.media_two_hybrid_columns:
+            title: 'app.ui_element.media.two_hybrid_columns.title'
+            description: 'app.ui_element.media.two_hybrid_columns.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaTwoHybridColumnsType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_two_hybrid_columns.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_two_hybrid_columns.html.twig'
+
+        app.media_two_photo_columns:
+            title: 'app.ui_element.media.two_photo_columns.title'
+            description: 'app.ui_element.media.two_photo_columns.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaTwoPhotoColumnsType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_two_photo_columns.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_two_photo_columns.html.twig'
+                
+        app.media_home_slider:
+            title: 'app.ui_element.media.home_slider.title'
+            description: 'app.ui_element.media.home_slider.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaHomeSliderType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_home_slider.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_home_slider.html.twig'
+
+        app.media_zoning_image:
+            title: 'app.ui_element.media.zoning_image.title'
+            description: 'app.ui_element.media.zoning_image.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaZoningImageType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_zoning_image.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_zoning_image.html.twig'
+                
+        app.media_project_plan:
+            title: 'app.ui_element.media.project_plan.title'
+            description: 'app.ui_element.media.project_plan.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\MediaProjectPlanType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/media_project_plan.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/media_project_plan.html.twig'
+                
+        app.home_project_hero:
+            title: 'app.ui_element.home_project.hero.title'
+            description: 'app.ui_element.home_project.hero.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\HomeProjectHeroType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/home_project_hero.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/home_project_hero.html.twig'
+                
+        app.home_project_creation_banner:
+            title: 'app.ui_element.home_project.creation_banner.title'
+            description: 'app.ui_element.home_project.creation_banner.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\HomeProjectCreationBannerType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/home_project_creation_banner.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/home_project_creation_banner.html.twig'
+                
+        app.home_project_budget:
+            title: 'app.ui_element.home_project.budget.title'
+            description: 'app.ui_element.home_project.budget.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\HomeProjectBudgetType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/home_project_budget.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/home_project_budget.html.twig'
+                
+        app.scan_banner:
+            title: 'app.ui_element.scan_banner.title'
+            description: 'app.ui_element.scan_banner.description'
+            icon: sort amount down
+            tags: [ 'media', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\ScanBannerType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/scan_banner.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/scan_banner.html.twig'
+        
+                
+        monsieurbiz.text:
+            tags: ['text', 'product_complete_info']
+            
+        monsieurbiz.h1:
+            tags: ['product_complete_info']
+            
+        monsieurbiz.h2:
+            tags: ['product_complete_info']
+            
+        monsieurbiz.h3:
+            tags: ['product_complete_info']
+
+        monsieurbiz.image_collection:
+            tags: ['product_complete_info']
+            
+        monsieurbiz.button:
+            tags: ['product_complete_info']
+
+        app.h4:
+            title: 'app.ui_element.h4.title'
+            description: 'app.ui_element.h4.description'
+            icon: heading
+            tags: [ default ]
+            classes:
+                form: MonsieurBiz\SyliusRichEditorPlugin\Form\Type\UiElement\TitleType
+            templates:
+                admin_render: '@MonsieurBizSyliusRichEditorPlugin/Admin/UiElement/h4.html.twig'
+                front_render: '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/h4.html.twig'
+
+        app.card_total:
+            title: 'app.ui_element.card_total.title'
+            description: 'app.ui_element.card_total.description'
+            icon: money bill alternate outline
+            classes:
+                form: App\Form\Type\UiElement\CardTotalType
+            templates:
+                admin_render: '/Admin/UiElement/card_total.html.twig'
+                front_render: '/Shop/UiElement/card_total.html.twig'
+
+        app.images_steps:
+            title: 'app.ui_element.images_steps.title'
+            description: 'app.ui_element.images_steps.description'
+            icon: images steps
+            classes:
+                form: App\Form\Type\UiElement\ImagesStepsType
+            templates:
+                admin_render: '/Admin/UiElement/images_steps.html.twig'
+                front_render: '/Shop/UiElement/images_steps.html.twig'
+
+        app.color_ui:
+            title: 'app.ui_element.color_ui.title'
+            description: 'app.ui_element.color_ui.description'
+            icon: paint brush
+            classes:
+                form: App\Form\Type\UiElement\ColorUIType
+                ui_element: App\Model\UiElement\ColorUIModel
+            templates:
+                admin_render: '/Admin/UiElement/color_ui.html.twig'
+                front_render: '/Shop/UiElement/color_ui.html.twig'
+
+        app.pages_listing:
+            alias: pages_listing
+            title: 'app.ui_element.pages_listing.title'
+            description: 'app.ui_element.pages_listing.description'
+            icon: folder open
+            tags: ['cross_content', 'product_complete_info']
+            classes:
+                form: App\Form\Type\UiElement\PagesListingType
+                ui_element: App\Model\UiElement\PagesListingModel
+            templates:
+                admin_render: '/Admin/UiElement/pages_listing.html.twig'
+                front_render: '/Shop/UiElement/pages_listing.html.twig'
+
+        app.pages_cards:
+            alias: pages_cards
+            title: 'app.ui_element.pages_cards.title'
+            description: 'app.ui_element.pages_cards.description'
+            icon: linkify
+            classes:
+                form: App\Form\Type\UiElement\PagesCardsType
+            templates:
+                admin_render: '/Admin/UiElement/pages_cards.html.twig'
+                front_render: '/Shop/UiElement/pages_cards.html.twig'
+
+        app.cards:
+            alias: cards
+            title: 'app.ui_element.cards.title'
+            description: 'app.ui_element.cards.description'
+            icon: address card outline
+            classes:
+                form: App\Form\Type\UiElement\CardsType
+            templates:
+                admin_render: '/Admin/UiElement/cards.html.twig'
+                front_render: '/Shop/UiElement/cards.html.twig'
+ 
+        app.product_option:
+            title: 'app.ui_element.product_option.title'
+            description: 'app.ui_element.product_option.description'
+            icon: product hunt
+            classes:
+                form: App\Form\Type\UiElement\ProductOptionType
+                ui_element: App\Model\UiElement\ProductOptionModel
+            templates:
+                admin_render: '/Admin/UiElement/product_option.html.twig'
+                front_render: '/Shop/UiElement/product_option.html.twig'
+                
+        app.caption:
+            title: 'app.ui_element.caption.title'
+            description: 'app.ui_element.caption.description'
+            icon: closed captioning outline
+            classes:
+                form: App\Form\Type\UiElement\CaptionType
+            templates:
+                admin_render: '/Admin/UiElement/caption.html.twig'
+                front_render: '/Shop/UiElement/caption.html.twig'
+
+        app.project_piece:
+            title: 'app.ui_element.project_piece.title'
+            description: 'app.ui_element.project_piece.description'
+            icon: boxes
+            classes:
+                form: App\Form\Type\UiElement\ProjectPieceType
+            templates:
+                admin_render: '/Admin/UiElement/project_piece.html.twig'
+                front_render: '/Shop/UiElement/project_piece.html.twig'
+
+        app.chip:
+            title: 'app.ui_element.chip.title'
+            description: 'app.ui_element.chip.description'
+            icon: thumbtack
+            classes:
+                form: App\Form\Type\UiElement\ChipType
+            templates:
+                admin_render: '/Admin/UiElement/chip.html.twig'
+                front_render: '/Shop/UiElement/chip.html.twig'
+
+        app.project_plan:
+            title: 'app.ui_element.project_plan.title'
+            description: 'app.ui_element.project_plan.description'
+            icon: file pdf outline
+            classes:
+                form: App\Form\Type\UiElement\ProjectPlanFileType
+                ui_element: App\Model\UiElement\ProjectPlanUIModel
+            templates:
+                admin_render: '/Admin/UiElement/project_plan.html.twig'
+                front_render: '/Shop/UiElement/project_plan.html.twig'        
+
+        app.recommendations:
+            title: 'app.ui_element.recommendation.title'
+            description: 'app.ui_element.recommendation.description'
+            icon: product hunt
+            tags: ['recommendation']
+            classes:
+                form: App\Form\Type\UiElement\RecommendationType
+            templates:
+                admin_render: '/Admin/UiElement/recommendation.html.twig'
+                front_render: '/Shop/UiElement/recommendation.html.twig'
+
+        app.product_info:
+            title: 'app.ui_element.product_info.title'
+            description: 'app.ui_element.product_info.description'
+            icon: question circle outline
+            tags: ['product_info']
+            classes:
+                form: App\Form\Type\UiElement\ProductInfo\ProductInfoType
+            templates:
+                admin_render: '/Admin/UiElement/ProductInfo/product_info.html.twig'
+                front_render: '/Shop/UiElement/ProductInfo/product_info.html.twig'
+
+        app.product_info_accessory:
+            title: 'app.ui_element.product_info_accessory.title'
+            description: 'app.ui_element.product_info_accessory.description'
+            icon: question circle outline
+            tags: [ 'product_info_accessory' ]
+            classes:
+                form: App\Form\Type\UiElement\ProductInfo\ProductInfoAccessoryType
+            templates:
+                admin_render: '/Admin/UiElement/ProductInfo/product_info_accessory.html.twig'
+                front_render: '/Shop/UiElement/ProductInfo/product_info_accessory.html.twig'
+
+        app.accordion:
+            title: 'app.ui_element.accordion.title'
+            description: 'app.ui_element.accordion.description'
+            icon: sort amount down
+            tags: [ 'accordion', 'product_complete_info' ]
+            classes:
+                form: App\Form\Type\UiElement\AccordionsType
+            templates:
+                admin_render: '/Admin/UiElement/accordion.html.twig'
+                front_render: '/Shop/UiElement/accordion.html.twig'
+
+        app.custom_slider: 
+            title: 'Carousel Home'
+            description: Nouveau slider
+            icon: image steps
+            classes:
+                form: App\Form\Type\UiElement\CustomSliderType
+            templates:
+                admin_render: '/Admin/UiElement/custom_slider.html.twig'
+                front_render: '/Shop/UiElement/custom_slider.html.twig'

@@ -1,0 +1,6 @@
+App\Entity\Product\ProductOptionValue:
+    properties:
+        position:
+            - NotBlank:
+                message: 'app.product_option_value.position.not_blank'
+                groups: [sylius]

@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+
+<!--
+
+Command to set and create a shop user account with his password
+
+-->
+
+<resources xmlns="https://api-platform.com/schema/metadata"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
+>
+    <resource class="App\ApiPlatform\Message\Commands\RegisterShopUserAccount" shortName="RegisterShopUserAccount">
+        <attribute name="route_prefix">admin</attribute>
+
+        <attribute name="messenger">true</attribute>
+
+        <attribute name="output">false</attribute>
+
+        <attribute name="validation_groups">
+            <attribute>sylius</attribute>
+            <attribute>api_platform</attribute>
+        </attribute>
+
+        <collectionOperations>
+            <collectionOperation name="post">
+                <attribute name="method">POST</attribute>
+                <attribute name="path">/shop-users/register-customer</attribute>
+                <attribute name="input">App\ApiPlatform\Message\Commands\RegisterShopUserAccount</attribute>
+                <attribute name="openapi_context">
+                    <attribute name="summary">Create or update a shop user account by setting his password</attribute>
+                </attribute>
+            </collectionOperation>
+        </collectionOperations>
+
+        <itemOperations />
+
+        <property name="id" identifier="true" writable="false" />
+        <!-- Note: subresource seems to be available when using the Messenger Handler implementation. We'll use customerId instead. -->
+<!--        <property name="customer" writable="true" readable="true" required="true">-->
+<!--            <subresource resourceClass="%sylius.model.customer.class%" />-->
+<!--        </property>-->
+        <property name="customerId" readable="false" writable="true" required="true" />
+        <!-- Note: Username is automatically took from customer's email address -->
+        <property name="password" readable="false" writable="true" required="true" />
+        <property name="enabled" readable="false" writable="true" required="false" />
+        <property name="emailVerified" readable="false" writable="true" required="false" />
+    </resource>
+</resources>

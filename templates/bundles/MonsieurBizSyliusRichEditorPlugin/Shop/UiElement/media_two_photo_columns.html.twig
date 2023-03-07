@@ -1,0 +1,50 @@
+<div class="media-two-photo">
+    <div class="container">
+        <div class="row u-cross-centered-row">
+            <div class="column-fill-space u-padding-t-3 u-padding-b-3 @lg:u-padding-b-7 @lg:u-padding-t-7">
+                <div class="row">
+                    <div class="column-6">
+                        <img src="{{ element.image_left | raw }}"
+                             alt="{{ element.image_left_alt | raw }}"
+                             title="{{ element.image_left_title | raw }}">
+                        {% if element.caption1  %}
+                            <div class="caption u-hidden @lg:u-block">
+                                {{ element.caption1| raw }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="column-6">
+                        <img src="{{ element.image_right | raw }}"
+                             alt="{{ element.image_right_alt | raw }}"
+                             title="{{ element.image_right_title | raw }}">
+                        {% if element.caption2  %}
+                            <div class="caption u-hidden @lg:u-block">
+                                {{ element.caption2| raw }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if element.caption1  %}
+                <div class="row u-flex @lg:u-hidden">
+                    <div class="column-fill-space">
+                        <div class="caption u-margin-b-1">
+                            {{ element.caption1| raw }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if element.caption2  %}
+                    <div class="row u-flex @lg:u-hidden">
+                        <div class="column-fill-space">
+                            <div class="caption u-margin-t-1">
+                                {{ element.caption2| raw }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>

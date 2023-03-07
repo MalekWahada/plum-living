@@ -1,0 +1,45 @@
+p, ul, ol, dl, dd, blockquote, figure {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+}
+
+ul, ol {
+  list-style-position: inside;
+}
+
+input {
+  margin: 0;
+}
+
+.btn {
+  text-align: inherit;
+  vertical-align: inherit;
+  user-select: none;
+  border-radius: 0;
+  transition: inherit;
+}
+
+fieldset {
+  padding: 0;
+}
+
+button {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.btn.focus,
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.table td, .table th {
+  padding: 0;
+  border: none;
+}

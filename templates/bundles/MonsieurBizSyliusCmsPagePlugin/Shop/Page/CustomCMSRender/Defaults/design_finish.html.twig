@@ -1,0 +1,117 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set designFinishContent = page.content|format_cms_content_to_array %}
+
+<div class="cms__container">
+    <div class="cms__content">
+        <div class="container">
+            <div class="cms-header__toptitle u-margin-b-4 t-align-center">
+                <h1 class="t-header-xxlarge">{{ 'app.cms_page.design_finish.top_title' | trans }}</h1>
+            </div>
+            <div class="cms-main-title u-hidden">
+                {{ designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_MAIN_TITLE')) | monsieurbiz_richeditor_render_element }}
+            </div>
+            <div class="cms-header-filter u-margin-t-5 t-align-center">
+                <span>{{ 'app.cms_page.design_finish.happy2022.subtitle'|trans|raw }}</span>
+            </div>
+            <div class="row t-align-center u-margin-t-4 u-margin-b-4">
+                <a href="{{ path('listing_sample_facade') }}" class="button u-margin-auto">
+                    {{ 'app.cms_page.design_finish.happy2022.cta'|trans }}
+                    <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                </a>
+            </div>
+            <div class="cms-design @lg:u-margin-t-6">
+            <div>
+            <div class="row u-cross-centered-row u-padding-l-2 u-padding-r-2">
+                <div class="column-fill-space">
+                    <hr/>
+                </div>
+                <div>
+                    <div class="cms-design__title t-align-center">
+                        <h2>
+                            {{ designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_OPTION_DESIGN_TITLE')) | monsieurbiz_richeditor_render_element }}
+                        </h2>
+                    </div>
+                </div>
+                <div class="column-fill-space">
+                    <hr/>
+                </div>
+            </div>
+
+                {{ designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_OPTION_DESIGN_CODE')) | monsieurbiz_richeditor_render_element }}
+            </div>
+            <div class="cms-finish">
+                <div class="row u-cross-centered-row u-padding-l-2 u-padding-r-2">
+                    <div class="column-fill-space">
+                        <hr/>
+                    </div>
+                    <div>
+                    <div class="cms-finish__title">
+                        <h2>
+                            {{ designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_OPTION_FINISH_TITLE')) | monsieurbiz_richeditor_render_element }}
+                        </h2>
+                    </div>
+                    </div>
+                    <div class="column-fill-space">
+                        <hr/>
+                    </div>
+                </div>
+
+                {{ designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_OPTION_FINISH_CODE')) | monsieurbiz_richeditor_render_element }}
+            </div>
+        </div>
+
+            {# Render color option [content, mainTitle, colorBox] #}
+            <div class="cms-palette">
+                <div class="row">
+                    {% set colorMainTitle = (designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_OPTION_COLOR_TITLE'))).data %}
+                    {% set boxTitle = (designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_SEE_SAMPLE_TEXT'))) %}
+                    {% set boxText = (designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_SEE_SAMPLE_LINK'))) %}
+                    {% set boxImage = (designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_SEE_SAMPLE_IMAGE'))) %}
+                    {% set colors = designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_OPTION_COLOR_CODE')) %}
+
+                    {% set data = colors.data|merge({
+                        'pageType': constant('App\\Entity\\Page\\Page::PAGE_TYPE_DEFAULT'),
+                        'title': colorMainTitle.content is defined ? colorMainTitle.content : null,
+                        'box': [boxTitle, boxText, boxImage]
+                    }) %}
+                    {% set colors = colors|merge({'data': data}) %}
+                    {{ colors | monsieurbiz_richeditor_render_element }}
+                </div>
+            </div>
+            {#  End render color option [content, mainTitle] #}
+            <div class="homepage-slider u-cross-centered-col">
+                <div class="cms-slider__header container">
+                    <div class="row align-items-center u-fullwidth cross-content-title">
+                        <div class="column-12 @lg:column-11">
+                            {{ designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_OTHER_PAGES_TITLE')) | monsieurbiz_richeditor_render_element }}
+                        </div>
+                        <div class="column-1 u-hidden @lg:u-block">
+                            <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78 cms-slider__arrow--right-new">
+                                <use xlink:href="{{ iconLibUrl }}#SVG-arrow-right-fill--white-new"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="cms-slider__container swiper-container u-padding-b-8">
+                    <div class="swiper-wrapper">
+                        {{ designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_OTHER_PAGES')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                </div>
+                <div class="cms-cta u-hidden">
+                    {{ designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_DISCOVER_OTHER_PAGES_BUTTON')) | monsieurbiz_richeditor_render_element }}
+                </div>
+            </div>
+            <!-- TODO : Remove after test -->
+            <div class="u-hidden">
+                {% set moazaicTitle = (designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_MOSAIC_IMAGES_TITLE'))).data %}
+                {% set mozaicImages = (designFinishContent | get_design_finish_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::DESIGN_FINISH_MOSAIC_IMAGES'))).data %}
+
+                {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ImageCollection/mozaic_image_collection.html.twig' with {
+                    mozaicMainTitle: moazaicTitle.content is defined ? moazaicTitle.content : null,
+                    mozaicImagesCollection: mozaicImages.images is defined ? mozaicImages.images : null
+                } only %}
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+{% import '@SyliusAdmin/Macro/breadcrumb.html.twig' as breadcrumb %}
+
+{% block title %}{{ 'app.ui.product_group'|trans ~' '~ product_group.name }} {{ parent() }}{% endblock %}
+
+{% set breadcrumbs = [
+    { label: 'sylius.ui.administration'|trans, url: path('sylius_admin_dashboard') },
+    { label: 'app.ui.product_groups'|trans, url: path('app_admin_product_group_index') },
+    { label: product_group.name }
+] %}
+
+{% block content %}
+    <div class="ui stackable two column grid">
+        <div class="ten wide column">
+            {% include '@SyliusAdmin/ProductGroup/Show/_header.html.twig' %}
+        </div>
+
+        {% set menu = knp_menu_get('app.admin.product_group.show', [], {'product_group': product_group}) %}
+        {{ knp_menu_render(menu, {'template': '@SyliusUi/Menu/top.html.twig'}) }}
+    </div>
+
+    {{ breadcrumb.crumble(breadcrumbs) }}
+
+    {% include '@SyliusAdmin/ProductGroup/Show/_grid.html.twig' %}
+{% endblock %}

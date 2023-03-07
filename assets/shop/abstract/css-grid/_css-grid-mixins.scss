@@ -1,0 +1,60 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use './css-grid-config' as *;
+
+
+@mixin up($from) {
+  @if meta.type-of($from) == string {
+    $from: map.get(map.get($css-grid--breakpoints, $from), "value");
+    @media screen and (min-width: $from) {
+      @content;
+    }
+  } @else if meta.type-of($from) == number {
+    @media screen and (min-width: $from) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin down($from) {
+  @if meta.type-of($from) == string {
+    $from: map.get(map.get($css-grid--breakpoints, $from), "value");
+    $from: calc(#{$from} - 1px);
+    @media screen and (max-width: $from) {
+      @content;
+    }
+  } @else if meta.type-of($from) == number {
+    @media screen and (max-width: $from) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin between($min, $max) {
+  @if meta.type-of($min) == string {
+    $min: map.get(map.get($css-grid--breakpoints, $min), "value");
+  }
+
+  @if meta.type-of($max) == string {
+    $max: map.get(map.get($css-grid--breakpoints, $max), "value");
+    $max: calc(#{$max} - 1px);
+  }
+
+  @if $min == null {
+    @include down($max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include up($min) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+}

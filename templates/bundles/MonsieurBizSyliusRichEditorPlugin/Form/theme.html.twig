@@ -1,0 +1,63 @@
+{% extends '@!MonsieurBizSyliusRichEditorPlugin/Form/theme.html.twig' %}
+
+{% block _pages_listing_pages_row %}
+    <div class="{% if required %}required {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}">
+        {{- form_label(form) -}}
+        {% set attr = attr|merge({'class': attr.class|default ~ ' ui dropdown search'}) %}
+        {{- form_widget(form, {'attr': attr}) -}}
+        {{- form_errors(form) -}}
+    </div>
+{% endblock %}
+
+{% block _product_option_option_row %}
+    <div class="{% if required %}required {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}">
+        {{- form_label(form) -}}
+        {% set attr = attr|merge({'class': attr.class|default ~ ' ui dropdown search'}) %}
+        {{- form_widget(form, {'attr': attr}) -}}
+        {{- form_errors(form) -}}
+    </div>
+{% endblock %}
+
+{% block _color_ui_color_row %}
+    <div class="{% if required %}required {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}">
+        {{- form_label(form) -}}
+        {% set attr = attr|merge({'class': attr.class|default ~ ' ui dropdown search'}) %}
+        {{- form_widget(form, {'attr': attr}) -}}
+        {{- form_errors(form) -}}
+    </div>
+{% endblock %}
+
+{% block _project_piece_piece_row %}
+    <div class="{% if required %}required {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}">
+        {{- form_label(form) -}}
+        {% set attr = attr|merge({'class': attr.class|default ~ ' ui dropdown search'}) %}
+        {{- form_widget(form, {'attr': attr}) -}}
+        {{- form_errors(form) -}}
+    </div>
+{% endblock %}
+
+{% block _chip_chip_row %}
+    <div class="{% if required %}required {% endif %}field{% if (not compound or force_error|default(false)) and not valid %} error{% endif %}">
+        {{- form_label(form) -}}
+        {% set attr = attr|merge({'class': attr.class|default ~ ' ui dropdown search'}) %}
+        {{- form_widget(form, {'attr': attr}) -}}
+        {{- form_errors(form) -}}
+    </div>
+{% endblock %}
+
+{% block file_widget %}
+    {% if form.vars.attr['data-slim'] is defined and form.vars.attr['data-slim'] %}
+        <div {% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+            {% set current_file_path = monsieurbiz_richeditor_get_current_file_path(form.vars.full_name) %}
+            {% if form.vars.valid and current_file_path is not empty %}
+                <img src="{{ current_file_path }}" />
+                {{- form_widget(form, {'attr': {'style': 'display: none;'}, 'full_name': 'change_' ~ form.vars.full_name}) -}}
+                <input type="hidden" name="{{ form.vars.full_name }}" value="{{ current_file_path }}" />
+            {% else %}
+                {{- form_widget(form) -}}
+            {% endif %}
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

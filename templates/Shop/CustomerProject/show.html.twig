@@ -1,0 +1,264 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% form_theme form _self %}
+
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set project_is_complete = true %}
+
+{% block _app_project_items_entry_widget %}
+    <script type="text/x-template" id="project-item-template">
+        {% include 'Shop/CustomerProject/Show/_project_item_template.html.twig' %}
+    </script>
+{% endblock %}
+
+{% block title %}
+    {{ "app.ui.plum_scanner.title"|trans }}
+{% endblock %}
+
+{% block content %}
+    <input id="project-token" type="hidden" value="{{ project.token }}">
+    <input id="channel-code" type="hidden" value="{{ sylius.channel.code }}">
+    <input id="currency-code" type="hidden" value="{{ sylius.currencyCode }}">
+    <input id="auto-save-url" type="hidden" value="{{ path('app_customer_project_auto_save', {'token': project.token}) }}">
+    <input id="get-bulk-project-item-details-url" type="hidden" value="{{ path('app_customer_project_bulk_item_details', {'token': project.token}) }}">
+    <input id="schedule-call-url" type="hidden" value="{{ path('app_customer_project_schedule_call', {'token': project.token}) }}">
+    <input id="download-quote-file-url" type="hidden" value="{{ path('app_customer_project_download_quote_file', {'token': project.token }) }}">
+    <input id="locale" type="hidden" value="{{ sylius.localeCode }}">
+    <input id="finishes_with_disabled_color" type="hidden" value="{{ get_finishes_with_disabled_colors() }}">
+
+    {{ form_widget(form.items.vars.prototype) }}
+
+    <div class="container">
+        {% if project.scannerProjectId and project.design and project.finish and project.color %}
+            <h1 class="page-title t-header-large">{{ "app.ui.plum_scanner.scan_success"|trans|raw }}</h1>
+
+            {% include 'Shop/PlumScanner/Quote/Partial/_steps.html.twig' with { step: 3 } %}
+            <div class="t-align-center u-margin-b-6">
+                <a class="link-button" href="{{ path('app_plum_scanner_share_plan', {
+                    'designCode': project.design.code,
+                    'finishCode': project.finish.code,
+                    'colorCode': project.color.code,
+                }) }}">{{ 'app.ui.plum_scanner.previous_step'|trans }}</a>
+            </div>
+        {% endif %}
+
+        {{ form_start(form, { attr: { 'class': 'ps-project row u-start-on-cross' }}) }}
+            <main class="ps-main-column column">
+                <div class="ps-global-options-panel panel panel--dense bg-green u-padding-b-1 u-padding-t-4">
+                    <h2 class="panel__title t-header-medium t-align-left u-margin-b-2">{{ 'app.ui.plum_scanner.step_three.adjust_options.heading_facade'|trans }}</h2>
+                    <p class="t-base-small u-margin-b-3">
+                        {{ 'app.ui.plum_scanner.step_three.adjust_options.hint'|trans }}
+                        <a class="small-link-button" href="{{ get_url_from_page_code('design-finish') }}" target="_blank">{{ 'app.ui.plum_scanner.step_three.adjust_options.link'|trans }}</a>
+                    </p>
+
+                    <div class="row">
+                        <div class="column @sm:column-12 @wd:column-12 u-margin-b-1 @sm:u-margin-b-0">
+                            <div class="panel__content">
+                                {% include 'Shop/CustomerProject/Show/_global_options.html.twig' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ps-project-item-panel panel panel--dense u-padding-b-7">
+                    <h2 class="panel__title t-header-medium t-align-left u-margin-b-4">
+                        {{ 'app.ui.plum_scanner.step_three.modulate_articles.heading'|trans }}
+                    </h2>
+                    <div class="panel__content">
+                        <div class="ps-project__product-list">
+                            {% for item in form.items %}
+                                {% if item.vars.value.variant is not defined or item.vars.value.variant is null %}
+                                    {% set project_is_complete = false %}
+                                {% endif %}
+                                {% include 'Shop/CustomerProject/Show/_project_item.html.twig' %}
+                            {% endfor %}
+                        </div>
+                        <hr class="c-grey-light">
+                        <div class="row u-margin-b-3">
+                            <div class="column-fill-space">
+                                <span class="t-label-medium">
+                                    <svg class="o-icon-20 u-margin-r-2">
+                                        <use xlink:href="{{ iconLibUrl }}#SVG-icon-plus"/>
+                                    </svg>
+                                    {{ 'app.ui.customer_project.add_item.main'|trans }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="ps-project__add-item-buttons row">
+                            <div class="@lg:column-6 @sm:column u-margin-b-3">
+                                <button type="button" class="ps-project__add-item-button button button--small u-fullwidth" data-type="{{ constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_METOD') }}">
+                                    <svg class="tunnel-sidebar__icon o-icon-20 u-margin-r-2">
+                                        <use xlink:href="{{ iconLibUrl }}#SVG-icon-door"/>
+                                    </svg>
+                                    {{ 'app.ui.customer_project.add_item.metod'|trans }}
+                                </button>
+                            </div>
+                            <div class="@lg:column-6 @sm:column u-margin-b-3">
+                                <button type="button" class="ps-project__add-item-button button button--small u-fullwidth" data-type="{{ constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_PAX') }}">
+                                    <svg class="tunnel-sidebar__icon o-icon-20 u-margin-r-2">
+                                        <use xlink:href="{{ iconLibUrl }}#SVG-icon-door"/>
+                                    </svg>
+                                    {{ 'app.ui.customer_project.add_item.pax'|trans }}
+                                </button>
+                            </div>
+                            <div class="@lg:column-6 @sm:column u-margin-b-3">
+                                <button type="button" class="ps-project__add-item-button button button--small u-fullwidth" data-type="{{ constant('App\\Entity\\Taxonomy\\Taxon::TAXON_PAINT_CODE') }}">
+                                    <svg class="tunnel-sidebar__icon o-icon-20 u-margin-r-2">
+                                        <use xlink:href="{{ iconLibUrl }}#SVG-icon-paint"/>
+                                    </svg>
+                                    {{ 'app.ui.customer_project.add_item.paint'|trans }}
+                                </button>
+                            </div>
+                            <div class="@lg:column-6 @sm:column">
+                                <button type="button" class="ps-project__add-item-button button button--small u-fullwidth" data-type="{{ constant('App\\Entity\\Taxonomy\\Taxon::TAXON_ACCESSORY_HANDLE_CODE') }}">
+                                    <svg class="tunnel-sidebar__icon o-icon-20 u-margin-r-2">
+                                        <use xlink:href="{{ iconLibUrl }}#SVG-icon-accessoire"/>
+                                    </svg>
+                                    {{ 'app.ui.customer_project.add_item.handles'|trans }}
+                                </button>
+                            </div>
+                            <div class="@lg:column-6 @sm:column">
+                                <button type="button" class="ps-project__add-item-button button button--small u-fullwidth" data-type="{{ constant('App\\Entity\\Taxonomy\\Taxon::TAXON_ACCESSORY_CODE') }}">
+                                    <svg class="tunnel-sidebar__icon o-icon-20 u-margin-r-2">
+                                        <use xlink:href="{{ iconLibUrl }}#SVG-icon-panneau"/>
+                                    </svg>
+                                    {{ 'app.ui.customer_project.add_item.accessory'|trans }}
+                                </button>
+                            </div>
+                            <div class="@lg:column-6 @sm:column">
+                                <button type="button" class="ps-project__add-item-button button button--small u-fullwidth" data-type="{{ constant('App\\Entity\\Taxonomy\\Taxon::TAXON_TAP_CODE') }}">
+                                    <svg class="tunnel-sidebar__icon o-icon-20 u-margin-r-2">
+                                        <use xlink:href="{{ iconLibUrl }}#SVG-icon-tap"/>
+                                    </svg>
+                                    {{ 'app.ui.customer_project.add_item.tap'|trans }}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="popin__handles bg-green u-margin-t-3 u-hidden">
+                            <div class="row">
+                                <div class="column-12 @wd:column-9 u-padding-r-1">
+                                    <div class="popin__handles-text u-padding-t-3 u-padding-r-3 u-padding-l-3">
+                                        <input type="hidden" id="popin__handles__text_template" value="{{ 'app.ui.customer_project.popin_handles.text'|trans }}">
+                                        <div class="t-base-small popin__handles__text"></div>
+                                    </div>
+                                    <div class="popin__handles-links u-padding-l-3 u-padding-t-3 u-padding-b-3">
+                                        <svg class="o-icon-16"><use xlink:href="{{ iconLibUrl }}#SVG-icon-plus"/></svg>
+                                        <input type="hidden" id="popin__handles__button_template" value="{{ 'app.ui.customer_project.popin_handles.add_link'|trans }}">
+                                        <a href="#" class="popin__handles__button small-link-button u-margin-r-1"></a>
+                                        <a href="{{ path('listing_accessoires') }}" target="_blank" class="small-link-button">
+                                            {{ 'app.ui.customer_project.popin_handles.accessories_link'|trans }}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="u-hidden @wd:u-block @wd:column-3">
+                                    <img class="popin__handles-img" alt="" src="{{ asset('build/shop/images/handles-popin.jpg', 'shop') }}" srcset="{{ asset('build/shop/images/handles-popin.jpg', 'shop') }} 2x">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr--l-space c-grey-light">
+                        <div class="row">
+                            <div class="column-fill-space">
+                                <div class="ps-project-item__comment-container">
+                                    {% include 'Shop/Form/_textarea_field.html.twig' with {
+                                        'field': form.comment,
+                                        'label': form.comment.vars.attr.placeholder|trans,
+                                        'autogrow': true,
+                                        'attributes': {
+                                            'class': 'ps-project-item__comment-field app_project_comment_field' ~ (form.comment.vars.value is empty ? ' u-invisible' : ''),
+                                            'id': 'app_project_comment_field'
+                                        },
+                                        'widget_attributes': form.comment.vars.attr
+                                    } %}
+                                    <button type="button" id="app_project_comment_button" class="ps-project-item__comment-button small-link-button c-grey-mid hover:c-near-black {{ (form.comment.vars.value is not empty ? ' u-hidden' : '') }}">
+                                        {{ form.comment.vars.attr.placeholder|trans }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <aside class="ps-aside-column column u-margin-t-4 @lg:u-margin-t-0">
+                <div class="ps-total-panel panel panel--aside panel--dense u-margin-b-4 @lg:u-margin-b-auto u-padding-t-4 u-padding-b-4">
+                    <h2 class="panel__title t-header-medium u-margin-b-1 u-margin-r-12 @sm:u-margin-r-0 @lg:u-margin-r-12">
+                        {{ 'app.ui.plum_scanner.step_three.checkout.heading'|trans }}
+                    </h2>
+                    <div class="panel__content">
+                        {% include 'Shop/CustomerProject/Show/_total.html.twig' %}
+                    </div>
+                </div>
+                <div class="flush-row ps-contact-photo">
+                    <div class="flush-column-12 u-fullwidth">
+                        <img class="u-block u-fullwidth" src="{{ asset('build/shop/images/team.jpeg', 'shop') }}" srcset="{{ asset('build/shop/images/team.jpeg', 'shop')}} 2x">
+                    </div>
+                </div>
+                <div class="ps-contact-panel panel panel--dense @sm:u-padding-r-15 @lg:u-padding-r-5 u-padding-t-3 u-padding-b-1">
+
+                    <h2 class="panel__title t-base-small t-align-left u-margin-r-12 @sm:u-margin-r-0">
+                        {{ 'app.ui.customer_project.contact.title'|trans }}
+                    </h2>
+
+                    <br>
+
+                    <button class="ps-project__phone-appointment-button button ripple-button u-margin-b-3 bg-pink c-true-white" type="button">
+                        {{ 'app.ui.customer_project.contact.cta'|trans }}
+                        <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-phone"/></svg>
+                    </button>
+                </div>
+
+                <div class="panel panel--dense u-margin-t-3 @lg:u-margin-b-auto u-padding-t-3 u-padding-b-2">
+                    <div class="panel__content">
+                        {% include 'Shop/CustomerProject/Show/_contact.html.twig' %}
+                    </div>
+                </div>
+
+            </aside>
+        {{ form_widget(form._token) }}
+        {{ form_end(form, {'render_rest': false}) }}
+    </div>
+
+    <div class="ps-loading-indicator">
+        <svg class="o-icon-40 c-near-white"><use xlink:href="{{ iconLibUrl }}#SVG-icon-check"/></svg>
+        <svg class="o-icon-40 c-near-white"><use xlink:href="{{ iconLibUrl }}#SVG-icon-close"/></svg>
+    </div>
+
+    <div class="ps-modal ui-modal ui-modal--dark"></div>
+
+    <div class="ps-save-warning-modal ui-modal ui-modal--dark">
+        <div class="ui-modal__scrollbox u-y-scrollable">
+            <div class="ui-modal__dialog">
+                {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/IFrames/_frame_popup.html.twig' with {pageCode: constant('App\\Provider\\CMS\\PageCode\\PageCodeProvider::PAGE_MEETING_POPUP')} %}
+            </div>
+        </div>
+    </div>
+
+    <div class="ps-share-project-modal ui-modal ui-modal--dark">
+        <div class="ui-modal__scrollbox u-y-scrollable">
+            <div class="ui-modal__dialog">
+                <a class="ps-share-project-link t-link c-near-white"
+                   data-clipboard="{{ absolute_url(path('app_customer_project_share', {token: project.token})) }}"
+                   data-clipboard-copied-text="{{ 'app.ui.generic.copied'|trans }}">
+                    {{ absolute_url(path('app_customer_project_share', {token: project.token})) }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ps-save-error-modal ui-modal ui-modal--dark">
+        <div class="ui-modal__scrollbox u-y-scrollable">
+            <div class="ui-modal__dialog">
+                <p class="ui-modal__title t-header-medium">{{ 'app.ui.plum_scanner.step_three.auto_save.error_title'|trans }}</p>
+                <div class="ui-modal__content">
+                    <p>{{ 'app.ui.plum_scanner.step_three.auto_save.error_main_message'|trans }}</p>
+                    <p class="t-base-small">{{ 'app.ui.plum_scanner.step_three.auto_save.error_aside_message'|trans }}</p>
+                </div>
+                <div class="ui-modal__footer">
+                    <button class="button button--inversed" data-confirm>
+                        {{ 'app.ui.plum_scanner.step_three.auto_save.confirm_button_label'|trans }}
+                        <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-check"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

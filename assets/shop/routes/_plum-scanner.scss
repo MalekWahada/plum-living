@@ -1,0 +1,51 @@
+@use '../config/sass' as *;
+
+
+
+.app_plum_scanner_project_status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0;
+}
+
+
+
+.plum-scanner-background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+
+
+.plum-scanner-loading {
+  width: calc(100% + #{rem(40)});
+  max-width: rem(420);
+  position: relative;
+  z-index: 2;
+
+  &__ratio {
+    padding-top: 100%;
+    position: relative;
+
+    .ui.loader {
+      top: rem(56);
+    }
+  }
+
+    &__content {
+      border-radius: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: #fff;
+    }
+}

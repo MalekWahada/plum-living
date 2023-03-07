@@ -1,0 +1,43 @@
+{%- macro format(amount, currency_code) -%}
+    {{ amount|sylius_format_money(currency_code, sylius.localeCode) }}
+{%- endmacro -%}
+
+{%- macro convertAndFormat(amount) -%}
+    {% from _self import format %}
+
+    {{- format(amount|sylius_convert_money(sylius.channel.baseCurrency.code, sylius.currencyCode), sylius.currencyCode) }}
+{%- endmacro -%}
+
+{%- macro calculatePrice(variant) -%}
+    {% from _self import convertAndFormat %}
+
+    {{- convertAndFormat(variant|sylius_calculate_price({'channel': sylius.channel})) }}
+{%- endmacro -%}
+
+{%- macro calculateOriginalPrice(variant) -%}
+    {% from _self import convertAndFormat %}
+
+    {{- convertAndFormat(variant|sylius_calculate_original_price({'channel': sylius.channel})) }}
+{%- endmacro -%}
+
+{%- macro calculatePriceWithTax(variant, context, taxRate) -%}
+    {% from _self import convertAndFormat %}
+
+    {{- convertAndFormat(variant|calculate_price_with_tax(context, taxRate)) }}
+{%- endmacro -%}
+
+{%- macro calculateTotal(orderItem, context) -%}
+    {% from _self import convertAndFormat %}
+
+    {{- convertAndFormat(orderItem|calculate_total_with_tax(context)) }}
+{%- endmacro -%}
+
+{%- macro calculateTotaItemsWithTax(order, context) -%}
+    {% from _self import convertAndFormat %}
+
+    {{- convertAndFormat(order|calculate_total_items_with_tax(context)) }}
+{%- endmacro -%}
+
+{% macro formatPriceWithoutDecimals(amount) %}
+    {{- amount|format_price_without_decimals(sylius.currencyCode, sylius.localeCode) }}
+{% endmacro %}

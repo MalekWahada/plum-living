@@ -1,0 +1,37 @@
+name,code,tax_category,images,channels,main_taxon,taxons,product_options,generate_products_for_design_and_finish_suffixes
+Tiroir 40X10cm,4010-04,tva,fixtures/Images/Products/tiroir_40X10cm.png,PLUM_FR,metod,metod_drawer,design|finish|color,SULOPW
+Tiroir 40X20cm,4020-04,tva,fixtures/Images/Products/tiroir_40X20cm.png,PLUM_FR,metod,metod_drawer,design|finish|color,CFSULOPW
+Tiroir 40X40cm,4040-01,tva,fixtures/Images/Products/tiroir_ou_porte_horizontale_40X40cm.png,PLUM_FR,metod,metod_drawer,design|finish|color,CFSULOPW
+Porte horizontale 40X40cm,4040-04,tva,fixtures/Images/Products/tiroir_ou_porte_horizontale_40X40cm.png,PLUM_FR,metod,metod_drawer,design|finish|color,CFSULOPW
+Tiroir 60X10cm,6010-04,tva,fixtures/Images/Products/tiroir_60X10cm.png,PLUM_FR,metod,metod_drawer,design|finish|color,SULOPW
+Porte 20X80cm,2080-01,tva,fixtures/Images/Products/porte_20X80cm.png,PLUM_FR,metod,metod_door,design|finish|color,FSULOPW
+Porte d'angle 25x80cm,2580-03,tva,fixtures/Images/Products/Porte_d_angle_25x80cm.png,PLUM_FR,metod,metod_door,design|finish|color,FSULOPW
+Porte 30X80cm,3080-01,tva,fixtures/Images/Products/porte_30X80cm.png,PLUM_FR,metod,metod_door,design|finish|color,CFSULOPW
+Panneau de finition 15x240cm,15240-07,tva,fixtures/Images/Products/panneau_de_finition_15x240cm.png,PLUM_FR,pax,pax_panel,design|finish|color,SLOPW
+Panneau de finition 39X86cm,3986-07,tva,fixtures/Images/Products/panneau_de_finition_39X86cm.png,PLUM_FR,pax,pax_panel,design|finish|color,SLOPW
+Panneau de finition 39X106cm,39106-07,tva,fixtures/Images/Products/panneau_de_finition_39X106cm.106.png,PLUM_FR,pax,pax_panel,design|finish|color,SLOPW
+Panneau de finition 62X240cm,62240-07,tva,fixtures/Images/Products/panneau-de-finition-62x240cm.png,PLUM_FR,pax,pax_panel,design|finish|color,SLOPW
+Plinthe 220X8cm,2208-08,tva,fixtures/Images/Products/plinthe-220x8cm.png,PLUM_FR,metod,metod_baseboard,design|finish|color,SLOPW
+Panneau de finition 62X220cm,62220-07,tva,fixtures/Images/Products/panneau-de-finition-62x220cm.png,PLUM_FR,pax,pax_panel,design|finish|color,SLOPW
+Porte 60X80cm,6080-01,tva,fixtures/Images/Products/porte-60x80cm.png,PLUM_FR,pax,pax_door,design|finish|color,FSULOPW
+Porte 40X200cm,40200-01,tva,fixtures/Images/Products/porte-40x200cm.png,PLUM_FR,pax,pax_door,design|finish|color,FSLOPW
+Porte 25x201cm - charnières à droite,25201-11,tva,fixtures/Images/Products/porte-25x201cm-charnieres-a-droite.png,PLUM_FR,pax,pax_door,design|finish|color,FSLOPW
+Porte 25x201cm - charnières à gauche,25201-12,tva,fixtures/Images/Products/porte-25x201cm-charnieres-a-gauche.png,PLUM_FR,pax,pax_door,design|finish|color,FSLOPW
+Porte 25x236cm - charnières à droite,25236-11,tva,fixtures/Images/Products/porte-25x236cm-charnieres-a-droite.png,PLUM_FR,pax,pax_door,design|finish|color,FSLOPW
+Porte 25x236cm - charnières à gauche,25236-12,tva,fixtures/Images/Products/porte-25x236cm-charnieres-a-gauche.png,PLUM_FR,pax,pax_door,design|finish|color,FSLOPW
+Panneau de finition 35x201cm,35201-17,tva,fixtures/Images/Products/panneau-de-finition-35x201cm.png,PLUM_FR,pax,pax_panel,design|finish|color,SLOPW
+Panneau de finition 35x236cm,35236-17,tva,fixtures/Images/Products/panneau-de-finition-35x236cm.png,PLUM_FR,pax,pax_panel,design|finish|color,SLOPW
+Echantillon à l'unité - Laque mate,1313-00S-L,tva,fixtures/Images/Echantillons/echantillon-couleur-laque-mate.png,PLUM_FR,echantillon_facade,echantillon|echantillon_facade,color,
+Echantillon à l'unité - Chêne peint,1313-00S-P,tva,fixtures/Images/Echantillons/echantillon-couleur-bois-peint.png,PLUM_FR,echantillon_facade,echantillon|echantillon_facade,color,
+Echantillon à l'unité - Chêne et Noyer naturels,1313-00S-OW,tva,fixtures/Images/Echantillons/echantillon-bois-naturel.png,PLUM_FR,echantillon_facade,echantillon|echantillon_facade,color,
+Box complète - Laque mate - 14 échantillons,1313-00S-BL14,tva,fixtures/Images/Echantillons/box-complete-laque-mate-14-echantillons.png,PLUM_FR,echantillon,echantillon,,
+Box complète - Chêne peint - 14 échantillons,1313-00S-BP14,tva,fixtures/Images/Echantillons/box-complete-bois-peints-naturels-16-echantillons.png,PLUM_FR,echantillon_facade,echantillon|echantillon_facade,,
+Box complète toutes finitions - 30 échantillons,1313-00S-BF30,tva,fixtures/Images/Echantillons/box-complete-30-echantillons.png,PLUM_FR,echantillon_facade,echantillon|echantillon_facade,,
+Poignée Mini-Lune laiton,C42-B15,tva,fixtures/Images/Accessoires/poignee-mini-lune-laiton.png,PLUM_FR,accessoires_handle,accessoires|accessoires_handle,,
+Poignée Linea laiton,P136-S15,tva,fixtures/Images/Accessoires/poignee-linea.png,PLUM_FR,accessoires_handle,accessoires|accessoires_handle,,
+Poignée Delta laiton,D110-B15,tva,fixtures/Images/Accessoires/poignee-delta-laiton.png,PLUM_FR,accessoires_handle,accessoires|accessoires_handle,,
+Plinthe laiton,2208-08S-M,tva,fixtures/Images/Accessoires/plinthe-laiton.png,PLUM_FR,accessoires,accessoires,,
+Poignée Mini-Rond laiton,R25-B15,tva,fixtures/Images/Accessoires/poignee-mini-rond.png,PLUM_FR,accessoires_handle,accessoires|accessoires_handle,,
+Poignée Bulle laiton,B25-S15,tva,fixtures/Images/Accessoires/poignee-bulle.png,PLUM_KITCHEN,accessoires_handle,accessoires|accessoires_handle,,
+Poignée Liseret laiton,L50-B15,tva,fixtures/Images/Accessoires/poignee-liseret-laiton.png,PLUM_KITCHEN,accessoires_handle,accessoires|accessoires_handle,,
+Poignée Coqui laiton,S90-S15,tva,fixtures/Images/Accessoires/poignee-coqui-laiton.png,PLUM_KITCHEN,accessoires_handle,accessoires|accessoires_handle,,

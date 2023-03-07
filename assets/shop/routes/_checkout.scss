@@ -1,0 +1,94 @@
+@use '../config/sass' as *;
+@use '../abstract/css-grid/css-grid-mixins' as *;
+
+
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+
+
+.sylius_shop_checkout_address,
+.sylius_shop_checkout_select_shipping,
+.sylius_shop_checkout_select_payment,
+.sylius_shop_checkout_complete {
+
+}
+
+.sylius_shop_checkout_address {
+
+}
+
+.sylius_shop_checkout_select_shipping {
+  .look-at-me {
+    animation: pop 0.5s both;
+  }
+}
+
+.sylius_shop_checkout_select_payment {
+
+}
+
+.sylius_shop_checkout_complete {
+  button.custom-button {
+    background-color: #eca796 !important;
+  }
+}
+
+
+
+.checkout {
+  &-main-row {
+
+  }
+
+    &-address-panel {
+
+    }
+
+      &-billing-address {
+          display: none;
+      }
+
+      &-shipping-address {
+
+      }
+
+    &-shipping-panel {
+
+    }
+
+      &-shipping-shipment {
+
+      }
+
+    &-payment-panel {
+
+    }
+
+      &-payment-payment {
+
+      }
+
+    &-confirmation-panel {
+
+    }
+
+    &-order-summary-panel {
+
+    }
+}
+
+@include up(large) {
+  .checkout-main-row {
+    .panel {
+      position: sticky;
+      top: rem(90 + 30); /* 1 */
+
+      /* 1. Height of the header + a little margin */
+    }
+  }
+}

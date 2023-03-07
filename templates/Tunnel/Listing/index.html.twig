@@ -1,0 +1,29 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block metatags %}
+    {% set filters = [
+        constant('App\\Entity\\Taxonomy\\Taxon::TAXON_SAMPLE_FRONT_CODE'),
+        constant('App\\Entity\\Taxonomy\\Taxon::TAXON_SAMPLE_PAINT_CODE'),
+        constant('App\\Entity\\Taxonomy\\Taxon::TAXON_ACCESSORY_CODE'),
+        constant('App\\Entity\\Taxonomy\\Taxon::TAXON_PAINT_CODE'),
+        constant('App\\Entity\\Taxonomy\\Taxon::TAXON_TAP_CODE')
+    ] %}
+    {% set filter =  app.request.attributes.get('_taxonCode') %}
+    {% if filter in filters %}
+        <meta property="og:type" content="{{ ('app.cms_page.eshop.'~filter~'.meta.type')|trans }}"/>
+        <meta property="og:title" content="{{ ('app.cms_page.eshop.'~filter~'.meta.title')|trans }}"/>
+        <meta name="description" property="og:description" content="{{ ('app.cms_page.eshop.'~filter~'.meta.description')|trans }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="tunnel container">
+        <div class="tunnel-third u-fullwidth">
+            {% include 'Tunnel/Listing/_content.html.twig' %}
+        </div>
+    </div>
+
+    {# product modal #}
+    <div id="tunnel-modal" class="ui-modal"></div>
+    {# product modal #}
+{% endblock %}

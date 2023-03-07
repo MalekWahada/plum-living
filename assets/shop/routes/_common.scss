@@ -1,0 +1,482 @@
+@use 'sass:map';
+@use 'sass:math';
+@use '../config/sass' as *;
+@use '../abstract/css-grid/css-grid-config' as *;
+@use '../abstract/css-grid/css-grid-mixins' as *;
+@use '../abstract/css-grid/flex-grid/flex-grid-mixins' as *;
+
+
+
+/*
+  Index
+  ---------- ---------- ---------- ---------- ----------
+
+  • Global
+  • Container addition: Narrow Container
+  • Container addition: Compact Container
+  • Container addition: Compressed Container
+  • Grid addition: Separator
+  • Page Container
+  • Panel
+*/
+
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: $color--near-white;
+}
+
+.page-container {
+  flex: 1 0 auto;
+}
+
+.plum-footer {
+  flex: 0 0 auto;
+}
+
+.ui.loader {
+  &::before,
+  &::after {
+    width: rem(24);
+    height: rem(24);
+    margin-left: rem(-12);
+  }
+
+  &::after {
+    border-top-color: get-color(near-black);
+  }
+}
+
+.container-custom-padding{
+  @media (min-width: 1000px){
+    padding-left: 100px;
+    padding-right:100px;
+  }
+}
+
+.ui.dimmer .ui.loader::after { border-top-color: #fff; }
+.ui.inverted.dimmer .ui.loader::after { border-top-color: get-color(near-black); }
+
+@keyframes cw-turn {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@mixin loading-pseudo-elmt ($position: 'center') {
+  content: '';
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid rgba(0,0,0, 0.2);
+  border-top-color: #000;
+  border-radius: 1rem;
+  position: absolute;
+  top: calc(50% - 0.5rem);
+  animation: 0.75s infinite linear cw-turn;
+
+  @if $position == 'center' {
+    left: calc(50% - 0.5rem);
+  }
+  @else if $position == 'left' {
+    left: -0.25rem;
+  }
+  @else if $position == 'right' {
+    right: -0.25rem;
+  }
+}
+
+@keyframes rotate-device-icon {
+  33% {
+    transform: rotate(0);
+  }
+
+  66% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+.rotate-device-indicator {
+  height: rem(72);
+  border-radius: rem(72);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+
+  [class*="o-icon"] {
+    animation: infinite 2s rotate-device-icon;
+  }
+}
+
+.u-badge{
+  display: inline-block;
+  font-weight: 500;
+  padding: 1px 8px;
+  margin-left: 10px;
+  letter-spacing: 1px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+/*
+  • Container addition: Narrow Container
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.container--narrow {
+  $narrow-max-width: rem(1020);
+
+  $_max-width-map: (
+    base: map.get($css-grid--base, 'max-width')
+  );
+
+  @each $_slug, $_values in $css-grid--breakpoints {
+    $_from: map.get($_values, 'value');
+    $_margins: css-grid--get-last-config($_slug, 'margins');
+    $_max-width: map.get($_values, 'max-width');
+
+    @if $_max-width != null {
+      $_max-width-map: map.set($_max-width-map, $_from, math.min($_max-width, $narrow-max-width + ($_margins * 2)));
+    }
+  }
+
+  @include is-container($as-modifier: true, $margins: false, $max-width: $_max-width-map);
+}
+
+
+
+/*
+  • Container addition: Compact Container
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.container--compact {
+  $compact-max-width: rem(720);
+
+  $_max-width-map: (
+    base: map.get($css-grid--base, 'max-width')
+  );
+
+  @each $_slug, $_values in $css-grid--breakpoints {
+    $_from: map.get($_values, 'value');
+    $_margins: css-grid--get-last-config($_slug, 'margins');
+    $_max-width: map.get($_values, 'max-width');
+
+    @if $_max-width != null {
+      $_max-width-map: map.set($_max-width-map, $_from, math.min($_max-width, $compact-max-width + ($_margins * 2)));
+    }
+  }
+
+  @include is-container($as-modifier: true, $margins: false, $max-width: $_max-width-map);
+}
+
+
+
+/*
+  • Container addition: Compressed Container
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.container--compressed {
+  $compact-max-width: rem(580);
+
+  $_max-width-map: (
+    base: map.get($css-grid--base, 'max-width')
+  );
+
+  @each $_slug, $_values in $css-grid--breakpoints {
+    $_from: map.get($_values, 'value');
+    $_margins: css-grid--get-last-config($_slug, 'margins');
+    $_max-width: map.get($_values, 'max-width');
+
+    @if $_max-width != null {
+      $_max-width-map: map.set($_max-width-map, $_from, math.min($_max-width, $compact-max-width + ($_margins * 2)));
+    }
+  }
+
+  @include is-container($as-modifier: true, $margins: false, $max-width: $_max-width-map);
+}
+
+
+
+/*
+  • Grid addition: Separator
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.column-separator {
+  flex: 0 0 2px;
+  max-width: 2px;
+  background-color: get-color(grey-clear);
+}
+
+
+
+/*
+  • Page Container
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.page-container {
+  padding-top: rem(50);
+  padding-bottom: rem(100);
+}
+
+
+.page-header {
+  margin-bottom: rem(40);
+}
+
+
+.page-title {
+  max-width: rem(960);
+  margin: 0 auto rem(40);
+  text-align: center;
+}
+
+.page-header .page-title {
+  margin-bottom: 0;
+}
+
+
+@include up(large) {
+  .page-container {
+    padding-top: rem(70);
+    padding-bottom: rem(120);
+  }
+
+
+  .page-header {
+    margin-bottom: rem(60);
+  }
+
+
+  .page-title {
+    margin-bottom: rem(60);
+  }
+
+  .page-header .page-title {
+    margin-bottom: 0;
+  }
+}
+
+
+
+/*
+  • Panel
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.panel {
+  padding: rem(40) rem(20);
+  position: relative;
+  background: #fff;
+
+  &__header {
+    margin-bottom: rem(40);
+  }
+
+  &__title {
+    margin-bottom: rem(30);
+    text-align: center;
+  }
+
+  &__header &__title {
+    margin-bottom: rem(16);
+  }
+}
+
+
+.panel--aside {
+  background: $color--near-black;
+  color: #fff;
+
+  .panel {
+    &__title {
+      text-align: left;
+    }
+  }
+}
+
+
+.panel--big-chin {
+  padding-bottom: rem(100);
+  margin-bottom: rem(80);
+}
+
+
+.panel--big-cheeks {
+  // No difference on mobile
+}
+
+
+.panel--dense {
+  // No difference on mobile
+}
+
+
+@include up(small) {
+  .panel {
+    padding-left: rem(30);
+    padding-right: rem(30);
+  }
+}
+
+
+@include up(medium) {
+  .panel {
+    padding: rem(70) rem(40);
+  }
+
+  .panel:not(.panel--aside) {
+    .panel { // For nesting convenience
+      &__header {
+        margin-bottom: rem(70);
+      }
+
+      &__title {
+        margin-bottom: rem(50);
+      }
+
+      &__header .panel__title {
+        margin-bottom: rem(16);
+      }
+    }
+  }
+
+  .panel--medium-chin {
+    padding-bottom: rem(64);
+  }
+
+  .panel--big-chin {
+    padding-bottom: rem(120);
+  }
+
+  .panel--big-cheeks {
+    padding-left: rem(60);
+    padding-right: rem(60);
+  }
+
+  .panel--dense {
+    padding: rem(40);
+  }
+}
+
+
+@include up(large) {
+  .panel--big-cheeks {
+    padding-left: rem(100);
+    padding-right: rem(100);
+  }
+}
+
+.scroll-top{
+  display:none;
+  right: 26px;
+  top: -39px;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  width: 78px;
+  height:auto;
+  &:hover{
+    top:-50px;
+  }
+  @include up('large'){
+    right: 60px;
+  }
+}
+
+
+// Locales management
+
+.u-visible-de, .u-visible-nl, .u-visible-en{
+  display:none !important;
+}
+
+:lang(de){
+  .u-visible-de{
+    display:initial !important;
+  }
+  .u-visible-fr{
+    display:none !important;
+  }
+}
+
+:lang(nl){
+  .u-visible-nl{
+    display:initial !important;
+  }
+  .u-visible-fr{
+    display:none !important;
+  }
+}
+
+:lang(en){
+  .u-visible-en{
+    display:initial !important;
+  }
+  .u-visible-fr{
+    display:none !important;
+  }
+}
+
+
+// Plum Styler Home @todo remove from here
+
+.app_plum_styler_index{
+
+  .page-container{
+    padding-top: 0;
+  }
+
+  .styler-home{
+    &__hero{
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+      .content{
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .t-base-medium{
+        max-width: 580px;
+      }
+      img{
+        object-fit: cover;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &__list{
+      &-item{
+        height: 300px;
+        overflow:hidden;
+        border-radius: 6px;
+        img{
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+          transition: all ease-in-out 0.3s;
+          &:hover{
+            transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+
+}
+

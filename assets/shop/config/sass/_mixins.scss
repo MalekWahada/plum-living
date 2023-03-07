@@ -1,0 +1,47 @@
+@use 'sass:meta';
+@use './variables/' as *;
+
+
+@mixin font-reset($color: $font--default-color) {
+  color: $color;
+  font-family: $font--default-stack;
+  font-size: $font--default-size;
+  font-style: $font--default-style;
+  font-weight: $font--default-weight;
+  line-height: $font--default-line-height;
+  letter-spacing: $font--default-letter-spacing;
+  text-decoration: $font--default-text-decoration;
+  text-transform: $font--default-text-transform;
+}
+
+/**
+ * Generates a complete font face declarations
+ * where invoked
+ *
+ * @type mixin
+ *
+ * @param $font-family The with which the font family will be called
+ * @param $font-path   The path to the fonts directory relative to the compiled stylesheet
+ * @param $font-file   The name of the actual font file
+ * @param $font-weight The font weight (normal, bold, lighter)
+ * @param $font-weight The font style (normal, italic)
+ *
+ * Example Usage:
+ * @include font-face('Open Sans', '../fonts/', 'OpenSans-regular-webfont', bold, italic)
+ */
+
+@mixin declare-font-face($font-family, $font-path, $font-file, $font-weight: normal, $font-style: normal) {
+  @font-face {
+    font-display: swap;
+    font-family: $font-family;
+    src: url($font-path + $font-file + '.eot');
+    src: local($font-family),
+    url($font-path + $font-file + '.eot?#iefix') format('embedded-opentype'),
+    url($font-path + $font-file + '.woff2') format('woff2'),
+    url($font-path + $font-file + '.woff') format('woff'),
+    url($font-path + $font-file + '.ttf') format('truetype'),
+    url($font-path + $font-file + '.svg') format('svg');
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}

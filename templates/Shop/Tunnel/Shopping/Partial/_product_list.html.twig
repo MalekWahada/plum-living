@@ -1,0 +1,36 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% include 'Shop/Common/Partial/_finish_list.html.twig' %}
+{% set taxRate = get_default_tax_Rate() %}
+
+{% set facadeTypeCode = app.request.get('facadeTypeCode', '')|lower %}
+
+<div class="tunnel-third u-margin-t-13">
+    <div class="tunnel-third__container">
+        {% for taxonCode, taxonObject in products %}
+            <div class="tunnel-products u-flex-column u-margin-b-12 @wd:u-margin-b-18 {{ facadeTypeCode }}"
+                 id="{{ taxonCode }}">
+                <div class="tunnel-products__title t-header-large u-flex u-margin-b-6">
+                    <svg class="tunnel-products__icon o-icon-32 u-margin-r-1">
+                        {% if taxonCode == constant('App\\Entity\\Taxonomy\\Taxon::CUSTOM_TAXON_PANEL_AND_PLINTH_CODE') %}
+                            <use xlink:href="{{ iconLibUrl }}#SVG-icon-panneau"/>
+                        {% elseif taxonCode  == constant('App\\Entity\\Taxonomy\\Taxon::TAXON_ACCESSORY_CODE') %}
+                            <use xlink:href="{{ iconLibUrl }}#SVG-icon-accessoire"/>
+                        {% elseif taxonCode in [constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_METOD_DOOR_CODE'), constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_PAX_DOOR_CODE')] %}
+                            <use xlink:href="{{ iconLibUrl }}#SVG-icon-door"/>
+                        {% elseif taxonCode == constant('App\\Entity\\Taxonomy\\Taxon::TAXON_FACADE_METOD_DRAWER_CODE') %}
+                            <use xlink:href="{{ iconLibUrl }}#SVG-icon-tiroir"/>
+                        {% endif %}
+                    </svg>
+                    <div class="t-header-large">{{ taxonObject.taxonName }}</div>
+                </div>
+                <div class="tunnel-products__list products row">
+                    {% include 'Shop/Tunnel/Shopping/Partial/_product_details.html.twig' with {'productsPerTaxon': taxonObject.products} %}
+                    <div class="infos @lg:column-6 @wd:column-4 u-margin-b-2 @lg:u-margin-b-6">
+                        {% include 'Shop/Tunnel/Shopping/Partial/_product_infos_list.html.twig' with {'taxonCode': taxonCode} %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

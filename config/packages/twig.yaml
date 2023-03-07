@@ -1,0 +1,17 @@
+twig:
+    paths: ['%kernel.project_dir%/templates']
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+        zendesk_support_chat_bot_key: '%env(ZENDESK_SUPPORT_CHAT_BOT_KEY)%'
+        hotjar_site_id: '%env(HOTJAR_SITE_ID)%'
+        STRIPE_API_KEY_PUBLIC: '%env(STRIPE_API_PUBLIC_KEY)%'
+        hubspot_url: '%env(HUBSPOT_URL)%'
+
+services:
+    _defaults:
+        public: false
+        autowire: true
+        autoconfigure: true
+
+    Twig\Extra\Intl\IntlExtension: ~

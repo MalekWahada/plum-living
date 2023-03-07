@@ -1,0 +1,38 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+
+/*
+  Components cms
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+@import './partials/sidebar';
+@import './partials/step-one';
+@import './partials/step-two';
+@import './partials/recommendations';
+@import './partials/products';
+@import './partials/modal';
+
+.facade_get_products {
+  .page-container {
+
+    @include up(large) {
+      padding-top: rem(60);
+    }
+  }
+}
+
+@include up(large) {
+  .tunnel {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+#div-custom-delays{
+  color: #eca796 !important;
+}
+
+#custom-wire-delay-message {
+  color: get-color('terra');
+}

@@ -1,0 +1,88 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set imageFilter = 'app_cms_image_collection_slider' %}
+{% set imageFilterRetina = 'app_cms_image_collection_slider_retina' %}
+
+<div class="container media-content-highlight u-margin-t-8 c-true-white">
+    <div class="row">
+        <div class="@lg:column-6">
+            {% if element.link_label and element.link_url %}
+                <a class="u-block u-fullheight u-fullwidth"
+                   href="{{ element.link_url | raw }}">
+                    <div class="card card-media u-relative u-fullwidth u-margin-b-3">
+                        <img src="{{ element.image1 | raw }}"
+                             alt="{{ element.image1_alt | raw }}"
+                             title="{{ element.image1_title | raw }}">
+                        <div class="content">
+                            <h2 class="t-header-medium c-true-white t-shadow">
+                                {{ element.title1 }}
+                            </h2>
+                            {% if element.description1 %}
+                                <div class="t-base-small c-true-white">
+                                    {{ element.description1 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            {% else  %}
+                <div class="card card-media u-relative u-fullwidth u-margin-b-3">
+                    <img src="{{ element.image1 | raw }}"
+                         alt="{{ element.image1_alt | raw }}"
+                         title="{{ element.image1_title | raw }}">
+                    <div class="content">
+                        <h2 class="t-header-medium t-shadow">
+                            {{ element.title1 }}
+                        </h2>
+                        {% if element.description1 %}
+                            <div class="t-base-small">
+                                {{ element.description1 }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        {% if element.image2 and element.title2 %}
+            <div class="@lg:column-6">
+            {% if element.link2_label and element.link2_url %}
+                <a class="u-block u-fullheight u-fullwidth"
+                   href="{{ element.link2_url | raw }}">
+                    <div class="card card-media u-relative u-fullwidth">
+                        <img src="{{ element.image2 | raw }}"
+                             alt="{{ element.image2_alt | raw }}"
+                             title="{{ element.image2_title | raw }}">
+                        <div class="content">
+                            <h2 class="t-header-medium c-true-white t-shadow">
+                                {{ element.title2 }}
+                            </h2>
+                            {% if element.description2 %}
+                                <div class="t-base-small c-true-white">
+                                    {{ element.description2 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            {% else  %}
+                <div class="card card-media u-relative u-fullwidth">
+                    <img src="{{ element.image2 | raw }}"
+                         alt="{{ element.image2_alt | raw }}"
+                         title="{{ element.image2_title | raw }}">
+                    <div class="content">
+                        <h2 class="t-header-medium t-shadow">
+                            {{ element.title2 }}
+                        </h2>
+                        {% if element.description2 %}
+                            <div class="t-base-medium">
+                                {{ element.description2 }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+

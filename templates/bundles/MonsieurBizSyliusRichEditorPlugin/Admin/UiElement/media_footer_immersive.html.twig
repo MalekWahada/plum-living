@@ -1,0 +1,10 @@
+<div class="ui grid">
+    <p>{{ element.tag | raw }}</p>
+    <h3>{{ element.title | raw }}</h3>
+    {% if element.link_label and element.link_url %}
+        <a class="btn"
+           href="{{ element.link_url | raw }}">
+            {{ element.link_label | raw }}
+        </a>
+    {% endif %}
+</div>

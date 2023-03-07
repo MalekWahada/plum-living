@@ -1,0 +1,16 @@
+{% for step in element.imagesSteps %}
+    <div class="cms-steps-item">
+        {% if step.imageStep is defined and step.imageStep is not empty %}
+            <div class="cms-steps-item__img">
+                <img class="cms-steps-item__img ui fluid image" src="{{ step.imageStep|imagine_filter('app_cms_steps_thumbnail') }}" alt=""/>
+                {% if element.type is defined and element.type == constant('App\\Provider\\CMS\\ImagesSteps\\ImagesStepsProvider::IMAGES_STEPS_TYPE_INDEXED') %}
+                    <div class="cms-steps-item__number"> {{ loop.index }}</div>
+                {% endif %}
+            </div>
+        {% endif %}
+        <div class="cms-steps-item__title t-header-small">{{ step.titleStep }}</div>
+        <div class="cms-steps-item__text">
+            {{ step.descriptionStep|raw }}
+        </div>
+    </div>
+{% endfor %}

@@ -1,0 +1,10 @@
+{#
+UI Element template
+type: h4
+element fields :
+    content
+    align
+#}
+{% if element is not empty %}
+    <h4 class="ui header" style="text-align: {{ element.align|default('inherit') }};">{{ element.content }}</h4>
+{% endif %}

@@ -1,0 +1,39 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+<div class="ui-modal__title t-header-medium">
+    {{ 'app.ui.cart.share_cart.modal_title'|trans }}
+</div>
+
+<div class="ui-modal__content">
+    {# TODO refactor text #}
+    <p class="t-base-small u-margin-b-3">
+        <span class="c-grey-mid">
+            {{ 'app.ui.cart.share_cart.modal_desc'|trans }}
+        </span>
+    </p>
+    {{ form_start(form, {
+        'action':path('app_share_cart', {
+            'tokenValue' : order.tokenValue
+        }
+        ), 'attr': {'id': 'share-cart-form'}}) }}
+
+    {% include 'Shop/Form/_text_field.html.twig' with {
+        'field': form.email,
+        'label': form.email.vars.attr.placeholder|trans,
+        'attributes': {
+            'type': 'email',
+            'class': 'field--inversed'
+        }
+    } %}
+
+    {{ form_end(form, { 'render_rest': false }) }}
+</div>
+
+<div class="ui-modal__footer">
+    <button type="submit" form="share-cart-form" id="order-proceed" class="button button--inversed">
+        {{ 'sylius.ui.send'|trans }}
+        <svg class="o-icon-24 o-icon--right">
+            <use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/>
+        </svg>
+    </button>
+</div>

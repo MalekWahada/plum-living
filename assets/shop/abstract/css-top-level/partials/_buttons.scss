@@ -1,0 +1,607 @@
+@use 'sass:color';
+@use '../../../config/sass' as *;
+@use '../../../abstract/css-grid/css-grid-mixins' as *;
+@use '../css-top-level-config' as *;
+
+
+// ---------- ---------- ---------- ----------
+// Summary
+//
+// - Default
+// - Pill
+// - Inversed
+// - Big
+// - Sized
+// - Functional Button
+// - Link Button
+// - Icon Button
+// - Big Honking Button
+// - Vendor Specific
+// ---------- ---------- ---------- ----------
+
+
+%button-base {
+  cursor: pointer;
+  pointer-events: auto;
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  box-shadow: none;
+  color: currentColor;
+  font-family: $font--default-stack;
+  font-size: $font--default-size;
+  font-style: $font--default-style;
+  font-weight: $font--default-weight;
+  line-height: $font--default-line-height;
+  letter-spacing: $font--default-letter-spacing;
+  text-align: center;
+  text-decoration: $font--default-text-decoration;
+  text-overflow: ellipsis;
+  text-transform: $font--default-text-transform;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    color: currentColor;
+  }
+}
+
+
+// ---------- ---------- ---------- ----------
+// - Default
+// ---------- ---------- ---------- ----------
+
+.button {
+  @extend %button-base;
+  min-width: rem(40);
+  min-height: $form--button-height;
+  padding: 12px 24px 12px 24px;
+  background: $color--asphalte;
+  color: #fff;
+  font-family: $font--cera;
+  font-size: rem(18);
+  font-weight: 500;
+  transition: color 0.2s 0s, background-color 0.2s 0.1s;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1.05px;
+
+  &--small{
+    font-size: rem(16);
+    padding: 10px 16px 10px 16px;
+    border: 1px solid !important;
+  }
+
+  .o-icon--left {
+    transition: transform 0.2s 0.1s;
+  }
+
+  .o-icon--right {
+    transition: transform 0.2s 0.1s;
+  }
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    background-color: black;
+    color: #fff;
+    transition: color 0.2s 0.1s, background-color 0.2s 0s;
+
+    .o-icon--left {
+      transform: translateX(#{rem(-8)});
+    }
+
+    .o-icon--right {
+      transform: translateX(#{rem(8)});
+    }
+  }
+
+
+  &:active:not(:disabled) {
+    transform: scale(0.96);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+
+// ---------- ---------- ---------- ----------
+// - Pill
+// ---------- ---------- ---------- ----------
+
+.button--pill {
+  padding: rem(8) rem(32) rem(8);
+  border-radius: $form--button-height;
+  background: $color--near-black;
+  color: $color--true-white;
+  transition: color 0.2s 0s, background-color 0.2s 0s;
+
+  span:not(.ripple-button__ripple) {
+    background: linear-gradient(to top, currentColor 1px, transparent 0) no-repeat;
+    background-size: 0 100%;
+    position: relative;
+    top: 2px;
+    transition: background-size 0.3s;
+  }
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    color: $color--true-white;
+
+    span {
+      background-size: 100% 100%;
+    }
+  }
+}
+
+
+// ---------- ---------- ---------- ----------
+// - Inversed
+// ---------- ---------- ---------- ----------
+
+.button--inversed {
+  background-color: #fff;
+  color: $color--near-black;
+  border: 2px solid $color--near-black;
+
+  &:hover, &:focus, &:active {
+    background-color: #f5f5f5 !important;
+    color: $color--near-black !important;
+  }
+
+  &--small{
+    border: 1px solid $color--near-black;
+  }
+}
+
+// ---------- ---------- ---------- ----------
+// - Big Button
+// ---------- ---------- ---------- ----------
+@include up('large') {
+  .button--big {
+    min-width: rem(330);
+  }
+}
+
+
+// ---------- ---------- ---------- ----------
+// - Sized
+// ---------- ---------- ---------- ----------
+
+.button--sized {
+  width: 100%;
+}
+
+@include up(medium) {
+  .button--sized {
+    width: auto;
+  }
+}
+
+
+
+
+
+// ---------- ---------- ---------- ----------
+// - Link Button
+// ---------- ---------- ---------- ----------
+
+// It semantically should be a button but it does not look like
+// a button. Ex: a clickable icon
+
+.link-button {
+  @extend %button-base;
+  overflow: visible;
+  min-width: 0;
+  background:
+    linear-gradient(to top, currentColor 2px, transparent 0) left center no-repeat,
+    linear-gradient(to top, transparent 1px, currentColor 1px, currentColor 1px, transparent 2px) left center no-repeat;
+  background-size: 0% 100%, 0% 100%;
+  font-family: $font--cera;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: rem(18);
+  line-height: 105%;
+  transition: background-size 0.2s;
+
+  &--inline {
+    display: inline;
+  }
+
+  &:hover,
+  &:focus {
+    background-size: 100% 100%;
+    color: currentColor;
+  }
+  &[disabled]{
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  &--small{
+    font-size: .9rem;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+}
+
+
+.small-link-button {
+  @extend .link-button;
+  font-size: rem(15);
+}
+
+.fix-arrow-size{
+  padding-top: 2px;
+}
+
+.cancel-button {
+  @extend .link-button;
+}
+
+
+.wrapping-link-button {
+  @extend .link-button;
+  background: none;
+
+  & > span:not([data-no-link-fx]) {
+    display: inline-block;
+    background:
+      linear-gradient(to top, currentColor 2px, transparent 0) left center no-repeat,
+      linear-gradient(to top, transparent 1px, currentColor 1px, currentColor 1px, transparent 2px) left center no-repeat;
+    background-size: 0% 100%, 100% 100%;
+    transition: background-size 0.2s;
+  }
+
+  &:hover,
+  &:focus {
+    & > span:not([data-no-link-fx]) {
+      background-size: 100% 100%;
+    }
+  }
+}
+
+.link-button-wrapper {
+  .link-button-proxy {
+    @extend .link-button;
+  }
+
+  .small-link-button-proxy {
+    @extend .small-link-button;
+  }
+
+  &:hover,
+  &:focus {
+    .link-button-proxy,
+    .small-link-button-proxy {
+      background-size: 100% 100%;
+    }
+  }
+}
+
+
+.panel--big-chin .cancel-button {
+  position: relative;
+  top: rem(56);
+}
+
+.cancel-button-group {
+  .cancel-button {
+    top: 0;
+  }
+}
+
+@include up(medium) {
+  .panel--big-chin .cancel-button-group {
+    position: relative;
+    top: rem(56);
+  }
+}
+
+
+
+
+
+// ---------- ---------- ---------- ----------
+// - Functional Button
+// ---------- ---------- ---------- ----------
+
+// It semantically should be a button but it does not look like
+// a button. Ex: a clickable icon
+
+.func-button {
+  @extend %button-base;
+  overflow: visible;
+  min-width: 0;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  text-overflow: inherit;
+  text-transform: inherit;
+  white-space: nowrap;
+
+
+  &:hover {
+    background: none;
+    // Styling needed
+  }
+
+
+  &:focus {
+    background: none;
+    // Styling needed
+  }
+
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+
+// ---------- ---------- ---------- ----------
+// - Icon Button
+// ---------- ---------- ---------- ----------
+
+.icon-button {
+  @extend %button-base;
+  overflow: visible;
+  min-width: rem(40);
+  min-height: rem(40);
+  padding: 0;
+  border-radius: rem(40);
+  background: none;
+  line-height: inherit;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+
+  &:hover,
+  &:focus {
+    background: rgba($color--near-black, 0.05);
+  }
+
+  &.no-bg{
+    &:hover,
+    &:focus {
+      background: none;
+    }
+  }
+}
+
+
+// ---------- ---------- ---------- ----------
+// - Big Honking Button
+// ---------- ---------- ---------- ----------
+
+.big-honking-button {
+  @extend %button-base;
+  min-width: rem(40);
+  min-height: $form--button-height;
+  padding: 12px 24px 12px 48px;
+  background: $color--asphalte;
+  background-size: 0 100%;
+  color: #fff;
+  font-family: $font--cera;
+  font-size: rem(18);
+  font-style: normal;
+  font-weight: 500;
+  transition: color 0.2s 0s, background-size 0.2s 0.1s;
+  text-transform: uppercase;
+  letter-spacing: 1.05px;
+  border-radius: 4px;
+  position:relative;
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    background-color: black;
+    color: #fff;
+    transition: color 0.2s 0.1s, background-color 0.2s 0s;
+
+    .o-icon--left {
+      transform: translateX(#{rem(-8)});
+    }
+
+    .o-icon--right {
+      transform: translateX(#{rem(8)});
+    }
+  }
+
+
+  &::after {
+    content: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18.7,7.3l-6.7-7c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4L15.7,7H1C0.4,7,0,7.5,0,8s0.4,1,1,1h14.6l-5.1,5.3 c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3c0.3,0,0.5-0.1,0.7-0.3l6.7-7C19.1,8.3,19.1,7.7,18.7,7.3z' fill='white'/%3E%3C/svg%3E");
+    display: block;
+    width: rem(24);
+    height: rem(24);
+    position: absolute;
+    left: rem(16);
+    bottom: rem(10);
+    transition: transform 0.2s;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.96);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+@include up(medium) {
+  .big-honking-button {
+
+  }
+}
+
+
+.big-honking-button--alt {
+  color: $color--near-black;
+
+  &::before {
+    background: $color--beige;
+  }
+
+  &::after {
+    content: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18.7,7.3l-6.7-7c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4L15.7,7H1C0.4,7,0,7.5,0,8s0.4,1,1,1h14.6l-5.1,5.3 c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3c0.3,0,0.5-0.1,0.7-0.3l6.7-7C19.1,8.3,19.1,7.7,18.7,7.3z' fill='black'/%3E%3C/svg%3E");
+  }
+
+  &:hover,
+  &:focus {
+    color: $color--near-black;
+  }
+}
+
+
+.big-honking-button--inversed {
+  color: $color--near-black;
+  background-color: transparent;
+  border: 2px solid $color--near-black;
+
+  &::before {
+    background: #fff;
+  }
+
+  &::after {
+    content: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18.7,7.3l-6.7-7c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4L15.7,7H1C0.4,7,0,7.5,0,8s0.4,1,1,1h14.6l-5.1,5.3 c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3c0.3,0,0.5-0.1,0.7-0.3l6.7-7C19.1,8.3,19.1,7.7,18.7,7.3z' fill='black'/%3E%3C/svg%3E");
+  }
+
+  &:hover,
+  &:focus {
+    background-color: rgba(0,0,0,.04) !important;
+    color: black !important;
+  }
+}
+
+
+.big-honking-button[disabled] {
+  &::before {
+    background: color.adjust($color--near-black, $lightness: 75%);
+  }
+
+  &:hover,
+  &:focus {
+    &::before,
+    &::after {
+      transform: none;
+    }
+  }
+}
+
+
+.big-honking-submit {
+  @extend .big-honking-button;
+}
+
+
+.panel--medium-chin,
+.panel--big-chin {
+  .big-honking-submit {
+
+    bottom:-16px;
+    @include up ('large'){
+      position: absolute;
+      right: calc(50% - #{rem(80)});
+      bottom: rem(32);
+    }
+  }
+
+  .cancel-button + .big-honking-submit {
+    right: rem(20);
+  }
+}
+
+
+@include up(medium) {
+  .panel--medium-chin,
+  .panel--big-chin {
+    .big-honking-submit,
+    .cancel-button + .big-honking-submit {
+      right: rem(80);
+    }
+  }
+}
+
+.icon-button-container{
+  .icon-button {
+    background: rgba(28,33,40,.05);
+    color: get-color(near-black);
+  }
+  &:hover{
+    .small-link-button{
+      background-size: 100% 100%;
+      color: currentColor;
+    }
+  }
+}
+
+.download-button{
+  padding-left: 6px;
+  padding-top: 4px;
+  background: rgba(28,33,40,.05);
+  color: get-color(near-black);
+}
+
+.button.bg-pink{
+  background: $color--primary linear-gradient(to top, #{$color--near-black} 100%, transparent 0) no-repeat left center;
+  background-size: 0 100%;
+}
+
+.button.bg-terra{
+  border:none;
+  &:hover{
+    background-color: #964d47 !important;
+    color: #ffffff !important;
+  }
+}
+
+.button--category{
+  border: 1px solid #B8C9D0;
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: rem(12);
+  img{
+    height: 16px;
+    width:auto;
+  }
+}
+
+// ---------- ---------- ---------- ----------
+// - Vendor Specific
+// ---------- ---------- ---------- ----------
+
+// These won't work in multi-selectors.
+//
+// For ex:
+//
+// .button, input[type="file"]::-webkit-file-upload-button
+//
+// won't work and will even cancel .button
+//
+// @extend won't work either since it compiles
+// to a multi-selector.
+// So you basically have to duplicate all the styles in
+// each of the followings if you need them.
+
+// input[type="file"]::-webkit-file-upload-button {}
+
+// input[type="file"]::-ms-browse {}

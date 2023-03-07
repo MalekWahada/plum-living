@@ -1,0 +1,10 @@
+{% set facadeTypeCode = app.request.get('facadeTypeCode')|lower %}
+
+<div class="tunnel-products-infos">
+    <div class="tunnel-products-infos__title">
+        <div class="t-header-medium">{{ "app.ui.tunnel_shopping.infos_title"|trans }}</div>
+    </div>
+    <div class="tunnel-products-infos__list">
+            {% include 'Shop/UiElement/ProductInfo/product_info_accessory.html.twig' with {'facadeTypeCode': facadeTypeCode, 'taxonCode': taxonCode} %}
+    </div>
+</div>

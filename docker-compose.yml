@@ -1,0 +1,99 @@
+version: '3.4'
+
+services:
+    php:
+        build:
+            context: docker/php
+            target: sylius_php
+        depends_on:
+            - mysql
+        environment:
+            - APP_ENV=dev
+            - APP_SECRET=qz2j3d5q8d9q6j7z1j1d2q3l6z6d9q8z5d4q7z8d52q2zdqzdq
+            - MAILER_URL=smtp://mailhog:1025
+            - PHP_DATE_TIMEZONE=${PHP_DATE_TIMEZONE:-UTC}
+        volumes:
+            - .:/srv/sylius:rw
+            - ./var:/srv/sylius/var:rw
+            - ./public:/srv/sylius/public:rw,delegated
+            - ./public/media:/srv/sylius/public/media:rw
+            - ./docker/php/php.ini:/usr/local/etc/php/php.ini:rw
+            - ./docker/php/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:rw
+            - ./docker/php/php-fpm.d/zzz-plum.conf:/usr/local/etc/php-fpm.d/zzz-plum.conf:rw
+
+    mysql:
+        image: percona:5.7
+        environment:
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-nopassword}
+            - MYSQL_DATABASE=sylius
+            - MYSQL_USER=sylius
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD:-nopassword}
+        volumes:
+            - mysql-data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - "8080:8080"
+        command: [ "php", "-S", "0.0.0.0:8080", "-t", "/var/www/html" ]
+        volumes:
+            - ./docker/adminer/0-upload_large_dumps.ini:/usr/local/etc/php/conf.d/0-upload_large_dumps.ini:rw
+
+    nodejs:
+        build:
+            context: docker/nodejs
+            target: sylius_nodejs
+            cache_from:
+                - quay.io/sylius/php:latest
+                - quay.io/sylius/nodejs:latest
+                - quay.io/sylius/nginx:latest
+        image: quay.io/sylius/nodejs:latest
+        tty: true
+        depends_on:
+            - php
+        environment:
+            - GULP_ENV=dev
+            - PHP_HOST=php
+            - PHP_PORT=9000
+            - NODE_OPTIONS=--max_old_space_size=5120
+        volumes:
+            - .:/srv/sylius:rw,cached
+            - ./public:/srv/sylius/public:rw,delegated
+        ports:
+            - "35729:35729"
+
+    nginx:
+        build:
+            context: docker/nginx
+            target: sylius_nginx
+            cache_from:
+                - quay.io/sylius/php:latest
+                - quay.io/sylius/nodejs:latest
+                - quay.io/sylius/nginx:latest
+        image: quay.io/sylius/nginx:latest
+        depends_on:
+            - php
+            - nodejs # to ensure correct build order
+        volumes:
+            - ./public:/srv/sylius/public:ro
+            - ./public/media:/srv/sylius/public/media:ro
+            - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:rw
+        ports:
+            - "80:80"
+
+    mailhog:
+        # do not use in production!
+        image: mailhog/mailhog:latest
+        environment:
+            - MH_STORAGE=maildir
+        # volumes:
+        #   - ./docker/mailhog/maildir:/maildir:rw,delegated
+        ports:
+            - "8025:8025"
+
+volumes:
+    mysql-data:
+    public-media:

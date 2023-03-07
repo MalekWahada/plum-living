@@ -1,0 +1,56 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set imageFilter = 'app_cms_image_collection_slider' %}
+{% set imageFilterRetina = 'app_cms_image_collection_slider_retina' %}
+
+<div class="media-two-hybrids-columns home-projects-hero img-immersive
+    {% if element.bg_color is defined %}
+        {{ element.bg_color }}
+    {% endif %}">
+    <div class="container static-container">
+        <div class="row u-cross-centered-row fixed-height-row">
+            <div class="@lg:column-6 u-padding-t-10 u-padding-b-3 @lg:u-padding-t-1 @lg:u-padding-b-1 @lg:u-padding-r-12 left-text">
+                <div class="t-header-xsmall">
+                    {% if page.category is defined and page.category is not empty %}
+                        {{ ('app.cms_page.media_article.category.' ~ page.category ~ '.title')|trans }}
+                    {% endif %}
+                </div>
+                <h1 class="t-header-xlarge u-margin-b-2 u-margin-t-2">{{ element.title | raw }}</h1>
+                <div class="t-header-xsmall u-margin-b-3">
+                    {% if page.room is defined and page.room is not empty %}
+                        {{ ('app.ui.cms.chip.room.type_' ~ page.room ~ '')|trans }} |
+                    {% endif %}
+                    {% if page.color is defined and page.color is not empty %}
+                        {{ get_color_from_page(page) }} |
+                    {% endif %}
+                    {% if page.budget is defined and page.budget is not empty %}
+                        {{ (page.budget / 100) | trans }}€
+                    {% endif %}
+
+                </div>
+                {% if element.description is defined and element.description is not empty %}
+                    <p>
+                        {{ element.description | raw }}
+                    </p>
+                {% endif %}
+            </div>
+            <div class="column-fill-space @lg:column-6 left-img">
+                <div class="cms-slider-home-project__container">
+                    <div class="swiper-wrapper">
+                        {% for slide in element.slider %}
+                            {% if slide.image is not empty %}
+                                <div class="swiper-slide">
+                                    <img src="{{ slide.image }}"
+                                         srcset="{{ slide.image }} 2x"
+                                         alt="{{ slide.image_alt|default('') }}"
+                                         title="{{ slide.image_title|default('') }}"/>
+                                </div>
+                            {% endif %}
+                        {% endfor  %}
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

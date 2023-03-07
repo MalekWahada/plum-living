@@ -1,0 +1,18 @@
+{% import "@SyliusUi/Macro/flags.html.twig" as flags %}
+
+<address>
+    <strong>{{ address.firstName }} {{ address.lastName }}</strong>
+    {% if address.company %}
+        {{ address.company }}<br/>
+    {% endif %}
+    {% if address.phoneNumber is not null %}
+        {{ address.phoneNumber|phone_number_parse|phone_number_format('INTERNATIONAL') }}<br/>
+    {% endif %}
+    {{ address.street }}<br/>
+    {{ address.city }}<br/>
+    {% if address|sylius_province_name is not empty %}
+        {{ address|sylius_province_name }}<br/>
+    {% endif %}
+    {{ flags.fromCountryCode(address.countryCode) }}
+    {{ address.countryCode|sylius_country_name|upper }} {{ address.postcode }}
+</address>

@@ -1,0 +1,35 @@
+{% use 'Shop/Form/_field_commons.html.twig' %}
+
+{% set props = field.vars %}
+{% set classAttr = attributes.class|default('') %}
+{% set tabsContainerClassAttr = attributes.tabsContainerClass|default('') %}
+{% set labelClassAttr = attributes.labelClass|default('t-label-medium') %}
+
+<div class="compound-field ratio-tabs-compound-field {{ props.errors is not empty ? 'field--invalid field--has-initial-error' }} {{ classAttr }}"
+{{ block('field_container_attributes') }}>
+    <div class="compound-field__widget u-width-100% u-height-100% u-x-scrollable t-nowrap u-v-align-inside-middle u-h-spaced-5 {{ tabsContainerClassAttr }}">
+        {% if props.placeholder is defined %}
+            <label class="field radio-field">
+                <input
+                type="radio"
+                {{ block('field_widget_attributes') }}
+                value=""
+                {% if props.value is empty %} checked {% endif %}>
+                <span class="field__label field__label--leave-font-size {{ labelClassAttr }}">{{ props.placeholder|trans }}</span>
+            </label>
+        {% endif %}
+        {% for group_label, choice in field.vars.choices %}
+            {% set isSelected = props.value is not empty and choice.value == props.value %}
+            <label class="field radio-field">
+                <input
+                type="radio"
+                {{ block('field_widget_attributes') }}
+                value="{{ choice.value }}"
+                {% if isSelected %} checked {% endif %}>
+                <span class="field__label field__label--leave-font-size {{ labelClassAttr }}">{{ choice.label|trans }}</span>
+            </label>
+        {% endfor %}
+    </div>
+    {{ block('field_help_or_description') }}
+    {{ block('field_errors') }}
+</div>

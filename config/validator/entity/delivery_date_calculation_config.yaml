@@ -1,0 +1,5 @@
+App\Entity\Product\DeliveryDateCalculationConfig:
+    properties:
+        maxDateDelivery:
+            - GreaterThanOrEqual:
+                  propertyPath: minDateDelivery

@@ -1,0 +1,27 @@
+sylius_grid:
+    grids:
+        sylius_admin_product:
+            limits: [50, 500, 200, 100, 25, 10]
+            filters:
+                channel:
+                    type: product_channel
+                    form_options:
+                        label: sylius.ui.channel
+                taxonomy:
+                    type: product_taxonomy
+                    form_options:
+                        label: sylius.ui.taxonomy
+            actions:
+                bulk:
+                    product_complete_info_translation:
+                        type: product_complete_info_translation
+                        options:
+                            link:
+                                route: app_admin_product_complete_info_bulk_translation_publish
+
+    templates:
+        filter:
+            product_channel: 'Grid/Filter/product_channel.html.twig'
+            product_taxonomy: 'Grid/Filter/product_taxon.html.twig'
+        bulk_action:
+            product_complete_info_translation: 'Grid/BulkAction/product_complete_info_translation.html.twig'

@@ -1,0 +1,38 @@
+sylius_grid:
+    grids:
+        app_admin_product_group_export:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%app.model.product_group.class%"
+                    repository:
+                        method: createListQueryBuilder
+                        arguments: [ "expr:service('sylius.context.locale').getLocaleCode()", $taxonId ]
+            sorting:
+                mainTaxon: asc
+                position: asc
+            fields:
+                mainTaxon:
+                    type: twig
+                    label: sylius.ui.main_taxon
+                    sortable: ~
+                    options:
+                        template: "@SyliusAdmin/Product/Grid/Field/mainTaxon.html.twig"
+                position:
+                    type: twig
+                    label: app.ui.generic.position
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/position.html.twig"
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [ code, translation.name ]
+                mainTaxon:
+                    type: entity
+                    label: sylius.ui.main_taxon
+                    enabled: true
+                    form_options:
+                        class: "%sylius.model.taxon.class%"

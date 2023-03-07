@@ -1,0 +1,19 @@
+{% set inspirationContent = inspiration.content|format_cms_content_to_array %}
+
+<div class="cms__item cms__item--inspiration">
+    <a class="u-block u-v-spaced-2 t-link-wrapper" href={{ path('monsieurbiz_cms_inspiration_page_show', {'slug': inspiration.slug}) }}>
+        <div class="cms__img u-relative">
+            {% if inspiration.image.path is defined and inspiration.image.path is not empty %}
+                <img class="slide-cover-image" src="{{ inspiration.image.path|imagine_filter('app_cms_big_thumbnail') }}" srcset="{{ inspiration.image.path|imagine_filter('app_cms_big_thumbnail_retina') }} 2x"/>
+            {% endif %}
+        </div>
+        <div class="cms-slider__content">
+            <div class="content-left">
+                <div class="cms-slider__type t-header-xsmall u-inline-block u-margin-b- c-basic-blue">
+                    {{ inspirationContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_CHIP')) | monsieurbiz_richeditor_render_element }}
+                </div>
+                {{ inspirationContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_MAIN_TITLE')) | monsieurbiz_richeditor_render_element }}
+            </div>
+        </div>
+    </a>
+</div>

@@ -1,0 +1,16 @@
+sylius_grid:
+    grids:
+        sylius_admin_customer:
+            limits: [ 100, 200, 50, 25, 10 ]
+            fields:
+                b2bProgram:
+                    type: twig
+                    label: sylius.ui.grid.b2b_program_enabled
+                    path: .
+                    sortable: ~
+                    options:
+                        template: "@SyliusAdmin/Grid/Field/b2bProgramEnabled.html.twig"
+            filters:
+                b2bProgram:
+                    type: boolean
+                    label: sylius.ui.grid.b2b_program_enabled

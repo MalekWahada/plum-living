@@ -1,0 +1,17 @@
+Sylius\Component\Addressing\Model\Address:
+    constraints:
+        - App\Validator\ZIPCodeConstraint\ZIPCodeReg: 
+            groups: [sylius]
+    properties:
+        city:
+            - Regex:
+                pattern: '/^[^0-9]+$/m'
+                message: 'app.form.address.city.no_digit'
+                groups: [app_address]
+
+App\Entity\Addressing\Address:
+    properties:
+        shippingNotes:
+            - Length:
+                  max: 150
+                  groups: [sylius]

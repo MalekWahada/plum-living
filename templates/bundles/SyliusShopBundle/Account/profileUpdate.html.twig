@@ -1,0 +1,148 @@
+{% extends '@SyliusShop/Account/layout.html.twig' %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block title %}{{ 'sylius.ui.your_profile'|trans }} | {{ parent() }}{% endblock %}
+
+{% block subcontent %}
+    <main class="panel account-profile-panel panel--big-chin panel--big-cheeks">
+        <h1 class="panel__title t-header-medium">{{ 'app.ui.account.profile.title'|trans }}</h1>
+        {{ form_start(form, {'action': path('sylius_shop_account_profile_update'), 'attr': {'class': 'panel__content row u-margin-b-5'}}) }}
+            {{ sylius_template_event('sylius.shop.account.profile.update.after_content_header', {'customer': customer, 'form': form}) }}
+            <input type="hidden" name="_method" value="PUT" />
+
+            <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.firstName } %}
+            </div>
+            <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.lastName } %}
+            </div>
+
+            <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.email, 'attributes': {'type': 'email'} } %}
+            </div>
+
+            <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_text_field.html.twig' with {
+                    'field': form.birthday,
+                    'widget_attributes': {
+                        'data-focus-placeholder': 'jj/mm/aaaa',
+                    },
+                    'attributes': {
+                        'class': 'focus-placeholder-field',
+                    }
+                } %}
+            </div>
+
+            <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_select_field.html.twig' with { 'field': form.gender } %}
+            </div>
+
+            <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_phonenumber_field.html.twig' with { 'field': form.phoneNumber } %}
+            </div>
+
+            <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_select_field.html.twig' with { 'field': form.preferredTranslationSlug } %}
+            </div>
+
+            <div id="customerTypeSwitchContainer" class="column @md:column-6  u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_select_field.html.twig' with { 'field': form.customerType } %}
+            </div>
+
+            <div id="ProFieldsContainer" class="column column-12 {{ not customer.hasB2bProgramOrIsEligibleToB2bProgram ? 'u-hidden' : '' }}">
+                <h1 class="panel__title t-header-medium">
+                    {{ 'app.ui.login_register.b2b_section_title'|trans }}
+                </h1>
+                <div class="row">
+                    <div class="column @md:column-6">
+                        <div class=" u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyName, 'isLabelRequired': true } %}
+                        </div>
+
+                        <div class="u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyStreet, 'isLabelRequired': true } %}
+                        </div>
+
+                        <div class="u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyCity, 'isLabelRequired': true } %}
+                        </div>
+
+                        <div class=" u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyInstagram } %}
+                        </div>
+                        <div class="u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_b2b_program_checkbox_field.html.twig' with { 'label': ('sylius.form.customer.b2b_subscription'|trans({'%url%': get_url_from_page_code('terra-club')}))|raw,'field': form.b2bProgram, 'attributes': { 'labelClass': 't-label-medium' } } %}
+                        </div>
+                    </div>
+
+                    <div class="column @md:column-6">
+                        <div class="u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.vatNumber, 'isLabelRequired': true } %}
+                        </div>
+
+                        <div class="u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyPostcode, 'isLabelRequired': true } %}
+                        </div>
+
+                        <div class="u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_select_field.html.twig' with { 'field': form.companyCountryCode, 'isLabelRequired': true, usePlaceholder: false } %}
+                        </div>
+
+                        <div class="u-margin-b-4 @md:u-margin-b-5">
+                            {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyWebsite } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column @md:column-12">
+                {% include 'Shop/Form/_checkbox_field.html.twig' with { 'field': form.subscribedToNewsletter } %}
+            </div>
+
+            {{ sylius_template_event('sylius.shop.account.profile.update.form', {'customer': customer, 'form': form}) }}
+
+            {%- if customer.hasB2bProgram -%}
+                <div class="column @md:column-12" id="b2b-advantages-block">
+                    <div class="popin__terraclub bg-terra u-margin-t-3" >
+                        <div class="row">
+                            <div class="u-hidden @wd:u-block @wd:column-4 popin__terraclub-left">
+                                <img class="popin__terraclub-img" src="{{ asset('build/shop/images/terra-club.jpg', 'shop') }}" srcset="{{ asset('build/shop/images/terra-club.jpg', 'shop') }} 2x">
+                            </div>
+                            <div class="column-12 @wd:column-8 u-padding-r-1">
+                                <div class="popin__terraclub-text u-padding-t-3 u-padding-r-3 u-padding-l-3">
+                                    <h2 class="t-header-medium u-margin-b-2">{{ 'app.ui.account.b2b_code.title'|trans|raw }}</h2>
+                                    <div class="code t-base-small">
+                                        {{ 'app.ui.account.b2b_code.text'|trans|raw }}
+                                        <span class="copy-code" data-clipboard="{{ customer.personalCoupon.code|default('-')}}" data-clipboard-copied-text="{{ 'app.ui.generic.copied'|trans }}">{{ customer.personalCoupon.code|default('-')}}</span>
+                                    </div>
+                                </div>
+                                <div class="popin__terraclub-links u-padding-l-3 u-padding-t-3 u-padding-b-3 u-padding-r-1">
+                                    {{ 'app.ui.account.b2b_code.link'|trans({
+                                        '%url%': get_url_from_page_code('terra-club'),
+                                        '%ICON_LIB_URL%': iconLibUrl
+                                    })|raw }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-align-center column u-margin-t-3">
+                    {{ 'app.ui.account.b2b_code.need_help'|trans|raw }}
+                </div>
+            {%- endif -%}
+
+            <div class="column">
+                <a class="cancel-button c-grey-dark u-margin-b-3 @lg:u-margin-b-0" href="{{ path('sylius_shop_account_change_password') }}">
+                    <svg class="o-icon-16 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                    {{ 'sylius.ui.change_password'|trans }}
+                </a>
+                <button type="submit" class="big-honking-submit" {{ sylius_test_html_attribute('save-changes') }}>{{ 'app.ui.generic.save'|trans }}</button>
+            </div>
+
+        {{ form_row(form._token) }}
+        {{ form_end(form, {'render_rest': false}) }}
+        <div id="proChoicesAvailable" data-choices="{{ constant('App\\Provider\\Customer\\CustomerTypeChoicesProvider::CHOICES_B2B')|json_encode }}"></div>
+    </main>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title t-header-large">
+            {{ 'app.cms_page.conception_services.form_confirmation.title'|trans}}
+        </h1>
+        <h5 class="page-title t-header-medium">
+            <svg class="o-icon-40 c-green-light">
+                <use xlink:href="{{ iconLibUrl }}#SVG-icon-check-circle"/>
+            </svg>
+            {{ 'app.cms_page.conception_services.form_confirmation.subtitle'|trans}}
+        </h5>
+        <div class="row">
+            <main class="column @lg:column-fill-space t-align-center">
+                <div class="panel">
+                    <div class="panel__header u-margin-b-5">
+                        <p class="t-base-medium">
+                            {% set url = path('inspiration_index') %}
+                            {{ 'app.cms_page.conception_services.form_confirmation.text'|trans({ '%URL%': url })|raw }}
+                            <span class="t-canela">
+                                {{ 'app.cms_page.conception_services.form_confirmation.signature'|trans}}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% include 'Shop/GoogleTagManager/conception_service.javascripts.twig' %}
+    <script>
+      window.addEventListener("DOMContentLoaded", function() {
+          gtmConceptionServiceCompleted();
+      });
+    </script>
+{% endblock %}

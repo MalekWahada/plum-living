@@ -1,0 +1,77 @@
+name: Deploy on preprod
+
+on: [workflow_dispatch]
+
+concurrency: preprod
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
+
+            -   name: SSH Agent
+                uses: webfactory/ssh-agent@v0.5.4
+                with:
+                    ssh-private-key: ${{ secrets.HUBSPOT_BUNDLE_DEPLOY_KEY }}
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    extensions: gd, intl, mbstring, pdo_mysql, soap
+                    php-version: 7.4
+                    tools: composer:v2
+
+            -   name: Validate composer.json and composer.lock
+                run: composer validate
+
+            -   name: Install Composer dependencies
+                run: composer install --no-ansi --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader
+
+            -   name: Setup Node
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 14
+
+            -   name: Install assets
+                run: |
+                    yarn install --force
+                    yarn build
+                    yarn encore prod
+
+            -   name: Deploy code on server
+                uses: burnett01/rsync-deployments@5.1
+                env:
+                    # Reset exported env vars to avoid conflict with SSH Agent
+                    SSH_AUTH_SOCK: ""
+                    SSH_AGENT_PID: ""
+                with:
+                    switches: -avzr --delete --exclude=".env.*" --exclude=".git" --exclude="assets" --exclude="fixtures/Images" --exclude="node_modules" --exclude="features" --exclude="tests"
+                    path: .
+                    remote_path: ${{ secrets.PREPROD_DEPLOY_PATH }}
+                    remote_host: ${{ secrets.PREPROD_HOST }}
+                    remote_user: ${{ secrets.PREPROD_USERNAME }}
+                    remote_key: ${{ secrets.PREPROD_KEY }}
+
+            -   name: Install app
+                if: success()
+                uses: appleboy/ssh-action@v0.1.4
+                env:
+                    # Reset exported env vars to avoid conflict with SSH Agent
+                    SSH_AUTH_SOCK: ""
+                    SSH_AGENT_PID: ""
+                with:
+                    host: ${{ secrets.PREPROD_HOST }}
+                    USERNAME: ${{ secrets.PREPROD_USERNAME }}
+                    KEY: ${{ secrets.PREPROD_KEY }}
+                    script_stop: true
+                    script: |
+                        rsync -avzr --delete --exclude=".env.local" --exclude="var/cache/*" --exclude="public/assets" --exclude="public/media" --exclude="public/bundles" ${{ secrets.PREPROD_DEPLOY_PATH }} ${{ secrets.PREPROD_APP_PATH }}
+                        cd ${{ secrets.PREPROD_APP_PATH }}
+                        php bin/console cache:clear || exit 1
+                        php bin/console doctrine:migrations:migrate --no-interaction || exit 1
+                        php bin/console d:s:u --dump-sql --force || exit 1
+                        php bin/console asset:install || exit 1
+                        php bin/console cache:clear || exit 1

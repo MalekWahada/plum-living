@@ -1,0 +1,52 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% set lastPayment = order.payments.last() %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title t-header-large" {{ sylius_test_html_attribute('thank-you') }}>
+            {{ 'app.ui.checkout.step_5_content.page_title'|trans }}
+        </h1>
+        <h5 class="page-title t-header-medium">{{ 'app.ui.checkout.payment_content.page_subtitle'|trans }}</h5>
+        {% include '@SyliusShop/_flashes.html.twig' %}
+
+        {% if lastPayment != false %}
+            {%  if lastPayment.method.instructions is not null %}
+                <div id="sylius-payment-method-instructions"
+                class="t-base-medium u-margin-b-5 u-padding-2 t-align-center"
+                {{ sylius_test_html_attribute('payment-method-instructions') }}>
+                    {{ lastPayment.method.instructions }}
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div class="t-align-center u-margin-b-6 u-h-spaced-3">
+        {% if order.customer.user is not null %}
+            <a class="link-button" href="{{ path('sylius_shop_account_order_index') }}">
+                {{ 'app.ui.checkout.step_5_content.see_my_orders'|trans }}
+            </a>
+        {% else %}
+            {% if lastPayment.state != 'completed' %}
+                <a href="{{ path('sylius_shop_order_show', {'tokenValue': order.tokenValue}) }}" id="payment-method-page" class="link-button" {{ sylius_test_html_attribute('payment-method-page') }}>
+                    {{ 'sylius.ui.change_payment_method'|trans }}
+                </a>
+            {% endif %}
+            <a href="{{ path('sylius_shop_register_after_checkout', {'tokenValue': order.tokenValue}) }}" class="link-button" {{ sylius_test_html_attribute('create-an-account') }}>
+                {{ 'sylius.ui.create_an_account'|trans }}
+            </a>
+        {% endif %}
+        </div>
+
+        <div class="checkout-main-row row">
+            <main class="column @lg:column-7">
+                <div class="checkout-confirmation-panel panel">
+                    <h2 class="panel__title t-header-medium">{{ 'app.ui.checkout.step_5_content.panel_title'|trans }}</h2>
+                    {% include '@SyliusShop/Common/Order/_summary.html.twig' %}
+                </div>
+            </main>
+            <aside class="column @lg:column-5 u-margin-t-5 @lg:u-margin-t-0">
+                {% include '@SyliusShop/Checkout/_summary.html.twig' %}
+            </aside>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set articleContent = page.content|format_cms_content_to_array %}
+
+<div class="cms__container">
+    <div class="cms-header">
+        <div class="cms-header__container container u-padding-t-7 @lg:u-padding-t-12">
+            <div class="flush-row">
+                {#Labels + Title + Text + Button#}
+                <div class="cms-header__left @md:flush-column-5">
+                    {# Labels #}
+                    {% set differenceTime = date(date()).diff(page.createdAt) %}
+                    {% if differenceTime.y != 0 %}
+                        {% set differenceTime = 'app.ui.shop.article.years'|trans({'%years%': differenceTime.y}) %}
+                    {% elseif differenceTime.m != 0 %}
+                        {% set differenceTime = 'app.ui.shop.article.months'|trans({'%months%': differenceTime.m}) %}
+                    {% else %}
+                        {% set differenceTime = 'app.ui.shop.article.days'|trans({'%days%': differenceTime.d}) %}
+                    {% endif %}
+
+                    {% set lectureTime = 'app.ui.shop.article.lecture_time'|trans({'%time%': articleContent|get_lecture_time}) %}
+                    <div class="cms-header-label">
+                        <div class="cms-header-label__duration t-label-small">
+                            {% include 'Shop/UiElement/label.html.twig' with { 'element': differenceTime } only %}
+                        </div>
+                        <div class="cms-header-label__lecture t-label-small">
+                            {% include 'Shop/UiElement/label.html.twig' with { 'element': lectureTime } only %}
+                        </div>
+                    </div>
+                    <div class="t-header-xsmall u-margin-t-4">
+                        {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_CHIP')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                    {#Title#}
+                    {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_MAIN_TITLE')) | monsieurbiz_richeditor_render_element }}
+                    {#Text#}
+                    {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_SHORT_DESC')) | monsieurbiz_richeditor_render_element }}
+                    {#Button#}
+                    <div class="cms-header__btn cms-anchor">
+                        {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_READ_BUTTON')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                </div>
+
+                {# Image #}
+                <div class="cms-header__right @md:flush-column-7">
+                    {% if page.image.path is defined and page.image.path is not empty %}
+                        <div class="cms-header__img">
+                            <img class="u-cover"
+                                 src="{{ page.image.path|imagine_filter('app_cms_main_image') }}" srcset="{{ page.image.path|imagine_filter('app_cms_main_image_retina') }} 2x" alt=""/>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cms__content container" id="cms-anchor">
+        {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_CONTENT')) |monsieurbiz_richeditor_render_elements }}
+    </div>
+    <div class="cms-cta u-cross-centered-col">
+        {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_DISCOVER_OTHER_PROJECTS_TITLE')) | monsieurbiz_richeditor_render_element }}
+        <div class="cms-cta__btn">
+            {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_DISCOVER_OTHER_PROJECTS_BUTTON')) | monsieurbiz_richeditor_render_element }}
+        </div>
+    </div>
+    <div class="cms-slider u-cross-centered-col">
+        <div class="cms-slider__header container">
+            <div class="row align-items-center u-fullwidth cross-content-title">
+                <div class="column-11">
+                    {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_OTHER_PAGES_TITLE')) | monsieurbiz_richeditor_render_element }}
+                    {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_OTHER_PAGES_BACK_BUTTON')) | monsieurbiz_richeditor_render_element }}                </div>
+                <div class="column-1">
+                    <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78 cms-slider__arrow--right-new">
+                        <use xlink:href="{{ iconLibUrl }}#SVG-arrow-right-fill--white-new"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="cms-slider__container swiper-container">
+            <div class="swiper-wrapper">
+                {{ articleContent | get_article_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::ARTICLE_OTHER_PAGES')) | monsieurbiz_richeditor_render_element }}
+            </div>
+        </div>
+    </div>
+</div>

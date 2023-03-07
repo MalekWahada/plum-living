@@ -1,0 +1,36 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+@use '../../abstract/css-top-level/css-top-level-config' as *;
+
+/*
+  Components cms
+  ---------- ---------- ---------- ---------- ----------
+*/
+@import './partials/card';
+@import './partials/chip';
+@import './partials/products';
+@import './partials/sheets';
+@import './partials/slider';
+@import './partials/mosaic';
+@import './partials/steps';
+@import './partials/values';
+@import './partials/colors';
+@import './partials/modal';
+@import './partials/box';
+@import './partials/popin';
+
+/*
+  Pages cms
+  ---------- ---------- ---------- ---------- ----------
+*/
+@import './pages/default';
+@import './pages/article';
+@import './pages/project';
+@import './pages/listing';
+@import './pages/concept';
+@import './pages/design-et-finition';
+@import './pages/faq';
+@import './pages/homepage';
+@import './pages/quote-home';
+@import './pages/services';
+

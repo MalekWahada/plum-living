@@ -1,0 +1,24 @@
+{% if element.cards is not empty %}
+    {% for card in element.cards %}
+        <center>
+            {% if card.image is defined and card.image is not empty %}
+                <img style="width: 100px; height: 100px;" class="ui fluid image" src="{{ card.image.image|imagine_filter('app_cms_image') }}"
+                     alt="{{ card.image.alt|default('') }}" title="{{ card.image.title|default('') }}"/>
+                {% if card.withIcon %} {{ 'app.ui.cms.admin.cards.with_icon'|trans }} {% endif %}
+            {% endif %}
+
+            {{ card.content | raw }}
+
+            {% if card.link is not null and card.linkLabel is not null %}
+                <br><br>
+                {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ButtonLink/default_button_link.html.twig' with {
+                    'element': {
+                        'label': card.linkLabel,
+                        'link': card.link,
+                    }
+                } %}
+            {% endif %}
+            {% if not loop.last %} <hr> {% endif %}
+        </center>
+    {% endfor %}
+{% endif %}

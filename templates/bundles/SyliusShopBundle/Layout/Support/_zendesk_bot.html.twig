@@ -1,0 +1,27 @@
+{# Start of plum-kitchen Zendesk Widget script #}
+<script>
+    {# load script delayed ! #}
+    document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('scroll', initZendeskOnEvent);
+        document.addEventListener('mousemove', initZendeskOnEvent);
+        document.addEventListener('touchstart', initZendeskOnEvent);
+    });
+
+    function initZendeskOnEvent(event) {
+        event.currentTarget.removeEventListener('scroll', initZendeskOnEvent); // remove the event listener that got
+        event.currentTarget.removeEventListener('mousemove', initZendeskOnEvent); // remove the event listener that got
+        event.currentTarget.removeEventListener('touchstart', initZendeskOnEvent); // remove the event listener that got
+        // event.currentTarget.removeEventListener('DOMContentLoaded', initZendeskOnEvent); // remove the event listener that got
+        initZendesk();
+    }
+
+    function initZendesk() {
+        var script   = document.createElement("script");
+        script.type  = "text/javascript";
+        script.id = 'ze-snippet';
+        script.src   = "https://static.zdassets.com/ekr/snippet.js?key={{ zendesk_support_chat_bot_key }}";    // use this for linked script
+        document.getElementsByTagName("head")[0].appendChild(script);
+    }
+</script>
+{# End of plum-kitchen Zendesk Widget script #}
+

@@ -1,0 +1,25 @@
+parameters:
+    env(ENABLE_API_ORDER_INCONSISTENCY_ERROR): true
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\ApiPlatform\Serializer\OrderSerializer:
+        arguments:
+            $normalizer: '@api_platform.serializer.normalizer.item'
+            $enableApiOrderInconsistencyError: '%env(bool:ENABLE_API_ORDER_INCONSISTENCY_ERROR)%'
+
+    App\ApiPlatform\Serializer\OrderItemSerializer:
+        arguments:
+            - '@api_platform.serializer.normalizer.item'
+
+    App\ApiPlatform\Serializer\PaymentSerializer:
+        arguments:
+            - '@api_platform.serializer.normalizer.item'
+
+    App\ApiPlatform\Serializer\AdjustmentSerializer:
+        arguments:
+            - '@api_platform.serializer.normalizer.item'

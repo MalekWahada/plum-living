@@ -1,0 +1,98 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set quotationHomeContent = page.content | format_cms_content_to_array %}
+
+<div class="cms__container">
+    <div class="bg-beige u-padding-b-3 u-margin-b-10 @lg:u-padding-b-6 @lg:u-margin-b-8">
+        <div class="container">
+            <div class="page-header flush-container container--compressed t-align-center @lg:u-margin-b-6">
+                {{ quotationHomeContent | get_quotation_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::QUOTATION_HOME_MAIN_TITLE')) | monsieurbiz_richeditor_render_element }}
+            </div>
+            {{ quotationHomeContent | get_quotation_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::QUOTATION_HOME_PAGES_CARDS')) | monsieurbiz_richeditor_render_element }}
+        </div>
+    </div>
+
+    <div class="bg-true-white cms__content__default">
+        <div class="container">
+            <div class="page-header flush-container t-align-center @lg:u-margin-b-8">
+                <div class="cms__title">
+                    <h1 class="t-header-large t-link-proxy">
+                        {{ 'app.cms_page.devis_services.title'|trans }}
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="fluid-container u-padding-0">
+
+            <div class="flush-row u-center-on-cross u-margin-b-10 help-fullwdith-card t-align-center @lg:t-align-left">
+                <div class="u-block @lg:u-hidden @lg:column-6 u-padding-0 u-relative">
+                    <img class="u-block u-cover u-fullwidth" src="{{ asset('build/shop/images/team.jpeg', 'shop') }}" srcset="{{ asset('build/shop/images/team.jpeg', 'shop')}} 2x">
+                    <div class="help-fullwdith-card__icon u-absolute bg-near-black c-true-white right">
+                        <svg class="o-icon-40 u-block"><use xlink:href="{{ iconLibUrl }}#SVG-icon-phone"></use></svg>
+                    </div>
+                </div>
+                <div class="@lg:column-6">
+                    <div class="cms__text cms-body-alt u-fill-space u-margin-t-0 t-base-medium @lg:u-padding-l-13 u-padding-4">
+                        <h3>{{ 'app.cms_page.devis_services.call_title'|trans }}</h3>
+                        <p>
+                            {{ 'app.cms_page.devis_services.call_text'|trans }}
+                        </p>
+                        <img class="u-block gift-badge u-visible-fr u-margin-t-3 u-margin-auto @lg:u-margin-l-0" src="{{ asset('build/shop/images/badge-gift.svg', 'shop') }}" srcset="{{ asset('build/shop/images/badge-gift.svg', 'shop')}} 2x" />
+                        <img class="u-block gift-badge u-visible-nl u-margin-t-3 u-margin-auto @lg:u-margin-l-0" src="{{ asset('build/shop/images/forfree-NL.svg', 'shop') }}" srcset="{{ asset('build/shop/images/forfree-NL.svg', 'shop')}} 2x" />
+                        <img class="u-block gift-badge u-visible-de u-margin-t-3 u-margin-auto @lg:u-margin-l-0" src="{{ asset('build/shop/images/forfree-DE.svg', 'shop') }}" srcset="{{ asset('build/shop/images/forfree-DE.svg', 'shop')}} 2x" />
+                        <img class="u-block gift-badge u-visible-en u-margin-t-3 u-margin-auto @lg:u-margin-l-0" src="{{ asset('build/shop/images/forfree-EN.svg', 'shop') }}" srcset="{{ asset('build/shop/images/forfree-EN.svg', 'shop')}} 2x" />
+                    </div>
+                </div>
+                <div class="u-hidden @lg:u-block @lg:column-6 u-padding-0 u-relative">
+                    <img class="u-block u-cover u-fullwidth" src="{{ asset('build/shop/images/team.jpeg', 'shop') }}" srcset="{{ asset('build/shop/images/team.jpeg', 'shop')}} 2x" />
+                    <div class="help-fullwdith-card__icon u-absolute bg-near-black c-true-white right">
+                        <svg class="o-icon-40 u-block"><use xlink:href="{{ iconLibUrl }}#SVG-icon-phone"></use></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-grey-dark t-align-center c-near-white u-padding-t-8 u-padding-b-8 u-margin-b-12 cms-button-ui-fix">
+        <h3 class="t-header-large">
+            {{ 'app.cms_page.devis_services.conception_title'|trans }}
+        </h3>
+        {{ quotationHomeContent | get_quotation_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::QUOTATION_HOME_BUTTON')) | monsieurbiz_richeditor_render_element }}
+    </div>
+
+    <div class="cross-content-slider cms-slider u-cross-centered-col">
+        <div class="cms-slider__header container">
+            {{ quotationHomeContent | get_quotation_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::QUOTATION_HOME_CROSS_CONTENT_TITLE')) | monsieurbiz_richeditor_render_element }}
+            {{ quotationHomeContent | get_quotation_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::QUOTATION_HOME_CROSS_CONTENT_BACK_LINK')) | monsieurbiz_richeditor_render_element }}
+        </div>
+        <div class="cms-slider__container swiper-container">
+            <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78"><use xlink:href="{{ iconLibUrl }}#SVG-arrow-fill--white"/></svg>
+            <div class="swiper-wrapper">
+                {{ quotationHomeContent | get_quotation_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::QUOTATION_HOME_CROSS_CONTENT_PAGES')) | monsieurbiz_richeditor_render_element }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui-modal ui-modal--has-border ui-modal--dark" id="dont-forget-front-modal">
+    <div class="ui-modal__scrollbox u-y-scrollable">
+        <div class="ui-modal__dialog">
+            <div class="ui-modal__content flush-row u-center-on-main">
+                <div class="@sm:flush-column-10 @md:flush-column-fill-space @md:u-margin-l-4">
+                    <h2 class="u-margin-b-2 t-header-medium">
+                        {{ 'app.ui.plum_scanner.step_two.prepare_front.modal_title'|trans }}
+                    </h2>
+                    <p class="u-margin-b-2">
+                        {{ 'app.ui.plum_scanner.step_two.prepare_front.modal_subtitle'|trans|raw }}
+                    </p>
+                    <p class="u-margin-b-2">
+                        {{ 'app.ui.plum_scanner.step_two.prepare_front.modal_content'|trans|raw }}
+                    </p>
+                    <a class="button button--inversed">
+                        {{ 'app.ui.plum_scanner.step_two.prepare_front.modal_button_text'|trans }}
+                        <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

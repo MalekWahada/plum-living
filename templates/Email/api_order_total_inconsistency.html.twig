@@ -1,0 +1,8 @@
+{%- block subject -%}
+    Sylius API Error - Total inconsistency detected for Order #{{ order.number }} ({{ gap|default('?') }}€ gap)
+{%- endblock -%}
+
+{% block body %}
+    Order #{{ order.number }} (id {{ order.id }}) has an inconsistency error. Calculated total is {{ sumup|default('?') }} and order total is {{ total|default('?') }}. Gap is {{ gap|default('?') }}
+
+{% endblock %}

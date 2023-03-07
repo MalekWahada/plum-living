@@ -1,0 +1,17 @@
+{% if element.pages is not empty %}
+    {% set pages = ui_element.getPagesListing(element.pages) %}
+    <div class="container">
+        <h2 class="t-header-large">{{ element.title }}</h2>
+        {% for singlePage in pages %}
+            {% if singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_INSPIRATION') %}
+                {% include 'Shop/Plum/Media/_single_thematique_slider_item.html.twig' with {'inspiration': singlePage} %}
+            {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_PROJECT') %}
+                {% include 'Shop/Plum/Media/_single_thematique_slider_item_project.html.twig' with {'project': singlePage} %}
+            {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_ARTICLE') %}
+                {% include 'Shop/Plum/Media/_single_thematique_slider_item.html.twig' with {'article': singlePage} %}
+            {% elseif singlePage.type == constant('App\\Entity\\Page\\Page::PAGE_TYPE_MEDIA_ARTICLE') %}
+                {% include 'Shop/Plum/Media/_single_thematique_slider_item.html.twig' with {'article': singlePage} %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}

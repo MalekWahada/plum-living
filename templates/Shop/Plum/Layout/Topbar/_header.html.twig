@@ -1,0 +1,63 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set menuItems = knp_menu_get('shop_navigation') %}
+{% set userAccountUrl = path('sylius_shop_register') %}
+
+{% if is_granted('ROLE_USER') %}
+    {% set userAccountUrl = path('sylius_shop_account_profile_update') %}
+{% endif %}
+
+{% include 'Shop/Plum/Layout/Topbar/_menu_toggle.html.twig' with { 'id': 'HeaderMenuToggle' } %}
+
+<header class="plum-header">
+    {% include 'Shop/Plum/Layout/Topbar/_ribbon.html.twig' %}
+    {% include 'Shop/Plum/Layout/Topbar/_locale_choice.html.twig' %}
+    <div class="plum-header__main u-cross-stretched-row">
+        <div class="plum-header__left-area u-cross-centered-row">
+            {% include 'Shop/Plum/Layout/Topbar/_menu_toggle.html.twig' %}
+            <a href="{{ path('sylius_shop_homepage') }}" class="plum-header__logo u-cross-centered-row c-true-black hover:c-true-black">
+                <svg aria-label="Plum Kitchen" viewBox="0 0 90 40"><use xlink:href="{{ iconLibUrl }}#SVG-logo-full"/></svg>
+            </a>
+        </div>
+        <div class="plum-header__right-area u-cross-centered-row u-margin-l-auto">
+            <nav class="plum-nav u-hidden @lg:u-flex">
+                {% include 'Shop/Plum/Layout/Topbar/_nav_items.html.twig' with {
+                    'itemList': menuItems,
+                    'blockName': 'plum-nav',
+                    'depth_n_class': 'ripple-button'
+                } %}
+            </nav>
+            {# TODO store social media urls in one place ? #}
+            <a href="{{ 'app.ui.cms.instagram_url'|trans }}" target="_blank" class="icon-button ripple-button u-hidden @lg:u-flex" data-dark-ripple>
+                <svg class="o-icon-20"><use xlink:href="{{ iconLibUrl }}#SVG-icon-instagram-thin"/></svg>
+            </a>
+            <a href="{{ userAccountUrl }}" class="icon-button ripple-button user-icon u-hidden @lg:u-flex" data-dark-ripple>
+                <span class="u-sr-only">
+                    {% if is_granted('ROLE_USER') %}
+                        {{ 'app.ui.generic.my_account'|trans }}
+                    {% else %}
+                        {{ 'sylius.ui.register'|trans }} / {{ 'sylius.ui.login'|trans }}
+                    {% endif %}
+                </span>
+                <svg class="o-icon-20"><use xlink:href="{{ iconLibUrl }}#SVG-icon-user"/></svg>
+            </a>
+            {{ render(url('sylius_shop_partial_cart_summary', {'template': '@SyliusShop/Cart/_widget.html.twig'})) }}
+            <a class="plum-nav__link ripple-button quotation-home-button c-near-black button u-hidden styler-home-button @lg:u-block u-margin-l-4" href="{{ path('app_plum_styler_index') }}">
+                <span>{{ 'app.menu.shop.nav.styler_button'|trans }}</span>
+            </a>
+            <a class="plum-nav__link ripple-button quotation-home-button button c-near-white u-hidden @lg:u-block" href="{{ get_url_from_page_code('quotation-home') }}">
+                <svg class="o-icon-16 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                <span>{{ 'app.menu.shop.nav.quotation_button'|trans }}</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+{# devis modal #}
+<div id="devis-modal" class="devis-modal ui-modal ui-modal--dark">
+    <div class="ui-modal__scrollbox u-y-scrollable">
+        <div class="ui-modal__dialog">
+            {% include '@MonsieurBizSyliusCmsPagePlugin/Shop/Page/CustomCMSRender/IFrames/_frame_popup.html.twig' with {pageCode: constant('App\\Provider\\CMS\\PageCode\\PageCodeProvider::PAGE_QUOTATION_POPUP')} %}
+        </div>
+    </div>
+</div>
+{# devis modal #}

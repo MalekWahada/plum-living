@@ -1,0 +1,39 @@
+{% use 'Shop/Form/_field_commons.html.twig' %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set props = field.vars %}
+{% set typeAttr = attributes.type|default('text') %}
+{% set classAttr = attributes.class|default('') %}
+{% set labelClassAttr = attributes.labelClass|default('t-label-small') %}
+{% set widgetClassAttr = '' %}
+
+{% if widget_attributes is defined %}
+    {% set widgetClassAttr = widget_attributes.class|default('') %}
+    {% set widget_attributes = widget_attributes|filter((value, key) => key != 'class') %}
+{% endif %}
+
+{% apply spaceless %}
+    <label class="field text-field u-relative {{ props.value is not empty ? 'field--fill' }} {{ props.errors is not empty ? 'field--invalid field--has-initial-error' }} {{ classAttr }}" {{ block('field_container_attributes') }}>
+        <div class="field__wrapper">
+            {{ block('field_label') }}
+            <input
+            type="{{ typeAttr }}"
+            class="field__widget {{ widgetClassAttr }}
+            {% if typeAttr == 'password' %} password-field  {% endif %}"
+            {{ block('field_widget_attributes') }}
+            {{ block('field_widget_value_attribute') }}>
+        </div>
+        {% if typeAttr == 'password' %}
+            <div class="show-password-icon">
+                <svg class="o-icon-20 show-icon">
+                    <use xlink:href="{{ iconLibUrl }}#SVG-icon-show"/>
+                </svg>
+                <svg class="o-icon-20 hide-icon">
+                    <use xlink:href="{{ iconLibUrl }}#SVG-icon-hide"/>
+                </svg>
+            </div>
+        {% endif %}
+        {{ block('field_help_or_description') }}
+        {{ block('field_errors') }}
+    </label>
+{% endapply %}

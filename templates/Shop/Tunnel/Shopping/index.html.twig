@@ -1,0 +1,47 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% block metatags %}
+    {% set filters = ['pax', 'metod'] %}
+    {% set filter =  app.request.attributes.get('facadeTypeCode') %}
+    {% if filter in filters %}
+        <meta property="og:type" content="{{ ('app.cms_page.eshop.'~filter~'.meta.type')|trans }}"/>
+        <meta property="og:title" content="{{ ('app.cms_page.eshop.'~filter~'.meta.title')|trans }}"/>
+        <meta name="description" property="og:description" content="{{ ('app.cms_page.eshop.'~filter~'.meta.description')|trans }}"/>
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {{ "app.ui.tunnel_shopping.title"|trans }}
+{% endblock %}
+
+{% set selectedDesign = '' %}
+{% set selectedFinish = '' %}
+{% set selectedColor = '' %}
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title t-header-large u-margin-b-2">{{ facadeType.name }}</h1>
+            <div class="t-header-small t-align-center">{{ "app.ui.tunnel_shopping.subtitle"|trans }}</div>
+        </div>
+        <div class="tunnel">
+            <div class="tunnel-sidebar u-margin-b-4 @lg:u-margin-r-5 @lg:u-fit-content">
+                {{ sideBarMenu|raw }}
+            </div>
+            <div class="tunnel-main-content @lg:u-fill-space">
+                {{ optionListView|raw }}
+            </div>
+            <div class="ajax-main-content" style="display : none"></div>
+        </div>
+    </div>
+
+    {# product modal #}
+    <div id="tunnel-modal" class="ui-modal"></div>
+    {# product modal #}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ sylius_template_event('app.shop.facade.scripts') }}
+{% endblock %}

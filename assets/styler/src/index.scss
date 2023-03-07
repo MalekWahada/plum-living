@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: 'Cera Pro' 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: 'Cera Pro';
+  src: url(~@plum/fonts/Cera/Cera-Pro-Regular.ttf) format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Cera Pro';
+  src: url(~@plum/fonts/Cera/Cera-Pro-Medium.ttf) format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Cera Pro';
+  src: url(~@plum/fonts/Cera/Cera-Pro-Bold.ttf) format('truetype');
+  font-weight: 800;
+}

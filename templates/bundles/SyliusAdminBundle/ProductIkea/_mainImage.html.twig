@@ -1,0 +1,7 @@
+{% if product_ikea.image %}
+    {% set path = product_ikea.image.path %}
+{% else %}
+    {% set path = '//placehold.it/50x50' %}
+{% endif %}
+
+<img src="{{ path }}" alt="" class="ui mini bordered image" />

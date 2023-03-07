@@ -1,0 +1,14 @@
+parameters:
+    level: 7
+    reportUnmatchedIgnoredErrors: false
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+
+    excludes_analyse:
+        - %currentWorkingDirectory%/src/Fixtures/*
+        - %currentWorkingDirectory%/src/Kernel.php
+
+    ignoreErrors:
+        - '|Method Symfony\\Contracts\\EventDispatcher\\EventDispatcherInterface::dispatch\(\) invoked with 2 parameters, 1 required|'
+        - '#Access to an undefined property NetSuite\\Classes\\[a-zA-Z]+::\$[a-zA-Z]+#' # NetSuite lib is not using any interfaces so phpstan says that some properties are missing from the inherited parent class
+        - '|Call to method findAll\(\) on an unknown class Zendesk\\API\\Traits\\Resource\\Locales.|'

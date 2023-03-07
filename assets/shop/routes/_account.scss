@@ -1,0 +1,192 @@
+@use '../config/sass' as *;
+@use '../abstract/css-grid/css-grid-mixins' as *;
+
+
+
+.sylius_shop_account_profile_update,
+.sylius_shop_account_change_password,
+.sylius_shop_account_address_book_index,
+.sylius_shop_account_address_book_update,
+.sylius_shop_account_address_book_create,
+.sylius_shop_account_order_index,
+.sylius_shop_account_order_show,
+.app_account_project_list{
+  .tabbed-nav__item{
+    border-bottom: 0;
+    background:none;
+  }
+  .tabbed-nav__item--selected{
+    background: linear-gradient(0deg ,currentColor 1px, transparent 0) 0 no-repeat;
+    background-size: 15% 100%;
+    background-position: center;
+  }
+}
+
+
+
+.account-profile-panel {
+  #b2b-advantages-block {
+    color: white;
+    .copy-code{
+      font-weight: bold;
+      &:after {
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+}
+
+
+.account-password-panel {
+
+}
+
+
+.account-addresses-panel {
+  .address-column {
+    margin-top: rem(40);
+
+    &::before {
+      content: '';
+      display: block;
+      border-top: 2px solid #{get-color('grey-clear')};
+      margin-bottom: rem(40);
+    }
+  }
+}
+
+@include up(medium) {
+  .account-addresses-panel {
+    .default-address-column {
+      .default-address {
+        height: 100%;
+      }
+    }
+
+    .address-column {
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3) {
+        margin-top: 0;
+
+        &::before {
+          content: none;
+          display: none;
+        }
+
+        .other-address {
+          height: 100%;
+        }
+      }
+    }
+
+    .default-address,
+    .other-address {
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - #{rem(42)});
+    }
+
+      address {
+        flex: 1 0 auto;
+      }
+  }
+}
+
+
+.account-modify-address-panel {
+
+}
+
+
+.account-create-address-panel {
+
+}
+
+
+.account-orders-panel {
+
+}
+
+
+  .account-orders-table {
+    @include down(small) {
+      display: block;
+
+      thead {
+        display: none;
+      }
+
+      tbody,
+      .table-separator-row,
+      .table-separator-row td {
+        display: block;
+      }
+
+      tbody {
+        // Item infos
+        tr {
+          display: flex;
+          flex-wrap: wrap;
+
+          td:first-child { // Order state
+            flex: 0 0 100%;
+            padding-right: 0;
+          }
+
+          td:nth-child(2) { // Order number
+            flex: 0 0 40%;
+          }
+
+          td:nth-child(3) { // Order date
+            flex: 0 0 30%;
+          }
+
+          .price {
+            flex: 0 0 30%;
+          }
+        }
+
+        // Item actions
+        tr + tr:not(.table-separator-row) {
+
+        }
+      }
+    }
+  }
+
+
+.account-projects-panel {
+
+}
+
+
+  .account-projects-table {
+    @extend .account-orders-table;
+
+    @include down(small) {
+      tbody {
+        tr {
+          td:first-child { // Project name/index
+            flex-basis: 50%;
+          }
+
+          td:nth-child(2) { // Project state
+            flex-basis: 50%;
+          }
+
+          td:nth-child(3) { // Project date
+            flex-basis: 50%;
+          }
+
+          .price {
+            flex-basis: 50%;
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+
+
+

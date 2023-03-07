@@ -1,0 +1,26 @@
+App\Entity\Product\ProductOption:
+    product_option_design:
+        code (unique): 'design'
+        created_at: <dateTimeBetween("-200 days", "now")>
+        updated_at: null
+        position: 1
+    product_option_finish:
+        code (unique): 'finish'
+        created_at: <dateTimeBetween("-200 days", "now")>
+        updated_at: null
+        position: 2
+    product_option_color:
+        code (unique): 'color'
+        created_at: <dateTimeBetween("-200 days", "now")>
+        updated_at: null
+        position: 3
+    product_option_design_handle:
+        code (unique): 'design_handle'
+        created_at: <dateTimeBetween("-200 days", "now")>
+        updated_at: null
+        position: 4
+    product_option_finish_handle:
+        code (unique): 'finish_handle'
+        created_at: <dateTimeBetween("-200 days", "now")>
+        updated_at: null
+        position: 5

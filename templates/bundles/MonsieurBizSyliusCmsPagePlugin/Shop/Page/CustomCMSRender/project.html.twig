@@ -1,0 +1,139 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set projectContent = page.content|format_cms_content_to_array %}
+
+{% set colorHex = '#FFFFFF' %}
+{% set textHeaderColor = '#000000' %}
+{% set colorUi = projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_COLOR')) %}
+{% if colorUi.data.color is defined and colorUi.data.color is not empty %}
+    {% set colorHex = colorUi.data.color|get_project_color %}
+    {% set textHeaderColor = colorHex|get_text_color %}
+{% endif %}
+
+<div class="cms__container">
+    <div class="cms-header" style="background-color: {{ colorHex }}">
+        <div class="cms-header__container full-container u-padding-t-7 @md:u-padding-t-7 @md:u-padding-b-7 @lg:u-padding-l-12">
+            <div class="flush-row u-cross-centered-row">
+                {# Labels + Title + Text + Button #}
+                <div class="cms-header__left js-text-color fluid-container @md:flush-column-6" style="color: {{ textHeaderColor }}">
+                    {# Title #}
+                    {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_MAIN_TITLE')) | monsieurbiz_richeditor_render_element }}
+                    <div class="cms-header__infos">
+                        {# Color #}
+                        <div class="cms-header__color t-header-xsmall" style="text-decoration-color: {{ textHeaderColor }}">
+                            {{ colorUi | monsieurbiz_richeditor_render_element }}
+                        </div>
+                        <div class="t-header-xsmall">|</div>
+                        {# Type #}
+                        <div class="cms-header__type t-header-xsmall" style="text-decoration-color: {{ textHeaderColor }}">
+                            {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_PIECE_TYPE')) | monsieurbiz_richeditor_render_element }}
+                        </div>
+                        <div class="t-header-xsmall">|</div>
+                        {# Price #}
+                        {% set total = projectContent|get_project_total %}
+                        <div class="cms-header__price t-header-xsmall" style="text-decoration-color: {{ textHeaderColor }}">
+                            {{ money.formatPriceWithoutDecimals(total) }}
+                        </div>
+                    </div>
+                    {# Text #}
+                    <div class="cms-header__text">
+                        {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_SHORT_DESC')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                    {# Button #}
+                    <div class="cms-header__btn cms-anchor u-hidden">
+                        {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_DISCOVER_BUDGET_BUTTON')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                </div>
+                {# Slider Image #}
+                <div class="cms-header__right @md:flush-column-fill-space">
+                    <div class="cms-slider-header">
+                        {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_SLIDER_COLLECTION')) | monsieurbiz_richeditor_render_element }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cms__content container" >
+        {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_LONG_DESC')) | monsieurbiz_richeditor_render_element }}
+    </div>
+
+    <div class="cms-section-budget" id="cms-anchor">
+        {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_BUDGET')) | monsieurbiz_richeditor_render_element }}
+        <div class="cms-slider-budget">
+            {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_SLIDER_PLANS')) | monsieurbiz_richeditor_render_element }}
+
+            <div class="cms-slider-budget__footer">
+                {# Receieve Plan #}
+                {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_PLAN_FILE')) | monsieurbiz_richeditor_render_element }}
+                {# END Receieve Plan #}
+
+                {# Discover tuto link #}
+                <div class="cms-slider-budget__tuto">
+                    {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_DISCOVER_TUTORIAL_LINK')) | monsieurbiz_richeditor_render_element }}
+                </div>
+                {# END Discover tuto link #}
+            </div>
+        </div>
+    </div>
+    <div class="home-project-creation-banner u-margin-t-12 t-align-center">
+        <div class="row u-relative">
+            <div class="column-fill-space">
+                <img src="{{ asset('build/shop/images/project-creation-banner.jpg', 'shop') }}" srcset="{{ asset('build/shop/images/project-creation-banner.jpg', 'shop') }} 2x">
+            </div>
+            <div class="u-absolute">
+                <h2 class="t-header-xlarge c-true-white t-shadow u-margin-b-2">
+                    {{ ('app.cms_page.project.creation_banner.title'|trans) }}
+                </h2>
+                <p class="t-base-medium c-true-white">
+                    {{ ('app.cms_page.project.creation_banner.desc'|trans) }}
+                </p>
+                <a class="button button--small u-margin-t-3" style="border:none !important;"
+                   href="{{ get_url_from_page_code('quotation-home') }}">
+                    <svg class="o-icon-16 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                    {{ ('app.cms_page.project.creation_banner.cta'|trans) }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--div class="row u-cross-centered-row">
+        <div class="cms-cta u-cross-centered-col">
+            {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_ESTIMATE_MY_PROJECT_TITLE')) | monsieurbiz_richeditor_render_element }}
+            <div class="u-margin-t-3">
+                {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_ESTIMATE_MY_PROJECT_BUTTON')) | monsieurbiz_richeditor_render_element }}
+            </div>
+        </div>
+    </div-->
+
+
+    {% set mozaicImages = (projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_MOSAIC_COLLECTION'))).data %}
+
+    <div class="container">
+        {% include '@MonsieurBizSyliusRichEditorPlugin/Shop/UiElement/ImageCollection/mozaic_image_collection.html.twig' with {
+            mozaicMainTitle: '',
+            mozaicImagesCollection: mozaicImages.images is defined ? mozaicImages.images : null
+        } only %}
+    </div>
+    <div class="cms-slider u-cross-centered-col">
+        <div class="cms-slider__header container">
+            <div class="row align-items-center u-fullwidth cross-content-title">
+                <div class="column-11">
+                    {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_OTHER_PAGES_TITLE')) | monsieurbiz_richeditor_render_element }}
+                    {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_OTHER_PAGES_BACK_BUTTON')) | monsieurbiz_richeditor_render_element }}
+                </div>
+                <div class="column-1">
+                    <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78 cms-slider__arrow--right-new">
+                        <use xlink:href="{{ iconLibUrl }}#SVG-arrow-right-fill--white-new"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="cms-slider__container swiper-container">
+            <div class="swiper-wrapper">
+                {{ projectContent | get_project_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::PROJECT_OTHER_PAGES')) | monsieurbiz_richeditor_render_element }}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+{#
+    UI Element template
+    type: h2
+    element fields :
+        content
+#}
+{% if element is not empty %}
+    <div class="cms__title">
+        <h2 class="t-header-large">{{ element.content }}</h2>
+    </div>
+{% endif %}

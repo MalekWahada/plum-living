@@ -1,0 +1,10 @@
+#bitbag_sylius_mailchimp_plugin:
+#    resource: "@BitBagSyliusMailChimpPlugin/Resources/config/routing.yml"
+
+sylius_paypal_webhook:
+    resource: "@SyliusPayPalPlugin/Resources/config/webhook_routing.yaml"
+
+stripe_webhook:
+    path: /stripe/webhook
+    methods: [POST]
+    controller: App\Funnel\Payment\Infrastructure\Controller\StripeWebhookController

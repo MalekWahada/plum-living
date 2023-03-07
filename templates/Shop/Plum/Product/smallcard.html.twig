@@ -1,0 +1,31 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set product = product_variant.product %}
+{# get the image #}
+{% set image = product.getImages()[0] ?? null %}
+{# get the product translation #}
+{% set translation = product.getTranslation() %}
+{# get the price for current channel #}
+{% set price = product_variant|calculate_price_with_tax %}
+{% set price = price|sylius_convert_money(sylius.channel.baseCurrency.code, sylius.currencyCode) %}
+{# define route add to cart #}
+{% set route = path('app_add_to_cart_via_link', {
+    'variants_codes_quantities': product_variant.code ~ '|1',
+    'json' : true
+}) %}
+
+<div class="zoning-card">
+    <div class="content">
+        <div class="header t-base-medium u-margin-b-2">{{ translation.name }}</div>
+        <div class="meta">
+            <span class="u-hidden">{{ product_variant.code }}</span>
+            <span class="u-hidden">{{ money.format(price, sylius.currencyCode) }}</span>
+            <img src="/media/image/{{ image.path }}">
+        </div>
+        <p>
+            <a class="button button--small u-fullwidth" href="{{ route }}">
+                {{ 'sylius.ui.add_to_cart'|trans }}
+            </a>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+{% if element.margin == 'margin' %}
+
+<div class="media-two-hybrids-columns img-margin {{ element.bg_color }}">
+    <div class="container">
+        <div class="flush-row u-cross-centered-row">
+            {% if element.orientation == 'left' %}
+                <div class="@lg:flush-column-6 @lg:u-padding-r-12 u-padding-t-3 u-padding-b-3 @lg:u-padding-t-12 @lg:u-padding-b-12">
+                    <h2 class="t-header-xlarge u-margin-b-2 u-margin-t-2">{{ element.title | raw }}</h2>
+                    <p>
+                        {{ element.description | raw }}
+                    </p>
+                    {% if element.link_label and element.link_url %}
+                        <a class="button u-margin-t-4"
+                            {% if element.link_target %} target="{{ element.link_target }}"{% endif %}
+                           href="{{ element.link_url | raw }}">
+                            {{ element.link_label | raw }}
+                        </a>
+                    {% endif %}
+                    <div class="caption">
+                        {% if element.caption  %}
+                            {{ element.caption | raw }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="@lg:flush-column-6 img-margin u-padding-t-3 u-padding-b-3 @lg:u-padding-t-12 @lg:u-padding-b-12">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}">
+                </div>
+            {% else %}
+                <div class="u-hidden @lg:u-block @lg:flush-column-6 img-margin @lg:u-padding-t-12 @lg:u-padding-b-12 u-padding-t-3 u-padding-b-3">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}">
+                </div>
+                <div class="@lg:flush-column-6 @lg:u-padding-l-12 u-padding-t-3 u-padding-b-3 @lg:u-padding-t-12 @lg:u-padding-b-12">
+                    <h2 class="t-header-xlarge u-margin-b-2 u-margin-t-2">{{ element.title | raw }}</h2>
+                    <p>
+                        {{ element.description | raw }}
+                    </p>
+                    {% if element.link_label and element.link_url %}
+                        <a class="button u-margin-t-4"
+                            {% if element.link_target %} target="{{ element.link_target }}"{% endif %}
+                           href="{{ element.link_url | raw }}">
+                            {{ element.link_label | raw }}
+                        </a>
+                    {% endif %}
+                    <div class="caption">
+                        {% if element.caption  %}
+                            {{ element.caption | raw }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="u-block @lg:u-hidden column-fill-space img-margin @lg:u-padding-t-12 @lg:u-padding-b-12 u-padding-t-3 u-padding-b-3">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="media-two-hybrids-columns img-immersive {{ element.bg_color }}">
+    <div class="container static-container">
+        <div class="row u-cross-centered-row fixed-height-row">
+            {% if element.orientation == 'left' %}
+                <div class="@lg:column-6 u-padding-t-3 u-padding-b-3 @lg:u-padding-t-1 @lg:u-padding-b-1 @lg:u-padding-r-12 left-text">
+                    <h2 class="t-header-xlarge u-margin-b-2 u-margin-t-2">{{ element.title | raw }}</h2>
+                    <p>
+                        {{ element.description | raw }}
+                    </p>
+                    {% if element.link_label and element.link_url %}
+                        <a class="button u-margin-t-4"
+                            {% if element.link_target %} target="{{ element.link_target }}"{% endif %}
+                           href="{{ element.link_url | raw }}">
+                            {{ element.link_label | raw }}
+                        </a>
+                    {% endif %}
+                    <div class="caption">
+                        {% if element.caption  %}
+                            {{ element.caption | raw }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="column-fill-space @lg:column-6 left-img">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}">
+                </div>
+            {% else %}
+                <div class="column-fill-space u-hidden @lg:u-block @lg:column-6 right-img">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}">
+                </div>
+                <div class="@lg:column-6 u-padding-t-3 u-padding-b-3 @lg:u-padding-t-1 @lg:u-padding-b-1 @lg:u-padding-l-12 right-text">
+                    <h2 class="t-header-xlarge u-margin-b-2 u-margin-t-2">{{ element.title | raw }}</h2>
+                    <p>
+                        {{ element.description | raw }}
+                    </p>
+                    {% if element.link_label and element.link_url %}
+                        <a class="button u-margin-t-4"
+                            {% if element.link_target %} target="{{ element.link_target }}"{% endif %}
+                           href="{{ element.link_url | raw }}">
+                            {{ element.link_label | raw }}
+                        </a>
+                    {% endif %}
+                    <div class="caption">
+                        {% if element.caption  %}
+                            {{ element.caption | raw }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="column-fill-space @lg:u-hidden right-img">
+                    <img src="{{ element.image | raw }}"
+                         alt="{{ element.image_alt | raw }}"
+                         title="{{ element.image_title | raw }}">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endif %}

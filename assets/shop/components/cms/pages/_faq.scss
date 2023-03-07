@@ -1,0 +1,57 @@
+.faq {
+  .ui.accordion .title:not(.ui) {
+    font-family: $font--cera;
+  }
+
+  &__subcategory {
+    color: $color--near-black;
+    font-size: rem(15);
+    line-height: 146%;
+    letter-spacing: -0.5px;
+
+    @include up('large') {
+      font-size: rem(20) !important;
+      line-height: 160%;
+    }
+  }
+
+  &__category {
+    border-bottom: 1px solid rgba(28, 33, 40, 0.2) !important;
+  }
+
+  .link-button{
+    text-transform:none;
+    letter-spacing:0;
+  }
+
+  &-item {
+    &__accordion {
+      cursor: pointer;
+
+
+      .content {
+        @include up('large') {
+          max-height: 220px;
+          overflow: hidden;
+        }
+
+        &.active {
+          @include up('large') {
+            overflow-y: auto;
+          }
+        }
+
+        a {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  &-single {
+    &__content {
+      flex-direction: column;
+      align-content: center;
+    }
+  }
+}

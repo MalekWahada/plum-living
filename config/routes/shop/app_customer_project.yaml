@@ -1,0 +1,38 @@
+###
+### All routes are prefixed by /project
+###
+
+app_customer_project_show:
+    path: /{token}
+    methods: [GET, POST]
+    controller: App\Controller\CustomerProject\ProjectController::projectShow
+
+app_customer_project_checkout:
+    path: /{token}/checkout
+    methods: [GET]
+    controller: App\Controller\CustomerProject\ProjectController::projectCheckout
+
+app_customer_project_share:
+    path: /{token}/share
+    methods: [GET]
+    controller: App\Controller\CustomerProject\ProjectController::projectShare
+
+app_customer_project_bulk_item_details:
+    path: /{token}/item-details
+    methods: [POST]
+    controller: App\Controller\CustomerProject\ProjectController::bulkProjectItemDetails
+
+app_customer_project_schedule_call:
+    path: /{token}/schedule-call
+    methods: [GET]
+    controller: App\Controller\CustomerProject\ProjectController::scheduleCall
+
+app_customer_project_auto_save:
+    path: /{token}/autosave
+    methods: [POST]
+    controller: App\Controller\CustomerProject\ProjectController::projectAutoSave
+
+app_customer_project_download_quote_file:
+    path: /{token}/download-quote-file
+    methods: [GET]
+    controller: App\Controller\CustomerProject\ProjectController::downloadQuoteFile

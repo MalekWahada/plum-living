@@ -1,0 +1,178 @@
+parameters:
+    hubspot_eventname_plum_scanner_status: '%env(string:HUBSPOT_EVENT_ID_PLUM_SCANNER_STATUS)%'
+
+imports:
+    - { resource: "@NoksiSyliusPlumHubspotPlugin/Resources/config/config.yaml" }
+    
+monolog:
+    handlers:
+        hubspot:
+            level: debug
+
+noksi_sylius_plum_hubspot:
+    enabled: true
+    sylius:
+        channel: 'PLUM_FR'
+    behavioral:
+        forget_password:
+            hubspot_event_id: '%env(string:HUBSPOT_EVENT_ID_FORGET_PASSWORD)%'
+        account_created:
+            hubspot_event_id: '%env(string:HUBSPOT_EVENT_ID_ACCOUNT_CREATED)%'
+        share_plan:
+            hubspot_event_id: '%env(string:HUBSPOT_EVENT_ID_SHARE_PLAN)%'
+        share_cart:
+            hubspot_event_id: '%env(string:HUBSPOT_EVENT_ID_SHARE_CART)%'
+        terraclub_subscribed:
+            hubspot_event_id: '%env(string:HUBSPOT_EVENT_ID_TERRACLUB)%'
+        newsletter_subscribed:
+            hubspot_event_id: '%env(string:HUBSPOT_EVENT_ID_NEWSLETTER_SUB)%'
+        newsletter_unsubscribed:
+            hubspot_event_id: '%env(string:HUBSPOT_EVENT_ID_NEWSLETTER_UNSUB)%'
+    transactionnal_email:
+        fallback_code: 'PLUM_FR/fr'
+        definitions:        
+            verification_token:
+                enabled: true
+                hubspot_email_id:
+                    PLUM_FR/fr: '%env(string:HUBSPOT_EMAIL_VERIFICATION_TOKEN_FR)%'
+                    PLUM_BE/fr: '%env(string:HUBSPOT_EMAIL_VERIFICATION_TOKEN_FR_BE)%'
+                    PLUM_BE/nl: '%env(string:HUBSPOT_EMAIL_VERIFICATION_TOKEN_NL_BE)%'
+                    PLUM_EU/en: '%env(string:HUBSPOT_EMAIL_VERIFICATION_TOKEN_EN)%'
+                    PLUM_NL/nl: '%env(string:HUBSPOT_EMAIL_VERIFICATION_TOKEN_NL)%'
+                    PLUM_DE/de: '%env(string:HUBSPOT_EMAIL_VERIFICATION_TOKEN_DE)%'
+            share_plan:
+                enabled: true
+                hubspot_email_id:
+                    PLUM_FR/fr: '%env(string:HUBSPOT_EMAIL_SHARE_PLAN_FR)%'
+                    PLUM_BE/fr: '%env(string:HUBSPOT_EMAIL_SHARE_PLAN_FR_BE)%'
+                    PLUM_BE/nl: '%env(string:HUBSPOT_EMAIL_SHARE_PLAN_NL_BE)%'
+                    PLUM_EU/en: '%env(string:HUBSPOT_EMAIL_SHARE_PLAN_EN)%'
+                    PLUM_NL/nl: '%env(string:HUBSPOT_EMAIL_SHARE_PLAN_NL)%'
+                    PLUM_DE/de: '%env(string:HUBSPOT_EMAIL_SHARE_PLAN_DE)%'
+            wire_payment_information:
+                enabled: true
+                hubspot_email_id:
+                    PLUM_FR/fr: '%env(string:HUBSPOT_EMAIL_WIRE_INFO_FR)%'
+                    PLUM_BE/fr: '%env(string:HUBSPOT_EMAIL_WIRE_INFO_FR_BE)%'
+                    PLUM_BE/nl: '%env(string:HUBSPOT_EMAIL_WIRE_INFO_NL_BE)%'
+                    PLUM_EU/en: '%env(string:HUBSPOT_EMAIL_WIRE_INFO_EN)%'
+                    PLUM_NL/nl: '%env(string:HUBSPOT_EMAIL_WIRE_INFO_NL)%'                
+                    PLUM_DE/de: '%env(string:HUBSPOT_EMAIL_WIRE_INFO_DE)%'
+            wire_payment_validated:
+                enabled: true
+                hubspot_email_id:
+                    PLUM_FR/fr: '%env(string:HUBSPOT_EMAIL_WIRE_VALID_FR)%'
+                    PLUM_BE/fr: '%env(string:HUBSPOT_EMAIL_WIRE_VALID_FR_BE)%'
+                    PLUM_BE/nl: '%env(string:HUBSPOT_EMAIL_WIRE_VALID_NL_BE)%'
+                    PLUM_EU/en: '%env(string:HUBSPOT_EMAIL_WIRE_VALID_EN)%'
+                    PLUM_NL/nl: '%env(string:HUBSPOT_EMAIL_WIRE_VALID_NL)%'                
+                    PLUM_DE/de: '%env(string:HUBSPOT_EMAIL_WIRE_VALID_DE)%'
+            wire_payment_reminder:
+                enabled: true
+                hubspot_email_id:
+                    PLUM_FR/fr: '%env(string:HUBSPOT_EMAIL_WIRE_REMIND_FR)%'
+                    PLUM_BE/fr: '%env(string:HUBSPOT_EMAIL_WIRE_REMIND_FR_BE)%'
+                    PLUM_BE/nl: '%env(string:HUBSPOT_EMAIL_WIRE_REMIND_NL_BE)%'
+                    PLUM_EU/en: '%env(string:HUBSPOT_EMAIL_WIRE_REMIND_EN)%'
+                    PLUM_NL/nl: '%env(string:HUBSPOT_EMAIL_WIRE_REMIND_NL)%'                
+                    PLUM_DE/de: '%env(string:HUBSPOT_EMAIL_WIRE_REMIND_DE)%'
+            share_cart:
+                enabled: true
+                hubspot_email_id:
+                    PLUM_FR/fr: '%env(string:HUBSPOT_EMAIL_SHARE_CART_FR)%'
+                    PLUM_BE/fr: '%env(string:HUBSPOT_EMAIL_SHARE_CART_FR_BE)%'
+                    PLUM_BE/nl: '%env(string:HUBSPOT_EMAIL_SHARE_CART_NL_BE)%'
+                    PLUM_EU/en: '%env(string:HUBSPOT_EMAIL_SHARE_CART_EN)%'
+                    PLUM_NL/nl: '%env(string:HUBSPOT_EMAIL_SHARE_CART_NL)%'                
+                    PLUM_DE/de: '%env(string:HUBSPOT_EMAIL_SHARE_CART_DE)%'
+            reset_password_token:
+                enabled: true
+                hubspot_email_id:
+                    PLUM_FR/fr: '%env(string:HUBSPOT_EMAIL_RESET_PASSWORD_FR)%'
+                    PLUM_BE/fr: '%env(string:HUBSPOT_EMAIL_RESET_PASSWORD_FR_BE)%'
+                    PLUM_BE/nl: '%env(string:HUBSPOT_EMAIL_RESET_PASSWORD_NL_BE)%'
+                    PLUM_EU/en: '%env(string:HUBSPOT_EMAIL_RESET_PASSWORD_EN)%'
+                    PLUM_NL/nl: '%env(string:HUBSPOT_EMAIL_RESET_PASSWORD_NL)%'
+                    PLUM_DE/de: '%env(string:HUBSPOT_EMAIL_RESET_PASSWORD_DE)%'
+    hubspot:
+        staging: '%env(bool:HUBSPOT_STAGING)%'
+        api_key: '%env(string:HUBSPOT_API_KEY)%'
+        catalog_routing_locale: 'fr'
+        catalog_routing_host: '%env(string:HUBSPOT_CATALOG_ROUTING_HOST)%'
+        sales:
+            default_pipe_id: '%env(string:HUBSPOT_SALES_PIPE_ID)%'
+            default_dealstage_id: '%env(string:HUBSPOT_SALES_DEALSTAGE_ID)%'
+        newsletter:
+            subscription_id: '%env(string:HUBSPOT_NEWSLETTER_SUBSCRIPTION_ID)%'
+            legal_basis: 'CONSENT_WITH_NOTICE'
+            legal_basis_explanation: 'Souscription newsletter'
+        mapping:
+            category_micro:
+                metod: 
+                    label: 'Metod'
+                    hubspot_value: 'metod'
+                    sylius_values:
+                        - !php/const App\Entity\Taxonomy\Taxon::TAXON_FACADE_METOD_DOOR_CODE
+                        - !php/const App\Entity\Taxonomy\Taxon::TAXON_FACADE_METOD_PANEL_CODE
+                        - !php/const App\Entity\Taxonomy\Taxon::TAXON_FACADE_METOD_DRAWER_CODE
+                        - !php/const App\Entity\Taxonomy\Taxon::TAXON_FACADE_METOD_BASEBOARD_CODE
+                pax:
+                    label: 'Pax'
+                    hubspot_value: 'pax'
+                    sylius_values:
+                        - !php/const App\Entity\Taxonomy\Taxon::TAXON_FACADE_PAX_DOOR_CODE
+                        - !php/const App\Entity\Taxonomy\Taxon::TAXON_FACADE_PAX_PANEL_CODE
+                sample_paint:
+                    label: 'Echantillon peinture'
+                    hubspot_value: 'echantillon_peinture'
+                    sylius_values:
+                        - !php/const App\Entity\Taxonomy\Taxon::TAXON_SAMPLE_PAINT_CODE
+                sample_front:
+                    label: 'Echantillon facade'
+                    hubspot_value: 'echantillon_facade'
+                    sylius_values:
+                        - !php/const App\Entity\Taxonomy\Taxon::TAXON_SAMPLE_FRONT_CODE
+                handler:
+                    label: 'Poignée'
+                    hubspot_value: 'handler'
+                    sylius_values:
+                        - !php/const App\Entity\Taxonomy\Taxon::TAXON_ACCESSORY_HANDLE_CODE
+                credenza:
+                    label: 'Crédence'
+                    hubspot_value: 'credenza'
+                    sylius_values:
+                        - not_defined
+                tap:
+                    label: 'Mitigeur'
+                    hubspot_value: 'tap'
+                    sylius_values:
+                        - !php/const App\Entity\Taxonomy\Taxon::TAXON_TAP_CODE
+ 
+        product_options:
+            design:
+                sylius_option_code: !php/const App\Entity\Product\ProductOption::PRODUCT_OPTION_DESIGN
+                product_property_name: design
+                
+            finish:
+                sylius_option_code: !php/const App\Entity\Product\ProductOption::PRODUCT_OPTION_FINISH
+                product_property_name: finish
+                
+            color:
+                sylius_option_code: !php/const App\Entity\Product\ProductOption::PRODUCT_OPTION_COLOR
+                product_property_name: color
+                
+            design_handle:
+                sylius_option_code: !php/const App\Entity\Product\ProductOption::PRODUCT_HANDLE_OPTION_DESIGN
+                product_property_name: design_handle
+                
+            finish_handle:
+                sylius_option_code: !php/const App\Entity\Product\ProductOption::PRODUCT_HANDLE_OPTION_FINISH
+                product_property_name: finish_handle
+                
+            design_tap:
+                sylius_option_code: !php/const App\Entity\Product\ProductOption::PRODUCT_TAP_OPTION_DESIGN
+                product_property_name: design_tap
+                
+            finish_tap:
+                sylius_option_code: !php/const App\Entity\Product\ProductOption::PRODUCT_TAP_OPTION_FINISH
+                product_property_name: finish_tap

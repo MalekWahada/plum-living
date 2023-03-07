@@ -1,0 +1,40 @@
+@use 'node_modules/mathsass/dist/math' as *;
+@use '../../config/sass' as *;
+
+
+@function m-scale-rem ($n, $base: $font--default-size, $ratio: $font--modular-scale-ratio) {
+  $base: rem(px($base));
+
+  @for $_i from 0 to $n {
+    $base: $base * $ratio;
+  }
+
+  @return $base;
+}
+
+@function m-scale-em ($n, $base: $font--default-size, $ratio: $font--modular-scale-ratio) {
+  $base: em(px($base));
+
+  @for $_i from 0 to $n {
+    $base: $base * $ratio;
+  }
+
+  @return $base;
+}
+
+@function m-scale-ratio ($r, $base: $font--default-size) {
+  $boom: str-split('@', $r);
+  $r: ();
+
+  @each $n in $boom {
+    $r: append($r, to-number($n));
+  }
+
+  $size: nth($r, 1);
+  $at: nth($r, 2);
+
+  @return pow(($size / $base), (1 / $at));
+}
+
+
+$font--modular-scale-ratio: m-scale-ratio('4@5');

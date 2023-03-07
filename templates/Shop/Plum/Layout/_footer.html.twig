@@ -1,0 +1,63 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set footerItems = knp_menu_get('shop_footer') %}
+{% set contactEmail = sylius.channel.contactEmail %}
+
+<footer class="plum-footer u-relative">
+    <div class="plum-footer__main fluid-container t-base-small">
+        <div class="full-container">
+            <div class="row">
+                <div class="plum-footer__touch-points u-flex-wrapping column @lg:column-3 last-on-mobile">
+                    <h6 class="t-header-xsmall">{{ 'app.footer.shop.contact_us_label'|trans }}</h6>
+                    <p class="u-fill-space bodycopy">{{ 'app.footer.shop.contact_us'|trans({'%email%': contactEmail})|raw }}</p>
+                    <div class="plum-footer__social-media u-fullwidth">
+                        <h6 class="t-header-xsmall">{{ 'app.footer.shop.follow_us_label'|trans }}</h6>
+                        {# TODO store social media urls in one place ?
+                           See. also templates/Shop/Plum/Layout/Topbar/_header.html.twig
+                           and templates/Shop/Plum/Layout/Topbar/_menu.html.twig
+                        #}
+                        <div class="row">
+                            <a href="{{ 'app.ui.cms.instagram_url'|trans }}" target="_blank" class="func-button t-link-wrapper u-start-on-main @wd:column-11 u-margin-b-1 @lg:u-margin-b-0 u-block u-fullwidth">
+                                <svg aria-hidden="true" class="o-icon-24 o-icon--left" data-no-link-fx><use xlink:href="{{ iconLibUrl }}#SVG-icon-instagram"/></svg>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://www.pinterest.fr/PlumLiving/" target="_blank" class="func-button t-link-wrapper u-start-on-main @wd:column-11 u-margin-b-1 @lg:u-margin-b-0 u-block u-fullwidth">
+                                <svg aria-hidden="true" class="o-icon-24 o-icon--left" data-no-link-fx><use xlink:href="{{ iconLibUrl }}#SVG-icon-pinterest"/></svg>
+                                <span>Pinterest</span>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCABXqwLdsJG0nkW8CODR3bg/videos" target="_blank" class="func-button t-link-wrapper u-start-on-main @wd:column-11 u-margin-b-1 u-block u-fullwidth">
+                                <svg aria-hidden="true" class="o-icon-24 o-icon--left" data-no-link-fx><use xlink:href="{{ iconLibUrl }}#SVG-icon-youtube"/></svg>
+                                <span>YouTube</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <nav class="plum-footer__menu u-flex-column column @lg:column-3 last-on-mobile">
+                    <h6 class="t-header-xsmall">{{ 'app.footer.shop.offers'|trans }}</h6>
+                    {% for footerItem in footerItems|slice(0, 6) %}
+                        <a href="{{ footerItem.uri }}" class="t-link"> {{ footerItem.label|trans }} </a>
+                    {% endfor %}
+                </nav>
+                <nav class="plum-footer__menu u-flex-column column @lg:column-3 last-on-mobile">
+                    <h6 class="t-header-xsmall">{{ 'app.footer.shop.about'|trans }}</h6>
+
+                    {% for footerItem in footerItems|slice(6) %}
+                        <a href="{{ footerItem.uri }}" class="t-link">{{ footerItem.label|trans }}</a>
+                    {% endfor %}
+                </nav>
+                <div class="column @lg:column-3 newsletter-container">
+                    {% include '@NoksiSyliusPlumHubspotPlugin/_subscribe.html.twig' %}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="@lg:column-6 u-centered-on-cross u-flex u-center-on-cross">
+                    <a href="{{ path('sylius_shop_homepage') }}" class="plum-header__logo c-true-black hover:c-true-black u-margin-r-5 u-relative">
+                        <svg aria-label="Plum Kitchen" viewBox="0 0 90 40"><use xlink:href="{{ iconLibUrl }}#SVG-logo-full-white"/></svg>
+                    </a>
+                    <span>{{ 'app.footer.shop.copyright'|trans }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img class="scroll-top u-absolute" id="scrollTopBtn" src="{{ asset('build/shop/images/scrolltop-button.svg', 'shop') }}" srcset="{{ asset('build/shop/images/scrolltop-button.svg', 'shop') }} 2x">
+</footer>

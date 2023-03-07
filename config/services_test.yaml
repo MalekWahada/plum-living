@@ -1,0 +1,6 @@
+imports:
+    - { resource: "../vendor/sylius/sylius/src/Sylius/Behat/Resources/config/services.xml" }
+
+services:
+    App\Datadog\Application\DatadogTestClient: ~
+    App\Datadog\Application\DatadogClientInterface: '@App\Datadog\Application\DatadogTestClient'

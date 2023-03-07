@@ -1,0 +1,34 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set selectedOptionsValues = {
+    facadeTypeCode: app.request.attributes.get('facadeTypeCode'),
+    designCode: app.request.attributes.get('designCode'),
+    finishCode: app.request.attributes.get('finishCode'),
+    colorCode: app.request.attributes.get('colorCode')
+} %}
+
+<div class="tunnel-modal">
+    <div class="tunnel-modal-left swiper-container">
+        {{ sylius_template_event('sylius.shop.product.show.left_sidebar', _context) }}
+        <svg class="tunnel-modal-arrow tunnel-modal-arrow--left o-icon-78">
+            <use xlink:href="{{ iconLibUrl }}#SVG-arrow-fill--white"/>
+        </svg>
+        <svg class="tunnel-modal-arrow tunnel-modal-arrow--right o-icon-78">
+            <use xlink:href="{{ iconLibUrl }}#SVG-arrow-fill--white"/>
+        </svg>
+    </div>
+    <div class="tunnel-modal-right">
+        {{ sylius_template_event('app.tunnel.shopping.product.show.right_sidebar', _context) }}
+        <div class="tunnel-modal-right-term">
+            <div class="tunnel-modal-right-term__title t-label-medium">
+                {{ "app.ui.tunnel_shopping.modal_return"|trans }}</div>
+            <div class="tunnel-modal-right-term__text t-base-xsmall">
+                {% if product.translation.deliveryDescription is not empty %}
+                    {{ (product.translation.deliveryDescription|format_cms_content_to_array)|monsieurbiz_richeditor_render_elements }}
+                {% else %}
+                    {{ 'app.ui.tunnel_shopping.no_delivery_details'|trans }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

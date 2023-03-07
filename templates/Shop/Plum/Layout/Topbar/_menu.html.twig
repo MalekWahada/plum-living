@@ -1,0 +1,37 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set menuItems = knp_menu_get('shop_navigation') %}
+{% set asideHeadearItems = knp_menu_get('shop_aside_header') %}
+
+<nav class="plum-menu u-y-scrollable">
+    <div class="container">
+        <div class="plum-menu__main plum-menu-main">
+            {% include 'Shop/Plum/Layout/Topbar/_nav_items.html.twig' with {
+                'itemList': menuItems,
+                'blockName': 'plum-menu-main',
+                'depth_1_class': 't-header-large t-link-wrapper',
+                'depth_2_class': 't-header-small t-link-wrapper',
+                'depth_n_class': 't-header-small t-link-wrapper'
+            } %}
+        </div>
+        <div class="plum-menu__aside">
+            <div>
+                {% for asideItem in asideHeadearItems %}
+                    <a href="{{ asideItem.uri }}" class="plum-menu__item t-link-wrapper t-header-small"><span>{{ asideItem.label|trans }}</span></a>
+                {% endfor %}
+                {# TODO store social media urls in one place ?
+                   See. also templates/Shop/Plum/Layout/Topbar/_header.html.twig
+                   and templates/Shop/Plum/Layout/_footer.html.twig
+                #}
+                <div class="plum-menu__item u-cross-centered-row">
+                    <a href="https://www.instagram.com/plum.living/" target="_blank" class="icon-button ripple-button" data-dark-ripple>
+                        <svg role="img" aria-label="Instagram" class="o-icon-24"><use xlink:href="{{ iconLibUrl }}#SVG-icon-instagram"/></svg>
+                    </a>
+                    <a href="https://www.pinterest.fr/PlumLiving/" target="_blank" class="icon-button ripple-button" data-dark-ripple>
+                        <svg role="img" aria-label="Pinterest" class="o-icon-24"><use xlink:href="{{ iconLibUrl }}#SVG-icon-pinterest"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <figure class="plum-menu__image u-hidden @lg:u-block"></figure>
+</nav>

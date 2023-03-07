@@ -1,0 +1,222 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+@use '../../../config/sass' as *;
+@use '../css-grid-config' as *;
+@use '../css-grid-mixins' as *;
+
+
+@mixin is-container($as-modifier: false, $margins: true, $max-width: true) {
+  @if $as-modifier == false {
+    box-sizing: border-box;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @if $margins {
+    @if meta.type-of($margins) == number {
+      padding-left: $margins;
+      padding-right: $margins;
+    } @else if meta.type-of($margins) == bool {
+      padding-left: map.get($css-grid--base, "margins");
+      padding-right: map.get($css-grid--base, "margins");
+    } @else if meta.type-of($margins) == map {
+      $first-value: list.nth(map.values($margins), 1);
+      padding-left: $first-value;
+      padding-right: $first-value;
+    }
+  }
+
+  @if $max-width {
+    @if meta.type-of($max-width) == number {
+      max-width: $max-width;
+    } @else if meta.type-of($max-width) == bool {
+      max-width: map.get($css-grid--base, "max-width");
+    } @else if meta.type-of($max-width) == map {
+      $first-value: list.nth(map.values($max-width), 1);
+      max-width: $first-value;
+    }
+  }
+
+  @if meta.type-of($margins) == bool or meta.type-of($max-width) == bool {
+    @each $_slug, $_obj in $css-grid--breakpoints {
+      $_virtual: if(map.has-key($_obj, "virtual"), map.get($_obj, "virtual"), false);
+
+      @if $_virtual != true {
+        $_value: map.get($_obj, "value");
+        $_margins: map.get($_obj, "margins");
+        $_max-width: map.get($_obj, "max-width");
+
+        @include up($_value) {
+          @if meta.type-of($margins) == bool and $margins and $_margins {
+            padding-left: $_margins;
+            padding-right: $_margins;
+          }
+
+          @if meta.type-of($max-width) == bool and $max-width and $_max-width {
+            max-width: $_max-width;
+          }
+        }
+      }
+    }
+  }
+
+  @if meta.type-of($margins) == map {
+    $first-key: list.nth(map.keys($margins), 1);
+    $margins: map.remove($margins, $first-key);
+
+    @each $_from, $_margins in $margins {
+      @include up($_from) {
+        padding-left: $_margins;
+        padding-right: $_margins;
+      }
+    }
+  }
+
+  @if meta.type-of($max-width) == map {
+    $first-key: list.nth(map.keys($max-width), 1);
+    $max-width: map.remove($max-width, $first-key);
+
+    @each $_from, $_max-width in $max-width {
+      @include up($_from) {
+        max-width: $_max-width;
+      }
+    }
+  }
+}
+
+
+@mixin is-row($as-modifier: false, $gutters: true) {
+  @if $as-modifier == false {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: flex-start;
+    box-sizing: border-box;
+  }
+
+  @if $gutters {
+    @if meta.type-of($gutters) == number {
+      margin-left: (-1 * $gutters / 2);
+      margin-right: (-1 * $gutters / 2);
+    } @else if meta.type-of($gutters) == bool {
+      margin-left: (-1 * map.get($css-grid--base, "gutters") / 2);
+      margin-right: (-1 * map.get($css-grid--base, "gutters") / 2);
+
+      @each $_slug, $_obj in $css-grid--breakpoints {
+        $_virtual: if(map.has-key($_obj, "virtual"), map.get($_obj, "virtual"), false);
+
+        @if $_virtual != true {
+          $_value: map.get($_obj, "value");
+          $_gutters: map.get($_obj, "gutters");
+
+          @include up($_value) {
+            @if $_gutters {
+              margin-left: (-1 * $_gutters / 2);
+              margin-right: (-1 * $_gutters / 2);
+            }
+          }
+        }
+      }
+    } @else if meta.type-of($gutters) == map {
+      $first-value: list.nth(map.values($gutters), 1);
+      margin-left: (-1 * $first-value / 2);
+      margin-right: (-1 * $first-value / 2);
+
+      $first-key: list.nth(map.keys($gutters), 1);
+      $gutters: map.remove($gutters, $first-key);
+
+      @each $_from, $_gutters in $gutters {
+        @include up($_from) {
+          margin-left: (-1 * $_gutters / 2);
+          margin-right: (-1 * $_gutters / 2);
+        }
+      }
+    }
+  }
+}
+
+
+@mixin is-column($as-modifier: false, $n: $css-grid--number-of-columns, $gutters: true) {
+  @if $as-modifier == false {
+    box-sizing: border-box;
+  }
+
+  @if $gutters {
+    @if meta.type-of($gutters) == number {
+      padding-left: ($gutters / 2);
+      padding-right: ($gutters / 2);
+    } @else if meta.type-of($gutters) == bool {
+      padding-left: (map.get($css-grid--base, "gutters") / 2);
+      padding-right: (map.get($css-grid--base, "gutters") / 2);
+
+      @each $_slug, $_obj in $css-grid--breakpoints {
+        $_virtual: if(map.has-key($_obj, "virtual"), map.get($_obj, "virtual"), false);
+
+        @if $_virtual != true {
+          $_value: map.get($_obj, "value");
+          $_gutters: map.get($_obj, "gutters");
+
+          @include up($_value) {
+            @if $_gutters {
+              padding-left: ($_gutters / 2);
+              padding-right: ($_gutters / 2);
+            }
+          }
+        }
+      }
+    } @else if meta.type-of($n) == map {
+      $first-value: list.nth(map.values($gutters), 1);
+      padding-left: ($first-value / 2);
+      padding-right: ($first-value / 2);
+
+      $first-key: list.nth(map.keys($gutters), 1);
+      $gutters: map.remove($gutters, $first-key);
+
+      @each $_from, $_gutters in $gutters {
+        @include up($_from) {
+          padding-left: ($_gutters / 2);
+          padding-right: ($_gutters / 2);
+        }
+      }
+    }
+  }
+
+  @if $n == 'auto' {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+  } @else if meta.type-of($n) == number {
+    flex: 0 0 ((100% / $css-grid--number-of-columns) * $n);
+    width: 100%;
+    max-width: (100% / $css-grid--number-of-columns) * $n;
+  } @else if meta.type-of($n) == map {
+    $first-value: list.nth(map.values($n), 1);
+    flex: 0 0 ((100% / $css-grid--number-of-columns) * $first-value);
+    width: 100%;
+    max-width: (100% / $css-grid--number-of-columns) * $first-value;
+
+    $first-key: list.nth(map.keys($n), 1);
+    $n: map.remove($n, $first-key);
+
+    @each $_from, $_n in $n {
+      @include up($_from) {
+        @if $_n == 'auto' {
+          flex-basis: auto;
+          width: 'auto';
+          max-width: 100%;
+        } @else if meta.type-of($_n) == number {
+          flex-basis: ((100% / $css-grid--number-of-columns) * $_n);
+          max-width: ((100% / $css-grid--number-of-columns) * $_n);
+        }
+      }
+    }
+  }
+}
+
+
+@mixin column-width($n) {
+  flex-basis: (100% / $css-grid--number-of-columns) * $n;
+  max-width: (100% / $css-grid--number-of-columns) * $n;
+}

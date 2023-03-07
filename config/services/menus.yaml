@@ -1,0 +1,35 @@
+services:
+    _defaults:
+        autoconfigure: false
+        autowire: true
+        public: false
+
+    App\Menu\ShopNavigationBuilder:
+        tags:
+            - { name: knp_menu.menu_builder, method: createShopNavigationMenu, alias: shop_navigation }
+            - { name: knp_menu.menu_builder, method: createShopAsideHeaderMenu, alias: shop_aside_header }
+            - { name: knp_menu.menu_builder, method: createShopFooterMenu, alias: shop_footer }
+
+    App\Menu\ProductFormMenuBuilderListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.product.form, method: addProductCompleteInfo }
+
+    App\Menu\AccountMenuListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.shop.account, method: updateAccountMenuItems }
+
+    App\Menu\AdminMenuListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
+
+    App\Menu\AdminOrderShowMenuListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.order.show, method: removeCancelAction }  
+              
+    App\Menu\AdminProductGroupShowMenuBuilder:
+        tags:
+            - { name: knp_menu.menu_builder, event: app.menu.admin.product_group.show, method: createMenu, alias: app.admin.product_group.show }
+    
+    App\Menu\AdminProductGroupFormMenuListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.product.form, method: addItems }

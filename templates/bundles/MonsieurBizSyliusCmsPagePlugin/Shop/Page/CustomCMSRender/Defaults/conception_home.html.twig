@@ -1,0 +1,86 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set conceptionHomeContent = page.content | format_cms_content_to_array %}
+
+<div class="cms__container bg-true-white conception-home">
+    <div class="bg-grey-dark @lg:u-padding-b-6 conception-home--header ">
+        <div class="container-fluid c-near-white">
+            <div class="flush-row u-cross-centered-row u-padding-t-4 @lg:u-padding-t-0">
+                <div class="@wd:flush-column-6 @lg:flush-column-7 left-side">
+                    <div class="u-flex u-spaced-on-main u-h-tail-spaced-3 u-margin-b-3">
+                        <div class="t-align-left">
+                            <h1 class="t-header-xlarge">
+                                {{ 'app.cms_page.conception_services.title'|trans }}
+                            </h1>
+                        </div>
+                        <div class="t-header-large price-container">
+                            <span class="price">
+                                {{ 'app.cms_page.conception_services.price'|trans }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="t-base-medium u-margin-t-2 @lg:u-padding-r-15">
+                        {{ 'app.cms_page.conception_services.top_text'|trans }}
+                    </div>
+                    <a class="button button--inversed u-margin-t-4 u-margin-b-4" href="{{ path('app_conception') }}">
+                        <svg class="o-icon-20 u-margin-r-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                        {{ 'app.cms_page.conception_services.cta'|trans }}
+                    </a>
+                </div>
+                <div class="@wd:flush-column-6 @lg:flush-column-5 u-relative">
+                    <div class="u-absolute bg-near-black c-true-white icon-visio">
+                        <img class="o-icon-40" src="{{ asset('build/shop/images/svg-icon-visio.svg', 'shop') }}" srcset="{{ asset('build/shop/images/svg-icon-visio.svg', 'shop') }} 2x">
+                    </div>
+                    <img class="u-cover u-fullwidth conception-home--image" alt="{{ 'app.cms_page.conception_services.title'|trans }}" src="{{ asset('build/shop/images/conception-plan.png', 'shop') }}" srcset="{{ asset('build/shop/images/conception-plan.png', 'shop') }} 2x">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-true-white cms__content__default conception-home--header ">
+        <div class="container-fluid">
+            <div class="flush-row u-cross-centered-row u-padding-t-4 u-padding-b-4 @lg:u-padding-t-0">
+                <div class="@wd:flush-column-6 @lg:flush-column-5 u-relative">
+                    <img class="u-cover u-fullwidth conception-home--image u-hidden @lg:u-block" alt="{{ 'app.cms_page.conception_services.title'|trans }}" src="{{ asset('build/shop/images/team.jpeg', 'shop') }}" srcset="{{ asset('build/shop/images/team.jpeg', 'shop') }} 2x">
+                </div>
+                <div class="@wd:flush-column-6 @lg:flush-column-7 right-side">
+                    <div class="row">
+                        <div class="column-fill-space">
+                            <h2 class="t-header-large">{{ 'app.cms_page.conception_services.info_title'|trans }}</h2>
+                            <p class="t-base-medium u-margin-t-3">
+                                {{ 'app.cms_page.conception_services.info_text'|trans({'%ICON_LIB_URL%': iconLibUrl })|raw }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-beige t-align-center u-padding-t-8 u-padding-b-8 u-margin-b-12 cms-button-ui-fix">
+        <h3 class="t-header-large">
+            {{ 'app.cms_page.conception_services.devis_title'|trans }}
+        </h3>
+        {{ conceptionHomeContent | get_conception_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::CONCEPTION_HOME_BUTTON')) | monsieurbiz_richeditor_render_element }}
+    </div>
+
+    <div class="cross-content-slider cms-slider u-cross-centered-col u-padding-b-14">
+        <div class="cms-slider__header container">
+            <div class="row align-items-center u-fullwidth cross-content-title">
+                <div class="column-11">
+                    {{ conceptionHomeContent | get_conception_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::CONCEPTION_HOME_CROSS_CONTENT_TITLE')) | monsieurbiz_richeditor_render_element }}
+                    {{ conceptionHomeContent | get_conception_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::CONCEPTION_HOME_CROSS_CONTENT_BACK_LINK')) | monsieurbiz_richeditor_render_element }}
+                </div>
+                <div class="column-1">
+                    <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78 cms-slider__arrow--right-new">
+                        <use xlink:href="{{ iconLibUrl }}#SVG-arrow-right-fill--white-new"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="cms-slider__container swiper-container">
+            <div class="swiper-wrapper">
+                {{ conceptionHomeContent | get_conception_home_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::CONCEPTION_HOME_CROSS_CONTENT_PAGES')) | monsieurbiz_richeditor_render_element }}
+            </div>
+        </div>
+    </div>
+</div>

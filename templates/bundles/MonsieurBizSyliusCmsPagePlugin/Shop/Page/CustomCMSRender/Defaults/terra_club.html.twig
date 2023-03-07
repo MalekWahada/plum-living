@@ -1,0 +1,172 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set terraClubContent = page.content | format_cms_content_to_array %}
+
+<div class="cms__container bg-true-white terra-club">
+
+    <div class="fluid-container header c-true-white @md:u-padding-t-14 u-padding-t-8 t-align-center">
+        <h1 class="t-cera">{{ 'app.cms_page.terra_club.title'|trans |raw }}</h1>
+    </div>
+
+    <div class="bg-true-white cms__content__default">
+        <div class="fluid-container @lg:u-margin-t-4">
+            <div class="flush-row u-center-on-cross u-margin-b-10 t-align-center @lg:t-align-left">
+                <div class="@lg:column-6">
+                    <div class="cms__text u-fill-space t-base-medium @lg:u-padding-l-10 u-padding-4 u-center-on-mobile">
+                        <h2 class="t-header-xlarge">{{ 'app.cms_page.terra_club.top_title'|trans }}</h2>
+                        <p class="t-base-large">
+                            {{ 'app.cms_page.terra_club.top_subtitle'|trans({'%ICON_LIB_URL%': iconLibUrl })|raw }}
+                        </p>
+                        <a class="button button--inversed bg-terra c-true-white u-margin-t-2 u-margin-b-3" href="{{ path('sylius_shop_register') }}">
+                            <svg class="o-icon-16 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                            {{ 'app.cms_page.terra_club.cta'|trans }}
+                        </a>
+                        <p>
+                            {{ 'app.cms_page.terra_club.already_signed'|trans }}
+                        </p>
+                        <a href="{{ path('app_account_root') }}" class="link-button">{{ 'app.cms_page.terra_club.already_signed_link'|trans }}</a>
+                    </div>
+                </div>
+                <div class="@lg:column-5 u-padding-0 u-relative">
+                    <div class="badges-container u-center-on-main">
+                        <div class="badges-container__item t-align-center">
+                            <img class="terra-badge u-visible-fr" src="{{ asset('build/shop/images/remises.svg', 'shop') }}" srcset="{{ asset('build/shop/images/remises.svg', 'shop')}} 2x" />
+                            <img class="terra-badge u-visible-de" src="{{ asset('build/shop/images/discount-DE.svg', 'shop') }}" srcset="{{ asset('build/shop/images/discount-DE.svg', 'shop')}} 2x" />
+                            <img class="terra-badge u-visible-nl" src="{{ asset('build/shop/images/discount-NL.svg', 'shop') }}" srcset="{{ asset('build/shop/images/discount-NL.svg', 'shop')}} 2x" />
+                            <img class="terra-badge u-visible-en" src="{{ asset('build/shop/images/discount-EN.svg', 'shop') }}" srcset="{{ asset('build/shop/images/discount-EN.svg', 'shop')}} 2x" />
+
+                        </div>
+                        <div class="badges-container__item t-align-center">
+                            <img class="terra-badge u-visible-fr" src="{{ asset('build/shop/images/services.svg', 'shop') }}" srcset="{{ asset('build/shop/images/services.svg', 'shop')}} 2x" />
+                            <img class="terra-badge u-visible-de" src="{{ asset('build/shop/images/services-DE.svg', 'shop') }}" srcset="{{ asset('build/shop/images/services-DE.svg', 'shop')}} 2x" />
+                            <img class="terra-badge u-visible-nl" src="{{ asset('build/shop/images/services-NL.svg', 'shop') }}" srcset="{{ asset('build/shop/images/services-NL.svg', 'shop')}} 2x" />
+                            <img class="terra-badge u-visible-en" src="{{ asset('build/shop/images/services-EN.svg', 'shop') }}" srcset="{{ asset('build/shop/images/services-EN.svg', 'shop')}} 2x" />
+                        </div>
+                        <div class="badges-container__item t-align-center">
+                            <img class="terra-badge u-visible-fr"  src="{{ asset('build/shop/images/shooting.svg', 'shop') }}" srcset="{{ asset('build/shop/images/shooting.svg', 'shop')}} 2x" />
+                            <img class="terra-badge u-visible-de" src="{{ asset('build/shop/images/photoshoot-DE.svg', 'shop') }}" srcset="{{ asset('build/shop/images/photoshoot-DE.svg', 'shop')}} 2x" />
+                            <img class="terra-badge u-visible-nl" src="{{ asset('build/shop/images/photoshoot-NL.svg', 'shop') }}" srcset="{{ asset('build/shop/images/photoshoot-NL.svg', 'shop')}} 2x" />
+                            <img class="terra-badge u-visible-en" src="{{ asset('build/shop/images/photoshoot-EN.svg', 'shop') }}" srcset="{{ asset('build/shop/images/photoshoot-EN.svg', 'shop')}} 2x" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fluid-container u-padding-0">
+            <div class="flush-row u-center-on-cross help-fullwdith-card t-align-center @lg:t-align-left">
+                <div class="u-block @lg:u-hidden @lg:column-6 u-padding-0 u-relative">
+                    <img class="u-block u-cover u-fullwidth" src="{{ asset('build/shop/images/TERRA-CLUB_Samples-box.jpg', 'shop') }}" srcset="{{ asset('build/shop/images/TERRA-CLUB_Samples-box.jpg', 'shop')}} 2x" />
+                    <div class="help-fullwdith-card__icon u-absolute bg-near-black c-true-white right">
+                        <svg class="o-icon-40 u-block discount-icon"><use xlink:href="{{ iconLibUrl }}#SVG-icon-discount"></use></svg>
+                    </div>
+                </div>
+                <div class="@lg:column-6">
+                    <div class="cms__text cms-body-alt u-fill-space u-margin-t-0 t-base-medium @lg:u-padding-l-13 u-padding-4">
+                        <h3 class="t-header-large">{{ 'app.cms_page.terra_club.echantillons.title'|trans }}</h3>
+                        <p>
+                            {{ 'app.cms_page.terra_club.echantillons.text'|trans({'%ICON_LIB_URL%': iconLibUrl })|raw }}
+                        </p>
+                        <p><i>{{ 'app.cms_page.terra_club.echantillons.italic'|trans }}</i></p>
+                    </div>
+                </div>
+
+                <div class="u-hidden @lg:u-block @lg:column-6 u-padding-0 u-relative">
+                        <img class="u-block u-cover u-fullwidth" src="{{ asset('build/shop/images/TERRA-CLUB_Samples-box.jpg', 'shop') }}" srcset="{{ asset('build/shop/images/TERRA-CLUB_Samples-box.jpg', 'shop')}} 2x" alt="Terra Club" />
+                    <div class="help-fullwdith-card__icon u-absolute bg-near-black c-true-white right">
+                        <svg class="o-icon-40 u-block discount-icon"><use xlink:href="{{ iconLibUrl }}#SVG-icon-discount"></use></svg>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flush-row u-center-on-cross help-fullwdith-card">
+                <div class="@lg:column-6 u-padding-0 u-relative">
+                    <img class="u-block u-cover u-fullwidth" style="object-position:top;" src="{{ asset('build/shop/images/TERRA-CLUB_Pro-tools.jpg', 'shop') }}" srcset="{{ asset('build/shop/images/TERRA-CLUB_Pro-tools.jpg', 'shop')}} 2x" alt="Terra Club">
+                    <div class="help-fullwdith-card__icon u-absolute bg-near-black c-true-white left">
+                        <svg class="o-icon-40 u-block u-padding-t-1"><use xlink:href="{{ iconLibUrl }}#SVG-icon-gem"></use></svg>
+                    </div>
+                </div>
+                <div class="@lg:column-6">
+                    <div class="cms__text cms-body-alt u-fill-space u-margin-t-0 t-base-medium @lg:u-padding-l-13 u-padding-4">
+                        <h3 class="t-header-large">{{ 'app.cms_page.terra_club.services.title'|trans }}</h3>
+                        <p>
+                            {{ 'app.cms_page.terra_club.services.text'|trans({'%ICON_LIB_URL%': iconLibUrl })|raw }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flush-row u-center-on-cross help-fullwdith-card u-margin-b-10 t-align-center @lg:t-align-left">
+                <div class="u-block @lg:u-hidden @lg:column-6 u-padding-0 u-relative">
+                    <img class="u-block u-cover u-fullwidth" src="{{ asset('build/shop/images/TERRA-CLUB_Shooting.jpg', 'shop') }}" srcset="{{ asset('build/shop/images/TERRA-CLUB_Shooting.jpg', 'shop')}} 2x" alt="Terra Club" />
+                    <div class="help-fullwdith-card__icon u-absolute bg-near-black c-true-white right">
+                        <svg class="o-icon-40 u-block camera-icon"><use xlink:href="{{ iconLibUrl }}#SVG-icon-camera"></use></svg>
+                    </div>
+                </div>
+                <div class="@lg:column-6">
+                    <div class="cms__text cms-body-alt u-fill-space u-margin-t-0 t-base-medium @lg:u-padding-l-13 u-padding-4">
+                        <h3 class="t-header-large">{{ 'app.cms_page.terra_club.shooting.title'|trans }}</h3>
+                        <p>
+                            {{ 'app.cms_page.terra_club.shooting.text'|trans({'%ICON_LIB_URL%': iconLibUrl })|raw }}
+                        </p>
+                    </div>
+                </div>
+                <div class="u-hidden @lg:u-block @lg:column-6 u-padding-0 u-relative">
+                    <img class="u-block u-cover u-fullwidth" src="{{ asset('build/shop/images/TERRA-CLUB_Shooting.jpg', 'shop') }}" srcset="{{ asset('build/shop/images/TERRA-CLUB_Shooting.jpg', 'shop')}} 2x" alt="Terra Club"/>
+                    <div class="help-fullwdith-card__icon u-absolute bg-near-black c-true-white right">
+                        <svg class="o-icon-40 u-block camera-icon"><use xlink:href="{{ iconLibUrl }}#SVG-icon-camera"></use></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="t-align-center u-margin-b-7">
+        <a class="button button--inversed bg-terra c-true-white u-margin-t-2 u-margin-b-3" href="{{ path('sylius_shop_register') }}">
+            <svg class="o-icon-16 u-margin-r-2"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+            {{ 'app.cms_page.terra_club.cta'|trans }}
+        </a>
+        <p>
+            {{ 'app.cms_page.terra_club.already_signed'|trans }}
+        </p>
+        <a href="{{ path('app_account_root') }}" class="link-button">
+            {{ 'app.cms_page.terra_club.already_signed_link'|trans }}
+        </a>
+    </div>
+
+    <div class="bg-grey-dark t-align-center c-near-white u-padding-t-8 u-padding-b-8 u-margin-b-12 cms-button-ui-fix">
+        <h3 class="t-header-large">
+            {{ 'app.cms_page.terra_club.how_it_works.title'|trans }}
+        </h3>
+        <a class="button button--inversed u-margin-t-4" href="{{ path('app_faq_index') }}">
+            {{ 'app.cms_page.terra_club.how_it_works.cta'|trans }}
+            <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+        </a>
+        <p class="u-margin-t-4 u-margin-b-1">
+            {{ 'app.cms_page.terra_club.how_it_works.help_text'|trans }}
+        </p>
+        {{ 'app.cms_page.terra_club.how_it_works.help_mail'|trans|raw }}
+    </div>
+
+    <div class="cross-content-slider cms-slider u-cross-centered-col u-padding-b-14">
+        <div class="cms-slider__header container">
+            <div class="row align-items-center u-fullwidth cross-content-title">
+                <div class="column-11">
+                    {{ terraClubContent | get_terra_club_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::TERRA_CLUB_CROSS_CONTENT_TITLE')) | monsieurbiz_richeditor_render_element }}
+                    {{ terraClubContent | get_terra_club_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::TERRA_CLUB_CROSS_CONTENT_BACK_LINK')) | monsieurbiz_richeditor_render_element }}
+                </div>
+                <div class="column-1">
+                    <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78 cms-slider__arrow--right-new">
+                        <use xlink:href="{{ iconLibUrl }}#SVG-arrow-right-fill--white-new"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="cms-slider__container swiper-container">
+            <div class="swiper-wrapper">
+                {{ terraClubContent | get_terra_club_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::TERRA_CLUB_CROSS_CONTENT_PAGES')) | monsieurbiz_richeditor_render_element }}
+            </div>
+        </div>
+    </div>
+</div>

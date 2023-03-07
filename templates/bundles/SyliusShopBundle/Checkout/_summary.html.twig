@@ -1,0 +1,131 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set cartPromotionTotal = order.adjustmentsTotalRecursively(constant('Sylius\\Component\\Core\\Model\\AdjustmentInterface::ORDER_PROMOTION_ADJUSTMENT')) %}
+
+{% set step = resolve_checkout_step() %}
+<div class="checkout-order-summary-panel panel panel--aside">
+    <h2 class="panel__title t-header-medium">
+        {% if step < 5 %}
+            {{ 'app.ui.checkout.order_summary.title'|trans }}
+        {% else %}
+            {{ 'app.ui.checkout.step_5_content.summary_title'|trans }}
+        {% endif %}
+    </h2>
+    <div class="panel__content">
+        <table class="table order-summary-table t-label-small" id="sylius-checkout-subtotal" {{ sylius_test_html_attribute('checkout-subtotal') }}>
+            <thead>
+                <tr>
+                    <th>{{ 'app.ui.generic.product'|trans }}</th>
+                    <th class="qty">{{ 'app.ui.generic.quantity'|trans }}</th>
+                    <th class="price">{{ 'app.ui.generic.price'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.items %}
+                    <tr>
+                        <td>
+                            <p class="u-margin-b-0.5">{{ item.variant.product.name }}</p>
+                            {% include 'Shop/Product/_selected_options.html.twig' with { variant: item.variant } %}
+                        </td>
+                        <td class="qty">{{ item.quantity }}</td>
+                        <td class="price" id="sylius-item-{{ item.variant.product.slug }}-subtotal" {{ sylius_test_html_attribute('item-subtotal', item.variant.product.slug) }}>
+                            {% if item.total < item|calculate_total_with_tax %}
+                                <strike>{{ money.calculateTotal(item) }}</strike><br>
+                                {{ money.convertAndFormat(item.total) }}
+                            {% else %}
+                                {{ money.calculateTotal(item) }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr class="table-separator-row"><td colspan="3"></td></tr>
+                <tr>
+                    <td colspan="2">
+                        <p>{{ 'app.ui.generic.sub_total'|trans }}</p>
+                        <p class="c-grey-mid t-base-xsmall">{{ 'app.ui.generic.vat_included'|trans }}</p>
+                        {% if order.shipments is empty and step > constant('App\\Provider\\Order\\CheckoutStepProvider::STEP_ADDRESS') %}
+                            <p class="c-grey-mid t-base-xsmall">{{ 'app.ui.checkout.order_summary.price_does_not_include_shipping'|trans }}</p>
+                        {% endif %}
+                    </td>
+                    <td class="price" id="sylius-summary-items-subtotal" data-initial-total="{{ order.itemsTotal }}">
+                        {{ money.calculateTotaItemsWithTax(order) }}
+                    </td>
+                </tr>
+                {% if cartPromotionTotal %}
+                    <tr>
+                        <td colspan="2">
+                            <p>{{ 'sylius.ui.discount'|trans }}:</p>
+                            <p class="c-grey-mid t-base-xsmall">
+                                {{ 'app.ui.generic.vat_included'|trans }}
+                            </p>
+                        </td>
+                        <td class="price" id="sylius-summary-promotion-total" data-initial-total="{{ cartPromotionTotal }}">{{ money.convertAndFormat(cartPromotionTotal) }}</td>
+                    </tr>
+                {% endif %}
+                {% if order.shipments is not empty and step > constant('App\\Provider\\Order\\CheckoutStepProvider::STEP_ADDRESS') %}
+                    <tr>
+                        <td colspan="2">
+                            <p>{{ 'app.ui.checkout.order_summary.shipping_total'|trans }}</p>
+                            <p class="c-grey-mid t-base-xsmall">{{ 'app.ui.generic.vat_included'|trans }}</p>
+                        </td>
+                        <td class="price">
+                            <p id="sylius-summary-shipping-total" data-initial-total="{{ order.shippingTotal }}">{{ money.convertAndFormat(order.shippingTotal) }}</p>
+                        </td>
+                    </tr>
+                {% endif %}
+                <tr class="table-separator-row c-grey-dark"><td colspan="3"></td></tr>
+                <tr>
+                    <td colspan="3" class="t-align-center">
+                        <span class="u-sr-only">{{ 'app.ui.delivery.delivery_delais_label'|trans }} :<br></span>
+                        {% include 'Shop/Cart/Delivery/_delivery_min_max_delays.html.twig' with {'cart': order} %}
+                        {% if order.lastPayment %}
+                            <div id="div-custom-delays" class="{{ (order.lastPayment.method.code != 'stripe_wire') ? 'u-hidden' : '' }}">+ délai de réception de votre virement</div>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr class="table-separator-row"><td colspan="3"></td></tr>
+                <tr>
+                    <td colspan="2">
+                        {% if step == constant('App\\Provider\\Order\\CheckoutStepProvider::STEP_ADDRESS') %}
+                            <p class="t-label-large">{{ 'app.ui.generic.total_without_shipping'|trans }}</p>
+                            <p class="c-grey-mid t-base-xsmall">{{ 'app.ui.checkout.order_summary.shipping_fee_calculated_next'|trans }}</p>
+                        {% else %}
+                            <p class="t-label-large">{{ 'app.ui.generic.total'|trans }}</p>
+                            <p class="c-grey-mid t-base-xsmall">{{ 'app.ui.generic.vat_included'|trans }}</p>
+                        {% endif %}
+                        {% if order.shipments is empty and step > constant('App\\Provider\\Order\\CheckoutStepProvider::STEP_ADDRESS') %}
+                            <p class="c-grey-mid t-base-xsmall">{{ 'app.ui.checkout.order_summary.price_does_not_include_shipping'|trans }}</p>
+                        {% endif %}
+                    </td>
+                    {% set cartItemsTotal = order.itemsTotal %}
+                    {% if step < constant('App\\Provider\\Order\\CheckoutStepProvider::STEP_SELECT_SHIPPING') %}
+                        <td class="price t-label-large" id="sylius-summary-grand-total" data-initial-total="{{ cartItemsTotal + cartPromotionTotal }}">{{ money.convertAndFormat(cartItemsTotal + cartPromotionTotal) }}</td>
+                    {% else %}
+                        {% set shippingTotal = order.shippingTotal %}
+                        <td class="price t-label-large" id="sylius-summary-grand-total" data-initial-total="{{ cartItemsTotal + cartPromotionTotal + shippingTotal }}">{{ money.convertAndFormat(cartItemsTotal + cartPromotionTotal + shippingTotal) }}</td>
+                    {% endif %}
+                </tr>
+            </tfoot>
+        </table>
+        {% if order.paymentState != constant('Sylius\\Component\\Core\\OrderPaymentStates::STATE_PAID') and form is defined  %}
+            <div class="u-margin-t-4">
+                <button class="button button--inversed ripple-button u-fullwidth custom-button" type="submit" form="{{ form.vars.id }}" {{ sylius_test_html_attribute('next-step') }}>
+                    {% if step == constant('App\\Provider\\Order\\CheckoutStepProvider::STEP_SELECT_COMPLETE') %}
+                        {{ 'app.ui.checkout.steps_nav.proceed_to_payment'|trans }}
+                    {% else %}
+                        {{ 'app.ui.generic.proceed'|trans }}
+                    {% endif %}
+                    <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                </button>
+                {% if order.lastPayment and order.lastPayment.method.code != constant('App\\Entity\\Payment\\PaymentMethod::STRIPE_PAYMENT_METHOD_WIRE_CODE') %}
+                    <div class="u-cross-centered-row u-margin-t-3">
+                        <a href="{{ path('sylius_shop_cart_summary') }}" class="link-button c-grey-light">{{ 'app.ui.checkout.order_summary.change_my_order'|trans }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>

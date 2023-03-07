@@ -1,0 +1,11 @@
+# JMS Serializer is used by Sylius ShopAPI and AdminAPI and will be replaced by ApiPlatform in further Sylius releases.
+
+jms_serializer:
+    visitors:
+        xml:
+            format_output: '%kernel.debug%'
+    metadata:
+        directories:
+            Product:
+                namespace_prefix: 'App\Entity'
+                path: '%kernel.project_dir%/config/jms_serializer'

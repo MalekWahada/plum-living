@@ -1,0 +1,49 @@
+app:
+    cart:
+        error: 'Fout in winkelmand: Uw winkelmand is niet bijgewerkt'
+        success: 'Uw winkelmand is succesvol bijgewerkt.'
+    cms:
+        page_position:
+            success: 'Posities zijn succesvol bijgewerkt'
+        project_plan:
+            error: 'Er is een interne fout opgetreden, probeer het later nog eens'
+            success: 'De e-mail werd succesvol verzonden'
+            warning: 'Controleer of u uw e-mail adres correct hebt ingevoerd'
+    duplicate_cart:
+        error: 'De bestelling bestaat niet, uw winkelmand is niet bijgewerkt.'
+        success: 'Uw winkelwagen is succesvol bijgewerkt.'
+    facade:
+        facade_not_exist: 'Uw keuze van ladefront bestaat niet.'
+    order:
+        awaiting_payment:
+            not_allowed: 'U bent uitgelogd, uw lopende orders zijn toegankelijk in uw ruimte'
+            not_found: 'Er is een fout opgetreden.'
+            to_cart_success: 'Uw bestelling is niet in rekening gebracht. Uw artikelen zitten nog in uw winkelmand'
+        order_not_exist: 'Bestelling niet gevonden.'
+    plum_scanner:
+        create_project_error: 'Er is een onverwacht probleem opgetreden tijdens het maken van uw project. Probeer het nog eens.'
+        create_project_success: 'Uw project is succesvol aangemaakt.'
+        error_invalid_mail: 'De e-mail die u ons stuurde, was niet afkomstig van de IKEA Keukenplanner.'
+        error_invalid_pdf: 'Het plan dat u ons heeft gestuurd is niet geldig.'
+        error_other: 'Er is een onverwacht probleem opgetreden tijdens het scannen van uw plan. Probeer het nog eens.'
+        not_found: 'Project niet gevonden.'
+        project_successfully_saved: 'Uw project is succesvol opgeslagen.'
+        project_successfully_shared: 'Het project werd met succes per e-mail gedeeld.'
+    product:
+        not_found: 'Het product dat u zoekt bestaat niet!'
+    project:
+        create_project_success: 'Uw project is succesvol aangemaakt.'
+        delete_project_success: 'Uw project is succesvol verwijderd.'
+        duplicate_project_error: 'Er is een onverwacht probleem opgetreden bij het dupliceren van uw project. Probeer het nog eens.'
+        duplicate_project_success: 'Uw project is succesvol gedupliceerd.'
+    share_cart:
+        error: 'Er is een interne fout opgetreden, probeer het later nog eens.'
+        success: 'Uw winkelmand is succesvol gedeeld via e-mail.'
+    user:
+        mail_verified: 'Uw e-mail is al geverifieerd'
+sylius:
+    address:
+        delete: 'Uw adres is verwijderd'
+    customer:
+        register: 'Bedankt voor uw registratie, u ontvangt een e-mail om uw account te verifiëren.'
+        update: 'Uw profiel is succesvol bijgewerkt.'

@@ -1,0 +1,87 @@
+- code: monsieurbiz.text
+  data:
+      content: >-
+          Lorem ipsum<br><p><br><p>Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Metus arcu euismod viverra faucibus amet. Purus penatibus
+          massa mauris ultrices. Massa ipsum lobortis neque tincidunt massa. Cras a
+          massa laoreet ut ut sagittis, nec. Amet dui, convallis maecenas aliquet
+          purus. Id sit vel, id felis non ac vel arcu.</p><p>Elementum ut quis vel
+          diam eu congue. Volutpat tempus integer nulla scelerisque sem pretium
+          laoreet quam. Ut nunc ultricies duis pellentesque in enim sed. Egestas a
+          et elit tempus purus at libero. Risus lacus vitae fames ac. Aliquam ipsum
+          quam praesent tincidunt. Suspendisse massa, tortor at tellus felis
+          penatibus. Orci, porttitor ut et est maecenas elementum quis ornare.
+          Varius nisi ultricies amet vitae, risus, faucibus mi accumsan, faucibus.
+          Tellus sed quisque pellentesque leo diam vestibulum, proin. Justo commodo
+          ipsum tempus morbi sed odio feugiat pellentesque.</p></p>
+      align: ''
+- code: app.accordion
+  data:
+      accordions:
+          - title: Livraison et retours
+            detail: >-
+                Nos façades sont fabriquées à la commande et ne peuvent être
+                retournées ni échangées. Consultez notre délai de livraison et le
+                montant des frais de port dans nos FAQ. ("délai de livraison"est
+                souligné et pointe vers l'article FAQ, et idem pour "frais de port"
+                qui est souligné et qui pointe vers l'article FAQ concerné). La
+                livraison a lieu sur RDV au RDC en région et à l'étage en IdF.&nbsp;
+          - title: Comment bien installer ma cadence ?
+            detail: >-
+                Nos façades sont fabriquées à la commande et ne peuvent être
+                retournées ni échangées. Consultez notre délai de livraison et le
+                montant des frais de port dans nos FAQ. ("délai de livraison"est
+                souligné et pointe vers l'article FAQ, et idem pour "frais de port"
+                qui est souligné et qui pointe vers l'article FAQ concerné). La
+                livraison a lieu sur RDV au RDC en région et à l'étage en IdF.&nbsp;
+          - title: Avec quel facade ma cadence ?
+            detail: >-
+                Nos façades sont fabriquées à la commande et ne peuvent être
+                retournées ni échangées. Consultez notre délai de livraison et le
+                montant des frais de port dans nos FAQ. ("délai de livraison"est
+                souligné et pointe vers l'article FAQ, et idem pour "frais de port"
+                qui est souligné et qui pointe vers l'article FAQ concerné). La
+                livraison a lieu sur RDV au RDC en région et à l'étage en IdF.
+- code: monsieurbiz.image_collection
+  data:
+      images:
+          - image:
+            alt:
+            title:
+            link:
+            align: ''
+          - image:
+            alt:
+            title:
+            link:
+            align: ''
+          - image:
+            alt:
+            title:
+            link:
+            align: ''
+      type: mosaic
+- code: monsieurbiz.h3
+  data:
+      content: Besoin d’exemples ?
+      align: ''
+- code: monsieurbiz.button
+  data:
+      label: Découvrez les projets de nos clients
+      link: projets
+      align: ''
+      type: default
+- code: monsieurbiz.h3
+  data:
+      content: Ces sujets pourraient vous plaire.
+      align: ''
+- code: monsieurbiz.button
+  data:
+      label: Retour au journal
+      link: inspirations
+      align: ''
+      type: simple_link
+- code: app.pages_listing
+  data:
+      pages:
+          - article-2

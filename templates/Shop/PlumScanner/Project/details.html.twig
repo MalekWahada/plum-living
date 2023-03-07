@@ -1,0 +1,123 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% block title %}
+    {{ "app.ui.plum_scanner.title"|trans }}
+{% endblock %}
+
+{% block content %}
+
+    {{ form_start(form) }}
+    <div class="ui grid">
+        <div class="two column row">
+            <div class="nine wide column">
+                <h3>{{ 'app.ui.plum_scanner.step_three.adjust_options.heading'|trans }}</h3>
+                <small>{{ 'app.ui.plum_scanner.step_three.adjust_options.hint'|trans }}</small>
+
+                <br> <br>
+
+                <div class="ui form">
+                    <div class="field">
+                        {{ form_label(form.design) }}
+                        {{ form_widget(form.design, {id: 'project-design', 'attr': {'class' : 'design'}}) }}
+                    </div>
+                    <div class="field">
+                        {{ form_label(form.finish) }}
+                        {{ form_widget(form.finish, {id: 'project-finish', 'attr': {'class' : 'finish'}}) }}
+                    </div>
+                    <div class="field">
+                        {{ form_label(form.color) }}
+                        {{ form_widget(form.color, {id: 'project-color', 'attr': {'class' : 'color'}}) }}
+                    </div>
+                </div>
+
+                <br> <br>
+
+                <h3>{{ 'app.ui.plum_scanner.step_three.modulate_articles.heading'|trans }}</h3>
+
+                <div class="ui form">
+                    <ul>
+                        {% for item in form.items %}
+                            <li>
+                                {% if item.vars.value.cabinetReference is defined %}
+                                    <h5>
+                                        {{ item.vars.value.cabinetReference }}
+                                        <small>{{ item.vars.value.ikeaSku }}</small>
+                                    </h5>
+                                {% endif %}
+
+                                <h5>{{ item.vars.value.product.name }}</h5>
+
+                                {% set unitPrice = item.vars.value.unitPrice(sylius.channel) %}
+                                <div>
+                                    <span class="product-unit-price">{{ money.convertAndFormat(unitPrice, sylius.currencyCode) }}</span>
+                                    {{ 'app.ui.plum_scanner.step_three.modulate_articles.unit_price'|trans }}
+                                </div>
+
+                                <div {% if item.vars.value.quantity == 1 %}style="display: none"{% endif %}>
+                                    <span>
+                                        {{ money.format(unitPrice * item.vars.value.quantity, sylius.currencyCode) }}
+                                    </span>
+                                    {{ 'app.ui.plum_scanner.step_three.modulate_articles.total_price'|trans }}
+                                </div>
+
+                                <div class="field">{{ form_row(item.quantity) }}</div>
+
+                                {% if not item.product.vars.data.isSimple %}
+                                    <div class="field">
+                                        {{ form_label(item.design) }}
+                                        {{ form_widget(item.design) }}
+                                    </div>
+
+                                    <div class="field">
+                                        {{ form_label(item.finish) }}
+                                        {{ form_widget(item.finish) }}
+                                    </div>
+
+                                    <div class="field">
+                                        {{ form_label(item.color) }}
+                                        {{ form_widget(item.color) }}
+                                    </div>
+                                {% endif %}
+
+                                <div class="field">{{ form_row(item.comment) }}</div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h3>{{ 'app.ui.plum_scanner.step_three.checkout.heading'|trans }}</h3>
+
+                {% set price = project.totalPrice(sylius.channel)|sylius_convert_money(sylius.channel.baseCurrency.code, sylius.currencyCode) %}
+                <span>{{ money.format(price, sylius.currencyCode) }}</span>
+
+                <br>
+
+                <small>{{ 'app.ui.plum_scanner.step_three.checkout.hint_charges'|trans }}</small> <br>
+                <small>{{ 'app.ui.plum_scanner.step_three.checkout.hint_cost'|trans }}</small> <br>
+
+                <a href="{{ path('app_customer_project_checkout', {'token' : project.token}) }}" class="ui primary button">
+                    {{ 'sylius.ui.add_to_cart'|trans }}
+                </a>
+
+                <br> <br>
+
+                <h3>{{ 'app.ui.plum_scanner.step_three.actions.heading'|trans }}</h3>
+
+                <br> <br>
+
+                <a href="" class="ui secondary icon labeled button">
+                    {{ 'app.ui.plum_scanner.step_three.actions.take_appointment'|trans }} <i class="phone icon"></i>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    {{ form_end(form, {'render_rest': false}) }}
+
+    <div class="js-share-project-via-email-modal ui modal">
+        <div class="ui loader"></div>
+    </div>
+
+{% endblock %}

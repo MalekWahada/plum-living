@@ -1,0 +1,17 @@
+<div class="row">
+    {% include '@SyliusShop/Common/Order/_addresses.html.twig' %}
+    <div class="column"><hr></div>
+    <div class="column" id="sylius-shipments">
+        <h3 class="t-header-small u-margin-b-2">{{ 'app.ui.generic.shipping'|trans }}</h3>
+        <div class="t-base-small">
+            {% include '@SyliusShop/Common/Order/_shipments.html.twig' %}
+        </div>
+    </div>
+    <div class="column"><hr></div>
+    <div class="column" id="sylius-payments">
+        <h3 class="t-header-small u-margin-b-2">{{ 'app.ui.generic.payment'|trans }}</h3>
+        <div class="t-base-small">
+            {% include '@SyliusShop/Common/Order/_payments.html.twig' %}
+        </div>
+    </div>
+</div>

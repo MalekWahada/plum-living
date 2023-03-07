@@ -1,0 +1,15 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\Order\Resolver\OrderPaymentStateTransitionResolver: ~
+
+    #to avoid https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts exception 
+    #we decorate the resolver to trigger the transition "pay" callback(s) on a reverted free order
+    App\Order\Resolver\OrderPaymentStateResolver:
+        decorates: sylius.state_resolver.order_payment
+        arguments:
+            - '@sm.factory'
+            - '@App\Order\Resolver\OrderPaymentStateTransitionResolver'

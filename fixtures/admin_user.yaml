@@ -1,0 +1,10 @@
+App\Entity\User\AdminUser:
+    admin_user:
+        username: 'admin@mail.com'
+        email: 'admin@mail.com'
+        enabled: true
+        plainPassword: 'admin'
+        encoder_name: 'argon2i'
+        locked: false
+        roles: '[ROLE_ADMINISTRATION_ACCESS]'
+        locale_code: '@locale_fr->code'

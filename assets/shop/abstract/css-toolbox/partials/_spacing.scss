@@ -1,0 +1,175 @@
+@use 'sass:map';
+@use '../../../config/sass' as *;
+@use '../../../abstract/css-grid/css-grid-config' as *;
+@use '../../../abstract/css-grid/css-grid-mixins' as *;
+
+
+
+$loop-iterations: 15;
+$small-loop-iterations: 8;
+
+
+
+/*
+  Shortcuts
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+@for $i from 1 to ($small-loop-iterations + 1) {
+  .u-h-spaced-#{$i} {
+    & > * + * {
+      margin-left: space($i) !important;
+    }
+  }
+
+  .u-h-tail-spaced-#{$i} {
+    & > * {
+      margin-right: space($i) !important;
+
+      &:last-child {
+        margin-right: 0 !important;
+      }
+    }
+  }
+
+  .u-v-spaced-#{$i} {
+    & > * + * {
+      margin-top: space($i) !important;
+    }
+  }
+
+  .u-v-tail-spaced-#{$i} {
+    & > * {
+      margin-bottom: space($i) !important;
+
+      &:last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+}
+
+
+
+/*
+  Margin
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.u-margin-auto { margin: auto !important; }
+.u-margin-l-auto { margin-left: auto !important; }
+.u-margin-r-auto { margin-right: auto !important; }
+.u-margin-t-auto { margin-top: auto !important; }
+.u-margin-b-auto { margin-bottom: auto !important; }
+
+.u-margin-0 { margin: 0 !important; }
+.u-margin-l-0 { margin-left: 0 !important; }
+.u-margin-r-0 { margin-right: 0 !important; }
+.u-margin-t-0 { margin-top: 0 !important; }
+.u-margin-b-0 { margin-bottom: 0 !important; }
+
+@for $i from 1 to ($loop-iterations + 1) {
+  $name-of-half: str-replace('.', '\\.', ($i - 0.5 + ""));
+
+  .u-margin-#{$name-of-half} { margin: space($i - 0.5) !important; }
+  .u-margin-l-#{$name-of-half} { margin-left: space($i - 0.5) !important; }
+  .u-margin-r-#{$name-of-half} { margin-right: space($i - 0.5) !important; }
+  .u-margin-t-#{$name-of-half} { margin-top: space($i - 0.5) !important; }
+  .u-margin-b-#{$name-of-half} { margin-bottom: space($i - 0.5) !important; }
+
+  .u-margin-#{$i} { margin: space($i) !important; }
+  .u-margin-l-#{$i} { margin-left: space($i) !important; }
+  .u-margin-r-#{$i} { margin-right: space($i) !important; }
+  .u-margin-t-#{$i} { margin-top: space($i) !important; }
+  .u-margin-b-#{$i} { margin-bottom: space($i) !important; }
+}
+
+
+@each $_slug, $_obj in $css-grid--breakpoints {
+  $_name:    map.get($_obj, "name");
+  $_shorthand: '\\@' + map.get($_obj, "shorthand") + '\\:';
+  $_value:   map.get($_obj, "value");
+  $_margins:   map.get($_obj, "margins");
+
+  @include up($_value) {
+    .#{$_shorthand}u-margin-auto { margin: auto !important; }
+    .#{$_shorthand}u-margin-l-auto { margin-left: auto !important; }
+    .#{$_shorthand}u-margin-r-auto { margin-right: auto !important; }
+    .#{$_shorthand}u-margin-t-auto { margin-top: auto !important; }
+    .#{$_shorthand}u-margin-b-auto { margin-bottom: auto !important; }
+
+    .#{$_shorthand}u-margin-0 { margin: 0 !important; }
+    .#{$_shorthand}u-margin-l-0 { margin-left: 0 !important; }
+    .#{$_shorthand}u-margin-r-0 { margin-right: 0 !important; }
+    .#{$_shorthand}u-margin-t-0 { margin-top: 0 !important; }
+    .#{$_shorthand}u-margin-b-0 { margin-bottom: 0 !important; }
+
+    @for $i from 0 to ($loop-iterations + 1) {
+      $name-of-half: str-replace('.', '\\.', ($i - 0.5 + ""));
+
+      .#{$_shorthand}u-margin-#{$name-of-half} { margin: space($i - 0.5) !important; }
+      .#{$_shorthand}u-margin-l-#{$name-of-half} { margin-left: space($i - 0.5) !important; }
+      .#{$_shorthand}u-margin-r-#{$name-of-half} { margin-right: space($i - 0.5) !important; }
+      .#{$_shorthand}u-margin-t-#{$name-of-half} { margin-top: space($i - 0.5) !important; }
+      .#{$_shorthand}u-margin-b-#{$name-of-half} { margin-bottom: space($i - 0.5) !important; }
+
+      .#{$_shorthand}u-margin-#{$i} { margin: space($i) !important; }
+      .#{$_shorthand}u-margin-l-#{$i} { margin-left: space($i) !important; }
+      .#{$_shorthand}u-margin-r-#{$i} { margin-right: space($i) !important; }
+      .#{$_shorthand}u-margin-t-#{$i} { margin-top: space($i) !important; }
+      .#{$_shorthand}u-margin-b-#{$i} { margin-bottom: space($i) !important; }
+    }
+  }
+}
+
+
+
+/*
+  Padding
+  ---------- ---------- ---------- ---------- ----------
+*/
+
+.u-padding-0 { padding: 0 !important; }
+
+@for $i from 1 to ($loop-iterations + 1) {
+  $name-of-half: str-replace('.', '\\.', ($i - 0.5 + ""));
+
+  .u-padding-#{$name-of-half} { padding: space($i - 0.5) !important; }
+  .u-padding-l-#{$name-of-half} { padding-left: space($i - 0.5) !important; }
+  .u-padding-r-#{$name-of-half} { padding-right: space($i - 0.5) !important; }
+  .u-padding-t-#{$name-of-half} { padding-top: space($i - 0.5) !important; }
+  .u-padding-b-#{$name-of-half} { padding-bottom: space($i - 0.5) !important; }
+
+  .u-padding-#{$i} { padding: space($i) !important; }
+  .u-padding-l-#{$i} { padding-left: space($i) !important; }
+  .u-padding-r-#{$i} { padding-right: space($i) !important; }
+  .u-padding-t-#{$i} { padding-top: space($i) !important; }
+  .u-padding-b-#{$i} { padding-bottom: space($i) !important; }
+}
+
+@each $_slug, $_obj in $css-grid--breakpoints {
+  $_name:    map.get($_obj, "name");
+  $_shorthand: '\\@' + map.get($_obj, "shorthand") + '\\:';
+  $_value:   map.get($_obj, "value");
+  $_margins:   map.get($_obj, "margins");
+
+  @include up($_value) {
+    .#{$_shorthand}u-padding-0 { padding: 0 !important; }
+
+    @for $i from 0 to ($loop-iterations + 1) {
+      $name-of-half: str-replace('.', '\\.', ($i - 0.5 + ""));
+
+      .#{$_shorthand}u-padding-#{$name-of-half} { padding: space($i - 0.5) !important; }
+      .#{$_shorthand}u-padding-l-#{$name-of-half} { padding-left: space($i - 0.5) !important; }
+      .#{$_shorthand}u-padding-r-#{$name-of-half} { padding-right: space($i - 0.5) !important; }
+      .#{$_shorthand}u-padding-t-#{$name-of-half} { padding-top: space($i - 0.5) !important; }
+      .#{$_shorthand}u-padding-b-#{$name-of-half} { padding-bottom: space($i - 0.5) !important; }
+
+      .#{$_shorthand}u-padding-#{$i} { padding: space($i) !important; }
+      .#{$_shorthand}u-padding-l-#{$i} { padding-left: space($i) !important; }
+      .#{$_shorthand}u-padding-r-#{$i} { padding-right: space($i) !important; }
+      .#{$_shorthand}u-padding-t-#{$i} { padding-top: space($i) !important; }
+      .#{$_shorthand}u-padding-b-#{$i} { padding-bottom: space($i) !important; }
+    }
+  }
+}

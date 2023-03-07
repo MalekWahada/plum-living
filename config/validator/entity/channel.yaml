@@ -1,0 +1,15 @@
+App\Entity\Channel\Channel:
+    properties:
+        defaultCountry:
+            - NotBlank:
+                  message: app.channel.default_country.not_blank
+                  groups: [Default, sylius]
+    constraints:
+        - App\Validator\ChannelConstraint\ChannelUniqueCountries:
+            groups: [Default, sylius]
+        -   App\Validator\ChannelConstraint\ChannelDefaultCountryEnabled:
+                groups: [Default, sylius]
+        -  Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [defaultCountry]
+            message: app.channel.unique_default_country
+            groups: [Default, sylius]

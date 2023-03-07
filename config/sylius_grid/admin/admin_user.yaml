@@ -1,0 +1,4 @@
+sylius_grid:
+    grids:
+        sylius_admin_admin_user:
+            limits: [50, 100, 25, 10]

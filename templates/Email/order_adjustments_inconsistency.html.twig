@@ -1,0 +1,12 @@
+{%- block subject -%}
+    Sylius Error - Adjustments total inconsistency detected for Order {{ order.id }}
+{%- endblock -%}
+
+{% block body %}
+    Order {{ order.id }} has an inconsistency error. Re-calculated adjustments total is {{ newTotal|default('?') }} and previous adjustments total was {{ previousTotal|default('?') }}.<br />
+    {% if order.customer is not null %}
+        Customer Id: {{ order.customer.id }}
+    {% else %}
+        User not logged in
+    {% endif %}
+{% endblock %}

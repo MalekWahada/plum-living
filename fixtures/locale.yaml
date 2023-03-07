@@ -1,0 +1,9 @@
+App\Entity\Locale\Locale:
+    locale_fr:
+        code: 'fr'
+        created_at: <dateTime()>
+        updated_at: null
+    locale_de:
+        code: 'de'
+        created_at: <dateTime()>
+        updated_at: null

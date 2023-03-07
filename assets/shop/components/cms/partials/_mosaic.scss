@@ -1,0 +1,232 @@
+.homepage,
+.cms {
+  //Mosaic
+  &-mosaic {
+    background-color: $color--true-white;
+    padding-top: rem(150);
+    margin-bottom: -152px;
+
+    @include up('wide') {
+      padding-top: rem(180);
+    }
+
+    @media screen and (min-width: 1700px) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    //Mosaic content
+    &__content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex-direction: row;
+      background-color: $color--beige;
+
+      @include up('medium') {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .cms-mosaic__item:first-child {
+        padding-right: 0;
+
+        @include up('medium') {
+          padding-right: 0;
+        }
+      }
+
+      .cms-mosaic__item:nth-child(3) {
+        position: relative;
+        margin-top: rem(0);
+        margin-bottom: rem(50);
+        padding-left: 0;
+
+        @include up('medium') {
+          top: rem(143);
+          margin-top: 0;
+          margin-bottom: 0;
+          padding-left: 0;
+        }
+
+        @include between('medium', 'large') {
+          top: rem(60);
+        }
+      }
+
+      .cms-mosaic__item:last-child {
+        padding-right: 28px;
+        position: relative;
+        left: rem(256);
+        top: rem(36);
+
+        @include up('medium') {
+          padding-right: 0;
+          position: relative;
+          left: rem(256);
+          top: rem(45);
+        }
+
+        @include between('medium', 'large') {
+          top: rem(60);
+          left: rem(126);
+        }
+      }
+    }
+    //End mosaic content
+
+    //Mosaic text center
+    &__center {
+      order: initial;
+      max-width: rem(474);
+      margin-bottom: 0;
+      align-self: flex-end;
+
+      @include up('medium') {
+        order: initial;
+        max-width: rem(474);
+        margin-bottom: 0;
+        align-self: flex-end;
+      }
+    }
+    //End mosaic text center
+
+    //Mosaic text subtitle tag
+    &__subtitle {
+      font-family: $font--blacklist;
+      color: #3C6575;
+    }
+    //End mosaic text subtitle tag
+
+    //Mosaic socials
+    &__socials {
+      padding-top: rem(30);
+
+      @include up('medium') {
+        padding-top: rem(25);
+      }
+
+      a {
+        color: get-color('blue');
+
+        &:first-child {
+          margin-right: rem(20);
+        }
+      }
+      @media (max-width: 448px){
+        a{
+          margin-right:0 !important;
+          width: 180px;
+        }
+      }
+    }
+    //End mosaic socials
+
+    //Mosaic images
+    .cms-mosaic__item {
+      img {
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+    //End mosaic images
+  }
+  //End mosaic
+}
+
+.CMS_PAGE_TYPE_project,
+.sylius_shop_product_show {
+  .cms-mosaic {
+    &__content {
+      //Mosaic images
+      .cms-mosaic__item {
+        img {
+
+          @include up('wide') {
+            width: 100%;
+          }
+        }
+      }
+      //End mosaic images
+      .cms-mosaic__item:nth-child(2) {
+        position: relative;
+        margin-top: rem(50);
+        margin-bottom: rem(50);
+        padding-left: rem(80);
+        text-align: right;
+
+        @include up('medium') {
+          top: rem(143);
+          margin-top: 0;
+          margin-bottom: 0;
+          padding-left: 0;
+        }
+
+        @include between('medium', 'large') {
+          top: rem(60);
+        }
+      }
+
+      .cms-mosaic__item:last-child {
+        left: 0;
+
+        @include between('medium', 'wide') {
+          left: rem(50);
+        }
+
+        @include up('wide') {
+          top: rem(140);
+          left: rem(144);
+        }
+      }
+    }
+  }
+}
+
+.sylius_shop_product_show {
+  .cms-mosaic {
+    @include up('medium') {
+      padding-bottom: rem(116);
+    }
+
+    @include between('medium', 'large') {
+      padding-bottom: rem(60);
+    }
+
+    @include up('wide') {
+      padding-bottom: rem(140);
+    }
+  }
+}
+
+
+// Animation images
+@include up('medium') {
+  .img-anim {
+    transition: transform 2s cubic-bezier(.16, 1.08, .38, .98);
+    will-change: transform;
+  }
+
+  .is-in {
+    transform: translateZ(0);
+  }
+
+  .is-out {
+    transition: none;
+    transition-delay: 0s;
+
+    &--up {
+      transform: translate3d(0, -120px, 0);
+    }
+
+    &--down {
+      transform: translate3d(0, 120px,0);
+    }
+  }
+}
+
+// End animation images
+
+

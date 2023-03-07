@@ -1,0 +1,25 @@
+{% set pageContent = item.content | format_cms_content_to_array %}
+{% set route = get_url_from_page(item) %}
+
+<a class="u-block u-v-spaced-2 t-link-wrapper u-fullwidth u-fullheight"
+   href="{{ route | raw }}">
+    <div class="cms__item cms__item--media_category u-relative">
+        <div class="cms__img u-relative">
+            {% if item.image.path is defined and item.image.path is not empty %}
+                <img class="slide-cover-image"
+                     src="{{ item.image.path | imagine_filter('app_cms_big_thumbnail') }}"
+                     srcset="{{ item.image.path | imagine_filter('app_cms_big_thumbnail_retina') }} 2x"/>
+            {% else %}
+                <img class="slide-cover-image"
+                     src="{{ asset('build/shop/images/no-image.png', 'shop') }}"
+                     srcset="{{ asset('build/shop/images/no-image.png', 'shop') }}"/>
+            {% endif %}
+        </div>
+        <div class="cms__item--media_category--content c-true-white">
+            <h4 class="t-header-small t-shadow">{{ item.title }}</h4>
+        </div>
+        <div class="background-opacity">
+        </div>
+    </div>
+</a>
+

@@ -1,0 +1,47 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+{% set order_status = order|get_account_status_label %}
+
+{% if order_status == constant('App\\Provider\\Order\\StatusProvider::STATE_CANCELLED') %}
+    <div class="steps-nav">
+        <div class="steps-nav__step steps-nav__step--active">
+            <span class="steps-nav__index t-base-medium bg-pink-light">
+                <svg class="o-icon-24"><use xlink:href="{{ iconLibUrl }}#SVG-icon-close"/></svg>
+            </span>
+            <span class="steps-nav__name t-base-small">{{ 'app.ui.order.state_cancelled'|trans }}</span>
+        </div>
+    </div>
+{% else %}
+    <div class="steps-nav">
+        {% if order_status == constant('App\\Provider\\Order\\StatusProvider::STATE_PENDING') or order_status == constant('App\\Provider\\Order\\StatusProvider::STATE_PARTIALLY_PAID') %}
+            <div class="steps-nav__step steps-nav__step--active">
+                <span class="steps-nav__index t-base-medium">1</span>
+                <span class="steps-nav__name t-base-small">{{ 'app.ui.order.state_pending'|trans }}</span>
+            </div>
+        {% else %}
+            <div class="steps-nav__step">
+                <span class="steps-nav__index t-base-medium">1</span>
+                <span class="steps-nav__name t-base-small">{{ 'app.ui.order.state_confimed'|trans }}</span>
+            </div>
+        {% endif %}
+
+        <div class="steps-nav__step {% if order_status == constant('App\\Provider\\Order\\StatusProvider::STATE_FULLY_PAID') %} steps-nav__step--active {% endif %}">
+            <span class="steps-nav__index t-base-medium">2</span>
+            <span class="steps-nav__name t-base-small">{{ 'app.ui.order.state_fully_paid'|trans }}</span>
+        </div>
+
+        <div class="steps-nav__step {% if order_status == constant('App\\Provider\\Order\\StatusProvider::STATE_PARTIALLY_SHIPPED') %} steps-nav__step--active {% endif %}">
+            <span class="steps-nav__index t-base-medium">3</span>
+            <span class="steps-nav__name t-base-small">{{ 'app.ui.order.step_state_partially_shipped'|trans }}</span>
+        </div>
+
+        <div class="steps-nav__step {% if order_status == constant('App\\Provider\\Order\\StatusProvider::STATE_FULLY_SHIPPED') %} steps-nav__step--active {% endif %}">
+            <span class="steps-nav__index t-base-medium">4</span>
+            <span class="steps-nav__name t-base-small">{{ 'app.ui.order.state_fully_shipped'|trans }}</span>
+        </div>
+
+        <div class="steps-nav__step {% if order_status == constant('App\\Provider\\Order\\StatusProvider::STATE_FULFILLED') %} steps-nav__step--active {% endif %}">
+            <span class="steps-nav__index t-base-medium">5</span>
+            <span class="steps-nav__name t-base-small">{{ 'app.ui.order.state_fulfilled'|trans }}</span>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,22 @@
+{% set image = null %}
+
+{% if product.imagesByType('main')|length > 0 %}
+    {% set image = product.imagesByType('main')|first %}
+{% elseif product.images|length > 0 %}
+    {% set image = product.images|first %}
+{% endif %}
+
+{% if image.path|default(null) is not null %}
+    <img
+        class="u-cover"
+        src="{{ image.path|imagine_filter('app_tunnel_product_thumbnail_custom') }}"
+        srcset="{{ image.path|imagine_filter('app_tunnel_product_thumbnail_custom_retina') }} 2x"
+        alt="{{ image.type }}"/>
+{% else %}
+    {% set path = asset('build/shop/images/no-image.png', 'shop') %}
+    <img
+        class="u-cover"
+        src="{{ path|imagine_filter('app_tunnel_product_thumbnail_custom') }}"
+        srcset="{{ path|imagine_filter('app_tunnel_product_thumbnail_custom_retina') }} 2x"
+        alt="no-image"/>
+{% endif %}

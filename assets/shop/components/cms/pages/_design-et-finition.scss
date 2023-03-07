@@ -1,0 +1,122 @@
+.CMS_design-et-finition, .CMS_design-finish {
+  background: $color--true-white;
+
+  .page-container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .cms {
+    //Design finish main title
+    &-main-title {
+      display: flex;
+      justify-content: center;
+      padding-left: rem(20);
+      padding-right: rem(20);
+
+      @include up('large') {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .cms__title {
+        max-width: 600px;
+        text-align: center;
+      }
+    }
+    //End design Finish main title
+
+    //Design finish content
+    &__content {
+      padding-top: rem(55);
+      background: $color--true-white;
+
+      @include up('large') {
+        padding-top: rem(60);
+      }
+      .cms-design,
+      .cms-finish {
+        &__title {
+          .cms__text {
+            font-size: rem(30);
+            line-height: 120%;
+            letter-spacing: -0.02em;
+            font-family: $font--blacklist;
+            font-weight: 700;
+
+            p{
+              margin-top: 0;
+            }
+
+            @include up('large') {
+              font-size: rem(44);
+              line-height: 107%;
+            }
+          }
+        }
+      }
+
+      //Category Design
+      .cms-design {
+        @include down('large') {
+          padding-top: rem(80);
+        }
+      }
+      //End category Design
+      }
+
+    .recommendations {
+      @include down('large') {
+        width: auto;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      &__container {
+        padding: 0 !important;
+      }
+    }
+
+    //Slider
+    &-slider {
+      padding-top: 0;
+      background: $color--beige;
+
+      .cms__title {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        max-width: inherit;
+        padding-left: 0;
+
+        h2 {
+          @include up('large') {
+            max-width: 486px;
+          }
+        }
+      }
+
+      .cms-cta {
+        position: relative;
+        top: rem(60);
+      }
+    }
+    //End slider
+
+    //Palette
+    &-palette {
+      margin-top: 0;
+      padding-top: rem(0);
+
+      @include up('large') {
+        padding-top: rem(0);
+      }
+    }
+    //End palette
+  }
+  .box{
+    display:none;
+  }
+}

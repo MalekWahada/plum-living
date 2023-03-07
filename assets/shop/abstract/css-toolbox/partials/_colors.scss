@@ -1,0 +1,24 @@
+@use '../../../config/sass' as *;
+
+
+
+.c-inherit { color: inherit !important; }
+.hover\:c-inherit:hover { color: inherit !important; }
+
+@each $name, $value in $colors {
+  .c-#{$name} { color: $value !important; }
+}
+
+@each $name, $value in $colors {
+  .hover\:c-#{$name}:hover { color: $value !important; }
+}
+
+
+
+@each $name, $value in $colors {
+  .bg-#{$name} { background-color: $value !important; }
+}
+
+@each $name, $value in $colors {
+  .hover\:bg-#{$name}:hover { background-color: $value !important; }
+}

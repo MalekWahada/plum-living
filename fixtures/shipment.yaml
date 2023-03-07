@@ -1,0 +1,9 @@
+App\Entity\Shipping\Shipment:
+    shipment_{1..25}:
+        method: '@shipping_method_with*'
+        order: '@order_<current()>'
+        state: <randomElement(['ready', 'cart'])>
+        tracking: null
+        created_at: <dateTime()>
+        updated_at: null
+        shipped_at: null

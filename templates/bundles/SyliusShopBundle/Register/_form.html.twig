@@ -1,0 +1,115 @@
+<div class="row">
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.firstName } %}
+    </div>
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.lastName } %}
+    </div>
+
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.email, 'attributes': { 'type': 'email' } } %}
+    </div>
+
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_phonenumber_field.html.twig' with { 'field': form.phoneNumber, 'attributes': { 'type': 'tel' } } %}
+    </div>
+
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_select_field.html.twig' with { 'field': form.gender } %}
+    </div>
+
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-5">
+        {% include 'Shop/Form/_text_field.html.twig' with {
+            'field': form.birthday,
+            'widget_attributes': {
+                'data-focus-placeholder': 'jj/mm/aaaa',
+            },
+            'attributes': {
+                'class': 'focus-placeholder-field',
+            }
+        } %}
+    </div>
+
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-auto">
+        {% include 'Shop/Form/_select_field.html.twig' with { 'field': form.howYouKnowAboutUs } %}
+
+        {% include 'Shop/Form/_text_field.html.twig' with {
+            'field': form.howYouKnowAboutUsDetails,
+            'attributes': {
+                'id': 'About-howYouKnowAboutUs-field',
+                'class': 'u-hidden u-margin-t-3',
+                'data-labels': {
+                    'by_my_architect': 'app.form.customer.how_you_know_about_us_details.architect'|trans,
+                    'by_my_contractor': 'app.form.customer.how_you_know_about_us_details.contractor'|trans,
+                    'default': 'app.form.customer.how_you_know_about_us_details.default'|trans
+                }|json_encode
+            }
+        } %}
+    </div>
+    <div id="customerTypeSwitchContainer" class="column @md:column-6">
+        {% include 'Shop/Form/_select_field.html.twig' with { 'field': form.customerType } %}
+    </div>
+</div>
+
+<div id="ProFieldsContainer" class="u-margin-t-6 {{ not form.vars.value.hasB2bProgram ? 'u-hidden' : '' }}">
+    <h1 class="panel__title t-header-medium">
+        {{ 'app.ui.login_register.b2b_section_title'|trans }}
+    </h1>
+    <div class="row">
+        <div class="column @md:column-6">
+            <div class=" u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyName, 'isLabelRequired': true } %}
+            </div>
+
+            <div class="u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyStreet, 'isLabelRequired': true } %}
+            </div>
+
+            <div class="u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyCity, 'isLabelRequired': true } %}
+            </div>
+
+            <div>
+                {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyInstagram } %}
+            </div>
+        </div>
+
+        <div class="column @md:column-6">
+            <div class="u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.vatNumber, 'isLabelRequired': true  } %}
+            </div>
+
+
+            <div class="u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyPostcode, 'isLabelRequired': true } %}
+            </div>
+
+            <div class="u-margin-b-4 @md:u-margin-b-5">
+                {% include 'Shop/Form/_select_field.html.twig' with { 'field': form.companyCountryCode, 'isLabelRequired': true, usePlaceholder: false } %}
+            </div>
+
+            <div>
+                {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.companyWebsite } %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="t-label-medium t-align-center u-margin-b-3 u-margin-t-8">{{ 'app.ui.login_register.choose_your_password'|trans }}</h2>
+
+<div class="row u-margin-b-8">
+    <div class="column @md:column-6 u-margin-b-4 @md:u-margin-b-auto">
+        {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.user.plainPassword.first, 'attributes': { 'type': 'password' } } %}
+    </div>
+    <div class="column @md:column-6">
+        {% include 'Shop/Form/_text_field.html.twig' with { 'field': form.user.plainPassword.second, 'attributes': { 'type': 'password' } } %}
+    </div>
+</div>
+
+<div class="field-group">
+    {% include 'Shop/Form/_b2b_program_checkbox_field.html.twig' with { 'label': ('sylius.form.customer.b2b_subscription'|trans({'%url%': get_url_from_page_code('terra-club')}))|raw,'field': form.b2bProgram, 'attributes': { 'labelClass': 't-label-medium', 'class': 'u-hidden' } } %}
+    {% include 'Shop/Form/_checkbox_field.html.twig' with { 'field': form.subscribedToNewsletter, 'attributes': { 'labelClass': 't-label-medium' } } %}
+    {% include 'Shop/Form/_checkbox_field.html.twig' with { 'field': form.acceptPrivacyPolicy, 'attributes': { 'labelClass': 't-label-medium' } } %}
+</div>
+
+<div id="proChoicesAvailable" data-choices="{{ constant('App\\Provider\\Customer\\CustomerTypeChoicesProvider::CHOICES_B2B')|json_encode }}"></div>

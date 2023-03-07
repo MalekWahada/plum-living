@@ -1,0 +1,9 @@
+App\Entity\Payment\GatewayConfig:
+    gateway_config_stripe_sca:
+        gatewayName: 'stripe_sca'
+        factoryName: 'stripe_checkout_session'
+        config: [{"publishable_key":"pk_test_3hIc1rsGgbfIux54GhiWz3Nh00IRCDUNGA","secret_key":"sk_test_3nhf8lvfEKVeE3xKA9qhwUqx00acLpARnV","webhook_secret_keys":["whsec_OQnwI9h25vfE5pFmDrq2i7Dt7iyO45HA"]}]
+    gateway_config_stripe_wire:
+        gatewayName: 'stripe_wire'
+        factoryName: 'stripe_wire'
+        config: [ { "publishable_key": "pk_test_3hIc1rsGgbfIux54GhiWz3Nh00IRCDUNGA","secret_key": "sk_test_3nhf8lvfEKVeE3xKA9qhwUqx00acLpARnV","webhook_secret_keys": [ "whsec_OQnwI9h25vfE5pFmDrq2i7Dt7iyO45HA" ] } ]

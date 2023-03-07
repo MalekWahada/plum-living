@@ -1,0 +1,41 @@
+@use './colors' as *;
+
+
+$font--families: (
+  'Canela': ('Canela-LightItalic' 300 italic, null), // Sass does not understand it's a list withing a list if there is only 1 item
+  'Sailec': ('Sailec-Regular' 400 normal, 'Sailec-RegularItalic' 400 italic, 'Sailec-Medium' 500 normal),
+  'Cera': ('Cera-Pro-Regular' 400 normal, 'Cera-Pro-Medium' 500 normal, 'Cera-Pro-Bold' 600 normal),
+  'Blacklist': ('Blacklist-ExtraBold' 800 normal, 'Blacklist-Bold' 700 normal, 'Blacklist-SemiBold' 600 normal, 'Blacklist-Italic' 500 italic),
+);
+
+$font--canela: 'Canela', serif; // We should make a better stack
+$font--sailec: 'Sailec', sans-serif; // We should make a better stack
+$font--cera: 'Cera', sans-serif; // We should make a better stack
+$font--blacklist: 'Blacklist', sans-serif; // We should make a better stack
+
+
+$font--sans-serif: sans-serif;
+$font--serif: serif;
+$font--monospace: serif;
+
+$font--stacks: (
+  'canela': $font--canela,
+  'sailec': $font--sailec,
+  'blacklist': $font--blacklist,
+  'cera': $font--cera,
+  'sans-serif': $font--sans-serif,
+  'serif': $font--serif,
+  'monospace': $font--monospace
+);
+
+$font--root-size: 100%; // 16px on most browsers
+$font--default-color: $color--near-black;
+$font--default-stack: $font--cera;
+$font--default-base: 16;
+$font--default-size: 16 / $font--default-base * 1rem;
+$font--default-style: normal;
+$font--default-weight: normal;
+$font--default-line-height: 1.5;
+$font--default-letter-spacing: 0;
+$font--default-text-decoration: none;
+$font--default-text-transform: none;

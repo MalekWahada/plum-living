@@ -1,0 +1,54 @@
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% set findInstallerContent = page.content | format_cms_content_to_array %}
+{% set slug = get_current_translation_slug() %}
+
+<div class="cms__container find-installer">
+    <div class="bg-beige u-padding-b-3 u-margin-b-10 @lg:u-padding-b-6 @lg:u-margin-b-15 find-installer--header">
+        <div class="container">
+            <div class="page-header flush-container container--compressed t-align-center @lg:u-margin-b-10">
+                {{ findInstallerContent | get_find_installer_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::FIND_INSTALLER_MAIN_TITLE')) | monsieurbiz_richeditor_render_element }}
+            </div>
+            <div class="flush-row">
+                <div class="@lg:flush-column-6">
+                    <div class="title">
+                        <h2 class="t-header-medium">{{ 'app.ui.find_installer.subtitle'|trans }}</h2>
+                    </div>
+                    <img class="plum-x-needhelp" alt="{{ 'app.ui.find_installer.subtitle'|trans }}" src="{{ asset('build/shop/images/plum-x-needhelp.png', 'shop') }}" srcset="{{ asset('build/shop/images/plum-x-needhelp.png', 'shop') }} 2x">
+                    <div class="t-base-medium u-margin-t-2 @lg:u-padding-r-15">
+                        {{ 'app.ui.find_installer.top_text'|trans }}
+                    </div>
+                    <a class="button u-margin-t-3 u-margin-b-4" href="{{ ('app.ui.find_installer.cta_url_' ~ slug) | trans }}" target="_blank">
+                        {{ 'app.ui.find_installer.cta'|trans }}
+                        <svg class="o-icon-24 o-icon--right"><use xlink:href="{{ iconLibUrl }}#SVG-icon-arrow-right"/></svg>
+                    </a>
+                </div>
+                <div class="@lg:flush-column-6">
+                    <img class="u-cover u-fullwidth" alt="{{ 'app.ui.find_installer.subtitle'|trans }}" src="{{ asset('build/shop/images/kitchen-installer.png', 'shop') }}" srcset="{{ asset('build/shop/images/kitchen-installer.png', 'shop') }} 2x">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-true-white cms__content__default u-padding-t-9">
+        <div class="container @lg:u-margin-t-7 @lg:u-padding-b-13 u-padding-b-8">
+            <div class="flush-row">
+                <div class="t-base-medium">
+                    {{ 'app.ui.find_installer.info_text'|trans }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cross-content-slider cms-slider u-cross-centered-col bg-beige u-padding-t-10">
+        <div class="cms-slider__header container">
+            {{ findInstallerContent | get_find_installer_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::FIND_INSTALLER_CROSS_CONTENT_TITLE')) | monsieurbiz_richeditor_render_element }}
+            {{ findInstallerContent | get_find_installer_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::FIND_INSTALLER_CROSS_CONTENT_BACK_LINK')) | monsieurbiz_richeditor_render_element }}
+        </div>
+        <div class="cms-slider__container swiper-container">
+            <svg class="cms-slider__arrow cms-slider__arrow--right o-icon-78"><use xlink:href="{{ iconLibUrl }}#SVG-arrow-fill--white"/></svg>
+            <div class="swiper-wrapper">
+                {{ findInstallerContent | get_find_installer_ui_element(constant('App\\Provider\\CMS\\PagesSkeleton\\PagesSkeletonProvider::FIND_INSTALLER_CROSS_CONTENT_PAGES')) | monsieurbiz_richeditor_render_element }}
+            </div>
+        </div>
+    </div>
+</div>

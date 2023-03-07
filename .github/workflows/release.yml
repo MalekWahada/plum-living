@@ -1,0 +1,33 @@
+name: Create release on master
+
+on: [workflow_dispatch]
+
+concurrency: release
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v2
+                with:
+                    ref: master
+
+            -   name: Conventional Changelog Action
+                id: changelog
+                uses: TriPSs/conventional-changelog-action@v3
+                with:
+                    github-token: ${{ secrets.GITHUB_TOKEN }}
+                    skip-commit: 'true'
+                    skip-on-empty: 'false'
+                    output-file: 'false'
+
+            -   name: Create Release
+                uses: actions/create-release@v1
+                if: ${{ steps.changelog.outputs.skipped == 'false' }}
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                with:
+                    tag_name: ${{ steps.changelog.outputs.tag }}
+                    release_name: ${{ steps.changelog.outputs.tag }}
+                    body: ${{ steps.changelog.outputs.clean_changelog }}

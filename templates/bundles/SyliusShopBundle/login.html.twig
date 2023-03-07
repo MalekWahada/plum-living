@@ -1,0 +1,18 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% set iconLibUrl = asset('build/shop/images/icon-lib.svg', 'shop') %}
+
+{% block title %}{{ 'sylius.ui.customer_login'|trans }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="container container--compact">
+        {{ sylius_template_event('sylius.shop.login.after_content_header') }}
+        <div class="panel panel--big-chin panel--big-cheeks">
+            <h1 class="panel__title t-header-medium">{{ 'app.ui.generic.connexion'|trans }}</h1>
+            {{ sylius_template_event('sylius.shop.login.main_column', _context) }}
+            {{ sylius_template_event('sylius.shop.login.register_column', _context) }}
+        </div>
+    </div>
+{% endblock %}

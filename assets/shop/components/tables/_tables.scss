@@ -1,0 +1,46 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-top-level/css-top-level-config' as *;
+
+.order-summary-table {
+  thead {
+    color: $color--grey-mid;
+  }
+
+  th, td {
+    vertical-align: top;
+  }
+
+  .baseline {
+    th, td {
+      vertical-align: baseline;
+    }
+  }
+
+  .qty {
+    width: 0;
+    text-align: center;
+  }
+
+  .price {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  a:not([class*="button"]) {
+    color: inherit;
+  }
+
+  &__form {
+    .field__widget {
+      color: $color--true-white;
+    }
+
+    .link-button {
+      position: absolute;
+      right: 0;
+      top: ($form--widget-height / 2);
+      transform: translateY(-50%);
+
+    }
+  }
+}

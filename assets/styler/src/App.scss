@@ -1,0 +1,55 @@
+#react-styler {
+  .App {
+    font-family: 'Cera Pro', Arial, sans-serif;
+    text-align: center;
+    height: 100%;
+    max-height: 100%;
+
+    .expandBtn.btn-primary {
+      position: fixed;
+      z-index: 99;
+      width: 40px;
+      height: 40px;
+      right: 50px;
+      top: 27px;
+      background: #FFFFFF;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+      border-radius: 100px;
+      border: none;
+      padding: 0;
+
+      &:hover, &:active, &:focus {
+        background: #FFFFFF;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  .mobileView {
+    .row {
+      height: 100vh;
+      background: #F9F7F4;
+      align-items: center;
+    }
+  }
+
+  .loaderContainer {
+    height: 100vh;
+    background: #F9F7F4;
+    padding-top: 30vh;
+  }
+}
+
+// Build ajustements
+
+.styler_styler_app {
+  .plum-nav__link {
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Cera', Arial, sans-serif !important;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+}

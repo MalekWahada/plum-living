@@ -1,0 +1,44 @@
+@use '../../config/sass' as *;
+@use '../../abstract/css-grid/css-grid-mixins' as *;
+@use '../../abstract/css-top-level/css-top-level-config' as *;
+
+.swiper-container {
+  width: 100%;
+}
+
+.swiper-slide {
+  position: relative;
+  display: block;
+}
+
+//Page project - On slider remove arrow right when there is only one slide
+.CMS_PAGE_TYPE_project {
+  .cms-slider-budget__container,
+  .cms-slider-header__container  {
+
+    .swiper-wrapper {
+      justify-content: center;
+    }
+
+    .cms-slider__arrow--right {
+      display: none;
+    }
+
+    &.active {
+      .cms-slider__arrow--right {
+        display: block;
+      }
+
+      .swiper-wrapper {
+        justify-content: initial;
+      }
+    }
+  }
+}
+
+.cms-slider__container{
+  .t-link-proxy{
+    background:none;
+  }
+}
+

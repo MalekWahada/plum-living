@@ -1,0 +1,57 @@
+<div class="media-panoramic-photo-xl-text u-padding-t-3 u-padding-b-3 @lg:u-padding-b-7 @lg:u-padding-t-7 {{ element.bg_color }}">
+    <div class="container">
+        <div class="row">
+            <div class="column-fill-space">
+                <h2 class="t-header-xlarge u-margin-b-7 u-margin-t-2">{{ element.title | raw }}</h2>
+            </div>
+        </div>
+    </div>
+    {% if element.margin == 'margin' %}
+    <div class="container">
+        <div class="row">
+            <div class="column-fill-space">
+                <img src="{{ element.image | raw }}"
+                     alt="{{ element.image_alt | raw }}"
+                     title="{{ element.image_title | raw }}">
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="column-fill-space">
+                <img src="{{ element.image | raw }}"
+                     alt="{{ element.image_alt | raw }}"
+                     title="{{ element.image_title | raw }}">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% if element.caption  %}
+    <div class="container">
+        <div class="row">
+            <div class="column-fill-space">
+                <div class="caption">
+                    {{ element.caption | raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="container">
+        <div class="row @lg:u-margin-t-3">
+            <div class="column-fill-space">
+                <p>
+                    {{ element.description | raw }}
+                </p>
+                {% if element.link_label and element.link_url %}
+                    <a class="btn"
+                       {% if element.link_target %} target="{{ element.link_target }}"{% endif %}
+                       href="{{ element.link_url | raw }}">
+                        {{ element.link_label | raw }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

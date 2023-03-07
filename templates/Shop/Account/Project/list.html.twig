@@ -1,0 +1,58 @@
+{% extends '@SyliusShop/Account/layout.html.twig' %}
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% block title %}{{ 'app.ui.account.menu.projects'|trans }} | {{ parent() }}{% endblock %}
+
+{% block subcontent %}
+    <main class="panel account-projects-panel panel--big-cheeks">
+        <h1 class="panel__title t-header-medium">{{ 'app.ui.account.projects.title'|trans }}</h1>
+        <div class="panel__content">
+            {% if projects|length > 0 %}
+                <table class="table order-summary-table account-projects-table t-label-small">
+                    <thead>
+                    <tr class="t-base-xsmall">
+                        <th>{{ 'app.ui.account.projects.project'|trans }}</th>
+                        <th>{{ 'app.ui.account.projects.last_saved_date'|trans }}</th>
+                        <th class="price">{{ 'app.ui.account.projects.total'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody class="baseline">
+                    {% for project in projects %}
+                        {% if loop.index0 > 0 %}
+                            <tr class="table-separator-row table-separator-row--s c-near-white">
+                                <td colspan="4"></td>
+                            </tr>
+                        {% endif %}
+                        <tr>
+                            <td>{{ project.name is not null ? project.name : 'N/A' }}</td>
+                            <td>{{ project.updatedAt|date('d/m/Y') }}</td>
+                            <td class="price">{{ money.convertAndFormat(project|calculate_project_total) }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                <a class="small-link-button c-grey-mid"
+                                   href="{{ path('app_customer_project_show', {'token': project.token}) }}">
+                                    {{ 'app.ui.account.projects.see_my_project'|trans }}
+                                </a>
+                                <a class="small-link-button c-grey-mid u-margin-l-2"
+                                   href="{{ path('app_account_project_duplicate', {'token': project.token}) }}">
+                                    {{ 'app.ui.account.projects.duplicate_my_project'|trans }}
+                                </a>
+                            </td>
+                            <td colspan="1">
+                                <a class="small-link-button c-grey-mid" href="{{ path('app_account_project_delete', {'token': project.token}) }}">
+                                    {{ 'app.ui.account.projects.delete_my_project'|trans }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="column c-grey-mid t-align-center">
+                    {{ 'app.ui.account.projects.no_projects'|trans }}
+                </div>
+            {% endif %}
+        </div>
+    </main>
+{% endblock %}
