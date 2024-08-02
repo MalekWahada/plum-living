@@ -1,272 +1,272 @@
-#stages:
-#    - DatasOperations
-#    - Quality
-#    - Build
-#    - DeployDev
-#    - DeployPreProd
-#    - DeployPreProd2
-#    - DeployProd
-#
-#.template_scripts:
-#    deploy: &script_template_deploy
-#        allow_failure: false
-#        before_script:
-#            # if deploy auto, verify if we must change branch.
-#            - |-
-#                if [ "$DEPLOY_TYPE" = "auto" ];then
-#                  current_branch=$(curl -s https://gitlab-webservice.cosavostra.com/?server=$DEPLOY_URL&project=$CI_PROJECT_PATH_SLUG);
-#                  if [ "$current_branch" != "$CI_COMMIT_BRANCH" ];then
-#                    echo
-#                    echo
-#                    echo -e "Le dernier déploiement était sur la branche '$current_branch', on ne déploie pas en automatique la branche '$CI_COMMIT_BRANCH'";
-#                    echo -e "Utilisez le déploiement manuel pour changer de branche";
-#                    echo
-#                    exit 0
-#                  fi
-#                fi
-#
-#            # if we are in manual deployment mode
-#            - |-
-#                if [ "$DEPLOY_TYPE" = "manual" ];then
-#                  curl -s -d "server=$DEPLOY_URL&project=${CI_PROJECT_PATH_SLUG}&branch=$CI_COMMIT_BRANCH" -X POST https://gitlab-webservice.cosavostra.com/
-#                fi
-#        script:
-#            # init folders .
-#            - |-
-#                ssh $DEPLOY_HOST <<SCRIPT
-#                mkdir -p ${DEPLOY_PATH}/public/assets/ ${DEPLOY_PATH}/public/build/ ${DEPLOY_PATH}/vendor/ ${DEPLOY_PATH}/.git/ || exit 1
-#                SCRIPT
-#            
-#            # sync datas
-#            - rsync --delete -av --no-perms --no-owner --no-group $CI_PROJECT_DIR/public/assets/ ${DEPLOY_HOST}:${DEPLOY_PATH}/public/assets/ # we sync builds
-#            - rsync --delete -av --no-perms --no-owner --no-group $CI_PROJECT_DIR/public/build/ ${DEPLOY_HOST}:${DEPLOY_PATH}/public/build/ # we sync builds
-#            - rsync --delete -av --no-perms --no-owner --no-group $CI_PROJECT_DIR/vendor/ ${DEPLOY_HOST}:${DEPLOY_PATH}/vendor/ # we sync vendor
-#            - rsync --ignore-times --delete -av --no-perms --no-owner --no-group $CI_PROJECT_DIR/.git/ ${DEPLOY_HOST}:${DEPLOY_PATH}/.git/ # we sync .git
-#            
-#            # deploy site.
-#            - |-
-#                ssh $DEPLOY_HOST <<SCRIPT
-#                cd $DEPLOY_PATH || exit 1
-#                git reset --hard HEAD || exit 1
-#                git clean -fd || exit 1
-#                php bin/console cache:clear || exit 1
-#                php bin/console doctrine:migrations:migrate --no-interaction || exit 1
-#                php bin/console d:s:u --dump-sql --force || exit 1
-#                php bin/console asset:install || exit 1
-#                php bin/console liip:imagine:cache:remove || exit 1
-#                php bin/console cache:clear || exit 1
-#                SCRIPT
-#            - echo "Please visit $DEPLOY_URL"
-#    quality: &script_template_quality
-#        tags:
-#            - shell-job-compliant
-#        script:
-#            - composer install --no-scripts
-#            - vendor/bin/phpcs --runtime-set ignore_warnings_on_exit true
-#            - vendor/bin/php-cs-fixer fix -v --dry-run --diff-format=udiff --using-cache=no src
-#            - vendor/bin/phpstan analyse -c phpstan.neon -l 6 src/
-#            - /opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=${SONAR_PROJECT} -Dsonar.sources=$SONAR_SOURCES
-#        cache:
-#            - key:
-#                files:
-#                - conposer.lock
-#              paths:
-#              - vendor
-#
-#Quality:PhpCS-PhpCsFixer-PhpStan-Sonar:
-#    <<: *script_template_quality
-#    stage: Quality
-#    only:
-#        - master
-#
-#Quality:MergeRequests:
-#    <<: *script_template_quality
-#    stage: Quality
-#    only:
-#        - merge_requests
-#
-#Build:
-#    tags:
-#        - shell-job-compliant
-#    stage: Build
-#    script:
-#        - composer install --no-scripts
-#        - |-
-#            export NVM_DIR="$HOME/.nvm"
-#            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#            yarn install --force
-#            yarn build
-#            yarn encore prod 2> >(grep 'The node type SpreadProperty has been renamed to SpreadElement' 1>/dev/null)
-#    cache:
-#        - key:
-#            files:
-#            - yarn.lock
-#          paths:
-#            - node_modules/
-#        - key:
-#            files:
-#            - conposer.lock
-#          paths:
-#          - vendor
-#
-#    artifacts:
-#        paths:
-#            - public/
-#            - vendor
-#
-#DeployDev:Auto:
-#    <<: *script_template_deploy
-#    stage: DeployDev
-#    needs: [ Build ]
-#    variables:
-#        DEPLOY_HOST: $DEV_HOST
-#        DEPLOY_PATH: $DEV_PATH
-#        DEPLOY_URL: $DEV_URL
-#        DEPLOY_TYPE: "auto"
-#    environment:
-#        name: staging
-#        url: $DEV_URL
-#
-#DeployDev:Manual:
-#    <<: *script_template_deploy
-#    stage: DeployDev
-#    needs: [ Build ]
-#    when: manual
-#    variables:
-#        DEPLOY_HOST: $DEV_HOST
-#        DEPLOY_PATH: $DEV_PATH
-#        DEPLOY_URL: $DEV_URL
-#        DEPLOY_TYPE: "manual"
-#    environment:
-#        name: staging
-#        url: $DEV_URL
-#
-#DeployPreProd:Auto:
-#    <<: *script_template_deploy
-#    stage: DeployPreProd
-#    needs: [ "Build" ]
-#    variables:
-#        DEPLOY_HOST: $PRE_PROD_HOST
-#        DEPLOY_PATH: $PRE_PROD_PATH
-#        DEPLOY_URL: $PRE_PROD_URL
-#        DEPLOY_TYPE: "auto"
-#    environment:
-#        name: pre-prod
-#        url: $PRE_PROD_URL
-#
-#DeployPreProd:Manual:
-#    <<: *script_template_deploy
-#    stage: DeployPreProd
-#    needs: [ "Build" ]
-#    when: manual
-#    variables:
-#        DEPLOY_HOST: $PRE_PROD_HOST
-#        DEPLOY_PATH: $PRE_PROD_PATH
-#        DEPLOY_URL: $PRE_PROD_URL
-#        DEPLOY_TYPE: "manual"
-#    environment:
-#        name: pre-prod
-#        url: $PRE_PROD_URL
-#
-#DeployPreProd2:Auto:
-#    <<: *script_template_deploy
-#    stage: DeployPreProd2
-#    needs: [ "Build" ]
-#    variables:
-#        DEPLOY_HOST: $PRE_PROD_2_HOST
-#        DEPLOY_PATH: $PRE_PROD_2_PATH
-#        DEPLOY_URL: $PRE_PROD_2_URL
-#        DEPLOY_TYPE: "auto"
-#    environment:
-#        name: pre-prod-2
-#        url: $PRE_PROD_2_URL
-#
-#DeployPreProd2:Manual:
-#    <<: *script_template_deploy
-#    stage: DeployPreProd2
-#    needs: [ "Build" ]
-#    when: manual
-#    variables:
-#        DEPLOY_HOST: $PRE_PROD_2_HOST
-#        DEPLOY_PATH: $PRE_PROD_2_PATH
-#        DEPLOY_URL: $PRE_PROD_2_URL
-#        DEPLOY_TYPE: "manual"
-#    environment:
-#        name: pre-prod-2
-#        url: $PRE_PROD_2_URL
-#
-#DeployProd:Manual:
-#    <<: *script_template_deploy
-#    stage: DeployProd
-#    needs: [ "Build", "DeployPreProd:Auto" ]
-#    when: manual
-#    only:
-#        - master
-#    variables:
-#        DEPLOY_HOST: $PROD_HOST
-#        DEPLOY_PATH: $PROD_PATH
-#        DEPLOY_URL: $PROD_URL
-#        DEPLOY_TYPE: "manual"
-#    environment:
-#        name: prod
-#        url: $PROD_URL
-#
-#CopyDataProdToDev:
-#    variables:
-#        GIT_STRATEGY: none
-#    script:
-#        - ~/plum_import_prod_to_dev.sh
-#    stage: DatasOperations
-#    when: manual
-#    only:
-#        - master
-#    environment:
-#        name: staging
-#        url: $DEV_URL
-#
-#CopyDataPreProdToDev:
-#    variables:
-#        GIT_STRATEGY: none
-#    script:
-#        - ~/plum_import_pre_prod_to_dev.sh
-#    stage: DatasOperations
-#    when: manual
-#    only:
-#        - master
-#    environment:
-#        name: staging
-#        url: $DEV_URL
-#
-#
-#CopyDataProdToPreProd:
-#    variables:
-#        GIT_STRATEGY: none
-#    script:
-#        - ~/plum_import_prod_to_preprod.sh
-#    stage: DatasOperations
-#    when: manual
-#    only:
-#        - master
-#    environment:
-#        name: staging
-#        url: $DEV_URL
-#
-#DumpProd:
-#    variables:
-#        GIT_STRATEGY: none
-#    script:
-#        - ~/plum_dump_prod.sh
-#    stage: DatasOperations
-#    when: manual
-#    only:
-#        - master
-#
-#DumpPreProd:
-#    variables:
-#        GIT_STRATEGY: none
-#    script:
-#        - ~/plum_dump_pre_prod.sh
-#    stage: DatasOperations
-#    when: manual
-#    only:
-#        - master
+stages:
+   - DatasOperations
+   - Quality
+   - Build
+   - DeployDev
+   - DeployPreProd
+   - DeployPreProd2
+   - DeployProd
+
+.template_scripts:
+   deploy: &script_template_deploy
+       allow_failure: false
+       before_script:
+           # if deploy auto, verify if we must change branch.
+           - |-
+               if [ "$DEPLOY_TYPE" = "auto" ];then
+                 current_branch=$(curl -s https://gitlab-webservice.cosavostra.com/?server=$DEPLOY_URL&project=$CI_PROJECT_PATH_SLUG);
+                 if [ "$current_branch" != "$CI_COMMIT_BRANCH" ];then
+                   echo
+                   echo
+                   echo -e "Le dernier déploiement était sur la branche '$current_branch', on ne déploie pas en automatique la branche '$CI_COMMIT_BRANCH'";
+                   echo -e "Utilisez le déploiement manuel pour changer de branche";
+                   echo
+                   exit 0
+                 fi
+               fi
+
+           # if we are in manual deployment mode
+           - |-
+               if [ "$DEPLOY_TYPE" = "manual" ];then
+                 curl -s -d "server=$DEPLOY_URL&project=${CI_PROJECT_PATH_SLUG}&branch=$CI_COMMIT_BRANCH" -X POST https://gitlab-webservice.cosavostra.com/
+               fi
+       script:
+           # init folders .
+           - |-
+               ssh $DEPLOY_HOST <<SCRIPT
+               mkdir -p ${DEPLOY_PATH}/public/assets/ ${DEPLOY_PATH}/public/build/ ${DEPLOY_PATH}/vendor/ ${DEPLOY_PATH}/.git/ || exit 1
+               SCRIPT
+           
+           # sync datas
+           - rsync --delete -av --no-perms --no-owner --no-group $CI_PROJECT_DIR/public/assets/ ${DEPLOY_HOST}:${DEPLOY_PATH}/public/assets/ # we sync builds
+           - rsync --delete -av --no-perms --no-owner --no-group $CI_PROJECT_DIR/public/build/ ${DEPLOY_HOST}:${DEPLOY_PATH}/public/build/ # we sync builds
+           - rsync --delete -av --no-perms --no-owner --no-group $CI_PROJECT_DIR/vendor/ ${DEPLOY_HOST}:${DEPLOY_PATH}/vendor/ # we sync vendor
+           - rsync --ignore-times --delete -av --no-perms --no-owner --no-group $CI_PROJECT_DIR/.git/ ${DEPLOY_HOST}:${DEPLOY_PATH}/.git/ # we sync .git
+           
+           # deploy site.
+           - |-
+               ssh $DEPLOY_HOST <<SCRIPT
+               cd $DEPLOY_PATH || exit 1
+               git reset --hard HEAD || exit 1
+               git clean -fd || exit 1
+               php bin/console cache:clear || exit 1
+               php bin/console doctrine:migrations:migrate --no-interaction || exit 1
+               php bin/console d:s:u --dump-sql --force || exit 1
+               php bin/console asset:install || exit 1
+               php bin/console liip:imagine:cache:remove || exit 1
+               php bin/console cache:clear || exit 1
+               SCRIPT
+           - echo "Please visit $DEPLOY_URL"
+   quality: &script_template_quality
+       tags:
+           - shell-job-compliant
+       script:
+           - composer install --no-scripts
+           - vendor/bin/phpcs --runtime-set ignore_warnings_on_exit true
+           - vendor/bin/php-cs-fixer fix -v --dry-run --diff-format=udiff --using-cache=no src
+           - vendor/bin/phpstan analyse -c phpstan.neon -l 6 src/
+           - /opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=${SONAR_PROJECT} -Dsonar.sources=$SONAR_SOURCES
+       cache:
+           - key:
+               files:
+               - conposer.lock
+             paths:
+             - vendor
+
+Quality:PhpCS-PhpCsFixer-PhpStan-Sonar:
+   <<: *script_template_quality
+   stage: Quality
+   only:
+       - master
+
+Quality:MergeRequests:
+   <<: *script_template_quality
+   stage: Quality
+   only:
+       - merge_requests
+
+Build:
+   tags:
+       - shell-job-compliant
+   stage: Build
+   script:
+       - composer install --no-scripts
+       - |-
+           export NVM_DIR="$HOME/.nvm"
+           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+           yarn install --force
+           yarn build
+           yarn encore prod 2> >(grep 'The node type SpreadProperty has been renamed to SpreadElement' 1>/dev/null)
+   cache:
+       - key:
+           files:
+           - yarn.lock
+         paths:
+           - node_modules/
+       - key:
+           files:
+           - conposer.lock
+         paths:
+         - vendor
+
+   artifacts:
+       paths:
+           - public/
+           - vendor
+
+DeployDev:Auto:
+   <<: *script_template_deploy
+   stage: DeployDev
+   needs: [ Build ]
+   variables:
+       DEPLOY_HOST: $DEV_HOST
+       DEPLOY_PATH: $DEV_PATH
+       DEPLOY_URL: $DEV_URL
+       DEPLOY_TYPE: "auto"
+   environment:
+       name: staging
+       url: $DEV_URL
+
+DeployDev:Manual:
+   <<: *script_template_deploy
+   stage: DeployDev
+   needs: [ Build ]
+   when: manual
+   variables:
+       DEPLOY_HOST: $DEV_HOST
+       DEPLOY_PATH: $DEV_PATH
+       DEPLOY_URL: $DEV_URL
+       DEPLOY_TYPE: "manual"
+   environment:
+       name: staging
+       url: $DEV_URL
+
+DeployPreProd:Auto:
+   <<: *script_template_deploy
+   stage: DeployPreProd
+   needs: [ "Build" ]
+   variables:
+       DEPLOY_HOST: $PRE_PROD_HOST
+       DEPLOY_PATH: $PRE_PROD_PATH
+       DEPLOY_URL: $PRE_PROD_URL
+       DEPLOY_TYPE: "auto"
+   environment:
+       name: pre-prod
+       url: $PRE_PROD_URL
+
+DeployPreProd:Manual:
+   <<: *script_template_deploy
+   stage: DeployPreProd
+   needs: [ "Build" ]
+   when: manual
+   variables:
+       DEPLOY_HOST: $PRE_PROD_HOST
+       DEPLOY_PATH: $PRE_PROD_PATH
+       DEPLOY_URL: $PRE_PROD_URL
+       DEPLOY_TYPE: "manual"
+   environment:
+       name: pre-prod
+       url: $PRE_PROD_URL
+
+DeployPreProd2:Auto:
+   <<: *script_template_deploy
+   stage: DeployPreProd2
+   needs: [ "Build" ]
+   variables:
+       DEPLOY_HOST: $PRE_PROD_2_HOST
+       DEPLOY_PATH: $PRE_PROD_2_PATH
+       DEPLOY_URL: $PRE_PROD_2_URL
+       DEPLOY_TYPE: "auto"
+   environment:
+       name: pre-prod-2
+       url: $PRE_PROD_2_URL
+
+DeployPreProd2:Manual:
+   <<: *script_template_deploy
+   stage: DeployPreProd2
+   needs: [ "Build" ]
+   when: manual
+   variables:
+       DEPLOY_HOST: $PRE_PROD_2_HOST
+       DEPLOY_PATH: $PRE_PROD_2_PATH
+       DEPLOY_URL: $PRE_PROD_2_URL
+       DEPLOY_TYPE: "manual"
+   environment:
+       name: pre-prod-2
+       url: $PRE_PROD_2_URL
+
+DeployProd:Manual:
+   <<: *script_template_deploy
+   stage: DeployProd
+   needs: [ "Build", "DeployPreProd:Auto" ]
+   when: manual
+   only:
+       - master
+   variables:
+       DEPLOY_HOST: $PROD_HOST
+       DEPLOY_PATH: $PROD_PATH
+       DEPLOY_URL: $PROD_URL
+       DEPLOY_TYPE: "manual"
+   environment:
+       name: prod
+       url: $PROD_URL
+
+CopyDataProdToDev:
+   variables:
+       GIT_STRATEGY: none
+   script:
+       - ~/plum_import_prod_to_dev.sh
+   stage: DatasOperations
+   when: manual
+   only:
+       - master
+   environment:
+       name: staging
+       url: $DEV_URL
+
+CopyDataPreProdToDev:
+   variables:
+       GIT_STRATEGY: none
+   script:
+       - ~/plum_import_pre_prod_to_dev.sh
+   stage: DatasOperations
+   when: manual
+   only:
+       - master
+   environment:
+       name: staging
+       url: $DEV_URL
+
+
+CopyDataProdToPreProd:
+   variables:
+       GIT_STRATEGY: none
+   script:
+       - ~/plum_import_prod_to_preprod.sh
+   stage: DatasOperations
+   when: manual
+   only:
+       - master
+   environment:
+       name: staging
+       url: $DEV_URL
+
+DumpProd:
+   variables:
+       GIT_STRATEGY: none
+   script:
+       - ~/plum_dump_prod.sh
+   stage: DatasOperations
+   when: manual
+   only:
+       - master
+
+DumpPreProd:
+   variables:
+       GIT_STRATEGY: none
+   script:
+       - ~/plum_dump_pre_prod.sh
+   stage: DatasOperations
+   when: manual
+   only:
+       - master
